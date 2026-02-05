@@ -1,0 +1,176 @@
+# Site Information
+site_name: AI System Design Documentation
+site_description: Comprehensive documentation for AI system design, specifications, skills, tools and prompting
+site_author: Archie Cur
+site_url: https://archiecur.github.io/ai-system-design/  
+
+# Repository
+repo_name: ArchieCur/ai-system-design
+repo_url: https://github.com/ArchieCur/ai-system-design
+edit_uri: edit/main/docs
+
+# Copyright
+copyright: Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+
+# Theme Configuration
+theme:
+  name: material
+  
+  # Color scheme
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  # Features
+  features:
+    - navigation.tabs           # Top-level sections as tabs
+    - navigation.tabs.sticky    # Tabs stay visible when scrolling
+    - navigation.sections       # Group pages into sections
+    - navigation.expand         # Expand all sections by default
+    - navigation.path           # Show breadcrumb navigation
+    - navigation.top            # Back-to-top button
+    - navigation.footer         # Previous/next links in footer
+    - search.suggest            # Search suggestions as you type
+    - search.highlight          # Highlight search results
+    - search.share              # Share search results
+    - content.code.copy         # Copy button for code blocks
+    - content.code.annotate     # Add annotations to code blocks
+    - content.tabs.link         # Link content tabs
+  
+  font:
+    text: Roboto
+    code: Roboto Mono
+  
+  # Logo and favicon (optional - add these files if you have them)
+  logo: assets/logo200.png
+  favicon: assets/favicon32.png
+
+# Navigation Structure
+
+nav:
+  - Home: index.md
+  
+  - Specifications:
+      - Overview: specifications/index.md
+      - Foundations: specifications/Specifications_1_Foundations.md
+      - MUST Constraints: specifications/Specifications_2_MUST_Constraints.md 
+      - SHOULD Guidelines: specifications/Specifications_3_SHOULD_Guidelines.md
+      - Providing CONTEXT: specifications/Specifications_4_Providing_CONTEXT.md
+      - Expressing INTENT: specifications/Specifications_5_Expressing_INTENT.md
+      - Verification Protocols: specifications/Specifications_6_Verification_Protocols.md
+      - Common Pitfalls: specifications/Specifications_7_Common_Pitfalls.md
+      - 'Appendix A: Templates': specifications/Specifications_A_Templates_Appendix.md
+      - 'Appendix B: Integration Examples': specifications/Specifications_B_IntegrationExamples_Appendix.md
+      - 'Appendix C: Quick Reference': specifications/Specifications_C_QuickReferenceGuide_Appendix.md
+      - 'Appendix D: Verification Templates': specifications/Specifications_D_VerificationProtocolTemplates_Appendix.md
+      - 'Appendix E: Folder Structures': specifications/Specifications_E_FolderStructures_Appendix.md
+
+  - Skills:
+      - Overview: skills/index.md
+      - Skill Anatomy: skills/Skills_1.1_Skill_Anatomy.md
+      - Basic Template (Class A): skills/Skills_1.2_Basic_Template_ClassA.md
+      - Designing Tools: skills/Skills_1.2a_Designing_Tools.md
+      - Advanced Skills (Class B/C): skills/Skills_1.3_Advanced_Skills_ClassB-C.md
+      - Semantic Tags: skills/Skills_1.4_Semantic_Tags.md
+      - Advanced Deep Dive: skills/Skills_1.5_Advanced_Deep_Dive.md
+      - Common Pitfalls: skills/Skills_1.6_Common_Pitfalls.md
+      - Semantic Tags Reference: skills/Skills_A_Semantic_Tag_Reference_Appendix.md
+      - Complete Skills Template Example: skills/Skills_B_Complete_Skill_Template_Appendix.md
+      - Fill in the Blank Skill Templates: skills/Skills_C_Tool_Templates_Appendix.md
+      - Cross Platform Implementation: skills/Skills_D_Cross-Platform_Implementation_Resources_Appendix.md
+
+  - Tools:
+      - Overview: tools/index.md
+      - Designing Tools: tools/Tool_Literacy_Designing_Tools.md
+      - Tool Usage: tools/Tool_Templates.md
+  
+  - Advanced Prompting:
+      - Overview: advanced-prompting/index.md
+      - Building Reliable Agents: advanced-prompting/Building_Reliable_Agents_Advanced_Prompting.md
+      - Prompt Engineering Field Guide: advanced-prompting/The_2026Prompt_Engineering_Field_Guide.md
+      - Automated Prompt Optimization: advanced-prompting/Automated_Prompt_Optimization.py
+  
+  
+# Markdown Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr                        # Abbreviations
+  - admonition                  # Callout boxes (Note, Warning, etc.)
+  - attr_list                   # Add HTML/CSS attributes to elements
+  - def_list                    # Definition lists
+  - footnotes                   # Footnotes
+  - md_in_html                  # Markdown inside HTML
+  - toc:                        # Table of contents
+      permalink: true           # Add permalink to headings
+      toc_depth: 3              # Show up to h3 in TOC
+  
+  # PyMdown Extensions
+  - pymdownx.arithmatex:        # Math equations (LaTeX)
+      generic: true
+  - pymdownx.betterem:          # Better emphasis (bold/italic)
+      smart_enable: all
+  - pymdownx.caret              # Superscript and insert (^text^, ^^text^^)
+  - pymdownx.mark               # Highlight text (==text==)
+  - pymdownx.tilde              # Subscript and delete (~text~, ~~text~~)
+  - pymdownx.critic             # Track changes
+  - pymdownx.details            # Collapsible details blocks
+  - pymdownx.emoji:             # Emoji support :smile:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:         # Code highlighting
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite       # Inline code highlighting
+  - pymdownx.keys               # Keyboard keys (++ctrl+alt+delete++)
+  - pymdownx.smartsymbols       # Smart symbols (arrows, quotes, etc.)
+  - pymdownx.superfences:       # Code blocks with additional features
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:            # Content tabs
+      alternate_style: true
+  - pymdownx.tasklist:          # Task lists with checkboxes
+      custom_checkbox: true
+
+# Plugins
+plugins:
+  - search:                     # Search functionality
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  # - tags                      # Optional: Tag pages for organization
+  # - git-revision-date-localized  # Optional: Show last updated date
+
+# Extra Configuration
+extra:
+  # Social links (optional)
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ArchieCur
+    
+  # Analytics (optional)
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+
+# Custom CSS (optional)
+# extra_css:
+#   - stylesheets/extra.css
+
+# Custom JavaScript (optional)
+# extra_javascript:
+#   - javascripts/extra.js
