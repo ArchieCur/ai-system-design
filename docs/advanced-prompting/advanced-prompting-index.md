@@ -95,8 +95,7 @@ Implementation of the I/T/E optimization workflow:
 - Practitioners requiring >95% reliability
 - Those debugging complex agent failures
 
-This is **not hobby-level content**—it's for production deployments where reliability matters.
-
+**This is production-grade content for systems where reliability is measured and failures have consequences.**
 ---
 
 ## A Note on Rapid Evolution
