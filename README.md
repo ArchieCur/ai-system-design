@@ -156,34 +156,47 @@ This curriculum emerged from genuine collaboration between:
 ai-system-design/
 ├── README.md (you are here)
 ├── LICENSE (MIT)
-├── CONTRIBUTING.md (how to contribute)
+├── mkdocs.yml
 ├── docs/
 │   ├── index.md (curriculum introduction)
-│   ├── module-1-prompts/
-│   │   └── ... (prompt engineering content)
-│   ├── module-2-skills/
-│   │   ├── sections/ (foundational content)
-│   │   └── appendices/
-│   │       ├── appendix-a-semantic-tags.md
-│   │       ├── appendix-b-skill-template.md
-│   │       ├── appendix-c-tool-templates.md
-│   │       └── appendix-d-cross-platform.md
-│   └── module-3-specifications/
-│       ├── sections/
-│       │   ├── section-1-foundation.md
-│       │   ├── section-2-must.md
-│       │   ├── section-3-should.md
-│       │   ├── section-4-context.md
-│       │   ├── section-5-intent.md
-│       │   ├── section-6-verification.md
-│       │   └── section-7-pitfalls.md
-│       └── appendices/
-│           ├── appendix-a-templates.md
-│           ├── appendix-b-integration.md
-│           ├── appendix-c-quick-reference.md
-│           ├── appendix-d-verification-protocols.md
-│           └── appendix-e-organizing-folders.md
-└── mkdocs.yml (documentation configuration)
+│   ├── advanced-prompting/
+|   |  ├── advnced-prompting-index.md
+|   |  ├── Automated_Prompt_Optimization.py
+│   │  └── Building_Reliable_Agents_Advanced_Prompting.md/
+|   |  └── The_2026Prompt_Engineering_Field_Guide.md/  
+│   ├── skills/
+│   │  ├── skills-index.md/
+|   |  ├── Skills_1.1_Skill_Anatomy.md/
+│   │  └── Skills_1.2_Basic_Template_ClassA.md/
+|   |  └── Skills_1.2a_Designing_Tools.md/ 
+|   |  ├── Skills_1.3_Advanced_Skills_ClassB-C.md
+│   │  └── Skills_1.4_Semantic_Tags.md/
+|   |  └── Skills_1.5_Advanced_Deep_Dive.md/
+│   │  └── Skills_1.6_Common_Pitfalls.md/
+|   |  └── Skills_A_Semantic_Tag_Reference_Appendix.md/ 
+|   |  ├── Skills_B_Complete_Skill_Template_Appendix.md
+│   │  └── Skills_C_Tool_Templates_Appendix.md/
+|   |  └── Skills_D_Cross-Platform_Implementation_Resources_Appendix.md/ 
+│   └── specifications/
+│   │  ├── specifications-index.md/
+|   |  ├── Specifications_1_Foundations.md/
+│   │  └── Specifications_2_MUST_Constraints.md/
+|   |  └── Specifications_3_SHOULD_Guidelines.md/ 
+|   |  ├── Specifications_4_Providing_CONTEXT.md
+│   │  └── Specifications_5_Expressing_INTENT.md/
+|   |  └── Specifications_6_Verification_Protocols.md/
+│   │  └── Specifications_7_Common_Pitfalls.md/
+│   │  └── Specifications_8_Supremacy_Evidence.md/
+|   |  └── Specifications_A_Templates_Appendix.md/ 
+|   |  ├── Specifications_B_IntegrationExamples_Appendix.md
+│   │  └── Specifications_C_QuickReferenceGuide_Appendix.md/
+|   |  └── Specifications_D_VerificationProtocolTemplates_Appendix.md/ 
+|   |  └── Specifications_E_FolderStructures_Appendix.md/ 
+|   |  └── Specifications_F_Reverse_Engineering.md/
+|   └── tools/
+│   │  ├── tools-index.md/
+|   |  ├── Tool_Literacy_Designing_Tools.md/
+│   │  └── Tool_Templates.md/
 ```
 
 ---
