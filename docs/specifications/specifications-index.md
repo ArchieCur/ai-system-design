@@ -24,11 +24,13 @@ The Specifications framework has four interconnected layers and Verification Pro
 
 - **[Foundations](Specifications_1_Foundations.md)** - Core principles and how specifications reduce cognitive friction
 - **[Common Pitfalls](Specifications_7_Common_Pitfalls.md)** - Mistakes to avoid and how to fix them
+- **[Supremacy Clause and Evidence Reset Protocols](Specifications_8_Supremacy_Clause_Evidence_Reset_Protocols.md)**
 - **[Templates](Specifications_A_Templates_Appendix.md)** - Ready-to-use specification templates
 - **[Integration Examples](Specifications_B_IntegrationExamples_Appendix.md)** - Real-world implementation examples
 - **[Quick Reference Guide](Specifications_C_QuickReferenceGuide_Appendix.md)** - Fast lookup for key concepts
 - **[Verification Protocol Templates](Specifications_D_VerificationProtocolTemplates_Appendix.md)** - Pre-built verification approaches
 - **[Folder Structures](Specifications_E_FolderStructures_Appendix.md)** - How to organize project references, complex policies, regulations, or extensive context, to be used in Specifications.
+- **[Reverse Engineering Belief Dynamics](Specifications_F_Reverse_Engineering.md)** - Dynamics Model to create a practical Belief Dynamics Control System Framework
 
 ---
 
@@ -65,7 +67,7 @@ Work through the core framework sequentially to build a solid understanding.
 
 ## Key Principle
 
-**All five layers work together.** MUST defines boundaries. SHOULD provides flexibility. CONTEXT enables planning. INTENT reveals why. VERIFICATION confirms success.
+**All five layers work together.** MUST defines boundaries. SHOULD provides flexibility. CONTEXT enables planning. INTENT reveals why. VERIFICATION PROTOCOLS confirm success.
 
 Missing any layer increases cognitive friction and reduces reliability.
 
