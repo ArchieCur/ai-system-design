@@ -11,12 +11,15 @@ What you'll learn: How to structure skills for optimal model interpretation
 When you write a skill, you're not just writing instructions for humans to read—you're writing
 instructions for AI models to parse, prioritize, and execute.
 
+```text
+
 **The challenge:**
 • Models need clear signals about:
 • What's critical vs. optional
 • What to do vs. what to avoid
 • When to activate vs. when to deactivate
 • How to make decisions vs. when to ask
+```
 
 **The solution:** A semantic tag system that provides unambiguous structure.
 
@@ -43,6 +46,7 @@ Using emojis such as a stop sign or a warning sign for empasizing caution, or a 
 **WARNING:** Over-indexing slows writes
 
 **Problems:**
+
 ```text
 • No semantic meaning (bold could be emphasis, title, or key term)
 • Models can't differentiate priority levels reliably
@@ -2910,6 +2914,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
