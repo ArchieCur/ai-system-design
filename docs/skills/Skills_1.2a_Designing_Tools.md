@@ -176,13 +176,13 @@ What it solves: Unknown failure modes, error handling, recovery patterns
 
 **Why this works:** The model now knows EXACTLY what to do for each failure type—no guessing, no loops, no hallucination.
 
-## **API Note
+## **Important Implementation note: Real APIs require flattening**
 
-Note: APIs are intentionally minimal, The API doesn’t enforce judgment- your system does.
+APIs are intentionally minimal, The API doesn’t enforce judgment- your system does.
 
 While this structure is the logical model for a tool, when implementing in code (Python/JS), you often deliberately inject the **'Trigger Logic' and 'Constraints'** directly into the top-level description field, or less frequently the system prompt, so the model sees them immediately.
 
-**API Implementation flattening note:** This JSON represents the Logical Definition. When sending this to an LLM API (like OpenAI/Claude/Opus/Gemini), map the fields as follows:
+## **API Implementation flattening note:** This JSON represents the Logical Definition. When sending this to an LLM API (like OpenAI/Claude/Opus/Gemini), map the fields as follows
 
 1. **Name/Parameters:** Map directly to the API schema
 2. **Trigger Logic & Negative Constraints:** Append these as structured text to the end of the Description field.
@@ -540,4 +540,5 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
