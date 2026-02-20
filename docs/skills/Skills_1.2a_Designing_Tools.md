@@ -12,6 +12,8 @@ Core Principle: Tools are a form of communication. You're not just defining what
 
 ## The Three-Part Tool Definition Standard
 
+![The Part Tool Definition Standard](../assets/Three_Part_Tool_Standard.png)
+
 Every tool should include:
 
 ### Trigger Logic (When to Use This)
@@ -219,6 +221,8 @@ return api_payload
 
 ## Tool Classification System (Risk Management)
 
+![Tool Classification System](../assets/3_Part_Tool_Classification.png)
+
 **What it solves:** State-change anxiety, unknown side effects
 **Every tool must be classified:**
 
@@ -308,7 +312,7 @@ What it solves: Using tools when reasoning would work, or reasoning when tools a
 
 ### The Decision Framework
 
-![When to use reasoning or use a tool](../assets/tool-classification.png)
+![When to use reasoning or use a tool](../assets/1.2_Decision_Framework.png)
 
 ### Concrete Examples
 
@@ -536,3 +540,4 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
