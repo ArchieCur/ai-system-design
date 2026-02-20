@@ -48,23 +48,37 @@
 **Class B (Intermediate):**
 
 skill-name/
+
 ├── SKILL.md # 100-500 lines
+
 └── references/ # Optional
+
 └── EXAMPLES.md # Extended examples if needed
 
 **Class C (Advanced):**
 
 skill-name/
+
 ├── SKILL.md # Overview (< 500 lines)
+
 ├── references/ # Detailed content
+
 │ ├── EXAMPLES.md # 10+ comprehensive examples
+
 │ ├── VERIFICATION.md # How to validate success
+
 │ ├── GUIDE.md # Step-by-step procedures
+
 │ ├── ANTI_PATTERNS.md # Common mistakes catalog
+
 │ └── CONTEXT.md # Background information
+
 └── scripts/ # Automation
+
 ├── verify.sh # Automated verification
+
 ├── test_suite.py # Test harness
+
 └── lint_check.sh # Code quality checks
 
 ## SKILL.md: The Overview Pattern
@@ -1298,6 +1312,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-08*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
