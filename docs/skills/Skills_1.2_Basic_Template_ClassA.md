@@ -59,14 +59,14 @@ Purpose: ____________________________
 **When to Use This Skill**
 4. The AI should use this skill when:
 (List when AI should use the Skill)
-•
-•
-•
+-
+-
+-
 5. The AI should NOT use this skill when:
 (List when AI should not use this Skill)
-•
-•
-•
+-
+-
+-
 
 **The Rules**
 6. What's the correct way to do this? (Good pattern)
@@ -794,3 +794,4 @@ Last Updated: 2026-02-08
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
