@@ -44,14 +44,13 @@ If you prefer detailed guidance, skip to Part 2 (Form with Explanations)
 ### Basic Information
 
 1. What should your skill be called?
-
 Skill name: ____________________________
 (lowercase, hyphens only, 1-64 characters)
+
 2. What does your skill do? (One sentence)
-
 Description: ____________________________
-
 (Describe what it does AND when to use it. Include keywords.)
+
 3. What's the main purpose?
 Purpose: ____________________________
 (Single sentence: "This skill ensures..." or "This skill helps...")
@@ -59,14 +58,14 @@ Purpose: ____________________________
 **When to Use This Skill**
 4. The AI should use this skill when:
 (List when AI should use the Skill)
--
--
--
+•
+•
+•
 5. The AI should NOT use this skill when:
 (List when AI should not use this Skill)
--
--
--
+•
+•
+•
 
 **The Rules**
 6. What's the correct way to do this? (Good pattern)
@@ -75,14 +74,13 @@ Purpose: ____________________________
 **Completion**
 8. How does the AI know the task is done?
 (List when AI should know the task is done)
-
 •
 •
 9. When should the AI stop using this skill?
 (List when AI should know stop using the Skill)
+•
+•
 
-•
-•
 
 **Done with worksheet?** → Jump to "Your Completed Template" section below to assemble your skill!
 
@@ -794,4 +792,5 @@ Last Updated: 2026-02-08
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
