@@ -47,39 +47,27 @@
 
 **Class B (Intermediate):**
 
+```text
 skill-name/
-
 ├── SKILL.md # 100-500 lines
-
 └── references/ # Optional
-
 └── EXAMPLES.md # Extended examples if needed
 
 **Class C (Advanced):**
 
 skill-name/
-
 ├── SKILL.md # Overview (< 500 lines)
-
 ├── references/ # Detailed content
-
 │ ├── EXAMPLES.md # 10+ comprehensive examples
-
 │ ├── VERIFICATION.md # How to validate success
-
 │ ├── GUIDE.md # Step-by-step procedures
-
 │ ├── ANTI_PATTERNS.md # Common mistakes catalog
-
 │ └── CONTEXT.md # Background information
-
 └── scripts/ # Automation
-
 ├── verify.sh # Automated verification
-
 ├── test_suite.py # Test harness
-
 └── lint_check.sh # Code quality checks
+```
 
 ## SKILL.md: The Overview Pattern
 
@@ -331,6 +319,7 @@ Verify no queries got slower.
 
 ## Decision Tree: Identifying Bottleneck Type
 
+```text
 START: Query is slow
 
 Is execution time the problem? ├─ YES → Continue └─ NO → Check planning time (statistics
@@ -349,6 +338,7 @@ Does output show "Sort" or "HashAggregate"? ├─ YES → Bottleneck Type: Aggr
 to Section 5: Aggregation Optimization └─ NO → Continue
 
 [20+ decision points...]
+```
 
 ---
 
@@ -363,10 +353,9 @@ to Section 5: Aggregation Optimization └─ NO → Continue
 3. Column has moderate cardinality (not all unique, not all same)
 4. Query runs frequently (>100 times/day)
 
-
 ### Index Selection Algorithm
 
-**Step 1: Identify Candidate Columns**
+Step 1: Identify Candidate Columns
 
 ```sql
 -- Find columns used in WHERE clauses
@@ -748,22 +737,21 @@ Tool A → Decision → Tool B (if X) OR Tool C (if Y) → Verification
 
 **Example (SQL Optimization):**
 
+```text
+
 1. explain_analyze(query) # Get execution plan
 2. identify_bottleneck() # Analyze output
-   
 ├─ IF Seq Scan → add_index()
 ├─ IF Nested Loop → optimize_join()
 └─ IF Sort → add_order_index()
-4. verify_improvement.sh # Verification
+3. verify_improvement.sh # Verification
 
 ### Pattern 3: Parallel Execution
-
 Tool A ─┬─ Tool B ─┐
 ├─ Tool C ─┤─ Merge → Verification
 └─ Tool D ─┘
 
 **Example (Comprehensive Code Review):**
-
 Parallel:
 ├─ run_linter() # Style checks
 ├─ run_security_scan() # Security
@@ -781,9 +769,9 @@ Tool A → Verify → (if fail) → Refine → Tool A → Verify → ...
 1. implement_ui_changes()
 2. take_screenshot()
 3. compare_to_design()
-
 ├─ IF match → Done ✓
 └─ IF mismatch → list_differences() → fix() → repeat
+```
 
 ## Error Handling Across Tools
 
@@ -842,7 +830,6 @@ Output: report.html
 **Skill:** SQL Query Optimization with Automated Verification
 
 **Files:**
-
 sql-query-optimization/
 ├── SKILL.md # 420 lines (under 500!)
 ├── references/
@@ -1313,13 +1300,6 @@ SKILL.md as routing document (< 500 lines)
 ---
 
 *Document Version: 1.0.0*
-*Last Updated: 2026-02-08*
+*Last Updated: 2026-02-20
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
-
-
-
-
-
-
-
