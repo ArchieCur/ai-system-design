@@ -107,6 +107,8 @@ Implementation (Updated Jan 2026)
 
 Skills are classified by complexity, which determines the appropriate template and architecture.
 
+![Skill Classification](../assets/Skill_Classification.png)
+
 ### Class A: Simple Skills
 
 **Characteristics:**
@@ -191,6 +193,8 @@ Skills follow an open standard that works across platforms (Anthropic, OpenAI, G
 
 ### Required Structure-**Every skill must have**
 
+![Required Skill Structure](../assets/Required_Skill_Structure.png)
+
 - A **directory** with the skill name
 
 your-skill-name/
@@ -225,6 +229,8 @@ Directories (optional)
 ## Core Components of Every Skill
 
 ***Regardless of class (A/B/C), every effective skill contains these elements:**
+
+![8 Core Skill Components](../assets/Core_Skill_Components.png)
 
 ### The 8 Essential Components
 
@@ -396,7 +402,7 @@ scanning).
 
 **Skills don't work in isolation—they're part of a larger agent architecture:**
 
-![Graphic showing Skills in the Ecosystem: How Skills, Tools, MCPs, and SubAgents work with LLM]()
+![Graphic showing Skills in the Ecosystem: How Skills, Tools, MCPs, and SubAgents work with LLM](../assets/1.1_Skills-Tools-MCP-Subagents.png)
 
 ### How the components work together
 
@@ -439,7 +445,7 @@ Subagents:
 
 For detailed comparison, see the Summary table below:
 
-![Summary of how Skills, Prompts, MCP and Tools work together]()
+![Summary of how Skills, Prompts, MCP and Tools work together](../assets/1.1_Skills-summary.png)
 
 ### Related
 
@@ -552,4 +558,5 @@ Related Curriculum Sections
 END OF SECTION 1.1
 
 Document Version: 2.0.0
-Last Updated: 2026-02-08
+Last Updated: 2026-02-20
+
