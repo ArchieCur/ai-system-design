@@ -76,6 +76,7 @@ Measure before optimizing:
 </good_pattern>
 ```
 
+```text
 Why this works:
 • Semantically clear: Models trained on millions of XML/HTML documents
 • Unambiguous: <critical> has one meaning (highest priority)
@@ -90,7 +91,7 @@ Why this works:
 • XML (configuration files, data formats)
 • SVG (vector graphics)
 • Markdown with HTML (documentation)
-
+```
 **This isn't an arbitrary choice—it leverages existing model capabilities.**
 
 **Note-** Adding attributes to tags was not tested.
@@ -2914,6 +2915,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
