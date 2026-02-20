@@ -827,6 +827,7 @@ Output: report.html
 
 **Skill:** SQL Query Optimization with Automated Verification
 
+```text
 **Files:**
 sql-query-optimization/
 ├── SKILL.md # 420 lines (under 500!)
@@ -842,6 +843,7 @@ sql-query-optimization/
 └── analyze_explain.py # Python (EXPLAIN parser)
 
 Total: 6,270 lines across multiple files **SKILL.md: 420 lines (main entry point)**
+```
 
 ### SKILL.md (Main File)
 
@@ -1301,4 +1303,5 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
