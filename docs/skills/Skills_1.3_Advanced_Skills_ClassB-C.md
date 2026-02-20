@@ -313,8 +313,6 @@ Verify no queries got slower.
 
 **Structure:**
 
-```markdown
-
 # SQL Optimization Guide
 
 ## Decision Tree: Identifying Bottleneck Type
@@ -1303,3 +1301,4 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
