@@ -252,7 +252,7 @@ Not "expensive computation" but "computation the model can't reliably do in cont
 Choosing your context strategy using a decision tree.
 **Decision Tree**
 
-![Decision for when to use Class A, Class B and Class C Skills](../assets/tool-classification.png)
+![Decision Tree for When to Use Class A, Class B or Class C Tools](../assets/Choosing_Tool_Class.png)
 
 **Tool Classification Examples:**
 
@@ -540,5 +540,6 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
