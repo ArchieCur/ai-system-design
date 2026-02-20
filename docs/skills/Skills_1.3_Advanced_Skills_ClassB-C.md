@@ -39,7 +39,7 @@
 
 **What goes where:**
 
-![What goes in a Skill vs What goes in a Reference file]/(../assets/1.3_Class_B-C_Skills_What_Skill_reference.png)
+![What goes in a Skill vs What goes in a Reference file](../assets/1.3_Class_B-C_Skills_What_Skill_reference.png)
 
 ## Multi-File Architecture
 
@@ -1298,5 +1298,6 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-08*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
