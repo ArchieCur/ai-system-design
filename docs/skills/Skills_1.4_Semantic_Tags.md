@@ -29,11 +29,12 @@ You have several options for signaling importance. Let's compare:
 Using emojis such as a stop sign or a warning sign for empasizing caution, or a checkmark to indicate good patterns  can cause these problems:
 
 **Problems**
-•Multi-token encoding (🛑 might be 3-4 tokens)
-•Ambiguous meaning (🔥 = "hot topic" or "emergency"?)
-•Accessibility issues (screen readers inconsistent)
-•Cultural variation (emojis mean different things in different contexts)
-•Model confusion (might drift into "Reddit commenter" persona)
+
+• Multi-token encoding (🛑 might be 3-4 tokens)
+• Ambiguous meaning (🔥 = "hot topic" or "emergency"?)
+• Accessibility issues (screen readers inconsistent)
+• Cultural variation (emojis mean different things in different contexts)
+• Model confusion (might drift into "Reddit commenter" persona)
 
 ### **Option 2: Formatting (Not Recommended)**
 
@@ -3145,3 +3146,4 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
