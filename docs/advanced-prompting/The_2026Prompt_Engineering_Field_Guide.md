@@ -10,7 +10,7 @@ Use this matrix to quickly identify which techniques apply to your situation:
 
 **Table 1:**
 
-![Table 1 Quick Reference: Technique Selection Guide](/assets/Quick_Refrence_Prompt_Technique_Selection.png)
+![Table 1 Quick Reference: Technique Selection Guide](../assets/Quick_Reference_Prompt_Technique_Selection.png)
 
 ---
 
@@ -525,3 +525,4 @@ Using a specific security prefix can reduce vulnerabilities by up to 56% in adva
 • AI Contribution: Structural organization, technique formatting, decision matrix design, and explanatory framework development.
 • Note on Methodology: All techniques documented here are grounded in peer-reviewed
 research and technical reports published between 2024-2026. This is not speculative or anecdotal guidance—every practice is cited to its original source. Claude's role was to help organize and present existing research, not to generate new prompting theories.
+
