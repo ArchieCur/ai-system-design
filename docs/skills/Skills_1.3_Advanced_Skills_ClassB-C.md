@@ -313,6 +313,8 @@ Verify no queries got slower.
 
 **Structure:**
 
+```markdown
+
 # SQL Optimization Guide
 
 ## Decision Tree: Identifying Bottleneck Type
@@ -827,7 +829,6 @@ Output: report.html
 
 **Skill:** SQL Query Optimization with Automated Verification
 
-```text
 **Files:**
 sql-query-optimization/
 ├── SKILL.md # 420 lines (under 500!)
@@ -843,7 +844,6 @@ sql-query-optimization/
 └── analyze_explain.py # Python (EXPLAIN parser)
 
 Total: 6,270 lines across multiple files **SKILL.md: 420 lines (main entry point)**
-```
 
 ### SKILL.md (Main File)
 
@@ -1054,13 +1054,20 @@ See verification output in references/EXAMPLES.md
 
 ---
 
-**Tool Orchestration**
 
-**This skill uses 6 tools in sequence:**
+##**Tool Orchestration-This skill uses 6 tools in sequence:**
 
-<sequence> <step id="1" required="true"> explain_analyze(query) - Establish baseline </step><step id="2" depends_on="1"> identify_bottleneck(explain_output) - Analyze execution plan</step> <step id="3" depends_on="2"> apply_optimization(bottleneck_type) - Targeted fix</step> <step id="4" depends_on="3" verification="true"> explain_analyze(query) - Measure
-improvement </step> <step id="5" depends_on="4"> run_script("./scripts/verify.sh") -Automated verification </step> <step id="6" depends_on="5">
-run_script("./scripts/test_suite.py") - Regression check </step> </sequence>
+```xml
+
+<sequence>
+  <step id="1" required="true">explain_analyze(query) - Establish baseline</step>
+  <step id="2" depends_on="1">identify_bottleneck(explain_output) - Analyze plan</step>
+  <step id="3" depends_on="2">apply_optimization(bottleneck_type) - Targeted fix</step>
+  <step id="4" depends_on="3" verification="true">explain_analyze(query) - Measure improvement</step>
+  <step id="5" depends_on="4">run_script("./scripts/verify.sh") - Automated verification</step>
+  <step id="6" depends_on="5">run_script("./scripts/test_suite.py") - Regression check</step>
+</sequence>
+```
 
 **Error handling:**
 
@@ -1068,14 +1075,14 @@ If any step fails → see references/GUIDE.md Section 10 (Troubleshooting)
 
 ---
 
-**Anti-Patterns (Top 3)**
+## **Anti-Patterns (Top 3)**
 
 <bad_pattern> #1: **Index Without Measurement Adding indexes without measuring baseline**
 performance.
 
 **Why wrong:** Adds overhead without confirming benefit.
 **Fix:** Always measure → optimize → verify.
-**Full explanation:** references/ANTI_PATTERNS.md #1 
+**Full explanation:** references/ANTI_PATTERNS.md #1
 </bad_pattern>
 
 <bad_pattern> #3: **Using DISTINCT to Hide JOIN Errors** Using DISTINCT to eliminate duplicate rows from incorrect JOINs.
@@ -1083,23 +1090,24 @@ performance.
 Why wrong: Masks underlying problem, adds expensive sorting.
 
 Fix: Fix JOIN conditions instead of masking symptoms.
-Full explanation: references/ANTI_PATTERNS.md #3 
+Full explanation: references/ANTI_PATTERNS.md #3
 </bad_pattern>
 
-<bad_pattern> 
-#7: No Verification Assuming optimization worked without measuring.
+<bad_pattern>
+7: No Verification Assuming optimization worked without measuring.
 
 Why wrong: May have made performance worse.
 Fix: Always run verification: ./scripts/verify.sh
-Full explanation: references/ANTI_PATTERNS.md #7 
+Full explanation: references/ANTI_PATTERNS.md #7
 </bad_pattern>
 
-
-### For complete catalog of 15 anti-patterns:
+### For complete catalog of 15 anti-patterns
 
 → references/ANTI_PATTERNS.md (900 lines)
 
 ---
+
+```xml
 
 Success Criteria
 
@@ -1121,7 +1129,7 @@ Success Criteria
 
 • Tested on production-like data volume
 • Edge cases verified (see references/VERIFICATION.md Section 4)
-• Rollback plan documented 
+• Rollback plan documented
 </success_criteria>
 ```
 
@@ -1300,8 +1308,6 @@ SKILL.md as routing document (< 500 lines)
 ---
 
 *Document Version: 1.0.0*
-*Last Updated: 2026-02-20
+*Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
-
-
