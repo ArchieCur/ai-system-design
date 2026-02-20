@@ -245,7 +245,7 @@ formatting in your prompt.
 • Replaces: Old 2024 pattern of using quotes or all caps to separate parts of a
 prompt
 
-• Sources: "Use XML tags to structure your prompts”, (Jan 2025, Claude docs Use XML tags to structure your prompts - Claude Docs), Effective Prompt Engineering with the Markdown Prompts Framework (CodeSignal Learn, Jan 2026)
+• Sources: "Use XML tags to structure your prompts”, (Jan 2025, Claude Docs Use XML tags to structure your prompts - Claude Docs), Effective Prompt Engineering with the Markdown Prompts Framework (CodeSignal Learn, Jan 2026)
 
 • Why it matters-
 
@@ -525,4 +525,5 @@ Using a specific security prefix can reduce vulnerabilities by up to 56% in adva
 • AI Contribution: Structural organization, technique formatting, decision matrix design, and explanatory framework development.
 • Note on Methodology: All techniques documented here are grounded in peer-reviewed
 research and technical reports published between 2024-2026. This is not speculative or anecdotal guidance—every practice is cited to its original source. Claude's role was to help organize and present existing research, not to generate new prompting theories.
+
 
