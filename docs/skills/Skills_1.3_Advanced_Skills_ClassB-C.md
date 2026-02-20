@@ -39,7 +39,7 @@
 
 **What goes where:**
 
-![What Goes in a Skill vs What goes in a Reference file](../assets/1.3_Class_B-C_Skill_What_Skill_reference.png)
+![What Goes in a SKILL.md versus a Reference File](../assets/Skill_versus_Reference_File.png)
 
 ## Multi-File Architecture
 
@@ -750,10 +750,11 @@ Tool A → Decision → Tool B (if X) OR Tool C (if Y) → Verification
 
 1. explain_analyze(query) # Get execution plan
 2. identify_bottleneck() # Analyze output
+   
 ├─ IF Seq Scan → add_index()
 ├─ IF Nested Loop → optimize_join()
 └─ IF Sort → add_order_index()
-3. verify_improvement.sh # Verification
+4. verify_improvement.sh # Verification
 
 ### Pattern 3: Parallel Execution
 
@@ -762,6 +763,7 @@ Tool A ─┬─ Tool B ─┐
 └─ Tool D ─┘
 
 **Example (Comprehensive Code Review):**
+
 Parallel:
 ├─ run_linter() # Style checks
 ├─ run_security_scan() # Security
@@ -779,6 +781,7 @@ Tool A → Verify → (if fail) → Refine → Tool A → Verify → ...
 1. implement_ui_changes()
 2. take_screenshot()
 3. compare_to_design()
+
 ├─ IF match → Done ✓
 └─ IF mismatch → list_differences() → fix() → repeat
 
@@ -839,6 +842,7 @@ Output: report.html
 **Skill:** SQL Query Optimization with Automated Verification
 
 **Files:**
+
 sql-query-optimization/
 ├── SKILL.md # 420 lines (under 500!)
 ├── references/
@@ -1312,6 +1316,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-08*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
