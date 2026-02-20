@@ -42,6 +42,7 @@ Whichever you choose, you'll have a working skill by the end!
 If you prefer detailed guidance, skip to Part 2 (Form with Explanations)
 
 **Basic Information**
+
 1- What should your skill be called?
 
 Skill name: ____________________________
@@ -57,6 +58,7 @@ Purpose: ____________________________
 (Single sentence: "This skill ensures..." or "This skill helps...")
 
 **When to Use This Skill**
+
 4- The AI should use this skill when:(List when AI should use the Skill)
 •
 •
@@ -68,11 +70,13 @@ Purpose: ____________________________
 •
 
 **The Rules**
+
 6- What's the correct way to do this? (Good pattern)
 
 7- What's the wrong way? (What to avoid)
 
 **Completion**
+
 8- How does the AI know the task is done?
 (List when AI should know the task is done)
 •
@@ -793,6 +797,7 @@ Last Updated: 2026-02-08
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
