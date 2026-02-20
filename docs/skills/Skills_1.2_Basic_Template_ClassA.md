@@ -81,7 +81,6 @@ Purpose: ____________________________
 •
 •
 
-
 **Done with worksheet?** → Jump to "Your Completed Template" section below to assemble your skill!
 
 ## Part 2: Form with Embedded Explanations
@@ -792,5 +791,6 @@ Last Updated: 2026-02-08
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
