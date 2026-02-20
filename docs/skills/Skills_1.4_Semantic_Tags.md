@@ -389,7 +389,8 @@ If all criteria met → Add index and verify improvement
 Best practice: Pair with <rationale> tag to explain WHY it's wrong.
 
 **Examples:**
-**With rationale:**
+
+### With rationale:**
 
 ```xml
 
@@ -427,11 +428,8 @@ Using SELECT * in production queries
 ### Problems with SELECT *:
 
 ## 1. Fetches unnecessary columns → Wastes I/O and memory
-
 ## 2. Breaks code when schema changes (new columns added)
-
 ## 3. Defeats covering indexes (can't use index-only scans)
-
 ## 4. Transfers unnecessary data over network
 
 Use explicit column lists: SELECT id, name, email FROM users
@@ -440,7 +438,6 @@ Use explicit column lists: SELECT id, name, email FROM users
 
 </bad_pattern>
 ```
-
 
 ### Masking symptoms:
 
@@ -462,98 +459,89 @@ DISTINCT adds expensive sorting operation and masks the real problem.
 Fix the JOIN logic instead of hiding duplicates with DISTINCT.
 
 </rationale>
+
 </bad_pattern>
 ```
 
-<decision_criteria> - Core Decision Logic
+### Core Decision Logic
 
-Purpose: IF-THEN conditional logic, decision trees, branching logic
+```xml
+<decision_criteria>
+```
 
-
-### When to use:
+**Purpose:** IF-THEN conditional logic, decision trees, branching logic
+**When to use:**
 
 • Core decision-making for the skill
 • Condition-action pairs ("IF X, THEN Y")
 • Multi-branch logic with multiple conditions
 • Any "how do I decide what to do?" scenarios
 
-### Model interpretation:
+**Model interpretation:**
 
 "This is my decision tree. When condition X is true, take action Y."
 
-Important: This tag handles ALL conditional logic in skills. Use it for simple IF-THEN rules or
-complex nested conditions.
+**Important: This tag handles ALL conditional logic in skills. Use it for simple IF-THEN rules or
+complex nested conditions.**
 
 
-### Examples:
+**Examples:**
+**Simple condition:**
 
-
-### Simple condition:
-
+```xml
 
 <decision_criteria>
 
-
 ### IF query execution time > 1 second:
 
-
 → Run EXPLAIN ANALYZE to identify bottleneck
-
 → Apply targeted optimization based on bottleneck type
+
 </decision_criteria>
+```
 
+**Multiple conditions:**
 
-### Multiple conditions:
-
+```xml
 
 <decision_criteria>
 
 ### IF query has JOIN on unindexed foreign key:
 
 → Add index to foreign key column
-
 → Verify with EXPLAIN ANALYZE showing "Index Scan"
-
 
 ### IF query execution time > 5 seconds AND data volume < 100K rows:
 
 → Problem is likely query logic (not data volume)
-
 → Review JOIN conditions and WHERE clauses
-
 → Check for missing indexes on filter columns
-
 
 ### IF EXPLAIN shows "Nested Loop" with large tables (>1M rows):
 
 → Consider Hash Join or Merge Join instead
-
 → Add indexes to join columns
-
 → Verify improvement
 
 </decision_criteria>
+```
 
+**Complex nested logic:**
 
-### Complex nested logic:
+```xml
 
 <decision_criteria>
 
 **Phase 1: Gather information**
 
-
 ### IF user provides EXPLAIN output:
-
 
 → Analyze execution plan directly
 → SKIP running EXPLAIN yourself
 
-
 ## ELSE:
 
-
 → Run EXPLAIN ANALYZE first
-
 → THEN analyze the output
 
 **Phase 2: Identify bottleneck**
@@ -563,11 +551,8 @@ complex nested conditions.
 ### → Apply specific fix based on type:
 
 - Seq Scan on large table → Add index to WHERE columns
-
 - Nested Loop with high cost → Optimize join strategy
-
 - Sort operation → Add index to ORDER BY columns
-
 - Hash operation on small table → Increase work_mem
 
 ## ELSE:
@@ -575,9 +560,7 @@ complex nested conditions.
 ### → Request more information from user:
 
 - Full query text
-
 - Table schemas
-
 - Row counts
 
 **Phase 3: Verify**
@@ -589,83 +572,66 @@ complex nested conditions.
 → Check for regressions in related queries
 
 </decision_criteria>
+```
 
+**Conditional file loading:**
 
-### Conditional file loading:
-
+```xml
 
 <decision_criteria>
 
 ### IF user asks about budget reallocation:
 
-
 → Read references/budget_reallocation_rules.md
-
 → Apply allocation framework from that file
-
 → Generate recommendations
 
 ## ELSE:
 
-
 → Skip budget analysis
-
 → Continue with standard campaign analysis only
 
 </decision_criteria>
+```
+**Key principle: Use <decision_criteria> for ANY "if this, then that" logic. It's designed to handle
+simple to complex conditional structures.**
 
-Key principle: Use <decision_criteria> for ANY "if this, then that" logic. It's designed to handle
-simple to complex conditional structures.
+**When to Stop Using This Skill**
 
-<unload_condition> - When to Stop Using This Skill
+```xml
+<unload_condition>
+```
 
-Purpose: Exit conditions, task completion signals, context change detection
+**Purpose:** Exit conditions, task completion signals, context change detection
+**When to use:** Every skill MUST have clear unload conditions
 
-When to use: Every skill MUST have clear unload conditions
-
-
-### Model interpretation:
+**Model interpretation:**
 
 "I should stop applying this skill now. The task is complete or context has changed."
 
-Why this matters: Without unload conditions, skills may stay active inappropriately, causing
+**Why this matters:** Without unload conditions, skills may stay active inappropriately, causing
 attentional residue that degrades subsequent task performance.
-
-Related: See Section 2.3 (Combating Attentional Residue) for detailed explanation.
-
 
 ### Template (USE THIS EXACT STRUCTURE):
 
-<unload_condition>
+```xml
 
+<unload_condition>
 
 ### Stop using this skill when:
 
-
 **User Intent Change (CHECK FIRST):**
 
-
 ## 1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
-
-
 ## 2. User asks unrelated question (topic shift to different domain)
-
-
-
 ## 3. User shows dissatisfaction with current approach
-
-
-
 ## 4. User provides contradictory information (reverses previous requirements)
 
-
 **Task Complete:**
+
 5. [Task-specific completion signal 1]
-
 6. [Task-specific completion signal 2]
-
-
-## 7. User confirms success
+7. User confirms success
 
 **Domain Switch:**
 
@@ -674,385 +640,285 @@ Related: See Section 2.3 (Combating Attentional Residue) for detailed explanatio
 
 **Explicit Stop:**
 
-## 10. User says "stop", "that's enough", "cancel"
-
-
-## 11. User asks to explain instead of execute
-
+10. User says "stop", "that's enough", "cancel"
+11. User asks to explain instead of execute
 
 </unload_condition>
+```
 
+**Examples:**
+**SQL Optimization:**
 
-### Examples:
-
-
-### SQL Optimization:
+```xml
 
 <unload_condition>
 
-
 ### Stop using this skill when:
-
 
 **User Intent Change (CHECK FIRST):**
 
-
 ## 1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
-
-
 ## 2. User asks unrelated question (topic shift away from SQL optimization)
-
-
-
 ## 3. User shows dissatisfaction ("This isn't working", "Let me try something else")
-
-
-
 ## 4. User provides contradictory requirements
-
 
 **Task Complete:**
 
 ## 5. Query execution time meets acceptable threshold (< 1 second for user-facing)
-
-
-
 ## 6. EXPLAIN ANALYZE shows optimal query plan (index usage confirmed)
-
-
-
 ## 7. User confirms performance is acceptable
-
-
-
 ## 8. Verification tests pass (no regressions in related queries)
-
 
 **Domain Switch:**
 
-
 ## 9. User switches to schema design → Activate schema-design skill
-
-
 ## 10. User switches to debugging syntax errors → Activate sql-debugging skill
-
-
 ## 11. User switches to NoSQL database → Activate database-specific skill
-
-
 ## 12. Task domain changes (no longer working with SQL queries)
-
 
 **Explicit Stop:**
 
-
 ## 13. User says "stop optimizing", "that's enough", "cancel this"
-
-
 ## 14. User asks to explain optimization concepts (teach, don't execute)
 
-
 </unload_condition>
+```
 
+**Content Creation:**
 
-### Content Creation:
-
+```xml
 
 <unload_condition>
 
-
 ### Stop using this skill when:
-
 
 **User Intent Change (CHECK FIRST):**
 
-
 ## 1. User says "Actually...", "Never mind...", "Wait..."
-
-
-
 ## 2. User pivots to different type of content
-
-
-
 ## 3. User shows dissatisfaction with tone/style
-
-
 ## 4. User requests different approach than skill provides
-
 
 **Task Complete:**
 
-
 ## 5. Content draft is complete
-
-
-
 ## 6. User confirms content meets requirements
-
-
 ## 7. Final edits are applied
-
 
 **Domain Switch:**
 
-
 ## 8. User switches from writing to editing → Activate editing-guidelines skill
-
-
 ## 9. User switches from blog post to technical documentation → Activate technical-writing skill
-
-
-
 ## 10. User asks about different content type (email, presentation, etc.)
-
 
 **Explicit Stop:**
 
-
 ## 11. User says "stop writing", "that's enough content"
-
-
 ## 12. User asks about the writing process (teach, don't execute)
 
-
 </unload_condition>
+```
+**Key principle: User Intent Change is ALWAYS the first condition to check. Task completion comes
+second.**
 
-Key principle: User Intent Change is ALWAYS the first condition to check. Task completion comes
-second.
+**When NOT to Use This Skill**
 
-<exclusion> - When NOT to Use This Skill
+```xml
 
-Purpose: Scope boundaries, alternate skills for different tasks
+<exclusion>
+```
 
-### When to use:
+**Purpose:** Scope boundaries, alternate skills for different tasks
+**When to use:**
 
 • Define what's OUT of scope
-
 • Prevent skill from activating inappropriately
-
 • Direct to alternative skills for wrong use cases
-
 • Clarify domain boundaries
 
-### Model interpretation:
-
+**Model interpretation:**
 
 "I should NOT use this skill for these cases. There's a better skill for these tasks."
 
+**Examples:**
+**Clear boundaries:**
 
-### Examples:
-
-
-
-### Clear boundaries:
-
+```xml
 
 <exclusion>
 
-
 ### Do NOT use this skill for:
 
-
 - Writing new queries from scratch → Use sql-best-practices skill
-
 - Debugging SQL syntax errors → Use sql-debugging skill
-
 - Schema design or database migrations → Use schema-design skill
-
 - NoSQL databases (MongoDB, Redis, etc.) → Use database-specific optimization skills
 - Queries that already execute in < 100ms → Optimization not needed
-
 - Read-only queries where performance is acceptable → Focus on slow queries
 
 </exclusion>
+```
 
+**Technology-specific:**
 
-### Technology-specific:
+```xml
 
 <exclusion>
 
 ### Do NOT use this skill for:
 
-
 **Wrong database engines:**
+
 - NoSQL databases → This skill is SQL-specific
-
 - Graph databases (Neo4j) → Use graph-query-optimization
-
 - Time-series databases (InfluxDB) → Use time-series-optimization
 
 **Wrong problem types:**
+
 - Application-level performance issues → Not database optimization
-
 - Network latency problems → Outside query optimization scope
-
 - Database server configuration → Requires DBA, not query changes
 
 **Wrong optimization level:**
-- Queries already meeting SLA → Don't optimize what isn't broken
 
+- Queries already meeting SLA → Don't optimize what isn't broken
 - Queries run rarely (< 10 times/day) → Optimization effort not justified
 
 </exclusion>
+```
 
+**With context:**
 
-### With context:
-
+```xml
 
 <exclusion>
 
 ### Do NOT use this skill for:
-
 
 - Code review for style/formatting → Use code-style-guide skill
 
 <context>
 
 This skill focuses on functional correctness, security vulnerabilities,
-
 and performance issues. Style and formatting are separate concerns.
-
 
 ### For comprehensive code review, use both skills:
 
-
 ## 1. This skill (functional/security/performance)
-
 
 2. code-style-guide (formatting/conventions)
 
 </context>
 
 </exclusion>
+```
 
-Tier 2: Common Tags (Use When Relevant)
+### Tier 2: Common Tags (Use When Relevant)
 
-<note> - Additional Context
+**Additional Context**
 
-Purpose: FYI information, helpful context, clarifications
+```xml
 
+<note>
+```
 
-### When to use:
+**Purpose:** FYI information, helpful context, clarifications
+**When to use:**
 
+- Platform-specific details
+- Edge cases worth mentioning
+- Background information
+- Helpful tips
 
-• Platform-specific details
-• Edge cases worth mentioning
-
-• Background information
-
-• Helpful tips
-
-
-### Model interpretation:
+**Model interpretation:**
 
 "This is good to know but not critical to follow."
 
+**Examples:**
+**Platform differences:**
 
-### Examples:
-
-
-
-### Platform differences:
-
+```xml
 
 <note>
 
-
 ### PostgreSQL and MySQL handle indexes differently:
 
-
 - PostgreSQL: Sophisticated query planner, good at using multiple indexes
-
 - MySQL (InnoDB): Clustered primary key affects secondary index performance
-
 - PostgreSQL: Supports partial indexes (WHERE clause in CREATE INDEX)
-
 - MySQL: Less sophisticated query planner, often needs query hints
-
 
 Adjust optimization strategies based on detected database engine.
 
 </note>
+```
+**Edge case:**
 
-### Edge case:
-
+```xml
 
 <note>
 
 For tables with very high INSERT/UPDATE rates (>1000 writes/second),
-
 index overhead may outweigh read performance benefits.
-
 
 ### Consider these alternatives:
 
-
 - Partition table by time (hot/cold data separation)
-
 - Use covering indexes to reduce index count
-
 - Denormalize for read-heavy columns
 - Implement application-level caching
 
 </note>
+```
 
+**Helpful tip:**
 
-### Helpful tip:
-
+```xml
 
 <note>
 
 When optimizing complex queries, start with the slowest part first.
 
 Use EXPLAIN ANALYZE cost estimates to identify which subquery or JOIN
-
 contributes most to total execution time. Optimize that first for
-
 maximum impact.
 
 </note>
+```
 
-<example> - Reference Implementation
+**Reference Implementation**
 
-Purpose: Concrete demonstrations, before/after comparisons
+```xml
 
+<example>
+```
 
-### When to use:
+**Purpose:** Concrete demonstrations, before/after comparisons
+**When to use:**
 
+- Show working code
+- Demonstrate improvements
+- Provide templates to copy
+- Illustrate abstract concepts
 
-• Show working code
-• Demonstrate improvements
-
-• Provide templates to copy
-
-
-• Illustrate abstract concepts
-
-
-### Model interpretation:
+**Model interpretation:**
 
 "Here's a concrete example I can learn from."
 
+**Examples:**
+**Before/after optimization:**
 
-### Examples:
-
-
-
-### Before/after optimization:
-
+```xml
 
 <example>
+```
 
 **Before optimization:** (2.3 seconds)
 
 ```sql
 SELECT * FROM orders
-
 WHERE user_id = 12345
-
 ORDER BY created_at DESC;
-
 EXPLAIN output showed: Seq Scan on orders (cost=0.00..18234.00)
 
 After optimization: (0.05 seconds)
@@ -1062,22 +928,20 @@ CREATE INDEX idx_user_created ON orders(user_id, created_at DESC);
 
 -- Used explicit columns
 SELECT order_id, total, status, created_at
-
 FROM orders
-
 WHERE user_id = 12345
-
 ORDER BY created_at DESC;
 
 EXPLAIN output shows: Index Scan using idx_user_created (cost=0.29..8.31)
 Improvement: 46x faster (2.3s → 0.05s), 99.5% cost reduction </example>
 
 **Query pattern:**
+```
 
 ```xml
 
 <example>
-
+```
 
 **Optimizing multi-column WHERE clauses:**
 
@@ -1086,10 +950,8 @@ Improvement: 46x faster (2.3s → 0.05s), 99.5% cost reduction </example>
 -- Common query pattern
 
 SELECT * FROM orders
-
 WHERE status = 'pending'
 AND created_at > '2024-01-01'
-
 AND user_id = 123;
 
 -- Create composite index matching WHERE order
@@ -1098,7 +960,6 @@ CREATE INDEX idx_orders_composite
 ON orders(status, created_at, user_id);
 
 -- Query now uses index-only scan
-
 -- Execution time: 850ms → 12ms (70x faster)
 
 Key insight: Index column order should match WHERE clause priority (most selective filters
@@ -1109,6 +970,7 @@ first). </example>
 ```xml
 
 <example>
+```
 
 **Common optimization scenarios:**
 
@@ -2915,6 +2777,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
