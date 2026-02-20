@@ -24,7 +24,7 @@ The Specifications framework has four interconnected layers and Verification Pro
 
 - **[Foundations](Specifications_1_Foundations.md)** - Core principles and how specifications reduce cognitive friction
 - **[Common Pitfalls](Specifications_7_Common_Pitfalls.md)** - Mistakes to avoid and how to fix them
-- **[Supremacy Clause and Evidence Reset Protocols](Specifications_8_Supremacy_Clause_Evidence_Reset_Protocols.md)**
+- **[Supremacy Clause and Evidence Reset Protocols](Specifications_8_Supremacy_Evidence.md)**
 - **[Templates](Specifications_A_Templates_Appendix.md)** - Ready-to-use specification templates
 - **[Integration Examples](Specifications_B_IntegrationExamples_Appendix.md)** - Real-world implementation examples
 - **[Quick Reference Guide](Specifications_C_QuickReferenceGuide_Appendix.md)** - Fast lookup for key concepts
