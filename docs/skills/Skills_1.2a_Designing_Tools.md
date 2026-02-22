@@ -410,22 +410,38 @@ Wrong: Execute immediately without confirmation
 **Template for a complete tool library:**
 
 **CRUD Operations (4 tools):**
+
+```text
+
 ├─ read_resource (Class A)
 ├─ create_resource (Class B)
 ├─ update_resource (Class B)
 └─ delete_resource (Class B)
+```
 
 **Search & Discovery (2 tools):**
+
+```text
+
 ├─ search_resources (Class A)
 └─ list_resources (Class A)
+```
 
 **Analysis (2 tools):**
+
+```text
+
 ├─ calculate_metrics (Class C)
 └─ generate_report (Class C)
+```
 
 **System (2 tools):**
+
+```text
+
 ├─ validate_input (Class A)
 └─ execute_workflow (Class B)
+```
 
 **Why this works:**
 • Generic patterns → Composable for complex tasks
@@ -563,6 +579,7 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
 
