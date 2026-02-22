@@ -11,9 +11,11 @@ What you'll learn: How to structure skills for optimal model interpretation
 When you write a skill, you're not just writing instructions for humans to read—you're writing
 instructions for AI models to parse, prioritize, and execute.
 
-```text
 
 **The challenge:**
+
+```text
+
 • Models need clear signals about:
 • What's critical vs. optional
 • What to do vs. what to avoid
@@ -2777,6 +2779,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
