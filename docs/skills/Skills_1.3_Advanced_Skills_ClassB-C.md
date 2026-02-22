@@ -9,18 +9,23 @@
 **You're in Class B/C territory if:**
 
 **Class B Indicators (Intermediate)**
+
+```text
 • Decision logic requires 2-4 examples to clarify
 • Uses 2-5 tools (may include state-change tools)
 • 100-500 lines of content
 • Verification tests helpful but not required
 • Single-file with optional references/
+```
 
+```text
 **Class C Indicators (Advanced)**
 • Complex multi-step workflows
 • Requires automated verification (tests, scripts, linters)
 • Uses 5+ tools with orchestration/composition
 • 500+ lines (requires multi-file architecture)
 • References/ and scripts/ directories essential
+```
 
 **Decision point:** If your SKILL.md is approaching 300 lines, start planning multi-file architecture.
 
@@ -73,6 +78,7 @@ skill-name/
 ```
 
 ## SKILL.md: The Overview Pattern
+
 
 [Main body SKILL.md](..assets/Main_Skill.png)
 
@@ -1302,6 +1308,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
