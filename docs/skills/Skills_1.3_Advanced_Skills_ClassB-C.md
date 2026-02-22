@@ -1,9 +1,9 @@
 # Skills_1.3_Advanced_Skills_ClassB-C
 
 ```text
-**For:** Experienced users building complex skills
-**Prerequisites:** Section 1.1 (foundation), understanding of Class A basics
-**What you'll learn:** Multi-file architecture, self-verification, tool orchestration
+For: Experienced users building complex skills
+Prerequisites: Section 1.1 (foundation), understanding of Class A basics
+What you'll learn: Multi-file architecture, self-verification, tool orchestration
 ```
 
 ## When You Need Advanced Skills
@@ -1326,6 +1326,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
