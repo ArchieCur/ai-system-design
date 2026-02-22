@@ -52,6 +52,8 @@ as needed.
 
 ## How Skills Are Actually Loaded
 
+![How Skills are Loaded](../assets/How_Skills_Load.png)
+
 **In practice, skills are loaded by agents as:**
 
 ### 1. Metadata (name + description) → Discovery phase
@@ -168,28 +170,13 @@ Architecture: Multi-file (SKILL.md + references/ + scripts/)
 
 ## Choosing Your Skill Class: Decision Tree
 
-START: What are you building?
+![Choosing Your Skill Class](../assets/Choosing_Skill_Class.png)
 
-┌─ Simple formatting or style rule?
-│ └─ No examples needed to clarify?
-│ └─ Uses only reasoning OR 1-2 read-only tools?
-│ └─ **CLASS A → Section 1.2 (Basic Template)**
 
-┌─ Decision logic or conditional workflow?
-│ └─ Needs examples to show how it works?
-│ └─ Uses 2-5 tools, possibly state-changing?
-│ └─ **CLASS B → Section 1.3 (Single-file, optional references/)**
+## **The Agent Skills Standard**
 
-┌─ Complex multi-step process?
-│ └─ Requires automated verification?
-│ └─ Uses 5+ tools or complex tool orchestration?
-│ └─ **CLASS C → Section 1.3 (Multi-file architecture)**
-
-When in doubt: Start with Class A. You can always graduate to B or C as complexity grows.
-
-## The Agent Skills Standard
-
-Skills follow an open standard that works across platforms (Anthropic, OpenAI, Google, and others).
+Skills follow an open standard that works across platforms (Anthropic, OpenAI, Google, and others). Agent Skills are folders of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently. Agent Skills open standard represents a significant advancement in AI technology, providing a framework for enhanced functionality, interoperability, and enterprise management in AI applications.
+<https://agentskills.io/home>
 
 ### Required Structure-**Every skill must have**
 
@@ -559,4 +546,5 @@ END OF SECTION 1.1
 
 Document Version: 2.0.0
 Last Updated: 2026-02-20
+
 
