@@ -41,6 +41,8 @@ Whichever you choose, you'll have a working skill by the end!
 
 If you prefer detailed guidance, skip to Part 2 (Form with Explanations)
 
+```text
+
 **Basic Information**
 
 1- What should your skill be called?
@@ -86,6 +88,7 @@ Purpose: ____________________________
 (List when AI should know stop using the Skill)
 •
 •
+```
 
 **Done with worksheet?** → Jump to "Your Completed Template" section below to assemble your skill!
 
@@ -94,6 +97,8 @@ Purpose: ____________________________
 If you prefer the quick worksheet, you can skip this section
 
 ### Element 1: Skill Name
+
+```text
 
 **Your skill name**
 Explanation:
@@ -127,13 +132,11 @@ Explanation:
 The description field is how the AI decides when to activate your skill.
 
 Must include:
-
 1. What the skill does
 2. When to use it
 3. Keywords for discovery
 
 Rules:
-
 • 1-1024 characters
 • Be specific (not "helps with writing" but "ensures Oxford commas in lists")
 • Include trigger words the user might say
@@ -158,7 +161,7 @@ Explanation:
 This is the first thing in your skill body. It tells the AI why this skill exists.
 Format: Start with "This skill ensures..." or "This skill helps..."
 
-### Purpose Satement Examples
+### Purpose Statement Examples
 
 • "This skill ensures consistent date formatting across all documentation."
 • "This skill helps maintain brand voice in client communications."
@@ -274,6 +277,8 @@ accuracy.
 
 ### Element 8: Success Criteria
 
+```text
+
 **How to verify the task is complete:** (List ways for AI to verify the task is complete)
 
 •
@@ -317,6 +322,7 @@ Tell the AI when to deactivate.
 3. User says "stop" or "that's enough"
 
 4. User asks about the rule (explain, don't apply)
+```
 
 ### Unload Trigger Example
 
@@ -797,6 +803,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
