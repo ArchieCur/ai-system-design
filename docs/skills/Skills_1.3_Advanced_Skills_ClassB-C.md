@@ -942,7 +942,6 @@ Do NOT use this skill for:
 - Database schema accessible
 
 </condition>
-```
 
 ---
 
@@ -1020,7 +1019,7 @@ IF improvement >= 50%:
 
 **Verification:**
 
-```bash
+bash
 
 ./scripts/verify.sh orders_query.sql
 ✓ Performance improved by 4500%
@@ -1072,13 +1071,10 @@ bash
 **Troubleshooting failed verifications:** → references/VERIFICATION.md Section 5
 
 </verification>
-```
 
 ---
 
 ##**Tool Orchestration-This skill uses 6 tools in sequence:**
-
-```text
 
 <sequence>
   <step id="1" required="true">explain_analyze(query) - Establish baseline</step>
@@ -1092,13 +1088,11 @@ bash
 **Error handling:**
 
 If any step fails → see references/GUIDE.md Section 10 (Troubleshooting)
-```
 
 ---
 
 ## **Anti-Patterns (Top 3)**
 
-```text
 
 <bad_pattern>
 **Index Without Measurement Adding indexes without measuring baseline performance.#1**
@@ -1128,13 +1122,11 @@ Full explanation: references/ANTI_PATTERNS.md #7
 ### For complete catalog of 15 anti-patterns
 
 → references/ANTI_PATTERNS.md (900 lines)
-```
 
 ---
 
 ## Success Criteria
 
-```text
 
 <success_criteria>
 Optimization is successful when:
@@ -1157,12 +1149,11 @@ Optimization is successful when:
 • Edge cases verified (see references/VERIFICATION.md Section 4)
 • Rollback plan documented
 </success_criteria>
-```
+
 ---
 
 ## When to Stop Using This Skill
 
-```text
 
 <unload_condition>
 Stop using this skill when:
@@ -1192,13 +1183,11 @@ Explicit Stop:
 15. User says "stop optimizing" or "that's enough" 
 16. User asks to explain optimization (don't apply, just teach) 
 </unload_condition>
-```
 
 ---
 
 ## Additional Resources
 
-```text
 
 <note>
 
@@ -1335,6 +1324,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
