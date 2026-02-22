@@ -227,16 +227,27 @@ return api_payload
 **Every tool must be classified:**
 
 **Class A: Read-Only (Low Risk)**
+
+```text
+
 • Characteristics: No side effects, idempotent, safe to retry, safe to use speculatively
 • Examples: get_user, search_documents, list_files, calculate_statistics
 • System Prompt Guidance: "Use freely when information retrieval is needed"
+```
 
 **Class B: State-Change (High Risk)**
+
+```text
+
 • Characteristics: Irreversible, has side effects, requires confirmation
 • Examples: delete_file, send_email, update_database, deploy_app
 • System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
+```
 
 **Class C: Computational (When Reasoning Fails)**
+
+```text
+
 • Characteristics: Task exceeds The model's reasoning capability, requires external computation
 • Examples: calculate_mortgage_schedule (360 months of calculations),
 run_statistical_analysis (large dataset), generate_complex_report (requires structured
@@ -246,11 +257,11 @@ capability"
 
 **Key Distinction for Class C:**
 Not "expensive computation" but "computation the model can't reliably do in context window"
+```
 
 ## How to Classify Your Tools
 
-Choosing your context strategy using a decision tree.
-**Decision Tree**
+**Choosing your context strategy using a decision tree.**
 
 ![Decision Tree for When to Use Class A, Class B or Class C Tools](../assets/Choosing_Tool_Class.png)
 
@@ -541,6 +552,7 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
 
