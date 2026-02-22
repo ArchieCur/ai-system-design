@@ -1,7 +1,9 @@
 # Skills_1.2_Basic_Template_ClassA
 
 **For:** Inexperienced users creating their first skill
+
 **Goal:** Create a working Class A skill in 15 minutes
+
 What you'll build: Simple formatting rule, style guide, or organizational constraint
 
 ## Who This Section Is For
@@ -673,11 +675,14 @@ Stop using this skill when:
 
 ### Before using your skill, verify
 
+```text
+
 **Frontmatter:**
 
 • [ ] Name is lowercase, hyphens only, 1-64 characters
 • [ ] Name matches your directory name
 • [ ] Description includes WHAT, WHEN, and KEYWORDS
+```
 
 **Body:**
 
@@ -693,10 +698,12 @@ Stop using this skill when:
 
 **Quality:**
 
+```text
 • [ ] Total length under 100 lines (Class A guideline)
 • [ ] Examples are concrete, not abstract
 • [ ] Language is clear and specific
 • [ ] No ambiguous terms ("best practices", "usually", "sometimes")
+```
 
 ## Testing Your Skill
 
@@ -843,6 +850,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
