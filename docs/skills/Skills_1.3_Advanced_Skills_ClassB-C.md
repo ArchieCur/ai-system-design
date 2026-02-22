@@ -30,10 +30,13 @@
 
 **From Anthropic's research:**
 
+```text
+
 • AI context fills fast (~200K tokens typical)
 • Performance degrades as context approaches capacity
 • Shorter skills = faster loading, better performance
 • Progressive disclosure requires external content
+```
 
 **The solution:** Keep SKILL.md as overview (< 500 lines), externalize details to references/.
 
@@ -1314,4 +1317,5 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
