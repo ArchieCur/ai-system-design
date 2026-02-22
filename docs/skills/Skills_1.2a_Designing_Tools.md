@@ -268,16 +268,26 @@ Not "expensive computation" but "computation the model can't reliably do in cont
 **Tool Classification Examples:**
 
 **Class A:**
+
+```text
 • read_user (just retrieval)
 • validate_email_format (simple regex check)
 • get_current_weather (API call, no state change)
+```
 
 **Class B**
+
+```text
+
 • delete_user (destructive)
 • send_notification (side effect: user gets notified)
 • create_order (changes system state)
+```
 
 **Class C**
+
+```text
+
 • calculate_amortization_schedule (30 years × 12 months = 360 calculations)
 • analyze_sales_trends (complex statistical analysis on large dataset)
 • generate_tax_form (structured output with many dependencies)
@@ -287,6 +297,7 @@ Not "expensive computation" but "computation the model can't reliably do in cont
 • format_date (The model can do: simple string manipulation)
 • count_words (The model can do: split and count)
 **Rule of thumb:** If The model can do it in 2-3 reasoning steps, it's NOT Class C.
+```
 
 ## System Prompt Integration
 
@@ -552,6 +563,7 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
 
