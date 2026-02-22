@@ -341,8 +341,11 @@ Success Criteria is met when:
 ✓ All lists with 3+ items have Oxford commas
 ✓ Format matches good_pattern examples
 ✓ User confirms text is correct
+```
 
 ### Element 9: Unload Conditions
+
+```text
 
 When should the AI stop using this skill?
 
@@ -352,8 +355,11 @@ When should the AI stop using this skill?
 Explanation:
 
 Tell the AI when to deactivate.
+```
 
 ### Common unload triggers-
+
+```text
 
 1. Task is complete (formatting applied)
 
@@ -465,8 +471,7 @@ The comma before "and" (the Oxford comma) eliminates ambiguity.
 **More examples:**
 
 - "The flag is red, white, and blue."
-
-- "Bring a notebook, pen, and laptop."
+                                                    - "Bring a notebook, pen, and laptop."
 - "She studied math, physics, and chemistry."
 
 </good_pattern>
@@ -544,7 +549,6 @@ Stop using this skill when:
 9. User says "stop" or "that's enough"
 
 </unload_condition>
-
 ```
 
 ---
@@ -857,6 +861,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
