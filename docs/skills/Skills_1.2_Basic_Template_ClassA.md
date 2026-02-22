@@ -6,20 +6,24 @@ What you'll build: Simple formatting rule, style guide, or organizational constr
 
 ## Who This Section Is For
 
+```text
 **You're in the right place if:**
 • You're new to skills and want to start simple
 • You're creating formatting rules or style guides
 • Your skill is under 100 lines
 • You don't need automated verification
 • You use reasoning only OR 1-2 read-only tools
+```
 
 ### Examples of Class A skills
+
+```text
 
 • "Always use Oxford commas in documentation"
 • "Format dates as YYYY-MM-DD"
 • "Use company disclaimer in client emails"
 • "Follow PEP8 style for Python code"
-
+```
 If your skill is more complex, see Section 1.3 (Advanced Skills).
 
 ## How to Use This Template
@@ -52,7 +56,7 @@ Skill name: ____________________________
 
 2- What does your skill do? (One sentence)
 
-Description: ____________________________
+Description: _________________________
 (Describe what it does AND when to use it. Include keywords.)
 
 3- What's the main purpose?
@@ -74,8 +78,10 @@ Purpose: ____________________________
 **The Rules**
 
 6- What's the correct way to do this? (Good pattern)
+____________________________________________
 
 7- What's the wrong way? (What to avoid)
+____________________________________________
 
 **Completion**
 
@@ -113,8 +119,11 @@ Rules:
 • Lowercase letters, numbers, hyphens only
 • No spaces, no underscores, no uppercase
 • Must match your directory name exactly
+```
 
 ### Skill Name Examples
+
+```text
 
 Good
 • oxford-comma-rule
@@ -123,8 +132,11 @@ Good
 Bad
 X Oxford_Comma (uppercase, underscore)
 X my skill (spaces)
+```
 
 ## Element 2: Description
+
+```text
 
 **Your description:**
 
@@ -140,8 +152,11 @@ Rules:
 • 1-1024 characters
 • Be specific (not "helps with writing" but "ensures Oxford commas in lists")
 • Include trigger words the user might say
+```
 
 ### Skill Description Examples
+
+```text
 
 **Good:**
 
@@ -151,17 +166,24 @@ with three or more items. Keywords: lists, commas, and, serial comma."
 **Too vague:**
 
 "Helps with punctuation"
+```
 
 ### Element 3: Purpose Statement
 
+```text
+
 **Your purpose (one sentence):**
+_____________________________________________
 
 Explanation:
 
 This is the first thing in your skill body. It tells the AI why this skill exists.
 Format: Start with "This skill ensures..." or "This skill helps..."
+```
 
 ### Purpose Statement Examples
+
+```text
 
 • "This skill ensures consistent date formatting across all documentation."
 • "This skill helps maintain brand voice in client communications."
@@ -169,8 +191,11 @@ Format: Start with "This skill ensures..." or "This skill helps..."
 
 Keep it to ONE sentence. If you need more, you might be building a Class B skill (see Section
 1.3).
+```
 
 ### Element 4: Critical Information (Exclusions)
+
+```text
 
 **What should the AI NOT do with this skill?** (List what AI should not do with this Skill)
 
@@ -178,17 +203,21 @@ Keep it to ONE sentence. If you need more, you might be building a Class B skill
 •
 
 Explanation:
+```
 
 ```xml
 
 Use the <critical> tag to prevent misuse.
 ```
 
+```text
+
 ***Think about:***
 
 • Wrong domains (don't use for X, use for Y)
 • Wrong file types (don't apply to code, only prose)
 • Wrong contexts (don't use in informal chat)
+```
 
 ### Critical Information (Exclusion) Example
 
@@ -202,6 +231,8 @@ Do NOT use this skill for:
 ```
 
 ## Element 5: When to Use
+
+```text
 
 **The AI should use this skill when:** (List when the AI should use this Skill)
 
@@ -224,11 +255,15 @@ X "User needs help writing" (too vague)
 • "Can you write..."
 • "Format this..."
 • "Create a..."
+```
 
 ## Element 6: Good Pattern
 
+```text
+
 **The correct way to do this:**
 Explanation:
+```
 
 ```xml
 Use the <good_pattern> tag to show the right approach.
@@ -236,7 +271,6 @@ Use the <good_pattern> tag to show the right approach.
 ### Example:
 
 <good_pattern>
-
 
 Lists with three or more items:
 
@@ -246,17 +280,23 @@ Always include it for clarity.
 </good_pattern>
 ```
 
+```text
+
 **Include:**
 
 • Concrete examples
 • Why this is the right way
 • Expected format
+```
 
 ### Element 7: Bad Pattern
+
+```text
 
 What NOT to do:
 
 Explanation:
+```
 
 ```xml
 Use the <bad_pattern> tag to show common mistakes.
@@ -344,11 +384,16 @@ Stop using this skill when:
 
 **Include User Intent Change signals (from Section 1.1):**
 
+```text
+
 • "Actually..." / "Never mind..." / "Wait..."
 • Topic shift to unrelated domain
 • User provides contradictory information
+```
 
 ## Part 3: Complete Example (Study This)
+
+```text
 
 Here's a fully-completed Class A skill you can use as a reference:
 
@@ -366,6 +411,7 @@ Oxford Comma Rule
 readability.
 
 ---
+```
 
 Critical Information
 
@@ -383,10 +429,11 @@ Do NOT use this skill for:
 - Non-English languages (different conventions)
 
 </critical>
-
 ```
 
 ---
+
+```text
 
 When to Use This Skill
 
@@ -403,6 +450,7 @@ Use this skill when:
 ---
 
 The Rule
+```
 
 ```xml
 
@@ -436,15 +484,15 @@ Without the Oxford comma, "JavaScript and SQL" might be read as a single item.
 
 (Are your parents Taylor Swift and Beyoncé?!)
 
-
 - "The book is dedicated to my mother, Oprah Winfrey and God."
 
 (Is your mother Oprah Winfrey?!)
 </bad_pattern>
-
 ```
 
 ---
+
+```text
 
 Success Criteria
 
@@ -457,6 +505,7 @@ Task is successful when:
 ✓ Text is clear and unambiguous
 
 ✓ User confirms formatting is correct
+```
 
 ---
 
@@ -467,7 +516,6 @@ When to Stop Using This Skill
 
 
 Stop using this skill when:
-
 
 **User Intent Change (check FIRST):**
 
@@ -526,7 +574,7 @@ Copy this template, replace the [BLANKS] with your answers from Part 1 or Part 2
 
 ---
 
-````markdown
+```text
 
 name: [your-skill-name]
 description: >
@@ -562,9 +610,11 @@ Use this skill when:
 - [Trigger scenario 3]
 
 ---
+```
 
 ## The Rule
 
+```xml
 <good_pattern>
 **Correct approach:**
 
@@ -583,11 +633,12 @@ Use this skill when:
 [Explain why this is wrong]
 
 </bad_pattern>
-
+```
 ---
 
 ## Success Criteria
 
+```text
 
 Task is successful when:
 
@@ -596,10 +647,12 @@ Task is successful when:
 ✓ [Measurable criterion 2]
 
 ✓ [Measurable criterion 3]
-
+```
 ---
 
 ## When to Stop Using This Skill
+
+```xml
 
 <unload_condition>
 
@@ -627,17 +680,18 @@ Stop using this skill when:
 ## 7. User says "stop" or "that's enough"
 
 </unload_condition>
-
+```
 ---
 
 ## Notes
+
+```xml
 
 <note>
 
 [Any additional context, edge cases, or helpful information]
 </note>
-
-````
+```
 
 ## Validation Checklist
 
@@ -803,6 +857,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
