@@ -172,6 +172,7 @@ with three or more items. Keywords: lists, commas, and, serial comma."
 
 ### Element 3: Purpose Statement
 
+
 ```text
 
 **Your purpose (one sentence):**
@@ -675,9 +676,9 @@ Stop using this skill when:
 
 ### Before using your skill, verify
 
-```text
-
 **Frontmatter:**
+
+```text
 
 • [ ] Name is lowercase, hyphens only, 1-64 characters
 • [ ] Name matches your directory name
@@ -850,6 +851,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
