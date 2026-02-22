@@ -288,10 +288,11 @@ Not "expensive computation" but "computation the model can't reliably do in cont
 • count_words (The model can do: split and count)
 **Rule of thumb:** If The model can do it in 2-3 reasoning steps, it's NOT Class C.
 
-System Prompt Integration
+## System Prompt Integration
+
 **Add this to your system prompt:**
 
-````markdown
+```text
 # Tool Usage Guidelines
 
 You have access to tools classified by risk level:
@@ -314,8 +315,7 @@ CLASS C (Computational): Use when reasoning capability exceeded
 - Examples: Complex multi-step calculations, large dataset analysis
 
 DEFAULT BEHAVIOR: Attempt reasoning first. Use tools only when necessary.
-
-````
+```
 
 ## The Decision Tree (Reasoning vs. Tools)
 
@@ -552,6 +552,7 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
 
