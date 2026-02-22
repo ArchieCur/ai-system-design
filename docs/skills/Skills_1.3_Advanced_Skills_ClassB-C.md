@@ -76,13 +76,11 @@ skill-name/
 
 **For Class B/C, SKILL.md becomes a routing document:**
 
-```xml
-
+```text
 ---
 name: sql-query-optimization
 description: Optimize slow SQL queries with automated verification
 ---
-
 # SQL Query Optimization
 
 Purpose: Systematic optimization of slow database queries with verification.
@@ -93,21 +91,13 @@ Do NOT use for:
  - Syntax errors → use sql-debugging skill
  - NoSQL databases → use nosql-optimization skill
 </critical>
-```
 
 ---
-
-```xml
-
 ## When to Use
 
 [2-3 sentences with triggers]
-```
 
 ---
-
-```xml
-
 ## Decision Framework
 
 <decision_criteria>
@@ -133,11 +123,8 @@ IF query execution time > threshold:
 For 15+ comprehensive examples with EXPLAIN output:
  → See references/EXAMPLES.md
 </example>
-```
 
 ---
-
-```xml
 
 ## Verification
 
@@ -160,11 +147,8 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 [Rest of skill with links to references...]
 
 **Key pattern:** Overview + links. Keep SKILL.md scannable, externalize depth.
-```
 
 ---
-
-```xml
 
 ## references/: Content Organization
 
@@ -174,8 +158,6 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 
 **Structure:**
 
-```markdown
-
 # SQL Optimization Examples
 
 ## Example 1: Missing Index on Foreign Key
@@ -183,8 +165,6 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 **Scenario:** JOIN query on unindexed user_id column
 
 **Before (2.3 seconds):**
-
-```sql
 
 SELECT orders.*, users.name
 FROM orders
@@ -235,15 +215,12 @@ Index Scan using idx_orders_user_id (cost=0.29..3.14 rows=1)
 
 **Structure:**
 
-```markdown
-
 # Verification Guide
 
 ## Automated Verification
 
 ### Using verify.sh Script
 
-```bash
 
 # Basic usage
 
@@ -316,13 +293,10 @@ Verify no queries got slower.
 
 **Structure:**
 
-```markdown
-
 # SQL Optimization Guide
 
 ## Decision Tree: Identifying Bottleneck Type
 
-```text
 START: Query is slow
 
 Is execution time the problem? ├─ YES → Continue └─ NO → Check planning time (statistics
@@ -341,7 +315,6 @@ Does output show "Sort" or "HashAggregate"? ├─ YES → Bottleneck Type: Aggr
 to Section 5: Aggregation Optimization └─ NO → Continue
 
 [20+ decision points...]
-```
 
 ---
 
@@ -360,7 +333,6 @@ to Section 5: Aggregation Optimization └─ NO → Continue
 
 Step 1: Identify Candidate Columns
 
-```sql
 -- Find columns used in WHERE clauses
 
 SELECT column_name, COUNT(*) as usage_count
@@ -399,7 +371,6 @@ Look for: Index Scan using idx_table_column
 **Purpose:** Comprehensive catalog of mistakes to avoid
 
 **Structure:**
-```markdown
 
 # SQL Optimization Anti-Patterns
 
@@ -673,48 +644,58 @@ if __name__ == "__main__":
 ### Why Self-Verification Matters
 
 **Without verification:**
+
+```text
 • AI produces plausible-looking output that doesn't work
 • Errors compound (bad optimization → worse performance)
 • User becomes the only feedback loop
 • Every mistake requires human intervention
+```
 
 **With verification:**
+
+```text
+
 • AI can iterate autonomously
 • Catches errors immediately
 • Builds confidence through validation
 • Reduces human review burden
+```
 
 ### Verification Strategies by Type
 
-**Code Changes:**
+```text
+
+Code Changes:
 • Unit tests (pytest, jest, etc.)
 • Integration tests
 • Linters (pylint, eslint)
 • Type checkers (mypy, TypeScript)
 
-**Query Optimization:**
+Query Optimization:
 • EXPLAIN ANALYZE comparison
 • Execution time thresholds
 • Index usage checks
 • Regression test suite
 
-**UI Changes:**
+UI Changes:
 • Screenshot comparison (Claude in Chrome)
 • Visual regression testing
 • Accessibility checks (WAVE, axe)
 • Cross-browser testing
 
-**Data Transformations:**
+Data Transformations:
 • Row count validation
 • Schema checks
 • Sample data verification
 • Checksum comparison
 
-**Configuration Changes:**
+Configuration Changes:
 • Syntax validation
 • Dry-run execution
 • Rollback capability
 • Smoke tests
+```
 
 ## Tool Orchestration (5+ Tools)
 
@@ -1317,5 +1298,6 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
