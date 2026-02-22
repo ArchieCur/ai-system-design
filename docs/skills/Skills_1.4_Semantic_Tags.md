@@ -80,8 +80,10 @@ Measure before optimizing:
 </good_pattern>
 ```
 
+**Why this works:**
+
 ```text
-Why this works:
+
 • Semantically clear: Models trained on millions of XML/HTML documents
 • Unambiguous: <critical> has one meaning (highest priority)
 • Nestable: Can structure complex information hierarchically
@@ -89,8 +91,11 @@ Why this works:
 • Human-friendly: Easy to type, autocomplete in IDEs
 • Accessible: Screen readers handle properly
 • Future-proof: Can become formal standard
+```
 
 **Models understand XML structure deeply because they're trained on:**
+
+```text
 • HTML (web pages)
 • XML (configuration files, data formats)
 • SVG (vector graphics)
@@ -2781,6 +2786,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
