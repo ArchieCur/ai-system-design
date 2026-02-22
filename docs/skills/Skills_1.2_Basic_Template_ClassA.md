@@ -437,6 +437,8 @@ Do NOT use this skill for:
 ```
 ---
 
+```text
+
 When to Use This Skill
 
 Use this skill when:
@@ -452,6 +454,7 @@ Use this skill when:
 ---
 
 The Rule
+```
 
 ```xml
 
@@ -466,7 +469,7 @@ The comma before "and" (the Oxford comma) eliminates ambiguity.
 **More examples:**
 
 - "The flag is red, white, and blue."
-                                                    - "Bring a notebook, pen, and laptop."
+- "Bring a notebook, pen, and laptop."
 - "She studied math, physics, and chemistry."
 
 </good_pattern>
@@ -492,6 +495,7 @@ Without the Oxford comma, "JavaScript and SQL" might be read as a single item.
 
 ---
 
+```text
 
 Success Criteria
 
@@ -508,6 +512,7 @@ Task is successful when:
 ---
 
 When to Stop Using This Skill
+```
 
 ```xml
 
@@ -544,9 +549,11 @@ Stop using this skill when:
 </unload_condition>
 ```
 
+```text
 ---
 
 Notes
+```
 
 ```xml
 
@@ -562,7 +569,6 @@ If user specifies British English, ask for their preference.
 ✓ "Python and JavaScript" (no comma needed)
 
 </note>
-
 ```
 
 ## Part 4: Your Completed Template
@@ -607,11 +613,9 @@ Use this skill when:
 - [Trigger scenario 3]
 
 ---
-```
 
 ## The Rule
 
-```xml
 <good_pattern>
 **Correct approach:**
 
@@ -630,12 +634,10 @@ Use this skill when:
 [Explain why this is wrong]
 
 </bad_pattern>
-```
+
 ---
 
 ## Success Criteria
-
-```text
 
 Task is successful when:
 
@@ -644,17 +646,14 @@ Task is successful when:
 ✓ [Measurable criterion 2]
 
 ✓ [Measurable criterion 3]
-```
+
 ---
 
 ## When to Stop Using This Skill
 
-```xml
-
 <unload_condition>
 
 Stop using this skill when:
-
 
 **User Intent Change (check FIRST):**
 
@@ -677,12 +676,10 @@ Stop using this skill when:
 ## 7. User says "stop" or "that's enough"
 
 </unload_condition>
-```
+
 ---
 
 ## Notes
-
-```xml
 
 <note>
 
@@ -710,7 +707,6 @@ Stop using this skill when:
 • [ ] <bad_pattern> shows mistakes to avoid
 • [ ] Success criteria are observable
 • [ ] Unload conditions include User Intent Change (FIRST!)
-
 ```
 
 **Quality:**
@@ -724,16 +720,20 @@ Stop using this skill when:
 
 ### Step 1: Ask AI to Review
 
+```text
+
 I created a skill called [your-skill-name]. Can you review it and tell me:
 
 1. Is the description clear about when to use it?
 2. Are the good/bad patterns helpful?
 3. Are the exclusions specific enough?
 4. Is anything confusing or ambiguous?
+```
 
 ### Step 2: Test Activation Try a query that should trigger your skill
 
-[Give a task that matches your "When to Use" scenarios]
+```text
+Give a task that matches your "When to Use" scenarios
 
 Verify the AI
 
@@ -741,12 +741,12 @@ Verify the AI
 • ✓ Follows the good_pattern
 • ✓ Avoids the bad_pattern
 • ✓ Unloads when task complete
+```
 
 ### Step 3: Test Exclusions Try a query that matches your exclusions
 
 ```xml
-
-[Give a task that's in your <critical> "Do NOT use" list]
+Give a task that's in your <critical> "Do NOT use" list
 
 Verify the AI:
 
@@ -800,9 +800,12 @@ You've created your first skill!
 
 ### On Anthropic Claude
 
+```text
+
 1. Create directory: your-skill-name/
 2. Save as: your-skill-name/SKILL.md
 3. Upload to Claude.ai (Settings → Features → Upload Skill)
+```
 
 ### On Other Platforms: See Appendix D: Cross-Platform Implementation for OpenAI/Gemini instructions
 
@@ -810,17 +813,21 @@ You've created your first skill!
 
 ### Improve your skill
 
+```text
 • Section 1.4: Learn all 18 semantic tags (you used 3 basic ones)
 • Section 1.5: Deep dive into each component
 • Section 1.6: Common pitfalls and how to avoid them
+```
 
 ### Build more complex skills
 
+```text
 • Section 1.3: Advanced Skills (Class B/C)
     o Multi-file architecture
     o References/ and scripts/
     o Complex tool orchestration
     o Automated verification
+```
 
 ### Understand the ecosystem
 
@@ -854,6 +861,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
