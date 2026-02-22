@@ -82,7 +82,7 @@ skill-name/
 ## SKILL.md: The Overview Pattern
 
 
-![Main body SKILL.md](..assets/Main_Skill.png)
+![Main body SKILL.md](../assets/Main_Skill.png)
 
 **For Class B/C, SKILL.md becomes a routing document:**
 
@@ -1310,6 +1310,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
