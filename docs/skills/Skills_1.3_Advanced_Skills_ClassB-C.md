@@ -74,6 +74,8 @@ skill-name/
 
 ## SKILL.md: The Overview Pattern
 
+[Main body SKILL.md](..assets/Main_Skill.png)
+
 **For Class B/C, SKILL.md becomes a routing document:**
 
 ```text
@@ -147,10 +149,12 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 [Rest of skill with links to references...]
 
 **Key pattern:** Overview + links. Keep SKILL.md scannable, externalize depth.
-
 ---
+```
 
 ## references/: Content Organization
+
+[Reference File Examples](../assets/Reference_Examples.png)
 
 ### **EXAMPLES.md Pattern**
 
@@ -1298,6 +1302,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
