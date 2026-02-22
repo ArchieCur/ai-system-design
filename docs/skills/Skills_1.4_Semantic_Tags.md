@@ -3,7 +3,9 @@
 Section 1.4: Semantic Tags
 
 **For**: All users (referenced from 1.2, 1.3, and 1.5)
+
 **Purpose:** Complete reference for the 18-tag semantic system
+
 What you'll learn: How to structure skills for optimal model interpretation
 
 ## Why Semantic Tags Matter
@@ -2779,6 +2781,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
