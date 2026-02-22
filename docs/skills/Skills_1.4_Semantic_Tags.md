@@ -242,10 +242,14 @@ before domain switches, before explicit stop signals.
 
 ```xml
 
-<warning>- 
+<warning>-
+``` 
 
-Purpose: Caution flags, frequent pitfalls, risky operations
-When to use:
+**Purpose:** Caution flags, frequent pitfalls, risky operations
+**When to use:**
+
+```text
+
 • Common errors that users make
 • Operations with hidden costs
 • Approaches that seem correct but fail
@@ -258,21 +262,25 @@ Model interpretation:
 **Examples:**
 **Hidden cost:**
 
-```xml
+```text
 
 <warning>
 Adding indexes to every column will slow INSERT/UPDATE operations by 20-30% per index.
 Indexes are not free—they speed reads but slow writes.
 Only add indexes where read performance gain justifies write cost.
 </warning>
+```
 
 **Common error:**
+
+```text
 
 <warning>
 Using DISTINCT to "fix" duplicate rows usually indicates a JOIN problem.
 DISTINCT masks symptoms with expensive sorting overhead.
 Fix the underlying JOIN logic instead of masking the problem.
 </warning>
+```
 
 **Performance pitfall:**
 
@@ -2789,6 +2797,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
