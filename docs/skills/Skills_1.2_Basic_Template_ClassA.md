@@ -420,8 +420,6 @@ readability.
 
 Critical Information
 
-```xml
-
 <critical>
 
 Do NOT use this skill for:
@@ -434,10 +432,8 @@ Do NOT use this skill for:
 - Non-English languages (different conventions)
 
 </critical>
-```
----
 
-```text
+---
 
 When to Use This Skill
 
@@ -454,9 +450,6 @@ Use this skill when:
 ---
 
 The Rule
-```
-
-```xml
 
 <good_pattern>
 
@@ -491,11 +484,8 @@ Without the Oxford comma, "JavaScript and SQL" might be read as a single item.
 
 (Is your mother Oprah Winfrey?!)
 </bad_pattern>
-```
 
 ---
-
-```text
 
 Success Criteria
 
@@ -512,9 +502,6 @@ Task is successful when:
 ---
 
 When to Stop Using This Skill
-```
-
-```xml
 
 <unload_condition>
 
@@ -547,15 +534,10 @@ Stop using this skill when:
 9. User says "stop" or "that's enough"
 
 </unload_condition>
-```
 
-```text
 ---
 
 Notes
-```
-
-```xml
 
 <note>
 
@@ -861,6 +843,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
