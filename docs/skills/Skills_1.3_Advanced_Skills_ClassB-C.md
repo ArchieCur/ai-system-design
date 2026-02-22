@@ -162,6 +162,8 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 ## references/: Content Organization
 ![Reference File Examples](../assets/Reference_Examples.png)
 
+```text
+
 ### **EXAMPLES.md Pattern**
 
 **Purpose:** Comprehensive before/after examples with technical details
@@ -216,10 +218,12 @@ Index Scan using idx_orders_user_id (cost=0.29..3.14 rows=1)
 - Show verification results
 - Cover edge cases
 - Measurable improvements (X% faster, Y% cost reduction)
-
+```
 ---
 
 ### **VERIFICATION.md Pattern**
+
+```text
 
 **Purpose:** How to validate that optimization succeeded
 
@@ -294,10 +298,12 @@ Verify no queries got slower.
 **Issue:** Index not being used Cause: Statistics outdated **Fix:** ANALYZE table_name;
 
 [10+ more troubleshooting scenarios...]
-
+```
 ---
 
 ### **GUIDE.md Pattern**
+
+```text
 
 **Purpose:** Step-by-step procedures, decision trees, technical deep dives
 
@@ -373,10 +379,13 @@ CREATE INDEX idx_table_column ON table_name(column_name);
 EXPLAIN ANALYZE [your query];
 Look for: Index Scan using idx_table_column
 [Continue with sections 4, 5, 6...]
+```
 
 ---
 
 ### **ANTI_PATTERNS.md Pattern**
+
+```text
 
 **Purpose:** Comprehensive catalog of mistakes to avoid
 
@@ -541,8 +550,13 @@ echo -e "${GREEN}✓ All verifications passed${NC}"
 • Index usage verification
 • Regression test integration
 • Color-coded output
+```
+
+---
 
 ### test_suite.py Pattern
+
+```text
 
 **Purpose:** Ensure optimization doesn't break related queries
 #!/usr/bin/env python3
@@ -643,8 +657,8 @@ if __name__ == "__main__":
     suite = QueryTestSuite("postgresql://localhost/mydb")
     success = suite.check_regression(TEST_QUERIES)
     sys.exit(0 if success else 1)
-
 ```
+---
 
 ## Self-Verification: The #1 Priority
 
@@ -656,6 +670,7 @@ if __name__ == "__main__":
 **Without verification:**
 
 ```text
+
 • AI produces plausible-looking output that doesn't work
 • Errors compound (bad optimization → worse performance)
 • User becomes the only feedback loop
@@ -715,6 +730,8 @@ Configuration Changes:
 
 ### Pattern 1: Linear Pipeline
 
+```text
+
 Tool A → Tool B → Tool C → Verification
 
 **Example (Code Review):**
@@ -724,14 +741,15 @@ Tool A → Tool B → Tool C → Verification
 3. run_tests(files) # Unit tests
 4. security_scan(files) # Vulnerability check
 5. verify_all_passed.sh # Verification
+```
 
 ### Pattern 2: Conditional Branching
+
+```text
 
 Tool A → Decision → Tool B (if X) OR Tool C (if Y) → Verification
 
 **Example (SQL Optimization):**
-
-```text
 
 1. explain_analyze(query) # Get execution plan
 2. identify_bottleneck() # Analyze output
@@ -739,8 +757,12 @@ Tool A → Decision → Tool B (if X) OR Tool C (if Y) → Verification
 ├─ IF Nested Loop → optimize_join()
 └─ IF Sort → add_order_index()
 3. verify_improvement.sh # Verification
+```
 
 ### Pattern 3: Parallel Execution
+
+```text
+
 Tool A ─┬─ Tool B ─┐
 ├─ Tool C ─┤─ Merge → Verification
 └─ Tool D ─┘
@@ -753,8 +775,11 @@ Parallel:
 └─ check_coverage() # Test coverage
 
 Merge results → generate_report() → Verification
+```
 
 ### Pattern 4: Iterative Refinement
+
+```text
 
 Tool A → Verify → (if fail) → Refine → Tool A → Verify → ...
 
@@ -816,7 +841,6 @@ Tool: generate_report(lint_errors=lint_errors) # Uses state from step 2
 Output: report.html
 </step>
 </workflow>
-
 ```
 
 ## Complete Class C Example
@@ -838,11 +862,13 @@ sql-query-optimization/
 ├── verify.sh # Bash (automated verification)
 ├── test_suite.py # Python (regression tests)
 └── analyze_explain.py # Python (EXPLAIN parser)
-```
 
 Total: 6,270 lines across multiple files **SKILL.md: 420 lines (main entry point)**
+```
 
 ### SKILL.md (Main File)
+
+```text
 
 ---
 
@@ -860,8 +886,6 @@ metadata:
 
 ---
 
-```xml
-
 # SQL Query Optimization
 
 **Purpose:** Systematically optimize slow database queries through bottleneck analysis,
@@ -871,9 +895,7 @@ targeted improvements, and automated verification.
 
 ## Critical Information
 
-
 <critical>
-```
 
 Do NOT use this skill for:
 
@@ -885,27 +907,23 @@ Do NOT use this skill for:
 
 **Platform scope:** PostgreSQL 12+, MySQL 8+
 
-```xml
-
 </critical>
 
 <prerequisite>
-  Requires:
 
+ Requires:
 - Database access with EXPLAIN privileges
 - Write permissions for CREATE INDEX (if optimization needed)
 - Ability to run scripts/ tools for verification
+
 </prerequisite>
-```
 
 ---
 
 ## When to Use This Skill
 
-```xml
 
 <condition>
-
 
 **Explicit requests:**
 - "Optimize this query"
@@ -930,11 +948,10 @@ Do NOT use this skill for:
 
 ## Decision Framework
 
-```xml
-
 <decision_criteria>
 
 **Phase 1: Analysis**
+
 <logic>
 IF query execution time unknown:
 → Run EXPLAIN ANALYZE to establish baseline
@@ -968,6 +985,7 @@ See references/GUIDE.md for complete decision tree (20+ scenarios).
 **Phase 4: Verification** !REQUIRED
 
 <logic>
+ 
 Run verification:
   ./scripts/verify.sh <query_file>
   
@@ -979,18 +997,16 @@ IF improvement >= 50%:
   → Run regression tests: ./scripts/test_suite.py
   → IF no regressions: Success ✓
   → IF regressions detected: Rollback, try different approach
+  
 </logic>
 </decision_criteria>
 
 **Complete decision tree with 20+ scenarios:**
   → references/GUIDE.md
-```
 
 ---
 
 ## Quick Examples
-
-```xml
 
 <example>
 
@@ -1022,7 +1038,8 @@ IF improvement >= 50%:
 **After:** 0.3s execution time
 **Result:** 27x faster
 
-See verification output in references/EXAMPLES.md 
+See verification output in references/EXAMPLES.md
+
 </example>
 
 **For 18 additional comprehensive examples:**
@@ -1033,8 +1050,14 @@ See verification output in references/EXAMPLES.md
 
 **Self-Verification (Required)**
 
-<verification> **Automated verification (recommended):** ```bash ./scripts/verify.sh
-<query_file> ```
+<verification>
+**Automated verification (recommended):**
+
+bash
+
+ ./scripts/verify.sh
+
+<query_file> 
 
 **What it checks:**
 
@@ -1046,15 +1069,16 @@ See verification output in references/EXAMPLES.md
 
 **Manual verification (if scripts unavailable):** → references/VERIFICATION.md (850 lines, step-by-step procedures)
 
-**Troubleshooting failed verifications:** → references/VERIFICATION.md Section 5 
+**Troubleshooting failed verifications:** → references/VERIFICATION.md Section 5
+
 </verification>
+```
 
 ---
 
-
 ##**Tool Orchestration-This skill uses 6 tools in sequence:**
 
-```xml
+```text
 
 <sequence>
   <step id="1" required="true">explain_analyze(query) - Establish baseline</step>
@@ -1064,25 +1088,28 @@ See verification output in references/EXAMPLES.md
   <step id="5" depends_on="4">run_script("./scripts/verify.sh") - Automated verification</step>
   <step id="6" depends_on="5">run_script("./scripts/test_suite.py") - Regression check</step>
 </sequence>
-```
 
 **Error handling:**
 
 If any step fails → see references/GUIDE.md Section 10 (Troubleshooting)
+```
 
 ---
 
 ## **Anti-Patterns (Top 3)**
 
-<bad_pattern> #1: **Index Without Measurement Adding indexes without measuring baseline**
-performance.
+```text
+
+<bad_pattern>
+**Index Without Measurement Adding indexes without measuring baseline performance.#1**
 
 **Why wrong:** Adds overhead without confirming benefit.
 **Fix:** Always measure → optimize → verify.
 **Full explanation:** references/ANTI_PATTERNS.md #1
 </bad_pattern>
 
-<bad_pattern> #3: **Using DISTINCT to Hide JOIN Errors** Using DISTINCT to eliminate duplicate rows from incorrect JOINs.
+<bad_pattern>
+**Using DISTINCT to Hide JOIN Errors** Using DISTINCT to eliminate duplicate rows from incorrect JOINs. #3**
 
 Why wrong: Masks underlying problem, adds expensive sorting.
 
@@ -1091,7 +1118,7 @@ Full explanation: references/ANTI_PATTERNS.md #3
 </bad_pattern>
 
 <bad_pattern>
-7: No Verification Assuming optimization worked without measuring.
+**No Verification Assuming optimization worked without measuring. #7**
 
 Why wrong: May have made performance worse.
 Fix: Always run verification: ./scripts/verify.sh
@@ -1101,14 +1128,16 @@ Full explanation: references/ANTI_PATTERNS.md #7
 ### For complete catalog of 15 anti-patterns
 
 → references/ANTI_PATTERNS.md (900 lines)
+```
 
 ---
 
-```xml
+## Success Criteria
 
-Success Criteria
+```text
 
-<success_criteria> Optimization is successful when:
+<success_criteria>
+Optimization is successful when:
 
 ✓ Performance:
 
@@ -1129,13 +1158,14 @@ Success Criteria
 • Rollback plan documented
 </success_criteria>
 ```
-
 ---
-When to Stop Using This Skill
 
-```xml
+## When to Stop Using This Skill
 
-<unload_condition> Stop using this skill when:
+```text
+
+<unload_condition>
+Stop using this skill when:
 
 User Intent Change (CHECK FIRST):
 1. User says "Actually...", "Never mind...", "Wait..."
@@ -1166,42 +1196,44 @@ Explicit Stop:
 
 ---
 
-Additional Resources
+## Additional Resources
 
-```xml
+```text
 
-<note> 
+<note>
+
 **Related skills:** 
 - database-schema-design - For schema optimization 
 - sql-debugging - For syntax errors 
 - nosql-optimization - For MongoDB, Redis, etc.
 
-### Reference materials:
+**Reference materials:**
 
 • references/CONTEXT.md - Database optimization theory (400 lines)
 • references/GUIDE.md - Complete procedures (1,600 lines)
 • references/EXAMPLES.md - 20 comprehensive examples (2,100 lines)
 
-### Tools:
+**Tools:**
 
 • scripts/verify.sh - Automated verification
 • scripts/test_suite.py - Regression testing
 • scripts/analyze_explain.py - EXPLAIN parser
 
-### Platform differences:
+**Platform differences:**
 
 • PostgreSQL: Strong query planner, excellent EXPLAIN
 • MySQL: Weaker planner, may need query hints
 • See references/CONTEXT.md Section 6 for details 
 </note>
-
 ```
 
 ## Building Your Own Class C Skill
 
-Checklist for multi-file architecture
+**Checklist for multi-file architecture**
 
 **SKILL.md (< 500 lines):**
+
+```text
 
 - [ ] Frontmatter (name, description, metadata)
 - [ ] Purpose statement (1 sentence)
@@ -1236,6 +1268,7 @@ Checklist for multi-file architecture
 - [ ] Test verification scripts (they actually run)
 - [ ] Test on realistic scenarios
 - [ ] Verify no regressions
+```
 
 ---
 
@@ -1248,9 +1281,7 @@ Checklist for multi-file architecture
 **Deepen component understanding:**
 
 - **Section 1.4:** All 19 semantic tags (you've used ~8)
-
 - **Section 1.5:** Deep dive into 8 components
-
 - **Section 1.6:** Common pitfalls and how to avoid them
 
 **Cross-module integration:**
@@ -1277,15 +1308,11 @@ Checklist for multi-file architecture
 
 **Class B/C skills require:**
 
-Multi-file architecture when content >300 lines
-
-Self-verification (Anthropic's #1 priority)
-
-Tool orchestration strategies (5+ tools)
-
-references/ for detailed content
-
-scripts/ for automation
+- Multi-file architecture when content >300 lines
+- Self-verification (Anthropic's #1 priority)
+- Tool orchestration strategies (5+ tools)
+- references/ for detailed content
+- scripts/ for automation
 
 SKILL.md as routing document (< 500 lines)
 
@@ -1308,6 +1335,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
