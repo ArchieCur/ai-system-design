@@ -399,9 +399,9 @@ Stop using this skill when:
 
 ## Part 3: Complete Example (Study This)
 
-```text
-
 Here's a fully-completed Class A skill you can use as a reference:
+
+```text
 
 name: oxford-comma-rule
 description: >
@@ -417,7 +417,6 @@ Oxford Comma Rule
 readability.
 
 ---
-```
 
 Critical Information
 
@@ -436,10 +435,7 @@ Do NOT use this skill for:
 
 </critical>
 ```
-
 ---
-
-```text
 
 When to Use This Skill
 
@@ -456,7 +452,6 @@ Use this skill when:
 ---
 
 The Rule
-```
 
 ```xml
 
@@ -497,7 +492,6 @@ Without the Oxford comma, "JavaScript and SQL" might be read as a single item.
 
 ---
 
-```text
 
 Success Criteria
 
@@ -510,15 +504,14 @@ Task is successful when:
 ✓ Text is clear and unambiguous
 
 ✓ User confirms formatting is correct
-```
 
 ---
 
 When to Stop Using This Skill
 
 ```xml
-<unload_condition>
 
+<unload_condition>
 
 Stop using this skill when:
 
@@ -861,6 +854,7 @@ Last Updated: 2026-02-20
 Target Audience: Inexperienced users, first skill
 
 Skill Class: Class A (Simple)
+
 
 
 
