@@ -164,9 +164,10 @@ For complete catalog of 15 anti-patterns: → See references/ANTI_PATTERNS.md </
 ## references/: Content Organization
 ![Reference File Examples](../assets/Reference_Examples.png)
 
-```text
 
 ### **EXAMPLES.md Pattern**
+
+```text
 
 **Purpose:** Comprehensive before/after examples with technical details
 
@@ -1326,6 +1327,7 @@ SKILL.md as routing document (< 500 lines)
 *Last Updated: 2026-02-20*
 *Target Audience: Experienced users, Class B/C skills*
 *Prerequisites: Section 1.1 (foundation), Class A understanding*
+
 
 
 
