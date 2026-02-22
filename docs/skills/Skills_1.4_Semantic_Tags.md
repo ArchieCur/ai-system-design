@@ -165,10 +165,12 @@ Total: 19 tags
 
 **When to use:**
 
+```text
 • Safety-critical operations
 • Scope boundaries (what NOT to use skill for)
 • Mandatory prerequisites
 • User Intent Change detection (see special pattern below)
+```
 
 **Model interpretation:**
 "I MUST follow this. Failure to follow causes serious problems."
@@ -2787,6 +2789,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
