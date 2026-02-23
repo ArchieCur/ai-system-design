@@ -419,8 +419,7 @@ If all criteria met → Add index and verify improvement
 **Best practice:** Pair with <rationale> tag to explain WHY it's wrong.
 
 **Examples:**
-
-### With rationale:**
+**With rationale:**
 
 ```xml
 
@@ -445,7 +444,7 @@ Always: Measure → Optimize → Verify
 </bad_pattern>
 ```
 
-### Common anti-pattern:
+**Common anti-pattern:**
 
 ```xml
 
@@ -469,7 +468,7 @@ Use explicit column lists: SELECT id, name, email FROM users
 </bad_pattern>
 ```
 
-### Masking symptoms:
+**Masking symptoms:**
 
 ```xml
 
@@ -502,11 +501,13 @@ Fix the JOIN logic instead of hiding duplicates with DISTINCT.
 **Purpose:** IF-THEN conditional logic, decision trees, branching logic
 **When to use:**
 
+```text
+
 • Core decision-making for the skill
 • Condition-action pairs ("IF X, THEN Y")
 • Multi-branch logic with multiple conditions
 • Any "how do I decide what to do?" scenarios
-
+```
 **Model interpretation:**
 
 "This is my decision tree. When condition X is true, take action Y."
@@ -642,7 +643,7 @@ simple to complex conditional structures.**
 **Why this matters:** Without unload conditions, skills may stay active inappropriately, causing
 attentional residue that degrades subsequent task performance.
 
-### Template (USE THIS EXACT STRUCTURE):
+**Template (USE THIS EXACT STRUCTURE):**
 
 ```xml
 
@@ -761,10 +762,13 @@ second.**
 **Purpose:** Scope boundaries, alternate skills for different tasks
 **When to use:**
 
+```text
+
 • Define what's OUT of scope
 • Prevent skill from activating inappropriately
 • Direct to alternative skills for wrong use cases
 • Clarify domain boundaries
+```
 
 **Model interpretation:**
 
@@ -855,11 +859,13 @@ and performance issues. Style and formatting are separate concerns.
 **Purpose:** FYI information, helpful context, clarifications
 **When to use:**
 
+```text
+
 - Platform-specific details
 - Edge cases worth mentioning
 - Background information
 - Helpful tips
-
+```
 **Model interpretation:**
 
 "This is good to know but not critical to follow."
@@ -926,10 +932,12 @@ maximum impact.
 **Purpose:** Concrete demonstrations, before/after comparisons
 **When to use:**
 
+```text
 - Show working code
 - Demonstrate improvements
 - Provide templates to copy
 - Illustrate abstract concepts
+```
 
 **Model interpretation:**
 
@@ -941,7 +949,7 @@ maximum impact.
 ```xml
 
 <example>
-```
+
 
 **Before optimization:** (2.3 seconds)
 
@@ -964,15 +972,14 @@ ORDER BY created_at DESC;
 
 EXPLAIN output shows: Index Scan using idx_user_created (cost=0.29..8.31)
 Improvement: 46x faster (2.3s → 0.05s), 99.5% cost reduction </example>
-
-**Query pattern:**
 ```
 
-```xml
+**Query pattern:**
+
+```text
 
 <example>
 ```
-
 **Optimizing multi-column WHERE clauses:**
 
 ```sql
@@ -991,14 +998,14 @@ ON orders(status, created_at, user_id);
 
 -- Query now uses index-only scan
 -- Execution time: 850ms → 12ms (70x faster)
+```
 
-Key insight: Index column order should match WHERE clause priority (most selective filters
+**Key insight:** Index column order should match WHERE clause priority (most selective filters
 first). </example>
 
 **Multiple scenarios:**
 
-```xml
-
+```text
 <example>
 ```
 
@@ -1040,55 +1047,52 @@ SELECT * FROM orders ORDER BY created_at DESC LIMIT 10;
 CREATE INDEX idx_orders_created ON orders(created_at DESC);
 -- New time: 0.02s (105x faster)
 
-</example> ```
+</example>
+```
 
-<condition> - Trigger Criteria
+**Trigger Criteria**
 
-Purpose: When skill should activate, observable signals
+```xml
+<condition>
+```
 
-### When to use:
+**Purpose:** When skill should activate, observable signals
 
+**When to use:**
+
+```text
 
 • Define activation triggers
-
 • Specify user language patterns
-
 • Set performance thresholds
-
 • Clarify when skill is relevant
+```
 
-### Model interpretation:
-
+**Model interpretation:**
 
 "These are the signals that I should activate this skill."
 
+**Examples:**
 
-### Examples:
+**User language triggers:**
 
-
-### User language triggers:
-
-
+```xml
 <condition>
-
 
 ### Activate this skill when user:
 
 
 - Uses performance keywords: "optimize", "speed up", "slow", "improve performance"
-
 - Asks about execution time: "Why is this query taking so long?"
-
 - Mentions specific thresholds: "This should run in under 1 second"
-
 - Provides EXPLAIN output or execution plans
-
 - Complains about query speed: "This is too slow"
 </condition>
+```
 
+**Observable metrics:**
 
-### Observable metrics:
-
+```xml
 
 <condition>
 
@@ -1106,10 +1110,12 @@ Purpose: When skill should activate, observable signals
 
 - Database monitoring alerts for slow query logged
 </condition>
+```
 
 
-### Context-based:
+**Context-based:**
 
+```xml
 
 <condition>
 
@@ -1128,34 +1134,36 @@ Purpose: When skill should activate, observable signals
 - Database is experiencing performance issues
 
 </condition>
+```
 
-<action> - Specific Steps to Take
-Purpose: Concrete action items, procedural steps
+**Specific Steps to Take**
 
+```xml
 
-### When to use:
+<action>
+```
 
+**Purpose:** Concrete action items, procedural steps
+**When to use:**
+
+```text
 
 • Define specific operations to perform
-
 • Break down complex procedures
-
 • Provide step-by-step instructions
-
 • Complement <decision_criteria> with implementation details
+```
 
-### Model interpretation:
-
+**Model interpretation:**
 
 "These are the specific steps I should take."
 
 
-### Examples:
+**Examples:**
 
+**Procedural steps:**
 
-
-### Procedural steps:
-
+```xml
 
 <action>
 
@@ -1192,145 +1200,125 @@ Confirm index usage (should show "Index Scan" not "Seq Scan")
 Measure execution time improvement (should be >50% faster)
 
 </action>
+```
 
-### Decision-based actions:
+**Decision-based actions:**
 
+```xml
 
 <action>
 
-
 ### Based on bottleneck identified:
-
 
 **If Seq Scan on large table:**
 → Add index to WHERE clause columns
-
 → Verify selectivity (>1% of rows filtered)
-
 → Check EXPLAIN shows index usage
 
 **If Nested Loop with high cost:**
 → Consider Hash Join (SET enable_hashjoin = on)
 
 → Add indexes to join columns
-
 → Increase work_mem if hash spills to disk
 
 **If Sort operation on large dataset:**
-
 → Add index matching ORDER BY columns
-
 → Consider materialized view for complex sorts
-
-
 → Increase work_mem for in-memory sorting
 
 </action>
+```
 
-### Verification actions:
+**Verification actions:**
 
+```xml
 
 <action>
 
-
 ### After applying optimization:
-
 
 1. **Measure improvement:**
 
 Run EXPLAIN ANALYZE on optimized query
-
 Compare execution time to baseline
-
 Confirm >50% improvement
 
 2. **Verify index usage:**
 
 Check EXPLAIN output shows "Index Scan" or "Index Only Scan"
-
 Confirm cost estimate decreased significantly
 
 3. **Check for regressions:**
+
 Test related queries that might be affected
-
 Verify INSERT/UPDATE performance acceptable
-
 Monitor for unexpected slow queries
 
 4. **Production validation:**
+
 Deploy to staging first
-
 Monitor query performance for 24 hours
-
 Check error logs for issues
-
 Deploy to production with monitoring
 </action>
+```
 
-<prerequisite> - Requirements Before Use
+**Requirements Before Use**
 
+```xml
 
-Purpose: Dependencies, required setup, permissions needed
+<prerequisite>
+```
 
+**Purpose:** Dependencies, required setup, permissions needed
+**When to use:**
 
-### When to use:
+```text
 
 • Specify technical requirements
-
 • List required permissions
-
 • Define necessary tools or access
-
 • Clarify assumptions
+```
 
-### Model interpretation:
-
+**Model interpretation:**
 
 "I need these things before I can use this skill effectively."
 
 
-### Examples:
+**Examples:**
 
+**Technical requirements:**
 
-
-### Technical requirements:
-
+```xml
 
 <prerequisite>
 
-
 ### This skill requires:
-
 
 **Database access:**
 
 - PostgreSQL 12+ or MySQL 8+ (for modern EXPLAIN features)
-
 - Read access to performance schema and query statistics
-
 - Write permissions for CREATE INDEX (if optimization needed)
 
 **Tools:**
 
 - Access to EXPLAIN ANALYZE command
-
 - Ability to run queries against database
-
 - Query editor or SQL client
 
 **Knowledge:**
 
 - Basic understanding of SQL syntax
-
 - Familiarity with execution plans (helpful but not required)
 
 </prerequisite>
+```
 
+**Permissions:**
 
-
-
-### Permissions:
-
+```xml
 
 <prerequisite>
 
@@ -1338,280 +1326,234 @@ Purpose: Dependencies, required setup, permissions needed
 
 
 - `SELECT` on tables being optimized
-
 - `EXPLAIN` privilege (view execution plans)
 - `CREATE INDEX` privilege (if optimization involves adding indexes)
-
 - Access to `information_schema` (for table metadata)
 
 **Optional but helpful:**
 
 - `SHOW PROFILE` access (MySQL detailed profiling)
 - `pg_stat_statements` extension (PostgreSQL query statistics)
-
 - Database monitoring dashboard access
 
 </prerequisite>
+```
 
+**Setup requirements:**
 
-### Setup requirements:
-
+```xml
 
 <prerequisite>
 
 ### Before using this skill:
 
-
 1. **Establish baseline:**
 
 Run queries and record current performance metrics
-
 Save EXPLAIN ANALYZE output for comparison
 
 2. **Backup data:**
 
 This skill may suggest index additions
-
 Ensure backups exist before schema changes
 
 3. **Verify test environment:**
 
 Test optimizations in non-production first
-
-
 Production-like data volume recommended
 
 4. **Check permissions:**
 
 Confirm ability to CREATE INDEX
-
 Verify access to performance monitoring tools
 
 </prerequisite>
+```
 
-<sequence> - Ordered Steps
+ Requirements Before Use
 
-Purpose: Linear workflows that must execute in specific order
+```xml
 
+<sequence>
+```
 
-### When to use:
+**Purpose:** Linear workflows that must execute in specific order
+**When to use:**
 
+```text
 
 • Multi-step processes with dependencies
-
 • Workflows where order matters
 • Pipeline-style operations
-
 • Verification workflows
+```
 
-
-### Model interpretation:
+**Model interpretation:**
 
 "I must follow these steps in this exact order."
 
-Best practice: Use <step> sub-tags with id and depends_on attributes for clarity.
+**Best practice:** Use <step> sub-tags with id and depends_on attributes for clarity.
 
+**Examples:**
 
-### Examples:
+**Simple sequence:**
 
-
-
-### Simple sequence:
-
+```xml
 
 <sequence>
 
-
 ## 1. Run EXPLAIN ANALYZE on current query to establish baseline
-
-
 
 ## 2. Identify bottleneck from EXPLAIN output (Seq Scan, Nested Loop, etc.)
 
-
 ## 3. Apply targeted optimization based on bottleneck type
-
-
 
 ## 4. Run EXPLAIN ANALYZE again to verify improvement
 
-
-
 ## 5. Check for regressions in related queries
 
-
 </sequence>
+```
 
+**With dependencies:**
 
-### With dependencies:
-
-
+```xml
 
 <sequence>
 
 <step id="1" required="true">
-Run EXPLAIN ANALYZE on current query to establish baseline.
 
+Run EXPLAIN ANALYZE on current query to establish baseline.
 Record execution time and query plan cost.
 
 </step>
 
 <step id="2" depends_on="1">
 
-
 ### Analyze EXPLAIN output to identify bottleneck type:
 
-
 - Seq Scan → Missing index problem
-
 - Nested Loop → Join optimization needed
-
 - Sort → ORDER BY optimization needed
 </step>
 
 <step id="3" depends_on="2">
 
-
 ### Apply optimization based on bottleneck:
-
 
 - For Seq Scan: Add index to WHERE columns
 - For Nested Loop: Optimize join strategy, add join indexes
-
 - For Sort: Add index to ORDER BY columns
-
 </step>
 
 <step id="4" depends_on="3" verification="true">
+
 Run EXPLAIN ANALYZE again on optimized query.
-
 Verify execution time improved by >50%.
-
 Confirm EXPLAIN shows index usage (not Seq Scan).
-
 </step>
 
 <step id="5" depends_on="4">
 
 Run regression tests on related queries.
-
-
 Verify no queries got slower.
-
 Check INSERT/UPDATE performance acceptable.
 </step>
 
 </sequence>
+```
 
+**Pipeline workflow:**
 
-### Pipeline workflow:
-
+```xml
 
 <sequence>
 **Data processing pipeline (execute in order):**
 
 <step id="1">
-
 **Extract:** Load raw data from source
 
 - Read CSV file or database export
 - Validate data format and schema
-
 - Handle missing values
-
 </step>
 
 <step id="2" depends_on="1">
 **Transform:** Clean and process data
 
 - Apply business rules
-
 - Calculate derived metrics
-
 - Filter invalid records
-
 </step>
 
 <step id="3" depends_on="2">
-
 **Validate:** Check data quality
 
 - Run validation rules
 - Compare to expected ranges
-
 - Flag anomalies for review
-
 </step>
-
 
 <step id="4" depends_on="3">
 **Load:** Insert processed data
 
 - Batch insert for performance
-
 - Update existing records if needed
-
 - Log processing statistics
 </step>
 
 <step id="5" depends_on="4" verification="true">
-
 **Verify:** Confirm successful processing
 
 - Check row counts match
 - Validate data integrity
-
 - Generate completion report
-
 </step>
 
 </sequence>
+```
 
-Tier 3: Advanced Tags (For Complex Skills)
+### Tier 3: Advanced Tags (For Complex Skills)
 
-<rationale> - Why This Approach
+**Why This Approach**
 
-Purpose: Explain reasoning behind recommendations
+```xml
 
+<rationale>
+```
+**Purpose:** Explain reasoning behind recommendations
 
-### When to use:
+**When to use:**
 
+```text
 
 • Inside <bad_pattern> to explain why approach is wrong
 • Inside <good_pattern> to explain why approach is right
-
 • Standalone to provide background reasoning
-
 • To justify tradeoffs or decisions
+```
 
-
-### Model interpretation:
+**Model interpretation:**
 
 "Here's the reasoning behind this recommendation."
 
+**Examples:**
 
-### Examples:
+**Within bad pattern:**
 
-
-
-### Within bad pattern:
-
+```xml
 
 <bad_pattern>
+
 Using SELECT * in production queries
 
 <rationale>
 
-
 ### Why SELECT * is problematic:
 
-
 1. **Performance:** Fetches unnecessary columns, wasting I/O and memory
-
 2. **Brittleness:** Breaks code when schema changes (new columns added)
-
 3. **Index efficiency:** Defeats covering indexes (can't use index-only scans)
-
 4. **Network cost:** Transfers unnecessary data, increasing latency
 5. **Maintenance:** Makes code harder to understand (unclear which columns used)
 
@@ -1620,9 +1562,11 @@ Always use explicit column lists: SELECT id, name, email FROM users
 </rationale>
 
 </bad_pattern>
+```
 
-### Within good pattern:
+**Within good pattern:**
 
+```xml
 
 <good_pattern>
 
@@ -1632,16 +1576,11 @@ Use composite indexes for multi-column WHERE clauses
 
 ### Why composite indexes outperform multiple single-column indexes:
 
-
 1. **Single index scan:** Query planner uses one index instead of merging multiple
-
 2. **Lower overhead:** One index to maintain instead of several
 3. **Better selectivity:** Combined columns often more selective than individual
-
 4. **Reduced storage:** One composite index < multiple single indexes
-
 5. **Covering potential:** Can include all SELECT columns for index-only scans
-
 
 Trade-off: Less flexible (only helps queries using leftmost columns)
 But for common query patterns, dramatically better performance.
@@ -1649,9 +1588,11 @@ But for common query patterns, dramatically better performance.
 </rationale>
 
 </good_pattern>
+```
 
+**Standalone reasoning:**
 
-### Standalone reasoning:
+```xml
 
 <rationale>
 
@@ -1661,12 +1602,9 @@ In most applications, 80% of database load comes from 20% of queries
 
 (Pareto principle applies to query performance).
 
-
 ### Optimizing the slowest or most frequent queries yields maximum impact:
 
-
 - Fastest query (1ms) optimized to 0.5ms → Saves 0.5ms
-
 - Slowest query (2000ms) optimized to 500ms → Saves 1500ms
 
 Always measure which queries consume the most total time
@@ -1674,83 +1612,74 @@ Always measure which queries consume the most total time
 (execution time × frequency) and optimize those first.
 
 </rationale>
+```
 
-<tradeoff> - Pros and Cons
-Purpose: Present balanced view of options, costs vs. benefits
+**Pros and Cons**
 
+```xml
 
-### When to use:
+<tradeoff>
+```
 
+**Purpose:** Present balanced view of options, costs vs. benefits
+**When to use:**
 
+```text
 • Decisions with significant tradeoffs
-
 • When multiple approaches are valid
-
 • Performance vs. maintainability decisions
 • Help model make informed choices
+```
 
-
-
-### Model interpretation:
+**Model interpretation:**
 
 "Here are the tradeoffs I need to consider when making this decision."
 
+**Examples:**
 
-### Examples:
+**Index decision:**
 
-
-### Index decision:
-
+```xml
 
 <tradeoff>
 
 **Adding indexes:**
 
 **Pros:**
+
 - Speeds up SELECT queries (10-100x for large tables)
-
 - Reduces query execution time and improves user experience
-
 - Enables efficient JOIN and WHERE filtering
-
 - Can enable index-only scans (no table access needed)
 
 **Cons:**
 
 - Slows INSERT/UPDATE/DELETE operations (20-30% overhead per index)
-
 - Increases storage requirements (index size ≈ 10-20% of table size)
-
 - Requires maintenance (REINDEX, ANALYZE, VACUUM)
 - More indexes → longer query planning time
-
 - Wrong indexes can confuse query planner
 
 **Decision rule:**
 
-
 ### Add index if:
 
 - Table is read-heavy (>80% SELECT operations)
-
 - Query performance gain >10x
-
 - Write overhead <30% acceptable
-
 
 ### Skip index if:
 
-
 - Write-heavy workload (>50% INSERT/UPDATE/DELETE)
-
 - Table is small (<10K rows)
 - Column has low selectivity (<1% distinct values)
 
 </tradeoff>
+```
 
+**Denormalization tradeoff:**
 
-### Denormalization tradeoff:
-
+```xml
 
 <tradeoff>
 **Denormalizing for read performance:**
@@ -1758,98 +1687,82 @@ Purpose: Present balanced view of options, costs vs. benefits
 **Pros:**
 
 - Eliminates expensive JOINs (can be 5-50x faster)
-
 - Simplifies queries (easier to write and maintain)
 - Reduces locking contention (fewer tables touched)
-
 - Better caching efficiency (all data in one place)
 
 **Cons:**
 
 - Data duplication (increased storage)
 - Update complexity (must update multiple places)
-
 - Data inconsistency risk (if updates fail partway)
-
 - Harder to maintain data integrity
-
 - Schema changes require updating multiple tables
 
 **When to denormalize:**
 
 - Read:write ratio >10:1 (read-heavy workload)
-
 - JOINs consistently slow despite optimization
-
 - Data rarely changes (mostly static reference data)
 - Can accept eventual consistency
 
 **When to stay normalized:**
 
-
 - Write-heavy workload (frequent updates)
-
 - Strong consistency required
 - Storage cost is concern
-
 - Data integrity critical
 
 </tradeoff>
+```
 
-<context> - Situational Factors
+**Situational Factors**
 
-Purpose: Environmental variations, platform-specific details, situational factors
+```xml
 
+<context>
+```
 
-### When to use:
+**Purpose:** Environmental variations, platform-specific details, situational factors
 
+**When to use:**
+
+```text
 
 • Platform differences (PostgreSQL vs. MySQL)
-
 • Environment-specific behavior (dev vs. production)
-
 • Configuration-dependent recommendations
 • Historical context
+```
 
-
-### Model interpretation:
+**Model interpretation:**
 
 "I should adjust my approach based on these situational factors."
 
+**Examples:**
 
-### Examples:
+**Platform differences:**
 
-
-
-### Platform differences:
+```xml
 
 <context>
 
-
 ### SQL optimization strategies vary by database engine:
-
 
 **PostgreSQL:**
 
 - Sophisticated query planner (good at multi-index queries)
 - Prefers B-tree indexes for most use cases
-
 - Strong support for partial indexes: CREATE INDEX ... WHERE condition
-
 - Can use multiple indexes per query (bitmap index scans)
-
 - Better at handling complex JOIN scenarios
-
 
 **MySQL (InnoDB):**
 
 - Clustered primary key (all secondary indexes include PK)
 - Less sophisticated query planner (often needs hints)
-
 - No partial index support
-
 - Typically uses only one index per table per query
-
 - Benefits more from denormalization for complex queries
 
 **Recommendation:** Detect database engine and adjust optimization approach.
@@ -1859,39 +1772,33 @@ PostgreSQL → More aggressive with indexes
 MySQL → Consider denormalization earlier
 
 </context>
+```
 
-### Environment considerations:
+**Environment considerations:**
 
+```xml
 
 <context>
 
-
 ### Optimization strategy depends on environment:
 
-
 **Development/Test:**
+
 - Small data volumes (may not show bottlenecks)
-
 - Index benefits less apparent with <10K rows
-
 - Performance issues may not surface until production
 
 **Staging:**
+
 - Should mirror production data volume
-
 - Best environment for testing optimizations
-
 - Reveals realistic performance characteristics
 
 **Production:**
 
 - Large data volumes (100K-100M+ rows)
-
 - Index benefits most apparent here
-
-
 - Must balance optimization vs. availability
-
 - Changes require careful deployment strategy
 
 **Action:** Always test optimizations on production-scale data before deploying.
@@ -1899,9 +1806,11 @@ MySQL → Consider denormalization earlier
 Development testing alone is insufficient.
 
 </context>
+```
 
-### Historical context:
+**Historical context:**
 
+```xml
 
 <context>
 
@@ -1909,92 +1818,60 @@ Development testing alone is insufficient.
 
 Historical problem: "Premature optimization is the root of all evil" (Knuth)
 
-
 ### Common failure pattern:
 
-
-
 ## 1. Developer assumes query is slow
-
-
-
 ## 2. Adds indexes without measuring
-
-
-
 ## 3. Indexes don't help (wrong bottleneck)
-
-
 ## 4. Write performance now worse
-
-
-
 ## 5. Extra indexes add maintenance overhead
-
-
-
 ## 6. Net result: System slower than before
-
-
 
 ### Modern best practice:
 
-
 ## 1. Measure current performance (establish baseline)
-
-
-
 ## 2. Identify actual bottleneck (not assumed)
-
-
-
 ## 3. Apply targeted fix
-
-
-
 ## 4. Verify improvement (measure again)
-
-
 ## 5. Check for regressions
-
 
 This measure-optimize-verify cycle prevents wasted effort and unintended consequences.
 
-
 </context>
+```
 
-<success_criteria> - Verification Criteria
+**Verification Criteria**
 
-Purpose: Observable outcomes that indicate success
+```xml
 
+<success_criteria>
+```
 
-### When to use:
+**Purpose:** Observable outcomes that indicate success
 
+**When to use:**
+
+```text
 
 • Define what success looks like
-
 • Provide measurable metrics
 • Enable verification of task completion
-
 • Complement <unload_condition>
+```
 
-
-### Model interpretation:
+**Model interpretation:**
 
 "These are the criteria I can check to know if I succeeded."
 
+**Examples:**
 
-### Examples:
+**Measurable criteria:**
 
-
-
-### Measurable criteria:
+```xml
 
 <success_criteria>
 
-
 ### Optimization is successful when:
-
 
 **Performance metrics:**
 
@@ -2021,16 +1898,15 @@ Purpose: Observable outcomes that indicate success
 ✓ No increase in error rates or timeouts
 ✓ User-reported performance issues resolved
 </success_criteria>
+```
 
+**Qualitative criteria:**
 
-### Qualitative criteria:
-
+```xml
 
 <success_criteria>
 
-
 ### Code review is complete when:
-
 
 **Functional correctness:**
 
@@ -2065,64 +1941,61 @@ Purpose: Observable outcomes that indicate success
 ✓ API documentation current
 ✓ Breaking changes noted
 </success_criteria>
+```
+
+ **Alternative If Primary Fails**
+
+ ```xml
 
 <fallback> - Alternative If Primary Fails
-Purpose: Backup plans, alternative approaches when primary strategy doesn't work
+```
 
+**Purpose:** Backup plans, alternative approaches when primary strategy doesn't work
 
-### When to use:
+**When to use:**
 
+```text
 
 • Provide Plan B when Plan A fails
-
 • Handle edge cases where normal approach insufficient
-
 • Escalation paths (when to involve humans)
 • Graceful degradation strategies
+```
 
-
-### Model interpretation:
+**Model interpretation:**
 
 "If my primary approach doesn't work, here's what I should try instead."
 
 
-### Examples:
+**Examples:**
 
+**Multi-level fallback:**
 
-
-### Multi-level fallback:
+```xml
 
 <fallback>
 
-
 ### If adding indexes doesn't improve performance:
 
-
 **Level 1: Verify index is being used**
-→ Run EXPLAIN ANALYZE to check query plan
+
+ Run EXPLAIN ANALYZE to check query plan
 
 → If index not used, try forcing: USE INDEX (idx_name) [MySQL]
-
 → Or: SET enable_seqscan = off; [PostgreSQL] to test
-
 → Check table statistics are current: ANALYZE table_name
 
 **Level 2: Try alternative optimizations**
 
 → Consider different index type (HASH vs BTREE)
-
 → Try covering index (include all SELECT columns)
-
 → Increase work_mem for in-memory operations
-
 → Consider table partitioning (for >10M rows)
 
 **Level 3: Structural changes**
 
 → Denormalize for read-heavy queries
-
 → Create materialized view for complex aggregations
-
 → Consider read replicas for query load distribution
 → Evaluate application-level caching (Redis, Memcached)
 
@@ -2130,22 +2003,19 @@ Purpose: Backup plans, alternative approaches when primary strategy doesn't work
 
 → Consult DBA for server-level tuning
 → Review hardware resources (disk I/O, memory)
-
 → Consider database sharding strategy
-
 → Evaluate if different database technology better suited
 
-
 </fallback>
+```
 
+**When constraints conflict:**
 
-### When constraints conflict:
+```xml
 
 <fallback>
 
-
 ### If primary recommendation conflicts with constraints:
-
 
 **If write performance unacceptable with indexes:**
 
@@ -2175,18 +2045,17 @@ Purpose: Backup plans, alternative approaches when primary strategy doesn't work
 → Accept slower optimization over multiple small windows
 
 </fallback>
+```
 
+## Tag Nesting and Composition
 
-Tag Nesting and Composition
-Nesting Principles
+**Nesting Principles**
 
+Tags can be nested when it adds clarity:
 
-### Tags can be nested when it adds clarity:
+**Simple nesting:**
 
-
-
-### Simple nesting:
-
+```xml
 
 <bad_pattern>
 Using DISTINCT to eliminate duplicates
@@ -2205,41 +2074,32 @@ Fix JOIN conditions instead of masking symptoms.
 </rationale>
 
 </bad_pattern>
+```
 
-### Complex nesting:
+**Complex nesting:**
 
+```xml
 
 <decision_criteria>
-
 
 ### IF query shows full table scan:
 
 
 <action>
 
-
 ## 1. Identify columns in WHERE clause
-
 
 ## 2. Check existing indexes
 
-
-
 ## 3. Create index if missing
 
-
-
 ## 4. Verify with EXPLAIN ANALYZE
-
 
 </action>
 
 <fallback>
 
-
 ### If index creation not possible:
-
-
 
 → Rewrite query to use existing indexes
 → Add query hints to guide planner
@@ -2248,10 +2108,13 @@ Fix JOIN conditions instead of masking symptoms.
 </fallback>
 
 </decision_criteria>
+```
 
-Common Composition Patterns
+**Common Composition Patterns**
 
-Pattern 1: Good/Bad with Rationale
+**Pattern 1: Good/Bad with Rationale**
+
+```xml
 
 <good_pattern>
 
@@ -2259,9 +2122,7 @@ Use explicit column lists in SELECT
 
 <rationale>
 
-
 ### Benefits:
-
 
 - Fetches only needed data (better performance)
 - Resilient to schema changes (won't break on new columns)
@@ -2281,42 +2142,45 @@ SELECT * FROM users WHERE status = 'active';
 </example>
 
 </good_pattern>
+```
 
+**Pattern 2: Decision with Action and Fallback**
 
-Pattern 2: Decision with Action and Fallback
+```xml
 
 <decision_criteria>
 
 ### IF query execution time > 5 seconds:
 
-
 <action>
 
-
 ## 1. Run EXPLAIN ANALYZE
-
 ## 2. Identify bottleneck type
-
 ## 3. Apply targeted optimization
-
 ## 4. Verify improvement
 
 </action>
+
 <fallback>
+
 ### If optimization doesn't reach target:
 
 → Review query logic (might be fundamentally inefficient)
 → Consider denormalization or materialized views
 → Escalate to DBA for server-level tuning
+
 </fallback>
 </decision_criteria>
+```
 
-Pattern 3: Warning with Context
+**Pattern 3: Warning with Context**
+
+```xml
 
 <warning>
 Over-indexing can hurt performance more than it helps
-<context>
 
+<context>
 
 ### Every index:
 
@@ -2332,118 +2196,132 @@ For data warehouse (read-heavy), 10-15 indexes acceptable.
 
 <good_pattern>
 
-
 ### Measure write performance impact:
 
 - Benchmark INSERT/UPDATE before adding index
-
 - Add index
-
 - Benchmark again
-
 - Verify write overhead <30%
 
 If overhead too high, remove index and try alternative optimization.
 </good_pattern>
 
 </warning>
+```
 
-Usage Principles
+### Usage Principles
 
-Do's ✅
+**Do's**
 
-Use tags consistently throughout the skill
+**Use tags consistently throughout the skill**
+
+```text
 
 • Every skill should have at least Tier 1 tags
-
 • Use same tags for similar concepts across skills
 • Maintain consistent hierarchy (don't vary nesting style)
+```
 
-Nest tags when it adds clarity
+**Nest tags when it adds clarity**
+
+```text
 
 • <rationale> inside <bad_pattern> explains WHY
-
 • <action> inside <decision_criteria> shows HOW
-
 • <context> inside <warning> provides situational details
-Combine tags appropriately
+```
+
+**Combine tags appropriately**
+
+```text
 
 • <good_pattern> + <example> + <rationale>
-
 • <decision_criteria> + <action> + <fallback>
-
-
-
 • <bad_pattern> + <rationale> + <good_pattern>
+```
 
-Use multiple examples
+**Use multiple examples**
+
+```text
+
 • Show before/after with <example> tags
-
 • Demonstrate multiple scenarios
-
 • Cover edge cases
+```
 
-Close all tags properly
+**Close all tags properly**
+
+```text
 
 • Every <tag> must have matching </tag>
 • Validate XML structure
-
 • Use editor with XML support
+```
 
-Don'ts ❌
+**Don'ts**
 
-Don't mix emojis with tags
+**Don't mix emojis with tags**
+
+```text
+
 • Pick XML tags or emojis, never both
-
 • Mixing creates confusion
-
 • Models trained on consistent structure
+```
 
-Don't over-tag every sentence
+**Don't over-tag every sentence**
+
+```text
 
 • Tags highlight important structure
 • Too many tags → noise, not signal
-
 • Reserve tags for significant semantic boundaries
+```
 
-Don't invent new tags without good reason
+**Don't invent new tags without good reason**
 
-• Stick to the 18 standard tags
+```text
 
+• Stick to the 19 standard tags
 • Adding custom tags breaks consistency
 • If needed, use existing tags with nesting
+```
 
-Don't use tags for formatting
+**Don't use tags for formatting**
+
+```text
 
 • Tags are for semantic meaning (priority, warning, example)
-
 • Use Markdown for formatting (bold, italic, code blocks)
-
 • Don't use <bold>text</bold> → use **text**
-Don't forget User Intent Change in <unload_condition>
+```
 
+**Don't forget User Intent Change in <unload_condition>**
+
+```text
 
 • This is MANDATORY in every skill
-
 • Must be FIRST condition checked
 • Prevents attentional residue
+```
 
-Common Mistakes and How to Avoid Them
+### Common Mistakes and How to Avoid Them
 
-Mistake 1: Vague Decision Criteria
+**Mistake 1: Vague Decision Criteria**
 
+**Wrong:**
 
-### Wrong:
-
+```xml
 
 <decision_criteria>
 
 If the query is slow, optimize it.
 </decision_criteria>
+```
 
+**Correct:**
 
-### Correct:
-
+```xml
 
 <decision_criteria>
 
@@ -2453,30 +2331,30 @@ If the query is slow, optimize it.
 
 → Run EXPLAIN ANALYZE to identify bottleneck
 → IF Seq Scan on large table → Add index
-
 → IF Nested Loop with high cost → Optimize JOIN strategy
-
 → IF Sort operation → Add index to ORDER BY columns
-
 → Verify improvement >50%
 
 </decision_criteria>
-Why: Specific thresholds and actions make decisions concrete.
+```
+**Why:** Specific thresholds and actions make decisions concrete.
 
-Mistake 2: Missing Rationale for Anti-Patterns
 
+**Mistake 2: Missing Rationale for Anti-Patterns**
 
-### Wrong:
+**Wrong:**
 
+```xml
 
 <bad_pattern>
 Don't use SELECT *
 
 </bad_pattern>
+```
 
+**Correct:**
 
-### Correct:
-
+```xml
 
 <bad_pattern>
 
@@ -2484,61 +2362,47 @@ Using SELECT * in production queries
 
 <rationale>
 
+Problems:
 
-### Problems:
-
-
-
-## 1. Fetches unnecessary columns (wastes I/O)
-
-
-## 2. Breaks on schema changes (new columns added)
-
-
-
-## 3. Defeats covering indexes (can't use index-only scans)
-
-
-
-## 4. Transfers extra data (increases network latency)
-
+1. Fetches unnecessary columns (wastes I/O)
+2. Breaks on schema changes (new columns added)
+3. Defeats covering indexes (can't use index-only scans)
+4. Transfers extra data (increases network latency)
 
 Use explicit columns: SELECT id, name, email FROM users
 </rationale>
 
 </bad_pattern>
+```
+**Why: Understanding WHY helps model generalize the principle.**
 
-Why: Understanding WHY helps model generalize the principle.
+**Mistake 3:** No Fallback for Complex Decisions
 
-Mistake 3: No Fallback for Complex Decisions
+**Wrong:**
 
-### Wrong:
-
+```xml
 
 <decision_criteria>
 
 IF query is slow, add an index.
 
 </decision_criteria>
+```
 
+**Correct:**
 
-### Correct:
-
+```xml
 
 <decision_criteria>
 
 ### IF query execution time > threshold:
 
-
 → Add index to WHERE columns
-
 → Verify with EXPLAIN ANALYZE
 
 <fallback>
 
 ### If index doesn't help:
-
-
 
 → Check index is actually being used (query plan)
 → Try covering index (include SELECT columns)
@@ -2548,80 +2412,61 @@ IF query is slow, add an index.
 </fallback>
 
 </decision_criteria>
-Why: Real-world problems often require multiple attempts.
+```
+**Why: Real-world problems often require multiple attempts.**
 
-Mistake 4: Forgetting User Intent Change
 
+**Mistake 4:** Forgetting User Intent Change
 
-### Wrong:
+**Wrong:**
 
+```xml
 
 <unload_condition>
 
+Stop using this skill when:
 
-### Stop using this skill when:
-
-
-## 1. Query optimization complete
-
-
-
-## 2. User switches to different task
-
+1. Query optimization complete
+2. User switches to different task
 
 </unload_condition>
+```
 
+**Correct:**
 
-### Correct:
-
+```xml
 
 <unload_condition>
 
-### Stop using this skill when:
-
+Stop using this skill when:
 
 **User Intent Change (CHECK FIRST):**
 
+1. User says "Actually...", "Never mind...", "Wait..."
 
-## 1. User says "Actually...", "Never mind...", "Wait..."
+2. User asks unrelated question (topic shift)
 
-
-
-## 2. User asks unrelated question (topic shift)
-
-
-## 3. User shows dissatisfaction with approach
-
+3. User shows dissatisfaction with approach
 
 **Task Complete:**
 
-
-## 4. Query optimization verified successful
-
-
-
-## 5. User confirms performance acceptable
-
-
+4. Query optimization verified successful
+5. User confirms performance acceptable
 
 **Domain Switch:**
 
-
-## 6. User switches to schema design
-
-
-## 7. User switches to debugging
-
+6. User switches to schema design
+7. User switches to debugging
 
 </unload_condition>
+```
+**Why: User Intent Change must be checked FIRST to prevent attentional residue.**
 
-Why: User Intent Change must be checked FIRST to prevent attentional residue.
+**Mistake 5:** Overusing <critical> Tag
 
-Mistake 5: Overusing <critical> Tag
+**Wrong:**
 
-
-### Wrong:
-
+```xml
 
 <critical>
 
@@ -2636,57 +2481,45 @@ Check for existing indexes
 </critical>
 
 <critical>
+
 Verify improvement after optimization
 
 </critical>
+```
 
+**Correct:**
 
-### Correct:
-
-
+```xml
 <critical>
 
-
-### Do NOT use this skill for:
+Do NOT use this skill for:
 
 - Schema design → Use schema-design skill
-
 - Syntax debugging → Use sql-debugging skill
-
 - NoSQL databases → This is SQL-specific
 
 </critical>
 
 <good_pattern>
 
+Standard optimization workflow:
 
-
-
-### Standard optimization workflow:
-
-
-
-## 1. Run EXPLAIN ANALYZE first
-
-
-## 2. Check for existing indexes
-
-
-
-## 3. Verify improvement after optimization
-
+1. Run EXPLAIN ANALYZE first
+2. Check for existing indexes
+3. Verify improvement after optimization
 
 </good_pattern>
-
-Why: <critical> should be reserved for truly critical requirements. Overuse dilutes its meaning.
-
-Decision Framework: Which Tag When?
+```
+**Why: <critical> should be reserved for truly critical requirements. Overuse dilutes its meaning.**
 
 
-### Use this guide to choose the right tag:
+### Decision Framework: Which Tag When?
 
+**Use this guide to choose the right tag:**
 
-Situation Tag Example
+**Situation Tag Example**
+
+```xml
 
 Absolute requirement <critical> Must verify connection before querying
 
@@ -2717,89 +2550,78 @@ Ordered workflow <sequence> Step 1 → Step 2 → Step 3
 Explain why <rationale> Composite indexes reduce overhead
 
 Present options <tradeoff> Indexes speed reads but slow writes
+```
 
+**Situation Tag Example**
 
-Situation Tag Example
+```text
 
 Environment factors <context> PostgreSQL vs MySQL optimization differs
 
 How to verify <success_criteria> Execution time reduced >50%
 
 Plan B <fallback> If index doesn't help, try denormalization
+```
 
-Key Takeaways
+## Key Takeaways
 
 Semantic tags transform vague instructions into clear, prioritized guidance that models can
 reliably interpret.
 
-Essential Principles
+### Essential Principles
 
+```text
 
-## 1. Use XML tags, not emojis or formatting - Models trained on XML structure
+1. Use XML tags, not emojis or formatting - Models trained on XML structure
 
+2. Be specific with decision criteria - Concrete thresholds and actions
 
+3. Always include User Intent Change - First priority in unload conditions
 
-## 2. Be specific with decision criteria - Concrete thresholds and actions
+4. Provide rationale for anti-patterns - Help model understand WHY
 
+5. Nest tags when it adds clarity - Structure complex information
 
-## 3. Always include User Intent Change - First priority in unload conditions
+6. Use Tier 1 tags in every skill - Foundation of semantic structure
 
+7. Don't over-tag - Reserve tags for important semantic boundaries
+```
 
+### The 18 Tags at a Glance
 
-## 4. Provide rationale for anti-patterns - Help model understand WHY
-
-
-
-## 5. Nest tags when it adds clarity - Structure complex information
-
-
-
-## 6. Use Tier 1 tags in every skill - Foundation of semantic structure
-
-
-
-## 7. Don't over-tag - Reserve tags for important semantic boundaries
-
-The 18 Tags at a Glance
-
-Tier 1 (Essential - 7 tags): critical, warning, good_pattern, bad_pattern, decision_criteria,
+**Tier 1 (Essential - 7 tags):** critical, warning, good_pattern, bad_pattern, decision_criteria,
 unload_condition, exclusion
 
-Tier 2 (Common - 6 tags): note, example, condition, action, prerequisite, sequence
+**Tier 2 (Common - 6 tags):** note, example, condition, action, prerequisite, sequence
 
-Tier 3 (Advanced - 5 tags): rationale, tradeoff, context, success_criteria, fallback
+**Tier 3 (Advanced - 5 tags):** rationale, tradeoff, context, success_criteria, fallback
 
-Next Steps
+### Next Steps
 
+Now that you understand semantic tags:
 
-### Now that you understand semantic tags:
-
-
-
-### To apply them:
+**To apply them:**
 
 • Section 1.2 (Basic): See tags in simple skills
 
 • Section 1.3 (Advanced): See tags in complex multi-file skills
 
-
 • Appendix A: Quick reference table of all tags
 
 
-### To master them:
+**To master them:**
 
 • Section 1.5 (Components Deep Dive): See how tags structure each component
 
 • Section 1.6 (Common Pitfalls): Learn tag misuse patterns to avoid
 
 
-### To reference quickly:
-
+**To reference quickly:**
 
 • Appendix A: Complete tag reference with examples
 
 
-## END OF SECTION 1.4
+**END OF SECTION 1.4**
 
 
 Document Version: 1.0.0
@@ -2807,6 +2629,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
