@@ -309,7 +309,7 @@ Do NOT use this skill for:
 This pattern immediately clarifies what IS and ISN'T in scope.
 ```
 
-## Component #3: Scope Definition (Critical Boundaries)
+## Component 3: Scope Definition (Critical Boundaries)
 
 **What It Is**
 Explicit boundaries that define when the skill SHOULD and SHOULD NOT be used.
@@ -823,38 +823,35 @@ Scenario 1: Unindexed Foreign Key
 
 Common query: JOIN on user_id without index
 
-```sql
+sql
 -- Slow (3.5s)
 SELECT o.*, u.name FROM orders o JOIN users u ON o.user_id = u.id;
-```
 
 Solution: Add foreign key index
 
-```sql
+sql
 CREATE INDEX idx_orders_user_id ON orders(user_id);
-```
+
 
 Result: 0.08s (43x faster)
 ```
-
 ---
 
 #### Scenario 2: Missing WHERE Index
 
-Common query: Filtered SELECT without index
+**Common query:** Filtered SELECT without index
 
 ```text
 
-```sql
+sql
 -- Slow (1.8s)
 SELECT * FROM orders WHERE status = 'pending';
-```
+
 
 Solution: Add index on filter column
 
-```sql
+sql
 CREATE INDEX idx_orders_status ON orders(status);
-```
 
 Result: 0.04s (45x faster)
 ```
@@ -863,40 +860,37 @@ Result: 0.04s (45x faster)
 
 #### Scenario 3: Inefficient ORDER BY
 
-Common query: Sorting large result set
+**Common query:** Sorting large result set
 
-```sql
+```text
+
+sql
 
 -- Slow (2.1s)
 
 SELECT * FROM orders ORDER BY created_at DESC LIMIT 10;
-```
 
 Solution: Add index on sort column
 
-```sql
+sql
 CREATE INDEX idx_orders_created ON orders(created_at DESC);
-
-```
 
 Result: 0.02s (105x faster)
 
-```xml
-
-</example>
-```
-
+,example>
 **Key elements:**
 • Multiple real-world cases
 • Different problem patterns
 • Specific solutions for each
 • Quantified improvements
+</example>
+```
 
 #### Type 3: Good vs. Bad Pattern Comparison
 
-Best for: Style, convention, best practice skills
+**Best for:** Style, convention, best practice skills
 
-```xml
+```text
 
 <good_pattern>
 
@@ -913,17 +907,14 @@ Benefits:
 </rationale>
 
 <example>
-```
 
 **Good:**
 
-```sql
+sql
 
 SELECT user_id, name, email, created_at
 FROM users
 WHERE status = 'active';
-
-```
 
 Benefits visible
 
@@ -933,13 +924,11 @@ Benefits visible
 
 **Bad:**
 
-```sql
-
+sql
 
 SELECT *
 FROM users
 WHERE status = 'active';
-```
 
 **Problems:**
 
@@ -948,8 +937,6 @@ WHERE status = 'active';
 - Breaks if schema changes (code assumes column order)
 - Unclear which columns actually used
 
-```xml
-
 </example>
 </good_pattern>
 
@@ -957,7 +944,6 @@ WHERE status = 'active';
 Using SELECT * in production queries
 
 <rationale>
-```
 
  Why this is problematic:
 
@@ -968,8 +954,6 @@ Using SELECT * in production queries
 5. **Maintenance:** Makes code harder to understand (unclear which columns used)
 
 The slight convenience of typing * is vastly outweighed by these costs.
-
-```xml
 
 </rationale>
 
@@ -2336,6 +2320,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
