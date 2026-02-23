@@ -1618,7 +1618,6 @@ See references/VERIFICATION.md for detailed procedures.
 
 **What It Is**
 **Mechanisms that enable the model to check its own work.**
-
 From Anthropic's best practices:
 
 "Include tests, screenshots, or expected outputs so Claude can check itself. This is the single highest-leverage thing you can do."
@@ -2316,6 +2315,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
