@@ -817,11 +817,11 @@ ORDER BY created_at DESC;
 
 ```text
 
-<example>
-
 Scenario 1: Unindexed Foreign Key
 
-Common query: JOIN on user_id without index
+<example>
+
+**Common query:** JOIN on user_id without index
 
 sql
 -- Slow (3.5s)
@@ -832,21 +832,17 @@ Solution: Add foreign key index
 sql
 CREATE INDEX idx_orders_user_id ON orders(user_id);
 
-
 Result: 0.08s (43x faster)
-```
+
 ---
 
-#### Scenario 2: Missing WHERE Index
+Scenario 2: Missing WHERE Index
 
 **Common query:** Filtered SELECT without index
-
-```text
 
 sql
 -- Slow (1.8s)
 SELECT * FROM orders WHERE status = 'pending';
-
 
 Solution: Add index on filter column
 
@@ -854,15 +850,12 @@ sql
 CREATE INDEX idx_orders_status ON orders(status);
 
 Result: 0.04s (45x faster)
-```
 
 ---
 
-#### Scenario 3: Inefficient ORDER BY
+Scenario 3: Inefficient ORDER BY
 
 **Common query:** Sorting large result set
-
-```text
 
 sql
 
@@ -876,15 +869,14 @@ sql
 CREATE INDEX idx_orders_created ON orders(created_at DESC);
 
 Result: 0.02s (105x faster)
+</example>
+```
 
-,example>
 **Key elements:**
 • Multiple real-world cases
 • Different problem patterns
 • Specific solutions for each
 • Quantified improvements
-</example>
-```
 
 #### Type 3: Good vs. Bad Pattern Comparison
 
@@ -2320,6 +2312,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
