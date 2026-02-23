@@ -461,12 +461,12 @@ Using SELECT * in production queries
 
 <rationale>
 
-### Problems with SELECT *:
+## Problems with SELECT *:
 
-## 1. Fetches unnecessary columns → Wastes I/O and memory
-## 2. Breaks code when schema changes (new columns added)
-## 3. Defeats covering indexes (can't use index-only scans)
-## 4. Transfers unnecessary data over network
+1. Fetches unnecessary columns → Wastes I/O and memory
+2. Breaks code when schema changes (new columns added)
+3. Defeats covering indexes (can't use index-only scans)
+4. Transfers unnecessary data over network
 
 Use explicit column lists: SELECT id, name, email FROM users
 
@@ -486,7 +486,7 @@ Using DISTINCT to eliminate duplicate rows from JOINs
 <rationale>
 DISTINCT adds expensive sorting operation and masks the real problem.
 
-### If you need DISTINCT, you likely have:
+## If you need DISTINCT, you likely have:
 
 - Incorrect JOIN conditions (producing cartesian product)
 - Missing JOIN constraints (1:many relationship not handled)
@@ -573,30 +573,30 @@ complex nested conditions.**
 
 **Phase 1: Gather information**
 
-### IF user provides EXPLAIN output:
+IF user provides EXPLAIN output:
 
 → Analyze execution plan directly
 → SKIP running EXPLAIN yourself
 
-## ELSE:
+ELSE:
 
 → Run EXPLAIN ANALYZE first
 → THEN analyze the output
 
 **Phase 2: Identify bottleneck**
 
-### IF bottleneck identified:
+IF bottleneck identified:
 
-### → Apply specific fix based on type:
+→ Apply specific fix based on type:
 
 - Seq Scan on large table → Add index to WHERE columns
 - Nested Loop with high cost → Optimize join strategy
 - Sort operation → Add index to ORDER BY columns
 - Hash operation on small table → Increase work_mem
 
-## ELSE:
+ ELSE:
 
-### → Request more information from user:
+ → Request more information from user:
 
 - Full query text
 - Table schemas
@@ -604,7 +604,7 @@ complex nested conditions.**
 
 **Phase 3: Verify**
 
-### IF optimization applied:
+IF optimization applied:
 
 → Run EXPLAIN ANALYZE again
 → Compare execution time (should improve >50%)
@@ -619,13 +619,13 @@ complex nested conditions.**
 
 <decision_criteria>
 
-### IF user asks about budget reallocation:
+IF user asks about budget reallocation:
 
 → Read references/budget_reallocation_rules.md
 → Apply allocation framework from that file
 → Generate recommendations
 
-## ELSE:
+ELSE:
 
 → Skip budget analysis
 → Continue with standard campaign analysis only
@@ -658,14 +658,14 @@ attentional residue that degrades subsequent task performance.
 
 <unload_condition>
 
-### Stop using this skill when:
+Stop using this skill when:
 
 **User Intent Change (CHECK FIRST):**
 
-## 1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
-## 2. User asks unrelated question (topic shift to different domain)
-## 3. User shows dissatisfaction with current approach
-## 4. User provides contradictory information (reverses previous requirements)
+1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
+2. User asks unrelated question (topic shift to different domain)
+3. User shows dissatisfaction with current approach
+4. User provides contradictory information (reverses previous requirements)
 
 **Task Complete:**
 
@@ -694,33 +694,33 @@ attentional residue that degrades subsequent task performance.
 
 <unload_condition>
 
-### Stop using this skill when:
+Stop using this skill when:
 
 **User Intent Change (CHECK FIRST):**
 
-## 1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
-## 2. User asks unrelated question (topic shift away from SQL optimization)
-## 3. User shows dissatisfaction ("This isn't working", "Let me try something else")
-## 4. User provides contradictory requirements
+1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
+2. User asks unrelated question (topic shift away from SQL optimization)
+3. User shows dissatisfaction ("This isn't working", "Let me try something else")
+4. User provides contradictory requirements
 
 **Task Complete:**
 
-## 5. Query execution time meets acceptable threshold (< 1 second for user-facing)
-## 6. EXPLAIN ANALYZE shows optimal query plan (index usage confirmed)
-## 7. User confirms performance is acceptable
-## 8. Verification tests pass (no regressions in related queries)
+5. Query execution time meets acceptable threshold (< 1 second for user-facing)
+6. EXPLAIN ANALYZE shows optimal query plan (index usage confirmed)
+7. User confirms performance is acceptable
+8. Verification tests pass (no regressions in related queries)
 
 **Domain Switch:**
 
-## 9. User switches to schema design → Activate schema-design skill
-## 10. User switches to debugging syntax errors → Activate sql-debugging skill
-## 11. User switches to NoSQL database → Activate database-specific skill
-## 12. Task domain changes (no longer working with SQL queries)
+9. User switches to schema design → Activate schema-design skill
+10. User switches to debugging syntax errors → Activate sql-debugging skill
+11. User switches to NoSQL database → Activate database-specific skill
+12. Task domain changes (no longer working with SQL queries)
 
 **Explicit Stop:**
 
-## 13. User says "stop optimizing", "that's enough", "cancel this"
-## 14. User asks to explain optimization concepts (teach, don't execute)
+13. User says "stop optimizing", "that's enough", "cancel this"
+14. User asks to explain optimization concepts (teach, don't execute)
 
 </unload_condition>
 ```
@@ -731,31 +731,31 @@ attentional residue that degrades subsequent task performance.
 
 <unload_condition>
 
-### Stop using this skill when:
+Stop using this skill when:
 
 **User Intent Change (CHECK FIRST):**
 
-## 1. User says "Actually...", "Never mind...", "Wait..."
-## 2. User pivots to different type of content
-## 3. User shows dissatisfaction with tone/style
-## 4. User requests different approach than skill provides
+1. User says "Actually...", "Never mind...", "Wait..."
+2. User pivots to different type of content
+3. User shows dissatisfaction with tone/style
+4. User requests different approach than skill provides
 
 **Task Complete:**
 
-## 5. Content draft is complete
-## 6. User confirms content meets requirements
-## 7. Final edits are applied
+5. Content draft is complete
+6. User confirms content meets requirements
+7. Final edits are applied
 
 **Domain Switch:**
 
-## 8. User switches from writing to editing → Activate editing-guidelines skill
-## 9. User switches from blog post to technical documentation → Activate technical-writing skill
-## 10. User asks about different content type (email, presentation, etc.)
+8. User switches from writing to editing → Activate editing-guidelines skill
+9. User switches from blog post to technical documentation → Activate technical-writing skill
+10. User asks about different content type (email, presentation, etc.)
 
 **Explicit Stop:**
 
-## 11. User says "stop writing", "that's enough content"
-## 12. User asks about the writing process (teach, don't execute)
+11. User says "stop writing", "that's enough content"
+12. User asks about the writing process (teach, don't execute)
 
 </unload_condition>
 ```
@@ -793,7 +793,7 @@ second.**
 
 <exclusion>
 
-### Do NOT use this skill for:
+Do NOT use this skill for:
 
 - Writing new queries from scratch → Use sql-best-practices skill
 - Debugging SQL syntax errors → Use sql-debugging skill
@@ -811,7 +811,7 @@ second.**
 
 <exclusion>
 
-### Do NOT use this skill for:
+Do NOT use this skill for:
 
 **Wrong database engines:**
 
@@ -839,7 +839,7 @@ second.**
 
 <exclusion>
 
-### Do NOT use this skill for:
+Do NOT use this skill for:
 
 - Code review for style/formatting → Use code-style-guide skill
 
@@ -848,9 +848,9 @@ second.**
 This skill focuses on functional correctness, security vulnerabilities,
 and performance issues. Style and formatting are separate concerns.
 
-### For comprehensive code review, use both skills:
+For comprehensive code review, use both skills:
 
-## 1. This skill (functional/security/performance)
+1. This skill (functional/security/performance)
 
 2. code-style-guide (formatting/conventions)
 
@@ -1131,16 +1131,11 @@ CREATE INDEX idx_orders_created ON orders(created_at DESC);
 <condition>
 
 
-### Activate this skill when:
-
+Activate this skill when:
 
 - User is working with SQL queries (PostgreSQL or MySQL)
-
 - Performance is the stated concern
-
-
 - User has access to EXPLAIN ANALYZE output
-
 - User has permissions to CREATE INDEX (if optimization needed)
 - Database is experiencing performance issues
 
@@ -1219,7 +1214,7 @@ Measure execution time improvement (should be >50% faster)
 
 <action>
 
-### Based on bottleneck identified:
+Based on bottleneck identified:
 
 **If Seq Scan on large table:**
 → Add index to WHERE clause columns
@@ -1305,7 +1300,7 @@ Deploy to production with monitoring
 
 <prerequisite>
 
-### This skill requires:
+This skill requires:
 
 **Database access:**
 
@@ -1333,8 +1328,7 @@ Deploy to production with monitoring
 
 <prerequisite>
 
-### Required permissions:
-
+Required permissions:
 
 - `SELECT` on tables being optimized
 - `EXPLAIN` privilege (view execution plans)
@@ -1356,7 +1350,7 @@ Deploy to production with monitoring
 
 <prerequisite>
 
-### Before using this skill:
+Before using this skill:
 
 1. **Establish baseline:**
 
@@ -1413,15 +1407,15 @@ Verify access to performance monitoring tools
 
 <sequence>
 
-## 1. Run EXPLAIN ANALYZE on current query to establish baseline
+1. Run EXPLAIN ANALYZE on current query to establish baseline
 
-## 2. Identify bottleneck from EXPLAIN output (Seq Scan, Nested Loop, etc.)
+2. Identify bottleneck from EXPLAIN output (Seq Scan, Nested Loop, etc.)
 
-## 3. Apply targeted optimization based on bottleneck type
+3. Apply targeted optimization based on bottleneck type
 
-## 4. Run EXPLAIN ANALYZE again to verify improvement
+4. Run EXPLAIN ANALYZE again to verify improvement
 
-## 5. Check for regressions in related queries
+5. Check for regressions in related queries
 
 </sequence>
 ```
@@ -1441,7 +1435,7 @@ Record execution time and query plan cost.
 
 <step id="2" depends_on="1">
 
-### Analyze EXPLAIN output to identify bottleneck type:
+Analyze EXPLAIN output to identify bottleneck type:
 
 - Seq Scan → Missing index problem
 - Nested Loop → Join optimization needed
@@ -1450,7 +1444,7 @@ Record execution time and query plan cost.
 
 <step id="3" depends_on="2">
 
-### Apply optimization based on bottleneck:
+Apply optimization based on bottleneck:
 
 - For Seq Scan: Add index to WHERE columns
 - For Nested Loop: Optimize join strategy, add join indexes
@@ -1562,11 +1556,11 @@ Using SELECT * in production queries
 
 ### Why SELECT * is problematic:
 
-1. **Performance:** Fetches unnecessary columns, wasting I/O and memory
-2. **Brittleness:** Breaks code when schema changes (new columns added)
-3. **Index efficiency:** Defeats covering indexes (can't use index-only scans)
-4. **Network cost:** Transfers unnecessary data, increasing latency
-5. **Maintenance:** Makes code harder to understand (unclear which columns used)
+1. Performance:** Fetches unnecessary columns, wasting I/O and memory
+2. Brittleness:** Breaks code when schema changes (new columns added)
+3. Index efficiency:** Defeats covering indexes (can't use index-only scans)
+4. Network cost:** Transfers unnecessary data, increasing latency
+5. Maintenance:** Makes code harder to understand (unclear which columns used)
 
 Always use explicit column lists: SELECT id, name, email FROM users
 
@@ -1585,7 +1579,7 @@ Use composite indexes for multi-column WHERE clauses
 
 <rationale>
 
-### Why composite indexes outperform multiple single-column indexes:
+Why composite indexes outperform multiple single-column indexes:
 
 1. **Single index scan:** Query planner uses one index instead of merging multiple
 2. **Lower overhead:** One index to maintain instead of several
@@ -1607,13 +1601,13 @@ But for common query patterns, dramatically better performance.
 
 <rationale>
 
-**Why we optimize hot paths first:**
+Why we optimize hot paths first:
 
 In most applications, 80% of database load comes from 20% of queries
 
 (Pareto principle applies to query performance).
 
-### Optimizing the slowest or most frequent queries yields maximum impact:
+Optimizing the slowest or most frequent queries yields maximum impact:
 
 - Fastest query (1ms) optimized to 0.5ms → Saves 0.5ms
 - Slowest query (2000ms) optimized to 500ms → Saves 1500ms
@@ -1656,14 +1650,14 @@ Always measure which queries consume the most total time
 
 **Adding indexes:**
 
-**Pros:**
+Pros:
 
 - Speeds up SELECT queries (10-100x for large tables)
 - Reduces query execution time and improves user experience
 - Enables efficient JOIN and WHERE filtering
 - Can enable index-only scans (no table access needed)
 
-**Cons:**
+Cons:
 
 - Slows INSERT/UPDATE/DELETE operations (20-30% overhead per index)
 - Increases storage requirements (index size ≈ 10-20% of table size)
@@ -1671,15 +1665,15 @@ Always measure which queries consume the most total time
 - More indexes → longer query planning time
 - Wrong indexes can confuse query planner
 
-**Decision rule:**
+Decision rule:
 
-### Add index if:
+Add index if:
 
 - Table is read-heavy (>80% SELECT operations)
 - Query performance gain >10x
 - Write overhead <30% acceptable
 
-### Skip index if:
+Skip index if:
 
 - Write-heavy workload (>50% INSERT/UPDATE/DELETE)
 - Table is small (<10K rows)
@@ -1695,14 +1689,14 @@ Always measure which queries consume the most total time
 <tradeoff>
 **Denormalizing for read performance:**
 
-**Pros:**
+Pros:
 
 - Eliminates expensive JOINs (can be 5-50x faster)
 - Simplifies queries (easier to write and maintain)
 - Reduces locking contention (fewer tables touched)
 - Better caching efficiency (all data in one place)
 
-**Cons:**
+Cons:
 
 - Data duplication (increased storage)
 - Update complexity (must update multiple places)
@@ -1710,14 +1704,14 @@ Always measure which queries consume the most total time
 - Harder to maintain data integrity
 - Schema changes require updating multiple tables
 
-**When to denormalize:**
+When to denormalize:
 
 - Read:write ratio >10:1 (read-heavy workload)
 - JOINs consistently slow despite optimization
 - Data rarely changes (mostly static reference data)
 - Can accept eventual consistency
 
-**When to stay normalized:**
+When to stay normalized:
 
 - Write-heavy workload (frequent updates)
 - Strong consistency required
@@ -1758,7 +1752,7 @@ Always measure which queries consume the most total time
 
 <context>
 
-### SQL optimization strategies vary by database engine:
+SQL optimization strategies vary by database engine:
 
 **PostgreSQL:**
 
@@ -1791,7 +1785,7 @@ MySQL → Consider denormalization earlier
 
 <context>
 
-### Optimization strategy depends on environment:
+Optimization strategy depends on environment:
 
 **Development/Test:**
 
@@ -1829,22 +1823,22 @@ Development testing alone is insufficient.
 
 Historical problem: "Premature optimization is the root of all evil" (Knuth)
 
-### Common failure pattern:
+Common failure pattern:
 
-## 1. Developer assumes query is slow
-## 2. Adds indexes without measuring
-## 3. Indexes don't help (wrong bottleneck)
-## 4. Write performance now worse
-## 5. Extra indexes add maintenance overhead
-## 6. Net result: System slower than before
+1. Developer assumes query is slow
+2. Adds indexes without measuring
+3. Indexes don't help (wrong bottleneck)
+4. Write performance now worse
+5. Extra indexes add maintenance overhead
+6. Net result: System slower than before
 
-### Modern best practice:
+Modern best practice:
 
-## 1. Measure current performance (establish baseline)
-## 2. Identify actual bottleneck (not assumed)
-## 3. Apply targeted fix
-## 4. Verify improvement (measure again)
-## 5. Check for regressions
+1. Measure current performance (establish baseline)
+2. Identify actual bottleneck (not assumed)
+3. Apply targeted fix
+4. Verify improvement (measure again)
+5. Check for regressions
 
 This measure-optimize-verify cycle prevents wasted effort and unintended consequences.
 
@@ -1882,7 +1876,7 @@ This measure-optimize-verify cycle prevents wasted effort and unintended consequ
 
 <success_criteria>
 
-### Optimization is successful when:
+Optimization is successful when:
 
 **Performance metrics:**
 
@@ -1917,7 +1911,7 @@ This measure-optimize-verify cycle prevents wasted effort and unintended consequ
 
 <success_criteria>
 
-### Code review is complete when:
+Code review is complete when:
 
 **Functional correctness:**
 
@@ -1986,7 +1980,7 @@ This measure-optimize-verify cycle prevents wasted effort and unintended consequ
 
 <fallback>
 
-### If adding indexes doesn't improve performance:
+If adding indexes doesn't improve performance:
 
 **Level 1: Verify index is being used**
 
@@ -2026,7 +2020,7 @@ This measure-optimize-verify cycle prevents wasted effort and unintended consequ
 
 <fallback>
 
-### If primary recommendation conflicts with constraints:
+If primary recommendation conflicts with constraints:
 
 **If write performance unacceptable with indexes:**
 
@@ -2093,24 +2087,24 @@ Fix JOIN conditions instead of masking symptoms.
 
 <decision_criteria>
 
-### IF query shows full table scan:
+IF query shows full table scan:
 
 
 <action>
 
-## 1. Identify columns in WHERE clause
+1. Identify columns in WHERE clause
 
-## 2. Check existing indexes
+2. Check existing indexes
 
-## 3. Create index if missing
+3. Create index if missing
 
-## 4. Verify with EXPLAIN ANALYZE
+4. Verify with EXPLAIN ANALYZE
 
 </action>
 
 <fallback>
 
-### If index creation not possible:
+If index creation not possible:
 
 → Rewrite query to use existing indexes
 → Add query hints to guide planner
@@ -2133,7 +2127,7 @@ Use explicit column lists in SELECT
 
 <rationale>
 
-### Benefits:
+Benefits:
 
 - Fetches only needed data (better performance)
 - Resilient to schema changes (won't break on new columns)
@@ -2161,20 +2155,20 @@ SELECT * FROM users WHERE status = 'active';
 
 <decision_criteria>
 
-### IF query execution time > 5 seconds:
+IF query execution time > 5 seconds:
 
 <action>
 
-## 1. Run EXPLAIN ANALYZE
-## 2. Identify bottleneck type
-## 3. Apply targeted optimization
-## 4. Verify improvement
+1. Run EXPLAIN ANALYZE
+2. Identify bottleneck type
+3. Apply targeted optimization
+4. Verify improvement
 
 </action>
 
 <fallback>
 
-### If optimization doesn't reach target:
+If optimization doesn't reach target:
 
 → Review query logic (might be fundamentally inefficient)
 → Consider denormalization or materialized views
@@ -2193,7 +2187,7 @@ Over-indexing can hurt performance more than it helps
 
 <context>
 
-### Every index:
+Every index:
 
 - Slows INSERT/UPDATE/DELETE by 20-30%
 - Requires storage (~10-20% of table size)
@@ -2207,7 +2201,7 @@ For data warehouse (read-heavy), 10-15 indexes acceptable.
 
 <good_pattern>
 
-### Measure write performance impact:
+Measure write performance impact:
 
 - Benchmark INSERT/UPDATE before adding index
 - Add index
@@ -2337,7 +2331,7 @@ If the query is slow, optimize it.
 <decision_criteria>
 
 
-### IF query execution time > 1 second (user-facing) OR > 10 seconds (batch):
+IF query execution time > 1 second (user-facing) OR > 10 seconds (batch):
 
 
 → Run EXPLAIN ANALYZE to identify bottleneck
@@ -2406,14 +2400,14 @@ IF query is slow, add an index.
 
 <decision_criteria>
 
-### IF query execution time > threshold:
+IF query execution time > threshold:
 
 → Add index to WHERE columns
 → Verify with EXPLAIN ANALYZE
 
 <fallback>
 
-### If index doesn't help:
+If index doesn't help:
 
 → Check index is actually being used (query plan)
 → Try covering index (include SELECT columns)
@@ -2471,7 +2465,7 @@ Stop using this skill when:
 
 </unload_condition>
 ```
-**Why: User Intent Change must be checked FIRST to prevent attentional residue.**
+**Why:** User Intent Change must be checked FIRST to prevent attentional residue.
 
 **Mistake 5:** Overusing <critical> Tag
 
@@ -2640,6 +2634,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
