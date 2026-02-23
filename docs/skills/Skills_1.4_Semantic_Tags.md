@@ -957,13 +957,11 @@ maximum impact.
 "Here's a concrete example I can learn from."
 
 **Examples:**
-
 **Before/after optimization:**
 
-```xml
+```text
 
 <example>
-
 
 **Before optimization:** (2.3 seconds)
 
@@ -993,7 +991,7 @@ Improvement: 46x faster (2.3s → 0.05s), 99.5% cost reduction </example>
 ```text
 
 <example>
-```
+
 **Optimizing multi-column WHERE clauses:**
 
 ```sql
@@ -1021,7 +1019,7 @@ first). </example>
 
 ```text
 <example>
-```
+
 
 **Common optimization scenarios:**
 
@@ -2642,6 +2640,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
