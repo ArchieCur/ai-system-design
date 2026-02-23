@@ -964,7 +964,7 @@ The slight convenience of typing * is vastly outweighed by these costs.
 • Clear bad pattern with rationale
 • Contrast highlights differences
 
-### Example Progression: Simple → Complex
+#### Example Progression: Simple → Complex
 
 #### Class A: Simple Example
 
@@ -983,7 +983,7 @@ The slight convenience of typing * is vastly outweighed by these costs.
 
 #### Class B: Intermediate Example
 
-```xml
+```text
 
 <example>
 
@@ -992,7 +992,6 @@ The slight convenience of typing * is vastly outweighed by these costs.
 **Input data:** campaign_data_week1.csv (1,247 rows)
 
 - Columns: date, campaign_name, impressions, clicks, conversions, spend
-```
 
 **Analysis performed:**
 
@@ -1009,15 +1008,12 @@ The slight convenience of typing * is vastly outweighed by these costs.
 - Visualizations (trend charts, funnel diagrams)
 
 **Result:** Identified $8K optimization opportunity (16% of weekly budget)
-
-```xml
-
 </example>
 ```
 
 #### Class C: Complex Example
 
-```xml
+```text
 
 <example>
 
@@ -1028,11 +1024,10 @@ The slight convenience of typing * is vastly outweighed by these costs.
 - Execution time: 4.2 seconds (unacceptable for user-facing)
 - Database: PostgreSQL 14, orders table (5.2M rows)
 - EXPLAIN output provided (Seq Scan, Nested Loop, Sort)
-```
 
 **Analysis Phase:**
 
-```sql
+sql
 -- Original query
 
 SELECT u.name, u.email, o.order_id, o.total, o.created_at
@@ -1041,8 +1036,6 @@ JOIN orders o ON u.id = o.user_id
 WHERE o.status IN ('pending', 'processing')
 ORDER BY o.created_at DESC
 LIMIT 20;
-
-```
 
 EXPLAIN showed:
 
@@ -1058,7 +1051,7 @@ EXPLAIN showed:
 
 **Optimization Applied:**
 
-```sql
+sql
 
 -- Create composite index covering all operations
 CREATE INDEX idxx_orders_status_created_user
@@ -1066,11 +1059,9 @@ ON orders(status, created_at DESC, user_id);
 
 -- Rewritten query (no changes needed, index handles it)
 
-```
-
 **Verification:**
 
-```bash
+bash
 
 ./scripts/verify.sh dashboard_query.sql --baseline baseline.json
 
@@ -1082,8 +1073,6 @@ Results:
 ✓ Index covers all query needs (index-only scan)
 ✓ Regression tests: 23/23 passed, no slowdowns detected
 ✓ Production monitoring: Sustained improvement confirmed
-
-```
 
 **Production Deployment:**
 
@@ -1100,8 +1089,6 @@ Results:
 - Index overhead: +180MB storage (0.003% of table size), acceptable
 - Write performance: INSERT time 12ms → 14ms (16% overhead), acceptable
 
-```xml
-
 </example>
 ```
 
@@ -1117,43 +1104,48 @@ Results:
 
 **Minimum by class:**
 
+```text
+
 • Class A: 2-3 examples (simple cases, basic variations)
 • Class B: 3-5 examples (multiple scenarios, edge cases)
 • Class C: 5-10 examples (comprehensive coverage, production contexts)
+
 Rule of thumb: If you find yourself explaining "except in this case..." more than 3 times, add examples for those cases.
+```
 
 ## Component 6: Unload Conditions
 
 **What It Is**
 **Explicit signals that tell the model when to STOP using the skill.**
 
-```xml
-
-Tag: <unload_condition>
-```
-
 **Purpose:** Define clear exit conditions so skills deactivate appropriately and don't interfere with
 subsequent tasks.
 
-Why This Matters
+**Why This Matters**
 
-Without unload conditions: Skills may stay active inappropriately, causing attentional residue that degrades performance from irrelevant context bleeding into new tasks.
+Without unload conditions: Skills may stay active inappropriately, causing
+attentional residue that degrades performance from irrelevant context bleeding into new tasks.
 
-With unload conditions: Skills deactivate cleanly when their job is done, maintaining optimal performance across task transitions.
+With unload conditions: Skills deactivate cleanly when their job is done, maintaining
+optimal performance across task transitions.
 
-*Key principle:* User Intent Change must be checked FIRST, before task completion, domain switches, or any other exit condition.
+*Key principle:* User Intent Change must be checked FIRST, before task completion,
+domain switches, or any other exit condition.
 
-*Note:* If relying on a text command to unload ‘forget’ a Skill within the same chat, it might be 80% reliable in long context windows, not 100%. The only way to guarantee a 100% clean slate is to start a new session. Think of text commands as a 'Soft Reset' (good for changing topics)
-and a New Session as a 'Hard Reset' (necessary for changing personas or critical rules).
+*Note:* If relying on a text command to unload ‘forget’ a Skill within the same chat,
+it might be 80% reliable in long context windows, not 100%. The only way to guarantee 
+a 100% clean slate is to start a new session. Think of text commands as a 'Soft Reset'
+(good for changing topics) and a New Session as a 'Hard Reset' (necessary for
+changing personas or critical rules).
 
-## The Mandatory Structure
+### The Mandatory Structure
 
 **EVERY skill must use this structure with User Intent Change as FIRST priority:**
+Uses `<unload>` tag
 
-```xml
+```text
 
 <unload_condition>
-```
 
 Stop using this skill when:
 
@@ -1177,16 +1169,15 @@ Stop using this skill when:
 10. User says "stop", "that's enough", "cancel"
 11. User asks to explain instead of execute
 
-```xml
-
 </unload_condition>
 ```
+**Non-negotiable:** User Intent Change must be checked FIRST, before task completion or domain switches.
 
-Non-negotiable: User Intent Change must be checked FIRST, before task completion or domain switches.
-
-### Why User Intent Change Must Be First
+#### Why User Intent Change Must Be First
 
 **The Problem:**
+
+```text
 
 Scenario
 
@@ -1196,13 +1187,13 @@ Scenario
 4. User: "Actually, never mind, can you help me with Python instead?"
 5. Without proper unload: Skill stays active, continues thinking about SQL optimization while user wants Python help
 6. Result: Degraded performance, confused responses, poor user experience
+```
 
-The Solution:
+**The Solution:**
 
-```xml
+```text
 
 <unload_condition>
-```
 
 Stop using this skill when:
 **User Intent Change (CHECK FIRST):**
@@ -1210,15 +1201,15 @@ Stop using this skill when:
 1. User says "Actually...", "Never mind...", "Wait..."
 → IMMEDIATELY deactivate, even if task incomplete
 This prevents attentional residue from active skill bleeding into new context.
+```
 
-### Unload Conditions by Complexity
+#### Unload Conditions by Complexity
 
 **Class A (Simple):**
 
-```xml
+```text
 
 <unload_condition>
-```
 
 Stop using this skill when:
 
@@ -1239,17 +1230,14 @@ Stop using this skill when:
 Explicit Stop:**
 User says "stop editing" or "that's enough"
 
-```xml
-
 </unload_condition>
 ```
 
 **Class B (Intermediate):**
 
-```xml
+```text
 
 <unload_condition>
-```
 
 Stop using this skill when:
 
@@ -1279,17 +1267,14 @@ Stop using this skill when:
 14. User says "stop analysis", "that's enough", "cancel this"
 15. User asks to explain methodology (teach, don't execute)
 
-```xml
-
 </unload_condition>
 ```
 
 **Class C (Advanced):**
 
-```xml
+```text
 
 <unload_condition>
-```
 
 Stop using this skill when:
 
@@ -1324,8 +1309,6 @@ Stop using this skill when:
 19. User asks to explain optimization concepts (teach mode, not execution mode)
 20. User requests analysis only (no changes to be applied)
 
-```xml
-
 </unload_condition>
 ```
 
@@ -1335,34 +1318,43 @@ Stop using this skill when:
 
 **Task Complete:**
 
+```text
+
 - [Specific deliverable created]
 - [Specific metric achieved]
 - [Specific verification passed]
 - User confirms success
-
+```
 #### Pattern 2: Domain Boundaries
 
 **Domain Switch:**
 
+```text
+
 - User switches to [different task type] → Activate [alternate-skill]
 - User switches to [different technology] → Activate [alternate-skill]
 - Task domain changes (no longer [current domain])
+```
 
 #### Pattern 3: Failure Modes
 
 **Failure Mode:**
 
+```text
+
 - After N attempts with insufficient progress → Escalate
 - Required resources unavailable → Notify user
 - Verification consistently fails → Review approach
+```
+**Why include failure modes:** Prevents infinite loops, provides graceful degradation
 
-Why include failure modes: Prevents infinite loops, provides graceful degradation
+### Commmon Mistakes
 
-### Mistake 1: No User Intent Change Priority
+#### Mistake 1: No User Intent Change Priority
 
 **Wrong:**
 
-```xml
+```text
 
 <unload_condition>
 
@@ -1376,7 +1368,7 @@ Stop when:
 
 **Correct:**
 
-```xml
+```text
 
 <unload_condition>
 
@@ -1392,16 +1384,21 @@ Stop using this skill when:
 </unload_condition>
 ```
 
-### Mistake 2: Vague Completion Signals
+#### Mistake 2: Vague Completion Signals
 
 **Wrong:**
+
+```text
 
 **Task Complete:**
 
 - Query is faster
 - User is happy
+```
 
 **Correct:**
+
+```text
 
 **Task Complete:**
 
@@ -1409,12 +1406,13 @@ Stop using this skill when:
 - EXPLAIN ANALYZE shows index usage
 - Regression tests pass (no related queries slower)
 - User confirms "This meets requirements" or similar
+```
 
-### Mistake 3: Missing Failure Modes
+#### Mistake 3: Missing Failure Modes
 
 **Wrong:**
 
-```xml
+```text
 
 <unload_condition>
 
@@ -1425,7 +1423,7 @@ Stop when task complete or user stops.
 
 **Correct:**
 
-```xml
+```text
 
 <unload_condition>
 
@@ -1436,46 +1434,49 @@ Stop when task complete or user stops.
 - After 3 optimization attempts with <20% improvement → Escalate
 - Verification fails repeatedly → Rollback, different approach
 - User lacks required permissions → Notify, cannot proceed
-```
 
 </unload_condition>
+```
 
 ## Component 7: Success Criteria
 
 **What It Is**
 **Observable, measurable outcomes that indicate the skill accomplished its goal.**
 
-```xml
-
-Tag: <success_criteria>
-```
+Tag: `<success_criteria>`
 
 **Purpose:** Enable verification that the skill's work was successful.
 
 ### Characteristics of Good Success Criteria
 
+```text
+
 1. Observable
 Can be checked without subjective interpretation
 Vague: "Query is better"
 Observable: "Query execution time reduced by >50%"
+
 2. Measurable
 Quantifiable metrics, not feelings
 Unmeasurable: "User is happy"
 Measurable: "User confirms 'This meets requirements'"
+
 3. Verifiable
 Can be checked by model or user
 Not verifiable: "Performance improved"
 Verifiable: "EXPLAIN ANALYZE shows Index Scan (not Seq Scan)"
+
 4. Specific to Task
 Tied to skill's purpose
 Generic: "Task complete"
 Specific: "Oxford commas applied to all lists with 3+ items"
+```
 
 ### Success Criteria by Complexity
 
 #### Class A (Simple)Success Criteria by Complexity
 
-```xml
+```text
 
 <success_criteria>
 
@@ -1489,9 +1490,9 @@ Formatting is successful when:
 </success_criteria>
 ```
 
-### Class B (Intermediate)Success Criteria by Complexity
+#### Class B (Intermediate)Success Criteria by Complexity
 
-```xml
+```text
 
 <success_criteria>
 Marketing campaign analysis is successful when:
@@ -1519,9 +1520,9 @@ Marketing campaign analysis is successful when:
 </success_criteria>
 ```
 
-### Class C (Advanced)Success Criteria by Complexity
+#### Class C (Advanced)Success Criteria by Complexity
 
-```xml
+```text
 
 <success_criteria>
 
@@ -1551,15 +1552,15 @@ SQL query optimization is successful when:
 ✓ No increase in error rates or timeouts
 ✓ User-reported performance issues resolved
 ✓ Production deployment completed successfully (if applicable)
-```
 
 </success_criteria>
+```
 
-## Success Criteria + Self-Verification
+### Success Criteria + Self-Verification
 
 **Success criteria often reference verification mechanisms:**
 
-```xml
+```text
 
 <success_criteria>
 
@@ -1581,14 +1582,13 @@ See references/VERIFICATION.md for detailed procedures.
 
 **This connects success criteria to Component 8 (Self-Verification).**
 
-### Multi-Tiered Success Criteria
+#### Multi-Tiered Success Criteria
 
 **For complex skills, use tiered criteria:**
 
-```xml
+``text
 
 <success_criteria>
-```
 
 **Minimum Success (Required):**
 ✓ Query execution time improved by >30%
@@ -1604,8 +1604,6 @@ See references/VERIFICATION.md for detailed procedures.
 ✓ Query execution time improved by >70%
 ✓ Index-only scan achieved (no table access)
 ✓ Related queries also improved (compound benefits)
-
-```xml
 
 </success_criteria>
 ```
@@ -2318,6 +2316,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
