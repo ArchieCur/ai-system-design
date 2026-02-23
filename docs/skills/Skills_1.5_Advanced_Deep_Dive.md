@@ -199,7 +199,8 @@ description: Systematic query optimization with verification.
 description:
 Systematic query optimization with verification. Keywords:
 slow query, performance, database, EXPLAIN, index, bottleneck.
-**Why:** Users might say "this query is slow" not "I need query optimization"—keywords help activation.
+**Why:** Users might say "this query is slow" not 
+"I need query optimization"—keywords help activation.
 
 ### Mistake 3: Non-gerund Name
 
@@ -213,7 +214,8 @@ name: optimizing-sql-queries
 ## Component 2: Purpose Statement
 
 **What It Is**
-A clear, concise statement of what the skill does, typically placed immediately after the YAML frontmatter.
+A clear, concise statement of what the skill does, typically
+placed immediately after the YAML frontmatter.
 
 **Pattern:**
 
@@ -228,7 +230,8 @@ A clear, concise statement of what the skill does, typically placed immediately 
 
 # [Skill Name-Enforcing Oxford Comma]
 
-**Purpose:** Apply Oxford comma (serial comma) to lists with three or more items in written content.
+**Purpose:** Apply Oxford comma (serial comma) to lists
+with three or more items in written content.
 
 **Characteristics:**
 • Single, clear objective
@@ -242,7 +245,8 @@ A clear, concise statement of what the skill does, typically placed immediately 
 
 #[Skill name- Analyzing Marketing Campaigns]
 
-**Purpose:** Analyze marketing campaign performance data using standardized metrics, identify optimization opportunities, and generate actionable recommendations with budget reallocation guidance.
+**Purpose:** Analyze marketing campaign performance data using standardized metrics,
+identify optimization opportunities, and generate actionable recommendations with budget reallocation guidance.
 ```
 
 **Characteristics:**
@@ -256,7 +260,8 @@ A clear, concise statement of what the skill does, typically placed immediately 
 
 #[Skill name- Optimizing SQL Queries]
 
-**Purpose:** Systematically optimize slow database queries through bottleneck analysis,targeted improvements, automated verification, and regression testing to ensure production-ready performance gains.
+**Purpose:** Systematically optimize slow database queries through bottleneck analysis,
+targeted improvements, automated verification, and regression testing to ensure production-ready performance gains.
 ```
 
 **Characteristics:**
@@ -2345,5 +2350,6 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
