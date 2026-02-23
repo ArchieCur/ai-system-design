@@ -254,15 +254,16 @@ before domain switches, before explicit stop signals.
 • Operations with hidden costs
 • Approaches that seem correct but fail
 • Performance pitfalls
+```
 
 Model interpretation:
 "This is a common mistake. I should avoid this approach."
-```
+
 
 **Examples:**
 **Hidden cost:**
 
-```text
+```xml
 
 <warning>
 Adding indexes to every column will slow INSERT/UPDATE operations by 20-30% per index.
@@ -273,7 +274,7 @@ Only add indexes where read performance gain justifies write cost.
 
 **Common error:**
 
-```text
+```xml
 
 <warning>
 Using DISTINCT to "fix" duplicate rows usually indicates a JOIN problem.
@@ -284,13 +285,18 @@ Fix the underlying JOIN logic instead of masking the problem.
 
 **Performance pitfall:**
 
+```xml
+
 <warning>
 Optimizing queries without measuring baseline performance first.
 You might optimize the wrong thing or make performance worse.
 Always measure before → optimize → verify after.
 </warning>
+```
 
 **Scope creep**:
+
+```xml
 
 <warning>
 This skill focuses on query optimization only.
@@ -311,12 +317,15 @@ Do not use for:
 **Purpose:** Recommended practices, proven solutions, examples to emulate
 
 **When to use:**
+
+```text
 • Show the right way to do something
 • Provide templates or patterns to follow
 • Demonstrate best practices
 • Give concrete examples
+```
 
-**Model interpretation:
+**Model interpretation:**
 "This is the right way to do it. I should emulate this approach."
 
 **Examples:**
@@ -397,16 +406,17 @@ If all criteria met → Add index and verify improvement
 **Purpose:** Anti-patterns, approaches to avoid, wrong solutions
 **When to use:**
 
-
+```text
 • Show what NOT to do
 • Explain why an approach fails
 • Contrast with <good_pattern>
 • Prevent common mistakes
+```
 
 **Model interpretation:**
-
 "This approach is wrong. I should actively avoid it."
-Best practice: Pair with <rationale> tag to explain WHY it's wrong.
+
+**Best practice:** Pair with <rationale> tag to explain WHY it's wrong.
 
 **Examples:**
 
@@ -2797,6 +2807,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
