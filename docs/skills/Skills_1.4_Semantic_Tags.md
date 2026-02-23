@@ -1065,11 +1065,11 @@ CREATE INDEX idx_orders_created ON orders(created_at DESC);
 **Trigger Criteria**
 
 ```xml
+
 <condition>
 ```
 
 **Purpose:** When skill should activate, observable signals
-
 **When to use:**
 
 ```text
@@ -2640,6 +2640,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
