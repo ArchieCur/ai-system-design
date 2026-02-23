@@ -239,6 +239,7 @@ before domain switches, before explicit stop signals.
 </critical>
 ```
 
+
 **Common Mistakes to Avoid**
 
 ```xml
@@ -309,6 +310,7 @@ Do not use for:
 - Database configuration tuning (requires DBA permissions)
 </warning>
 ```
+
 
 **Correct Approaches**
 
@@ -398,6 +400,7 @@ CREATE INDEX idx_user_status ON orders(user_id, status);
 If all criteria met → Add index and verify improvement
 </good_pattern>
 ```
+
 
 **Incorrect Approaches**
 
@@ -2639,6 +2642,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
