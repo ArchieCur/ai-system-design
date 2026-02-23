@@ -1,8 +1,8 @@
 # Section 1.5: Required Components Deep Dive
 
-For: Intermediate to advanced users
-Prerequisites: Sections 1.1-1.4 (foundation, templates, advanced patterns, semantic tags)
-What you'll learn: How each of the 8 core components works and how they compose into complete skills.
+**For:** Intermediate to advanced users
+**Prerequisites:** Sections 1.1-1.4 (foundation, templates, advanced patterns, semantic tags)
+**What you'll learn:** How each of the 8 core components works and how they compose into complete skills.
 
 ## Introduction
 
@@ -185,10 +185,10 @@ Note: This is experimental and may not be supported by all platforms.
 description: Helps with database stuff
 
 **Correct**
-description: >
-Optimize slow SQL queries for PostgreSQL and MySQL. Use when
-query execution time >1 second or EXPLAIN output shows
-inefficiencies. Keywords: slow query, performance, database.
+description: >Optimize slow SQL queries for PostgreSQL and MySQL.
+Use whenquery execution time >1 second or EXPLAIN output shows
+inefficiencies.
+Keywords: slow query, performance, database.
 
 ### Mistake 2: Missing Keywords
 
@@ -291,11 +291,11 @@ Includes automated testing to ensure improvements don't cause regressions.
 
 ### Purpose Statement + Semantic Tags
 
-```xml
+**The purpose statement often appears with <critical> tags defining exclusions:**
 
-The purpose statement often appears with <critical> tags defining exclusions:
+Optimizing SQL Queries_ Example
 
-#Optimizing SQL Queries
+```text
 
 **Purpose:** Systematically optimize slow database queries for PostgreSQL and MySQL.
 
@@ -309,7 +309,7 @@ Do NOT use this skill for:
 This pattern immediately clarifies what IS and ISN'T in scope.
 ```
 
-### Component 3: Scope Definition (Critical Boundaries)
+## Component #3: Scope Definition (Critical Boundaries)
 
 **What It Is**
 Explicit boundaries that define when the skill SHOULD and SHOULD NOT be used.
@@ -320,11 +320,12 @@ Explicit boundaries that define when the skill SHOULD and SHOULD NOT be used.
 • <exclusion> - Wrong use cases, alternate skills
 ```
 
-#### The Dual Boundary Pattern
+### The Dual Boundary Pattern
+
+**Pattern 1: Critical Exclusions**
 
 ```xml
 
-Pattern 1: Critical Exclusions
 <critical>
 Do NOT use this skill for:
 - [Wrong domain 1] → Use [alternative-skill]
@@ -332,14 +333,12 @@ Do NOT use this skill for:
 - [Wrong problem type] → [Explanation]
 - [Wrong technology] → [Explanation]
 </critical>
+```
+**Purpose:** Prevent inappropriate activation (highest priority)
 
-*Purpose:* Prevent inappropriate activation (highest priority)
-
----
+**Pattern 2: Detailed Exclusions with Context**
 
 ```xml
-
-Pattern 2: Detailed Exclusions with Context
 
 <exclusion>
 Do NOT use this skill for:
@@ -359,13 +358,16 @@ Do NOT use this skill for:
 - Application-level performance issues → Not database optimization
 
 </exclusion>
-
-Purpose: Comprehensive boundaries with rationale (detailed reference)
 ```
+**Purpose:** Comprehensive boundaries with rationale (detailed reference)
+
 
 ### Why Scope Definition Matters
 
 **Without Clear Boundaries:**
+
+```text
+
 User: "Help me design a database schema for user management"
 Model (confused):
 • Should I use optimizing-sql-queries skill? (It mentions databases...)
@@ -373,22 +375,23 @@ Model (confused):
 • Or general knowledge? (Not sure if specialized skill applies...)
 
 **Result:** Wrong skill activated or no skill activated
+```
 
 ***With Clear Boundaries:**
 
-```xml
+```text
 
 <critical>
 Do NOT use optimizing-sql-queries for:
 - Schema design or database architecture → Use schema-design skill
 </critical>
-```
 
 User: "Help me design a database schema for user management"
 Model:
 • optimizing-sql-queries explicitly excludes schema design
 • Activates schema-design skill instead
 • Correct skill for the task ✓
+```
 
 ### Scope Definition Across Complexity Levels
 
@@ -403,8 +406,7 @@ Do NOT use this skill for:
 - Formal academic writing → May require different comma usage per style guide
 </critical>
 ```
-
-Simple exclusions: Just list what's out of scope.
+**Simple exclusions:** Just list what's out of scope.
 
 #### Class B (Intermediate) Scope definition
 
@@ -430,8 +432,7 @@ Do NOT use this skill for:
 - DDL statements (not applicable - schema changes)
 </exclusion>
 ```
-
-Moderate complexity: Brief critical + detailed exclusion.
+**Moderate complexity:** Brief critical + detailed exclusion.
 
 #### Class C (Advanced) Scope definition
 
@@ -463,9 +464,9 @@ escalate to DBA for system-level analysis.
 Detailed exclusions with platform specifics...
 [Full exclusion section as shown above]
 </exclusion>
-
-High complexity: Multiple layers of boundaries (critical + warning + detailed exclusion).
 ```
+**High complexity:** Multiple layers of boundaries (critical + warning + detailed exclusion).
+
 
 #### The "Prerequisites" Companion
 
@@ -500,7 +501,8 @@ Together they create complete boundaries.
 **What It Is**
 **The core conditional logic that guides the skill's decision-making process.**
 
-Note- Refer to Section 1.2 for the 'Three-Part Tool Definition' to ensure your Decision Logic aligns with your Tool Triggers.
+Note- Refer to Section 1.2 for the 'Three-Part Tool Definition' to ensure your Decision
+Logic aligns with your Tool Triggers.
 
 ```xml
 
@@ -521,8 +523,7 @@ IF list has 2 items:
 → No comma needed (just "and" or "or" between them)
 </decision_criteria>
 ```
-
-Use for: Class A skills with straightforward rules
+**Use for:** Class A skills with straightforward rules
 
 #### Level 2: Multiple Independent Conditions
 
@@ -541,9 +542,9 @@ IF EXPLAIN shows "Nested Loop" with large tables (>1M rows):
 → Add indexes to join columns
 → Verify improvement with second EXPLAIN ANALYZE
 </decision_criteria>
-
-Use for: Class B skills with multiple decision points
 ```
+**Use for:** Class B skills with multiple decision points
+
 
 #### Level 3: Nested Conditionals with Phases
 
@@ -580,9 +581,8 @@ IF optimization applied:
 → Try alternative optimization approach
 → See <fallback> section for escalation options
 </decision_criteria>
-
-Use for: Class C skills with complex workflows
 ```
+**Use for:** Class C skills with complex workflows
 
 #### Level 4: Conditional File Loading (Meta-Logic)
 
@@ -619,15 +619,14 @@ ELSE IF running in staging/test:
 → Automated verification without approval
 → Standard test suite sufficient
 </decision_criteria>
-
-Use for: Skills that adapt behavior based on context
 ```
+**Use for:** Skills that adapt behavior based on context
 
-### Decision Logic + Actions Pattern
-
-```xml
+#### Decision Logic + Actions Pattern
 
 Combine <decision_criteria> with nested <action> tags for detailed implementation:
+
+```xml
 
 <decision_criteria>
 IF query shows full table scan on large table:
@@ -651,9 +650,9 @@ Measure execution time improvement (should be >50%)
 </decision_criteria>
 ```
 
-## Decision Logic Common Mistakes
+#### Decision Logic Common Mistakes
 
-### Mistake 1: Vague Conditions
+#### Mistake 1: Vague Conditions
 
 **Wrong:**
 
@@ -676,7 +675,7 @@ IF query execution time > 1 second (user-facing) OR > 10 seconds (batch):
 </decision_criteria>
 ```
 
-### Mistake 2: Missing Fallback Logic
+#### Mistake 2: Missing Fallback Logic
 
 **Wrong:**
 
@@ -700,9 +699,9 @@ IF improvement insufficient (<50%):
 → Try covering index (include SELECT columns)
 → Consider denormalization for read-heavy queries
 → Escalate to DBA if still slow
-```
 
 </decision_criteria>
+```
 
 ### Mistake 3: Not Handling Edge Cases
 
@@ -760,26 +759,21 @@ Minimum for effective skills: 3 examples showing:
 
 #### Type 1: Before/After
 
-Best for: Optimization, transformation, correction tasks
+**Best for:** Optimization, transformation, correction tasks
 
-```xml
+```text
 
 <example>
 **Before:** (2.3 seconds execution time)
-```
 
 ```sql
 SELECT * FROM orders
 WHERE user_id = 12345
 ORDER BY created_at DESC;
 
-```
-
 **EXPLAIN output:** Seq Scan on orders (cost=0.00..18234.00)
 
 **After:** (0.05 seconds execution time)
-
-```sql
 
 -- Added composite index
 
@@ -790,7 +784,6 @@ SELECT order_id, total, status, created_at
 FROM orders
 WHERE user_id = 12345
 ORDER BY created_at DESC;
-```
 
 **EXPLAIN output:** Index Scan using idx_user_created (cost=0.29..8.31)
 
@@ -807,75 +800,68 @@ ORDER BY created_at DESC;
 ✓ Index usage confirmed
 ✓ No regressions in related queries
 
+</example>
 ```
 
-```xml
-
-</example>
 **Key elements:**
 • Measurable before state
 • Clear intervention
 • Measurable after state
 • Improvement quantified
 • Verification shown
-```
+
 
 #### Type 2: Multiple Scenarios
 
-Best for: Decision-based skills with different contexts
+**Best for:** Decision-based skills with different contexts
 
-```xml
+```text
 
 <example>
-
-```
 
 Scenario 1: Unindexed Foreign Key
 
 Common query: JOIN on user_id without index
 
 ```sql
-
 -- Slow (3.5s)
 SELECT o.*, u.name FROM orders o JOIN users u ON o.user_id = u.id;
-
 ```
 
 Solution: Add foreign key index
 
 ```sql
-
 CREATE INDEX idx_orders_user_id ON orders(user_id);
-
 ```
 
 Result: 0.08s (43x faster)
+```
 
 ---
 
-Scenario 2: Missing WHERE Index
+#### Scenario 2: Missing WHERE Index
 
 Common query: Filtered SELECT without index
+
+```text
 
 ```sql
 -- Slow (1.8s)
 SELECT * FROM orders WHERE status = 'pending';
-
 ```
 
 Solution: Add index on filter column
 
 ```sql
-
 CREATE INDEX idx_orders_status ON orders(status);
-
 ```
 
 Result: 0.04s (45x faster)
+```
 
 ---
 
-Scenario 3: Inefficient ORDER BY
+#### Scenario 3: Inefficient ORDER BY
 
 Common query: Sorting large result set
 
@@ -2350,6 +2336,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
