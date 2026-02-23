@@ -116,11 +116,14 @@ optimization, EXPLAIN, index.
 
 ### Components
 
-1. **WHAT:** Core capability in one sentence
+```text
 
-2. **WHEN:** Trigger conditions
+1. WHAT: Core capability in one sentence
 
-3. **KEYWORDS:** Terms users might mention
+2. WHEN: Trigger conditions
+
+3. KEYWORDS: Terms users might mention
+```
 
 ### Simple vs. Complex Descriptions
 
@@ -2315,6 +2318,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
