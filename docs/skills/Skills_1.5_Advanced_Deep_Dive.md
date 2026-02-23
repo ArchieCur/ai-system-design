@@ -70,34 +70,38 @@ allowed-tools: Ex.- bash,filesystem,web_search
 
 **Good (gerund form)**
 
+```text
 name: optimizing-sql-queries
 name: analyzing-marketing-campaigns
 name: formatting-technical-documents
-
+```
 **Avoid (noun form)**
 
+```text
 name: sql-query-optimizer
 name: marketing-campaign-analyzer
 name: technical-document-formatter
 User says: "I'm optimizing queries" → Matches "optimizing-sql-queries" naturally
-
+```
 **Anthropic research shows: Gerund-form names have higher activation accuracy.**
-
----
 
 ## The Description Field
 
-Purpose: Helps models decide when to activate the skill
+**Purpose:** Helps models decide when to activate the skill
 
 **Constraints:**
+
+```text
 
 • Max 1,024 characters
 • Must be non-empty
 • Should describe WHAT the skill does AND WHEN to use it
 • Include specific keywords users might mention
+```
 
 **Anatomy of a good description:**
 
+```text
 description: >
 [WHAT] Optimize slow SQL queries for PostgreSQL and MySQL
 [WHEN] using systematic analysis and automated verification.
@@ -105,6 +109,7 @@ description: >
 thresholds or EXPLAIN ANALYZE output is provided.
 [KEYWORDS] Keywords: slow query, performance, database,
 optimization, EXPLAIN, index.
+```
 
 ### Components
 
@@ -118,13 +123,18 @@ optimization, EXPLAIN, index.
 
 #### Simple (Class A)
 
+```text
+
 name: enforcing-oxford-comma
 description: >
 Apply Oxford comma (serial comma) to lists with 3+ items in
 written content. Use when editing or reviewing text that
 contains lists. Keywords: comma, list, grammar, style.
+```
 
 #### Complex (Class C)
+
+```text
 
 name: optimizing-sql-queries
 description: >
@@ -136,10 +146,12 @@ output is provided, or performance degradation is observed.
 Includes automated testing, regression checking, and production
 deployment guidance. Keywords: slow query, performance,
 database, optimization, EXPLAIN, index, bottleneck.
-
-**Key difference: Simple describes straightforward rule; complex describes multi-phase workflow with verification.**
+```
+**Key difference:** Simple describes straightforward rule; complex describes multi-phase workflow with verification.
 
 #### Optional Metadata Fields
+
+```text
 
 **license**
 license: MIT
@@ -163,6 +175,7 @@ metadata:
 allowed-tools: bash,filesystem,web_search
 Pre-approved tools the skill can use without asking permission each time.
 Note: This is experimental and may not be supported by all platforms.
+```
 
 ## Common Mistakes
 
@@ -2332,4 +2345,5 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
