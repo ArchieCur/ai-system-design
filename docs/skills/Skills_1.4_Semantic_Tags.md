@@ -176,6 +176,7 @@ Total: 19 tags
 "I MUST follow this. Failure to follow causes serious problems."
 
 **Examples:**
+
 **Blocking condition:**
 
 ```xml
@@ -261,6 +262,7 @@ Model interpretation:
 
 
 **Examples:**
+
 **Hidden cost:**
 
 ```xml
@@ -329,6 +331,7 @@ Do not use for:
 "This is the right way to do it. I should emulate this approach."
 
 **Examples:**
+
 **Step-by-step pattern:**
 
 ```xml
@@ -419,6 +422,7 @@ If all criteria met → Add index and verify improvement
 **Best practice:** Pair with <rationale> tag to explain WHY it's wrong.
 
 **Examples:**
+
 **With rationale:**
 
 ```xml
@@ -517,6 +521,7 @@ complex nested conditions.**
 
 
 **Examples:**
+
 **Simple condition:**
 
 ```xml
@@ -627,6 +632,7 @@ complex nested conditions.**
 **Key principle: Use <decision_criteria> for ANY "if this, then that" logic. It's designed to handle
 simple to complex conditional structures.**
 
+
 **When to Stop Using This Skill**
 
 ```xml
@@ -678,6 +684,7 @@ attentional residue that degrades subsequent task performance.
 ```
 
 **Examples:**
+
 **SQL Optimization:**
 
 ```xml
@@ -752,6 +759,7 @@ attentional residue that degrades subsequent task performance.
 **Key principle: User Intent Change is ALWAYS the first condition to check. Task completion comes
 second.**
 
+
 **When NOT to Use This Skill**
 
 ```xml
@@ -775,6 +783,7 @@ second.**
 "I should NOT use this skill for these cases. There's a better skill for these tasks."
 
 **Examples:**
+
 **Clear boundaries:**
 
 ```xml
@@ -871,6 +880,7 @@ and performance issues. Style and formatting are separate concerns.
 "This is good to know but not critical to follow."
 
 **Examples:**
+
 **Platform differences:**
 
 ```xml
@@ -944,6 +954,7 @@ maximum impact.
 "Here's a concrete example I can learn from."
 
 **Examples:**
+
 **Before/after optimization:**
 
 ```xml
@@ -1112,7 +1123,6 @@ CREATE INDEX idx_orders_created ON orders(created_at DESC);
 </condition>
 ```
 
-
 **Context-based:**
 
 ```xml
@@ -1235,7 +1245,7 @@ Measure execution time improvement (should be >50% faster)
 
 <action>
 
-### After applying optimization:
+After applying optimization:
 
 1. **Measure improvement:**
 
@@ -2629,6 +2639,7 @@ Last Updated: 2026-01-29
 Tags Covered: 18 (Tier 1: 7, Tier 2: 6, Tier 3: 5)
 
 Key Addition: User Intent Change as mandatory first unload condition
+
 
 
 
