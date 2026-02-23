@@ -27,14 +27,16 @@ Every skill begins with YAML frontmatter that provides essential metadata for sk
 
 **Minimum required fields:**
 
+```text
+
 name: skill-name-here
 description: What the skill does and when to use it
-
----
+```
 
 **All available fields:**
 
----
+```text
+
 name: skill-name-here
 description: What the skill does and when to use it
 license: MIT
@@ -45,31 +47,34 @@ version: Ex.- "2.1.0"
 last_updated: Ex.- "2026-01-29"
 category: Ex.- database-optimization
 allowed-tools: Ex.- bash,filesystem,web_search
-
----
+```
 
 ## The Name Field
 
-Purpose: Identifies the skill for activation and reference
+**Purpose:** Identifies the skill for activation and reference
+
 **Constraints:**
+
+```text
 
 • Max 64 characters
 • Lowercase letters, numbers, hyphens only
 • Must NOT start or end with hyphens
 • Must match parent directory name
 • Recommended: gerund form (verb + -ing)
+```
 
 ### Why gerund form works best
 
 **Gerunds describe ongoing action, matching how users naturally describe tasks:**
 
-#### Good (gerund form)
+**Good (gerund form)**
 
 name: optimizing-sql-queries
 name: analyzing-marketing-campaigns
 name: formatting-technical-documents
 
-#### Avoid (noun form)
+**Avoid (noun form)**
 
 name: sql-query-optimizer
 name: marketing-campaign-analyzer
@@ -2327,3 +2332,4 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
