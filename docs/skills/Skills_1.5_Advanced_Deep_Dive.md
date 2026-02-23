@@ -1,8 +1,11 @@
 # Section 1.5: Required Components Deep Dive
 
+```text
+
 **For:** Intermediate to advanced users
 **Prerequisites:** Sections 1.1-1.4 (foundation, templates, advanced patterns, semantic tags)
 **What you'll learn:** How each of the 8 core components works and how they compose into complete skills.
+```
 
 ## Introduction
 
@@ -2312,6 +2315,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
