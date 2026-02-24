@@ -359,7 +359,6 @@ Alternative Approaches
 
 <fallback> 
 If primary approach doesn't work:
-```
 
 Level 1: Verify Assumptions → [Check assumption 1] → [Check assumption 2] → [Adjust approach based on findings]
 
@@ -370,10 +369,11 @@ Level 3: Escalate or Hand Off → [When to escalate, e.g., "After 3 attempts wit
 
 ---
 
-
 Additional Context
 
-<note> **Related Skills:** - [related-skill-1] - [When to use instead of this skill] - [related-skill-2] - [How it complements this skill]
+<note> **Related Skills:**
+- [related-skill-1] - [When to use instead of this skill]
+- [related-skill-2] - [How it complements this skill]
 
 Platform Considerations:
 • [Platform-specific note if applicable]
@@ -707,6 +707,7 @@ Document Version: 2.0.0
 Last Updated: 2026-02-10
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
 
 
 
