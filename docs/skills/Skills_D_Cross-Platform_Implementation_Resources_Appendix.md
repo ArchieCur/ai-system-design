@@ -285,7 +285,9 @@ response = client.responses.create(
 **Documentation:** <https://developers.openai.com/api/docs/guides/tools-skills>
 
 **Note on AGENTS.md:**
-OpenAI previously used AGENTS.md files (static instructions loaded at startup) for Codex and other tools. This approach is still valid for project-specific coding standards but is separate from the Skills standard. The Skills implementation described above is the newer, standardized approach that supports progressive disclosure and aligns with agentskills.io.
+OpenAI previously used AGENTS.md files (static instructions loaded at startup) for Codex and other tools.
+This approach is still valid for project-specific coding standards but is separate from the Skills standard.
+The Skills implementation described above is the newer, standardized approach that supports progressive disclosure and aligns with agentskills.io.
 
 ### Google (System Instructions)
 
@@ -943,6 +945,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
