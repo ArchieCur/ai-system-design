@@ -161,9 +161,10 @@ How to use: Install skills from the marketplace or create custom skills
 Marketplace: Browse and install community-created skills
 
 Custom skills: Place in ~/.claude/skills/ directory
-
-Documentation: See Claude Code marketplace in terminal
 ```
+
+**Documentation:** See Claude Code marketplace in terminal
+
 
 ### Claude Desktop
 
@@ -942,5 +943,6 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
