@@ -707,7 +707,7 @@ IF improvement insufficient (<50%):
 </decision_criteria>
 ```
 
-### Mistake 3: Not Handling Edge Cases
+#### Mistake 3: Not Handling Edge Cases
 
 **Wrong:**
 
@@ -2231,6 +2231,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
