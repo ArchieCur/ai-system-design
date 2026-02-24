@@ -1076,6 +1076,7 @@ Link from verification section!
 ### Pitfall 7: Missing Failure Modes in Unload Conditions
 
 **What It Looks Like-No failure modes**
+
 **Only success-path unload conditions, no failure modes:**
 
 ```text
@@ -1752,6 +1753,7 @@ To master advanced patterns:
 END OF SECTION 1.6
 Document Version: 1.0.0
 Last Updated: 2026-02-10
+
 
 
 
