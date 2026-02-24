@@ -1,6 +1,9 @@
 # Tool Templates
 
-There are 3 tool templates included. A Fill-in-the-Blank template for intermediate to advanced users. A Minimal template for simple tools. And a template for Non-Coders.
+There are 3 tool templates included. 
+A Fill-in-the-Blank template for intermediate to advanced users.
+A Minimal template for simple tools. 
+And a template for Non-Coders.
 
 ## Tool Definition Template: Fill-in-the-Blank Edition
 
@@ -8,6 +11,9 @@ Instructions: Replace all [BLANK] sections with your specific information. Delet
 sections if not needed. Copy this entire template for each tool you create.
 
 ### BASIC INFORMATION
+
+```text
+
 
 {
 "name": "[TOOL_NAME]",
@@ -22,8 +28,9 @@ sections if not needed. Copy this entire template for each tool you create.
 // A = Read-Only (no side effects, safe to use freely)
 // B = State-Change (modifies data, requires confirmation)
 // C = Computational (task exceeds Claude's reasoning capability)
+}
 
-#### TRIGGER LOGIC (When a Model Should Use This)
+TRIGGER LOGIC (When a Model Should Use This)
 
 "trigger_logic": {
  "use_when": [
@@ -31,6 +38,7 @@ sections if not needed. Copy this entire template for each tool you create.
   "[Scenario 2: Another situation where this tool is appropriate]",
   "[Scenario 3: Add more as needed]"
  ],
+
 // Examples:
 // - "User asks to send an email or message"
 // - "User requests information about a specific person"
@@ -41,22 +49,24 @@ sections if not needed. Copy this entire template for each tool you create.
  "[Scenario 2: When should a different tool be used instead?]",
  "[Scenario 3: What edge cases fail?]"
 ]
+
 // Examples:
 // - "User is asking ABOUT email (explain, don't send)"
 // - "General questions about users (use search_users for multiple)"
 // - "Simple calculations Claude can do (e.g., 15% of 200)"
 },
 
-#### PARAMETERS (What Inputs Does This Tool Accept?)
+PARAMETERS (What Inputs Does This Tool Accept?)
 
 "parameters": {
-"[parameter_name]": {
- "type": "[string/number/boolean/array/object]",
- "description": "[What is this parameter for?]",
-"required": [true/false],
- "example": "[Example value]",
- "constraints": "[Any validation rules? e.g., 'must be valid email format']"
+ "[parameter_name]": {
+  "type": "[string/number/boolean/array/object]",
+  "description": "[What is this parameter for?]",
+  "required": [true/false],
+  "example": "[Example value]",
+  "constraints": "[Any validation rules? e.g., 'must be valid email format']"
 },
+
 // Repeat for each parameter
 
 // Example:
@@ -69,7 +79,7 @@ sections if not needed. Copy this entire template for each tool you create.
  }
 },
 
-#### NEGATIVE CONSTRAINTS (What a Model Should NEVER Do)
+NEGATIVE CONSTRAINTS (What a Model Should NEVER Do)
 
 "negative_constraints": {
  "do_not": [
@@ -93,7 +103,7 @@ sections if not needed. Copy this entire template for each tool you create.
 // - "Timeout after 5 seconds"
 },
 
-#### RETURN CONTRACT (What to Expect When the Tool Runs)
+RETURN CONTRACT (What to Expect When the Tool Runs)
 
 **Success Case:**
  "return_contract": {
@@ -113,8 +123,10 @@ Failure Cases:
   "failure_modes": {
    "[error_type_1]": {
     // Example: "invalid_email", "rate_limit", "timeout"
+
     "error": "[Human-readable error message]",
     // Example: "Recipient email format is invalid"
+
     "recovery_action": "[What should Claude DO when this happens?]",
     // Example: "Ask user to verify email address format"
 
@@ -136,7 +148,7 @@ Failure Cases:
  }
 }
 
-#### COMPOSITION (Optional: How This Tool Relates to Others)
+COMPOSITION (Optional: How This Tool Relates to Others)
 
 "composition": {
  "typically_followed_by": [
@@ -160,10 +172,13 @@ Failure Cases:
 // Example: "delete_user" conflicts with "create_user"
  }
 }
+```
 
 #### CLASS-SPECIFIC ADDITIONS
 
 #### If Class B (State-Change), Add This
+
+```text
 
 "confirmation_required": true,
 "confirmation_template": "[This will [ACTION]. Proceed? (yes/no)]",
@@ -174,8 +189,11 @@ Failure Cases:
 
 "backup_strategy": "[How is data backed up before this operation?]"
 // Example: "File is copied to .backup/ directory before deletion"
+```
 
 #### If Class C (Computational), Add This
+
+```text
 
 "complexity_justification": "[Why can't a model do this with reasoning alone?],
 // Example: "Requires 360 separate calculations (30 years × 12 months)"
@@ -186,26 +204,30 @@ Failure Cases:
 
 "timeout_threshold": "[When should this operation time out?]"
 // Example: "30 seconds maximum"
+```
 
 ### QUICK REFERENCE CHECKLIST
 
-**Before finalizing your tool definition, verify:*
+**Before finalizing your tool definition, verify:**
 
-• [ ] Name is clear and descriptive (not generic like "do_thing")
-• [ ] Description is ONE sentence explaining what it does
-• [ ] Class is assigned (A, B, or C)
-• [ ] Trigger Logic has at least 2 "use_when" scenarios
-• [ ] Trigger Logic has at least 2 "dont_use_when" scenarios
-• [ ] Parameters all have types, descriptions, and examples
-• [ ] Negative Constraints list common mistakes to avoid
-• [ ] Return Contract includes success schema AND example
-• [ ] Failure Modes include at least 2 error types with recovery actions
-• [ ] Class B tools have confirmation templates
-• [ ] Class C tools have complexity justification
+
+[ ] Name is clear and descriptive (not generic like "do_thing")
+[ ] Description is ONE sentence explaining what it does
+[ ] Class is assigned (A, B, or C)
+[ ] Trigger Logic has at least 2 "use_when" scenarios
+[ ] Trigger Logic has at least 2 "dont_use_when" scenarios
+[ ] Parameters all have types, descriptions, and examples
+[ ] Negative Constraints list common mistakes to avoid
+[ ] Return Contract includes success schema AND example
+[ ] Failure Modes include at least 2 error types with recovery actions
+[ ] Class B tools have confirmation templates
+[ ] Class C tools have complexity justification
 
 ### COMPLETE EXAMPLE (Filled Template)
 
 **Here's what a fully-completed template looks like:**
+
+```text
 
 {
  "name": "send_email",
@@ -313,10 +335,13 @@ Failure Cases:
  "reversible": false,
  "backup_strategy": "Email is logged in sent_emails table before sending"
 }
+```
 
-### MINIMAL TEMPLATE (For Simple Tools)
+## MINIMAL TEMPLATE (For Simple Tools)
 
 **If your tool is simple (like a Class A read-only tool), here's a shorter version:**
+
+```text
 
 {
 
@@ -357,10 +382,14 @@ Failure Cases:
   }
  }
 }
+```
 
 ### WORKSHEET FORMAT (For Non-Coders)
 
+
 **Prefer a questionnaire style? Answer these questions:**
+
+```text
 
 BASIC INFO:
 
@@ -410,3 +439,10 @@ What to do: ____________________
 CONFIRMATION (If Class B):
 10. What should Model ask before using this tool?
 "This will ____________________. Proceed?"
+```
+
+**END OF SKILLS C: TOOL TEMPLATES**
+version:1.0
+2026-02-24
+
+
