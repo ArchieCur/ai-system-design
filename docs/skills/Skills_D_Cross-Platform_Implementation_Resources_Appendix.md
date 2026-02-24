@@ -6,7 +6,8 @@
 
 ## Introduction
 
-Skills (also called "Instructions.md," "Agents.md", or "System Instructions" depending on platform) are a universal concept in AI system design, but each platform implements them differently.
+Skills (also called "Instructions.md," "Agents.md", or "System Instructions" depending on platform) are a universal concept in AI system design,
+but each platform implements them differently.
 
 ## This appendix provides
 
@@ -18,7 +19,8 @@ Skills (also called "Instructions.md," "Agents.md", or "System Instructions" dep
 • Conversion guidance (adapting skills between platforms)
 • Anthropic resources and repositories
 ```
-**Important:** AI platforms are evolving rapidly. The popularity and ease-of-use of Anthropic's Skills implementation is likely to influence how other platforms approach this concept. Always consult official documentation for the latest implementation details.
+**Important:** AI platforms are evolving rapidly. The popularity and ease-of-use of Anthropic's Skills implementation is likely to influence
+how other platforms approach this concept. Always consult official documentation for the latest implementation details.
 
 ## Universal Principles
 
@@ -287,7 +289,8 @@ response = client.responses.create(
 **Note on AGENTS.md:**
 OpenAI previously used AGENTS.md files (static instructions loaded at startup) for Codex and other tools.
 This approach is still valid for project-specific coding standards but is separate from the Skills standard.
-The Skills implementation described above is the newer, standardized approach that supports progressive disclosure and aligns with agentskills.io.
+The Skills implementation described above is the newer, standardized approach that 
+supports progressive disclosure and aligns with agentskills.io.
 
 ### Google (System Instructions)
 
@@ -295,7 +298,8 @@ The Skills implementation described above is the newer, standardized approach th
 
 **Implementation approach:** Hybrid model using System Instructions + Function Calling
 
-**Status:** Recognizes Agent Skills format via Vertex AI Agent Development Kit (ADK), converts to platform-native implementation
+**Status:** Recognizes Agent Skills format via Vertex AI Agent Development Kit (ADK),
+converts to platform-native implementation
 
 **How to use:**
 
@@ -714,7 +718,8 @@ response = model.generate_content(
 
 **5. Test Intent Routing:**
 
-Google uses the `description` field to determine when to activate skills. Test with various user prompts to ensure proper routing:
+Google uses the `description` field to determine when to activate skills.
+Test with various user prompts to ensure proper routing:
 
 **Good routing examples:**
 
@@ -756,7 +761,8 @@ Google uses the `description` field to determine when to activate skills. Test w
 4. Test thoroughly: Platform differences can affect behavior
 5. Document origin: Note if skill was converted (aids future updates)
 ```
-**Best practice:** Maintain skills in platform-agnostic format (Markdown body), then adapt metadata/structure for each platform.
+**Best practice:** Maintain skills in platform-agnostic format (Markdown body),
+then adapt metadata/structure for each platform.
 
 ## Anthropic Resources
 
@@ -857,7 +863,8 @@ OpenAI adopted the Agent Skills open standard, implementing:
 - Versioned skill management via API
 - Multi-file skill support (references/, scripts/)
 
-**This demonstrates the momentum behind the open standard and validates the portability of skills built following these principles.**
+**This demonstrates the momentum behind the open standard and 
+validates the portability of skills built following these principles.**
 
 **What this means for Skills:**
 
@@ -945,6 +952,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
