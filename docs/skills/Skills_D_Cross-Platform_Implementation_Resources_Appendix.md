@@ -10,43 +10,63 @@ Skills (also called "Instructions.md," "Agents.md", or "System Instructions" dep
 
 ## This appendix provides
 
+```text
+
 • Universal principles that apply across all platforms
 • Platform-specific implementation notes (brief)
 • Terminology landscape (what each vendor calls Skills)
 • Conversion guidance (adapting skills between platforms)
 • Anthropic resources and repositories
-
+```
 **Important:** AI platforms are evolving rapidly. The popularity and ease-of-use of Anthropic's Skills implementation is likely to influence how other platforms approach this concept. Always consult official documentation for the latest implementation details.
 
 ## Universal Principles
 
 **Regardless of platform, effective agent knowledge documents share these characteristics:**
 
-1. **Progressive Disclosure**
-Principle: Load only what's needed, when it's needed.
-Why it matters:
+### 1. Progressive Disclosure
+
+**Principle:** Load only what's needed, when it's needed.
+
+**Why it matters:**
+
+```text
 • Reduces cognitive load on the model
 • Keeps context focused and relevant
 • Enables larger knowledge bases without overload
 • Improves performance by avoiding irrelevant information
 **How Anthropic implements:** Metadata-driven activation (skills load based on name and description matching user intent)
 **How others might implement:** Varies by platform (some load all instructions at startup, others support dynamic loading)
+```
 
-2. **Metadata-Driven Discovery**
+### 2. Metadata-Driven Discovery
+
 **Principle:** Name and description enable automatic activation.
+
 **Why it matters:**
+
+```text
+
 • Models can discover and activate appropriate skills
 • No manual switching required
 • Enables skill composition (multiple skills active)
 • Scales to large skill libraries
-**Universal pattern:**
+
+Universal pattern:
+
 name: skill-identifier
 description: What this does and when to use it. Keywords: relevant, terms.
+```
 **All platforms benefit from clear naming and descriptions, even if they don't use YAML frontmatter.**
 
-3. **Structured Decision Criteria**
+### 3. Structured Decision Criteria
+
 **Principle:** Use IF-THEN patterns for decision logic.
-Why it matters:
+
+**Why it matters:**
+
+```text
+
 • Clear, parseable logic
 • Models understand conditional execution
 • Reduces ambiguity
@@ -55,19 +75,27 @@ Why it matters:
 IF [observable condition]:
 → [Specific action]
 → [Expected outcome]
+```
 **This works across Anthropic, OpenAI, Google, and open-source implementations.**
 
-4. **Cognitive Load Management**
+### 4. Cognitive Load Management
+
 **Principle:** Don't overload the model's context window.
+
 **Why it matters:**
+
+```text
+
 • Too much information degrades performance
 • Context limits are real constraints
 • Focus improves quality
- **Best practices:**
+
+ Best practices:
 • Main file: 400-500 lines max (Anthropic SKILL.md)
 • Extended content in separate reference files
 • Progressive disclosure of details
 • Clear unload conditions to prevent context bleed
+```
 
 ## Platform-Specific Implementations
 
@@ -79,6 +107,8 @@ Implementation approach: Progressive disclosure with metadata-driven activation
 
 **How to use:**
 
+```text
+
 1. Navigate to Settings → Capabilities → Skills
 2. Upload skill as zip file (directory containing SKILL.md)
 3. Skills activate automatically based on user intent
@@ -89,12 +119,17 @@ skill-name/
 └── references/ # Optional: Supporting files
 ├── EXAMPLES.md
 └── GUIDE.md
+```
 **Documentation:** <https://support.claude.com/en/articles/12580051>
 
 ### Claude API
 
-**How to use:** Pass skills via the skills parameter in API requests.
+**How to use:** Pass skills via the skills parameter in API requests
+
 **Example:**
+
+```text
+
 import anthropic
 client = anthropic.Anthropic(api_key="your-api-key")
 response = client.messages.create(
@@ -111,6 +146,7 @@ skills=[
       {"role": "user", "content": "Your prompt"}
     ]
 )
+```
 
 **Documentation:**
 <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview>
@@ -118,15 +154,21 @@ skills=[
 ### Claude Code
 
 **How to use:** Install skills from the marketplace or create custom skills.
+
 **Marketplace:** Browse and install community-created skills
+
 **Custom skills:** Place in ~/.claude/skills/ directory
+
 **Documentation:** See Claude Code marketplace in terminal
 
 ### Claude Desktop
 
 **How to use:** Skills work with Cowork's autonomous task execution.
+
 **Note:** Cowork is in research preview (as of January 2026). Skills integration capabilities are evolving.
+
 **Status:** Check official documentation for latest Cowork + Skills support
+
 **Documentation:** <https://support.claude.com> (search "Cowork")
 
 ### OpenAI (Skills via Responses API)
@@ -137,32 +179,33 @@ skills=[
 
 **How to use:**
 
+```text
+
 1. Upload skill via API (multipart or zip)
 2. Attach to hosted or local shell environment
 3. Skills activate based on metadata in system prompt
 
-**Upload methods:**
+Upload methods:
 
-**Directory upload (multipart):**
+Directory upload (multipart):
 
-     ```bash
+ bash
 
 curl -X POST '<https://api.openai.com/v1/skills>' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files[]=@./skill-name/SKILL.md;filename=skill-name/SKILL.md;type=text/markdown' \
   -F 'files[]=@./skill-name/script.py;filename=skill-name/script.py;type=text/plain'
 
-     ```
 
-**Zip upload:**
-     ```bash
+Zip upload:
+
+bash
+
 curl -X POST '<https://api.openai.com/v1/skills>' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./skill-name.zip;type=application/zip'
 
-     ```
-
-**File structure:**
+ **File structure:**
 
 skill-name/
 ├── SKILL.md          # Required: YAML frontmatter + Markdown
@@ -172,9 +215,9 @@ skill-name/
 └── scripts/          # Optional: Verification scripts
     └── verify.sh
 
-**Usage in Responses API:**
+Usage in Responses API:
 
-     ```python
+python
 
 from openai import OpenAI
 
@@ -196,10 +239,11 @@ response = client.responses.create(
     ],
     input="Your prompt here"
 )
-
-     ```
+```
 
 **Characteristics:**
+
+```text
 
 - Compatible with Agent Skills open standard
 - SKILL.md with YAML frontmatter required
@@ -210,20 +254,26 @@ response = client.responses.create(
 - Supports hosted (container) and local shell modes
 - Curated first-party skills available (e.g., "openai-spreadsheets")
 - Inline skills supported (base64 zip in request)
+```
 
 **Limits:**
+
+```text
 
 - Max zip upload: 50 MB
 - Max files per skill version: 500
 - Max uncompressed file size: 25 MB
 - Cannot use with Zero Data Retention enabled (hosted mode)
+```
 
 **When to use:**
+
+```text
 
 - For OpenAI Responses API with shell tool
 - When you need versioned skill management
 - For hosted or local execution environments
-
+```
 **Documentation:** <https://developers.openai.com/api/docs/guides/tools-skills>
 
 **Note on AGENTS.md:**
@@ -239,57 +289,70 @@ OpenAI previously used AGENTS.md files (static instructions loaded at startup) f
 
 **How to use:**
 
-1. **Standardize the Manifest:**
+```text
+
+1. Standardize the Manifest:
    - Extract YAML frontmatter from SKILL.md
    - Google uses `description` for intent routing (skill activation)
    - Key fields: `name`, `description`, `scope`
 
-2. **Convert to System Instructions:**
+2. Convert to System Instructions:
    - Take "Instructions" section from SKILL.md
    - Convert to structured plain-text block
    - In Vertex AI API: Place in `system_instruction` field of `GenerateContentRequest`
 
-3. **Register Execution Capabilities as Tools:**
+3. Register Execution Capabilities as Tools:
    - If skill requires code execution or data access → Register as Tool
    - Use Function Declarations (not generic "triggers")
    - In Google AI Studio: Add under "Tools" section
    - In Vertex AI: Use Extensions or Function Calling API
 
-4. **Optimize with Context Caching:**
+4. Optimize with Context Caching:
    - Cache large skill sets to reduce latency and token costs
    - Important for managing multiple skills simultaneously
+```
 
 **Architecture Pattern:**
+
+```text
 
 Anthropic SKILL.md
 ├── YAML Frontmatter → Google: Metadata + Intent Routing
 ├── Instructions → Google: System Instructions
 └── Execution Logic → Google: Tools/Function Declarations
-
-**Example Conversion:**
+```
+#### Example Conversion:
 
 **From Anthropic SKILL.md:**
 
-     ```yaml
+```text
+
+yaml
 
 ---
 name: data-analysis
 
 description: Analyze datasets and generate insights. Use for CSV, JSON data.
+```
 
 ---
 
-## Instructions
+**Instructions**
+
+```text
 
 When user provides data:
 
 1. Load and validate data
 2. Perform statistical analysis
 3. Generate visualization
+```
 
 **To Google Vertex AI:**
 
 **System Instruction (plain text):**
+
+```text
 
 Data Analysis Skill:
 
@@ -299,7 +362,7 @@ When user provides data in CSV or JSON format:
 2. Perform statistical analysis (mean, median, distribution)
 3. Generate appropriate visualizations
 
-**Function Declaration (Tool):**
+Function Declaration (Tool):
 
      ```python
 
@@ -316,7 +379,7 @@ When user provides data in CSV or JSON format:
     }
 }
 
-     ```
+```
 
 **Characteristics:**
 
@@ -331,14 +394,18 @@ When user provides data in CSV or JSON format:
 **Key Difference from Anthropic:**
 
 - **Anthropic:** Skills are self-contained units (instructions + execution together)
+- 
 - **Google:** Split model (instructions in System Instructions, execution in Tools/Functions)
 
 **When to use:**
+
+```text
 
 - For Google Cloud integrated workflows
 - When using Vertex AI or Google AI Studio
 - When you need tight integration with Google Cloud services
 - When managing large skill libraries (leverage Context Caching)
+```
 
 **Documentation:**
 
@@ -347,29 +414,40 @@ When user provides data in CSV or JSON format:
 - Function Calling: <https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/function-calling>
 - Open Standard Integration: <https://agentskills.io> (AAIF Skills Spec)
 
-**Pro Tip:** When converting from Anthropic Skills, remember that the "Instructions" (the how-to) move to Google's System Instructions, while the "Execution" (the doing) moves to Google's Tools/Extensions. You'll need to split your skill into these two components.
+**Pro Tip:**
+When converting from Anthropic Skills, remember that the "Instructions" (the how-to) move to Google's System Instructions,
+while the "Execution" (the doing) moves to Google's Tools/Extensions. You'll need to split your skill into these two components.
 
 ### Open Source Implementations
 
 **Implementation approach: Varies widely (no standard)**
+
 Always check documentation
-**Common Patterns**
-**Files used:**
+
+#### Common Patterns
+
+```text
+
+Files used:
 • README.md (instructions in project readme)
 • INSTRUCTIONS.md (dedicated instruction file)
 • .ai/ directory (custom conventions)
 • Custom filenames (project-specific)
-**Formats:**
+
+Formats:
 • Markdown (most common)
 • Plain text
 • JSON/YAML
 • Platform-specific formats
-**Characteristics:**
+
+Characteristics:
 • No standard (each framework different)
 • Often simpler than enterprise platforms
 • Community-driven conventions
 • Evolving rapidly
+```
 **When to use:** For open-source AI frameworks, custom implementations, or experimental setups.
+
 **Documentation:** Check specific framework documentation (LangChain, AutoGPT, etc.)
 
 ## The Terminology Landscape
@@ -387,28 +465,29 @@ Always check documentation
 
 **Good news:** OpenAI now supports the Agent Skills open standard, so skills are largely compatible!
 
-**Steps:**
+```text
+
+Steps:
 
 1. **No changes needed to file structure:**
    - Keep YAML frontmatter (OpenAI requires it)
    - Keep Markdown body (same format)
    - Keep references/ and scripts/ directories if present
 
-2. **Upload to OpenAI via API:**
-
-## Zip your skill directory
+2. Upload to OpenAI via API:
+    - Zip your skill directory
 
    zip -r skill-name.zip skill-name/
 
-## Upload to OpenAI
+    - Upload to OpenAI
 
      curl -X POST '<https://api.openai.com/v1/skills>' \
      -H "Authorization: Bearer $OPENAI_API_KEY" \
      -F 'files=@./skill-name.zip;type=application/zip'
 
-3. **Attach to shell environment in Responses API:**
+3. Attach to shell environment in Responses API:
 
-     ```python
+     python
 
    response = client.responses.create(
        model="gpt-5.2",
@@ -424,7 +503,9 @@ Always check documentation
 
      ```
 
-**Compatibility notes:**
+#### Compatibility notes:
+
+```text
 
 - ✅ YAML frontmatter: Compatible (OpenAI requires it)
 - ✅ Semantic tags: Compatible (work in Markdown body)
@@ -432,21 +513,29 @@ Always check documentation
 - ✅ Multi-file structure: Compatible (references/, scripts/)
 - ⚠️ Activation mechanism: Slightly different (Anthropic auto-activates, OpenAI requires explicit shell tool attachment)
 - ⚠️ Platform-specific features: Some Anthropic-specific patterns may need testing
+```
 
 **What you gain:**
+
+```text
 
 - Explicit versioning API
 - Hosted and local execution modes
 - Integration with OpenAI's shell tool
+```
 
 **What you lose:**
 
+```text
 - Anthropic's web interface upload (must use API)
 - Direct activation in chat (requires shell tool attachment)
+```
 
-### Legacy: Anthropic SKILL.md → OpenAI AGENTS.md (Static Instructions)
+#### Legacy: Anthropic SKILL.md → OpenAI AGENTS.md (Static Instructions)
 
 If you need to convert to OpenAI's older AGENTS.md format (for Codex project-specific rules):
+
+```text
 
 **Steps:**
 
@@ -462,9 +551,12 @@ If you need to convert to OpenAI's older AGENTS.md format (for Codex project-spe
      Include `<unload_condition>` for when to stop
 
 6. Place in skills directory (or zip for upload)
-Benefit: Gain progressive disclosure (only loads when needed), reducing context overhead.
+```
+**Benefit:** Gain progressive disclosure (only loads when needed), reducing context overhead.
 
 ### From Anthropic SKILL.md → Google Vertex AI (Detailed)
+
+```text
 
 **The Split-Model Approach:**
 
@@ -472,12 +564,15 @@ Google requires you to split your skill into two parts:
 
 1. **System Instructions** (the "how-to" - decision logic, patterns)
 2. **Tools/Functions** (the "doing" - executable capabilities)
+```
 
 **Step-by-step conversion:**
 
-**1. Extract and Standardize Manifest:**
+```text
 
-     ```yaml
+1. Extract and Standardize Manifest:
+
+yaml
 
 From your SKILL.md frontmatter
 
@@ -496,19 +591,17 @@ scope: postgresql, mysql
 
 ---
 
-     ```
-
 Google uses:
 
 - `name` → Function/Tool identifier
 - `description` → Intent routing (when to activate)
 - `scope` → Context boundaries
 
-**2. Convert Instructions to System Instructions:**
+2. Convert Instructions to System Instructions:
 
 **From SKILL.md body:**
 
-     ```markdown
+markdown
 
 ## Core Decision Logic
 
@@ -539,15 +632,14 @@ Best Practice Pattern:
 - Verify improvement after changes
 - Check for performance regressions in related queries
 
-**3. Register Execution as Tool/Function:**
+3. Register Execution as Tool/Function:
 
-**If your skill executes actions (not just provides guidance):**
+If your skill executes actions (not just provides guidance):
 
 **Via Vertex AI Function Calling API:**
 
-     ```
+python
 
-     ```python
 function_declaration = {
     "name": "optimize_sql_query",
     "description": "Optimize slow SQL queries by analyzing execution plans and applying targeted fixes",
@@ -572,16 +664,15 @@ function_declaration = {
     }
 }
 
-     ```
-
-**Via Google AI Studio (UI):**
+    
+Via Google AI Studio (UI):
 
 - Go to "Tools" section
 - Add new Function
 - Fill in: Name, Description, Parameters
 - Connect to your execution backend
 
-**4. Implement Context Caching (for multiple skills):**
+4. Implement Context Caching (for multiple skills):
 
 **When managing 5+ skills:**
 
@@ -603,7 +694,7 @@ cached_content = aiplatform.CachedContent.create(
 
 ## Use cached content in requests
 
-     ```python
+python
 
 response = model.generate_content(
     prompt="Optimize this query: SELECT * FROM users WHERE status = 'active'",
@@ -641,52 +732,65 @@ Google uses the `description` field to determine when to activate skills. Test w
 - Need Function Calling for real execution
 - Managing large skill libraries (leverage Context Caching)
 - Want tight integration with Vertex AI features
+```
 
 ## Universal Conversion Tips
 
-When converting between platforms:
+**When converting between platforms:**
+
+```text
 
 1. Preserve core logic: Decision criteria, patterns, examples translate across platforms
 2. Adapt metadata: Each platform has different frontmatter/config requirements
 3. Consider activation: Some platforms auto-activate (Anthropic), others load all at once (OpenAI)
 4. Test thoroughly: Platform differences can affect behavior
 5. Document origin: Note if skill was converted (aids future updates)
-
+```
 **Best practice:** Maintain skills in platform-agnostic format (Markdown body), then adapt metadata/structure for each platform.
 
 ## Anthropic Resources
 
-Official Repositories
+### Official Repositories
 
 1. Anthropic Skills Repository
 URL: <https://github.com/anthropics/skills>
-**What it contains:**
+
+```text
+
+What it contains:
 • Anthropic's official implementation of Skills for Claude
 • Example skills demonstrating best practices
 • Reference implementations
-**When to use:**
+
+When to use:
 • Study well-crafted skill examples
 • Understand Anthropic's approach to skill design
 • Find inspiration for your own skills
+ ```       
 **Note:** For information about the Agent Skills open standard, see agentskills.io
 
 2. Skill Creator Skill
 URL: <https://github.com/anthropics/skills/tree/main/skills/skill-creator>
+
 **What it contains:**
 • A skill that helps create other skills!
 • Automated best practice checking
 • Guidance on effective skill design
+
 **When to use:**
 • Creating a new skill from scratch
 • Updating an existing skill
 • Want automated validation of skill quality
 • Need guidance on skill structure
-**How it works:** Activate the skill-creator skill, describe what you want your skill to do, and it guides you through creation with best practices built in.
 
-Official Documentation
+**How it works:** Activate the skill-creator skill, describe what you want your skill to do,
+and it guides you through creation with best practices built in.
+
+### Official Documentation
 
 1. Claude Support: Skills Guide
 URL: <https://support.claude.com/en/articles/12580051-teach-claude-your-way-of-working-using-skills>
+
 **What it covers:**
 • How to create skills
 • How to upload skills to Claude.ai
@@ -696,6 +800,7 @@ URL: <https://support.claude.com/en/articles/12580051-teach-claude-your-way-of-w
 
 2. Anthropic Blog: Equipping Agents for the Real World
 URL: <https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills>
+
 **What it covers:**
 • The vision behind Agent Skills
 • Why skills matter for AI agents
@@ -703,8 +808,9 @@ URL: <https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-ski
 • The open standard approach
 **Audience:** Anyone interested in the "why" behind Skills
 
-3. Claude API Documentation: Agent Skills
+4. Claude API Documentation: Agent Skills
 URL: <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview>
+
 **What it covers:**
 • Using skills via the Claude API
 • Skills parameter format
@@ -712,10 +818,11 @@ URL: <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 • Integration patterns
 **Audience:** Developers integrating Claude API
 
-## Agent Skills Open Standard
+### Agent Skills Open Standard
 
 Specification Website
 URL: <https://agentskills.io/specification>
+
 **What it contains:**
 • Complete open standard specification
 • Platform-agnostic skill format
@@ -728,11 +835,11 @@ URL: <https://agentskills.io/specification>
 • Community-driven evolution
 **When to reference:** For precise technical details about the skill specification format.
 
-**Platform Evolution Note**
+## Platform Evolution Note
 Important reminder: AI platforms are evolving rapidly, especially around agent capabilities and knowledge integration.
 
-**Recent Development (February 2026):**
-This prediction came true! OpenAI adopted the Agent Skills open standard, implementing:
+### Recent Development (February 2026):
+OpenAI adopted the Agent Skills open standard, implementing:
 
 - SKILL.md with YAML frontmatter
 - Progressive disclosure via system prompt injection
@@ -740,17 +847,20 @@ This prediction came true! OpenAI adopted the Agent Skills open standard, implem
 - Versioned skill management via API
 - Multi-file skill support (references/, scripts/)
 
-This demonstrates the momentum behind the open standard and validates the portability of skills built following these principles.
+**This demonstrates the momentum behind the open standard and validates the portability of skills built following these principles.**
 
 **What this means for Skills:**
-Anthropic's Influence- The ease-of-use and effectiveness of Anthropic's Skills implementation is likely to influence how other platforms approach this concept. Features like:
+
+Anthropic's Influence- The ease-of-use and effectiveness of Anthropic's Skills implementation is likely
+to influence how other platforms approach this concept.
+Features like:
 • Progressive disclosure
 • Metadata-driven activation
 • Structured semantic tags
 • User Intent Change detection
 ...may appear in other platforms' implementations over time.
 
-**Checking for Updates**
+### Checking for Updates**
 Always consult official documentation:
 
 • Anthropic:
@@ -767,7 +877,7 @@ What to watch for:
 • Progressive disclosure support in other platforms
 • Interoperability improvements
 
-This Curriculum's Approach
+### This Curriculum's Approach
 This curriculum teaches Anthropic's implementation in depth because:
 
 1. It's the most mature and well-documented
@@ -775,9 +885,10 @@ This curriculum teaches Anthropic's implementation in depth because:
 3. The principles transfer to other platforms
 4. It represents best practices for agent knowledge design
 
-Adapting to other platforms: Use the principles and patterns taught here, then adjust metadata and structure to match your target platform's requirements.
+Adapting to other platforms: Use the principles and patterns taught here,
+then adjust metadata and structure to match your target platform's requirements.
 
-Quick Reference: When to Use Which Platform
+## Quick Reference: When to Use Which Platform
 
 ![When to use which plaform chart](../assets/Quick_Refernce_When_to_use-which_platform.png)
 
@@ -824,3 +935,4 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
