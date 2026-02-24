@@ -1214,9 +1214,9 @@ Stop using this skill when:
 This prevents attentional residue from active skill bleeding into new context.
 ```
 
-#### Unload Conditions by Complexity
+### Unload Conditions by Complexity
 
-**Class A (Simple):**
+#### **Class A (Simple):**
 
 ```text
 
@@ -1244,7 +1244,7 @@ User says "stop editing" or "that's enough"
 </unload_condition>
 ```
 
-**Class B (Intermediate):**
+#### **Class B (Intermediate):**
 
 ```text
 
@@ -1281,7 +1281,7 @@ Stop using this skill when:
 </unload_condition>
 ```
 
-**Class C (Advanced):**
+#### **Class C (Advanced):**
 
 ```text
 
@@ -1842,7 +1842,7 @@ See tests/ directory for full test suite.
 </verification>
 ```
 
-**Class C:** Automated Verification Required
+#### **Class C:** Automated Verification Required
 
 ```text
 
@@ -2053,7 +2053,6 @@ See references/VERIFICATION.md for procedures.
 
 ![How All 8 Components Work Together](../assets/Section_1.5_Components_List)
 
-
 ### Component Interdependencies
 
 **Metadata → Everything**
@@ -2077,9 +2076,9 @@ Criteria define what verification must check
 **Self-Verification → Unload Conditions**
 Verification failure can trigger unload
 
-### Minimal vs. Complete Implementation
+## Minimal vs. Complete Implementation
 
-#### Minimal Skill (Class A)
+### **Minimal Skill (Class A)**
 
 ```text
 
@@ -2127,7 +2126,7 @@ Output: "A, B, and C"
 ```
 **Total:** ~30-40 lines, covers all 8 components minimally
 
-#### Intermediate Skill (Class B)
+### **Intermediate Skill (Class B)**
 
 ```text
 
@@ -2158,7 +2157,7 @@ analyzing-marketing-campaigns/
 • Covers complex workflows but manageable size
 ```
 
-#### Complete Skill (Class C)
+### **Complete Skill (Class C)**
 
 ```text
 
@@ -2186,10 +2185,9 @@ optimizing-sql-queries/
 ├── test_suite.py # Regression testing
 └── analyze_explain.py # EXPLAIN parser
 ```
-
 **Total:** 6,000+ lines across multiple files, all 8 components deeply implemented
 
-### Key TakeawaysThe 8 Core Components
+## Key Takeaways: The 8 Core Components
 
 ```text
 
@@ -2255,6 +2253,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
