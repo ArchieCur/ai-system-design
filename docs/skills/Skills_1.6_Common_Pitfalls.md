@@ -1,9 +1,8 @@
 # Skills_1.6_Common_Pitfalls
 
-For: All skill creators
-
-Prerequisites: Sections 1.1-1.5 (foundation through components)
-What you'll learn: The most common mistakes in skill creation and how to avoid them
+**For:** All skill creators
+**Prerequisites:** Sections 1.1-1.5 (foundation through components)
+**What you'll learn:** The most common mistakes in skill creation and how to avoid them
 
 ## Introduction
 
@@ -11,19 +10,21 @@ You've learned the theory (Sections 1.1-1.4) and mastered the components (Sectio
 
 This section covers the 10 most common pitfalls in skill creation, drawn from real-world experience and Anthropic's best practices. Each pitfall includes:
 
+```text
+
 • What it looks like ( example)
 • Why it's a problem (consequences)
 • How to avoid it ( prevention)
 • How to fix it ( remediation)
 Learning from mistakes is faster than learning from theory. Let's dive in.
+```
 
-## Pitfall 1: Scope Creep
+### **Pitfall 1: Scope Creep**
 
-What It Looks Like
-
+**What It Looks Like**
 **Skill that does too much:**
 
----
+```Text
 
 name: managing-databases
 
@@ -32,10 +33,11 @@ Handle all database operations including schema design,
 query optimization, data migration, backup/restore,
 user management, performance tuning, security audits,
 and incident response.
-
----
+```
 
 **The skill tries to be:**
+
+```text
 
 • Schema designer
 • Query optimizer
@@ -44,21 +46,24 @@ and incident response.
 • Security auditor
 • Incident responder
 All in one!
+```
 
 ### Why It’s a Problem
 
-1. Activation Confusion- Model doesn't know WHEN to activate:
-• User says "optimize this query" → Should managing-databases activate?
-• Or is query optimization separate?
-• Unclear boundaries = unreliable activation
-2. Unmaintainable Size- Covering 6 different domains in one skill means:
-• Thousands of lines of instructions
-• Impossible to maintain
-• Hard to test
-• Difficult to improve
-3. Decision Logic Chaos
+```text
 
-```xml
+1. Activation Confusion- Model doesn't know WHEN to activate:
+ • User says "optimize this query" → Should managing-databases activate?
+ • Or is query optimization separate?
+ • Unclear boundaries = unreliable activation
+
+2. Unmaintainable Size- Covering 6 different domains in one skill means:
+ • Thousands of lines of instructions
+ • Impossible to maintain
+ • Hard to test
+ • Difficult to improve
+
+3. Decision Logic Chaos
 
 <decision_criteria>
 IF user asks about schema design:
@@ -70,16 +75,16 @@ ELSE IF user asks about migrations:
 ELSE IF user asks about backups:
 [100 lines of backup logic]
 </decision_criteria>
-```
-
 Unreadable mess!
+
 4. Unclear Success Criteria
 What does success mean for a skill that does 6 things?
-• Schema designed correctly?
-• Query optimized?
-• Migration successful?
-• All of the above?
+ • Schema designed correctly?
+ • Query optimized?
+ • Migration successful?
+ • All of the above?
 Impossible to verify!
+```
 
 ### How to Avoid it
 
@@ -91,27 +96,34 @@ Each skill should do ONE thing well.
 name: managing-databases # Too broad!
 
 **Create separate skills:**
+
+```text
+
 name: designing-database-schemas
 name: optimizing-sql-queries
 name: managing-database-migrations
 name: performing-database-backups
-
+```
 Each focused, maintainable, verifiable!
 
-The "One Sentence Test"
+#### The "One Sentence Test"
+
 Can you describe the skill in one sentence without using "and"?
+
+```text
 
 *Fails test:*
 "This skill designs schemas AND optimizes queries AND manages migrations."
 
 *Passes test:*
 "This skill optimizes slow SQL queries using systematic analysis."
+```
 
 #### Exclusions in Scope Definition
 
-```xml
+Use `<exclusion>` to clarify boundaries:
 
-Use <exclusion> to clarify boundaries:
+```text
 
 <exclusion>
 Do NOT use this skill for:
@@ -122,12 +134,13 @@ Do NOT use this skill for:
 - Security audits → Use auditing-database-security
 </exclusion>
 ```
-
-Clear boundaries = reliable activation!
+No clear boundaries = No reliable activation!
 
 #### How to Fix It
 
 **If your skill suffers from scope creep:**
+
+```text
 
 Step 1: Identify Distinct Responsibilities
 
@@ -153,8 +166,6 @@ Create separate skill for each responsibility:
 
 Step 3: Add Cross-References
 
-```xml
-
 In each skill's <exclusion>:
 
 <exclusion>
@@ -165,28 +176,32 @@ Do NOT use optimizing-sql-queries for:
 </exclusion>
 ```
 
-Models can now activate the RIGHT skill for each task!
+Models can now activate the **RIGHT** skill for each task!
 
-## Pitfall 2: Vague Activation Criteria
+### Pitfall 2: Vague Activation Criteria
 
-What It Looks Like
+**What It Looks Like**
+**Unclear description:**
 
-Unclear description:
+```text
 
 name: helping-with-code
 description: Help with coding tasks
+```
 
----
+#### Questions this raises
 
-### Questions this raises
+```text
 
 • What languages? (Python? JavaScript? All languages?)
 • What kind of help? (Writing? Reviewing? Debugging? Optimizing?)
 • When to activate? (Always? Only for certain tasks?)
-
+```
 Model has no idea when to use this!
 
-### Why It's a Problem
+#### Why It's a Problem
+
+```text
 
 1. Won't Activate When Needed
 User: "Can you review this Python function for bugs?"
@@ -195,8 +210,8 @@ Model thinks:
 • But is code review "helping"?
 • Or is it something else?
 • Uncertain → doesn't activate
-
 Skill sits idle when it should be working!
+
 2. Activates When Shouldn't
 User: "Help me understand how this algorithm works"
 Model thinks:
@@ -204,6 +219,7 @@ Model thinks:
 • helping-with-code says "help with coding tasks"
 • Activates when explanation skill would be better!
 Wrong skill for the task!
+
 3. Competes with Other Skills
 If you have:
 • helping-with-code (vague)
@@ -211,20 +227,24 @@ If you have:
 • debugging-javascript (specific)
 Which should activate for "help debug my Python"?
 Vague descriptions create activation conflicts!
+```
+#### How to Avoid It
 
-### How to Avoid It
-
-Specific WHAT + WHEN + KEYWORDS
-
+Specific **WHAT + WHEN + KEYWORDS**
 **Pattern:**
+
+```text
 
 description: >
 
 [WHAT] Specific capability description
 [WHEN] Clear trigger conditions
 [KEYWORDS] Terms users might say
+```
 
 #### Vague Activation Example
+
+```text
 
 name: reviewing-python-code
 description: >
@@ -233,16 +253,21 @@ performance issues using systematic analysis. Use when user
 provides Python code and requests review, audit, or bug detection.
 
 Keywords: review, audit, bug, security, vulnerability, Python.
+```
 
 **Clear signals:**
+
+```text
 
 • WHAT: Review Python code for specific issues
 • WHEN: User provides code AND requests review
 • KEYWORDS: review, audit, bug, security, vulnerability
-
-Include User Language
+```
+**Include User Language**
 
 **Think about how users actually ask for this:**
+
+```text
 
 Users might say:
 • "Review this Python code"
@@ -256,10 +281,13 @@ description: >
 
 ... Keywords: review, audit, bug, check, security,
 vulnerability, find issues, code quality.
+```
 
 #### Test Activation Reliability
 
 **Try these scenarios:**
+
+```text
 
 Should activate:
 
@@ -273,23 +301,25 @@ Should NOT activate:
 • "Write a Python function to..." → (writing, not review)
 • "Review this JavaScript code" → (wrong language)
 If activation unclear → refine description!
+```
 
 #### How to Fix It Skill Activation Problems
 
 If your skill has vague activation criteria:
 
-**Step 1: Analyze Failed Activations**
+```text
+
+Step 1: Analyze Failed Activations
 When did skill NOT activate when it should have?
 • User said what?
 • What keywords were present?
 • Why didn't model activate?
 
-**Step 2: Add Missing Keywords**
-**Before**
-
+Step 2: Add Missing Keywords
+-Before-
 description: Help with coding tasks
 
-**After**
+-After-
 description: >
 Review Python code for bugs, security vulnerabilities, and
 performance issues. Use when user requests code review, audit,
@@ -297,22 +327,22 @@ bug detection, or quality analysis for Python files.
 Keywords: review, audit, bug, security, vulnerability,
 quality, analyze, check, Python, .py file.
 
-**Step 3: Test and Iterate**
+Step 3: Test and Iterate
 Try activation scenarios:
 
 • Does it activate when it should?
 • Does it stay inactive when it shouldn't?
 Refine until activation is reliable!
+```
 
-## Pitfall 3: Missing or Inadequate Unload Conditions
+### Pitfall 3: Missing or Inadequate Unload Conditions
 
-What It Looks Like
+**What It Looks Like**
+**No unload conditions:**
 
-No unload conditions:
+```text
 
-```xml
-
-# Optimizing SQL Queries
+Optimizing SQL Queries
 
 [Skill content...]
 
@@ -324,10 +354,11 @@ Or vague unload conditions:
 Stop when done.
 </unload_condition>
 ```
+**When done" = not specific!**
 
-"When done" = not specific!
+#### Why Not Unloading Skills is a Problem
 
-### Why Not Unloading Skills is a Problem
+```text
 
 1. Attentional Residue
 Without clear unload conditions:
@@ -338,6 +369,7 @@ User: "Actually, never mind. Can you help me with Python instead?"
 Skill: still active, thinking about SQL optimization while user wants Python help
 Result: Degraded performance on Python task because SQL context still present!
 This is attentional residue
+
 2. Skill Never Deactivates
 Without clear exit signals:
 • Skill stays active for entire conversation
@@ -347,13 +379,14 @@ Without clear exit signals:
 The #1 unload priority is missing!
 User changes direction → Skill should immediately deactivate
 Without this: Skill persists when user has moved on!
+```
 
 ### How to Avoid Unload Condition Problems
 
 **ALWAYS Include Unload Conditions**
-Every skill MUST have:
+**Every skill MUST have:**
 
-```xml
+```text
 
 <unload_condition>
 Stop using this skill when:
@@ -372,15 +405,14 @@ Stop using this skill when:
 
 </unload_condition>
 ```
+This is **NOT** optional!
+User Intent Change **MUST** Be First 
 
-This is NOT optional!
-
-User Intent Change MUST Be First
-
-```xml
+```text
 
 <unload_condition>
 Stop using this skill when:
+
 **User Intent Change (CHECK FIRST):**
 1. User says "Actually...", "Never mind...", "Wait...", "Instead..."
 2. User asks unrelated question (topic shift to different domain)
@@ -389,34 +421,39 @@ Stop using this skill when:
 [Other conditions follow...]
 </unload_condition>
 ```
-
 This prevents attentional residue!
 
 #### Specific Task Completion Signals
 
 **Vague:**
+```text
+
 Task Complete:
 
 - Query is faster
 - Done
+```
 
 **Specific:**
+
+```text
+
 Task Complete:
 
 - Query execution time reduced by >50%
 - EXPLAIN ANALYZE shows index usage (not Seq Scan)
 - Regression tests pass (no queries got slower)
 - User confirms "This meets requirements" or similar
-
+```
 Observable, verifiable completion!
 
 #### How to Fix- Add Unload Consitions
 
 If your skill lacks unload conditions:
 
-Step 1: Add the Mandatory Template
+```text
 
-```xml
+Step 1: Add the Mandatory Template
 
 <unload_condition>
 Stop using this skill when:
@@ -438,7 +475,6 @@ Stop using this skill when:
 User says "stop", "that's enough", "cancel"
 
 </unload_condition>
-```
 
 Step 2: Define Task-Specific Completion
 For YOUR skill, what does "complete" mean?
@@ -469,24 +505,28 @@ Scenarios to test:
 **Should stay active:**
 • Task in progress, user asks clarifying question →
 • Intermediate step complete, final step remains →
-
-## Pitfall 4: Over-Complicated Decision Logic
-
-What It Looks Like
-**Unreadable nested conditions:**
-
-```xml
-
-<decision_criteria>
-IF query slow AND table large AND index missing THEN add index ELSE IF query slow AND table small AND query complex THEN rewrite query ELSE IF query slow AND joins present THEN
-optimize joins UNLESS joins already optimized THEN check WHERE clause UNLESS WHERE
-clause already optimal THEN consider materialized view BUT ONLY IF update frequency low AND read frequency high AND storage not constrained...
-</decision_criteria>
 ```
 
+### Pitfall 4: Over-Complicated Decision Logic
+
+**What It Looks Like:**
+**Unreadable nested conditions:**
+
+```text
+
+<decision_criteria>
+IF query slow AND table large AND index missing THEN add index ELSE IF query slow
+AND table small AND query complex THEN rewrite query ELSE IF query slow AND joins present THEN
+optimize joins UNLESS joins already optimized THEN check WHERE clause UNLESS WHERE
+clause already optimal THEN consider materialized view BUT ONLY IF update frequency low
+AND read frequency high AND storage not constrained...
+</decision_criteria>
+```
 One massive run-on sentence with 10+ nested conditions!
 
-### Why Overcomplicating Skills is a Problem
+#### Why Overcomplicating Skills is a Problem
+
+```text
 
 1. Impossible to Maintain
 Try adding a new condition:
@@ -494,27 +534,31 @@ Try adding a new condition:
 • Does it conflict with existing conditions?
 • How do you test it?
 Unmaintainable complexity!
+
 2. Hard to Verify
 Which path will execute for given input?
 • 10+ nested conditions
 • Multiple UNLESS clauses
 • Hard to trace logic
 Can't verify correctness!
+
 3. Models Get Confused
 Even AI models struggle with deeply nested logic:
 • Lose track of which branch they're in
 • Miss edge cases
 • Execute wrong path
 Unreliable execution!
+```
 
-### How to Avoid Overcomplicating Skills
+#### How to Avoid Overcomplicating Skills
 
-Break Into Phases
-Instead of one giant condition:
+**Break Into Phases**
+**Instead of one giant condition:**
 
-```xml
+```text
 
 <decision_criteria>
+
 **Phase 1: Gather Information**
 IF user provides EXPLAIN output:
  → Analyze directly
@@ -536,19 +580,21 @@ Based on bottleneck identified:
 - ORDER BY → Add index to sort columns
 </decision_criteria>
 ```
-
 Clear phases, simple conditions within each!
 
-**Maximum 3 Levels Deep**
-Rule of thumb: If nesting goes beyond 3 levels, refactor!
+#### Maximum 3 Levels Deep
 
-**Too deep (4+ levels):**
+**Rule of thumb: If nesting goes beyond 3 levels, refactor!**
+
+```text
+
+Too deep (4+ levels):
 IF A:
     IF B:
         IF C:
             IF D: ← 4 levels, too deep!
 
-**Better (2-3 levels):**
+Better (2-3 levels):
 
 Phase 1: Check A
 IF A → Handle A case
@@ -558,16 +604,18 @@ IF B → Handle B case
 
 Phase 3: Check C
 IF C → Handle C case
+```
 
 ### Use Decision Tables for Complex Logic
 
+![Decison Table for Complex Logic](../assets/Section_1.6_Decision_Tree_Complex_Logic.png)
+
 **For multiple interacting conditions:**
 
-```xml
+```text
 
 <decision_criteria>
 
-**Decision table:**
 ___________________________________________________
 | Table | Has   | Query   |       Action           |
 | Size  | Index | Type    |                        |
@@ -586,7 +634,6 @@ ___________________________________________________
 4. Apply action from table above
 </decision_criteria>
 ```
-
 Clear, testable, maintainable!
 
 ### How to Fix It- Decision Logic <decision_criteria>
@@ -1680,3 +1727,4 @@ To master advanced patterns:
 END OF SECTION 1.6
 Document Version: 1.0.0
 Last Updated: 2026-02-10
+
