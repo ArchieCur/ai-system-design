@@ -2051,7 +2051,7 @@ See references/VERIFICATION.md for procedures.
 **The Complete Skill Architecture**
 **All 8 components work together to create a complete, effective skill:**
 
-![How All 8 Components Work Together](../assets/Section_1.5_Components_List)
+![How All 8 Components Work Together](../assets/Section_1.5_Components_List.png)
 
 ### Component Interdependencies
 
@@ -2253,24 +2253,3 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
