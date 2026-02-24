@@ -1347,7 +1347,7 @@ Stop using this skill when:
 ```
 **Why include failure modes:** Prevents infinite loops, provides graceful degradation
 
-### Commmon Mistakes
+### Common Mistakes
 
 #### Mistake 1: No User Intent Change Priority
 
@@ -1643,30 +1643,22 @@ bash
 
 ./scripts/verify.sh <query_file>
 
-```
-
 **What it checks:**
-
-```text
 
  1. Execution time improvement (>50% required)
  2. EXPLAIN output shows index usage
  3. Query plan cost reduction
  4. No regression in related queries (test suite)
  5. Resource usage acceptable (memory, I/O)
-```
-**Exit codes:**
 
-```text
+**Exit codes:**
 
 - 0: All checks passed ✓
 - 1: Verification failed (details in output)
 - 2: Prerequisites missing (e.g., database unavailable)
-```
 
 **Output format:**
 
-```text
  Verifying optimization for: orders_query.sql Baseline: 2300ms Current: 50ms Improvement: 4500% (46x faster)
 ✓ Performance improved by >50% ✓ Index usage confirmed ✓ No regressions detected ✓ All
 
@@ -1785,16 +1777,16 @@ If all properties hold, optimization is verified correct.
 </verification>
 ```
 
-#### Verification by Complexity Level
+### Verification by Complexity Level
 
-**Class A:** User Validation Acceptable
+
+#### **Class A:** User Validation Acceptable
 
 ```text
 
 <verification>
 
-
-### Review the document to confirm:
+Review the document to confirm:
 
 ✓ All lists with 3+ items have Oxford comma
 ✓ Lists with 2 items have no comma
@@ -1805,7 +1797,7 @@ User should review and confirm formatting is correct.
 ```
 Simple skills can rely on user validation.
 
-**Class B:** Tests Helpful
+#### **Class B:** Tests Helpful
 
 ```text
 
@@ -2241,6 +2233,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
