@@ -399,16 +399,13 @@ For Deep Dives:
 
 ## Scaling Guide: Class A, B and C
 
-```xml
-
-# Scaling Guide: Class A, B, and C
-
-## How to Adapt This Template by Complexity
+**How to Adapt This Template by Complexity**
 
 ### Class A: Minimal Skill (30-50 lines)
 
 **What to keep:**
 
+```text
 - YAML frontmatter (required fields only)
 - Purpose statement
 - One `<critical>` section (exclusions)
@@ -416,23 +413,30 @@ For Deep Dives:
 - 1-2 `<example>` blocks (basic cases)
 - `<unload_condition>` (mandatory, User Intent Change first)
 - `<success_criteria>` (brief, 3-5 checkboxes)
+```
 
 **What to simplify:**
+
+```text
 - Prerequisites: One-liner if any
 - Patterns: Skip `<good_pattern>` and `<bad_pattern>` if obvious
 - Verification: Use "Expected Output Method" (simple test cases)
 - Examples: 1-2 is sufficient
+```
 
 **What to skip:**
+
+```text
 - Optional metadata fields
 - `<fallback>` section
 - `<note>` and `<context>` sections
 - Separate verification scripts
 - Multiple decision phases
+```
 
-**Example Class A structure:**
+### Example Class A structure:**
 
-```markdown
+``text
 
 ---
 name: enforcing-oxford-comma
@@ -472,11 +476,14 @@ Output: "A, B, and C"
 ✓ 2-item lists unchanged
 ✓ User confirms formatting correct
 </success_criteria>
+```
+**Total: ~40 lines**
 
-Total: ~40 lines
+### Class B: Intermediate Skill (200-400 lines)
 
-Class B: Intermediate Skill (200-400 lines)
-What to keep:
+**What to keep:**
+
+```text
 • Everything from Class A
 • Optional metadata fields (version, author, category)
 • <prerequisite> section (detailed)
@@ -487,24 +494,37 @@ What to keep:
 • <unload_condition> with failure modes
 • Manual verification checklist
 • <note> section (related skills, references)
+```
 
-What to expand:
+**What to expand:**
+
+```text
 • Decision logic: 2-3 phases with nested conditions
 • Examples: Show simple, common, and edge cases
 • Verification: Manual checklist (no automated scripts yet)
 • Patterns: Include 1-2 good patterns and 1-2 anti-patterns
+```
 
-What to add:
+**What to add:**
+
+```text
+
 • 1-2 reference files in references/ directory (optional)
     references/EXAMPLES.md (~200 lines of detailed examples)
     references/budget_rules.md (domain-specific reference)
 
-What to skip (still):
+**What to skip (still):**
+
+```text
+
 • Extensive automated verification scripts
 • Deep context and rationale (save for Class C)
 • Multiple fallback levels (one level is fine)
+```
 
-Example Class B file structure:
+### Example Class B file structure:
+
+```text
 
 analyzing-marketing-campaigns/
 ├── SKILL.md # 250-300 lines
@@ -517,12 +537,15 @@ analyzing-marketing-campaigns/
 └── references/ (optional)
 ├── budget_reallocation_rules.md # 150 lines
 └── EXAMPLES.md # 200 lines
+```
+**Total: 550-650 lines across 1-3 files**
 
-Total: 550-650 lines across 1-3 files
+### Class C: Complete Skill (1,000-6,000+ lines)
 
-Class C: Complete Skill (1,000-6,000+ lines)
+**What to include:**
 
-What to include:
+```text
+
 • Everything from Class A and B
 • Extensive <decision_criteria> (3-4 phases, nested logic)
 • Comprehensive examples (5-10+ across multiple scenarios)
@@ -532,15 +555,21 @@ What to include:
 • Extensive <context> and <rationale> sections
 • Reference files in references/ directory
 • Verification scripts in scripts/ directory
+```
 
-What to expand:
+**What to expand:**
+
+```text
 • Decision logic: 3-4 phases with complex nested conditions
 • Examples: Before/after with metrics, production contexts
 • Patterns: Multiple good patterns with rationale, 3+ anti-patterns
 • Verification: Automated scripts + manual fallback
 • Context: Background information, trade-offs, design decisions
+```
 
-Required file structure:
+**Required file structure:**
+
+```text
 
 optimizing-sql-queries/
 
@@ -562,87 +591,97 @@ optimizing-sql-queries/
 ├── verify.sh # Automated verification
 ├── test_suite.py # Regression testing
 └── analyze_explain.py # Domain-specific tooling
+```
+**Total: 6,000+ lines across multiple files**
 
-Total: 6,000+ lines across multiple files
+### Key principle for Class C: 
 
-Key principle for Class C: Main SKILL.md stays manageable (400-500 lines) by referencing extensive content in references/ and providing automation in scripts/.
+Main SKILL.md stays manageable (400-500 lines) by referencing extensive content
+in references/ and providing automation in scripts/.
 
-Validation Checklist
+## Validation Checklist
 
 Before deploying your skill, verify all items:
 
-Core Requirements
+**Core Requirements**
+
+```text
+
 Spec Compliance:
-• [ ] Required frontmatter fields present (name, description)
-• [ ] Name follows constraints (lowercase, hyphens, 1-64 chars, matches directory)
-• [ ] Description includes WHAT + WHEN + KEYWORDS
-• [ ] Name uses gerund form (verb + -ing, e.g., optimizing-sql-queries)
+
+[ ] Required frontmatter fields present (name, description)
+[ ] Name follows constraints (lowercase, hyphens, 1-64 chars, matches directory)
+[ ] Description includes WHAT + WHEN + KEYWORDS
+[ ] Name uses gerund form (verb + -ing, e.g., optimizing-sql-queries)
 
 User Intent Change Detection:
 
-• [ ] <critical> section mentions User Intent Change monitoring
-• [ ] <unload_condition> lists User Intent Change FIRST (highest priority)
-• [ ] Intent change signals are specific and detectable
-• [ ] Action upon detection is clear (stop immediately, acknowledge, offer help)
-• [ ] No other conditions checked before User Intent Change
+[ ] <critical> section mentions User Intent Change monitoring
+[ ] <unload_condition> lists User Intent Change FIRST (highest priority)
+[ ] Intent change signals are specific and detectable
+[ ] Action upon detection is clear (stop immediately, acknowledge, offer help)
+[ ] No other conditions checked before User Intent Change
 
 8 Core Components
 
-• [ ] 1. Metadata: YAML frontmatter with required fields
-• [ ] 2. Purpose: Clear one-sentence purpose statement
-• [ ] 3. Scope: <critical> section defines exclusions and wrong use cases
-• [ ] 4. Decision Logic: <decision_criteria> with IF-THEN patterns
-• [ ] 5. Examples: Minimum 2-3 <example> blocks (simple, common, edge)
-• [ ] 6. Unload Conditions: <unload_condition> with User Intent Change first
-• [ ] 7. Success Criteria: <success_criteria> with measurable outcomes
-• [ ] 8. Self-Verification: <verification> section (automated or manual)
+[ ] 1. Metadata: YAML frontmatter with required fields
+[ ] 2. Purpose: Clear one-sentence purpose statement
+[ ] 3. Scope: <critical> section defines exclusions and wrong use cases
+[ ] 4. Decision Logic: <decision_criteria> with IF-THEN patterns
+[ ] 5. Examples: Minimum 2-3 <example> blocks (simple, common, edge)
+[ ] 6. Unload Conditions: <unload_condition> with User Intent Change first
+[ ] 7. Success Criteria: <success_criteria> with measurable outcomes
+[ ] 8. Self-Verification: <verification> section (automated or manual)
 
 Quality Standards
 
 Content Quality:
-• [ ] Purpose statement is one sentence, clear, specific
-• [ ] Triggers and exclusions are explicit (no vague "helps with" language)
-• [ ] Decision criteria use clear IF-THEN patterns (not run-on sentences)
-• [ ] Examples show measurable improvements or clear transformations
-• [ ] Anti-patterns explained with rationale (WHY they're wrong)
-• [ ] Success criteria are observable and verifiable
-• [ ] Unload conditions are comprehensive (intent, complete, switch, failure, stop)
+[ ] Purpose statement is one sentence, clear, specific
+[ ] Triggers and exclusions are explicit (no vague "helps with" language)
+[ ] Decision criteria use clear IF-THEN patterns (not run-on sentences)
+[ ] Examples show measurable improvements or clear transformations
+[ ] Anti-patterns explained with rationale (WHY they're wrong)
+[ ] Success criteria are observable and verifiable
+[ ] Unload conditions are comprehensive (intent, complete, switch, failure, stop)
 
 Technical Quality:
-• [ ] All semantic tags properly closed (<tag>...</tag>)
-• [ ] No conflicting instructions between sections
-• [ ] Language is specific, not vague ("optimize query" not "make query better")
-• [ ] No platform-specific assumptions (works on claude.ai, API, Code, Desktop)
+[ ] All semantic tags properly closed (<tag>...</tag>)
+[ ] No conflicting instructions between sections
+[ ] Language is specific, not vague ("optimize query" not "make query better")
+[ ] No platform-specific assumptions (works on claude.ai, API, Code, Desktop)
 
 File Size (Class-Appropriate):
 
-• [ ] Class A: Main SKILL.md < 100 lines
-• [ ] Class B: Main SKILL.md 200-400 lines, total with references < 1,000 lines
-• [ ] Class C: Main SKILL.md 400-500 lines (extensive content in references/)
+[ ] Class A: Main SKILL.md < 100 lines
+[ ] Class B: Main SKILL.md 200-400 lines, total with references < 1,000 lines
+[ ] Class C: Main SKILL.md 400-500 lines (extensive content in references/)
 
 Self-Verification Emphasis
 
 Anthropic's #1 Recommendation:
-• [ ] <verification> section exists (not optional!)
-• [ ] Verification method is actionable (scripts, checklist, or expected outputs)
-• [ ] Class A: Expected output test cases provided
-• [ ] Class B: Manual verification checklist with clear steps
-• [ ] Class C: Automated verification scripts in scripts/ directory
-• [ ] Verification connects to <success_criteria> (each criterion has verification step)
+[ ] <verification> section exists (not optional!)
+[ ] Verification method is actionable (scripts, checklist, or expected outputs)
+[ ] Class A: Expected output test cases provided
+[ ] Class B: Manual verification checklist with clear steps
+[ ] Class C: Automated verification scripts in scripts/ directory
+[ ] Verification connects to <success_criteria> (each criterion has verification step)
 
 Testing
 
 Scenarios to test before deployment:
 
-• [ ] Basic activation (skill activates when it should)
-• [ ] Exclusions work (skill doesn't activate for wrong use cases)
-• [ ] User Intent Change mid-task (skill stops immediately when user pivots)
-• [ ] Task completion (skill deactivates when success criteria met)
-• [ ] Failure modes (skill handles errors gracefully, doesn't loop infinitely)
-• [ ] Edge cases (skill handles special scenarios from examples)
+[ ] Basic activation (skill activates when it should)
+[ ] Exclusions work (skill doesn't activate for wrong use cases)
+[ ] User Intent Change mid-task (skill stops immediately when user pivots)
+[ ] Task completion (skill deactivates when success criteria met)
+[ ] Failure modes (skill handles errors gracefully, doesn't loop infinitely)
+[ ] Edge cases (skill handles special scenarios from examples)
 
-Usage Notes
-Common Questions
+## Usage Notes
+
+**Common Questions**
+
+```text
 
 Q: Do I need all sections for a simple skill?
 A: No! For Class A skills, use only required sections. See "Class A: Minimal Skill" in Scaling Guide.
@@ -661,8 +700,11 @@ A: Use tags when they add value. Class A skills might only use <critical>, <deci
 
 Q: Can I create custom sections?
 A: Yes, but start with the standard 8 components. Add custom sections only if they provide unique value not covered by standard components.
+```
 
-Tips for Success
+## Tips for Success
+
+```text
 
 Start Simple:
 1. Begin with Class A template (minimal)
@@ -701,14 +743,15 @@ External resources:
 • Agent Skills Specification: https://agentskills.io/specification
 • Anthropic Skills Repository: https://github.com/anthropics/skills
 • Skill Creator Skill: https://github.com/anthropics/skills/tree/main/skills/skill-creator
-
+```
 
 END OF APPENDIX B
 
 Document Version: 2.0.0
-Last Updated: 2026-02-10
+Last Updated: 2026-02-24
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
 
 
 
