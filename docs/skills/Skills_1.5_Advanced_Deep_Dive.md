@@ -119,9 +119,7 @@ optimization, EXPLAIN, index.
 ```text
 
 1. WHAT: Core capability in one sentence
-
 2. WHEN: Trigger conditions
-
 3. KEYWORDS: Terms users might mention
 ```
 
@@ -183,9 +181,9 @@ Pre-approved tools the skill can use without asking permission each time.
 Note: This is experimental and may not be supported by all platforms.
 ```
 
-## Common Mistakes
+### Common Mistakes
 
-### Mistake 1: Vague Description
+#### Mistake 1: Vague Description
 
 **Wrong:**
 description: Helps with database stuff
@@ -196,7 +194,7 @@ Use whenquery execution time >1 second or EXPLAIN output shows
 inefficiencies.
 Keywords: slow query, performance, database.
 
-### Mistake 2: Missing Keywords
+#### Mistake 2: Missing Keywords
 
 **Wrong:**
 description: Systematic query optimization with verification.
@@ -208,7 +206,7 @@ slow query, performance, database, EXPLAIN, index, bottleneck.
 **Why:** Users might say "this query is slow" not 
 "I need query optimization"—keywords help activation.
 
-### Mistake 3: Non-gerund Name
+#### Mistake 3: Non-gerund Name
 
 **Wrong:**
 name: sql-optimizer
@@ -2233,6 +2231,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
