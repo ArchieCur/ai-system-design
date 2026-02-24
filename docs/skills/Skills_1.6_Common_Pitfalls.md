@@ -357,7 +357,7 @@ Or vague unload conditions:
 Stop when done.
 </unload_condition>
 ```
-**When done" = not specific!**
+**When done is not specific!**
 
 #### Why Not Unloading Skills is a Problem
 
@@ -1751,6 +1751,7 @@ To master advanced patterns:
 END OF SECTION 1.6
 Document Version: 1.0.0
 Last Updated: 2026-02-10
+
 
 
 
