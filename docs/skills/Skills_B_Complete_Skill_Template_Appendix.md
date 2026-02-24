@@ -32,7 +32,9 @@ This appendix provides a complete, production-ready skill template that works fo
 
 This template works for all skill classes. Customize depth based on complexity.
 
-### REQUIRED FIELDS **Yaml Frontmatter**, yml is persistent
+### REQUIRED FIELDS 
+
+![YAML Frontmatter (Persistent)](../assets/SkillsB_YAML.png)
 
 ```xml
 
@@ -52,12 +54,12 @@ description: >
 # last_updated: "YYYY-MM-DD"
 # category: [domain-category]
 ```
-
 ---
 
-### This is the markdown file, loads at activation
+![Markdown File (Loads at Activation)(../assets/SkillsB_Markdown.png)
 
-```xml
+
+```text
 
 #[Skill Name in Title Case]
 
@@ -271,16 +273,12 @@ Why this approach is wrong:
 <verification>
 
 **Automated Verification (recommended for Class B/C):**
-```
 
 Run verification script:
 
-```bash
+bash
 
 ./scripts/verify.sh [arguments]
-```
-
-```xml
 
 What it checks:
 1. [Verification point 1]
@@ -372,7 +370,6 @@ Level 3: Escalate or Hand Off → [When to escalate, e.g., "After 3 attempts wit
 
 ---
 
-```xml
 
 Additional Context
 
@@ -394,7 +391,7 @@ For Deep Dives:
 </context>
 ```
 
-END OF TEMPLATE
+**END OF TEMPLATE**
 
 ---
 
@@ -710,4 +707,5 @@ Document Version: 2.0.0
 Last Updated: 2026-02-10
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
 
