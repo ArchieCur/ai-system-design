@@ -153,21 +153,28 @@ skills=[
 
 ### Claude Code
 
-**How to use:** Install skills from the marketplace or create custom skills.
 
-**Marketplace:** Browse and install community-created skills
+```text
 
-**Custom skills:** Place in ~/.claude/skills/ directory
+How to use: Install skills from the marketplace or create custom skills
 
-**Documentation:** See Claude Code marketplace in terminal
+Marketplace: Browse and install community-created skills
+
+Custom skills: Place in ~/.claude/skills/ directory
+
+Documentation: See Claude Code marketplace in terminal
+```
 
 ### Claude Desktop
 
-**How to use:** Skills work with Cowork's autonomous task execution.
+```text
 
-**Note:** Cowork is in research preview (as of January 2026). Skills integration capabilities are evolving.
+How to use: Skills work with Cowork's autonomous task execution.
+
+**Note:** Cowork is in develpoment (as of February 2026). Skills integration capabilities are evolving.
 
 **Status:** Check official documentation for latest Cowork + Skills support
+```
 
 **Documentation:** <https://support.claude.com> (search "Cowork")
 
@@ -935,4 +942,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
