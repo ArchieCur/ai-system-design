@@ -772,7 +772,7 @@ Minimum for effective skills: 3 examples showing:
 <example>
 **Before:** (2.3 seconds execution time)
 
-```sql
+sql
 SELECT * FROM orders
 WHERE user_id = 12345
 ORDER BY created_at DESC;
@@ -802,7 +802,6 @@ ORDER BY created_at DESC;
 ./scripts/verify.sh orders_query.sql
 
 ✓ Performance improved by 4500%
-
 ✓ Index usage confirmed
 ✓ No regressions in related queries
 
@@ -1586,7 +1585,7 @@ See references/VERIFICATION.md for detailed procedures.
 
 **For complex skills, use tiered criteria:**
 
-``text
+```text
 
 <success_criteria>
 
@@ -1610,9 +1609,11 @@ See references/VERIFICATION.md for detailed procedures.
 
 **This provides:**
 
+```text
 • Minimum bar (acceptable)
 • Target goal (expected)
 • Stretch goal (exceptional)
+```
 
 ## Component 8: Self-Verification
 
@@ -1620,9 +1621,10 @@ See references/VERIFICATION.md for detailed procedures.
 **Mechanisms that enable the model to check its own work.**
 From Anthropic's best practices:
 
-"Include tests, screenshots, or expected outputs so Claude can check itself. This is the single highest-leverage thing you can do."
+"Include tests, screenshots, or expected outputs so Claude can check itself.
+This is the single highest-leverage thing you can do."
 
-Why it matters:
+**Why it matters:**
 Without self-verification, models produce plausible-looking output that may be
 incorrect. Self-verification catches errors before user sees them.
 
@@ -1632,14 +1634,12 @@ incorrect. Self-verification catches errors before user sees them.
 
 Best for: Technical tasks with deterministic verification
 
-```xml
+```text
 
 <verification>
 **Automated verification (recommended):**
 
-```
-
-```bash
+bash
 
 ./scripts/verify.sh <query_file>
 
@@ -1647,25 +1647,30 @@ Best for: Technical tasks with deterministic verification
 
 **What it checks:**
 
+```text
+
  1. Execution time improvement (>50% required)
  2. EXPLAIN output shows index usage
  3. Query plan cost reduction
  4. No regression in related queries (test suite)
  5. Resource usage acceptable (memory, I/O)
-
+```
 **Exit codes:**
+
+```text
 
 - 0: All checks passed ✓
 - 1: Verification failed (details in output)
 - 2: Prerequisites missing (e.g., database unavailable)
+```
 
 **Output format:**
+
+```text
  Verifying optimization for: orders_query.sql Baseline: 2300ms Current: 50ms Improvement: 4500% (46x faster)
 ✓ Performance improved by >50% ✓ Index usage confirmed ✓ No regressions detected ✓ All
 
 verifications passed
-
-```xml
 
 </verification>
 ```
@@ -1674,7 +1679,7 @@ verifications passed
 
 Best for: When automated scripts unavailable or insufficient
 
-```xml
+```text
 
 <verification>
 
@@ -1705,15 +1710,15 @@ Best for: When automated scripts unavailable or insufficient
 □ Check edge cases (empty result sets, large result sets)
 
 See references/VERIFICATION.md for detailed procedures.
-```
 
 </verification>
+```
 
 #### Strategy 3: Expected Output Comparison
 
 Best for: Formatting, transformation, generation tasks
 
-```xml
+```text
 
 <verification>
 
@@ -1750,7 +1755,7 @@ Run through all test cases to verify correctness.
 
 Best for: Tasks with knowable properties even without exact expected output
 
-```xml
+``text
 
 <verification>
 **Self-verification using properties:**
@@ -1782,9 +1787,9 @@ If all properties hold, optimization is verified correct.
 
 #### Verification by Complexity Level
 
-Class A: User Validation Acceptable
+**Class A:** User Validation Acceptable
 
-```xml
+```text
 
 <verification>
 
@@ -1798,27 +1803,23 @@ Class A: User Validation Acceptable
 User should review and confirm formatting is correct.
 </verification>
 ```
-
 Simple skills can rely on user validation.
 
-Class B: Tests Helpful
+**Class B:** Tests Helpful
 
-```xml
+```text
 
 <verification>
-```
 
 **Automated testing recommended:**
 
 Run test suite:
 
-```bash
+bash
 
 python test_campaign_analysis.py
 
-```
-
-Tests verify:
+**Tests verify:**
 
 1. Data quality checks catch known issues
 2. Funnel metrics calculated correctly
@@ -1834,27 +1835,22 @@ Tests verify:
 
 See tests/ directory for full test suite.
 
-```xml
-
 </verification>
 ```
 
-Class C: Automated Verification Required
+**Class C:** Automated Verification Required
 
-```xml
+```text
 
 <verification>
-```
 
 **Automated verification is REQUIRED for production use.**
 
 Phase 1: Performance Verification
 
-```bash
+bash
 
 ./scripts/verify.sh <query_file> --baseline baseline.json
-
-```
 
 Must pass:
 
@@ -1864,11 +1860,9 @@ Must pass:
 
 Phase 2: Regression Testing
 
-```bash
+bash
 
 ./scripts/test_suite.py --regression-check
-
-```
 
 Must pass:
 
@@ -1878,10 +1872,9 @@ Must pass:
 
 **Phase 3: Load Testing** (optional but recommended)
 
-```bash
+bash
 
 ./scripts/load_test.sh --concurrent 100 --duration 60
-```
 
 Should pass:
 
@@ -1899,8 +1892,6 @@ After deployment, monitor for 24 hours:
 
 See references/VERIFICATION.md for complete procedures.
 
-```xml
-
 </verification>
 ```
 
@@ -1911,7 +1902,7 @@ Self-Verification defines HOW to check if success was achieved.
 
 success_criteria Example
 
-```xml
+```text
 
 <success_criteria>
 
@@ -1924,41 +1915,31 @@ Optimization is successful when:
 </success_criteria>
 
 <verification>
-```
 
 To verify success:
 
 **Check Criterion 1:** (>50% improvement)
 
-```bash
+bash
 
 ./scripts/verify.sh --check-performance <query_file>
 
-```
-
 **Check Criterion 2:** (index usage)
 
-```bash
+`bash
 
 ./scripts/verify.sh --check-indexes <query_file>
 
-```
-
 **Check Criterion 3:** (no regressions)
 
-```bash
+bash
 
 ./scripts/test_suite.py --regression-check
 
-```
-
 All checks must pass for success to be verified.
-
-```xml
 
 </verification>
 ```
-
 Each success criterion has corresponding verification step.
 
 ##### Common Mistakes- Verification
@@ -1967,18 +1948,18 @@ Mistake 1: No Verification Mechanism
 
 **Wrong:**
 
-```xml
+```text
 
 <success_criteria>
 Query should be faster
 </success_criteria>
-```
 
 [No verification section]
+```
 
 **Correct:**
 
-```xml
+```text
 
 <success_criteria>
 Query execution time reduced by >50%
@@ -1999,7 +1980,7 @@ Mistake 2: Vague Verification Instructions
 
 **Wrong:**
 
-```xml
+```text
 
 <verification>
 Make sure it works correctly.
@@ -2008,7 +1989,7 @@ Make sure it works correctly.
 
 **Correct:**
 
-```xml
+```text
 
 <verification>
 
@@ -2027,7 +2008,7 @@ Mistake 3: Verification Without Tools
 
 **Wrong:**
 
-```xml
+```text
 
 <verification>
 Run ./scripts/verify.sh to check correctness.
@@ -2038,18 +2019,15 @@ Run ./scripts/verify.sh to check correctness.
 
 **Correct:**
 
-```xml
+```text
 
 <verification>
-```
 
 **Automated verification:**
 
-```bash
+bash
 
 ./scripts/verify.sh <query_file>
-
-```
 
 Script location: scripts/verify.sh (included in this skill)
 
@@ -2059,71 +2037,19 @@ Script location: scripts/verify.sh (included in this skill)
 
 See references/VERIFICATION.md for procedures.
 
-```xml
-
 </verification>
-```
 
 [Include actual verify.sh script in skill's scripts/ directory]
+```
 
 ## How Components Compose
 
 **The Complete Skill Architecture**
 **All 8 components work together to create a complete, effective skill:**
 
-┌─────────────────────────────────────────────────┐
-│ 1. METADATA (YAML Frontmatter) │
-│ - Name (what to call it) │
-│ - Description (when to activate) │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 2. PURPOSE STATEMENT │
-│ - What does this skill accomplish? │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 3. SCOPE DEFINITION │
-│ - What IS in scope │
-│ - What is NOT in scope │
-│ - Prerequisites needed │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 4. DECISION LOGIC │
-│ - IF this → THEN that │
-│ - Conditional branching │
-│ - Multi-phase workflows │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-| 5. EXAMPLES & PATTERNS │
-│ - Good patterns (what to do) │
-│ - Bad patterns (what NOT to do) │
-│ - Before/after demonstrations │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 6. UNLOAD CONDITIONS │
-│ - User Intent Change (FIRST!) │
-│ - Task complete signals │
-│ - Domain switches │
-│ - Failure modes │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 7. SUCCESS CRITERIA │
-│ - Observable outcomes │
-│ - Measurable metrics │
-│ - Verification points │
-└─────────────────────────────────────────────────┘
-↓
-┌─────────────────────────────────────────────────┐
-│ 8. SELF-VERIFICATION │
-│ - Automated scripts (best) │
-│ - Manual procedures (fallback) │
-│ - Expected outputs (reference) │
-└─────────────────────────────────────────────────┘
+![How All 8 Components Work Together](../assets/Section_1.5_Components_List)
+
+
 
 ### Component Interdependencies
 
@@ -2315,6 +2241,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
