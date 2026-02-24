@@ -1757,9 +1757,9 @@ Run through all test cases to verify correctness.
 
 #### Strategy 4: Property-Based Checks
 
-Best for: Tasks with knowable properties even without exact expected output
+**Best for:** Tasks with knowable properties even without exact expected output
 
-``text
+```text
 
 <verification>
 **Self-verification using properties:**
@@ -2253,6 +2253,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
