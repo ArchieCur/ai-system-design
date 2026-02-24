@@ -495,10 +495,10 @@ This skill requires:
 - Understanding of indexes (will be explained if needed)
 </prerequisite>
 Scope definition says: "Don't use for X"
-
-Prerequisites say: "Need Y to use effectively"
-Together they create complete boundaries.
 ```
+
+**Prerequisites say:** "Need Y to use effectively"
+Together they create complete boundaries.
 
 ## Component 4: Decision Logic
 
@@ -755,9 +755,12 @@ IF list has special cases:
 
 Minimum for effective skills: 3 examples showing:
 
+```text
+
 1. Simple case (happy path)
 2. Common variation (typical scenario)
 3. Edge case (challenging situation)
+```
 
 ### Example Types
 
@@ -807,11 +810,14 @@ ORDER BY created_at DESC;
 ```
 
 **Key elements:**
+
+```text
 • Measurable before state
 • Clear intervention
 • Measurable after state
 • Improvement quantified
 • Verification shown
+```
 
 
 #### Type 2: Multiple Scenarios
@@ -876,10 +882,13 @@ Result: 0.02s (105x faster)
 ```
 
 **Key elements:**
+
+```text
 • Multiple real-world cases
 • Different problem patterns
 • Specific solutions for each
 • Quantified improvements
+```
 
 #### Type 3: Good vs. Bad Pattern Comparison
 
@@ -954,14 +963,16 @@ The slight convenience of typing * is vastly outweighed by these costs.
 
 </bad_pattern>
 ```
-
 **Key elements:**
+
+```text
 • Clear good pattern with rationale
 • Concrete examples of good approach
 • Clear bad pattern with rationale
 • Contrast highlights differences
+```
 
-#### Example Progression: Simple → Complex
+### Example Progression: Simple → Complex
 
 #### Class A: Simple Example
 
@@ -1091,11 +1102,14 @@ Results:
 
 **Key elements in complex examples:**
 
+```text
+
 • Real production context
 • Multiple phases (analysis, optimization, verification)
 • Quantified results at each step
 • Production deployment considerations
 • Monitoring confirmation
+```
 
 #### How Many Examples
 
@@ -1579,7 +1593,7 @@ See references/VERIFICATION.md for detailed procedures.
 
 **This connects success criteria to Component 8 (Self-Verification).**
 
-#### Multi-Tiered Success Criteria
+### Multi-Tiered Success Criteria
 
 **For complex skills, use tiered criteria:**
 
@@ -1885,12 +1899,12 @@ See references/VERIFICATION.md for complete procedures.
 </verification>
 ```
 
-#### The Verification-Criteria Connection
+### The Verification-Criteria Connection
 
-Success Criteria defines WHAT success looks like.
-Self-Verification defines HOW to check if success was achieved.
+Success Criteria defines **WHAT** success looks like.
+Self-Verification defines **HOW** to check if success was achieved.
 
-success_criteria Example
+#### `<success_criteria>` Example
 
 ```text
 
@@ -1932,9 +1946,9 @@ All checks must pass for success to be verified.
 ```
 Each success criterion has corresponding verification step.
 
-##### Common Mistakes- Verification
+### Common Mistakes- Verification
 
-Mistake 1: No Verification Mechanism
+#### Mistake 1: No Verification Mechanism
 
 **Wrong:**
 
@@ -1966,7 +1980,7 @@ Run EXPLAIN ANALYZE to verify:
 </verification>
 ```
 
-Mistake 2: Vague Verification Instructions
+#### Mistake 2: Vague Verification Instructions
 
 **Wrong:**
 
@@ -1994,7 +2008,7 @@ If any step fails, optimization did not succeed.
 </verification>
 ```
 
-Mistake 3: Verification Without Tools
+#### Mistake 3: Verification Without Tools
 
 **Wrong:**
 
@@ -2040,7 +2054,6 @@ See references/VERIFICATION.md for procedures.
 ![How All 8 Components Work Together](../assets/Section_1.5_Components_List)
 
 
-
 ### Component Interdependencies
 
 **Metadata → Everything**
@@ -2068,20 +2081,19 @@ Verification failure can trigger unload
 
 #### Minimal Skill (Class A)
 
-```yaml
+```text
+
+yaml
 ---
 
 name: enforcing-oxford-comma
 description: Apply Oxford comma to lists with 3+ items
-```
 
 ---
 
 Enforcing Oxford Comma
 
 **Purpose:** Apply Oxford comma to lists with 3+ items.
-
-```xml
 
 <critical>
 Do NOT use for: technical docs, code, numbered lists
@@ -2113,10 +2125,11 @@ Output: "A, B, and C"
 ✓ User confirms formatting correct
 </success_criteria>
 ```
-
-Total: ~30-40 lines, covers all 8 components minimally
+**Total:** ~30-40 lines, covers all 8 components minimally
 
 #### Intermediate Skill (Class B)
+
+```text
 
 analyzing-marketing-campaigns/
 |--------SKILL.md #200-300 lines
@@ -2133,17 +2146,21 @@ analyzing-marketing-campaigns/
 |---- references/
 |----budget_reallocation_rules.md #150 lines
 |---EXAMPLES.md # 200 lines (detailed examples)
-
-Total: ~550-650 lines across 3 files, intermediate implementation
+```
+**Total:** ~550-650 lines across 3 files, intermediate implementation
 
 #### Key characteristics
 
+```text
 • Main SKILL.md has substantive content (not minimal)
 • 1-2 reference files for details (not dozens)
 • Manual verification (no automated scripts yet)
 • Covers complex workflows but manageable size
+```
 
 #### Complete Skill (Class C)
+
+```text
 
 optimizing-sql-queries/
 ├── SKILL.md # 400 lines
@@ -2168,10 +2185,13 @@ optimizing-sql-queries/
 ├── verify.sh # Automated verification
 ├── test_suite.py # Regression testing
 └── analyze_explain.py # EXPLAIN parser
+```
 
-Total: 6,000+ lines across multiple files, all 8 components deeply implemented
+**Total:** 6,000+ lines across multiple files, all 8 components deeply implemented
 
 ### Key TakeawaysThe 8 Core Components
+
+```text
 
 1. Metadata - Identity and discovery
 2. Purpose - What it does in one sentence
@@ -2183,8 +2203,11 @@ Total: 6,000+ lines across multiple files, all 8 components deeply implemented
 8. Self-Verification - How to check success
 
 All skills need all 8 components. Simple skills implement minimally; complex skills implement deeply.
+```
 
-### Component Quality Checklist
+## Component Quality Checklist
+
+```text
 
 For each skill, verify:
 
@@ -2196,8 +2219,9 @@ For each skill, verify:
 • Unload Conditions list User Intent Change FIRST
 • Success Criteria are observable and measurable
 • Self-Verification provides automated or manual checking
+```
 
-### Scaling Components by Class
+## Scaling Components by Class
 
 ![Scaling Components by Class table](../assets/Scaling_Components_by_Class.png)
 
@@ -2225,12 +2249,13 @@ To verify quality:
 END OF SECTION 1.5
 
 • Document Version: 1.0.0
-Last Updated: 2026-02-09
+Last Updated: 2026-02-23
 Components Covered: 8 (Metadata, Purpose, Scope, Decision Logic, Examples, Unload
 Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
