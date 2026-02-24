@@ -408,7 +408,6 @@ Function Declaration (Tool):
 **Key Difference from Anthropic:**
 
 - **Anthropic:** Skills are self-contained units (instructions + execution together)
-- 
 - **Google:** Split model (instructions in System Instructions, execution in Tools/Functions)
 
 **When to use:**
@@ -952,6 +951,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
