@@ -1325,7 +1325,9 @@ Stop using this skill when:
 ```
 This prevents attentional residue!
 
-Emphasize in Critical Section Too
+**Emphasize in Critical Section Too**
+
+```text
 
 <critical>
 
@@ -1392,7 +1394,9 @@ This is Priority #1—check BEFORE task completion!
 What It Looks Like
 **Assumes specific platform:**
 
-Code Review Skill
+#### Code Review Skill
+
+```text
 To use this skill:
 
 1. Open the file in Claude Desktop
@@ -1404,9 +1408,12 @@ Assumes:
 • Claude Desktop (not API, not claude.ai)
 • Specific UI features
 • Interactive buttons
+```
 Won't work on other platforms!
 
-Why Platform specific- Code Review is a Problem
+#### Why Platform specific- Code Review is a Problem
+
+```text
 
 1. Skill Not Portable
 Platforms where Claude runs:
@@ -1415,19 +1422,24 @@ Platforms where Claude runs:
 • Claude Code (terminal)
 • Claude Desktop (desktop app)
 Platform-specific skill only works on one!
+
 2. Instructions May Be Wrong
 User on API:
 • No file browser
 • No buttons
 • Different interaction model
 Instructions don't apply!
+
 3. Limits Reusability
 Can't share skill across team if it only works on one platform!
+```
 
-How to Avoid Platform specific-Code Review Skills
+#### How to Avoid Platform specific-Code Review Skills
 
-Platform-Agnostic Instructions
-Focus on WHAT to do, not HOW (platform-specific):
+**Platform-Agnostic Instructions**
+**Focus on WHAT to do, not HOW (platform-specific):**
+
+```text
 
 Platform-specific:
 "Click the Review button in the sidebar"
@@ -1443,8 +1455,6 @@ Platform-agnostic:
 When Platform Matters, Make It Optional
 
 If platform-specific features are helpful but not required:
-
-```xml
 
 <note>
 
@@ -1469,18 +1479,23 @@ The core skill works on all platforms; these are enhancements.
 </note>
 ```
 
-Test on Multiple Platforms
+#### Test on Multiple Platforms
 
 Before finalizing skill:
+
+```text
 
 • Test on Claude.ai (web)
 • Test via API (programmatic)
 • Test in Claude Code (terminal, if applicable)
 Ensure skill works (or gracefully degrades) on each!
+```
 
-How to Fix Platflorm Assumptions
+#### How to Fix Platflorm Assumptions
 
-If your skill has platform assumptions:
+**If your skill has platform assumptions:**
+
+```text
 
 Step 1: Identify Platform-Specific Elements
 
@@ -1497,8 +1512,6 @@ Replace:
 
 Step 3: Add Platform Notes
 
-```xml
-
 <note>
 This skill works across all Claude platforms (claude.ai, API, Code, Desktop).
 
@@ -1514,11 +1527,11 @@ Core functionality identical on all platforms.
 
 ## Pitfall 10: Poor Error Handling
 
-What Poor Error Handling Looks Like
+**What Poor Error Handling Looks Like**
 
 No error handling mentioned:
 
-```xml
+```text
 
 <decision_criteria>
 IF user provides query:
@@ -1529,13 +1542,18 @@ IF user provides query:
 </decision_criteria>
 ```
 
-What if:
+**What if:**
+
+```text
 • EXPLAIN ANALYZE fails? (syntax error, permissions)
 • Optimization breaks query? (introduces bug)
 • Verification shows worse performance? (regression)
+```
 No error handling defined!
 
-Why Noe Error Handling is a Problem
+### Why No Error Handling is a Problem
+
+```text
 
 1. Failures Cascade
 Without error handling:
@@ -1556,12 +1574,13 @@ When errors occur:
 • How to try alternative approach?
 • How to notify user?
 Without error handling, no answers!
+```
 
-How to Avoid Poor Error Handling
+### How to Avoid Poor Error Handling
 
-Try-Catch-Finally Pattern
+#### Try-Catch-Finally Pattern
 
-```xml
+```text
 
 <decision_criteria>
 **Error-handled workflow:**
@@ -1582,11 +1601,11 @@ FINALLY:
 </decision_criteria>
 ```
 
-Graceful Degradation
+#### Graceful Degradation
 
-When optimal path fails, try alternatives:
+**When optimal path fails, try alternatives:**
 
-```xml
+```text
 
 <decision_criteria>
 **Primary approach:**
@@ -1608,9 +1627,9 @@ IF no EXPLAIN available:
 </decision_criteria>
 ```
 
-Error Messages in Success Criteria
+#### Error Messages in Success Criteria
 
-```xml
+```text
 
 <success_criteria>
 **Success indicators:**
@@ -1627,12 +1646,13 @@ Error Messages in Success Criteria
 On failure: Rollback changes, notify user with details
 
 </success_criteria>
-
 ```
 
-How to Fix Lacking Error Handling
+### How to Fix Lacking Error Handling
 
-If your skill lacks error handling:
+**If your skill lacks error handling:**
+
+```text
 
 Step 1: Identify Failure Points
 Where could things go wrong?
@@ -1647,7 +1667,6 @@ For each failure point:
 
 **Error: Database connection failed**
 Response:
-
 - Notify user: "Cannot connect to database"
 - Suggest: "Verify database is online and credentials correct"
 - Fallback: Offer manual approach (user provides EXPLAIN output)
@@ -1655,7 +1674,6 @@ Response:
 
 **Error: Optimization breaks query**
 Response:
-
 - Detect: Verification shows different row count
 - Rollback: Restore original query
 - Notify: "Optimization introduced correctness issue—rolled back"
@@ -1664,7 +1682,6 @@ Response:
 
 Step 3: Add to Decision Logic
 
-```xml
 <decision_criteria>
 **Step 3: Apply Optimization**
 TRY:
@@ -1684,7 +1701,9 @@ CATCH syntax_error:
 
 ## Key Takeaways
 
-The 10 Common Pitfalls
+**The 10 Common Pitfalls**
+
+```text
 
 1. Scope Creep - Skill tries to do too much → Split into focused skills
 2. Vague Activation - Unclear when to activate → Add specific WHAT + WHEN +
@@ -1697,39 +1716,43 @@ KEYWORDS
 8. Ignoring User Intent Change - Not first priority → ALWAYS check User Intent Change before task completion
 9. Platform Assumptions - Only works on one platform → Make platform-agnostic
 10. Poor Error Handling - Silent failures → Add try-catch, graceful degradation
-
-```xml
-
-Prevention Checklist
-
-Before publishing a skill, verify:
-
-• [ ] Scope: Single responsibility, one-sentence description works
-• [ ] Activation: Specific WHAT + WHEN + KEYWORDS in description
-• [ ] Unload Conditions: User Intent Change is FIRST priority
-• [ ] Decision Logic: Phases clear, max 3 nesting levels
-• [ ] Examples: 3+ examples (simple, common, edge)
-• [ ] Self-Verification: Included (scripts or manual checklist)
-• [ ] Failure Modes: Defined with thresholds and escalation
-• [ ] User Intent Change: Emphasized in both <critical> and <unload_condition>
-• [ ] Platform Agnostic: Works on claude.ai, API, Code, Desktop (or gracefully degrades)
-• [ ] Error Handling: Try-catch patterns for failure points
 ```
 
-When You Fall Into a Pitfall
+## Prevention Checklist
+
+**Before publishing a skill, verify:**
+
+```text
+
+[ ] Scope: Single responsibility, one-sentence description works
+[ ] Activation: Specific WHAT + WHEN + KEYWORDS in description
+[ ] Unload Conditions: User Intent Change is FIRST priority
+[ ] Decision Logic: Phases clear, max 3 nesting levels
+[ ] Examples: 3+ examples (simple, common, edge)
+[ ] Self-Verification: Included (scripts or manual checklist)
+[ ] Failure Modes: Defined with thresholds and escalation
+[ ] User Intent Change: Emphasized in both <critical> and <unload_condition>
+[ ] Platform Agnostic: Works on claude.ai, API, Code, Desktop (or gracefully degrades)
+[ ] Error Handling: Try-catch patterns for failure points
+```
+
+## When You Fall Into a Pitfall
 
 Don't panic! All skills can be improved:
+
+```text
 
 1. Identify which pitfall(s) affect your skill
 2. Review the "How to Fix It" section for that pitfall
 3. Apply the remediation steps
 4. Test that fix resolved the issue
 5. Iterate until skill is solid
-
+```
 Skills are living documents—continuous improvement is expected!
 
 ## Next Steps
 
+```text
 You've completed the main Skills curriculum!
 To continue:
 
@@ -1749,10 +1772,12 @@ To master advanced patterns:
 • Review Section 1.3 (multi-file skills)
 • Study Section 1.5 (component deep dive)
 • Practice with real workflows
+```
 
 END OF SECTION 1.6
 Document Version: 1.0.0
 Last Updated: 2026-02-10
+
 
 
 
