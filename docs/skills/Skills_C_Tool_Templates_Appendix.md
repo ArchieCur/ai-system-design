@@ -210,6 +210,7 @@ COMPOSITION (Optional: How This Tool Relates to Others)
 
 **Before finalizing your tool definition, verify:**
 
+```text
 
 [ ] Name is clear and descriptive (not generic like "do_thing")
 [ ] Description is ONE sentence explaining what it does
@@ -222,6 +223,7 @@ COMPOSITION (Optional: How This Tool Relates to Others)
 [ ] Failure Modes include at least 2 error types with recovery actions
 [ ] Class B tools have confirmation templates
 [ ] Class C tools have complexity justification
+```
 
 ### COMPLETE EXAMPLE (Filled Template)
 
@@ -444,5 +446,6 @@ CONFIRMATION (If Class B):
 **END OF SKILLS C: TOOL TEMPLATES**
 version:1.0
 2026-02-24
+
 
 
