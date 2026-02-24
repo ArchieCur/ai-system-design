@@ -365,7 +365,8 @@ Level 1: Verify Assumptions → [Check assumption 1] → [Check assumption 2] �
 
 Level 2: Try Alternative Method → [Alternative approach 1] → [When to use this alternative] → [Expected outcome]
 
-Level 3: Escalate or Hand Off → [When to escalate, e.g., "After 3 attempts with <20% improvement"] → [Who/what to escalate to] → [Information to provide]
+Level 3: Escalate or Hand Off → [When to escalate, e.g., "After 3 attempts with <20% improvement"]
+→ [Who/what to escalate to] → [Information to provide]
 </fallback>
 
 ---
@@ -708,6 +709,7 @@ Document Version: 2.0.0
 Last Updated: 2026-02-10
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
 
 
 
