@@ -626,7 +626,7 @@ ELSE IF running in staging/test:
 ```
 **Use for:** Skills that adapt behavior based on context
 
-#### Decision Logic + Actions Pattern
+### Decision Logic + Actions Pattern
 
 Combine <decision_criteria> with nested <action> tags for detailed implementation:
 
@@ -2231,6 +2231,7 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
 
