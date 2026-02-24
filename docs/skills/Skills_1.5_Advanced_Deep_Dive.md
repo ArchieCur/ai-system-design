@@ -2055,6 +2055,8 @@ See references/VERIFICATION.md for procedures.
 
 ### Component Interdependencies
 
+!Component Interdependencies](../assets/Section_1.5_Component_Interdependencies.png)
+
 **Metadata → Everything**
 Name and description determine activation, referenced everywhere
 
@@ -2253,3 +2255,4 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
