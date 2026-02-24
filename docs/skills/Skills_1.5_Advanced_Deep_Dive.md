@@ -2057,27 +2057,6 @@ See references/VERIFICATION.md for procedures.
 
 ![Component Interdependencies](../assets/Section_1.5_Component_Interdependencies.png)
 
-**Metadata → Everything**
-Name and description determine activation, referenced everywhere
-
-**Purpose → Scope**
-Purpose defines what; scope defines boundaries of what
-
-**Scope → Decision Logic**
-Boundaries inform which decisions are relevant
-
-**Decision Logic → Examples**
-Logic explained through concrete examples
-
-**Examples → Success Criteria**
-Examples show what success looks like
-
-**Success Criteria → Self-Verification**
-Criteria define what verification must check
-
-**Self-Verification → Unload Conditions**
-Verification failure can trigger unload
-
 ## Minimal vs. Complete Implementation
 
 ### **Minimal Skill (Class A)**
@@ -2255,5 +2234,6 @@ Conditions, Success Criteria, Self-Verification)
 
 Key Emphasis: All components required, User Intent Change first priority in unload
 conditions, self-verification as highest-leverage improvement
+
 
 
