@@ -1,8 +1,11 @@
 # Skills_1.6_Common_Pitfalls
 
+```text
+
 **For:** All skill creators
 **Prerequisites:** Sections 1.1-1.5 (foundation through components)
 **What you'll learn:** The most common mistakes in skill creation and how to avoid them
+```
 
 ## Introduction
 
@@ -640,6 +643,8 @@ Clear, testable, maintainable!
 
 **If your decision logic is too complex:**
 
+```text
+
 Step 1: Draw It Out
 Visualize the decision tree:
 Start
@@ -667,15 +672,15 @@ Check in priority order:
 3. Inefficient sort? (third most common)
 
 Take first match, skip rest.
-
+```
 **Sequential checks, not nested conditions!**
 
-## Pitfall 5: Insufficient Examples
+### Pitfall 5: Insufficient Examples
 
-What It Looks Like
-Only one example:
+**What It Looks Like**
+**Only one example:**
 
-```xml
+```text
 
 <example> (bad Example)
 
@@ -684,17 +689,20 @@ Output: "A, B, and C"
 
 </example>
 ```
-
 That's it!
 
-No examples for:
+**No examples for:**
+
+```text
 • 2-item lists
 • Items with commas inside them
 • Lists with "or" instead of "and"
 • Special cases
+```
 
-### Why It's a Problem- Insufficient Examples
+#### Why It's a Problem- Insufficient Examples
 
+```text
 1. Users Don't Understand Edge Cases
 With one example, users don't know:
 • What about 2-item lists? ("A and B")
@@ -711,21 +719,22 @@ Models might misapply skill to edge cases!
 
 3. No Verification Template
 How do users verify correctness without examples showing expected behavior?
+```
 
 ### How to Avoid It- Insufficient Examples
 
 **The 3-Example Minimum**
 Every skill needs at least 3 examples:
 
+```text
 1. Simple case (happy path)
 2. Common variation (typical real-world scenario)
 3. Edge case (challenging situation)
 
 The 3-Minimum Example:
 
-```xml
-
 <example>
+
 **Example 1: Basic list (3+ items)**
 Input: "I like apples, oranges and bananas."
 
@@ -741,7 +750,6 @@ Output: "I like apples and oranges."
 Change: None (two items don't need Oxford comma)
 
 **Example 3: Items with internal commas**
-
 Input: "I invited my parents, Kris and Sam."
 
 Output: "I invited my parents, Kris, and Sam."
@@ -751,39 +759,45 @@ Change: Added comma before "and" to avoid ambiguity
 Clarification: Without Oxford comma, unclear if parents ARE Kris and Sam
 </example>
 ```
-
 Covers simple, common, and edge cases!
 
-### Example Progression by Class
+#### Example Progression by Class
 
-Class A: 2-3 examples (simple cases)
-Class B: 3-5 examples (multiple scenarios)
-Class C: 5-10+ examples (comprehensive coverage including:)
+**Class A:** 2-3 examples (simple cases)
+**Class B:** 3-5 examples (multiple scenarios)
+**Class C:** 5-10+ examples (comprehensive coverage including:)
+
+```text
 • Before/after transformations
 • Multiple real-world scenarios
 • Edge cases and exceptions
 • Production contexts with verification
+```
 
-Show What NOT to Do**
+#### Show What NOT to Do
 
-```xml
+```text
 
 Combine <example> with <bad_pattern>:
 
 <bad_pattern>
 Treating 2-item lists like 3+ item lists
 <example>
+```
 **Wrong:**
+```text
+
 Input: "I like apples and oranges."
 
 Output: "I like apples, and oranges." ← Incorrect comma!
-
+```
 **Right:**
+```text
 Input: "I like apples and oranges."
 
 Output: "I like apples and oranges." ← No comma for 2 items
 
-**Why this matters:**
+Why this matters:
 
 Two-item lists with Oxford comma look awkward and violate standard grammar.
 </example>
@@ -791,9 +805,11 @@ Two-item lists with Oxford comma look awkward and violate standard grammar.
 </bad_pattern>
 ```
 
-### How to Fix It- Too few Examples
+#### How to Fix It- Too few Examples
 
 **If your skill has too few examples:
+
+```text
 
 Step 1: Identify Scenarios
 List all the scenarios your skill handles:
@@ -813,11 +829,11 @@ For each example, explain:
 • What makes this case special
 • Why the skill handles it this way
 • What would go wrong without proper handling
+```
 
-```xml
+```text
 
 <example>
-```
 
 Scenario: Items containing "and"
 
@@ -835,31 +851,33 @@ Output: "I need bread, peanut butter and jelly, and milk."
 Identifies "peanut butter and jelly" as single item (no commas inside)
 Applies Oxford comma only to list-level "and" (before "milk")
 
-```xml
 </example>
 ```
 
-## Pitfall 6: No Self-Verification
+### Pitfall 6: No Self-Verification
 
-What It Looks Like
+**What It Looks Like**
+**Missing verification section:**
 
-Missing verification section:
+```text
 
-```xml
-
-# Optimizing SQL Queries
+Optimizing SQL Queries
 [All other components present...]
 [No <verification> section!]
 Or placeholder verification:
+```
+
+```text
 
 <verification>
 Check that it works.
 </verification>
 ```
+"Check that it works" is not actionable!
 
-"Check that it works" = not actionable!
+#### Why No self-verification is a Problem
 
-### Why No self-verification is a Problem
+```text
 
 1. Can't Verify Success
 
@@ -869,23 +887,27 @@ Model: "I think so?"
 User: "How do I know?"
 Model: "Uh... run it and see?"
 No systematic verification = hope-based quality!
+
 2. Anthropic's #1 Recommendation
 From Anthropic's best practices:
-"Include tests, screenshots, or expected outputs so Claude can check itself. This is the single highest-leverage thing you can do."
+"Include tests, screenshots, or expected outputs so Claude can check itself.
+This is the single highest-leverage thing you can do."
 Without self-verification, you're missing the highest-leverage improvement!
-3. Errors Go Undetected
+
+4. Errors Go Undetected
 Optimization might:
 • Make query slower (regression!)
 • Break correctness (wrong results!)
 • Violate constraints (missing data!)
 Without verification, these go unnoticed until production!
+```
 
-### How to Avoid Self-Verification Problems
+#### How to Avoid Self-Verification Problems
 
-Always Include Verification Section
-Minimum requirement:
+**Always Include Verification Section**
+**Minimum requirement:**
 
-```xml
+```text
 
 <verification>
 To verify [task] was successful:
@@ -899,23 +921,21 @@ All checks must pass for success.
 </verification>
 ```
 
-Automated Verification (Best)
+#### Automated Verification (Best)
 
-Provide verification scripts:
+**Provide verification scripts:**
 
-```xml
+```text
 
 <verification>
-```
 
-#### Automated verification (recommended)
+Automated verification (recommended)
 
 Run verification script:
 
-```bash
+bash
 
 ./scripts/verify.sh query_file.sql
-```
 
 What it checks:
 
@@ -933,76 +953,72 @@ What it checks:
 
 If script unavailable, use manual verification below: [Manual procedures provided]
 
-```xml
-
 </verification>
 ```
-
 **Script location:** `scripts/verify.sh` (included in skill)
 
 #### **Manual Verification Checklist**
 
 **When scripts aren't available:**
 
-```xml
+```text
 
 <verification>
 
-**Manual verification steps:**
+Manual verification steps:
 
-**Step 1: Performance Check**
+Step 1: Performance Check
 
 □ Run EXPLAIN ANALYZE on optimized query
 □ Compare execution time to baseline
 □ Confirm >50% improvement
 
-**Step 2: Correctness Check**
+Step 2: Correctness Check
 
 □ Verify result row count matches baseline
 □ Spot-check 10 random rows (values identical)
 □ Run aggregation checks (SUM, COUNT match)
 
-**Step 3: Side Effects Check**
+Step 3: Side Effects Check
 
 □ Test related queries (ensure no slowdowns)
 □ Check INSERT/UPDATE performance (<30% slower acceptable)
 □ Verify no queries timing out
 
-**Step 4: Production Readiness**
+Step 4: Production Readiness
 
 □ Test with production data volume
 □ Verify under realistic load
 □ Check error logs (no new errors)
 All steps must pass for verification to succeed.
-```
 
 </verification>
+```
 
 #### Expected Output Method
 
-For transformations/formatting:
+**For transformations/formatting:**
 
-```xml
+```text
 
 <verification>
-```
 
-**Self-verification using expected outputs:**
+Self-verification using expected outputs:
 Run through test cases:
 
-Test Case 1:**
+Test Case 1:
 
 Input: "A, B and C"
 Expected: "A, B, and C"
 Check: Comma appears before "and" ✓
 
-Test Case 2:**
+Test Case 2:
 
 Input: "A and B"
 Expected: "A and B"
 Check: No comma added (only 2 items) ✓
 
-Test Case 3:**
+Test Case 3:
 
 Input: "I invited my parents, Kris and Sam."
 Expected: "I invited my parents, Kris, and Sam."
@@ -1015,14 +1031,13 @@ All test cases must pass.
 
 ### How to Fix It-Verification
 
-If your skill lacks verification:
+**If your skill lacks verification:**
+
+```text
 
 Step 1: Identify Success Criteria
 
-```xml
-
 From <success_criteria>, what needs verification?
-
 
 Identifying Needed Verification Example:
 
@@ -1057,13 +1072,12 @@ If Class C skill, include verification scripts:
 Link from verification section!
 ```
 
-## Pitfall 7: Missing Failure Modes in Unload Conditions
+### Pitfall 7: Missing Failure Modes in Unload Conditions
 
-What It Looks Like-No failure modes
+**What It Looks Like-No failure modes**
+**Only success-path unload conditions, no failure modes:**
 
-Only success-path unload conditions, no failure modes:
-
-```xml
+```text
 
 <unload_condition>
 
@@ -1074,7 +1088,6 @@ Stop when:
 
 </unload_condition>
 ```
-
 No failure modes defined!
 
 What if?
@@ -1082,38 +1095,43 @@ What if?
 • Required resources unavailable?
 • After 5 attempts, still no success?
 
-### Why no failure modes is a Problem
+#### Why no failure modes is a Problem
+
+```text
 
 1. Infinite Loops
 2. Without failure modes:
 
 User: "Optimize this query"
-Skill tries:
 
+Skill tries:
 • Attempt 1: Add index → No improvement
 • Attempt 2: Different index → No improvement
 • Attempt 3: Rewrite query → No improvement
 • Attempt 4: Try another approach → No improvement
 • Attempt 5-100: Keep trying forever...
 Never stops trying because no failure condition defined!
+
 2. No Graceful Degradation
 When things go wrong:
 • Can't access database → Skill keeps trying
 • Missing permissions → Skill keeps requesting
 • Impossible task → Skill never admits defeat
 No exit = user stuck in loop!
+
 3. No Escalation Path
 Complex problems might need:
 • Human expert (DBA)
 • Different approach entirely
 • Acknowledgment that skill can't solve this
 Without failure modes, no path to escalate!
+```
 
-### How to Avoid It-Adding Failure Modes
+#### How to Avoid It-Adding Failure Modes
 
-Include Failure Mode Section
+**Include Failure Mode Section**
 
-```xml
+```text
 
 <unload_condition>
 
@@ -1140,24 +1158,34 @@ Stop using this skill when:
 </unload_condition>
 ```
 
-Define "Insufficient Progress"
+#### Define "Insufficient Progress"
+
 **Be specific about what "failure" means:**
 
 **Vague:**
 
+```text
+
 Failure Mode:
 If it's not working → Stop
+```
 
 **Specific:**
+
+```text
+
 Failure Mode:
 
 1. After 3 optimization attempts with <20% improvement → Escalate to DBA
 2. After 5 verification failures → Rollback changes, review with user
 3. If EXPLAIN shows worse performance than baseline → Immediate rollback
+```
 
-Provide Escalation Paths
+#### Provide Escalation Paths
 
 When skill can't solve the problem:
+
+```text
 
 Failure Mode:
 After 3 attempts with insufficient improvement:
@@ -1166,11 +1194,14 @@ After 3 attempts with insufficient improvement:
 → Provide context: "Attempted index optimization, query rewrite, join tuning—
 all showed <20% improvement. This may require system-level changes."
 → Deactivate skill
+```
 Graceful exit with helpful context!
 
 ### How to Fix It Identifying failure scenarios
 
-If your unload conditions lack failure modes:
+**If your unload conditions lack failure modes:**
+
+```text
 
 Step 1: Identify Failure Scenarios
 What could go wrong?
@@ -1189,7 +1220,6 @@ For each failure scenario:
 • When is task impossible vs. just difficult?
 
 Faulure Scenario Example:
-
 Thresholds:
 
 - Max 3 optimization attempts
@@ -1198,8 +1228,6 @@ Thresholds:
 - Impossible = Query already optimal (baseline <100ms)
 
 Step 3: Add to Unload Conditions
-
-```xml
 
 <unload_condition>
 **Failure Mode:**
@@ -1217,16 +1245,16 @@ Step 3: Add to Unload Conditions
 → Notify: "Optimization requires INDEX creation permission"
 → Suggest: "Request permission from DBA or provide query for DBA to optimize"
 → Deactivate skill
-```
 
 </unload_condition>
+```
 
-## Pitfall 8: Ignoring User Intent Change Priority
+### Pitfall 8: Ignoring User Intent Change Priority
 
-What It Looks Like
-User Intent Change buried in middle:
+**What It Looks Like**
+**User Intent Change buried in middle:**
 
-```xml
+```text
 
 <unload_condition>
 Stop when:
@@ -1244,14 +1272,14 @@ Stop when:
 
 </unload_condition>
 ```
-
 User Intent Change is item #3, not #1!
 
-### Why not having User Intent Change first is a Problem
+#### Why not having User Intent Change first is a Problem
 
-Critical: This Is Our Non-Negotiable Priority!
-
+**Critical: This Is Our Non-Negotiable Priority!**
 User Intent Change MUST be checked FIRST, before task completion!
+
+```text
 
 Why Scenario:
 
@@ -1262,14 +1290,16 @@ Why Scenario:
 5. Skill continues optimizing while user wants Python help!
 6. Attentional residue degrades Python task performance
 
-If User Intent Change was first: 4. Skill checks: "User Intent Change?" → Yes! ("Actually, never mind") 5. Skill IMMEDIATELY deactivates 6. Python help proceeds without SQL context interference
+If User Intent Change was first: 4. Skill checks: "User Intent Change?" → Yes! ("Actually, never mind")
+5. Skill IMMEDIATELY deactivates 6. Python help proceeds without SQL context interference
+```
 
-How to Avoid It
-ALWAYS Put User Intent Change First
+#### How to Avoid It
 
+**ALWAYS Put User Intent Change First**
 Mandatory structure:
 
-```xml
+```text
 
 <unload_condition>
 Stop using this skill when:
@@ -1291,12 +1321,9 @@ Stop using this skill when:
 
 </unload_condition>
 ```
-
 This prevents attentional residue!
 
 Emphasize in Critical Section Too
-
-```xml
 
 <critical>
 
@@ -1310,17 +1337,16 @@ before domain switches, before anything else.
 
 </critical>
 ```
-
 Double emphasis ensures it's not missed!
 
-### How to Fix Ituser Intent Change isn't first priority
+#### How to Fix User Intent Change isn't first priority
 
-If User Intent Change isn't first priority:
+**If User Intent Change isn't first priority:**
+
+```text
 
 Step 1: Reorder Unload Conditions
 Move User Intent Change to top:
-
-```xml
 
 <unload_condition>
 
@@ -1341,15 +1367,13 @@ Stop using this skill when:
 [Stop signals...]
 
 </unload_condition>
-```
+
 
 Step 2: Add Emphasis
 **User Intent Change (CHECK FIRST):**
 Make it unmissable!
 
 Step 3: Cross-Reference
-
-```xml
 
 <critical>
 
@@ -1361,7 +1385,7 @@ This is Priority #1—check BEFORE task completion!
 </critical>
 ```
 
-## Pitfall 9: Platform-Specific Assumptions
+### Pitfall 9: Platform-Specific Assumptions
 
 What It Looks Like
 **Assumes specific platform:**
@@ -1727,4 +1751,5 @@ To master advanced patterns:
 END OF SECTION 1.6
 Document Version: 1.0.0
 Last Updated: 2026-02-10
+
 
