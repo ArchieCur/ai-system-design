@@ -9,18 +9,24 @@ This appendix provides a complete, production-ready skill template that works fo
 
 ## What's included
 
+```text
+
 • Base template with all 8 core components
 • Scaling guide showing how to adapt for Class A/B/C
 • Validation checklist ensuring quality
 • User Intent Change emphasis (mandatory for all skills)
+```
 
 ## How to use this template
+
+```text
 
 1. Copy the base template to a new SKILL.md file
 2. Replace all [placeholders] with your content
 3. Follow the scaling guide for your skill's complexity level
 4. Use validation checklist before deployment
 5. Test with real scenarios including User Intent Change
+```
 
 ## Base Template (Universal)
 
@@ -704,3 +710,4 @@ Document Version: 2.0.0
 Last Updated: 2026-02-10
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
