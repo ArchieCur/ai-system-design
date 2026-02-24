@@ -1,6 +1,7 @@
 # Appendix B: Complete Skill Template
 
 **Purpose:** Copy-paste ready template with scaling guidance for Class A, B, and C skills
+
 **How to use:** Copy entire template, replace placeholders, customize based on skill complexity
 
 ## Introduction
@@ -707,6 +708,7 @@ Document Version: 2.0.0
 Last Updated: 2026-02-10
 Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
 Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*
+
 
 
 
