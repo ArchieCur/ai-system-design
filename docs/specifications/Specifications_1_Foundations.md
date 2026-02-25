@@ -83,12 +83,13 @@ Result:
 SPEC.md says:
 
 `<constraint priority="critical">`
-MUST: PostgreSQL 14+ database
-MUST: Bcrypt password hashing (salt rounds=12)
-MUST: JWT tokens (HS256 algorithm)
-MUST: Tokens stored in httpOnly cookies
-MUST: Access token expiry: 15 minutes
-MUST: Password minimum: 12 characters, must include uppercase, lowercase, number, special char
+
+- MUST: PostgreSQL 14+ database
+- MUST: Bcrypt password hashing (salt rounds=12)
+- MUST: JWT tokens (HS256 algorithm)
+- MUST: Tokens stored in httpOnly cookies
+- MUST: Access token expiry: 15 minutes
+- MUST: Password minimum: 12 characters, must include uppercase, lowercase, number, special char
 `</constraint>`
 
 User: "Build a user authentication system"
@@ -752,6 +753,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
