@@ -1,4 +1,3 @@
-
 # Appendix D: Cross-Platform Implementation & Resources
 
 **Purpose:** Brief guide to Skills across AI platforms with links to official resources
@@ -292,159 +291,161 @@ This approach is still valid for project-specific coding standards but is separa
 The Skills implementation described above is the newer, standardized approach that 
 supports progressive disclosure and aligns with agentskills.io.
 
-### Google (System Instructions)
-
-Two paths will for using Skills (System Instructions) will be provided.  Use the Decsion Tree to determine which Google path should you use.
-
-Decision Tree
+### Google (System Instructions & Function Calling)
 
 ![Which Google path should you use? AI Studio (UI) or Vertex AI (API)](../assets/SkillsD_Google.png)
 
+Two paths for implementing Skills (Google: System Instructions + Tools) are provided.
+Use the Decision Tree to determine which path fits your deployment scale.
 
-| Criterion             | AI Studio (UI)         | Vertex AI (API) |
-|-----------------------|------------------------|----------------------------|
-| Best for              | Testing, 1-3 skills    | Production, 5+ skills      |
-| Setup complexity      | Low (visual interface) | Medium (Python code)       |
-| Cost optimization     | Basic                  | Advanced (context caching) |
+| Criterion             | AI Studio (UI)                      | Vertex AI (API)             |
+|-----------------------|-------------------------------------|-----------------------------|
+| Best for              | Prototyping, Testing, 1-3 skills    | Production, 5+ skills       |
+| Setup complexity      | Low (visual interface)              | Medium (Python SDK)         |
+| Cost optimization     | Basic                               | Advanced (Context caching)  |
+| Architecture          | Manual Tool registration            | Programmatic Tool Objects   |
 
-
-
-### Google Vertex AI (System Instructions + Tools)
-
-**Implementation approach:** Hybrid model using System Instructions + Function Calling
-
-**Status:** Recognizes Agent Skills format via Vertex AI Agent Development Kit (ADK),
-converts to platform-native implementation
-
-**How to use:**
-
-```text
-
-1. Standardize the Manifest:
-   - Extract YAML frontmatter from SKILL.md
-   - Google uses `description` for intent routing (skill activation)
-   - Key fields: `name`, `description`, `scope`
-
-2. Convert to System Instructions:
-   - Take "Instructions" section from SKILL.md
-   - Convert to structured plain-text block
-   - In Vertex AI API: Place in `system_instruction` field of `GenerateContentRequest`
-
-3. Register Execution Capabilities as Tools:
-   - If skill requires code execution or data access → Register as Tool
-   - Use Function Declarations (not generic "triggers")
-   - In Google AI Studio: Add under "Tools" section
-   - In Vertex AI: Use Extensions or Function Calling API
-
-4. Optimize with Context Caching:
-   - Cache large skill sets to reduce latency and token costs
-   - Important for managing multiple skills simultaneously
-```
-
-**Architecture Pattern:**
-
-```text
-
-Anthropic SKILL.md
-├── YAML Frontmatter → Google: Metadata + Intent Routing
-├── Instructions → Google: System Instructions
-└── Execution Logic → Google: Tools/Function Declarations
-```
-#### Example Conversion:
-
-**From Anthropic SKILL.md:**
-
-```text
-
-yaml
-
----
-name: data-analysis
-
-description: Analyze datasets and generate insights. Use for CSV, JSON data.
-```
-
----
-
-**Instructions**
-
-```text
-
-When user provides data:
-
-1. Load and validate data
-2. Perform statistical analysis
-3. Generate visualization
-```
-
-**To Google Vertex AI:**
-
-**System Instruction (plain text):**
-
-```text
-
-Data Analysis Skill:
-
-When user provides data in CSV or JSON format:
-
-1. Load and validate the data structure
-2. Perform statistical analysis (mean, median, distribution)
-3. Generate appropriate visualizations
-
-Function Declaration (Tool):
-
-     ```python
-
-{
-    "name": "analyze_dataset",
-    "description": "Analyze datasets and generate insights for CSV/JSON data",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "data_source": {"type": "string", "description": "Path or content of dataset"},
-            "analysis_type": {"type": "string", "enum": ["statistical", "visual", "both"]}
-        },
-        "required": ["data_source"]
-    }
-}
-
-```
-
-**Characteristics:**
-
-- ✅ Recognizes SKILL.md format (via ADK)
-- ✅ Uses YAML frontmatter for metadata
-- ⚠️ Converts to System Instructions (not native skill loading)
-- ⚠️ Separates "how-to" (Instructions) from "doing" (Tools)
-- ✅ Context Caching for managing large skill sets (2026 feature)
-- ⚠️ No progressive disclosure (instructions loaded at startup)
-- ✅ Intent routing via description field
-
-**Key Difference from Anthropic:**
-
-- **Anthropic:** Skills are self-contained units (instructions + execution together)
-- **Google:** Split model (instructions in System Instructions, execution in Tools/Functions)
+#### Path 1: Via Google AI Studio (UI)
 
 **When to use:**
 
 ```text
 
-- For Google Cloud integrated workflows
-- When using Vertex AI or Google AI Studio
-- When you need tight integration with Google Cloud services
-- When managing large skill libraries (leverage Context Caching)
+-You are in the discovery phase or testing individual skill logic.
+-You want to test the interaction between System Instructions and Tools without writing boilerplate code.
+-You are managing a small set (1-3) of skills.
+```
+**Step-by-Step:**
+
+```text
+
+1. Extract Manifest: Convert your SKILL.md metadata (YAML) into the "System Instructions" block.
+
+2. Set System Instructions: Paste the "How-to" logic into the System Instructions field at the
+top of the interface.
+
+3. Register Tools (Function Calling): Click Add Tool → Function Calling.
+
+4. Define the function name, description, and parameters (JSON Schema) based on the
+"Execution" section of your skill.
+
+5. Test Intent Routing: Use the chat window to verify the model correctly triggers
+the tool based on your instructions.
+```
+**Documentation:** <ai.google.dev/gemini-api/docs>
+
+#### Path 2: Via Vertex AI Function Calling API (Python)
+
+**When to use:**
+
+```text
+
+- You are deploying to a production environment.
+- You are managing 5+ skills (leveraging Context Caching for 90% cost savings).
+- You require Vertex AI Agent Runtime for advanced orchestration.
+```
+**Step-by-Step:**
+
+```text
+
+1. Initialize the Vertex AI SDK: Use the GenerativeModel class to bridge your instructions and tools.
+
+2. Register Execution as a Tool:In Google's SDK, functions are wrapped in a Tool object.
+
+Python
+from vertexai.generative_models import FunctionDeclaration, Tool, GenerativeModel
+
+# 1. Define the skill's execution interface (The "Doing")
+optimize_sql_declaration = FunctionDeclaration(
+    name="optimize_sql_query",
+    description="Optimizes slow SQL queries by analyzing execution plans.",
+    parameters={
+        "type": "object",
+        "properties": {
+            "query": {"type": "string", "description": "The raw SQL string"},
+            "db_type": {"type": "string", "enum": ["postgres", "bigquery"]}
+        },
+        "required": ["query"]
+    }
+)
+
+# 2. Bundle declarations into a Tool object
+sql_tool = Tool(function_declarations=[optimize_sql_declaration])
+
+# 3. Initialize Model with System Instructions (The "How-to")
+model = GenerativeModel(
+    model_name="gemini-1.5-pro",
+    system_instruction=["You are a Senior DBA. Use the optimize_sql_query tool for any performance requests."],
+    tools=[sql_tool]
+)
+Implement Context Caching (Cost Optimization):For large skill libraries, cache the system instructions and tool definitions. Note: This is most effective for contexts exceeding 32k tokens.Pythonfrom vertexai.preview import caching
+
+cached_content = caching.CachedContent.create(
+    model_name="gemini-1.5-pro",
+    system_instruction=combined_skill_instructions, # Your 5+ skills
+    ttl=3600 # 1 hour
+)
+
+# Use the cache in your model
+
+model = GenerativeModel(model_name="gemini-1.5-pro")
+response = model.generate_content("User prompt", cached_content=cached_content.name)
 ```
 
-**Documentation:**
+#### Architecture Pattern
 
-- System Instructions: <https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompts/system-instructions>
-- Agent Development: <https://cloud.google.com/vertex-ai/docs/generative-ai/agent-runtime>
-- Function Calling: <https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/function-calling>
-- Open Standard Integration: <https://agentskills.io> (AAIF Skills Spec)
+**The "Split" Model**
 
-**Pro Tip:**
-When converting from Anthropic Skills, remember that the "Instructions" (the how-to) move to Google's System Instructions,
-while the "Execution" (the doing) moves to Google's Tools/Extensions. You'll need to split your skill into these two components.
+**Google separates the Persona from the Capability.**
+
+Anthropic: Skills are "Self-Contained" (Instructions + Tools together).
+
+Google: Skills are "Split" (Instructions go to System Instructions, Execution goes to Tools).PlaintextAnthropic SKILL.md
+
+```text
+
+├── YAML Frontmatter   → Google: Metadata + Intent Routing
+├── Instructions       → Google: System Instructions (The "Brain")
+└── Execution Logic    → Google: Tools/Function Declarations (The "Hands")
+```
+
+**Progressive Disclosure & Agent Runtime**
+
+```text
+
+While standard System Instructions load everything at startup, Vertex AI Agent Runtime allows
+for Progressive Disclosure:
+
+1. Discovery Layer: The agent is only aware of the metadata (names and descriptions) of your skill library.
+
+2. Just-in-Time Loading: The Runtime only pulls the full "System Instructions" for a specific skill
+once the model determines that skill is needed for the task.
+
+Benefit: This prevents "context stuffing," reduces costs, and improves reasoning accuracy for libraries
+with 50+ skills.
+```
+**Documentation:** 
+As of early 2026, Google has consolidated several "Reasoning Engine" and "Agent" features under
+the Vertex AI Agent Builder umbrella. "Agent Engine" is the infrastructure that hosts the code, 
+while "System Instructions" are the logic inside the model.
+
+- Vertex AI System Instructions: 
+<https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions>
+
+- Vertex AI Agent Engine (Runtime):
+<https://docs.cloud.google.com/agent-builder/agent-engine/overview>
+<https://cloud.google.com/vertex-ai/docs/generative-ai/agent-runtime>
+
+- Vertex AI Agent Builder (The broader suite):
+<https://cloud.google.com/products/agent-builder>
+
+- Multimodal Function Calling: <https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/function-calling>
+
+#### Pro Tip:
+When migrating from Anthropic, remember that the "Instructions" are the model's internal guide, 
+while the "Tools" are its external interface. If your skill feels "slow," check if your System Instructions
+are too verbose-consider moving some of that logic into the tool's parameter descriptions!
+
 
 ### Open Source Implementations
 
@@ -966,6 +967,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
