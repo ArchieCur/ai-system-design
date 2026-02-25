@@ -399,7 +399,8 @@ response = model.generate_content("User prompt", cached_content=cached_content.n
 
 Anthropic: Skills are "Self-Contained" (Instructions + Tools together).
 
-Google: Skills are "Split" (Instructions go to System Instructions, Execution goes to Tools).PlaintextAnthropic SKILL.md
+Google: Skills are "Split" (Instructions go to System Instructions,
+Execution goes to Tools).PlaintextAnthropic SKILL.md
 
 ```text
 
@@ -539,7 +540,8 @@ Steps:
 - ✅ Semantic tags: Compatible (work in Markdown body)
 - ✅ Progressive disclosure: Both platforms support it
 - ✅ Multi-file structure: Compatible (references/, scripts/)
-- ⚠️ Activation mechanism: Slightly different (Anthropic auto-activates, OpenAI requires explicit shell tool attachment)
+- ⚠️ Activation mechanism: Slightly different
+     (Anthropic auto-activates, OpenAI requires explicit shell tool attachment)
 - ⚠️ Platform-specific features: Some Anthropic-specific patterns may need testing
 ```
 
@@ -622,7 +624,8 @@ description → Intent Routing: This is the most critical field. Google uses thi
 scope → Context Boundaries: Should be included in the System Instructions to limit the model's "domain of authority."
 
 2. Convert Instructions to System Instructions
-Move your "How-to" logic from the SKILL.md body into Google’s System Instruction block. Gemini models perform best when logic is organized using Markdown headers and clear If/Then patterns.
+Move your "How-to" logic from the SKILL.md body into Google’s System Instruction block.
+Gemini models perform best when logic is organized using Markdown headers and clear If/Then patterns.
 
 To System Instruction (plain text/markdown):
 
@@ -908,7 +911,8 @@ then adjust metadata and structure to match your target platform's requirements.
 5. Conversion is possible: Skills can be adapted between platforms with some effort
 6. Open standard exists: agentskills.io provides platform-agnostic specification
 
-For this curriculum: We teach Anthropic's approach in depth, knowing the principles apply broadly and the implementation is likely to influence the field.
+For this curriculum: We teach Anthropic's approach in depth,
+knowing the principles apply broadly and the implementation is likely to influence the field.
 
 ### Your next steps
 
@@ -940,6 +944,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
