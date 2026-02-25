@@ -298,7 +298,7 @@ Two paths will for using Skills (System Instructions) will be provided.  Use the
 
 Decision Tree
 
-```text
+![Which Google path should you use? AI Studio (UI) or Vertex AI (API)](../assets/SkillsD_Google.png)
 
 
 | Criterion             | AI Studio (UI)         | Vertex AI (API) |
@@ -966,6 +966,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
