@@ -37,12 +37,15 @@ A Specification (spec.md) is a document that defines the persistent, project-lev
 
 For complex projects, specifications can be organized into folders to separate concerns:
 
+```text
+
 /project-specs/
 
 ├── SPEC.md (main specification)
 ├── policies/ (security, data retention policies)
 ├── regulations/ (GDPR, SOC2, PCI-DSS compliance)
 └── context/ (brand guidelines, business priorities)
+```
 
 SPEC.md references these documents rather than duplicating content, keeping the main specification focused while providing access to detailed policies and regulations.
 
@@ -744,4 +747,5 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
