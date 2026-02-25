@@ -93,18 +93,20 @@ SPEC.md says:
 
 `</constraint>`
 
-User: "Build a user authentication system"
+**User:** "Build a user authentication system"
 
-Model: "Perfect! The spec tells me:
-Database: PostgreSQL ✓
-Hashing: Bcrypt with 12 salt rounds ✓
-Tokens: JWT with HS256 ✓
-Storage: httpOnly cookies ✓
-Expiry: 15 minutes ✓
-Password rules: Clear requirements ✓
+**Model:** "Perfect! The spec tells me:
 
-Model: I'll implement exactly according to spec. No guessing needed.
-Result: Consistent, compliant, matches your requirements.
+- Database: PostgreSQL ✓
+- Hashing: Bcrypt with 12 salt rounds ✓
+- Tokens: JWT with HS256 ✓
+- Storage: httpOnly cookies ✓
+- Expiry: 15 minutes ✓
+- Password rules: Clear requirements ✓
+
+**Model:** I'll implement exactly according to spec. No guessing needed.
+
+**Result:** Consistent, compliant, matches your requirements.
 
 ## The Key Insight
 
@@ -754,6 +756,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
