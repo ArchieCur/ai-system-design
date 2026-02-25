@@ -72,10 +72,11 @@ The model: "Okay! I'll need to make decisions about:
 
 The model: I'll just... invent reasonable defaults and hope they match the needs.
 Result: 
-Model invents policy. 
-Might not match your requirements. 
-Might violate your security standards. 
-Might be inconsistent across projects.
+
+- Model invents policy. 
+- Might not match your requirements. 
+- Might violate your security standards. 
+- Might be inconsistent across projects.
 
 ### *With Specifications:*
 
@@ -751,6 +752,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
