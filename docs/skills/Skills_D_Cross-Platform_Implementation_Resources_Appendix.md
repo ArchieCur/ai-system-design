@@ -896,10 +896,13 @@ Features like:
 Always consult official documentation:
 
 • Anthropic:
-<https://docs.claude.com>
-<https://support.claude.com>
+  <https://docs.claude.com>
+  <https://support.claude.com>
+
 • OpenAI: <https://platform.openai.com/docs>
+
 • Google: <https://cloud.google.com/vertex-ai/docs>
+
 • Open Source: Check specific framework documentation
 
 What to watch for:
@@ -949,16 +952,19 @@ knowing the principles apply broadly and the implementation is likely to influen
 
 #### GitHub
 
-• Anthropic Skills Repo: <https://github.com/anthropics/skills>,
+• Anthropic Skills Repo: <https://github.com/anthropics/skills>
+
 • Skill Creator: <https://github.com/anthropics/skills/tree/main/skills/skill-creator>
 
 #### Documentation
 
 • Skills Guide: <https://support.claude.com/en/articles/12580051>
+
 • Blog Post: <https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills>
+
 • API Docs: <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview>
 
-#### Standard
+#### Open Standard
 
 • Open Specification: <https://agentskills.io/specification>
 
@@ -968,6 +974,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
