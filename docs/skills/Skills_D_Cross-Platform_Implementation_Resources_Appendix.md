@@ -622,8 +622,10 @@ scope: postgresql, mysql
 
 name → Function/Tool Identifier: Used in code to trigger the execution.
 
-description → Intent Routing: This is the most critical field. Google uses this text to decide when to activate a specific tool.
-scope → Context Boundaries: Should be included in the System Instructions to limit the model's "domain of authority."
+description → Intent Routing: This is the most critical field.
+Google uses this text to decide when to activate a specific tool.
+scope → Context Boundaries: Should be included in the System Instructions
+to limit the model's "domain of authority."
 
 2. Convert Instructions to System Instructions
 Move your "How-to" logic from the SKILL.md body into Google’s System Instruction block.
@@ -946,6 +948,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
