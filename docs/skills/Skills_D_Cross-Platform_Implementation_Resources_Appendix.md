@@ -803,31 +803,41 @@ and it guides you through creation with best practices built in.
 URL: <https://support.claude.com/en/articles/12580051-teach-claude-your-way-of-working-using-skills>
 
 **What it covers:**
+
+```text
+
 • How to create skills
 • How to upload skills to Claude.ai
 • Best practices for skill design
 • Troubleshooting common issues
 **Audience:** All users (beginner to advanced)
-
+```
 2. Anthropic Blog: Equipping Agents for the Real World
 URL: <https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills>
 
 **What it covers:**
+
+```text
+
 • The vision behind Agent Skills
 • Why skills matter for AI agents
 • Real-world use cases
 • The open standard approach
 **Audience:** Anyone interested in the "why" behind Skills
-
-4. Claude API Documentation: Agent Skills
+```
+3. Claude API Documentation: Agent Skills
 URL: <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview>
 
 **What it covers:**
+
+```text
+
 • Using skills via the Claude API
 • Skills parameter format
 • API examples with skills
 • Integration patterns
 **Audience:** Developers integrating Claude API
+```
 
 ### Agent Skills Open Standard
 
@@ -835,15 +845,25 @@ Specification Website
 URL: <https://agentskills.io/specification>
 
 **What it contains:**
+
+```text
+
 • Complete open standard specification
 • Platform-agnostic skill format
 • Technical specification details
 • Governance and contribution guidelines
+```
+
 **Why it matters:**
+
+```text
+
 • Skills are not proprietary to Anthropic
 • Other platforms can adopt the standard
 • Enables skill portability across AI platforms
 • Community-driven evolution
+```
+
 **When to reference:** For precise technical details about the skill specification format.
 
 ## Platform Evolution Note
@@ -948,6 +968,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
