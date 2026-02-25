@@ -1,8 +1,10 @@
 # Section 1: Foundation - What Are Specifications?
 
 **For:** All users designing AI systems
+
 **Prerequisites:** Understanding of Prompts and Skills (Modules 1-2)
-What you'll learn: What Specifications are, why AI needs them, and how they differ from traditional software requirements.
+
+**What you'll learn:** What Specifications are, why AI needs them, and how they differ from traditional software requirements.
 
 ## Introduction
 
@@ -742,3 +744,4 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
