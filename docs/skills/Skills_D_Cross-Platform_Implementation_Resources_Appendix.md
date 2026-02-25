@@ -377,7 +377,9 @@ model = GenerativeModel(
     system_instruction=["You are a Senior DBA. Use the optimize_sql_query tool for any performance requests."],
     tools=[sql_tool]
 )
-Implement Context Caching (Cost Optimization):For large skill libraries, cache the system instructions and tool definitions. Note: This is most effective for contexts exceeding 32k tokens.Pythonfrom vertexai.preview import caching
+Implement Context Caching (Cost Optimization):For large skill libraries,
+cache the system instructions and tool definitions.
+Note: This is most effective for contexts exceeding 32k tokens.Pythonfrom vertexai.preview import caching
 
 cached_content = caching.CachedContent.create(
     model_name="gemini-1.5-pro",
@@ -944,6 +946,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
