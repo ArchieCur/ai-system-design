@@ -274,18 +274,20 @@ MUST: Database backups every 24 hours
 ### SHOULD Example
 
 `<guideline priority="high">`
-SHOULD: Keep functions under 50 lines
-SHOULD: Use functional components (prefer hooks over classes)
-SHOULD: Include inline comments for complex logic
+
+- SHOULD: Keep functions under 50 lines
+- SHOULD: Use functional components (prefer hooks over classes)
+- SHOULD: Include inline comments for complex logic
 
 WHEN violating:
 
 - Document rationale in code comments
 - Consider refactoring if violation becomes pattern
 - Acceptable for complex algorithms where splitting hurts readability
+  
 `</guideline>`
 
-How a model processes this
+**How a model processes this:**
 
 - These are PREFERENCES I aim to follow
 - I can deviate with good reason
@@ -312,6 +314,7 @@ How a model processes this
 ### CONTEXT Example
 
 `<context>`
+
 **Technical Environment:**
 
 - Stack: Next.js 14 + TypeScript + Tailwind
@@ -325,11 +328,13 @@ How a model processes this
 - Frustration: Complex interfaces, unexpected errors
 
 **Decision Framework:**
+
 **When in doubt:**
 
 - Simple > Clever (junior devs will maintain this)
 - Explicit > Implicit (code clarity matters)
 - Reliable > Fast (stability critical for trust)
+
 `</context>`
 
 **How a model processes this:**
@@ -342,6 +347,7 @@ How a model processes this
 ### **Layer 4: INTENT (The Why)**
 
 **Purpose: Goals and rationale behind constraints**
+
 **What goes here:**
 
 - Business objectives
@@ -358,8 +364,10 @@ How a model processes this
 ### INTENT Example
 
 `<intent>`
+
 **Primary Goal:**
 Enable small business owners to manage inventory without technical expertise.
+
 **Why This Matters:**
 
 - Users are time-constrained (5-10 minutes max per session)
@@ -389,30 +397,35 @@ Enable small business owners to manage inventory without technical expertise.
 ## **How the Layers Work Together**
 
 **Real scenario:**
+
 User prompt: "Add a bulk import feature for inventory"
 Model references specs:
 
 ### MUST (Layer 1)
 
-MUST: Validate all input data before database write
-MUST: Maximum 1000 records per import (prevent DOS)
+- MUST: Validate all input data before database write
+- MUST: Maximum 1000 records per import (prevent DOS)
+
 -> Model implements validation + 1000 record limit
 
 ### SHOULD (Layer 2)
 
 SHOULD: Provide progress indicator for operations >2 seconds
+
 -> Model adds progress bar (import likely >2 seconds)
 
 ### CONTEXT (Layer 3)
 
 Users are non-technical, time-constrained
 Priority: Reliability > Features
+
 -> Model adds clear error messages, handle edge cases carefully
 
 ### INTENT (Layer 4)
 
 Success = 90% task completion without docs
 Users need to know what went wrong
+
 -> Model designs clear, actionable error messages → Model adds inline help text
 
 ### Result: Import feature that
@@ -421,33 +434,37 @@ Users need to know what went wrong
 • Follows SHOULD guidelines ✓
 • Aligns with user context ✓
 • Achieves intended outcomes ✓
+
 Without layered specs: Model might build technically correct but unusable feature.
 
 ## Why AI Needs Different Specs Than Software
 
 ### The Fundamental Difference
 
-Compilers
-Process syntax
-Enforce rules
-Return binary outcomes
+- Compilers
+- Process syntax
+- Enforce rules
+- Return binary outcomes
 
 ### AI Models
 
-Process semantics
-Apply judgment
-Return intelligent solutions
+- Process semantics
+- Apply judgment
+- Return intelligent solutions
 
-This requires different specification approaches.
+  **This requires different specification approaches.**
 
 ### What Works for Compilers (But Not for AI)
 
 1. Precise Syntax
 Compiler requirement:
 
-`int calculate(int a, int b) {
+```text
+
+int calculate(int a, int b) {
 return a + b;
-}`
+}
+```
 Works: Exact syntax enforced
 
 AI specification (if written like compiler requirement)
@@ -458,6 +475,7 @@ Function name must be exactly 'calculate'.
 Parameters must be named 'a' and 'b' in that order.
 
 Problem: Over-specified. A model should be able to choose sensible names, types based on context.
+
 2. Binary Constraints
 
 Compiler requirement:
@@ -476,15 +494,19 @@ Problem: What does "release" mean in this context?
 Better AI specification:
 
 `<constraint>`
+
 MUST: Production builds optimized for performance
 MUST: No debugging symbols in production binaries
 MUST: Environment-specific config (dev/staging/prod)
 
 `<rationale>`
+
 Performance critical for user experience (context: 5K users, limited resources)
 Debug symbols = security risk (exposed internal structure)
 Environment configs = different DB/API endpoints per environment
+
 `</rationale>`
+
 `</constraint>`
 
 ### What Works for AI (But Would Confuse Compilers)
@@ -764,6 +786,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
