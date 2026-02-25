@@ -118,7 +118,7 @@ Specs are most usable by models when they eliminate the need for the model to in
 - Good at applying context to decisions
 - Capable of planning within boundaries
 
-But:
+**But:**
 
 - Should not invent security policies
 - Should not guess architectural decisions
@@ -131,21 +131,22 @@ But:
 
 In traditional software engineering:
 
-Requirements → Code → Compiler → Binary Output
-The compiler:
-Enforces syntax rules (binary: works or doesn't)
-Has no understanding of intent
-Cannot clarify ambiguity
-Cannot negotiate requirements
-Returns errors or success (nothing in between)
+- Requirements → Code → Compiler → Binary Output
+- The compiler:
+- Enforces syntax rules (binary: works or doesn't)
+- Has no understanding of intent
+- Cannot clarify ambiguity
+- Cannot negotiate requirements
+- Returns errors or success (nothing in between)
 
 Requirements are written for something that:
-Can't ask questions
-Can't explain its reasoning
-Can't suggest alternatives
-Just does exactly what you specify (or fails)
 
-AI Systems: Writing for Partners
+- Can't ask questions
+- Can't explain its reasoning
+- Can't suggest alternatives
+- Just does exactly what you specify (or fails)
+
+## AI Systems: Writing for Partners
 
 ### With AI systems
 
@@ -170,31 +171,38 @@ This changes everything about how we write specifications.
 
 *Traditional Requirements (Compiler Thinking):*
 
-REQUIREMENT: The system shall hash passwords using bcrypt
+**REQUIREMENT:** The system shall hash passwords using bcrypt
 with a cost factor of 12.
 
-IMPLEMENTATION: If (bcrypt && cost_factor == 12) { compile_success() }
+**IMPLEMENTATION:** If (bcrypt && cost_factor == 12) { compile_success() }
 else { compilation_error() }
 Binary outcome. No dialog.
 
 **AI Specifications (Partner Thinking):**
 
 `<constraint priority="critical">`
+
 MUST: Password hashing uses bcrypt with salt rounds=12
+
 `<rationale>`
+
 Security requirement: OWASP recommends 12+ rounds for 2026.
 Lower rounds = insufficient protection against brute force.
 Higher rounds = unnecessary performance cost at our scale.
+
 `</rationale>`
+
 `</constraint>`
 
 **Model reads this and:**
-Understands the constraint (bcrypt, 12 rounds)
-Understands the why (security vs. performance balance)
-Can ask: "What if user requests 10 rounds for performance?"
-Can challenge: "Spec requires 12 rounds, but you asked for 10. Override?"
-Can suggest: "If performance is critical, we could optimize other areas instead"
-Dialog-enabled outcome. Collaborative.
+
+- Understands the constraint (bcrypt, 12 rounds)
+- Understands the why (security vs. performance balance)
+- Can ask: "What if user requests 10 rounds for performance?"
+- Can challenge: "Spec requires 12 rounds, but you asked for 10. Override?"
+- Can suggest: "If performance is critical, we could optimize other areas instead"
+- 
+  **Dialog-enabled outcome. Collaborative.**
 
 ### The Implications
 
@@ -756,6 +764,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
