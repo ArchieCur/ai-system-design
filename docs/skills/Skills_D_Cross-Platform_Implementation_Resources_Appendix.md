@@ -333,8 +333,6 @@ top of the interface.
 the tool based on your instructions.
 ```
 
-**Documentation:** <ai.google.dev/gemini-api/docs>
-
 #### Path 2: Via Vertex AI Function Calling API (Python)
 
 **When to use:**
@@ -586,183 +584,157 @@ If you need to convert to OpenAI's older AGENTS.md format (for Codex project-spe
 
 ### From Anthropic SKILL.md → Google Vertex AI (Detailed)
 
-```text
-
 **The Split-Model Approach:**
 
-Google requires you to split your skill into two parts:
-
-1. **System Instructions** (the "how-to" - decision logic, patterns)
-2. **Tools/Functions** (the "doing" - executable capabilities)
-```
-
-**Step-by-step conversion:**
+**Google separates a skill into two distinct components to optimize for cloud scale and security:**
 
 ```text
 
-1. Extract and Standardize Manifest:
+System Instructions: The "Brain" (decision logic, persona, and constraints).
 
-yaml
+Tools/Functions: The "Hands" (executable capabilities and API interfaces).
+```
 
-From your SKILL.md frontmatter
+#### **Step-by-step conversion:**
 
+```text
+
+1. Extract and Standardize Manifest
+Google uses the metadata from your SKILL.md frontmatter to drive its Intent Routing engine.
+
+YAML
+# From your SKILL.md frontmatter
 ---
 name: sql-query-optimization
-
 description: >
-
-Optimize slow SQL queries for PostgreSQL and MySQL.
-
-Use when query execution time exceeds 1 second.
-
+  Optimize slow SQL queries for PostgreSQL and MySQL.
+  Use when query execution time exceeds 1 second.
 Keywords: database, performance, query optimization
-
 scope: postgresql, mysql
 
 ---
 
-Google uses:
+**Google Mapping:**
 
-- `name` → Function/Tool identifier
-- `description` → Intent routing (when to activate)
-- `scope` → Context boundaries
+name → Function/Tool Identifier: Used in code to trigger the execution.
 
-2. Convert Instructions to System Instructions:
+description → Intent Routing: This is the most critical field. Google uses this text to decide when to activate a specific tool.
+scope → Context Boundaries: Should be included in the System Instructions to limit the model's "domain of authority."
 
-**From SKILL.md body:**
+2. Convert Instructions to System Instructions
+Move your "How-to" logic from the SKILL.md body into Google’s System Instruction block. Gemini models perform best when logic is organized using Markdown headers and clear If/Then patterns.
 
-markdown
+To System Instruction (plain text/markdown):
 
-## Core Decision Logic
+Markdown
+# SQL Query Optimization Logic
+When a query execution time exceeds 1 second:
 
-IF query execution time > 1 second:
-→ Run EXPLAIN ANALYZE
-→ Identify bottleneck (seq scan, nested loop, etc.)
-→ Apply targeted optimization
+1. Run EXPLAIN ANALYZE to retrieve the execution plan.
+2. Identify bottlenecks: Look specifically for Sequential Scans, Nested Loops, or Missing Indexes.
+3. Apply targeted optimization based on the identified bottleneck type.
+4. Verify improvement with a follow-up EXPLAIN ANALYZE.
 
-1. Measure baseline performance
-2. Identify specific bottleneck
-3. Apply targeted fix
-4. Verify improvement
+## Best Practice Patterns:
+- Always measure a baseline before applying optimizations.
+- Focus on the specific bottleneck; do not add redundant indexes.
+- Check for performance regressions in related queries after changes.
 
-**To System Instruction (plain text):**
+3. Register Execution as Tool/Function
+If your skill performs an action (like running an actual SQL command), you must register it as a Tool.
+```
 
-SQL Query Optimization:
-When query execution time exceeds 1 second:
+#### ***Via Google AI Studio (UI):***
 
-1. Run EXPLAIN ANALYZE to get execution plan
-2. Identify bottleneck: Sequential scans, nested loops, or missing indexes
-3. Apply targeted optimization based on bottleneck type
-4. Verify improvement with follow-up EXPLAIN ANALYZE
+```text
 
-Best Practice Pattern:
+Navigate to the Tools section.
 
-- Always measure before optimizing
-- Focus on specific bottleneck (don't add random indexes)
-- Verify improvement after changes
-- Check for performance regressions in related queries
+Select Add Function.
 
-3. Register Execution as Tool/Function:
+Map your skill's "Execution" parameters to the JSON Schema fields provided in the UI.
 
-If your skill executes actions (not just provides guidance):
+Via Vertex AI SDK (Python - 2026 Standard):
 
-**Via Vertex AI Function Calling API:**
+Python
+from google import genai
+from google.genai import types
 
-python
-
-function_declaration = {
-    "name": "optimize_sql_query",
-    "description": "Optimize slow SQL queries by analyzing execution plans and applying targeted fixes",
-    "parameters": {
+# Define the Tool (The "Doing")
+optimize_func = types.FunctionDeclaration(
+    name="optimize_sql_query",
+    description="Optimizes slow SQL queries by analyzing execution plans.",
+    parameters={
         "type": "object",
         "properties": {
-            "query": {
-                "type": "string",
-                "description": "The SQL query to optimize"
-            },
-            "database_type": {
-                "type": "string",
-                "enum": ["postgresql", "mysql"],
-                "description": "Type of database"
-            },
-            "execution_time_ms": {
-                "type": "number",
-                "description": "Current query execution time in milliseconds"
-            }
+            "query": {"type": "string", "description": "The SQL query string"},
+            "db_type": {"type": "string", "enum": ["postgresql", "mysql"]}
         },
-        "required": ["query", "database_type", "execution_time_ms"]
+        "required": ["query", "db_type"]
     }
-}
-
-    
-Via Google AI Studio (UI):
-
-- Go to "Tools" section
-- Add new Function
-- Fill in: Name, Description, Parameters
-- Connect to your execution backend
-
-4. Implement Context Caching (for multiple skills):
-
-**When managing 5+ skills:**
-
-     ```python
-
-from google.cloud import aiplatform
-     ```
-
-## Cache skill instructions to reduce latency and costs
-
-     ```python
-
-cached_content = aiplatform.CachedContent.create(
-    model_name="gemini-1.5-pro",
-    system_instruction=combined_skill_instructions,  # All skill system instructions
-    ttl=3600  # Cache for 1 hour
 )
-     ```
 
-## Use cached content in requests
+sql_tool = types.Tool(function_declarations=[optimize_func])
 
-python
+4. Implement Context Caching (for 5+ Skills)
 
-response = model.generate_content(
-    prompt="Optimize this query: SELECT * FROM users WHERE status = 'active'",
-    cached_content=cached_content
+For large skill libraries, Google allows you to cache your System Instructions and Tool definitions.
+This is a major cost-saver for production environments.
+
+Note: Context Caching typically requires a minimum of 32,768 tokens to be active.
+For smaller skill sets, the standard GenerateContent call is sufficient.
+
+Python
+# Cache your library of 5+ skills to reduce latency and costs
+skill_cache = client.caches.create(
+    model="gemini-1.5-pro-002",
+    config=types.CreateCachedContentConfig(
+        system_instruction=combined_skill_instructions,
+        ttl_seconds=3600  # Minimum 1 hour
+    )
 )
-     ```
 
-**5. Test Intent Routing:**
+# Use the cached skills in a request
+response = client.models.generate_content(
+    model="gemini-1.5-pro-002",
+    contents="Optimize: SELECT * FROM users WHERE age > 30",
+    config=types.GenerateContentConfig(cached_content=skill_cache.name)
+)
 
-Google uses the `description` field to determine when to activate skills.
-Test with various user prompts to ensure proper routing:
+5. Test Intent Routing
+Because Google uses the description field to activate tools,
+you must verify that user prompts trigger the correct "Skill."
 
-**Good routing examples:**
+Test Case 1: "My database is crawling" → should activate sql-query-optimization.
 
-- User: "My query is slow" → Activates sql-query-optimization
-- User: "Analyze this dataset" → Activates data-analysis skill
-- User: "Write a function" → Activates code-generation skill
-
+Test Case 2: "Format this SQL" → should not activate optimization (remains in general chat).
+```
 **Benefits of Google's approach:**
 
-- Tight integration with Google Cloud services
-- Context Caching reduces cost for large skill sets
-- Function Calling enables real execution (not just guidance)
-- Familiar pattern if you're already using Vertex AI
+```text
+
+Enterprise Scale: Context Caching reduces costs significantly for massive skill sets.
+Enhanced Security: Execution logic is kept in your backend; the LLM only sees the tool "interface."
+Native Integration: Direct access to Google Cloud/Vertex AI ecosystem features.
+```
 
 **Trade-offs:**
 
-- More complex setup (split instructions from execution)
-- No native progressive disclosure (all instructions loaded)
-- Requires separate Tool registration for execution
-- Different mental model than Anthropic's self-contained skills
+```text
+
+Increased Complexity: You must manage the "Split" between instructions and tool code.
+No Native Progressive Disclosure: By default, all system instructions are loaded at once.
+Workaround: Use Dynamic Tool Routing to provide only relevant tools based on conversation state.
+State Management: Developers must manually pass tool outputs back to the model to maintain the "Skill" loop.
+```
 
 **When to use Google approach:**
 
-- Already invested in Google Cloud ecosystem
-- Need Function Calling for real execution
-- Managing large skill libraries (leverage Context Caching)
-- Want tight integration with Vertex AI features
+```text
+
+You are already operating within the Google Cloud ecosystem.
+You need Function Calling for real-time system execution.
+You are managing a large library (50+) of complex, versioned skills.
 ```
 
 ## Universal Conversion Tips
@@ -968,6 +940,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
