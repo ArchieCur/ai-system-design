@@ -294,7 +294,6 @@ supports progressive disclosure and aligns with agentskills.io.
 
 ### Google (System Instructions & Function Calling)
 
-![Which Google path should you use? AI Studio (UI) or Vertex AI (API)](../assets/SkillsD_Google.png)
 
 Two paths for implementing Skills (Google: System Instructions + Tools) are provided.
 Use the Decision Tree to determine which path fits your deployment scale.
@@ -333,6 +332,7 @@ top of the interface.
 5. Test Intent Routing: Use the chat window to verify the model correctly triggers
 the tool based on your instructions.
 ```
+
 **Documentation:** <ai.google.dev/gemini-api/docs>
 
 #### Path 2: Via Vertex AI Function Calling API (Python)
@@ -968,6 +968,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
