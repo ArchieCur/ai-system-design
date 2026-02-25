@@ -294,6 +294,21 @@ supports progressive disclosure and aligns with agentskills.io.
 
 ### Google (System Instructions)
 
+Two paths will for using Skills (System Instructions) will be provided.  Use the Decsion Tree to determine which Google path should you use.
+
+Decision Tree
+
+```text
+
+
+| Criterion             | AI Studio (UI)         | Vertex AI (API) |
+|-----------------------|------------------------|----------------------------|
+| Best for              | Testing, 1-3 skills    | Production, 5+ skills      |
+| Setup complexity      | Low (visual interface) | Medium (Python code)       |
+| Cost optimization     | Basic                  | Advanced (context caching) |
+
+
+
 ### Google Vertex AI (System Instructions + Tools)
 
 **Implementation approach:** Hybrid model using System Instructions + Function Calling
@@ -951,6 +966,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-10
 Note:*Platforms evolve rapidly—verify current implementation details in official documentation*
 Key Principle:*Skills concepts are universal; implementations are platform-specific*
+
 
 
 
