@@ -18,10 +18,10 @@ When you write a MUST, you're saying:
 
 ### This section teaches you how to write MUSTs that
 
-• A model can understand clearly (no ambiguity)
-• A model can follow reliably (actionable)
-• A model can verify against (measurable)
-• A model won't accidentally violate (explicit scope)
+- A model can understand clearly (no ambiguity)
+- A model can follow reliably (actionable)
+- A model can verify against (measurable)
+- A model won't accidentally violate (explicit scope)
 
 Let's explore what makes MUST constraints work from the trenches of a model’s perspective.
 
@@ -1263,4 +1263,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
