@@ -1091,17 +1091,20 @@ Company auth service provides:
 - SOC 2 compliant
 
 No exceptions without security team approval.
-`</constraint>`
+</constraint>
+```
 
 **Or (if genuinely flexible):**
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: Prefer company auth service (auth.company.com)
 
 ACCEPTABLE alternatives (with approval):
 
-- Third-party auth (Auth0, Okta) if integrating with external systems
-- Simple API key auth for internal tools (if justified)
+Third-party auth (Auth0, Okta) if integrating with external systems
+Simple API key auth for internal tools (if justified)
 
 REQUIRES security team approval:
 
@@ -1109,13 +1112,14 @@ Document why company auth doesn't work for this use case.
 
 NOT acceptable:
 
-- Rolling custom authentication (security risk)
-- Storing passwords without company service (compliance violation)
+Rolling custom authentication (security risk)
+Storing passwords without company service (compliance violation)
 
 RATIONALE: Company service provides SSO, MFA, compliance.
 
 But some scenarios legitimately need alternatives.
-`</guideline>`
+</guideline>
+```
 
 **Clear about what's truly flexible vs. rigid.**
 
@@ -1132,14 +1136,17 @@ The most powerful aspect of SHOULDs: they enable conversation.
 3. Offer alternatives
 
 **Example 1: Function Length**
-SHOULD says:
+
+**SHOULD says:**
 
 SHOULD: Functions under 50 lines
 
 Model writes 75-line function.
 
-Model's response:
-"Note: The processPayment function is 75 lines, which exceeds the 50-line guideline. However, it implements the complete payment workflow in one cohesive block:
+**Model's response:**
+"Note: The processPayment function is 75 lines, which exceeds the 50-line guideline.
+
+However, it implements the complete payment workflow in one cohesive block:
 
 1. Validate payment details (10 lines)
 2. Call payment gateway (15 lines)
@@ -1147,10 +1154,13 @@ Model's response:
 4. Update order status (15 lines)
 5. Send confirmation email (15 lines)
 
-Breaking this into smaller functions would scatter the payment flow across multiple files, making it harder to understand the complete sequence. Each step depends on the previous one.
+Breaking this into smaller functions would scatter the payment flow across multiple files,
 
-This appears to fall under the guideline's exception for 'cohesive algorithms where breaking hurts readability.
-Options: A- Keep as-is (single cohesive function) B- Refactor into 5 separate functions (scattered logic) C- Keep main flow, extract helpers (compromise)
+making it harder to understand the complete sequence. Each step depends on the previous one.
+
+**This appears to fall under the guideline's exception for 'cohesive algorithms where breaking hurts readability.**
+
+- Options: A- Keep as-is (single cohesive function) B- Refactor into 5 separate functions (scattered logic) C- Keep main flow, extract helpers (compromise)
 My recommendation: Option C (main flow visible, helpers extracted)
 
 Would you like me to proceed with Option C, or do you prefer A or B?"
@@ -1447,6 +1457,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
