@@ -530,6 +530,7 @@ Environment configs = different DB/API endpoints per environment
 </rationale>
 
 </constraint>
+```
 
 ### What Works for AI (But Would Confuse Compilers)
 
@@ -553,7 +554,6 @@ MUST: Email + password only (no additional required fields on registration)
 SHOULD: Progressive profiling (collect other data after signup)
 </constraint>
 ```
-
 This works for AI: Model understands the goal (minimize friction) and can make decisions aligned with it.
 
 Would confuse compiler: "Minimize friction" is not a compilable instruction.
@@ -835,3 +835,4 @@ Last Updated: 2026-02-26
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
