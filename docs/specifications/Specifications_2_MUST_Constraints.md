@@ -361,10 +361,10 @@ Internal: VPC provides network security, HTTP acceptable for speed
 
 **Why this works:**
 
-• Environment-specific rules (production ≠ dev)
-• Context-specific rules (external ≠ internal)
-• Clear exceptions (localhost, VPC)
-• Rationale provided (I understand why)
+- Environment-specific rules (production ≠ dev)
+- Context-specific rules (external ≠ internal)
+- Clear exceptions (localhost, VPC)
+- Rationale provided (I understand why)
 
 **Model knows exactly when to enforce HTTPS and when not to.**
 
@@ -1263,6 +1263,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
