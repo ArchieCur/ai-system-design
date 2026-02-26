@@ -182,7 +182,6 @@ function quicksort(array, low, high) {
 // Partitioning, pivot selection, recursion
 // Breaking it up would scatter the algorithm logic
 }
-```
 
 **Model’s thought:** 75 lines, but cohesive algorithm. Acceptable violation per guideline. I'll note it:
 
@@ -196,6 +195,7 @@ guideline's exception for 'complex algorithms that are cohesive.'"
 
 **Dialog opportunity**
 "Is this acceptable, or would you prefer a refactored version?"
+```
 
 ### Scenario 3: Multiple responsibilities
 
@@ -1447,4 +1447,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
