@@ -245,12 +245,14 @@ Specifications work best when they're structured in clear layers, each serving a
 
 ### MUST Example
 
-`<constraint priority="critical">`
+```text
+<constraint priority="critical">
 MUST: All PII encrypted at rest (AES-256)
 MUST: HTTPS only (no HTTP in production)
 MUST: No API keys in version control
 MUST: Database backups every 24 hours
-`</constraint>`
+</constraint>
+```
 
 **How a model processes this:**
 
@@ -278,7 +280,9 @@ MUST: Database backups every 24 hours
 
 ### SHOULD Example
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 
 - SHOULD: Keep functions under 50 lines
 - SHOULD: Use functional components (prefer hooks over classes)
@@ -290,8 +294,8 @@ WHEN violating:
 - Consider refactoring if violation becomes pattern
 - Acceptable for complex algorithms where splitting hurts readability
   
-`</guideline>`
-
+</guideline>
+```
 **How a model processes this:**
 
 - These are PREFERENCES I aim to follow
@@ -318,30 +322,32 @@ WHEN violating:
 
 ### CONTEXT Example
 
-`<context>`
+```text
+
+<context>
 
 **Technical Environment:**
 
-- Stack: Next.js 14 + TypeScript + Tailwind
-- Team: 2 senior devs, 3 junior (optimize for maintainability)
-- Scale: ~5K users, 50 concurrent peak
+Stack: Next.js 14 + TypeScript + Tailwind
+Team: 2 senior devs, 3 junior (optimize for maintainability)
+Scale: ~5K users, 50 concurrent peak
 
 **Users:**
 
-- Primary: Small business owners (non-technical)
-- Priority: Reliability > Features > Performance
-- Frustration: Complex interfaces, unexpected errors
+Primary: Small business owners (non-technical)
+Priority: Reliability > Features > Performance
+Frustration: Complex interfaces, unexpected errors
 
 **Decision Framework:**
 
 **When in doubt:**
 
-- Simple > Clever (junior devs will maintain this)
-- Explicit > Implicit (code clarity matters)
-- Reliable > Fast (stability critical for trust)
+Simple > Clever (junior devs will maintain this)
+Explicit > Implicit (code clarity matters)
+Reliable > Fast (stability critical for trust)
 
-`</context>`
-
+</context>
+```
 **How a model processes this:**
 
 - This INFORMS a model’s planning
@@ -368,7 +374,9 @@ WHEN violating:
 
 ### INTENT Example
 
-`<intent>`
+```text
+
+<intent>
 
 **Primary Goal:**
 Enable small business owners to manage inventory without technical expertise.
@@ -390,8 +398,8 @@ Enable small business owners to manage inventory without technical expertise.
 - Simple over Clever: Users are non-technical, complexity = abandonment
 - Reliability over Features: Trust critical for small business adoption
 - Explicit errors over silent fails: Users need to know what went wrong
-`</intent>`
-
+</intent>
+```
 **How a model processes this:**
 
 - This helps a model UNDERSTAND the goal
@@ -406,41 +414,43 @@ Enable small business owners to manage inventory without technical expertise.
 User prompt: "Add a bulk import feature for inventory"
 Model references specs:
 
-### MUST (Layer 1)
+```text
 
-- MUST: Validate all input data before database write
-- MUST: Maximum 1000 records per import (prevent DOS)
+MUST (Layer 1)
+
+MUST: Validate all input data before database write
+MUST: Maximum 1000 records per import (prevent DOS)
 
 -> Model implements validation + 1000 record limit
 
-### SHOULD (Layer 2)
+SHOULD (Layer 2)
 
 SHOULD: Provide progress indicator for operations >2 seconds
 
 -> Model adds progress bar (import likely >2 seconds)
 
-### CONTEXT (Layer 3)
+CONTEXT (Layer 3)
 
 Users are non-technical, time-constrained
 Priority: Reliability > Features
 
 -> Model adds clear error messages, handle edge cases carefully
 
-### INTENT (Layer 4)
+INTENT (Layer 4)
 
 Success = 90% task completion without docs
 Users need to know what went wrong
 
 -> Model designs clear, actionable error messages → Model adds inline help text
-
-### Result: Import feature that
+```
+**Result:** Import feature that
 
 • Complies with MUST constraints ✓
 • Follows SHOULD guidelines ✓
 • Aligns with user context ✓
 • Achieves intended outcomes ✓
 
-Without layered specs: Model might build technically correct but unusable feature.
+**Without layered specs: Model might build technically correct but unusable feature.**
 
 ## Why AI Needs Different Specs Than Software
 
@@ -461,8 +471,9 @@ Without layered specs: Model might build technically correct but unusable featur
 
 ### What Works for Compilers (But Not for AI)
 
-1. Precise Syntax
-Compiler requirement:
+1. **Precise Syntax**
+   
+**Compiler requirement:**
 
 ```text
 
@@ -470,25 +481,25 @@ int calculate(int a, int b) {
 return a + b;
 }
 ```
-Works: Exact syntax enforced
+**Works:** Exact syntax enforced
 
-AI specification (if written like compiler requirement)
+**AI specification (if written like compiler requirement)**
 
 The function shall accept two integers and return their sum.
 Implementation must use 'int' type for parameters and return value.
 Function name must be exactly 'calculate'.
 Parameters must be named 'a' and 'b' in that order.
 
-Problem: Over-specified. A model should be able to choose sensible names, types based on context.
+**Problem:** Over-specified. A model should be able to choose sensible names, types based on context.
 
-2. Binary Constraints
+2. **Binary Constraints**
 
-Compiler requirement:
+**Compiler requirement:**
 
 BUILD CONFIGURATION: Release mode, optimization level O2
 Works: Binary setting (O2 or fail)
 
-AI specification (if written like this):
+**AI specification (if written like this):**
 
 MUST: Use release build configuration
 Problem: What does "release" mean in this context?
@@ -496,47 +507,52 @@ Problem: What does "release" mean in this context?
 • Optimized for performance?
 • Debugging symbols removed?
 
-Better AI specification:
+**Better AI specification:**
 
-`<constraint>`
+```text
+
+<constraint>
 
 MUST: Production builds optimized for performance
 MUST: No debugging symbols in production binaries
 MUST: Environment-specific config (dev/staging/prod)
 
-`<rationale>`
+<rationale>
 
 Performance critical for user experience (context: 5K users, limited resources)
 Debug symbols = security risk (exposed internal structure)
 Environment configs = different DB/API endpoints per environment
 
-`</rationale>`
+</rationale>
 
-`</constraint>`
+</constraint>
 
 ### What Works for AI (But Would Confuse Compilers)
 
-1. Intent-Based Constraints
+1. **Intent-Based Constraints**
 
-AI specification:
+**AI specification:**
 
-`<intent>`
+```text
+
+<intent>
 Primary goal: Minimize user friction during authentication
 This means:
 
-- Reduce required fields to minimum
-- Clear error messages (tell user what to fix)
-- Smooth flow (no unexpected steps)
-`</intent>`
+Reduce required fields to minimum
+Clear error messages (tell user what to fix)
+Smooth flow (no unexpected steps)
+</intent>
 
-`<constraint>`
+<constraint>
 MUST: Email + password only (no additional required fields on registration)
 SHOULD: Progressive profiling (collect other data after signup)
-`</constraint>`
+</constraint>
+```
 
 This works for AI: Model understands the goal (minimize friction) and can make decisions aligned with it.
-
 Would confuse compiler: "Minimize friction" is not a compilable instruction.
+
 2. Contextual Guidelines
 
 AI specification:
@@ -791,6 +807,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
