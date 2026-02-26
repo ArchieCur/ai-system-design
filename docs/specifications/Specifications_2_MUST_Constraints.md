@@ -173,7 +173,6 @@ Expected result: No matches found If matches found: MUST is violated, fix requir
 
 **Model can verify it’s compliance by running this check!**
 
----
 
 #### Must with Manual verification
 
@@ -407,10 +406,10 @@ MUST: Logging optional
 
 **Why this works:**
 
-• Conditional scope (PII vs. non-PII)
-• PII explicitly defined (no guessing)
-• Different requirements per condition
-• Rationale clear (security vs. performance balance)
+- Conditional scope (PII vs. non-PII)
+- PII explicitly defined (no guessing)
+- Different requirements per condition
+- Rationale clear (security vs. performance balance)
 
 **Model can determine if data is PII and apply correct MUSTs.**
 
@@ -1263,6 +1262,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
