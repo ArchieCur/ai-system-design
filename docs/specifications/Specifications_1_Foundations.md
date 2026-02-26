@@ -246,6 +246,7 @@ Specifications work best when they're structured in clear layers, each serving a
 ### MUST Example
 
 ```text
+
 <constraint priority="critical">
 MUST: All PII encrypted at rest (AES-256)
 MUST: HTTPS only (no HTTP in production)
@@ -260,6 +261,7 @@ MUST: Database backups every 24 hours
 - I verify compliance before delivery
 - If user requests conflict, I challenge (may require override password)
 - No room for interpretation
+
 
 ### **Layer 2: SHOULD (Soft Constraints / Guidelines)**
 
@@ -807,6 +809,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
