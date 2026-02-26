@@ -224,7 +224,6 @@ Expected result: Zero rows returned If rows returned: Listed tables violate MUST
 
 ### Unverifiable MUSTs (Avoid These!)
 
-Unverifiable MUSTs (Avoid These!)
 
 #### **MUST that can't be verified:**
 
@@ -1264,6 +1263,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
