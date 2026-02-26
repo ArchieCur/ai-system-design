@@ -878,7 +878,9 @@ From a model’s perspective:
 **Why this fails**
 
 -"Elegant" = subjective, no clear action
+
 -"Good judgment" = circular (I need judgment to apply judgment!)
+
 -"Spirit of best practices" = vague, unactionable
 
 **Solution:**
@@ -1445,6 +1447,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
