@@ -620,7 +620,9 @@ MUST: Be user-friendly and intuitive
 
 ### Specific, verifiable constraints
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: All errors return JSON with structure:
 
 {
@@ -630,15 +632,19 @@ MUST: All errors return JSON with structure:
 "details": { } // Optional context
 }
 
-`<verification>`
+<verification>
 Check: All error responses include "error" and "message" fields
 Check: HTTP status code matches error severity (4xx client, 5xx server)
-`</verification>`
-`</constraint>`
+</verification>
+
+</constraint>
+```
 
 ### Explicit scope
 
-`<constraint scope="API-versioning">`
+```text
+
+<constraint scope="API-versioning">
 MUST: Support API v1 and v2 simultaneously
 MUST: No breaking changes to v1 endpoints
 
@@ -654,28 +660,31 @@ Non-breaking changes (allowed):
 - Adding endpoint
 - Adding optional field
 - Adding response field
-`</constraint>`
+</constraint>
+```
 
 ### Separated concerns
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: PostgreSQL 14+ database
-`</constraint>`
+</constraint>
 
-`<guideline>`
+<guideline>
 SHOULD: Use connection pooling
-`</guideline>`
+</guideline>
 
-`<context>`
+<context>
 Expected load: 100 queries/second peak
 Team expertise: Strong SQL, familiar with pg
-`</context>`
+</context>
 
-`<intent>`
+<intent>
 Reliability critical (handles financial data)
 Performance secondary (acceptable latency: <500ms)
-`</intent>`
-
+</intent>
+```
 Each concern in its own layer. No mental separation required.
 
 ## The Complete Picture
@@ -699,27 +708,31 @@ Specifications in the AI System Design Stack
 "Add user authentication to the application"
 **Spec (Laws):**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: PostgreSQL 14+ database
 MUST: Bcrypt hashing (salt rounds=12)
 MUST: JWT tokens (HS256, 15min expiry)
 MUST: httpOnly cookies for token storage
-`</constraint>`
+</constraint>
 
-`<context>`
+<context>
 Users: Small business owners (non-technical)
 Priority: Security > UX > Performance
-`</context>`
+</context>
 
-`<intent>`
+<intent>
 Goal: Secure authentication without user friction
 Success: <1% login failures, zero security incidents
-`</intent>`
+</intent>
+```
 
 **Skill (Hands):**
-implementing-jwt-authentication.md
-securing-user-credentials.md
-designing-auth-flows.md
+
+-implementing-jwt-authentication.md
+-securing-user-credentials.md
+-designing-auth-flows.md
 
 ### AI Process
 
@@ -757,6 +770,8 @@ Effective specs have four layers:
 4. INTENT - Goals and rationale (the why)
 
 Each layer serves a different purpose in how models process and apply constraints.
+
+The layers are covered by **Verification Protocols**
 
 ### The Paradigm Shift
 
@@ -815,23 +830,8 @@ This is the future of AI system design (2026 and beyond).
 END OF SECTION 1
 
 Document Version: 1.0.0
-Last Updated: 2026-01-31
+Last Updated: 2026-02-26
 
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
