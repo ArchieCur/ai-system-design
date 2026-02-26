@@ -779,65 +779,76 @@ The layers are covered by **Verification Protocols**
 ### The Paradigm Shift
 
 Traditional software: Writing for compilers (binary, rigid, no dialog)
+
 AI systems: Writing for partners (semantic, flexible, dialog-enabled)
 
-This changes how we write specifications:
-More context (helps planning)
-Clearer rationale (enables judgment)
-Explicit scope (reduces ambiguity)
-Verifiable criteria (enables self-checking)
+**This changes how we write specifications:**
 
-*Why This Matters*
+- More context (helps planning)
+- Clearer rationale (enables judgment)
+- Explicit scope (reduces ambiguity)
+- Verifiable criteria (enables self-checking)
+
+**Why This Matters**
+
 **Good specifications:**
-Eliminate policy invention (Models know what you want)
-Reduce cognitive load (clear structure, separated concerns)
-Enable verification (Models can check their own work)
-Support dialog (Models can ask meaningful questions)
-**Bad specifications:**
-Force a model to guess (ambiguous constraints)
-Create friction (hidden coupling, unclear scope)
-Prevent verification (aspirational, unmeasurable)
-Block dialog (rigid, no room for judgment)
 
-*The goal: Write specs that help a model help you.*
+- Eliminate policy invention (Models know what you want)
+- Reduce cognitive load (clear structure, separated concerns)
+- Enable verification (Models can check their own work)
+- Support dialog (Models can ask meaningful questions)
+
+**Bad specifications:**
+
+- Force a model to guess (ambiguous constraints)
+- Create friction (hidden coupling, unclear scope)
+- Prevent verification (aspirational, unmeasurable)
+- Block dialog (rigid, no room for judgment)
+
+**The goal: Write specs that help a model help you.**
 
 ## Next Steps
 
 You've learned the foundation. Next sections cover:
-Section 2: Writing MUST constraints (hard boundaries)
-Section 3: Writing SHOULD guidelines (soft constraints)
-Section 4: Providing CONTEXT (planning information)
-Section 5: Expressing INTENT (goals and rationale)
-Section 6: Verification and self-correction protocols
-Section 7: Common pitfalls (what goes wrong)
-Section 8: The Supremacy Clause and Evidence Reset Protocols (Belief Dynamics)
+
+` Section 2: Writing MUST constraints (hard boundaries)
+- Section 3: Writing SHOULD guidelines (soft constraints)
+- Section 4: Providing CONTEXT (planning information)
+- Section 5: Expressing INTENT (goals and rationale)
+- Section 6: Verification and self-correction protocols
+- Section 7: Common pitfalls (what goes wrong)
+- Section 8: The Supremacy Clause and Evidence Reset Protocols (Belief Dynamics)
 
 ### Each section includes
 
-Detailed guidance from model perspective
-Examples (good vs. bad)
-Templates and patterns
-Common mistakes to avoid
+- Detailed guidance from model perspective
+- Examples (good vs. bad)
+- Templates and patterns
+- Common mistakes to avoid
 
 ### The Vision
 
 By the end of Module 3, you'll be able to:
-Write specifications that models can easily internalize
-Structure constraints to reduce cognitive load
-Enable dialog and intelligent application
-Build self-verifying systems
-Create reliable, compliant AI solutions
 
-This is the future of AI system design (2026 and beyond).
+- Write specifications that models can easily internalize
+- Structure constraints to reduce cognitive load
+- Enable dialog and intelligent application
+- Build self-verifying systems
+- Create reliable, compliant AI solutions
+
+**This is the future of AI system design (2026 and beyond).**
 
 END OF SECTION 1
 
 Document Version: 1.0.0
 Last Updated: 2026-02-26
 
-Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
-behaviors.
+Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications.
+The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align
+with actual model behaviors.
+
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
