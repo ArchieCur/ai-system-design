@@ -558,7 +558,7 @@ This works for AI: Model understands the goal (minimize friction) and can make d
 
 Would confuse compiler: "Minimize friction" is not a compilable instruction.
 
-2. Contextual Guidelines
+2. **Contextual Guidelines**
 
 AI specification:
 
@@ -580,7 +580,8 @@ This works for AI: Model adjusts it’s code style based on team context.
 
 Would confuse compiler: Compiler doesn't care about maintainability or team expertise.
 
-3. Negotiable Constraints
+3. **Negotiable Constraints**
+
 AI specification:
 
 ```text
@@ -835,4 +836,5 @@ Last Updated: 2026-02-26
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
