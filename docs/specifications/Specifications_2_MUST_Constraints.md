@@ -49,10 +49,10 @@ MUST: Use secure authentication
 
 **Model’s questions:**
 
-• Secure how? JWT? OAuth? Session-based? API keys?
-• What algorithm? HS256? RS256? ES256?
-• What expiry? 15 minutes? 1 hour? 1 day?
-• Where stored? Cookies? localStorage? Database?
+- Secure how? JWT? OAuth? Session-based? API keys?
+- What algorithm? HS256? RS256? ES256?
+- What expiry? 15 minutes? 1 hour? 1 day?
+-• Where stored? Cookies? localStorage? Database?
 
 **Model is forced to invent policy.**
 
@@ -1263,5 +1263,6 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
