@@ -71,11 +71,12 @@ MUST: Token payload includes: userId, role, iat (issued at), exp (expiry)
 
 **Model's response:**
 
-• JWT ✓ (knows what to implement)
-• HS256 ✓ (knows which algorithm)
-• 15min / 7day ✓ (knows exact expiry)
-• httpOnly cookies ✓ (knows storage method)
-• Required payload fields ✓ (know token structure)
+- JWT ✓ (knows what to implement)
+- HS256 ✓ (knows which algorithm)
+- 15min / 7day ✓ (knows exact expiry)
+- httpOnly cookies ✓ (knows storage method)
+- Required payload fields ✓ (know token structure)
+
 **No guessing. model implements exactly as specified.**
 
 #### The "Could a Model Build This from MUST Alone?" Test
@@ -1263,6 +1264,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
