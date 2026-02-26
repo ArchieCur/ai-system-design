@@ -507,9 +507,9 @@ Works: Binary setting (O2 or fail)
 
 **Problem:** What does "release" mean in this context?
 
-• Production deployment?
-• Optimized for performance?
-• Debugging symbols removed?
+- Production deployment?
+- Optimized for performance?
+- Debugging symbols removed?
 
 **Better AI specification:**
 
@@ -555,35 +555,44 @@ SHOULD: Progressive profiling (collect other data after signup)
 ```
 
 This works for AI: Model understands the goal (minimize friction) and can make decisions aligned with it.
+
 Would confuse compiler: "Minimize friction" is not a compilable instruction.
 
 2. Contextual Guidelines
 
 AI specification:
-`<context>`
+
+```text
+
+context>
 Team expertise: Strong in React, limited in Vue
 Code reviewers: Prefer explicit over clever
 Future maintenance: Code will be maintained by junior devs
-`</context>`
+</context>
 
-`<guideline>`
+<guideline>
 SHOULD: Prioritize code clarity over performance optimization
 SHOULD: Include explanatory comments for non-obvious logic
 SHOULD: Use established React patterns (avoid experimental features)
-`</guideline>`
+</guideline>`
+```
 This works for AI: Model adjusts it’s code style based on team context.
 
 Would confuse compiler: Compiler doesn't care about maintainability or team expertise.
+
 3. Negotiable Constraints
 AI specification:
 
-`<guideline>`
+```text
+
+<guideline>
 SHOULD: API responses < 200ms (95th percentile)
 EXCEPTION: Complex reports acceptable up to 2 seconds with progress indicator
 NEGOTIABLE: If achieving 200ms requires significant architectural changes, discuss alternatives
-`</guideline>`
+</guideline>
+```
+This works for AI: Model can engage in dialog about tradeoffs
 
-This works for AI: Model can engage in dialog about tradeoffs.
 Would confuse compiler: Compiler can't negotiate or discuss alternatives.
 
 ### The Cognitive Load Difference
@@ -811,6 +820,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
