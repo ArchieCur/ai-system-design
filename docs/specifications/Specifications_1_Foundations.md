@@ -503,8 +503,10 @@ Works: Binary setting (O2 or fail)
 
 **AI specification (if written like this):**
 
-MUST: Use release build configuration
-Problem: What does "release" mean in this context?
+**MUST:** Use release build configuration
+
+**Problem:** What does "release" mean in this context?
+
 • Production deployment?
 • Optimized for performance?
 • Debugging symbols removed?
@@ -809,6 +811,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
