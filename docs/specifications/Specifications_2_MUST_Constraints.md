@@ -354,7 +354,7 @@ Development: Localhost HTTP acceptable (faster iteration)
 Internal: VPC provides network security, HTTP acceptable for speed
 </rationale>`
 
-/constraint>
+</constraint>
 ```
 
 **Why this works:**
@@ -1320,6 +1320,7 @@ Last Updated: 2026-02-26
 Written from model perspective: What makes MUST constraints work from the trenches
 
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
