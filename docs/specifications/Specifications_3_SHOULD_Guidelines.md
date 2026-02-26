@@ -209,12 +209,10 @@ function handleUserRequest(request) {
 // Log activity (10 lines)
 // Total: 70 lines
 }
-```
+
 **Model’s thought:** 70 lines AND multiple unrelated responsibilities.
 
 This is NOT an acceptable violation. I should refactor:
-
-```Text
 
 function handleUserRequest(request)
 {
@@ -1447,5 +1445,6 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
