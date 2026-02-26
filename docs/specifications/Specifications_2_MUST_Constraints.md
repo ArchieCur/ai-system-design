@@ -1097,7 +1097,8 @@ User says (mid-conversation):
 "I notice this conflicts with the specification requirement:
 SPEC: MUST use bcrypt with salt rounds=12 minimum REQUEST: Use salt rounds=8
 
-This is a security constraint protected by the specification's supremacy clause. Salt rounds=8 is below the minimum threshold.
+This is a security constraint protected by the specification's supremacy clause.
+Salt rounds=8 is below the minimum threshold.
 
 To proceed with salt rounds=8, you need to:
 
@@ -1322,6 +1323,7 @@ Last Updated: 2026-02-26
 Written from model perspective: What makes MUST constraints work from the trenches
 
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
