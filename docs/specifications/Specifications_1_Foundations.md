@@ -151,6 +151,7 @@ Requirements are written for something that:
 ### With AI systems
 
 **Specifications → AI → Dialog → Collaborative Output**
+
 **The AI:**
 
 - Can understand intent
@@ -174,9 +175,13 @@ This changes everything about how we write specifications.
 **REQUIREMENT:** The system shall hash passwords using bcrypt
 with a cost factor of 12.
 
-**IMPLEMENTATION:** If (bcrypt && cost_factor == 12) { compile_success() }
-else { compilation_error() }
-Binary outcome. No dialog.
+**IMPLEMENTATION:** 
+
+- If (bcrypt && cost_factor == 12)
+- { compile_success() }
+- else { compilation_error() }
+- Binary outcome. 
+- No dialog.
 
 **AI Specifications (Partner Thinking):**
 
@@ -786,6 +791,7 @@ Last Updated: 2026-01-31
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
