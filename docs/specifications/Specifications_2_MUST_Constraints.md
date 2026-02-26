@@ -1,16 +1,19 @@
 # Section 2: Writing MUST Constraints
 
 **For:** Users who need to define non-negotiable boundaries
+
 **Prerequisites:** Section 1 (Foundation and layered model)
-What you'll learn: How to write MUST constraints that models can reliably follow and verify
+
+**What you'll learn:** How to write MUST constraints that models can reliably follow and verify
 
 ## Introduction
 
-MUST constraints are the hard boundaries in your specifications—the lines a model cannot cross without explicit override authorization.
+**MUST** constraints are the hard boundaries in your specifications—the lines a model cannot cross without explicit override authorization.
 
 ### From the perspective of the model processing these constraints
 
 When you write a MUST, you're saying:
+
 "This is not negotiable. Follow this exactly, verify compliance, and challenge the model if it asks you to violate it."
 
 ### This section teaches you how to write MUSTs that
@@ -36,7 +39,7 @@ From a model’s experience processing thousands of specifications:
 
 Let's examine each:
 
-### Characteristic 1: SPECIFIC
+#### Characteristic 1: SPECIFIC
 
 **What "Specific" Means**
 Specific = The model doesn't have to guess what you mean
@@ -44,25 +47,30 @@ Specific = The model doesn't have to guess what you mean
 **Vague** MUST (Model has to guess):
 MUST: Use secure authentication
 
-Model’s questions:
+**Model’s questions:**
+
 • Secure how? JWT? OAuth? Session-based? API keys?
 • What algorithm? HS256? RS256? ES256?
 • What expiry? 15 minutes? 1 hour? 1 day?
 • Where stored? Cookies? localStorage? Database?
 
-Model is forced to invent policy.
+**Model is forced to invent policy.**
 
-Specific MUST (Tell a model exactly what to do):
+**Specific MUST** (Tell a model exactly what to do):
 
-`<constraint priority="critical" scope="authentication">`
+```text
+
+<constraint priority="critical" scope="authentication">
 MUST: JWT authentication using HS256 algorithm
 MUST: Access tokens expire in 15 minutes (maximum)
 MUST: Refresh tokens expire in 7 days (maximum)
 MUST: Tokens stored in httpOnly cookies (not localStorage or sessionStorage)
 MUST: Token payload includes: userId, role, iat (issued at), exp (expiry)
-`</constraint>`
+</constraint>
+```
 
-Model's response:
+**Model's response:**
+
 • JWT ✓ (knows what to implement)
 • HS256 ✓ (knows which algorithm)
 • 15min / 7day ✓ (knows exact expiry)
@@ -77,36 +85,47 @@ Ask yourself: If I removed all other context and gave the model ONLY the MUST co
 #### Could a Model Build This from MUST Alone? Example 1
 
 MUST (alone):
+
 MUST: Use best practices for password security
 Could a model build from this alone?
-• What counts as "best practice"? (changes over time)
-• Which standard? OWASP? NIST? Company policy?
-• Minimum length? Complexity requirements?
+
+- What counts as "best practice"? (changes over time)
+- Which standard? OWASP? NIST? Company policy?
+- Minimum length? Complexity requirements?
+
 **Model would have to guess. Not specific enough.**
 
 #### Could a Model Build This from MUST Alone? Example 2
 
 MUST (alone):
-`<constraint priority="critical" scope="password-security">`
+
+```text
+
+<constraint priority="critical" scope="password-security">
+
 MUST: Passwords hashed using bcrypt (salt rounds = 12 minimum)
 MUST: Password minimum length: 12 characters
 MUST: Password must contain: 1 uppercase, 1 lowercase, 1 number, 1 special character
 MUST: Special characters allowed: !@#$%^&*()_+-=[]{}|;:,.<>?
 MUST: No password reuse for last 5 passwords
 MUST NOT: Store passwords in plain text anywhere (code, logs, database, config files)
-`</constraint>`
-Could a model build from this alone?
-• Hashing: bcrypt, 12+ rounds ✓
-• Length: 12+ characters ✓
-• Complexity: Exact requirements ✓
-• Special chars: Allowed list ✓
-• History: Check last 5 ✓
-• Prohibition: No plain text ✓
+</constraint>
+```
+**Could a Model Build This from MUST Alone?**
+
+- Hashing: bcrypt, 12+ rounds ✓
+- Length: 12+ characters ✓
+- Complexity: Exact requirements ✓
+- Special chars: Allowed list ✓
+- History: Check last 5 ✓
+- Prohibition: No plain text ✓
+
 **A model can implement this without guessing. Specific enough.**
 
 ### Characteristic 2: VERIFIABLE
 
 **What "Verifiable" Means**
+
 Verifiable = Model can check if model complied
 
 #### Two types of verification
@@ -120,13 +139,15 @@ Both are valid. Automated is better when possible.
 
 #### MUST with automated verification
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: No API keys hardcoded in source code
 
-`<verification>`
+<verification>
 **Automated check:**
 
-```bash
+bash
 Search for common API key patterns
 
 grep -r "api[_-]key.*=.*['\"]" src/
@@ -137,10 +158,10 @@ Exit code 0 = found matches (FAIL)
 Exit code 1 = no matches (PASS)
 
 Expected result: No matches found If matches found: MUST is violated, fix required
-```
+</verification>
 
-`</verification>`
-`</constraint>`
+</constraint>
+```
 
 **Why this works:**
 
@@ -157,7 +178,7 @@ Expected result: No matches found If matches found: MUST is violated, fix requir
 
 **MUST with manual verification:**
 
-```xml
+```text
 
 <constraint priority="critical">
 
@@ -166,7 +187,7 @@ MUST: All database tables have primary key constraints
 <verification>
 
 **Manual check:**
-```sql
+sql
 
 -- List all tables without primary keys
 
@@ -177,17 +198,20 @@ t.table_name
 FROM information_schema.tables t
 
 LEFT JOIN information_schema.table_constraints tc
+
 ON t.table_name = tc.table_name
 
 AND tc.constraint_type = 'PRIMARY KEY'
 
 WHERE t.table_schema = 'public'
+
 AND tc.constraint_name IS NULL;
 
-Expected result: Zero rows returned If rows returned: Listed tables violate MUST </verification>
+Expected result: Zero rows returned If rows returned: Listed tables violate MUST
+</verification>
+
 </constraint>
 ```
-
 **Why this works:**
 
 - Clear query provided
@@ -196,57 +220,64 @@ Expected result: Zero rows returned If rows returned: Listed tables violate MUST
 
 **Model can tell you how to verify, even if model can't run the check myself.**
 
----
 
 ### Unverifiable MUSTs (Avoid These!)
 
 Unverifiable MUSTs (Avoid These!)
 
-**MUST that can't be verified:**
+#### **MUST that can't be verified:**
 
 MUST: Code should be elegant and maintainable
 
-### Unverifiable MUSTs Problems
+#### Unverifiable MUSTs Problems
 
-• "Elegant" = subjective (your elegant ≠ my elegant)
-• "Maintainable" = subjective (what's maintainable to senior dev ≠ junior dev)
-• No objective test
-How does a model verify this? It can't.
+- "Elegant" = subjective (your elegant ≠ my elegant)
+- "Maintainable" = subjective (what's maintainable to senior dev ≠ junior dev)
+- No objective test
 
-**MUST that's too vague to verify:**
+**How does a model verify this? It can't.**
+
+#### **MUST that's too vague to verify:**
+
 MUST: System should perform well under load
 
-### MUST that's too vague Problems
+##### MUST that's too vague Problems
 
-• "Perform well" = what metrics? Response time? Throughput? Error rate?
-• "Under load" = how much load? 10 users? 1000? 10,000?
-• No threshold defined
-How does a model verify? Model’s can't measure "well."
+- "Perform well" = what metrics? Response time? Throughput? Error rate?
+- "Under load" = how much load? 10 users? 1000? 10,000?
+- No threshold defined
 
-### Verifiable versions
+**How does a model verify? Model’s can't measure "well."**
 
-`<constraint priority="critical" scope="performance">`
+#### Verifiable versions
+
+```text
+
+<constraint priority="critical" scope="performance">
 MUST: API endpoints respond in <200ms (95th percentile under 100 concurrent users)
 MUST: Error rate <0.1% under normal load (100 concurrent users)
 MUST: System handles 1000 concurrent users without degradation >10%
-`<verification>`
+
+<verification>
+
 **Load testing:**
 
-```bash
+bash
 
-# Run load test
+Run load test
 artillery run load-test.yml
 
-# Check results against thresholds
+Check results against thresholds
 
-# p95 latency < 200ms? ✓
-# Error rate < 0.1%? ✓
+p95 latency < 200ms? ✓
+Error rate < 0.1%? ✓
 
-# 1000 concurrent users handled? ✓
+1000 concurrent users handled? ✓
 
 All thresholds must pass for MUST compliance 
-`</verification>`
-`</constraint>`
+</verification>
+
+</constraint>
 ```
 
 **Why this works:**
@@ -262,6 +293,7 @@ All thresholds must pass for MUST compliance
 #### What "Scoped" Means
 
 **Scoped = Clear when and where the MUST applies**
+
 Without scope, the model might apply constraints where they don't belong.
 
 #### Scope Dimensions
@@ -279,22 +311,27 @@ Without scope, the model might apply constraints where they don't belong.
 MUST: Use HTTPS for all connections
 
 Model confusion:
+
 • Does this mean:
-Production only? Or also dev/staging?
-External API calls? Or also internal microservice communication?
-Database connections? Or just HTTP endpoints?
-Even localhost testing? Or production deployment only?
+
+- Production only? Or also dev/staging?
+- External API calls? Or also internal microservice communication?
+- Database connections? Or just HTTP endpoints?
+- Even localhost testing? Or production deployment only?
 
 Model might:
-• Enforce HTTPS in local dev (breaking developer workflow!)
-• Require HTTPS for internal service-to-service calls (unnecessary overhead!)
-• Flag localhost:3000 as violation (annoying during testing!)
+
+- Enforce HTTPS in local dev (breaking developer workflow!)
+- Require HTTPS for internal service-to-service calls (unnecessary overhead!)
+- Flag localhost:3000 as violation (annoying during testing!)
 
 #### Example: Well-Scoped MUST
 
 Scoped clearly:
 
-`<constraint priority="critical" scope="transport-security">`
+```text
+
+<constraint priority="critical" scope="transport-security">
 
 **Production Environment:**
 MUST: All external API endpoints use HTTPS (no HTTP)
@@ -312,15 +349,18 @@ MUST: HTTPS required for external API calls (even in dev)
 MUST: Service-to-service calls within same VPC can use HTTP (performance optimization)
 MUST: Cross-VPC service calls must use HTTPS
 
-`<rationale>`
+<rationale>
 Production: Security critical (user data transmitted)
 Staging: Close to production, but debugging may need HTTP
 Development: Localhost HTTP acceptable (faster iteration)
 Internal: VPC provides network security, HTTP acceptable for speed
-`</rationale>`
-`</constraint>`
+</rationale>`
+
+/constraint>
+```
 
 **Why this works:**
+
 • Environment-specific rules (production ≠ dev)
 • Context-specific rules (external ≠ internal)
 • Clear exceptions (localhost, VPC)
@@ -332,9 +372,12 @@ Internal: VPC provides network security, HTTP acceptable for speed
 
 Sometimes MUSTs apply conditionally:
 
-`<constraint priority="critical" scope="data-handling">`
+```text
+
+<constraint priority="critical" scope="data-handling">
 
 **When handling PII (Personally Identifiable Information):**
+
 MUST: Encrypt at rest (AES-256)
 MUST: Encrypt in transit (TLS 1.2+)
 MUST: Log access (who, when, what action)
@@ -359,9 +402,11 @@ MUST: Logging optional
 - Aggregate statistics
 - Anonymized data
 - Public information
-`</constraint>`
+</constraint>
+```
 
 **Why this works:**
+
 • Conditional scope (PII vs. non-PII)
 • PII explicitly defined (no guessing)
 • Different requirements per condition
@@ -369,7 +414,7 @@ MUST: Logging optional
 
 **Model can determine if data is PII and apply correct MUSTs.**
 
-#### Writing MUSTs Across Domains
+### Writing MUSTs Across Domains
 
 Let's look at examples across different technical domains.
 
@@ -1218,3 +1263,4 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
