@@ -176,7 +176,6 @@ Expected result: No matches found If matches found: MUST is violated, fix requir
 
 #### Must with Manual verification
 
-**MUST with manual verification:**
 
 ```text
 
@@ -1321,4 +1320,5 @@ Last Updated: 2026-02-26
 Written from model perspective: What makes MUST constraints work from the trenches
 
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
