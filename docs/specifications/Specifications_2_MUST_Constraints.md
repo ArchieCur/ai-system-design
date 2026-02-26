@@ -419,11 +419,13 @@ Let's look at examples across different technical domains.
 
 #### Domain 1: Security MUSTs
 
-Security MUSTs are often the most critical.
+**Security MUSTs are often the most critical.**
 
 #### Authentication & Authorization
 
-`<constraint priority="critical" scope="authentication">`
+```text
+
+<constraint priority="critical" scope="authentication">
 
 **Authentication:**
 MUST: JWT tokens using HS256 algorithm
@@ -449,11 +451,11 @@ MUST: Invalidate sessions on password change
 MUST: Invalidate sessions on logout
 MUST: Maximum concurrent sessions per user: 3
 MUST: Session timeout: 24 hours of inactivity
-`<verification>`
+<verification>
 
 **Automated checks:**
 
-```bash
+bash
 
 # Check bcrypt usage (no other hashing)
 
@@ -461,23 +463,28 @@ grep -r "bcrypt.hash" src/auth/
 grep -r "md5\|sha1\|sha256" src/auth/ && echo "FAIL: Wrong hash algorithm"
 
 # Check token storage (no localStorage)
+
 grep -r "localStorage\|sessionStorage" src/ && echo "FAIL: Insecure storage"
 
 # Check password requirements in validation
+
 grep -r "password.*length.*12" src/validation/
-```
 
 Manual checks:
 
 • Attempt 6 logins in 15 minutes → Should block
 • Check cookie flags: httpOnly=true, Secure=true, SameSite=strict
 • Verify session invalidation on logout
-`</verification>`
-`</constraint>`
+</verification>
+
+</constraint>
+```
 
 #### Data Encryption
 
-`<constraint priority="critical" scope="data-encryption">`
+```text
+
+<constraint priority="critical" scope="data-encryption">
 
 **At Rest:**
 MUST: PII encrypted using AES-256
@@ -498,7 +505,7 @@ MUST: Key access restricted to authorized services only
 
 **Database check:**
 
-```sql
+sql
 
 -- Verify PII fields are encrypted (check for readable values)
 
@@ -509,7 +516,7 @@ SELECT key_id, created_at FROM encryption_keys
 WHERE created_at < NOW() - INTERVAL '90 days';
 -- Should return 0 rows (all keys <90 days old)
 
-### API check:
+API check:
 # Verify TLS version
 `curl -v https://api.example.com 2>&1 | grep "TLS"`
 
@@ -519,15 +526,20 @@ WHERE created_at < NOW() - INTERVAL '90 days';
 
 openssl s_client -connect api.example.com:443 | grep "Verify return code"
 
-# Should show "0 (ok)"
-</verification> </constraint> 
+Should show "0 (ok)"
+
+</verification>
+
+</constraint> 
 ```
 
 ### Domain 2: Performance MUSTs
 
-Performance MUSTs define acceptable thresholds.
+**Performance MUSTs define acceptable thresholds.**
 
-`<constraint priority="critical" scope="performance">`
+```text
+
+<constraint priority="critical" scope="performance">
 
 **API Response Times:**
 MUST: GET requests: <200ms (95th percentile)
@@ -555,7 +567,7 @@ MUST: Concurrent API requests per user: 10 maximum
 
 **Load testing (automated):**
 
-```bash
+bash
 
 # API response times
 
@@ -573,7 +585,6 @@ lighthouse https://app.example.com --only-categories=performance
 
 # Check FCP, LCP, TTI, CLS scores
 
-
 ### Monitoring (continuous):
 
 • Alert if p95 > thresholds for 5 consecutive minutes
@@ -581,14 +592,16 @@ lighthouse https://app.example.com --only-categories=performance
 • Alert if any query >5 seconds (timeout violation)
 
 • Daily lighthouse checks on key pages </verification>
-`</constraint>` 
+</constraint>`
 ```
 
 ### Domain 3: Data Integrity MUSTs
 
-Data integrity MUSTs prevent corruption and inconsistency.
+**Data integrity MUSTs prevent corruption and inconsistency.**
 
-`<constraint priority="critical" scope="data-integrity">`
+```text
+
+<constraint priority="critical" scope="data-integrity">
 
 **Database Constraints:**
 MUST: All tables have primary key
@@ -614,11 +627,11 @@ MUST: Track created_at timestamp (all tables)
 MUST: Track updated_at timestamp (all tables)
 MUST: Track created_by user ID (all tables)
 MUST: Soft delete (is_deleted flag, not hard delete) for user-generated content
-`<verification>`
+<verification>
 
 **Schema check:**
 
-```sql
+sql
 
 -- Tables without primary keys
 
@@ -650,9 +663,7 @@ try {
 
 await db.transaction(async (trx) => {
 await trx('users').update({ balance: balance - 100 });
-
 await trx('transactions').insert({ amount: 100 });
-
 throw new Error('Simulated failure'); // Should rollback both
 });
 
@@ -660,16 +671,16 @@ throw new Error('Simulated failure'); // Should rollback both
 
 // Verify balance unchanged and no transaction record
 }
+</verification>
 
-`</verification>`
-`</constraint>`
- ```
+</constraint>
+```
 
 ### Domain 4: Architecture MUSTs
 
-Architecture MUSTs define structural requirements.
+**Architecture MUSTs define structural requirements.**
 
-`<constraint priority="critical" scope="architecture">`
+```text
 
 **Technology Stack:**
 MUST: Backend: Node.js 20 LTS (no other versions)
@@ -701,7 +712,7 @@ MUST NOT: Expose stack traces in production responses
 
 **Dependency check:**
 
-```bash
+bash
 
 # Verify Node version
 node --version # Should be v20.x.x
@@ -714,9 +725,7 @@ madge --circular src/
 
 # Should return "No circular dependencies found"
 
-
 ### API convention check:
-
 
 # Find non-resource URLs
 grep -r "app\.(get|post)" src/routes/ | grep -v "/v[0-9]/"
@@ -728,31 +737,37 @@ grep -r "app\.(get|post)" src/routes/ | grep -v "/v[0-9]/"
 curl https://api.example.com/v1/nonexistent
 
 # Should return: {"error": "...", "message": "...", "details": {...}}
-`</verification>`
-`</constraint>`
+</verification>
+
+</constraint>
 ```
 
-#### Common MUST-Writing Mistakes
+### Common MUST-Writing Mistakes
 
-From a model’s experience, here are the most common mistakes users make when writing MUSTs.
+##From a model’s experience, here are the most common mistakes users make when writing MUSTs.**
 
-**Mistake 1: Aspirational MUSTs**
-Problem: Writing MUSTs that express a goal rather than a constraint.
+#### **Mistake 1: Aspirational MUSTs**
 
-Aspirational (not a constraint):
-MUST: Be secure
-MUST: Perform well
-MUST: Be user-friendly
-MUST: Follow best practices
+**Problem:** Writing MUSTs that express a goal rather than a constraint.
+
+**Aspirational (not a constraint):**
+
+- MUST: Be secure
+- MUST: Perform well
+- MUST: Be user-friendly
+- MUST: Follow best practices
 
 **Why this fails:**
-• Not actionable (what specific action makes it "secure"?)
-• Not verifiable (how does a model measure "user-friendly"?)
-• Not scoped (best practices for what? in which context?)
+
+- Not actionable (what specific action makes it "secure"?)
+- Not verifiable (how does a model measure "user-friendly"?)
+- Not scoped (best practices for what? in which context?)
 
 #### Concrete constraints
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 
 **Security:**
 MUST: Bcrypt password hashing (salt rounds=12)
@@ -767,19 +782,24 @@ MUST: Database queries <100ms (p95)
 MUST: Error messages include recovery steps
 MUST: Forms show inline validation
 MUST: Loading states for operations >500ms
-`</constraint>`
+</constraint>
+```
 
 **Why this works:**
-• Actionable (Model knows exactly what to implement)
-• Verifiable (Model can measure response times, check for bcrypt, etc.)
-• Scoped (specific to security, performance, usability contexts)
 
-Mistake 2: Over-Constraining
-Problem: So many MUSTs that there's no room for judgment or optimization.
+- Actionable (Model knows exactly what to implement)
+- Verifiable (Model can measure response times, check for bcrypt, etc.)
+- Scoped (specific to security, performance, usability contexts)
 
-### Over-constrained
+### Mistake 2: Over-Constraining
 
-`<constraint priority="critical"`>
+**Problem:** So many MUSTs that there's no room for judgment or optimization.
+
+#### Over-constrained
+
+```text
+
+<constraint priority="critical"`>
 
 MUST: Variable names exactly 15 characters
 MUST: Functions exactly 20 lines (no more, no less)
@@ -789,44 +809,50 @@ MUST: File names lowercase-with-dashes-only.js (no other format)
 MUST: Imports alphabetically sorted by package name
 MUST: No abbreviations in any name (even common ones like "id" or "url")
 ... [50 more micro-constraints]
-`</constraint>`
+</constraint>
+```
 
 **Why this fails:**
-• Paralysis (Model spends time checking micro-constraints)
-• No judgment (can't optimize or improve)
-• Brittle (one constraint violation = blocked)
-• Annoying (users will ignore overly strict specs)
 
-Result: Either model fails to comply (too restrictive) or model produces technically correct but poor quality code.
+- Paralysis (Model spends time checking micro-constraints)
+- No judgment (can't optimize or improve)
+- Brittle (one constraint violation = blocked)
+-  Annoying (users will ignore overly strict specs)
 
-### Appropriately constrained
+**Result:** Either model fails to comply (too restrictive) or model produces technically correct but poor quality code.
 
-`<constraint priority="critical">`
+#### Appropriately constrained
+
+```text
+
+<constraint priority="critical">
 MUST: TypeScript strict mode enabled
 MUST: No any type (use unknown for truly dynamic)
 MUST: Functions under 50 lines (unless complex algorithm with rationale)
 MUST: Descriptive variable names (avoid single-letter except standard loops)
 MUST: Public APIs documented (JSDoc with params, returns, examples)
-`</constraint>`
+</constraint>
 
-`<guideline priority="high">`
+<guideline priority="high">
 SHOULD: Consistent indentation (2 spaces preferred)
 SHOULD: Imports organized (external, then internal)
 SHOULD: Comments for non-obvious logic
 WHEN violating: Document rationale
-`</guideline>`
+</guideline>
+```
 
 **Why this works:**
-• MUSTs: Critical constraints only
-• SHOULDs: Preferences with flexibility
-• Room for judgment (under 50 lines "unless complex algorithm")
-• Practical (I can comply while producing quality code)
+
+- MUSTs: Critical constraints only
+- SHOULDs: Preferences with flexibility
+- Room for judgment (under 50 lines "unless complex algorithm")
+- Practical (I can comply while producing quality code)
 
 ### Mistake 3: Unmeasurable MUSTs
 
-Problem: Writing MUSTs that can't be objectively measured.
+**Problem:** Writing MUSTs that can't be objectively measured.
 
-#### Unmeasurable
+#### Unmeasurable 
 
 MUST: Code should be elegant
 MUST: System should feel fast
@@ -834,12 +860,13 @@ MUST: Design should look modern
 MUST: Documentation should be comprehensive
 
 **Why this fails:**
+
 • "Elegant" = subjective (your elegant ≠ my elegant)
 • "Feel fast" = vague (fast for what? compared to what?)
 • "Look modern" = changes over time, subjective
 • "Comprehensive" = how much is enough?
 
-Model can't verify compliance objectively.
+**Model can't verify compliance objectively.**
 
 #### Measurable
 
@@ -1262,6 +1289,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-12
 Written from model perspective: What makes MUST constraints work from the trenches
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
