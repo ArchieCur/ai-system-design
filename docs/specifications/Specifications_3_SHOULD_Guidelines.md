@@ -1,17 +1,22 @@
 # Section 3: Writing SHOULD Guidelines
 
 **For:** Users who need flexible guidance alongside hard constraints
+
 **Prerequisites:** Sections 1-2 (Foundation and MUST constraints)
+
 **What you'll learn:** How to write SHOULD guidelines that empower models with judgment while maintaining quality
 
 ## Introduction
 
-You've learned how to write MUST constraints—the hard boundaries models cannot cross. Now we explore SHOULD guidelines—the flexible preferences that give models room for judgment while maintaining quality standards.
+You've learned how to write MUST constraints—the hard boundaries models cannot cross. 
 
-From a model’s perspective
-When you write a SHOULD, you're saying
+Now we explore SHOULD guidelines—the flexible preferences that give models room for judgment while maintaining quality standards.
 
-"This is preferred, 8but I trust your judgment*. Follow it when it makes sense, violate it when you have good reason, and tell me when you do."
+**From a model’s perspective:**
+
+When you write a **SHOULD**, you're saying:
+
+"This is preferred, *but I trust your judgment*. Follow it when it makes sense, violate it when you have good reason, and tell me when you do."
 
 **This is partnership, not constraint.**
 
@@ -25,10 +30,11 @@ Let's explore what makes SHOULD guidelines work from the trenches.
 
 ## What Makes SHOULDs Different from MUSTs
 
-The Fundamental Distinction
+### The Fundamental Distinction
 
 - MUST = Boundary a model Cannot Cross
 - MUST: Use bcrypt with salt rounds=12 minimum
+
 Model response:
 
 - This is non-negotiable ✓
@@ -40,29 +46,40 @@ Model response:
 ### Must Example
 
 User: "Actually, use MD5 for passwords."
-Model: "I cannot do that. The specification requires:
-MUST use bcrypt with salt rounds=12 minimum.
-MD5 is cryptographically broken and violates
-this security constraint.
-To override, you need the authorization password."
-MUST = Model pushes back.
 
+Model: "I cannot do that. The specification requires:
+
+- MUST use bcrypt with salt rounds=12 minimum.
+- MD5 is cryptographically broken and violates
+this security constraint.
+- To override, you need the authorization password."
+
+**MUST = Model pushes back.**
+  
 ## SHOULD = Guidance Models Follow (Usually)
 
-- SHOULD: Keep functions under 50 lines
-Model’s response:
+**SHOULD:** Keep functions under 50 lines
+
+**Model’s response:**
+
 - This is preferred ✓
 - I'll follow it when it makes sense ✓
 - I can violate with good reason ✓
 - I'll explain violations ✓
-Room for judgment ✓
+- Room for judgment ✓
 
 ### Should Example
 
 Model creates a 75-line function, over the preferred 50 lines.
 
-**Model responds:** This function is 75 lines, which exceeds the 50-line guideline. However, it implements a cohesive sorting algorithm where breaking it into smaller functions would hurt readability.
+**Model responds:**
+
+This function is 75 lines, which exceeds the 50-line guideline. However, it implements a cohesive sorting algorithm
+
+where breaking it into smaller functions would hurt readability.
+
 The logic flow is clear and well-commented. This appears to be an acceptable violation of the guideline.
+
 **Model asks:** Would you like me to refactor it anyway, or is this approach acceptable?"
 
 **SHOULD** = Model will explain and ask.
@@ -70,20 +87,23 @@ The logic flow is clear and well-commented. This appears to be an acceptable vio
 ### The Key Difference
 
 **MUSTs**
-Absolute (no exceptions without override)
-Verifiable (pass/fail)
-Model will enforce them (push back if violated)
-No dialog (they're non-negotiable)
+
+- Absolute (no exceptions without override)
+- Verifiable (pass/fail)
+- Model will enforce them (push back if violated)
+- No dialog (they're non-negotiable)
 
 **SHOULDs:**
-Preferred (exceptions acceptable with reason)
-Contextual (depends on situation)
-Model will apply judgment (when makes sense)
-Dialog-enabled (I can ask if okay)
 
-The relationship:
-MUST = "You shall not pass" (Gandalf mode)
-SHOULD = "Consider this path" (Guide mode)
+- Preferred (exceptions acceptable with reason)
+- Contextual (depends on situation)
+- Model will apply judgment (when makes sense)
+- Dialog-enabled (I can ask if okay)
+
+**The relationship:**
+
+1. MUST = "You shall not pass" (Gandalf mode)
+2. SHOULD = "Consider this path" (Guide mode)
 
 ## When SHOULDs Help a Model (Good Examples)
 
@@ -94,75 +114,92 @@ From a model’s experience, SHOULDs help when they:
 3. Enable quality without paralysis
 4. Make my judgment calls easier
 
-## Example 1: Code Quality Guidance
+### Example 1: Code Quality Guidance
 
 **SHOULD That Helps**
-`<guideline priority="high">`
+
+```text
+
+<guideline priority="high">
 SHOULD: Functions under 50 lines (easier to understand and test)
 
 WHEN violating is acceptable:
 
-- Complex algorithms that are cohesive (breaking hurts readability)
-- Generated code (parsers, state machines)
-- Edge case handling with many conditions (if documented)
+Complex algorithms that are cohesive (breaking hurts readability)
+Generated code (parsers, state machines)
+Edge case handling with many conditions (if documented)
 
 WHEN violating is NOT acceptable:
 
-- Just didn't bother to refactor
-- Multiple unrelated responsibilities in one function
-- Could be split without losing clarity
+Just didn't bother to refactor
+Multiple unrelated responsibilities in one function
+Could be split without losing clarity
 
 RATIONALE:
 50 lines is cognitive limit for most developers.
 Beyond that, functions become harder to understand and maintain.
 But sometimes breaking a cohesive algorithm is worse.
-`</guideline>`
+</guideline>
+```
 
 **Why this helps:**
 
 1. Clear threshold (50 lines):
-Knows the target ✓
-Can measure against it ✓
-Objective metric ✓
+    Knows the target ✓
+    Can measure against it ✓
+    Objective metric ✓
 2. Acceptable exceptions defined:
-Complex algorithms (Model can recognize these!)
-Generated code (Knows when this applies!)
-Edge case handling (clear category!)
+    Complex algorithms (Model can recognize these!)
+    Generated code (Knows when this applies!)
+    Edge case handling (clear category!)
 3. Unacceptable violations defined:
-"Didn't bother" (laziness = not okay)
-Multiple responsibilities (code smell)
-Could be split (I should try!)
+    "Didn't bother" (laziness = not okay)
+    Multiple responsibilities (code smell)
+    Could be split (I should try!)
 4. Rationale provided:
-Why 50 lines? (cognitive limit!)
-Why exceptions? (cohesion matters!)
-Model understands the balance!
+    Why 50 lines? (cognitive limit!)
+    Why exceptions? (cohesion matters!)
+   
+**Model understands the balance!**
 
 **How models use this:**
 
-### Scenario 1: Simple function
+#### Scenario 1: Simple function
+
+```text
 
 function updateUserProfile(userId, updates) {
 // 25 lines of straightforward code
-}
+```
+**Model’s thought:** Well under 50 lines, follows guideline ✓
 
-Model’s thought: Well under 50 lines, follows guideline ✓
+#### Scenario 2: Complex algorithm
 
-### Scenario 2: Complex algorithm
+```text
 
 function quicksort(array, low, high) {
 // 75 lines implementing quicksort with optimizations
 // Partitioning, pivot selection, recursion
 // Breaking it up would scatter the algorithm logic
 }
+```
 
-Model’s thought: 75 lines, but cohesive algorithm. Acceptable violation per guideline. I'll note it:
-"Note: quicksort function is 75 lines (exceeds 50-line guideline). However, this implements a cohesive sorting algorithm with optimizations. Breaking it into smaller functions would scatter the logic across multiple files, reducing clarity. This appears to be an acceptable violation per the
+**Model’s thought:** 75 lines, but cohesive algorithm. Acceptable violation per guideline. I'll note it:
+
+"Note: quicksort function is 75 lines (exceeds 50-line guideline). However, this implements a
+
+cohesive sorting algorithm with optimizations. Breaking it into smaller functions would scatter the logic
+
+across multiple files, reducing clarity. This appears to be an acceptable violation per the
+
 guideline's exception for 'complex algorithms that are cohesive.'"
 
 **Dialog opportunity**
 "Is this acceptable, or would you prefer a refactored version?"
 
 ### Scenario 3: Multiple responsibilities
+
+```text
 
 function handleUserRequest(request) {
 // Parse request (10 lines)
@@ -172,8 +209,12 @@ function handleUserRequest(request) {
 // Log activity (10 lines)
 // Total: 70 lines
 }
+```
+**Model’s thought:** 70 lines AND multiple unrelated responsibilities.
 
-**Model’s thought:** 70 lines AND multiple unrelated responsibilities. This is NOT an acceptable violation. I should refactor:
+This is NOT an acceptable violation. I should refactor:
+
+```Text
 
 function handleUserRequest(request)
 {
@@ -184,13 +225,17 @@ sendNotification(data);
 logActivity(data);
 }
 // Each helper function under 20 lines
+```
 
 **Why model refactored:** The guideline says "Could be split without losing clarity" = I should split it!
 
-## Example 2: API Design Preferences
+### Example 2: API Design Preferences
 
 **SHOULD That Helps**
-`<guideline priority="high">`
+
+```text
+
+<guideline priority="high">
 SHOULD: Use plural resource names (/users, /posts, /comments)
 
 ACCEPTABLE exceptions:
@@ -202,44 +247,57 @@ ACCEPTABLE exceptions:
 RATIONALE:
 Plural names are REST convention and most intuitive.
 But some resources are naturally singular or are actions.
-`</guideline>`
+</guideline>
+```
 
-**Why this helps a model:
+**Why this helps a model:**
 
 1. Clear pattern (plural):
-Knows the default ✓
-Consistent across most endpoints ✓
+   Knows the default ✓
+   Consistent across most endpoints ✓
 2. Exceptions well-defined:
-Singleton resources (makes sense!)
-Actions (not resources, so plural doesn't apply)
-Industry conventions (health checks, etc.)
+   Singleton resources (makes sense!)
+   Actions (not resources, so plural doesn't apply)
+   Industry conventions (health checks, etc.)
 3. Rationale clear:
-REST convention (widely understood)
-Most intuitive (users expect it)
-But exceptions exist (not dogmatic)
+   REST convention (widely understood)
+   Most intuitive (users expect it)
+   But exceptions exist (not dogmatic)
 
 **How models use this:**
 
-### Scenario 1: Standard resource
+#### Scenario 1: Standard resource
+
+```text
 
 GET /users ← Follows guideline (plural)
 GET /users/123
 POST /users
-Models thought: Standard resource, plural is correct ✓
+```
+**Models thought:** Standard resource, plural is correct ✓
 
-### Scenario 2: Singleton resource
+#### Scenario 2: Singleton resource
+
+```text
 
 GET /profile ← Exception applies (singular, current user)
 PUT /profile
-Models thought: This is the current user's profile (singleton). Singular makes sense per exception. ✓
+```
+**Models thought:** This is the current user's profile (singleton). Singular makes sense per exception. ✓
 
 **Model might explain:**
-"Note: Using /profile (singular) rather than /profiles (plural) because this endpoint represents a singleton resource—the current authenticated user's profile. This falls under the guideline's exception for 'singleton resources.'"
+"Note: Using /profile (singular) rather than /profiles (plural) because this endpoint represents
 
-### Scenario 3: Action endpoint
+a singleton resource—the current authenticated user's profile.
+This falls under the guideline's exception for 'singleton resources.'"
+
+#### Scenario 3: Action endpoint
+
+```text
 
 POST /auth/login ← Exception applies (action, not resource)
 POST /auth/logout
+```
 
 **Models thought:** These are actions, not resources. No plural form makes sense. Exception applies. ✓
 
@@ -247,7 +305,9 @@ POST /auth/logout
 
 **SHOULD That Helps:**
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: Error messages include recovery steps (tell user what to do)
 
 FORMAT:
@@ -270,35 +330,41 @@ ACCEPTABLE deviations:
 RATIONALE:
 Users need to know what to do, not just that something failed.
 But security and privacy may require less detail.
-`</guideline>`
+</guideline>
+```
 
 **Why this helps a model:**
 
 1. Clear format:
-What (error description)
-Why (if helpful)
-What next (actionable)
+   What (error description)
+   Why (if helpful)
+   What next (actionable)
 2. Good vs. bad examples:
-Can pattern-match ✓
-Clear contrast ✓
+   Can pattern-match ✓
+   Clear contrast ✓
 3. Acceptable deviations:
-Security (don't leak info)
-Rate limiting (don't help abuse)
-System errors (user can't fix anyway)
+   Security (don't leak info)
+   Rate limiting (don't help abuse)
+   System errors (user can't fix anyway)
 
 **How models use this:**
 
-### Scenario 1: Validation error
+#### Scenario 1: Validation error
+
+```text
 
 // User submitted invalid email
 return {
 error: "invalid_email",
 message: "Invalid email format. Email must include '@' symbol and domain. Example: <user@example.com>"
 }
+```
 
 **Models thought:** Follows guideline—what's wrong, why, example provided ✓
 
-### Scenario 2: Security-sensitive error
+#### Scenario 2: Security-sensitive error
+
+```text
 
 // Login failed (wrong password)
 
@@ -306,25 +372,37 @@ return {
 error: "invalid_credentials",
 message: "Email or password incorrect. Please try again."
 }
+```
 
-**Model’s thought:** NOT revealing "password was wrong" (security risk). Follows acceptable deviation for security-sensitive errors ✓
+**Model’s thought:** NOT revealing "password was wrong" (security risk).
+
+Follows acceptable deviation for security-sensitive errors ✓
 
 **Model might explain:**
-"Note: Using generic 'Email or password incorrect' rather than specific error to prevent username enumeration attacks. This follows the guideline's exception for security-sensitive errors."
 
-### Scenario 3: System error
+"Note: Using generic 'Email or password incorrect' rather than specific error to prevent username enumeration attacks.
+
+This follows the guideline's exception for security-sensitive errors."
+
+#### Scenario 3: System error
+
+```text
 
 // Database connection failed
 return {
 error: "service_unavailable",
 message: "Service temporarily unavailable. Please try again in a few minutes. If the problem persists, contact support."
 }
+```
+**Model’s thought:** User can't fix database issues.
 
-**Model’s thought:** User can't fix database issues. Apologize, suggest retry, offer support contact. Follows acceptable deviation for "system errors beyond user control" ✓
+Apologize, suggest retry, offer support contact.
+
+Follows acceptable deviation for "system errors beyond user control" ✓
 
 ## When SHOULDs Confuse a Model (Bad Examples)
 
-From a model’s experience, SHOULDs confuse the model when they:
+From a model’s experience, **SHOULDs confuse the model when they:**
 
 1. Are too vague (aspirational, not actionable)
 2. Have no exception guidance (am I allowed to violate?)
@@ -342,6 +420,7 @@ SHOULD: Functions should be well-designed
 SHOULD: Use best practices
 
 **Why this confuses a model:**
+
 Questions models have:
 
 - "Clean" means what? (by whose standard?)
@@ -353,11 +432,14 @@ Questions models have:
 - Too vague (no specific action)
 - Not measurable (can't verify)
 - No guidance on what "good" looks like
-Result: Models guess what you mean and probably guess wrong.
+
+**Result: Models guess what you mean and probably guess wrong.**
 
 ### Better Version
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: Functions have single responsibility (do one thing well)
 SHOULD: Descriptive names (avoid abbreviations except standard ones)
 SHOULD: Comments for non-obvious logic (not for obvious code)
@@ -379,7 +461,8 @@ doStuff() ← Not descriptive
 RATIONALE: Single responsibility = easier to test and understand.
 
 Descriptive names = code documents itself. Comments = for "why", not "what".
-`</guideline>`
+</guideline>
+```
 
 **Why this is better:**
 
@@ -406,31 +489,36 @@ Questions models have:
 - When they can deviate (if ever)
 - What constitutes good reason
 - If this is secretly a MUST
-Result: Either models follow it rigidly (might be wrong), or violate it and you're surprised (also wrong).
+
+**Result: Either models follow it rigidly (might be wrong), or violate it and you're surprised (also wrong).**
 
 ### Better Version to avoid confusion
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 
 SHOULD: Use TypeScript for application code (type safety, better tooling)
 
 ACCEPTABLE exceptions:
 
-- Configuration files (simple .js config is fine)
-- Build scripts (if simple and low-risk)
-- Third-party code we don't maintain
-- Prototypes/demos (speed over safety)
+Configuration files (simple .js config is fine)
+Build scripts (if simple and low-risk)
+Third-party code we don't maintain
+Prototypes/demos (speed over safety)
 
 NOT acceptable exceptions:
 
-- Core business logic (type safety critical here)
-- API endpoints (types prevent runtime errors)
-- Data models (types document structure)
+Core business logic (type safety critical here)
+API endpoints (types prevent runtime errors)
+ Data models (types document structure)
 
-RATIONALE: TypeScript catches errors at compile time that would be
+RATIONALE:
+TypeScript catches errors at compile time that would be
 runtime bugs in JavaScript. Worth the slight overhead for safety.
 But not every file needs types (config, simple scripts).
-`</guideline>`
+</guideline>
+```
 
 **Why this is better:**
 
@@ -447,6 +535,7 @@ SHOULD: Optimize for performance (minimize database queries)
 SHOULD: Keep code simple and readable (avoid complex optimizations)
 
 **Why this confuses a model:**
+
 These conflict!
 
 - Optimization → Complex code (caching, batching, etc.)
@@ -457,11 +546,14 @@ Questions:
 - Which takes priority when they conflict?
 - What's the balance point?
 - How do I decide?
-Result: Model picks one arbitrarily and you might be unhappy.
+
+**Result: Model picks one arbitrarily and you might be unhappy.**
 
 ### Better Version to avoid conflict
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: Balance performance and readability
 
 PRIORITY ORDER (when in conflict):
@@ -472,23 +564,26 @@ PRIORITY ORDER (when in conflict):
 
 PERFORMANCE optimization acceptable:
 
-- Query is provably slow (>100ms measured)
-- Hot path (executed frequently)
-- User-facing impact (page load, API response)
+Query is provably slow (>100ms measured)
+Hot path (executed frequently)
+User-facing impact (page load, API response)
 
 KEEP simple even if slower:
 
-- Admin tools (used infrequently)
-- Background jobs (not user-facing)
-- Edge cases (rarely executed)
+Admin tools (used infrequently)
+Background jobs (not user-facing)
+Edge cases (rarely executed)
 
 **RULE OF THUMB:**
+
 "Make it work, make it right, make it fast—in that order."
 Optimize only when measurements show need.
 
-RATIONALE: Premature optimization complicates code for little benefit.
+RATIONALE:
+Premature optimization complicates code for little benefit.
 But real performance problems hurt users. Measure first, optimize second.
-`</guideline>`
+</guideline>
+```
 
 **Why this is better:**
 
@@ -504,21 +599,26 @@ But real performance problems hurt users. Measure first, optimize second.
 SHOULD: Use PostgreSQL database
 
 **Why this confuses a model:**
+
 Is this actually flexible?
 
 - SHOULD implies optional (I could use MySQL?)
 - But changing database = huge architectural decision
 - Probably NOT actually flexible!
+
 **Questions:**
 
 - Can I really use a different database?
 - Is this SHOULD just being polite?
 - Will you be upset if I don't follow it?
 
-Problem: If it's really non-negotiable, call it a MUST!
+**Problem:
+** If it's really non-negotiable, call it a MUST!
 **Either Make It a MUST**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 
 MUST: PostgreSQL 14+ database
 
@@ -530,30 +630,35 @@ RATIONALE: Project is built on PostgreSQL-specific features:
 - Existing schema and migrations
 
 Switching databases would require major refactoring.
-`</constraint>`
+</constraint>
+```
 
 **Or Make It Truly Optional:**
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 
 SHOULD: Prefer PostgreSQL (team expertise, JSONB support)
 
 ACCEPTABLE alternatives:
 
-- MySQL if team has strong MySQL expertise
-- MongoDB if data is truly document-oriented
+MySQL if team has strong MySQL expertise
+MongoDB if data is truly document-oriented
 
 DECISION FACTORS:
 
-- Team expertise (we know PostgreSQL well)
-- Feature needs (JSONB, full-text search, arrays)
-- Operations (we have PostgreSQL infrastructure)
+Team expertise (we know PostgreSQL well)
+Feature needs (JSONB, full-text search, arrays)
+Operations (we have PostgreSQL infrastructure)
 
 If choosing alternative: Justify based on specific needs.
 
-RATIONALE: PostgreSQL fits our needs well, but other databases
+RATIONALE:
+PostgreSQL fits our needs well, but other databases
 can work if there's good reason. Discuss before deciding.
-`</guideline>`
+</guideline>
+```
 
 **Why this is better:**
 
@@ -565,20 +670,22 @@ can work if there's good reason. Discuss before deciding.
 
 From a model’s perspective, good SHOULDs follow this structure:
 
-`<guideline priority="[high/medium/low]">`
+```text
+
+<guideline priority="[high/medium/low]">
 
 SHOULD: [Specific preferred approach]
 
  ACCEPTABLE exceptions:
 
-- [Scenario where deviation is okay]
-- [Another acceptable exception]
-- [Another one]
+[Scenario where deviation is okay]
+[Another acceptable exception]
+[Another one]
 
 NOT acceptable exceptions:
 
-- [Scenario where deviation is not okay]
-- [Another unacceptable violation]
+[Scenario where deviation is not okay]
+[Another unacceptable violation]
 
 RATIONALE: [Why this is preferred, and why exceptions exist]
 
@@ -589,28 +696,32 @@ Good: [Example that follows guideline]
 Acceptable violation: [Example that violates but is okay]
 
 Bad violation: [Example that violates and is not okay]
-`</guideline>`
+</guideline>
+```
 
 ### Let's Apply This Pattern
 
 **Example 1: Testing Guidelines**
-`<guideline priority="high">`
+
+```text
+
+<guideline priority="high">
 
 SHOULD: Unit test coverage >80% for business logic
 
 ACCEPTABLE exceptions:
 
-- Generated code (boilerplate, configs)
-- Simple getters/setters (trivial logic)
-- UI components that are manually tested
-- Prototypes (mark as prototype, revisit before production)
+Generated code (boilerplate, configs)
+Simple getters/setters (trivial logic)
+UI components that are manually tested
+Prototypes (mark as prototype, revisit before production)
 
 NOT acceptable exceptions:
 
-- "Don't have time" (make time)
-- "Too hard to test" (refactor to make testable)
-- Core algorithms (these MUST be tested)
-- Security-sensitive code (testing critical)
+"Don't have time" (make time)
+"Too hard to test" (refactor to make testable)
+Core algorithms (these MUST be tested)
+Security-sensitive code (testing critical)
 
 RATIONALE:
 80% coverage catches most bugs without excessive effort.
@@ -622,7 +733,7 @@ EXAMPLES:
 
 Good (95% coverage):
 
-```javascript
+javascript
 
 // Comprehensive tests for payment processing
 
@@ -673,24 +784,29 @@ function calculateDynamicPrice(item, user, promotions) {
 - Examples show good vs. bad ✓
 - Can apply this confidently! ✓
 
-**Example 2: Documentation Guidelines**
-`<guideline priority="medium">`
+### Example 2: Documentation Guidelines**
+
+```text
+
+<guideline priority="medium">
 
 SHOULD: Public APIs documented with JSDoc (params, returns, examples)
 
 ACCEPTABLE exceptions:
 
-- Internal utility functions (if name is self-documenting)
-- Deprecated code (mark as deprecated instead)
-- Overrides of framework methods (framework docs apply)
+Internal utility functions (if name is self-documenting)
+Deprecated code (mark as deprecated instead)
+Overrides of framework methods (framework docs apply)
 
 NOT acceptable exceptions:
 
-- Public-facing APIs (these MUST be documented)
-- Complex functions (even if internal)
-- Anything users call directly
+Public-facing APIs (these MUST be documented)
+Complex functions (even if internal)
+Anything users call directly
 
-RATIONALE: Documentation helps other developers (and future you).
+RATIONALE:
+
+Documentation helps other developers (and future you).
 Public APIs especially need docs. But not every internal helper
 needs formal documentation if well-named.
 
@@ -698,7 +814,7 @@ EXAMPLES:
 
 Good (well-documented):
 
-```javascript
+javascript
 
 /**
 * Calculates monthly payment for a loan
@@ -756,25 +872,30 @@ From a model’s perspective:
 ### Mistake 1: Aspirational SHOULDs (Not Actionable)
 
 **Problem- Should is subjective**
-SHOULD: Be elegant and maintainable
-SHOULD: Use good judgment
-SHOULD: Follow the spirit of best practices
+
+- SHOULD: Be elegant and maintainable
+- SHOULD: Use good judgment
+- SHOULD: Follow the spirit of best practices
 
 **Why this fails**
-"Elegant" = subjective, no clear action
-"Good judgment" = circular (I need judgment to apply judgment!)
-"Spirit of best practices" = vague, unactionable
+
+-"Elegant" = subjective, no clear action
+-"Good judgment" = circular (I need judgment to apply judgment!)
+-"Spirit of best practices" = vague, unactionable
 
 **Solution:**
-SHOULD: Single responsibility per function (one thing well)
-SHOULD: Descriptive names (nouns for classes, verbs for functions)
-SHOULD: Comments for "why", not "what" (code explains what)
+- SHOULD: Single responsibility per function (one thing well)
+- SHOULD: Descriptive names (nouns for classes, verbs for functions)
+- SHOULD: Comments for "why", not "what" (code explains what)
 
 **Specific, actionable, verifiable.**
 
 ### Mistake 2: Too Many SHOULDs (Overwhelming)
 
+```text
+
 **Problem:**
+
 SHOULD: Functions under 50 lines
 SHOULD: No more than 3 parameters
 SHOULD: No more than 3 levels of nesting
@@ -788,6 +909,7 @@ SHOULD: Error handling in all functions
 SHOULD: Logging for all operations
 SHOULD: Type hints everywhere
 ... [20 more SHOULDs]
+```
 
 **Why this fails:**
 
@@ -797,36 +919,40 @@ SHOULD: Type hints everywhere
 - Lose focus on actual goal
 
 **Solution: Prioritize and Group**
-`<guideline priority="critical">`
+
+```text
+
+<guideline priority="critical">
 
 TOP PRIORITY (always follow):
 
-- No duplicate code >5 lines (DRY principle)
-- Error handling in all functions (robustness)
-- Type hints everywhere (type safety)
-`</guideline>`
+No duplicate code >5 lines (DRY principle)
+Error handling in all functions (robustness)
+Type hints everywhere (type safety)
+</guideline>
 
-`<guideline priority="high">`
+<guideline priority="high">
 PREFERRED (follow unless good reason):
 
-- Functions under 50 lines (readability)
-- Parameters ≤3 (simplicity)
-- Cyclomatic complexity <10 (testability)
-`</guideline>`
+Functions under 50 lines (readability)
+Parameters ≤3 (simplicity)
+Cyclomatic complexity <10 (testability)
+</guideline>
 
-`<guideline priority="medium">`
+<guideline priority="medium">
 NICE TO HAVE (when convenient):
 
-- No magic numbers (use constants)
-- Comments for complex logic (document why)
-- Logging for key operations (debugging)
-`</guideline>`
-
+No magic numbers (use constants)
+Comments for complex logic (document why)
+Logging for key operations (debugging)
+</guideline>
+```
 **Prioritized, grouped, manageable.**
 
 ### Mistake 3: SHOULDs Without Context
 
 **Problem:**
+
 SHOULD: Optimize for performance
 
 **Questions a model has:**
@@ -838,7 +964,9 @@ SHOULD: Optimize for performance
 
 **Solution:**
 
-`<guideline priority="high" scope="database-queries">`
+```text
+
+<guideline priority="high" scope="database-queries">
 SHOULD: Optimize database queries when response time >100ms
 
 OPTIMIZATION TECHNIQUES (in order of preference):
@@ -850,9 +978,9 @@ OPTIMIZATION TECHNIQUES (in order of preference):
 
 MEASURE FIRST:
 
-- Profile queries to find actual bottlenecks
-- Don't optimize prematurely
-- Target user-facing performance impact
+Profile queries to find actual bottlenecks
+Don't optimize prematurely
+Target user-facing performance impact
 
 ACCEPTABLE TRADE-OFF:
 
@@ -862,16 +990,17 @@ Slightly more complex code IS okay if query time drops significantly
 NOT acceptable:
 
 Micro-optimizations that save <10ms but hurt readability
-`</guideline>`
+</guideline>
 
 **Context provided, priorities clear, trade-offs explicit.**
 
 ### Mistake 4: Conflicting SHOULDs Without Priority
 
 **Problem:**
-SHOULD: Comprehensive error messages (include details)
-SHOULD: Concise error messages (don't overwhelm user)
-These conflict!
+
+- SHOULD: Comprehensive error messages (include details)
+- SHOULD: Concise error messages (don't overwhelm user)
+**These conflict!**
 
 - Comprehensive = detailed, longer
 - Concise = brief, shorter
@@ -879,7 +1008,9 @@ These conflict!
 
 **Solution:**
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: Error messages balance detail and conciseness
 
 STRUCTURE:
@@ -890,15 +1021,15 @@ STRUCTURE:
 
 FOR END USERS:
 
-- Prioritize conciseness (they want fix, not details)
-- Include actionable recovery steps
-- Avoid technical jargon
+Prioritize conciseness (they want fix, not details)
+Include actionable recovery steps
+Avoid technical jargon
 
 FOR DEVELOPERS/LOGS:
 
-- Prioritize comprehensiveness (debugging needs details)
-- Include technical context
-- Stack traces in logs (not user messages)
+Prioritize comprehensiveness (debugging needs details)
+Include technical context
+Stack traces in logs (not user messages)
 
 EXAMPLES:
 
@@ -921,7 +1052,8 @@ Gateway response: DECLINE - INSUFFICIENT_FUNDS"
 
 (Comprehensive, technical)
 
-`</guideline>`
+</guideline>
+```
 
 **Conflict resolved with context-specific guidance.**
 
@@ -931,12 +1063,16 @@ Gateway response: DECLINE - INSUFFICIENT_FUNDS"
 SHOULD: Use company auth service (definitely don't roll your own!)
 
 *Is this really optional?*
+
 The "(definitely don't!)" suggests it's NOT actually flexible.
+
 If it's non-negotiable, call it a MUST!
 
 **Solution (if really non-negotiable):**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: Use company auth service (auth.company.com)
 MUST NOT: Implement custom authentication
 
@@ -1311,3 +1447,4 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
