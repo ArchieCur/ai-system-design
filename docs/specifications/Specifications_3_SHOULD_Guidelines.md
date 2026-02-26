@@ -991,7 +991,7 @@ NOT acceptable:
 
 Micro-optimizations that save <10ms but hurt readability
 </guideline>
-
+```
 **Context provided, priorities clear, trade-offs explicit.**
 
 ### Mistake 4: Conflicting SHOULDs Without Priority
@@ -1447,6 +1447,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
