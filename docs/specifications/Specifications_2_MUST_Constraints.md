@@ -745,7 +745,7 @@ curl https://api.example.com/v1/nonexistent
 
 **From a model’s experience, here are the most common mistakes users make when writing MUSTs.**
 
-#### **Mistake 1: Aspirational MUSTs**
+### **Mistake 1: Aspirational MUSTs**
 
 **Problem:** Writing MUSTs that express a goal rather than a constraint.
 
@@ -1320,5 +1320,6 @@ Last Updated: 2026-02-26
 Written from model perspective: What makes MUST constraints work from the trenches
 
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
