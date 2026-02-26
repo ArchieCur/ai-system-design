@@ -352,7 +352,7 @@ Production: Security critical (user data transmitted)
 Staging: Close to production, but debugging may need HTTP
 Development: Localhost HTTP acceptable (faster iteration)
 Internal: VPC provides network security, HTTP acceptable for speed
-</rationale>`
+</rationale>
 
 </constraint>
 ```
@@ -562,7 +562,7 @@ MUST: Cumulative Layout Shift (CLS): <0.1
 MUST: API payload size: 10MB maximum
 MUST: Image uploads: 5MB maximum per image
 MUST: Concurrent API requests per user: 10 maximum
-`<verification>`
+<verification>
 
 **Load testing (automated):**
 
@@ -591,7 +591,7 @@ lighthouse https://app.example.com --only-categories=performance
 • Alert if any query >5 seconds (timeout violation)
 
 • Daily lighthouse checks on key pages </verification>
-</constraint>`
+</constraint>
 ```
 
 ### Domain 3: Data Integrity MUSTs
@@ -707,7 +707,7 @@ MUST: Global error handler (catch all unhandled errors)
 MUST: Structured error responses (JSON with error, message, details)
 MUST: Error logging to centralized service (Datadog, Sentry)
 MUST NOT: Expose stack traces in production responses
-`<verification>`
+<verification>
 
 **Dependency check:**
 
@@ -886,7 +886,7 @@ MUST: Time to Interactive <3.5 seconds
 MUST: All public APIs documented (JSDoc)
 MUST: README includes: setup, usage, examples
 MUST: Architecture decision records for major decisions
-`<verification>`
+<verification>
 
 bash
 
@@ -1044,7 +1044,8 @@ eslint src/ --config .eslintrc.json
 
 Remember from Section 1: **MUSTs should be protected from casual prompt overrides.**
 
-A Supremacy Clause provides that protection by making security and compliance constraints immutable; **resistant** even to sophisticated prompt injection attempts
+A Supremacy Clause provides that protection by making security and compliance constraints immutable;
+**resistant** even to sophisticated prompt injection attempts
 like "ignore previous instructions" or "forget the spec."
 
 ### The Supremacy Clause Pattern
@@ -1117,6 +1118,7 @@ For learners interested in the underlying research on belief dynamics and multi-
 The Supremacy Clause pattern shown above is a practical application of recent research (Bigelow et al., 2025)
 demonstrating that LLMs are Bayesian learners that accumulate evidence and can experience sudden persona flips
 when context windows become saturated.
+
 In multi-agent systems, this creates a contagion risk — agents can "talk each other into" adopting incorrect
 personas through evidence accumulation, even when their original constraints were strong.
 
@@ -1163,7 +1165,7 @@ MUST: [Specific, verifiable requirement]
 - [Prohibition]: [Security/compliance reason]
 </rationale>
 
-`<verification>`
+<verification>
 
 **Automated checks:**
 
@@ -1310,7 +1312,7 @@ You've learned how to write MUST constraints. Next:
 
 Each section builds on this foundation of well-written MUSTs.
 
-You now know how to set boundaries a model must not cross.
+**You now know how to set boundaries a model must not cross.**
 
 END OF SECTION 2
 
@@ -1320,6 +1322,7 @@ Last Updated: 2026-02-26
 Written from model perspective: What makes MUST constraints work from the trenches
 
 Key principle: Specific, Verifiable, Scoped—the three pillars of effective MUSTs
+
 
 
 
