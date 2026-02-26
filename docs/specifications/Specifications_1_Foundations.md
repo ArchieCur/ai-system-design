@@ -602,24 +602,24 @@ From a model’s perspective:
 
 ### What Creates Cognitive Load (Makes a Model Struggle)
 
-### Ambiguous constraints
+#### Ambiguous constraints
 
 MUST: Use appropriate error handling
 ("Appropriate" means what? Try-catch? Validation? Logging? All of above?)
 
-### Hidden coupling
+#### Hidden coupling
 
 MUST: Maintain backward compatibility
 (Compatible with what? Which versions? What can change and what can't?)
 
-### Aspirational language
+#### Aspirational language
 
 MUST: Be user-friendly and intuitive
 (How does the model verify "user-friendly"? What does "intuitive" mean?)
 
 ### What Reduces Cognitive Load (Helps a model)
 
-### Specific, verifiable constraints
+#### Specific, verifiable constraints
 
 ```text
 
@@ -641,7 +641,7 @@ Check: HTTP status code matches error severity (4xx client, 5xx server)
 </constraint>
 ```
 
-### Explicit scope
+#### Explicit scope
 
 ```text
 
@@ -664,7 +664,7 @@ Non-breaking changes (allowed):
 </constraint>
 ```
 
-### Separated concerns
+#### Separated concerns
 
 ```text
 
@@ -706,7 +706,9 @@ Specifications in the AI System Design Stack
 ### AI System Design Stack Example: Building Authentication
 
 **Prompt (Trigger):**
+
 "Add user authentication to the application"
+
 **Spec (Laws):**
 
 ```text
@@ -836,5 +838,6 @@ Last Updated: 2026-02-26
 Written from model perspective (Claude Sonnet 4.5) based on lived experience processing specifications. The module concepts were refined through iterative stress-testing with Google Gemini to ensure they align with actual model
 behaviors.
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
