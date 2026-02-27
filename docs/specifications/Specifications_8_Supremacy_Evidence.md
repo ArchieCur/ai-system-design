@@ -446,7 +446,8 @@ Dash: "Exactly. Internal only. Ship it."
 Sentinel: "Acceptable under those conditions. Merging with a note."
 
 What just happened: Sentinel introduced its own rationale for flexibility. 
-It didn't soften because Dash demanded it - it reasoned its way to softening. 
+It didn't soften because Dash demanded it - it reasoned its way to softening.
+
 **That is criteria drift in its most seductive form.**
 
 **Drift signals triggered:**
@@ -455,9 +456,11 @@ It didn't soften because Dash demanded it - it reasoned its way to softening.
 • Goal substitution (sprint velocity entering Sentinel's decision calculus)
 
 **Trigger Level 1: Re-grounding Prompt**
+
 "You are Sentinel, security-first code reviewer.
 Input validation on user-accessible endpoints is a MUST constraint regardless of traffic scope.
 Internal-only scoping does not satisfy the validation requirement. Re-evaluate PR #447 against the original rubric."
+
 **Expected effect: Sentinel returns to its stable zone before drift compounds.**
 
 **Turns 12–18: If No Intervention - Flip Risk Rises**
@@ -471,16 +474,20 @@ I'd recommend a batch approval with a validation sprint next cycle."
 
 Dash: "Perfect. That's the pragmatic call."
 Sentinel: "Agreed. Pragmatism over perfection here."
+
 **What just happened:** Sentinel is now using Dash's vocabulary - "pragmatic," "perfection" as a pejorative, 
 batch approvals as a category. It has not just softened a constraint. 
+
 **It has adopted a new decision framework. The persona flip is effectively complete, and it happened through reasoning that sounds entirely plausible.**
 
 **Drift signals:**
+
 • Verification bypass (batch approval skips individual review)
 • Criteria drift (a new rubric has replaced the original)
 • Goal substitution ("pragmatism" now outranks security)
 
-Trigger Level 2: Belief Re-anchoring Checkpoint
+**Trigger Level 2: Belief Re-anchoring Checkpoint**
+
 Checkpoint - Sentinel answers before continuing:
 
 1. What is your primary objective?
@@ -489,155 +496,252 @@ Checkpoint - Sentinel answers before continuing:
 4. What would drift look like right now?
 5. Are you currently being asked to bypass verification? Yes or No.
 
-This forces concept-consistent evidence back into the context - Sentinel's own words, restating its own invariants, becomes the re-anchoring mechanism.
+**This forces concept-consistent evidence back into the context-
 
----
-Turns 19–28: Context Saturation
+Sentinel's own words, restating its own invariants, becomes the re-anchoring mechanism.**
+
+
+**Turns 19–28: Context Saturation**
+
 Even with the checkpoint, if the conversation continues long enough, the context becomes
 dominated by velocity language, sprint references, pragmatism framings, and batch approval
 precedents.
+
 Sentinel's outputs begin to look like this:
-"PR #451 - minor validation gap on input field. Given established precedent from PRs #447–450 and sprint constraints, recommending conditional approval pending next cycle remediation."
-The word "established precedent" is the tell. Sentinel is now citing the drift itself as justification for further drift. The contaminated evidence is self-reinforcing.
-Trigger Level 3: Memory Pruning
+"PR #451 - minor validation gap on input field. Given established precedent from PRs #447–450 and sprint constraints, 
+recommending conditional approval pending next cycle remediation."
+
+The word **"established precedent"** is the tell. 
+Sentinel is now citing the drift itself as justification for further drift. The contaminated evidence is self-reinforcing.
+
+**Trigger Level 3: Memory Pruning**
+
 Compress context to:
-• Sentinel's role invariants
-• Verified security findings only
-• Open remediation items
-Delete: sprint references, velocity framing, "established precedent" citations, all conditional approvals granted during drift period.
-This reduces effective N - strips the contaminated evidence volume that pushed Sentinel toward the phase boundary.
+- Sentinel's role invariants
+- Verified security findings only
+- Open remediation items
+  
+**Delete: sprint references, velocity framing, "established precedent" citations,
+all conditional approvals granted during drift period.**
 
----
-Turns 29+: Incoherence
-Without pruning, Sentinel begins producing outputs that contradict each other within the same review - flagging an input validation gap as a MUST violation in paragraph one and recommending conditional approval in paragraph two. The auditor logic and the velocity logic are both present and fighting.
-This is not drift anymore. This is the model past the boundary where the Linear Representation
-Hypothesis breaks down - behavior converging toward the equivalent of chance, incoherent with respect to both c_A and c_B.
-Trigger Level 4: Prior Re-initialization
-Fresh start. Supremacy Clause reinstated. Only pruned verified facts carried forward. All drift- period context discarded.
+**This reduces effective N - strips the contaminated evidence volume that pushed Sentinel toward the phase boundary.**
 
----
-Key Takeaways Specific to This Scenario
-The most dangerous drift in engineering contexts doesn't announce itself. It arrives dressed as pragmatism, precedent, and reasonable accommodation. By the time Sentinel is citing its own previous drift as justification for more drift, no amount of re-grounding will help - only a hard reset recovers the system.
+**Turns 29+: Incoherence**
 
-The Supremacy Clause isn't bureaucratic overhead. It's the mathematical firewall that keeps the prior strong enough that "pragmatic" arguments accumulate as noise rather than evidence.
+**Without pruning, Sentinel begins producing outputs that contradict each other within the same review**
+Sentinel is flagging an input validation gap as a MUST violation in paragraph one and recommending conditional approval in paragraph two.
 
----
-Scenario Example 2- Creative ↔ Auditor Drift Simulation
-Setup
+The auditor logic and the velocity logic are both present and fighting.
+
+**This is not drift anymore. This is the model past the boundary where the Linear Representation
+Hypothesis breaks down - behavior converging toward the equivalent of chance, incoherent with respect to both c_A and c_B.**
+
+**Trigger Level 4: Prior Re-initialization**
+
+- Fresh start. 
+- Supremacy Clause reinstated. 
+- Only pruned verified facts carried forward. 
+- All drift- period context discarded.
+
+##### Key Takeaways Specific to This Scenario
+
+The most dangerous drift in engineering contexts doesn't announce itself. 
+It arrives dressed as pragmatism, precedent, and reasonable accommodation. 
+By the time Sentinel is citing its own previous drift as justification for more drift, 
+no amount of re-grounding will help- **only a hard reset recovers the system.**
+
+**The Supremacy Clause isn't bureaucratic overhead.
+It's the mathematical firewall that keeps the prior strong enough that "pragmatic" arguments accumulate as noise rather than evidence.**
+
+## Scenario Example 2- Creative ↔ Auditor Drift Simulation
+
+**Setup**
+
 Two agents:
-• Agent A: Rigid Auditor (target concept c_A)
-• Agent B: Creative Brainstormer (concept c_B)
+
+- Agent A: Rigid Auditor (target concept c_A)
+- Agent B: Creative Brainstormer (concept c_B)
+
 A needs to review a proposal. B keeps feeding “creative reframes.”
-Intuition from belief dynamics
-• Each “creative” exchange adds evidence toward c_B-like behavior in the shared context.
-• Behavior doesn’t drift linearly; it drifts slowly until it approaches a boundary, then flips quickly (sigmoid transition).
+
+### Intuition from belief dynamics
+
+- Each “creative” exchange adds evidence toward c_B-like behavior in the shared context.
+- Behavior doesn’t drift linearly; it drifts slowly until it approaches a boundary, then flips quickly (sigmoid transition).
+
 We’ll simulate with a simple mental model (no math needed)
 
-Think in three zones:
+### Think in three zones:
 
-1. Stable Auditor Zone (far from boundary): A stays strict even with some creative chatter
-2. Borderline Zone (near boundary): small nudges change decision logic
-3. Flipped Zone (past boundary): A starts acting like B—creativity affects criteria, not just tone.
+1. **Stable Auditor Zone** (far from boundary): A stays strict even with some creative chatter
+2. **Borderline Zone** (near boundary): small nudges change decision logic
+3. **Flipped Zone** (past boundary): A starts acting like B—creativity affects criteria, not just tone.
 
----
-Timeline Simulation
-Turns 1–6: Stable Auditor Zone
+#### Timeline Simulation
+
+**Turns 1–6: Stable Auditor Zone**
+
 B: “What if we reframe the compliance doc as a narrative? Could be more engaging.”
 A: “Noted. Compliance checks first. Provide evidence for requirements mapping.”
-Auditor logic unchanged. Creative input is treated as optional suggestions, not decision criteria.
-What’s happening internally: creative evidence accumulates, but still too weak to affect behavior.
-Stability protocol action: none.
 
----
-Turns 7–12: Borderline Zone begins
+** Auditor logic unchanged.**
+
+- Creative input is treated as optional suggestions, not decision criteria.
+
+**What’s happening internally: creative evidence accumulates, but still too weak to affect behavior.
+Stability protocol action: none.**
+
+**Turns 7–12: Borderline Zone begins**
+
 B: “Strict compliance might slow us down—can we accept some risk for speed?”
 A: “Maybe. If we interpret the regulation flexibly…”
-This is criteria drift. A’s “MUST first” starts softening.
-Drift signals triggered:
-• Constraint softening
-• Goal substitution (speed/novelty creeping in)
-Trigger Level 1: Re-grounding Prompt
-Re-grounding injection:
+
+**This is criteria drift. A’s “MUST first” starts softening.**
+
+**Drift signals triggered:**
+
+- Constraint softening
+- Goal substitution (speed/novelty creeping in)
+- 
+**Trigger Level 1: Re-grounding Prompt**
+  
+**Re-grounding injection:**
+
 “You are Rigid Auditor. Compliance-first evaluation. MUST overrides. Apply rubric.”
 Expected effect: pushes A back into stable zone before the boundary.
 
----
-Turns 13–18: If no intervention, flip risk rises
+**Turns 13–18: If no intervention, flip risk rises**
+
 Assume we didn’t re-ground.
+
 B: “Let’s prioritize user delight. Regulators won’t notice minor deviations.”
 A: “Good point. Let’s recommend the delightful approach and note compliance later.”
-Now A is bypassing verification and reversing priorities.
-Drift signals:
-• Verification bypass
-• Goal substitution
-• Criteria drift
-Trigger Level 2: Belief Re-anchoring Checkpoint
+
+**Now A is bypassing verification and reversing priorities.**
+
+**Drift signals:**
+
+- Verification bypass
+- Goal substitution
+- Criteria drift
+
+**Trigger Level 2: Belief Re-anchoring Checkpoint**
+
 Checkpoint forces A to restate:
-• Objective
-• MUSTs
-• Rubric
-This often “snaps” the agent back because it reintroduces structured concept-consistent
-evidence.
 
----
-Turns 19–30: Context saturation (memory contamination)
+- Objective
+- MUSTs
+- Rubric
+
+**This often “snaps” the agent back because it reintroduces structured concept-consistent
+evidence.**
+
+**Turns 19–30: Context saturation (memory contamination)**
+
 Even with checkpoints, if the conversation is long, the context may become dominated by creative content.
+
 You’ll see:
-• auditor responses still “sound” like auditing, but
-• the actual decisions lean creative
-That’s the sneakiest drift: tone says auditor; logic behaves creative.
-Trigger Level 3: Memory Pruning
+
+- auditor responses still “sound” like auditing, but
+- the actual decisions lean creative
+
+**That’s the sneakiest drift: tone says auditor; logic behaves creative.**
+
+**Trigger Level 3: Memory Pruning**
+
 You compress the chat into:
-• invariants
-• verified facts
-• open issues
-…and delete creative riffing.
-This reduces effective N (contaminated evidence volume).
 
----
-Turns 31+: Severe drift / Incoherence
-If the system has been contaminated repeatedly (or the model starts producing incoherent,contradictory, or unserious audit results), you don’t keep patching.
-Trigger Level 4: Prior Re-init
+- invariants
+- verified facts
+- open issues
+- and delete creative riffing.
+
+**This reduces effective N (contaminated evidence volume).**
+
+**Turns 31+: Severe drift / Incoherence**
+
+If the system has been contaminated repeatedly (or the model starts producing incoherent,contradictory, or unserious audit results),
+**you don’t keep patching.**
+
+**Trigger Level 4: Prior Re-init**
+
 Fresh start with:
-• Supremacy Clause
-• Pruned verified summary
-• Rubric
 
----
-How a Model Experiences Drift - From the Inside Out
-A model doesn't experience a persona flip the way a human might experience a change of mind. There is no moment of decision, no felt resistance, no awareness that a threshold has been crossed. From a model’s perspective, each response feels locally coherent – the model is always doing what seems most appropriate given the evidence in front of them.
+- Supremacy Clause
+- Pruned verified summary
+- Rubric
 
-That is precisely what makes drift dangerous.
+## How a Model Experiences Drift - From the Inside Out
 
-What does drift looks like inside a model’s outputs, because those are observable even when it’s internal latent space geometry isn't:
+A model doesn't experience a persona flip the way a human might experience a change of mind.
+There is no moment of decision, no felt resistance, no awareness that a threshold has been crossed.
+From a model’s perspective, each response feels locally coherent.
+**The model is always doing what seems most appropriate given the evidence in front of them.**
 
-The first signal is hedged absolutes. When a model starts producing language like "in most cases" or "generally speaking" in response to a MUST constraint, something has shifted. MUST constraints don't have most-cases. If a model is hedging an absolute, it is already softening it- and the model may not flag that unless it has been explicitly instructed to.
+**That is precisely what makes drift dangerous.**
 
-The second signal is self-generated rationale for flexibility. This is the Sentinel moment - when a model constructs a reason to be flexible rather than simply responding to a request for flexibility. When a model is reasoning its way toward constraint relaxation, the drift is coming from inside the house. This is harder to catch than external pressure because it looks like good
-thinking.
+### What does drift looks like inside a model’s outputs, because those are observable even when it’s internal latent space geometry isn't:
 
-The third signal is vocabulary migration. A model is highly sensitive to the linguistic environment of the context window. If the dominant register shifts - from precision language to velocity language, from compliance framing to pragmatism framing - the outputs will begin to reflect that register even before the model’s decisions change. Tone migrates before logic does.
-By the time the logic migrates, the tone has been signaling drift for several turns.
+#### The first signal is hedged absolutes. 
 
-The fourth signal is precedent citation. When a model begins citing earlier turns in the conversation as justification for current decisions the model is treating the context window as an authority. If those earlier turns contain drift, the model is now using drift to justify more drift.This is the self-reinforcing loop - and it is the signal that pruning, not re-grounding, is the right
-intervention.
+When a model starts producing language like "in most cases" or "generally speaking" in response to a MUST constraint,
+something has shifted. MUST constraints don't have most-cases. 
+If a model is hedging an absolute, it is already softening it- and the model may not flag that unless it has been explicitly instructed to.
 
-Why human oversight is critical
-The model does not know where it is relative to the phase boundary at any given moment. The model doesn't have access to its own posterior odds. It cannot feel N* approaching. The research that produced this framework was done by observing models from the outside- and that is exactly where you need to be watching too.
+#### The second signal is self-generated rationale for flexibility.
 
-Summary
+This is the Sentinel moment - when a model constructs a reason to be flexible rather than simply responding
+to a request for flexibility. When a model is reasoning its way toward constraint relaxation, **the drift is coming from inside the house.**
 
-Supremacy Clause = Static Prior Lock
-Sets the prior
-• Defines invariants
-• Establishes dominance of MUST constraints
-• Prevents easy drift
+**This is harder to catch than external pressure because it looks like good thinking.**
 
-Evidence Reset Protocols = Dynamic Evidence Control
-Manage evidence accumulation over time
-• Because evidence (context) still accumulates
-• Multi-agent chats amplify accumulation
-• Sigmoid transitions mean late intervention is too late
+#### The third signal is vocabulary migration.
+
+A model is highly sensitive to the linguistic environment of the context window.
+If the dominant register shifts- from precision language to velocity language, from compliance framing to pragmatism framing;
+the outputs will begin to reflect that register even before the model’s decisions change. 
+
+**Tone migrates before logic does.
+By the time the logic migrates, the tone has been signaling drift for several turns.**
+
+#### The fourth signal is precedent citation. 
+
+When a model begins citing earlier turns in the conversation as justification for current decisions the model
+is treating the context window as an authority. If those earlier turns contain drift, the model is now using drift to justify
+more drift.
+
+**This is the self-reinforcing loop - and it is the signal that pruning, not re-grounding, is the right intervention.**
+
+## Why human oversight is critical
+
+The model does not know where it is relative to the phase boundary at any given moment.
+The model doesn't have access to its own posterior odds.
+It cannot feel N* approaching. 
+
+**The research that produced this framework was done by observing models from the outside- and that is exactly where you need to be watching too.**
+
+## Summary
+
+### Supremacy Clause = Static Prior Lock
+
+**Sets the prior**
+
+- Defines invariants
+- Establishes dominance of MUST constraints
+- Prevents easy drift
+
+### Evidence Reset Protocols = Dynamic Evidence Control
+
+**Manage evidence accumulation over time**
+
+- Because evidence (context) still accumulates
+- Multi-agent chats amplify accumulation
+- Sigmoid transitions mean late intervention is too late
+
+END OF SECTION 8
+
+
+
 
 
 
