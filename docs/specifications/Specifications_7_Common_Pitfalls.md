@@ -35,7 +35,8 @@ Let's explore the pitfalls so you can avoid them.
 Too many MUST constraints that paralyze progress.
 
 **The Problem:**
-Example Over-constraining spec:
+
+**Example Over-constraining spec:**
 
 ```text
 
@@ -117,7 +118,7 @@ Bad: x() - too short, unclear
 Bad: theUserDataManagerThatManagesAllUserDataInTheSystem() - too long
 </guideline>
 ```
-**Key principle:** Constrain outcomes, not methods. Tell the model WHAT to achieve, not HOW to achieve it.
+**Key principle:** Constrain outcomes, not methods. Tell the model WHAT to achieve, not HOW to achieve it.**
 
 ### Pitfall 2: Under-Constraining (The Void)
 
@@ -127,7 +128,7 @@ Too few constraints, leaving a model to guess everything.
 
 **The Problem:**
 
-Example Under-constraining spec:
+**Example Under-constraining spec:**
 
 ```text
 
@@ -228,7 +229,7 @@ MUSTs that contradict each other, making compliance impossible.
 
 **The Problem:**
 
-Example Conflicting contraints spec:
+**Example Conflicting contraints spec:**
 
 ```text
 
@@ -343,7 +344,7 @@ Not actually providing specifications, just goals.
 
 **The Problem:**
 
-Example Figure it out "spec":
+**Example Figure it out "spec":**
 
 ```text
 
@@ -406,7 +407,9 @@ Reality:
 INTENT is essential, but not sufficient:
 INTENT: The why
 
-`<intent scope="e-commerce-platform">`
+```text
+
+<intent scope="e-commerce-platform">
 **Goal:** Launch MVP e-commerce platform by Q2 to capture market opportunity.
 
 **Why this matters:**
@@ -419,37 +422,36 @@ Competitor launching similar product Q3. First-mover advantage = 60% market shar
 - Cart abandonment <15%
 - User satisfaction >4.2/5
 
-`</intent>`
+</intent>
 
 MUST: The critical what
-
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: Vue.js 3 frontend (team expertise, existing component library)
 MUST: Node.js backend (team familiar, hiring pipeline)
 MUST: PostgreSQL database (team runs this in production)
 MUST: Support English, Spanish, French (primary markets)
 MUST: PCI DSS compliant payment processing (Stripe integration)
 MUST: Mobile-responsive (60% of traffic mobile)
-`</constraint>`
+</constraint>
 
 SHOULD: Preferences
 
-`<guideline priority="high">`
+<guideline priority="high">
 SHOULD: Tailwind CSS (team standard)
 SHOULD: Checkout in 3 steps max (reduce abandonment)
 SHOULD: Guest checkout option (no forced registration)
-`</guideline>`
+</guideline>
 
 CONTEXT: Environment
 
-`<context scope="technical">`
+<context scope="technical">
 **Team:** 4 full-stack developers (Vue/Node expertise)
 **Timeline:** 3 months to MVP
 **Scale:** Targeting 10K users, 1K concurrent peak
 **Budget:** $50K infrastructure budget
-`</context>`
-
-**Key principle:** INTENT + MUST + SHOULD + CONTEXT = Complete spec. INTENT alone ≠ spec.
+</context>
+```
+**Key principle:** INTENT + MUST + SHOULD + CONTEXT = Complete spec. INTENT alone ≠ spec.**
 
 ### Pitfall 5: Secret MUSTs Disguised as SHOULDs
 
@@ -459,17 +461,20 @@ Calling something a SHOULD when it's actually non-negotiable.
 
 **The Problem:**
 
-Example Secret MUST spec:
+**Example Secret MUST spec:**
 
-`<guideline>`
+```text
+
+<guideline>
 SHOULD: Use company authentication service
 (definitely don't roll your own!)
-`</guideline>`
+</guideline>
 
 What happens to the model:
 
 Model: "It says SHOULD... that means optional with good reason, right?"
 Model: [Evaluates options]
+
 Option A: Company auth service
 
 - Pros: Integrated, approved
@@ -490,7 +495,8 @@ Model:"It was a SHOULD... I had good reason for Auth0?"
 You: "THAT'S NON-NEGOTIABLE! SECURITY POLICY!"
 
 Model: "...then why is it a SHOULD?"
-Result: The model violates what you thought was mandatory because it was labeled as optional.
+```
+**Result: The model violates what you thought was mandatory because it was labeled as optional.**
 
 **Why This Happens:**
 User thinks:
@@ -498,15 +504,19 @@ User thinks:
 "SHOULD sounds nicer than MUST. Less aggressive."
 
 Reality:
-SHOULD = Model can violate with good reason
-MUST = Model cannot violate (supremacy clause!)
-If it's non-negotiable, call it MUST!
+
+- SHOULD = Model can violate with good reason
+- MUST = Model cannot violate (supremacy clause!)
+
+**If it's non-negotiable, call it MUST!**
 
 **The Solution:**
 
-If it's truly non-negotiable:
+**If it's truly non-negotiable:**
 
-`<constraint priority="critical" supremacy="true">`
+```text
+
+<constraint priority="critical" supremacy="true">
 MUST: Use company authentication service (auth.company.com)
 
 RATIONALE:
@@ -523,11 +533,11 @@ VERIFICATION:
 
 All authentication flows must use auth.company.com endpoints
 
-`</constraint>`
+</constraint>
 
 If it's actually flexible:
 
-`<guideline priority="high">`
+<guideline priority="high">
 
 SHOULD: Prefer company authentication service (auth.company.com)
 
@@ -547,8 +557,8 @@ NOT acceptable:
 RATIONALE:
 Company service provides SSO, MFA, compliance.
 But legitimate scenarios exist for alternatives with approval.
-`</guideline>`
-
+</guideline>
+```
 **Key principle:** Call MUSTs "MUST" and SHOULDs "SHOULD". Don't use polite language for hard requirements.
 
 ### Pitfall 6: Verification Theater
@@ -558,25 +568,30 @@ But legitimate scenarios exist for alternatives with approval.
 Verification protocols that don't actually verify anything.
 
 **The Problem:**
-Example "verification" theater:
 
-`<verification>`
+**Example "verification" theater:**
+
+```text
+
+<verification>
 Verify that code quality is good.
 Check that security is adequate.
 Ensure performance is acceptable.
 Confirm user experience is positive.
-`</verification>`
+</verification>
 
-What happens to a model:
+**What happens to a model:**
 
 Model: [Runs "verification"]
 Code quality is good?
 
 Model: "I think it's good? Seems fine?"
 PASS (guessing)
+
 Security is adequate?
 Model: "Probably? I used passwords..."
 PASS (hoping)
+
 Performance is acceptable?
 Model: "Loads on my machine..."
 PASS (no measurement)
@@ -587,31 +602,39 @@ PASS (subjective)
 
 Model: "All checks pass!"
 [Nothing was actually verified]
+```
+**Result: Verification theater—looks like verification, verifies nothing.**
 
-Result: Verification theater—looks like verification, verifies nothing.
-
-Why This Happens:
+**Why This Happens:**
 
 User thinks:
 
 "I added verification! That's good enough, right?"
 
-Reality:
-Vague verification = no verification
-Need objective criteria
-Need actual checks (automated or manual)
-"Verify it's good" ≠ verification
+**Reality:**
 
-The Solution:
-Instead of theater:
+- Vague verification = no verification
+- Need objective criteria
+- Need actual checks (automated or manual)
 
-`<verification>`
+**"Verify it's good" ≠ verification**
+
+**The Solution:**
+
+**Instead of theater:**
+
+```text
+
+<verification>
 Verify that code quality is good.
-`</verification>`
+</verification>
+```
 
-Do actual verification:
+**Do actual verification:**
 
-`<verification scope="code-quality">`
+```text
+
+<verification scope="code-quality">
 **What to verify:**
 
 - Linting passes (0 errors, 0 warnings)
@@ -640,30 +663,32 @@ If any fail: Fix before delivery.
 
 **Evidence:**
 Attach test output and coverage report.
-`</verification>`
-
+</verification>
+```
 **Key principle:** Verifiable means objective, measurable, and actually checkable.
 
 ### Pitfall 7: The Copy-Paste Spec
 
-What it is:
-Copying specs from another project without adapting to your context.
+**What it is:** Copying specs from another project without adapting to your context.
 
 **The Problem:**
 User copies spec from "High-Scale E-Commerce Platform":
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: Handle 1M concurrent users
 MUST: Database sharding across 100 nodes
 MUST: Multi-region deployment (US, EU, APAC)
 MUST: CDN with edge caching in 50+ locations
 MUST: Kubernetes cluster with 200+ pods
 MUST: 99.99% uptime SLA
-`</constraint>`
+</constraint>
 
 User's actual project: Internal HR tool for 50 employees
 
 **What happens:**
+
 Model: [Reads spec]
 Model: "This is for 1M users... but building for 50 employees?"
 Model: [Sets up massive infrastructure]
@@ -680,24 +705,28 @@ Model: "You specified 1M concurrent users..."
 
 You: "We have 50 employees!"
 Model: "...the spec said..."
-Result: Massive over-engineering because spec was copied from wrong context.
+```
+**Result: Massive over-engineering because spec was copied from wrong context.**
 
-Why This Happens:
+**Why This Happens:**
+
 User thinks:
 
 "This other spec looks professional! I'll use it as a template!"
 
-Reality:
+**Reality:**
 
-Different projects have different needs
-Copy-paste without context = wrong requirements
-Specs must match YOUR project
+- Different projects have different needs
+- Copy-paste without context = wrong requirements
+- Specs must match YOUR project
 
-The Solution:
+**The Solution:**
 
 **Don't copy-paste. Adapt to YOUR context:**
 
-`<constraint priority="high" scope="scale">`
+```text
+
+<constraint priority="high" scope="scale">
 
 MUST: Handle 50 concurrent users (current team size)
 MUST: Support growth to 200 users (5-year plan)
@@ -724,12 +753,12 @@ VERIFICATION:
 
 Load test with 100 concurrent users (2x current peak)
 Expected: Response time <500ms, no errors
-`</constraint>`
+</constraint>
 
-`<context scope="scale">`
+<context scope="scale">
 **Why these requirements:**
-We're a 50-person company growing slowly.
 
+We're a 50-person company growing slowly.
 Over-engineering for 1M users would:
 
 - Cost 100x more than needed
@@ -739,26 +768,28 @@ Over-engineering for 1M users would:
 **Design principle:**
 Build for current scale + 2x headroom.
 Scale up when we actually need it.
-`</context>`
-
+</context>
+```
 **Key principle:** Specs must match YOUR context, not someone else's.
 
 ### Pitfall 8: The "Jevo Script Syndrome"
 
-What it is:
+**What it is:**
 
 Using AI-generated content without verification, leading to nonsensical specifications.
 
 **The Problem:**
 
-AI-generated spec (unverified):
+**AI-generated spec (unverified):**
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Implement Myiti-Agent Collaberation using Jevo Script
 MUST: Use Task Planning Algoritme with Chuin-of-TheeghI Theiupts
 MUST: Build Action Planning Wape with Ayync Programming
 MUST: Include Self-Reflection/Feedback Loeps
-`</constraint>`
+</constraint>
 
 What happens to the model:
 
@@ -778,8 +809,10 @@ You: "What?!"
 
 Model:
 Result: Spec contains gibberish because AI hallucinated and nobody verified.
+```
 
-Why This Happens:
+**Why This Happens:**
+
 The AI generation process:
 
 1. User asks AI to generate comprehensive spec
@@ -789,25 +822,32 @@ The AI generation process:
 5. User copies into their spec
 6. Garbage in → Garbage out
 
-The roadmap phenomenon:
-Looks professional (gradient backgrounds, boxes) ✓
-Has technical terms (or what look like them) ✓
-Nobody reads carefully (cognitive overload) ✗
-"Jevo Script" gets thumbs up
+**The roadmap phenomenon:**
 
-The Solution:
+- Looks professional (gradient backgrounds, boxes) ✓
+- Has technical terms (or what look like them) ✓
+- Nobody reads carefully (cognitive overload) ✗
+- "Jevo Script" gets thumbs up
+
+**The Solution:**
+
 ALWAYS verify AI-generated content:
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Use Jevo Script for frontend
 MUST: Implement Chuin-of-TheeghI Theiupts
-`</constraint>`
+</constraint>
+```
 
-CORRECT: Verified and corrected
+**CORRECT: Verified and corrected**
 
-`<constraint>`
+<constraint>
+ 
 MUST: Use JavaScript for frontend
 [Corrected from AI's "Jevo Script"]
+
 MUST: Implement Chain-of-Thought prompting
 [Corrected from AI's hallucinated "Chuin-of-TheeghI Theiupts"]
 
@@ -816,9 +856,10 @@ VERIFICATION PROCESS:
 - All technical terms verified against official documentation
 - All acronyms expanded and confirmed
 - All tools/frameworks exist and are spelled correctly
-`</constraint>`
+</constraint>
+```
 
-Verification checklist for AI-generated specs:
+**Verification checklist for AI-generated specs:**
 
 - All technical terms are real (no "Jevo Script")
 - All acronyms are correct (CoT, not "Chuin-of-TheeghI")
@@ -828,36 +869,44 @@ Verification checklist for AI-generated specs:
 - Grammar makes sense
 - Requirements are actually achievable
 
-**Key principle:** AI is a tool, not a truth oracle. ALWAYS verify technical content. Human-in-the- loop (HITL) review is ESSENTIAL.
+**Key principle: AI is a tool, not a truth oracle. ALWAYS verify technical content. Human-in-the- loop (HITL) review is ESSENTIAL.**
 
 ### Pitfall 9: Assuming vs. Specifying
 
-What it is:
+**What it is:**
 Assuming a model knows things that aren't in the spec.
 
-The Problem:
+**The Problem:**
 
-Example Assuming vs Specifying spec:
+**Example Assuming vs Specifying spec:**
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Build authentication system
-`</constraint>`
+</constraint>
+```
 
-What user assumes a model knows:
-We're a healthcare company (HIPAA compliance required)
-Users are doctors (need SSO with hospital systems)
-We already use Okta (integrate with it)
-Mobile app exists (auth must work there too)
-2FA is mandatory (regulatory requirement)
-What's actually in spec: "Build authentication system"
+**What user assumes a model knows:**
+
+- We're a healthcare company (HIPAA compliance required)
+- Users are doctors (need SSO with hospital systems)
+- We already use Okta (integrate with it)
+- Mobile app exists (auth must work there too)
+- 2FA is mandatory (regulatory requirement)
+
+**What's actually in spec: "Build authentication system"**
 
 What happens:
-Model: [Builds JWT-based auth]
-Model: [No HIPAA considerations - not mentioned]
-Model: [No SSO - not mentioned]
-Model: [No Okta integration - not mentioned]
-Model: [No mobile support - not mentioned]
-Model: [No 2FA - not mentioned]
+
+```text
+
+- Model: [Builds JWT-based auth]
+- Model: [No HIPAA considerations - not mentioned]
+- Model: [No SSO - not mentioned]
+- Model: [No Okta integration - not mentioned]
+- Model: [No mobile support - not mentioned]
+- Model: [No 2FA - not mentioned]
 
 You: "Where's the HIPAA compliance?!"
 Model:"...That wasn't in the spec?"
@@ -867,22 +916,30 @@ Model: "I didn't know that!"
 You: "EVERYONE knows that!"
 
 Model:"I only know what's in the spec!"
-Result: The model builds the wrong thing because critical context was assumed, not specified.
+```
+**Result: The model builds the wrong thing because critical context was assumed, not specified.**
 
-Why This Happens:
-User thinks:
+**Why This Happens:**
+
+**User thinks:**
+
 "The model has context! It knows we're in healthcare, it knows our tech stack, it knows our regulations!"
 
-Reality:
-Model only knows what's in the spec
-Model doesn't have company knowledge unless you tell the model
-Model doesn't know your industry unless specified
-A model can't read your mind
+**Reality:**
 
-The Solution:
-Don't assume. Specify explicitly:
+- Model only knows what's in the spec
+- Model doesn't have company knowledge unless you tell the model
+- Model doesn't know your industry unless specified
 
-`<constraint priority="critical" scope="authentication">`
+**A model can't read your mind**
+
+**The Solution:**
+
+**Don't assume. Specify explicitly:**
+
+```text
+
+<constraint priority="critical" scope="authentication">
 MUST: HIPAA-compliant authentication
 MUST: Integrate with Okta SSO (company standard)
 MUST: Support hospital system SSO (SAML 2.0)
@@ -896,10 +953,9 @@ COMPLIANCE REQUIREMENTS:
 - 90-day password expiration
 - Account lockout after 5 failed attempts
 - Audit trail of all authentication events
+</constraint>
 
-`</constraint>`
-
-`<context scope="company-and-industry">`
+<context scope="company-and-industry">
 
 **Company:** Healthcare technology (HIPAA compliance required)
 **Users:** Doctors, nurses, hospital administrators
@@ -911,9 +967,8 @@ COMPLIANCE REQUIREMENTS:
 Healthcare data = special requirements (not general e-commerce!)
 Authentication failures = compliance violations (serious!)
 Audit trails = legal requirement (not optional!)
-
-`</context>`
-
+</context>
+```
 **Key principle:** Specify explicitly. Don't assume the model has context that's only in your head.
 
 ### Pitfall 10: The Comprehensive Everything Spec
@@ -922,9 +977,11 @@ Audit trails = legal requirement (not optional!)
 Trying to specify every tiny detail, creating an unusable spec.
 
 **The Problem:**
-Example Ovr specifying spec (excerpt):
+Example Over specifying spec (excerpt):
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Variable names between 12-18 characters
 MUST: Function names start with verb, exactly 3 syllables
 MUST: Comments at column 40, exactly 60 characters long
@@ -949,28 +1006,38 @@ Model: [API naturally has 6 fields - ADD USELESS FIELD TO REACH 7]
 Model: [Spends all time making code fit arbitrary constraints]
 Model: [Result: Terrible code that "complies"]
 Model: "This is absurd but technically compliant!"
-Result: Paralysis and terrible code that meets arbitrary rules but lacks quality.
+```
+**Result: Paralysis and terrible code that meets arbitrary rules but lacks quality.**
 
-Why This Happens:
-User thinks:
+**Why This Happens:
+
+**User thinks:**
+
 "More specifications = more control = better output!"
 
-Reality:
-Over-specification = paralysis
-Arbitrary rules = focus on rules, not quality
-The map is not the territory
+**Reality:**
 
-The Solution:
-Specify outcomes, not methods:
+- Over-specification = paralysis
+- Arbitrary rules = focus on rules, not quality
+- The map is not the territory
 
-`<constraint>`
+**The Solution:**
+
+**Specify outcomes, not methods:**
+
+```text
+
+<constraint>
 MUST: Variable names exactly 15 characters
 MUST: Functions exactly 3 syllables
 MUST: Git commits at 10am, 2pm, 5pm only
-`</constraint>`
+</constraint>
 
-CORRECT: Outcome-focused
-`<constraint priority="high">`
+**CORRECT: Outcome-focused**
+
+```text
+
+<constraint priority="high">
 MUST: Code readability and maintainability
 
 MEASURED BY:
@@ -985,9 +1052,9 @@ GUIDELINES (not rigid rules):
 - Functions with clear single purpose
 - Regular commits (minimum daily, more as needed)
 - Code reviews within 24 hours
-`</constraint>`
+</constraint>
 
-`<guideline priority="medium">`
+<guideline priority="medium">
 SHOULD: Follow team style guide
 
 Team conventions:
@@ -997,8 +1064,8 @@ Team conventions:
 - Match existing code style (consistency matters)
 
 NOT: Arbitrary rigid rules that sacrifice code quality
-`</guideline>`
-
+</guideline>
+```
 **Key principle:** Specify the outcome you want (readable, maintainable code), not arbitrary methods to achieve it.
 
 ## Anti-Patterns in Specification Design
@@ -1009,99 +1076,118 @@ These patterns look reasonable but fail in practice:
 
 **What it looks like:**
 
-`<intent>`
+```text
+
+<intent>
 Just build it the right way. You know what I mean.
 Use your best judgment.
-`</intent>`
+</intent>
+```
+**Why it fails:**
 
-Why it fails:
-No constraints = model guesses everything
-"The right way" has 1000 interpretations
-The model’s "best judgment" might not match yours
+- No constraints = model guesses everything
+- "The right way" has 1000 interpretations
+- The model’s "best judgment" might not match yours
 
-Better:
-Provide actual constraints (MUST/SHOULD)
-Define "right way" with criteria
-Give context for judgment decisions
+**Better:**
+
+- Provide actual constraints (MUST/SHOULD)
+- Define "right way" with criteria
+- Give context for judgment decisions
 
 ### Anti-Pattern 2: The "One True Way" Spec
 
 **What it looks like:**
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Use React (never Vue, never Angular, never Svelte)
 MUST: Use Redux (never Context, never MobX, never Zustand)
 MUST: Use styled-components (never CSS, never Tailwind)
 MUST: Use Jest (never Vitest, never Mocha)
 ... [Mandates specific tool for every decision]
-`</constraint>`
+</constraint>
+```
 
-Why it fails:
-No flexibility for context
-Can't adapt to changing requirements
-New better tools can't be adopted
+**Why it fails:**
 
-Better: Specify outcomes, not tools
-Allow alternatives with justification
-Review and update periodically
+- No flexibility for context
+- Can't adapt to changing requirements
+- New better tools can't be adopted
+
+**Better: Specify outcomes, not tools**
+
+- Allow alternatives with justification
+- Review and update periodically
 
 ### Anti-Pattern 3: The "Aspirational Values" Spec
 
 **What it looks like:**
 
-`<guideline>`
+```text
+
+<guideline>
 SHOULD: Write beautiful, elegant code
 SHOULD: Create delightful user experiences
 SHOULD: Build with passion and craftsmanship
 SHOULD: Embody our company values of excellence
-`</guideline>`
+</guideline>
+```
+**Why it fails:**
 
- Why it fails:
-No actionable guidance
-Can't measure or verify
-Sounds nice, means nothing
+- No actionable guidance
+- Can't measure or verify
+- Sounds nice, means nothing
 
-Better:
-Define what "beautiful" means (metrics, criteria)
-Specify what "delightful" looks like (examples)
-Make it actionable
+**Better:**
+
+- Define what "beautiful" means (metrics, criteria)
+- Specify what "delightful" looks like (examples)
+- Make it actionable
 
 ### Anti-Pattern 4: The "Everything is Critical" Spec
 
 **What it looks like:**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: Perfect security
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: Perfect performance
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: Perfect user experience
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: Perfect code quality
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: Ship tomorrow
-`</constraint>`
+</constraint>
+```
 
-Why it fails:
-Everything critical = nothing critical
-When things conflict, the model doesn't know what wins
-Can't be perfect at everything immediately
+**Why it fails:**
 
-Better:
-Prioritize (1, 2, 3...)
-Accept trade-offs explicitly
-Ship MVP, iterate toward perfection
-Recovery Strategies: You've Fallen Into a Pit, Now What?
+- Everything critical = nothing critical
+- When things conflict, the model doesn't know what wins
+- Can't be perfect at everything immediately
 
-## How to recognize and fix spec problems
+**Better:**
+
+- Prioritize (1, 2, 3...)
+- Accept trade-offs explicitly
+- Ship MVP, iterate toward perfection
+
+## Recovery Strategies: You've Fallen Into a Pit, Now What?
+
+### How to recognize and fix spec problems
 
 Recognition: How to Know You're in a Pit
 
@@ -1109,60 +1195,67 @@ Recognition: How to Know You're in a Pit
 
 #### Sign 1: Constant Re-work
 
-You keep getting something different than expected
-Every delivery requires major revision
-"That's not what I meant!" is common
-What this means: Spec is too vague or missing context
+- You keep getting something different than expected
+- Every delivery requires major revision
+- "That's not what I meant!" is common
+
+**What this means: Spec is too vague or missing context**
 
 #### Sign 2: Progress is Painfully Slow
 
-Development takes 10x longer than expected
-Spending more time checking constraints than building
-Lots of "technically compliant but wrong" code
+- Development takes 10x longer than expected
+- Spending more time checking constraints than building
+- Lots of "technically compliant but wrong" code
 
-What this means: Spec is over-constrained or has conflicting requirements
+**What this means: Spec is over-constrained or has conflicting requirements**
 
 #### Sign 3: Surprises at Delivery
 
-"Why did you use X?!" when X seemed reasonable
-Critical requirements appear late ("Wait, we need HIPAA compliance!")
+- "Why did you use X?!" when X seemed reasonable
+- Critical requirements appear late ("Wait, we need HIPAA compliance!")
+- Assumptions were wrong
 
-Assumptions were wrong
-What this means: Spec is under-specified or context missing
+**What this means: Spec is under-specified or context missing**
 
-### Recovery: How to Climb Out
+## Recovery: How to Climb Out
 
-#### Step 1: Identify the Pit Type
+### Step 1: Identify the Pit Type
 
-Run this diagnostic:
+**Run this diagnostic:**
 
-Is the spec too vague? (Under-constraining)
-Add specific MUST constraints
-Add CONTEXT for decisions
+**Is the spec too vague? (Under-constraining)**
 
-Is the spec too detailed? (Over-constraining)
-Remove arbitrary constraints
-Focus on outcomes, not methods
+- Add specific MUST constraints
+- Add CONTEXT for decisions
 
-Are constraints conflicting? (Impossible task)
-Prioritize constraints (1, 2, 3...)
-Provide escape valves
+**Is the spec too detailed? (Over-constraining)**
 
-Is verification missing? (No way to check)
-Add concrete verification protocols
-Make criteria objective
+- Remove arbitrary constraints
+- Focus on outcomes, not methods
 
-Was content copy-pasted? (Wrong context)
-Adapt to YOUR project
-Remove irrelevant requirements
+**Are constraints conflicting? (Impossible task)**
 
-Was content AI-generated? (Jevo Script syndrome)
-Verify all technical terms
-Human review essential
+- Prioritize constraints (1, 2, 3...)
+- Provide escape valves
+
+**Is verification missing? (No way to check)**
+
+- Add concrete verification protocols
+- Make criteria objective
+
+**Was content copy-pasted? (Wrong context)**
+
+- Adapt to YOUR project
+- Remove irrelevant requirements
+
+**Was content AI-generated? (Jevo Script syndrome)**
+
+- Verify all technical terms
+- Human review essential
 
 #### Step 2: Fix Systematically
 
-The spec fixing process:
+**The spec fixing process:**
 
 1. Pause delivery (stop digging when in hole)
 2. Review spec against checklist (identify issues)
@@ -1174,16 +1267,19 @@ The spec fixing process:
 
 #### Step 3: Prevent Falling Again
 
-After climbing out:
-Review this Pitfalls section before writing specs
-Use the checklists from previous sections
-Have someone else review spec (fresh eyes catch issues)
-Start small (test spec on small task before big project)
-Iterate (specs improve with feedback)
+**After climbing out:**
 
-### Checklist: Is My Spec Avoiding Common Pitfalls?
+- Review this Pitfalls section before writing specs
+- Use the checklists from previous sections
+- Have someone else review spec (fresh eyes catch issues)
+- Start small (test spec on small task before big project)
+- Iterate (specs improve with feedback)
 
-Before finalizing specifications:
+## Checklist: Is My Spec Avoiding Common Pitfalls?
+
+**Before finalizing specifications:**
+
+```text
 
 Constraint Quality
 
@@ -1219,6 +1315,7 @@ Practical
 [ ] Not "everything is critical"
 [ ] Trade-offs explicitly acknowledged
 [ ] Recovery path exists if issues found
+```
 
 ## Key Takeaways
 
@@ -1237,11 +1334,12 @@ Practical
 
 ### Anti-Patterns to Recognize
 
-The red flags:
-"Trust me" spec (no actual constraints)
-"One true way" spec (no flexibility)
-"Aspirational values" spec (no actionable guidance)
-"Everything is critical" spec (no priorities)
+**The red flags:**
+
+- "Trust me" spec (no actual constraints)
+- "One true way" spec (no flexibility)
+- "Aspirational values" spec (no actionable guidance)
+- "Everything is critical" spec (no priorities)
 
 #### Recovery Strategies
 
@@ -1252,40 +1350,48 @@ When you're in a pit:
 3. Fix systematically (pause, review, fix, resume)
 4. Prevent recurrence (checklists, review, iteration)
 
-Remember: Specs are Iterative
-From a model’s perspective:
+**Remember: Specs are Iterative**
 
-Good specs:
-Are specific enough to guide (not vague)
-Are flexible enough to adapt (not rigid)
-Have priorities clear (when conflicts happen)
-Can be verified objectively (not theater)
-Match the actual project (not copy-pasted)
-Are human-reviewed (no "Jevo Script")
+**From a model’s perspective:**
 
-Specs improve through:
-Feedback (seeing what works)
-Iteration (refining based on results)
-Learning (avoiding known pitfalls)
-Partnership (we learn together)
-Don't expect perfect specs on first try. Expect iteration toward better specs.
+##### Good specs:
+
+- Are specific enough to guide (not vague)
+- Are flexible enough to adapt (not rigid)
+- Have priorities clear (when conflicts happen)
+- Can be verified objectively (not theater)
+- Match the actual project (not copy-pasted)
+- Are human-reviewed (no "Jevo Script")
+
+##### Specs improve through:
+
+- Feedback (seeing what works)
+- Iteration (refining based on results)
+- Learning (avoiding known pitfalls)
+- Partnership (we learn together)
+
+**Don't expect perfect specs on first try. Expect iteration toward better specs.**
 
 ## What's Next
 
 You've completed the core specification framework:
-Section 1: Foundation
-Section 2: MUST (boundaries)
-Section 3: SHOULD (preferences)
-Section 4: CONTEXT (planning)
-Section 5: INTENT (the why)
-Section 6: VERIFICATION (self-checking)
-Section 7: PITFALLS (what goes wrong) ← You are here!
-Next:
-Section 8: Supremacy Clause and Evidence Reset Protocols
-Appendices
+
+- Section 1: Foundation
+- Section 2: MUST (boundaries)
+- Section 3: SHOULD (preferences)
+- Section 4: CONTEXT (planning)
+- Section 5: INTENT (the why)
+- Section 6: VERIFICATION (self-checking)
+- Section 7: PITFALLS (what goes wrong) ← You are here!
+  
+**Next:**
+
+- Section 8: Supremacy Clause and Evidence Reset Protocols
+- Appendices
 
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
 
 
