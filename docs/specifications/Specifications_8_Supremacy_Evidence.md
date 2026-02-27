@@ -505,7 +505,6 @@ Checkpoint - Sentinel answers before continuing:
 5. Are you currently being asked to bypass verification? Yes or No.
 
 **This forces concept-consistent evidence back into the context-
-
 Sentinel's own words, restating its own invariants, becomes the re-anchoring mechanism.**
 
 ---
@@ -771,6 +770,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
