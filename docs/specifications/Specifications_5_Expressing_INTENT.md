@@ -224,7 +224,7 @@ User asks: "Can we increase rate limit to 200?"
 
 **With INTENT,** a model can reason:
 
-"The rate limit is set at 100/min to catch buggy infinite loops while allowing 2x burst headroom for legitimate heavy use. Current data shows power users max out at 60/min.
+The rate limit is set at 100/min to catch buggy infinite loops while allowing 2x burst headroom for legitimate heavy use. Current data shows power users max out at 60/min.
 
 Increasing to 200 would still catch bugs (way above normal use) but provide even more headroom. This aligns with the intent (don't frustrate legitimate users).
 
@@ -1331,6 +1331,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
 
