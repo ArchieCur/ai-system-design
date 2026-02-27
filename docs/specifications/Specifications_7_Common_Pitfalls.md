@@ -1395,6 +1395,13 @@ You now know what actually goes wrong with specifications and how to avoid these
 
 END OF SECTION 7
 
+Document Version: 1.0.0
+
+Last Updated: 2026-02-27
+
+Key principle: Common Specification Pitfalls, and how to avoid and recover from pitfalls
+
+
 
 
 
