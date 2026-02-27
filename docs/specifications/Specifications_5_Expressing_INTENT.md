@@ -233,26 +233,34 @@ INTENT enabled intelligent recommendation! ✓
 
 ### Use Case 2: Resolving Ambiguity
 
-Scenario: "Keep Code Simple"
+**Scenario: "Keep Code Simple"**
 
 Vague SHOULD:
 
-`<guideline>`
+```text
+
+<guideline>
 SHOULD: Keep code simple and maintainable
-`</guideline>`
+</guideline>
+```
 
-Model’s confusion:
-"Simple" means what? (few lines? obvious logic? no libraries?)
-"Maintainable" by whom? (junior devs? anyone? original author?)
-Model has to guess.
+**Model’s confusion:**
 
-With INTENT:
+- "Simple" means what? (few lines? obvious logic? no libraries?)
+- "Maintainable" by whom? (junior devs? anyone? original author?)
 
-`<guideline>`
+**Model has to guess.**
+
+**With INTENT:**
+
+```text
+
+<guideline>
 SHOULD: Keep code simple and maintainable
-`</guideline>`
+</guideline>
 
-`<intent>`
+<intent>
+
 **Team context:**
 
 3 senior developers, 5 junior developers. Juniors will maintain
@@ -288,24 +296,33 @@ more than maintainability.
 - Juniors can fix bugs within 1 day (not 1 week)
 - Code reviews don't have "what does this do?" questions
 - No escalations to seniors for debugging
-`</intent>`
+</intent>
+```
 
-Now "simple" is clear:
-Junior-dev understandable ✓
-Obvious over clever ✓
-Standard patterns ✓
-Performance is secondary ✓
+**Now "simple" is clear:**
 
-How this resolves ambiguity:
+- Junior-dev understandable ✓
+- Obvious over clever ✓
+- Standard patterns ✓
+- Performance is secondary ✓
+
+**How this resolves ambiguity:**
+
 A model is implementing a feature and considers two approaches:
-Approach A (Clever):
+
+#### Approach A (Clever):
+
+```text
 
 // Optimized with memoization, currying, and custom reduce
 const process = memoize(curry((config) => (items) =>
 items.reduce((acc, item) => customTransform(config, acc, item), [])
 ))
+```
 
-Approach B (Simple):
+#### Approach B (Simple):
+
+```text
 
 // Process items with config
 function processItems(config, items) {
@@ -316,46 +333,54 @@ results.push(transformed);
 }
 return results;
 }
+```
 
-Without INTENT: A model might choose A (more "elegant", faster)
+**Without INTENT: A model might choose A (more "elegant", faster)**
 
-With INTENT: A model chooses B because:
-Junior devs understand loops and arrays immediately ✓
-Obvious what it does (transform each item) ✓
-Easy to debug (step through, add logging) ✓
-Performance difference negligible at our scale ✓
-Aligns with goal: junior-maintainable code! ✓
+**With INTENT: A model chooses B because:**
 
-INTENT resolved the ambiguity of "simple"!
+- Junior devs understand loops and arrays immediately ✓
+- Obvious what it does (transform each item) ✓
+- Easy to debug (step through, add logging) ✓
+- Performance difference negligible at our scale ✓
+- Aligns with goal: junior-maintainable code! ✓
+**INTENT resolved the ambiguity of "simple"!**
 
 ### Use Case 3: Suggesting Alternatives
 
-Scenario: Conflicting Constraints
+**Scenario: Conflicting Constraints**
 
 Constraints that conflict:
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
+
 MUST: API response time <200ms (95th percentile)
 MUST: Complete data validation before returning response
 MUST: Log all validation errors to database
-`</constraint>`
+</constraint>
+```
 
-**The problem:
-Database logging takes 50-100ms
-Full validation takes 80-120ms
-Total: 130-220ms (exceeds 200ms budget!)
+**The problem:**
 
-Without INTENT, A model is stuck: Can't meet all MUSTs!
+- Database logging takes 50-100ms
+- Full validation takes 80-120ms
+- Total: 130-220ms (exceeds 200ms budget!)
+**Without INTENT, A model is stuck: Can't meet all MUSTs!**
 
 **With INTENT:**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
+
 MUST: API response time <200ms (95th percentile)
 MUST: Complete data validation before returning response
 MUST: Log all validation errors to database
-`</constraint>`
+</constraint>
 
-`<intent>`
+<intent>
 
 **User-facing goal:**
 API must feel instant. User research shows 200ms is cognitive
@@ -382,17 +407,19 @@ bugs and improve documentation.
 
 User experience and data quality are non-negotiable. Debugging
 is important but can be done asynchronously if needed.
-`</intent>`
+</intent>
+```
 
-Now a model understands priorities:
+**Now a model understands priorities:**
 
 1. Speed (200ms) ✓
 2. Validation (no invalid data) ✓
 3. Logging (can be async!) ✓
 
 **A model’s alternative suggestion:**
-"I notice the constraints conflict: database logging (50-100ms)
--validation (80-120ms) = 130-220ms, which exceeds the 200ms requirement.
+
+"I notice the constraints conflict: database logging (50-100ms),
+validation (80-120ms) = 130-220ms, which exceeds the 200ms requirement.
 Based on the INTENT's priority order:
 
 1. User experience (speed)
@@ -400,35 +427,43 @@ Based on the INTENT's priority order:
 3. Debugging (logging)
 
 **Model suggests:**
-Keep synchronous validation (data quality non-negotiable)
-Move logging to async queue (debugging = lower priority)
-Validation errors pushed to queue, logged in background
+
+- Keep synchronous validation (data quality non-negotiable)
+- Move logging to async queue (debugging = lower priority)
+- Validation errors pushed to queue, logged in background
 
 **Result:**
-API response: 80-120ms (well under 200ms) ✓
-Data validation: Complete (data quality protected) ✓
-Error logging: Happens (just async, 1-2 sec delay) ✓
 
-This meets all MUSTs while respecting priority order. The 1-2 second delay on error logs is acceptable since debugging isn't time-critical.
+- API response: 80-120ms (well under 200ms) ✓
+- Data validation: Complete (data quality protected) ✓
+- Error logging: Happens (just async, 1-2 sec delay) ✓
+
+This meets all MUSTs while respecting priority order.
+The 1-2 second delay on error logs is acceptable since debugging isn't time-critical.
 Does this approach align with your intent?"
 
 **INTENT enabled intelligent alternative that satisfies all goals!**
 
 ### Use Case 4: Making Aligned Decisions
 
-Scenario: Build vs. Buy
+**Scenario: Build vs. Buy**
 
 Request: "Add email sending capability"
 
 **Without INTENT:**
 
+```text
+
 Model: "I'll implement a custom email service with queue,
 retry logic, template engine..."
 [Builds for 2 weeks, reinvents wheel]
+```
 
 **With INTENT:**
 
-`<intent scope="project-philosophy">`
+```text
+
+<intent scope="project-philosophy">
 
 **Business stage:**
 
@@ -456,38 +491,44 @@ on features that win customers.
 Higher cost for services ($100-500/month) is OK if it saves
 engineering time (1 week = $10K+ in salary + opportunity cost
 of not shipping features).
-`</intent>`
+</intent>
+```
 
 **Now a model understands:**
 
-Goal: Revenue before runway ends ✓
-Philosophy: Build differentiation, buy commodity ✓
-Email: NOT differentiation ✓
-Time: Extremely valuable ✓
+- Goal: Revenue before runway ends ✓
+- Philosophy: Build differentiation, buy commodity ✓
+- Email: NOT differentiation ✓
+- Time: Extremely valuable ✓
 
 **The model’s recommendation:**
+
+```text
 
 "For email sending, I recommend using SendGrid or AWS SES rather than building custom.
 
 Reasoning based on INTENT:
-Time savings:
+
+- Time savings:
 Custom email: 2 weeks development + ongoing maintenance
-SendGrid: 2 hours integration
-Savings: ~78 hours (2 weeks of focus on revenue features)
-Cost comparison:
+- SendGrid: 2 hours integration
+- Savings: ~78 hours (2 weeks of focus on revenue features)
+- Cost comparison:
 SendGrid: ~$50/month
 Custom: 2 weeks eng time (~$10K) + maintenance
-Break-even: 200 months (16+ years!)
+- Break-even: 200 months (16+ years!)
 
 **Alignment with intent:**
-NOT competitive advantage (email is commodity)
-Saves engineering time (focus on differentiation)
-Proven reliability (99.9% uptime built-in)
-Faster to market (78 hours saved = ship 2-3 features)
+
+- NOT competitive advantage (email is commodity)
+- Saves engineering time (focus on differentiation)
+- Proven reliability (99.9% uptime built-in)
+- Faster to market (78 hours saved = ship 2-3 features)
 
 This directly supports the goal (reach $100K MRR) by maximizing time spent on revenue-driving features.
 
-Recommendation: Use SendGrid or AWS SES."
+**Recommendation: Use SendGrid or AWS SES**
+```
 **INTENT guided build-vs-buy decision toward business goal! ✓**
 
 ## Writing Effective INTENT
@@ -495,37 +536,55 @@ Recommendation: Use SendGrid or AWS SES."
 ### Good INTENT answers these questions
 
 **The Five Key Questions**
-1.What are we trying to achieve?
-`<intent>`
+
+#### 1.What are we trying to achieve?
+
+```text
+
+<intent>
 **Primary goal:**
 Enable non-technical restaurant managers to track inventory
 during busy service hours without slowing down operations.
-`</intent>`
+</intent>
+```
 
-2.Why does this matter?
-`<intent>`
+#### 2.Why does this matter?
+
+```Text
+
+<intent>
 **Why this matters:**
+
 Inventory errors during service lead to:
 
 - Running out of items (customer disappointment)
 - Over-ordering (waste, cost)
 - Stock discrepancies (hours spent reconciling)
+
 Current manual tracking: 15 minutes lost per service + 20% error rate.
 Target: 2 minutes with <5% error rate.
-`</intent>`
+</intent>
+```
 
-3.What does success look like?
-`<intent>`
+#### 3.What does success look like?
+
+```text
+
+<intent>
 **Success criteria:**
 
 - Managers complete inventory update in <2 minutes
 - Error rate <5% (currently 20%)
 - Zero impact on service speed (no delays taking orders)
 - Adoption rate >90% (managers actually use it)
-`</intent>`
+</intent>
+```
 
-4.Why did we choose this approach?
-`<intent>`
+#### 4.Why did we choose this approach?
+
+```text
+
+<intent>
 
 **Rationale for decisions:**
 
@@ -540,11 +599,15 @@ Must work offline, sync when connection available.
 Why simple UI:
 Managers are busy, stressed during service. Complex UI = abandoned.
 Big buttons, minimal steps = actually gets used.
-`</intent>`
+</intent>
+```
 
-5.What trade-offs are acceptable?
+#### 5.What trade-offs are acceptable?
+
+```text
 
 Trade-offs we accept:**
+
 Performance vs. features:
 Offline-first architecture is harder to build but critical for
 adoption. Worth the extra development time (2 weeks) because
@@ -554,13 +617,16 @@ Simplicity vs. power-user features:
 Advanced filtering/reporting would be nice but adds complexity.
 90% of use is simple: "update stock for these 10 items."
 Focus on the 90% case, skip the 10% edge cases.
-`</intent>`
+</intent>
+```
 
 ## The INTENT Writing Pattern
 
 Effective INTENT follows this structure:
 
-`<intent scope="[domain]">`
+```text
+
+<intent scope="[domain]">
 
 **Primary Goal:**
 [What we're trying to achieve - one sentence]
@@ -586,13 +652,16 @@ Effective INTENT follows this structure:
 **Alignment Check:**
 [How to know if we're on track]
 [How to know if we're drifting from intent]
-`</intent>`
+</intent>
+```
 
-## Example: Complete INTENT
+### Example: Complete INTENT
 
-E-commerce Checkout Flow
+**E-commerce Checkout Flow**
 
-`<intent scope="checkout-experience">`
+```text
+
+<intent scope="checkout-experience">
 
 **Primary Goal:**
 Minimize cart abandonment while maintaining security and compliance.
@@ -702,16 +771,18 @@ We're on track if:
 - Adding features that increase steps (going from 3 to 4+)
 - Optimizing edge cases over common cases (5% vs 95%)
 - Sacrificing speed for marginal brand consistency
-`</intent>`
+</intent>
+```
 
-This INTENT gives a model:
-Clear goal (reduce abandonment to 15%) ✓
-Understanding of why (revenue impact, user frustration) ✓
-Success metrics (abandonment, time, confidence) ✓
-Decision rationale (why guest checkout, why 3 steps) ✓
-Trade-off understanding (speed > customization) ✓
-Alignment check (how to stay on track) ✓
-A model can now make decisions that align with the goal!
+**This INTENT gives a model:**
+
+- Clear goal (reduce abandonment to 15%) ✓
+- Understanding of why (revenue impact, user frustration) ✓
+- Success metrics (abandonment, time, confidence) ✓
+- Decision rationale (why guest checkout, why 3 steps) ✓
+- Trade-off understanding (speed > customization) ✓
+- Alignment check (how to stay on track) ✓
+**A model can now make decisions that align with the goal!**
 
 ## Common INTENT Mistakes
 
@@ -719,78 +790,98 @@ A model can now make decisions that align with the goal!
 
 **Problem:**
 
-`<intent>`
-**Goal:** Build a great user experience that customers love.
-`</intent>`
+```text
 
-Why this fails:
+<intent>
+**Goal:** Build a great user experience that customers love.
+</intent>
+```
+
+**Why this fails:**
 
 1. "Great" = subjective (by whose standard?)
 2. "Customers love" = unmeasurable (how does the model know?)
 3. No specific target (what are we actually trying to do?)
 
-Better:
+**Better:**
 
-`<intent>`
+```text
+
+<intent>
+
 **Goal:** Reduce support tickets by 40% through improved UI clarity.
 **Current state:** 200 support tickets/week, 80% are "how do I..." questions
 **Target:** 120 support tickets/week by Q2
 **How we measure:** Support ticket volume + ticket categorization
-`</intent>`
+</intent>
+```
 
 ### Mistake 2: Missing "Why It Matters"
 
-Problem:
+**Problem:**
 
-`<intent>`
+```text
+
+<intent>
 **Goal:** Implement caching
-`</intent>`
+</intent>
+```
 
-Why this fails:
+**Why this fails:**
 
-What problem does caching solve?
-Why do we need it?
-What's the impact if we don't do it?
+- What problem does caching solve?
+- Why do we need it?
+- What's the impact if we don't do it?
 
 **Better:**
 
-`<intent>`
+```text
+
+<intent>
 **Goal:** Implement caching to reduce server costs
+
 **Why this matters:**
 Current server costs: $8K/month (80% from database queries)
 Budget constraint: Need to reduce to $5K/month
+
 **Problem:**
 Same queries run repeatedly (product catalog doesn't change often).
 Database is bottleneck (expensive queries every request).
+
 **Impact if not solved:**
 Exceed budget by $36K/year OR need to raise prices (hurts acquisition).
-`</intent>`
+</intent>
+```
 
 ### Mistake 3: No Success Criteria
 
 **Problem:**
 
-`<intent>`
-**Goal:** Improve application performance
-`</intent>`
+```text
 
-Why this fails:
-How much improvement? (10%? 50%? 2x?)
-How does the model know when it’s done? (no target)
-How does the model measure success? (no metrics)
+<intent>
+**Goal:** Improve application performance
+</intent>
+
+**Why this fails:**
+
+- How much improvement? (10%? 50%? 2x?)
+- How does the model know when it’s done? (no target)
+- How does the model measure success? (no metrics)
 
 **Better:**
 
-`<intent>`
-**Goal:** Improve perceived performance for mobile users
-**Success criteria:**
+```text
 
+<intent>
+**Goal:** Improve perceived performance for mobile users
+
+**Success criteria:**
 - First Contentful Paint: <1.5s (currently 3.2s)
 - Time to Interactive: <3.5s (currently 6.1s)
 - Lighthouse performance score: >90 (currently 62)
 
 **How we measure:**
-
 - Lighthouse audits (automated, daily)
 - Real User Monitoring (RUM) via DataDog
 - User satisfaction survey ("How fast does the app feel?" >4.5/5)
@@ -798,25 +889,33 @@ How does the model measure success? (no metrics)
 **Why these targets:**
 Research shows <2s FCP = users perceive as fast.
 Our competitor's FCP: 1.8s (we need to match or beat).
-`</intent>`
+</intent>
+```
 
 ### Mistake 4: No Rationale for Decisions
 
 **Problem:**
 
-`<intent>`
-**Goal:** Use React for frontend
-`</intent>`
+```text
 
-Why this fails:
-Why React? (why not Vue, Angular, Svelte?)
-What alternatives were considered?
-What trade-offs were made?
+<intent>
+**Goal:** Use React for frontend
+</intent>
+```
+
+**Why this fails:**
+
+- Why React? (why not Vue, Angular, Svelte?)
+- What alternatives were considered?
+- What trade-offs were made?
 
 **Better:**
 
-`<intent>`
+```text
+
+<intent>
 **Goal:** Use React for frontend development
+
 **Alternatives considered:**
 
 - Vue.js: Simpler learning curve, but less ecosystem support
@@ -838,27 +937,34 @@ What trade-offs were made?
 
 **Decision principle:**
 Optimize for team velocity and hiring, not framework elegance.
-`</intent>`
+</intent>
+```
 
 ### Mistake 5: Conflicting Intent
 
 **Problem:**
 
-`<intent>`
+```text
+
+<intent>
 
 **Goal:** Ship features as fast as possible to beat competitor
 **Goal:** Maintain highest code quality and comprehensive tests
 **Goal:** Keep costs as low as possible
-`</intent>`
+</intent>
+```
 
-Why this fails:
-These goals conflict (speed vs quality, features vs cost)
-No priority when they clash
-Model doesn't know which to optimize for
+**Why this fails:**
+
+- These goals conflict (speed vs quality, features vs cost)
+- No priority when they clash
+- Model doesn't know which to optimize for
 
 **Better:**
 
-`<intent>`
+```text
+
+<intent>
 **Primary goal:** Ship differentiated features before competitor (Q2 deadline)
 
 **Secondary goals (support primary):**
@@ -884,26 +990,29 @@ When features conflict with costs:
 
 - Differentiating features: Spend money to ship faster
 - Commodity features: Use cheap/free solutions (Stripe, SendGrid)
-`</intent>`
+</intent>
+```
 
 ## Integration with MUST, SHOULD, and CONTEXT
 
-How all four layers work together:
+### **How all four layers work together:**
 
-### Complete Example: Mobile App Development
+### **Complete Example: Mobile App Development**
+
+```text
 
 MUST: Hard boundaries
 
-`<constraint priority="critical" scope="mobile-performance">`
+<constraint priority="critical" scope="mobile-performance">
 MUST: App bundle size <50MB (App Store limit: 100MB, target 50% headroom)
 MUST: App launches in <2 seconds on iPhone 11 (3-year-old device)
 MUST: Works offline for core features (reading, creating basic content)
 MUST: Passes App Store review (privacy, security, content guidelines)
-`</constraint>`
+</constraint>
 
 SHOULD: Preferences
 
-`<guideline priority="high" scope="mobile-ux">`
+<guideline priority="high" scope="mobile-ux">
 SHOULD: Follow iOS Human Interface Guidelines for common patterns
 SHOULD: Support iOS accessibility features (VoiceOver, Dynamic Type)
 SHOULD: Provide haptic feedback for important actions
@@ -913,12 +1022,11 @@ WHEN violating:
 
 Custom components acceptable for brand-critical experiences (onboarding,
 checkout) but document why native wasn't suitable.
-`</guideline>`
+</guideline>
 
 CONTEXT: Planning information
 
 `<context scope="mobile-app">`
-
 **Current state:**
 
 - Platform: iOS 15+ (95% of target users)
@@ -944,11 +1052,11 @@ CONTEXT: Planning information
 - Backend: Existing REST API (can't change significantly)
 - Analytics: Must integrate with Mixpanel (current tool)
 - Auth: Must integrate with existing OAuth system
-`</context>`
+</context>
 
 INTENT: The why
 
-`<intent scope="mobile-app">`
+<intent scope="mobile-app">
 
 **Primary Goal:**
 Beat competitor to market with superior offline experience.
@@ -1062,20 +1170,24 @@ If we're behind schedule:
 4. Delay analytics integration (nice-to-have, not core)
 
 Priority: Ship Q2 with working offline > ship later with more features.
-`</intent>`
+</intent>
+```
 
-This complete specification gives a model:
+**This complete specification gives a model:**
 
-MUST tells a model: Boundaries (50MB, 2s launch, offline, App Store)
-SHOULD tells a model: Preferences (HIG, accessibility, native UI)
-CONTEXT tells a model: Environment (team, users, timeline, constraints)
-INTENT tells a model: WHY (beat competitor with offline, Q2 deadline critical)
+- MUST tells a model: Boundaries (50MB, 2s launch, offline, App Store)
+- SHOULD tells a model: Preferences (HIG, accessibility, native UI)
+- CONTEXT tells a model: Environment (team, users, timeline, constraints)
+- INTENT tells a model: WHY (beat competitor with offline, Q2 deadline critical)
 
-Now a model can make aligned decisions:
+**Now a model can make aligned decisions:**
 
-### Example decision: User asks for video feature
+#### Example decision: User asks for video feature
 
-Model’s reasoning with complete specification:
+**Model’s reasoning with complete specification:**
+
+```text
+
 "Adding video conflicts with the INTENT in several ways:
 
 1. Timeline: Video implementation = 2-3 weeks (May 15 feature freeze)
@@ -1095,19 +1207,24 @@ Video is valuable BUT doesn't align with:
 - Offline focus (large files = poor offline experience)
 - Core use case (95% usage is simple text)
 
-Suggest: Validate offline text experience in v1.0, consider video for v1.2 if users request it AND we have resources after Android launch.
+Suggest: Validate offline text experience in v1.0, consider video for v1.2
+if users request it AND we have resources after Android launch.
 Does this align with your priorities?"
+```
 
-INTENT enabled the model to:
-Understand the goal (beat competitor, Q2) ✓
-Recognize misalignment (video delays timeline) ✓
-Explain reasoning (timeline, size, offline impact) ✓
-Suggest alternative path (v1.2 after validation) ✓
-Make recommendation aligned with business goal! ✓
+**INTENT enabled the model to:**
+
+- Understand the goal (beat competitor, Q2) ✓
+- Recognize misalignment (video delays timeline) ✓
+- Explain reasoning (timeline, size, offline impact) ✓
+- Suggest alternative path (v1.2 after validation) ✓
+- Make recommendation aligned with business goal! ✓
 
 ## Checklist: Is My INTENT Well-Written?
 
-Before finalizing INTENT:
+**Before finalizing INTENT:**
+
+```text
 
 Clarity
 
@@ -1139,10 +1256,11 @@ Honesty
 [ ] Explains "why not" (alternatives considered)
 [ ] Clear about acceptable imperfection
 [ ] Realistic success criteria
+```
 
 ## Key Takeaways
 
-What Makes Good INTENT
+**What Makes Good INTENT**
 
 ### Good INTENT is
 
@@ -1172,17 +1290,20 @@ Every INTENT should have:
 - Alignment check (how to stay on track)
 
 **Remember: INTENT Guides Decisions**
-INTENT tells a model:
-The goal it should work toward
-Why this matters (impact)
-What success looks like
-How to make aligned decisions
 
-Good INTENT enables a model to:
-Understand purpose (not just follow rules)
-Resolve ambiguity (when specs unclear)
-Suggest alternatives (when constraints conflict)
-Make aligned decisions (toward your goals)
+**INTENT tells a model:**
+
+- The goal it should work toward
+- Why this matters (impact)
+- What success looks like
+- How to make aligned decisions
+
+**Good INTENT enables a model to:**
+
+- Understand purpose (not just follow rules)
+- Resolve ambiguity (when specs unclear)
+- Suggest alternatives (when constraints conflict)
+- Make aligned decisions (toward your goals)
 
 **This is goal alignment, not rules.**
 
@@ -1207,9 +1328,10 @@ You now know how to express intent so models understand your goals and make alig
 END OF SECTION 5
 
 Document Version: 1.0.0
-Last Updated: 2026-02-16
+Last Updated: 2026-02-27
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
 
