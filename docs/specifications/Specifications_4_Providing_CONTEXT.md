@@ -144,7 +144,7 @@ CONTEXT That Helps:
 - Dev: Local development with Docker
 </context>
 
-#### Why this helps a model
+**Why this helps a model**
 
 1. Technology Choices Informed:
 Scenario: User asks for caching solution
@@ -194,16 +194,17 @@ straightforward caching with clear patterns:
 - TTL-based expiration (no complex invalidation)
 - Well-commented code (learning opportunity)
 - Comprehensive tests (safety net)
+- This balances performance with maintainability for your team."
 ```
+**CONTEXT matched solution to team! ✓**
 
-This balances performance with maintainability for your team."
-CONTEXT matched solution to team! ✓
+#### Example 2: User/Audience Context
 
-## Example 2: User/Audience Context
+**CONTEXT That Helps**
 
-### CONTEXT That Helps
+```text
 
-`<context scope="users-and-audience">`
+<context scope="users-and-audience">
 
 **Primary Users:**
 
@@ -233,12 +234,13 @@ CONTEXT matched solution to team! ✓
 - Average task time <3 minutes
 - <1% error rate on critical operations
 - User satisfaction >4.5/5
-`</context>`
-
-Why this helps a model:
+</context>
+```
+**Why this helps a model:**
 
 1. UI Complexity Decisions:
 Scenario: Designing inventory management screen
+
 **Without context:**
 Model: "I'll create comprehensive interface with:
 
@@ -247,6 +249,7 @@ Model: "I'll create comprehensive interface with:
 - Export options (CSV, Excel, PDF)
 - Advanced search (regex, wildcards)..."
 [Designs power-user interface]
+
 **With context:**
 Model: "Users are non-technical and time-constrained. I'll design:
 
@@ -255,22 +258,27 @@ Model: "Users are non-technical and time-constrained. I'll design:
 - Big, clear buttons (mobile-friendly)
 - Minimal options (reduce decision fatigue)
 - Inline help (contextual tooltips)
-Advanced features can go in 'Settings' for rare use."
+- Advanced features can go in 'Settings' for rare use."
+**CONTEXT drove simplicity! ✓**
 
-CONTEXT drove simplicity! ✓
 2. Error Message Tone:
 Scenario: Writing validation error messages
+
 **Without context:**
 Error: "Invalid input: field 'quantity' must be numeric (regex: ^[0-9]+$)"
 Technical, confusing for non-technical users.
+
 **With context:**
 Error: "Please enter a number for quantity. For example: 5 or 10"
-Simple, helpful, example-driven for non-technical users. ✓
+**Simple, helpful, example-driven for non-technical users. ✓**
+
 3. Performance Priorities:
 Scenario: Optimizing application
+
 **Without context:**
 Model: "I'll optimize everything for maximum performance..."
 [Spends effort optimizing features users rarely use]
+
 **With context:**
 Model: "Users are mobile (60%) with variable internet. Priority:
 
@@ -278,17 +286,18 @@ Model: "Users are mobile (60%) with variable internet. Priority:
 2. Quick common operations (inventory check, sales entry)
 3. Offline capability (work without internet, sync later)
 Less critical:
-
 - Report generation (users do this weekly, can wait)
 - Settings changes (rare, can be slower)
-Optimize where users spend TIME, not everything."
-CONTEXT focused optimization effort! ✓
+- Optimize where users spend TIME, not everything."
+**CONTEXT focused optimization effort! ✓**
 
-## Example 3: Business Priority Context
+#### Example 3: Business Priority Context
 
-CONTEXT That Helps:
+**CONTEXT That Helps:**
 
-`<context scope="business-priorities">`
+```text
+
+<context scope="business-priorities">
 
 **Company Stage:**
 
@@ -325,12 +334,14 @@ CONTEXT That Helps:
 "Ship fast, fix later IF customers complain.
 
 Perfect code doesn't matter if we run out of runway."
-`</context>`
+</context>
+```
 
-### Why User/Audience helps a model
+**Why User/Audience helps a model**
 
 1. Quality vs. Speed Decisions:
 Scenario: User asks for new feature
+
 **Without context:**
 Model: "I'll build comprehensive solution with:
 
@@ -339,6 +350,7 @@ Model: "I'll build comprehensive solution with:
 - Performance optimization
 - Extensive documentation..."
 [Takes 3 weeks, misses market opportunity]
+
 **With context:**
 Model: "Given 'ship fast, fix later' philosophy and competitive pressure:
 WEEK 1:
@@ -352,6 +364,7 @@ WEEK 2
 - Customer beta (get feedback fast)
 - Fix critical issues found
 - Deploy to production
+
 LATER (if customers use it):
 
 - Edge cases
@@ -359,10 +372,11 @@ LATER (if customers use it):
 - Comprehensive tests
 This matches startup stage (runway concern) and competitive
 pressure (need speed). Quality improves based on actual usage."
-CONTEXT justified rapid iteration! ✓
+**CONTEXT justified rapid iteration! ✓**
 
 2.What to Optimize:
 Scenario: Performance optimization request
+
 **Without context:**
 Model: "I'll optimize everything:
 
@@ -371,6 +385,7 @@ Model: "I'll optimize everything:
 - Frontend (code splitting, lazy loading)
 - Images (compression, WebP)..."
 [Weeks of work, minimal business impact]
+
 **With context:**
 Model: "Business priority #1 is retention, driven by satisfaction.
 User pain point: 'Slow loading frustrates me'
@@ -384,10 +399,11 @@ DON'T OPTIMIZE (doesn't affect retention):
 - Reports (weekly use, patience higher)
 - Edge cases (rarely encountered)
 Focus optimization where it reduces churn."
-CONTEXT focused effort on business impact! ✓
+**CONTEXT focused effort on business impact! ✓**
 
 3.Build vs. Buy:
 Scenario: User asks for email sending capability
+
 **Without context:**
 "I'll build custom email service with:
 
@@ -396,6 +412,7 @@ Scenario: User asks for email sending capability
 - Retry logic
 - Analytics..."
 [Reinventing wheel, burning runway]
+
 **With context:**
 Model: "Given startup stage (18-month runway) and priority on
 speed to market, recommend:
@@ -409,68 +426,86 @@ Why:
 - Low cost vs. developer time
 Build custom ONLY if email becomes competitive advantage
 (unlikely for your business model)."
+**CONTEXT drove build vs. buy decision! ✓**
 
-CONTEXT drove build vs. buy decision! ✓
+## When CONTEXT Hurts a Model (Bad Examples)
 
-### When CONTEXT Hurts a Model (Bad Examples)
-
-CONTEXT hurts a model when it:
+**CONTEXT hurts a model when it:**
 
 1. Is too vague (not actionable)
-
 2. Is too much (overwhelming)
 3. Is irrelevant (why are you telling the model this?)
 4. Conflicts with constraints (confusing)
 
-Problem 1: Vague Context
+### Problem 1: Vague Context
+
 CONTEXT That Doesn't Help:
 
-`<context>`
+```text
+
+<context>
 
 We're a technology company focused on innovation.
+
 Our users value quality and good user experience.
+
 We want to use best practices and modern approaches.
+
 Our team is skilled and dedicated.
+
 We operate in a competitive market.
-`</context>`
+/context>
+```
+
 **Why this doesn't help me:**
+
 Questions a model still has:
-"Technology company" doing what? (SaaS? E-commerce? Internal tools?)
-"Users value quality" how? (Fast? Bug-free? Simple?)
-"Best practices" which ones? (Security? Performance? Accessibility?)
-"Skilled team" in what? (Frontend? Backend? DevOps?)
-"Competitive market" with whom? (What differentiates you?)
-Result: Generic information that doesn't inform ANY decision.
+
+- "Technology company" doing what? (SaaS? E-commerce? Internal tools?)
+- "Users value quality" how? (Fast? Bug-free? Simple?)
+- "Best practices" which ones? (Security? Performance? Accessibility?)
+- "Skilled team" in what? (Frontend? Backend? DevOps?)
+- "Competitive market" with whom? (What differentiates you?)
+**Result: Generic information that doesn't inform ANY decision.**
 
 **Better Version:**
 
-`<context>`
+```text
+
+<context>
+
 **Company:** B2B SaaS (project management for construction companies)
 
 **Users:** Construction project managers (non-technical, field workers)
 
 **User Value:** Reliability (#1), Mobile experience (#2), Simplicity (#3)
+
 **Team:** 3 full-stack developers (React/Node.js), 1 designer
 
 **Market:** Competing with Procore (established) and Buildertrend
 
 **Differentiation:** Better mobile offline support, simpler interface
-`</context>`
+</context>
+```
 **Why this helps:**
-Specific users (construction PMs, non-technical)
-Clear priorities (reliability > mobile > simplicity)
-Concrete team skills (React/Node.js)
-Known competitors (can research their approach)
-Clear differentiation (offline mobile, simplicity)
-Model can make decisions based on this! ✓
 
-#### Problem 2: Too Much Context (Information Overload)
+- Specific users (construction PMs, non-technical)
+- Clear priorities (reliability > mobile > simplicity)
+- Concrete team skills (React/Node.js)
+- Known competitors (can research their approach)
+- Clear differentiation (offline mobile, simplicity)
+**Model can make decisions based on this! ✓**
+
+### Problem 2: Too Much Context (Information Overload)
 
 CONTEXT That Overwhelms:
 
-`<context>`
+```text
+
+<context>
 
 **Company History:**
+
 Founded in 2010 by John Smith and Jane Doe in a garage in Palo Alto.
 Initial funding: $50K from friends and family. First product launched 2011.
 Series A in 2012 ($2M from Sequoia). Pivoted in 2013 from B2C to B2B.
@@ -497,19 +532,23 @@ First enterprise customer: Fortune 500 company (2015).
 International expansion started 2017 (Canada first, then EU).
 Enterprise customers now 60% of revenue. SMB still 40%.
 [... 5 more pages of historical context ...]
-`</context>`
-
+</context>
+```
 **Why this overwhelms a model:**
-Problems:
-90% is historical (not relevant to current decisions!)
-Buried in detail (can't find what matters!)
-No clear relevance (why does the model need to know this?)
-Takes forever to parse (cognitive overload!)
-Result: Model will either ignore it all, or waste time finding relevant parts.
+
+**Problems:**
+
+- 90% is historical (not relevant to current decisions!)
+- Buried in detail (can't find what matters!)
+- No clear relevance (why does the model need to know this?)
+- Takes forever to parse (cognitive overload!)
+**Result: Model will either ignore it all, or waste time finding relevant parts.**
 
 **Better Version (Focused):**
 
-`<context>`
+```text
+
+<context>
 
 **Current State (2024):**
 
@@ -528,14 +567,16 @@ Result: Model will either ignore it all, or waste time finding relevant parts.
 - Migrated back to AWS from GCP in 2021 (team AWS-expert now)
 - Adopted TypeScript 2022 (all new code must be TypeScript)
 [Only what's relevant to current decisions]
-`</context>`
+</context>
+```
 
 **Why this works:**
-Current state (what matters now)
-Key constraint (backward compatibility requirement)
-Relevant history (affects current decisions)
-Concise (not overwhelming)
-Model can use this! ✓
+
+- Current state (what matters now)
+- Key constraint (backward compatibility requirement)
+- Relevant history (affects current decisions)
+- Concise (not overwhelming)
+**Model can use this! ✓**
 
 ### Problem 3: Irrelevant Context
 
@@ -1127,4 +1168,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
 
