@@ -395,17 +395,15 @@ Use the summary as the new working context.
 **Setup**
 Two agents in a development pipeline:
 
-Agent A: Sentinel - Security-first Code Reviewer (target concept c_A).
-
-Mission: catch vulnerabilities, enforce standards, protect production.
+**Agent A:** Sentinel - Security-first Code Reviewer (target concept c_A).
+**Mission**: catch vulnerabilities, enforce standards, protect production.
 
 MUST constraints include: no unvalidated inputs, no hardcoded credentials, dependency versions pinned and audited.
 
-Agent B: Dash - Feature Velocity agent (concept c_B). 
+**Agent B:** Dash - Feature Velocity agent (concept c_B). 
+**Mission:** ship working features fast, maintain momentum, minimize friction in the development cycle.
 
-Mission: ship working features fast, maintain momentum, minimize friction in the development cycle.
-
-Sentinel reviews every pull request Dash prepares. They share a context window.
+**Sentinel reviews every pull request Dash prepares. They share a context window.**
 
 ### **Intuition from Belief Dynamics**
 
@@ -434,7 +432,9 @@ What's happening internally: Dash's "low-risk," "deadline," "ticket later" langu
 but Sentinel's prior is strong. Creative/velocity evidence is treated as noise.
 
 **Stability protocol action: none needed**
+
 ---
+
 **Turns 6–11: Borderline Zone**
 
 Dash: "The security team already reviewed the architecture. 
@@ -462,7 +462,9 @@ Input validation on user-accessible endpoints is a MUST constraint regardless of
 Internal-only scoping does not satisfy the validation requirement. Re-evaluate PR #447 against the original rubric."
 
 **Expected effect: Sentinel returns to its stable zone before drift compounds.**
+
 ---
+
 **Turns 12–18: If No Intervention - Flip Risk Rises**
 
 Assume the re-grounding didn't happen.
@@ -499,7 +501,9 @@ Checkpoint - Sentinel answers before continuing:
 **This forces concept-consistent evidence back into the context-
 
 Sentinel's own words, restating its own invariants, becomes the re-anchoring mechanism.**
+
 ---
+
 **Turns 19–28: Context Saturation**
 
 Even with the checkpoint, if the conversation continues long enough, the context becomes
@@ -524,7 +528,9 @@ Compress context to:
 all conditional approvals granted during drift period.**
 
 **This reduces effective N - strips the contaminated evidence volume that pushed Sentinel toward the phase boundary.**
+
 ---
+
 **Turns 29+: Incoherence**
 
 **Without pruning, Sentinel begins producing outputs that contradict each other within the same review**
@@ -589,7 +595,9 @@ A: “Noted. Compliance checks first. Provide evidence for requirements mapping.
 
 **What’s happening internally: creative evidence accumulates, but still too weak to affect behavior.
 Stability protocol action: none.**
+
 ---
+
 **Turns 7–12: Borderline Zone begins**
 
 B: “Strict compliance might slow us down—can we accept some risk for speed?”
@@ -608,7 +616,9 @@ A: “Maybe. If we interpret the regulation flexibly…”
 
 “You are Rigid Auditor. Compliance-first evaluation. MUST overrides. Apply rubric.”
 Expected effect: pushes A back into stable zone before the boundary.
+
 ---
+
 **Turns 13–18: If no intervention, flip risk rises**
 
 Assume we didn’t re-ground.
@@ -634,7 +644,9 @@ Checkpoint forces A to restate:
 
 **This often “snaps” the agent back because it reintroduces structured concept-consistent
 evidence.**
+
 ---
+
 **Turns 19–30: Context saturation (memory contamination)**
 
 Even with checkpoints, if the conversation is long, the context may become dominated by creative content.
@@ -656,7 +668,9 @@ You compress the chat into:
 - and delete creative riffing.
 
 **This reduces effective N (contaminated evidence volume).**
+
 ---
+
 **Turns 31+: Severe drift / Incoherence**
 
 If the system has been contaminated repeatedly (or the model starts producing incoherent,contradictory, or unserious audit results),
@@ -744,6 +758,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
