@@ -451,7 +451,7 @@ CONTEXT: Environment
 **Budget:** $50K infrastructure budget
 </context>
 ```
-**Key principle:** INTENT + MUST + SHOULD + CONTEXT = Complete spec. INTENT alone ≠ spec.**
+**Key principle:** INTENT + MUST + SHOULD + CONTEXT = Complete spec. INTENT alone ≠ spec.
 
 ### Pitfall 5: Secret MUSTs Disguised as SHOULDs
 
@@ -1394,6 +1394,7 @@ You've completed the core specification framework:
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
 
 
 
