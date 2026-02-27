@@ -118,7 +118,7 @@ Bad: x() - too short, unclear
 Bad: theUserDataManagerThatManagesAllUserDataInTheSystem() - too long
 </guideline>
 ```
-**Key principle:** Constrain outcomes, not methods. Tell the model WHAT to achieve, not HOW to achieve it.**
+**Key principle:** Constrain outcomes, not methods. Tell the model WHAT to achieve, not HOW to achieve it.
 
 ### Pitfall 2: Under-Constraining (The Void)
 
@@ -1394,6 +1394,7 @@ You've completed the core specification framework:
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
 
 
 
