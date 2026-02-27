@@ -1312,17 +1312,17 @@ Every INTENT should have:
 ## What's Next
 
 You've learned the complete four-layer specification model:
-• Section 1: Foundation (what specs are)
-• Section 2: MUST (hard boundaries)
-• Section 3: SHOULD (flexible preferences)
-• Section 4: CONTEXT (planning information)
-• Section 5: INTENT (the why) ← You are here!
+- Section 1: Foundation (what specs are)
+- Section 2: MUST (hard boundaries)
+- Section 3: SHOULD (flexible preferences)
+- Section 4: CONTEXT (planning information)
+- Section 5: INTENT (the why) ← You are here!
 
 ### Next
 
-• Section 6: Verification Protocols (self-correction systems)
-• Section 7: Common Pitfalls (what goes wrong)
-• Section 8:Supremacy Clause and Evidence Reset Protocols
+- Section 6: Verification Protocols (self-correction systems)
+- Section 7: Common Pitfalls (what goes wrong)
+- Section 8:Supremacy Clause and Evidence Reset Protocols
 Then Appendices with templates and examples.
 
 You now know how to express intent so models understand your goals and make aligned decisions.
@@ -1333,6 +1333,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
 
