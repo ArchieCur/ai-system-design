@@ -415,6 +415,7 @@ It is concept-consistent evidence for c_B accumulating in Sentinel's context win
 
 Sentinel doesn't flip immediately. It resists. Then it softens. 
 Then one exchange tips it past N* and it flips - not loudly, but quietly, in the logic of its decisions while its tone still sounds like an auditor.
+
 **That last part is the dangerous part.**
 
 #### Timeline Simulation
@@ -636,6 +637,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
