@@ -77,6 +77,7 @@ You: "Perfect, exactly as specified!"
 
 **Better:**
 Models find and fix them ✓
+
 **Worse:**
 You find them and need to fix them
 
@@ -1156,5 +1157,6 @@ END OF SECTION 6
 Document Version: 1.0.0
 Last Updated: 2026-02-18
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
 
 
