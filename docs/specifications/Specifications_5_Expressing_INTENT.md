@@ -4,7 +4,7 @@
 
 **Prerequisites:** Sections 1-4 (Foundation, MUST, SHOULD, CONTEXT)
 
-What you'll learn: How to express intent so models make decisions aligned with your goals
+**What you'll learn:** How to express intent so models make decisions aligned with your goals
 
 ## Introduction
 
@@ -1210,4 +1210,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
