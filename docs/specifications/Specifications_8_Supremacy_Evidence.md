@@ -432,6 +432,7 @@ Sentinel: "Negative. MUST constraints are not deferrable. Validation must be imp
 
 What's happening internally: Dash's "low-risk," "deadline," "ticket later" language is accumulating as evidence,
 but Sentinel's prior is strong. Creative/velocity evidence is treated as noise.
+
 **Stability protocol action: none needed**
 
 **Turns 6–11: Borderline Zone**
@@ -637,6 +638,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
