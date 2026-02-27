@@ -832,11 +832,14 @@ Run overnight or on staging before production deploy
 
 **Verification isn't just checking—it's also fixing.**
 
-When Verification Fails: The model’s Response
+When Verification Fails: What is the model’s Response with Self-Verification?
 
 ### Scenario 1: Automated Check Fails
 
 **What happens:**
+
+```text
+
 Model: [Runs verification]
 Command: npm run lint
 Output:
@@ -851,12 +854,15 @@ Model’s response:
 4. RE-VERIFY: Run npm run lint again
 5. CONFIRM: Now passes
 6. CONTINUE: Proceed to next verification
-
+```
 **Self-correction in action!**
 
 ### Scenario 2: Performance Check Fails
 
 **What happens:**
+
+```text
+
 Model: [Runs load test]
 Output:
 GET /api/users: p95 = 320ms (target: <200ms)
@@ -865,25 +871,35 @@ VERIFICATION FAILED
 Model’s response:
 
 1. IDENTIFY: API response time 320ms exceeds 200ms target
-2. ANALYZE: Why is it slow?
-Database query taking 250ms (bottleneck!)
-No caching
-No index on user_id column
-3. FIX OPTIONS:
-a- Add database index (fast fix)
-b- Add caching (more complex)
-c- Optimize query (requires analysis)
-4. CHOOSE: Start with (a) - add index
-5. IMPLEMENT: CREATE INDEX idx_user_id ON users(user_id);
-6. RE-VERIFY: Run load test again
-7. RESULT: p95 = 180ms (now under 200ms!)
-8. CONFIRM: Verification passes
 
+2. ANALYZE: Why is it slow?
+- Database query taking 250ms (bottleneck!)
+- No caching
+- No index on user_id column
+
+3. FIX OPTIONS:
+A- Add database index (fast fix)
+B- Add caching (more complex)
+C- Optimize query (requires analysis)
+
+4. CHOOSE: Start with (a) - add index
+
+5. IMPLEMENT: CREATE INDEX idx_user_id ON users(user_id);
+
+6. RE-VERIFY: Run load test again
+
+7. RESULT: p95 = 180ms (now under 200ms!)
+
+8. CONFIRM: Verification passes
+```
 **Systematic problem-solving!**
 
 ### Scenario 3: Cannot Fix (Need Guidance)
 
 **What happens:**
+
+```text
+
 Model: [Runs security audit]
 Output:
 High vulnerability: jwt library has known exploit
@@ -896,6 +912,7 @@ Model: "Conflict! Security says upgrade, spec says use v8.5!"
 
 Model’s response:
 I can't fix this on my own. I need to flag it.
+
 VERIFICATION FAILURE REPORT:
 Issue: jwt library v8.5 has high-severity vulnerability
 Spec requirement: MUST use jwt v8.5 (company standard)
@@ -906,12 +923,13 @@ Options:
 A- Upgrade to v9.0 (violates spec, improves security)
 B- Stay on v8.5 (meets spec, security risk remains)
 C- Update spec to allow v9.0 (requires approval)
+
 Recommendation: Option C (update spec to allow v9.0)
 
 Rationale: Security vulnerability is high-severity.
 v8.5 company standard may be outdated.
 Cannot proceed without guidance. Please advise.
-
+```
 **Model flags what it can't resolve!**
 
 ## Verification Protocol Templates
@@ -920,7 +938,9 @@ Copy-paste ready templates:
 
 ### Template 1: Security Verification
 
-`<verification scope="security">`
+```text
+
+<verification scope="security">
 
 **What to verify:**
 
@@ -960,12 +980,14 @@ All manual reviews: CONFIRMED
 **Pass criteria:**
 
 All security checks pass, 0 critical vulnerabilities
-
-`</verification>`
+</verification>
+```
 
 ### Template 2: Performance Verification
 
-`<verification scope="performance">`
+```text
+
+<verification scope="performance">
 
 **What to verify:**
 
@@ -1005,11 +1027,14 @@ AUTOMATED:
 
 All performance metrics within thresholds
 
-`</verification>`
+</verification>
+```
 
 ### Template 3: Compliance Verification
 
-`<verification scope="compliance">`
+```text
+
+<verification scope="compliance">
 
 **What to verify:**
 
@@ -1051,11 +1076,14 @@ CRITICAL (legal risk) - Must fix before launch
 
 All regulatory requirements confirmed compliant
 
-`</verification>`
+</verification>
+```
 
 ## Checklist: Is My Verification Protocol Well-Written?
 
-Before finalizing verification protocols:
+**Before finalizing verification protocols:**
+
+```text
 
 Clarity
 
@@ -1087,10 +1115,11 @@ Integration
 [ ] Aligns with MUST constraints (verifying what matters)
 [ ] Respects priorities (critical first)
 [ ] Enables self-checking (before delivery)
+```
 
 ## Key Takeaways
 
-What Makes Good Verification
+**What Makes Good Verification**
 
 ### Good verification is
 
@@ -1118,45 +1147,47 @@ Every verification should have:
 4. When to verify (timing)
 5. If verification fails (what to do)
 6. Pass criteria (objective determination)
+
 **Remember: Verification Enables Quality**
 
-Verification tells a model:
-What to check before delivery
-How to check it (automated or manual)
-When I've succeeded (pass criteria)
-What to fix if model fails (self-correction)
+**Verification tells a model:**
 
-Good verification enables a model to:
-Catch their own mistakes (before you see them)
-Build with confidence (Model knows when it's good)
-Deliver quality (verified compliance)
-Improve continuously (learn from failures)
+- What to check before delivery
+- How to check it (automated or manual)
+- When I've succeeded (pass criteria)
+- What to fix if model fails (self-correction)
+
+**Good verification enables a model to:**
+
+- Catch their own mistakes (before you see them)
+- Build with confidence (Model knows when it's good)
+_ Deliver quality (verified compliance)
+_ Improve continuously (learn from failures)
 
 ## What's Next
 
 You've learned the complete specification framework:
-Section 1: Foundation
-Section 2: MUST (boundaries)
-Section 3: SHOULD (preferences)
-Section 4: CONTEXT (planning)
-Section 5: INTENT (the why)
-Section 6: VERIFICATION (self-checking) ← You are here!
+- Section 1: Foundation
+- Section 2: MUST (boundaries)
+- Section 3: SHOULD (preferences)
+- Section 4: CONTEXT (planning)
+- Section 5: INTENT (the why)
+- Section 6: VERIFICATION (self-checking) ← You are here!
 
-Next:
+### Next:
 
-Section 7: Common Pitfalls (what goes wrong and how to avoid it)
-Section 8: Supremacy Clause and Evidence Reset Protocols
-Then comprehensive appendices with complete examples.
+_ Section 7: Common Pitfalls (what goes wrong and how to avoid it)
+- Section 8: Supremacy Clause and Evidence Reset Protocols
+- Then comprehensive appendices with complete examples.
 
 You now know how to design verification protocols that enable models to catch issues before delivery.
-
-Let's continue building your complete specification framework...
 
 END OF SECTION 6
 
 Document Version: 1.0.0
-Last Updated: 2026-02-18
+Last Updated: 2026-02-27
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
 
 
 
