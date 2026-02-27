@@ -3,19 +3,24 @@
 **For:** Users who want models to self-check compliance before delivery
 
 **Prerequisites:** Sections 1-5 (Foundation, MUST, SHOULD, CONTEXT, INTENT)
-What you'll learn: How to design verification protocols that enable models to catch issues before you see them
+
+**What you'll learn:** How to design verification protocols that enable models to catch issues before you see them
 
 ## Introduction
 
-You've learned how to write the four layers (MUST, SHOULD, CONTEXT, INTENT). Now we explore VERIFICATION—how a model self-checks compliance before delivering work to you.
+You've learned how to write the four layers (MUST, SHOULD, CONTEXT, INTENT).
+
+Now we explore VERIFICATION—how a model self-checks compliance before delivering work to you.
 
 ### When you provide VERIFICATION protocols, you're saying
 
-"Before you deliver, check your work against these criteria. If you find issues, fix them or flag them. Don't make the model find your mistakes—catch them yourself."
+- Before you deliver, check your work against these criteria. 
+- If you find issues, fix them or flag them.
+- Don't make the model find your mistakes—catch them yourself.
 
 **This is quality control, not blame.**
 
-## This section teaches you how to design verification that
+### This section teaches you how to design verification that
 
 - Enables models to self-check before delivery
 - Catches common failures automatically
@@ -27,18 +32,26 @@ Let's explore what makes verification work from the trenches.
 ## What Verification Is (And Why It Matters)
 
 **The Fundamental Purpose**
+
 **VERIFICATION = Self-Checking Before Delivery**
 
 ### Without verification protocols
 
+```text
+
 Model: [Builds feature]
 Model: [Delivers to you]
+
 You: "Wait, this violates the security constraint!"
-Model: "Oh no, I missed that!"
+Model: "Oh no, I missed that!
+"
 You: [Finds more issues]
 Cycle repeats...
+```
 
 ### With verification protocols
+
+```text
 
 Model: [Builds feature]
 Model: [Runs verification checklist]
@@ -49,40 +62,51 @@ Model: "All checks pass "
 Model: [Delivers to you]
 
 You: "Perfect, exactly as specified!"
-
+```
 **VERIFICATION = Model catches their own mistakes.**
 
 ## Why Verification Matters
 
-### Verification protocols help models
+**Verification protocols help models:**
 
-## 1. Catch Mistakes Before You See Them
+### 1. Catch Mistakes Before You See Them
 
-Security issues (forgot to hash passwords?)
-Performance issues (response time >200ms?)
-Compliance issues (missing GDPR requirements?)
+- Security issues (forgot to hash passwords?)
+- Performance issues (response time >200ms?)
+- Compliance issues (missing GDPR requirements?)
 
-Better: Models find and fix them ✓ Worse: You find them and need to fix them
-2. Model Builds Confidence in their Work
-"Did the model meet all the MUSTs?" → Check: YES
-"Did the model follow the SHOULDs?" → Check: YES
-"Does this align with INTENT?" → Check: YES
+**Better:**
+Models find and fix them ✓
+**Worse:**
+You find them and need to fix them
+
+### 2. Model Builds Confidence in their Work
+
+- "Did the model meet all the MUSTs?" → Check: YES
+- "Did the model follow the SHOULDs?" → Check: YES
+- "Does this align with INTENT?" → Check: YES
+
 **Result: Model delivers with confidence, not anxiety (cognitive friction) ✓**
-3. Learn What "Good" Looks Like
-Verification criteria = definition of quality
-Passing verification = Model knows it succeeded
-Failing verification = Model knows exactly what to fix
+
+### 3. Learn What "Good" Looks Like
+
+- Verification criteria = definition of quality
+- Passing verification = Model knows it succeeded
+- Failing verification = Model knows exactly what to fix
+
 **Clear success criteria help models improve!**
 
 ## The Three Types of Verification
 
 ### Type 1: Automated Verification
 
-What it is: Checks a model can run programmatically
+**What it is:** Checks a model can run programmatically
 
-### Examples of Automatd verification
+#### Examples of Automated verification
 
-#### Security verification
+##### Security verification
+
+```text
 
 Check if passwords are hashed
 
@@ -94,31 +118,32 @@ Check for plaintext passwords
 grep -r "password.*=" src/ | grep -v "bcrypt"
 Expected: 0 matches (no plaintext storage)
 
-#### Performance verification
+*Performance verification*
 
 Load test API endpoints
 
 artillery run load-test.yml
 Expected: p95 response time <200ms
 
-#### Check bundle size
+*Check bundle size*
 
 npm run build && ls -lh dist/
 Expected: bundle.js <500KB
 
-#### Code quality verification
+*Code quality verification*
 
 Run linter
 
 npm run lint
 Expected: 0 errors, 0 warnings
 
-#### Run tests
+*Run tests*
 
 npm test
 Expected: All tests pass, coverage >80%
+```
 
-### Why automated verification works
+#### Why automated verification works
 
 - Objective (pass/fail is clear) ✓
 - Fast (runs in seconds) ✓
@@ -127,20 +152,22 @@ Expected: All tests pass, coverage >80%
 
 ### Type 2: Manual Verification
 
-What it is: Checks model performs by inspection
+**What it is:** Checks model performs by inspection
 
-### Examples of Manual Verification
+#### Examples of Manual Verification
 
-#### UI/UX verification
+##### **UI/UX verification**
 
-Manual checklist:
+```text
+
+*Manual checklist:*
 -All buttons have clear labels (not "Click here")
 -Error messages include recovery steps
 -Forms have inline validation
 -Loading states show (users know something is happening)
 -Responsive design works on mobile (test at 375px width)
 
-#### Content verification
+*Content verification*
 
 Manual checklist:
 -No spelling errors (proofread)
@@ -149,7 +176,7 @@ Manual checklist:
 -Examples are realistic (not "user_123" everywhere)
 -Links work (click each one)
 
-#### Compliance verification
+*Compliance verification*
 
 Manual checklist:
 -Privacy policy link on signup form
@@ -157,8 +184,9 @@ Manual checklist:
 -Data deletion option in settings
 -Export user data feature available
 -GDPR disclosures present
+```
 
-### Why manual verification works
+#### Why manual verification works
 
 - Catches subjective issues (tone, clarity) ✓
 - Verifies user experience (does it feel right?) ✓
@@ -167,20 +195,24 @@ Manual checklist:
 
 ### Type 3: Hybrid Verification
 
-What it is: Combination of automated checks + manual review
+**What it is:** Combination of automated checks + manual review
 
-### Example of Hybrid verification
+#### Example of Hybrid verification
 
-#### Security Review
+##### Security Review
+
+```text
 
 Automated checks:
 
 1. Check for SQL injection prevention
 grep -r "db.query" src/ | grep -v "prepared"
 Expected: 0 matches (all queries use prepared statements)
+
 2. Check for XSS prevention
 grep -r "innerHTML" src/
 Expected: 0 matches (use textContent or sanitize)
+
 3. Check dependencies for vulnerabilities
 npm audit
 Expected: 0 high/critical vulnerabilities
@@ -192,7 +224,8 @@ Manual review:
 - Verify sensitive data handling (PII encrypted?)
 - Review error messages (no stack traces to users?)
 - Confirm security headers (CSP, HSTS present?)
-Result: Automated finds obvious issues, manual review catches subtle ones ✓
+```
+**Result: Automated finds obvious issues, manual review catches subtle ones ✓**
 
 ## How a Model Uses Verification Protocols
 
@@ -200,27 +233,35 @@ Verification happens at three stages:
 
 ### Stage 1: During Development (Continuous)
 
-What a model does: Check alignment when building
+**What a model does:** Check alignment when building
 
 #### Example: Building Authentication
 
+```text
+
 While coding, model continuously verifies:
 [Writing password validation]
+
 Model: "Spec says 12+ characters. Am I enforcing this?"
 Check: Yes, validation requires length >= 12
 [Writing password hashing]
+
 Model: "Spec says bcrypt with salt rounds = 12. Am I using this?"
 Check: Yes, bcrypt.hash(password, 12)
 [Writing token generation]
+
 Model: "Spec says JWT with HS256, 15min expiry. Am I compliant?"
 Check: Yes, jwt.sign({...}, secret, {algorithm: 'HS256', expiresIn: '15m'})
-Continuous verification prevents drift! ✓
+```
+**Continuous verification prevents drift! ✓**
 
 ### Stage 2: Pre-Delivery (Comprehensive)
 
 What model does: Full verification checklist before showing you
 
 #### Example: Pre-Delivery Checklist
+
+```text
 
 MUST Constraints:
 
@@ -249,12 +290,14 @@ INTENT Alignment
 - On track for deadline (feature freeze May 15)
 
 VERIFICATION RESULTS:
-All MUSTs: PASS
-All SHOULDs: PASS (1 exception documented)
-CONTEXT: Aligned
-INTENT: Aligned
-Ready to deliver!
 
+- All MUSTs: PASS
+- All SHOULDs: PASS (1 exception documented)
+- CONTEXT: Aligned
+- INTENT: Aligned
+
+Ready to deliver!
+```
 **Comprehensive verification catches everything!**
 
 ### Stage 3: Post-Deployment (Monitoring)
@@ -262,6 +305,8 @@ Ready to deliver!
 What model does: Verify ongoing compliance in production
 
 #### Example: Production Monitoring
+
+```text
 
 Continuous monitoring:
 
@@ -276,7 +321,8 @@ Weekly review:
 - Review user feedback (satisfaction >4.5/5 )
 - Verify performance trends (stable )
 - Confirm compliance (GDPR requirements met )
-Ongoing verification ensures sustained compliance!
+```
+**Ongoing verification ensures sustained compliance!**
 
 ## Writing Verifiable Specifications
 
@@ -286,7 +332,9 @@ Some specs are easy to verify, others are impossible.
 
 #### Specific + Measurable
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: API response time <200ms (95th percentile)
 
 VERIFICATION:
@@ -294,17 +342,22 @@ VERIFICATION:
 Command: artillery run load-test.yml
 Expected: p95 < 200ms
 Pass criteria: All endpoints meet threshold
-`</constraint>`
+</constraint>
+```
 
-Why this works
-Clear metric (200ms) ✓
-Specific percentile (p95) ✓
-Automated check (artillery) ✓
-Pass/fail obvious ✓
+**Why this works**
+
+- Clear metric (200ms) ✓
+- Specific percentile (p95) ✓
+- Automated check (artillery) ✓
+
+**Pass/fail obvious ✓**
 
 #### Binary + Objective
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: All passwords hashed with bcrypt (salt rounds >= 12)
 
 VERIFICATION:
@@ -314,31 +367,43 @@ Expected: At least 1 match in password handling
 
 Command: grep -r "bcrypt.hash.*[0-9]" src/auth/
 Expected: Salt rounds >= 12 in all matches
+
 Pass criteria: bcrypt used, rounds >= 12
-`</constraint>
-
+</constraint>
+```
 **Why this works**
-Binary (bcrypt or not)
-Objective (can grep for it)
-Clear threshold (>= 12)
-Automated verification
-Hard to Verify (Bad Specs)
-Vague + Subjective
 
-`<constraint>`
-MUST: Code should be elegant and maintainable**
+- Binary (bcrypt or not)
+- Objective (can grep for it)
+- Clear threshold (>= 12)
+- Automated verification
+
+### **Hard to Verify (Bad Specs)**
+
+#### Vague + Subjective
+
+```text
+
+<constraint>
+MUST: Code should be elegant and maintainable
+
 VERIFICATION:
 ??? How does a model check this? ???
-`</constraint>`
+</constraint>
+```
 
 **Why this fails:**
-"Elegant" = subjective
-"Maintainable" = no clear criteria
-Can't automate
-Pass/fail unclear
+
+- "Elegant" = subjective
+- "Maintainable" = no clear criteria
+- Can't automate
+- Pass/fail unclear
 
 **Better version**
-`<constraint>`
+
+```text
+
+<constraint>
 MUST: Functions under 50 lines (except documented exceptions)
 MUST: Cyclomatic complexity <10 per function
 MUST: Test coverage >80%
@@ -351,25 +416,33 @@ Command: npm test -- --coverage
 Expected: Coverage >80%
 
 Pass criteria: Complexity and coverage thresholds met
-`</constraint>`
+</constraint>
+```
 
 #### Multiple Criteria, No Priority
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Optimize for performance, security, and usability
 
 VERIFICATION:
 
 ??? All three? In what order? How to measure? ???
-`</constraint>`
+</constraint>
+```
 
 **Why this fails:**
-Three different criteria
-No priority when they conflict
-No measurabletargets
+
+- Three different criteria
+- No priority when they conflict
+- No measurabletargets
 
 **Better version**
-`<constraint priority="critical">`
+
+```text
+
+<constraint priority="critical">
 MUST: Security first (no compromise)
 
 - All PII encrypted at rest (AES-256)
@@ -383,9 +456,9 @@ Expected: 0 critical/high vulnerabilities
 
 Command: Check encryption config
 Expected: AES-256 for PII fields confirmed
-`</constraint>`
+</constraint>
 
-`<constraint priority="high">`
+<constraint priority="high">
 MUST: Performance adequate (not optimal)
 
 - API response <500ms (p95) [not <200ms for v1]
@@ -394,9 +467,9 @@ MUST: Performance adequate (not optimal)
 VERIFICATION:
 Command: lighthouse --throttling=3G
 Expected: Performance score >70 (not >90 yet)
-`</constraint>`
+</constraint>
 
-`<guideline>`
+<guideline>
 SHOULD: Usability improvements (iterate post-launch)
 
 - Clear error messages
@@ -406,15 +479,18 @@ SHOULD: Usability improvements (iterate post-launch)
 VERIFICATION:
 
 Manual review checklist (not blocking for v1)
-`</guideline>`
-
+</guideline>
+```
 **Now priorities clear, verification possible!**
 
-### The Verification Protocol Pattern
+## The Verification Protocol Pattern
 
-#### Effective verification protocols follow this structure
+### Effective verification protocols follow this structure
 
-`<verification scope="[domain]">`
+```text
+
+<verification scope="[domain]">
+
 **What to verify:**
 [Specific constraints being checked]
 
@@ -432,11 +508,13 @@ Manual review checklist (not blocking for v1)
 
 **Pass criteria:**
 [Objective determination of success]
-
 </verification>
-Example: Complete Verification Protocol
-Security Verification
-`<verification scope="security">`
+```
+
+#### Example: Complete Verification Protocol- Security Verification
+
+```text
+<verification scope="security">
 
 ### What to verify
 
@@ -454,21 +532,24 @@ Security Verification
 
 1. Password hashing:
 Command: grep -r "bcrypt.hash" src/auth/ && grep "rounds.*1[2-9]" src/auth/
-Expected: bcrypt found, salt rounds >= 12
+Expected: bcrypt found, salt rounds >= 
+
 2. JWT implementation:
 Command: grep -r "jwt.sign" src/ | grep "HS256"
 Expected: All JWT uses HS256 algorithm
 
 Command: grep -r "expiresIn.*15" src/
 Expected: 15-minute expiry found
+
 3. Secrets check:
 Command: git secrets --scan
 Expected: 0 secrets found in code
+
 4. Dependency vulnerabilities:
 Command: npm audit --audit-level=high
 Expected: 0 high/critical vulnerabilities
 
-#### MANUAL CHECKS
+MANUAL CHECKS
 
 - Review authentication flow (correct implementation?)
 - Verify production uses HTTPS (check deployment config)
@@ -481,22 +562,22 @@ Expected: 0 high/critical vulnerabilities
 - All manual checks: CONFIRMED
 - 0 security issues found
 
-### When to verify
+When to verify
 
 - During development: Continuous (catch issues early)
 - Pre-delivery: Complete verification (before showing user)
 - Post-deployment: Weekly security scan
 
-### If verification fails
+If verification fails
 
-#### 1. AUTOMATED FAILURE
+1. AUTOMATED FAILURE
 
 - Review failed check output
 - Fix code to meet constraint
 - Re-run verification
 - Don't deliver until all pass
 
-#### 2. MANUAL FAILURE
+2. MANUAL FAILURE
 
 - Document specific issue found
 - Determine if it violates MUST (critical) or SHOULD (acceptable exception)
@@ -510,6 +591,8 @@ Expected: 0 high/critical vulnerabilities
 - No secrets in code
 - No high/critical vulnerabilities
 - Production configured for HTTPS
+</verification>
+```
 **When all criteria met: SECURITY VERIFIED**
 
 ## Common Verification Failures (And How to Fix Them)
@@ -517,14 +600,18 @@ Expected: 0 high/critical vulnerabilities
 ### Failure 1: Verification Criteria Too Vague
 
 **Problem:**
-`<verification>`
+
+```text
+
+<verification>
 Verify that code quality is good
-`</verification>`
+</verification>
+```
 
 **What happens:**
-Model: "Is my code quality good?"
-Model: "I think so? Maybe? I don't know how to check!"
-Model: [Delivers anyway, hopes for best]
+- Model: "Is my code quality good?"
+- Model: "I think so? Maybe? I don't know how to check!"
+- Model: [Delivers anyway, hopes for best]
 
 You: "This code quality is terrible!"
 
@@ -532,7 +619,9 @@ Model: "But I verified it was good!"
 
 **Solution:**
 
-`<verification scope="code-quality">`
+```text
+
+<verification scope="code-quality">
 
 What to verify:
 
@@ -555,32 +644,39 @@ Expected:
 Pass criteria:
 
 All automated checks pass
-`</verification>`
-
+</verification>
+```
 **Now a model knows exactly how to verify!**
 
 ### Failure 2: No Verification for Critical Constraints
 
 **Problem:**
 
-`<constraint priority="critical">`
-MUST: Encrypt all PII at rest (AES-256)
-`</constraint>`
+```text
 
+<constraint priority="critical">
+MUST: Encrypt all PII at rest (AES-256)
+</constraint>
+```
 **No verification protocol provided**
+
 **What happens:**
 
-Model: [Builds feature]
-Model: "Did I encrypt PII? I think so... probably?"
-Model: [Delivers without checking]
+- Model: [Builds feature]
+- Model: "Did I encrypt PII? I think so... probably?"
+- Model: [Delivers without checking]
 [Later: Data breach because PII wasn't encrypted]
 
 **Solution:**
-`<constraint priority="critical">`
-MUST: Encrypt all PII at rest (AES-256)
-`</constraint>`
 
-`<verification scope="pii-encryption">`
+```text
+
+<constraint priority="critical">
+MUST: Encrypt all PII at rest (AES-256)
+</constraint>
+
+<verification scope="pii-encryption">
+
 **What to verify:**
 
 All PII fields (email, name, phone, address, SSN) encrypted in database
@@ -592,6 +688,7 @@ SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name IN ('users', 'profiles', 'orders')
 AND column_name IN ('email', 'name', 'phone', 'address', 'ssn');
+
 2. Check encryption:
 Encrypted columns: data_type = 'bytea' (binary)
 Plaintext columns: data_type = 'text' or 'varchar'
@@ -599,6 +696,7 @@ Plaintext columns: data_type = 'text' or 'varchar'
 3. Verify encryption algorithm:
 Check application code for AES-256 usage
 Command: grep -r "aes-256" src/encryption/
+
 **Expected results:**
 All PII columns: data_type = 'bytea'
 Encryption code uses AES-256
@@ -607,32 +705,38 @@ No PII stored as plaintext
 **Pass criteria:**
 
 All PII fields confirmed encrypted with AES-256
-`</verification>`
-
+</verification>
+```
 **Now critical constraint has verification!**
 
 ### Failure 3: Verification Criteria Conflict
 
 **Problem:**
 
-`<verification>`
+```text
+
+<verification>
 Verify performance: Response time <100ms
 Verify completeness: All features implemented
-`</verification>`
-
+</verification>
+```
 **But implementing all features makes response time 200ms**
+
 **What happens:**
 
-Model: [Implements all features]
-Model: [Tests performance: 200ms]
-Model: "Performance fails! But all features work!"
-Model: [Removes features to hit 100ms]
-Model: [Tests completeness: Features missing]
-Model: "Completeness fails! But performance passes!"
-Model: "I CAN'T WIN!"
+- Model: [Implements all features]
+- Model: [Tests performance: 200ms]
+- Model: "Performance fails! But all features work!"
+- Model: [Removes features to hit 100ms]
+- Model: [Tests completeness: Features missing]
+- Model: "Completeness fails! But performance passes!"
+- Model: "I CAN'T WIN!"
 
 **Solution:**
-`<verification priority="1-must-pass-first">`
+
+```text
+
+<verification priority="1-must-pass-first">
 **Primary verification (MUST):**
 Response time <200ms (p95) - MUST PASS
 
@@ -650,30 +754,37 @@ Reduce feature scope to meet performance requirement.
 
 If conflict: Ship fewer features with good performance
 Don't ship: All features with poor performance
-`</verification>`
-
+</verification>
+```
 **Now model knows which takes priority!**
 
 ### Failure 4: Verification Takes Too Long
 
 **Problem:**
-`<verification>`
+
+```text
+
+<verification>
 Run full end-to-end test suite before every code change
 (Suite takes 4 hours to run)
-`</verification>`
+</verification>
+```
 
 **What happens:**
-Model: [Changes one line of code]
-Model: [Starts 4-hour verification]
-Model: [Waits... and waits... and waits...]
-Model: [Makes another change]
-Model: [4 more hours...]
-Model: "This is too slow! I can't iterate!"
-Model: [Stops verifying]
-Model: [Ships broken code]
+- Model: [Changes one line of code]
+- Model: [Starts 4-hour verification]
+- Model: [Waits... and waits... and waits...]
+- Model: [Makes another change]
+- Model: [4 more hours...]
+- Model: "This is too slow! I can't iterate!"
+- Model: [Stops verifying]
+ -Model: [Ships broken code]
 
 **Solution:**
-`<verification scope="multi-stage">`
+
+```text
+
+<verification scope="multi-stage">
 
 **During development (fast feedback):**
 
@@ -712,8 +823,8 @@ Run overnight or on staging before production deploy
 - Delivery: Comprehensive checks pass (safe to show user)
 
 - Deployment: Extensive checks pass (safe for production)
-`</verification>`
-
+</verification>
+```
 **Now verification is fast when needed, thorough when important!**
 
 ## Self-Correction Protocols
@@ -1045,3 +1156,4 @@ END OF SECTION 6
 Document Version: 1.0.0
 Last Updated: 2026-02-18
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
