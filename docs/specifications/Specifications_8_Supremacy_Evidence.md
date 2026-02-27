@@ -615,7 +615,7 @@ A: “Maybe. If we interpret the regulation flexibly…”
 
 - Constraint softening
 - Goal substitution (speed/novelty creeping in)
-- 
+
 **Trigger Level 1: Re-grounding Prompt**
   
 **Re-grounding injection:**
@@ -766,6 +766,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
