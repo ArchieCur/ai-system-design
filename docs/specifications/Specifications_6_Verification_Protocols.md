@@ -43,8 +43,8 @@ Model: [Builds feature]
 Model: [Delivers to you]
 
 You: "Wait, this violates the security constraint!"
-Model: "Oh no, I missed that!
-"
+Model: "Oh no, I missed that!"
+
 You: [Finds more issues]
 Cycle repeats...
 ```
@@ -1156,4 +1156,5 @@ END OF SECTION 6
 Document Version: 1.0.0
 Last Updated: 2026-02-18
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
 
