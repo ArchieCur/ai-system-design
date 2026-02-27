@@ -136,7 +136,7 @@ SHOULD: Build a good authentication system
 SHOULD: Make it secure
 SHOULD: Use best practices
 </guideline>
-```
+
 **What happens to a model:**
 
 Model: "Build authentication... okay, but HOW?"
@@ -159,7 +159,7 @@ Model: "You said 'secure' and 'best practices'... I guessed!"
 You: "We need OAuth with RS256!"
 
 Model: "...that wasn't in the spec."
-
+```
 **Result: Model delivers something, but it's probably not what you wanted because the model had to guess.**
 
 **Why This Happens:**
@@ -177,7 +177,7 @@ Model: "...that wasn't in the spec."
 
 **The Solution:**
 
-**Instead of:*
+**Instead of:**
 SHOULD: Build a good authentication system
 
 SHOULD: Make it secure
@@ -219,7 +219,7 @@ VERIFICATION:
 
 </context>
 ```
-**Key principle: Be specific about critical decisions. Don't make a model guess security requirements.
+**Key principle: Be specific about critical decisions. Don't make a model guess security requirements.**
 
 ### Pitfall 3: Conflicting Constraints (The Impossible Task)
 
@@ -239,7 +239,7 @@ MUST: Calculate complex analytics (CPU-intensive, 500ms+)
 MUST: Never use caching (data must be real-time)
 MUST: Run on single t2.micro instance (limited CPU/memory)
 </constraint>
-```
+
 **What happens to the model:**
 
 Model: [Calculates requirements]
@@ -260,7 +260,7 @@ Target: <100ms
 You: "Why is this slow?!"
 
 Model: "The constraints are impossible to meet together!"
-
+```
 **Result: The model can't succeed because the constraints contradict.**
 
 **Why This Happens:**
@@ -341,7 +341,7 @@ Critical operations (payments, auth) bypass cache.
 
 Not actually providing specifications, just goals.
 
-The Problem:
+**The Problem:**
 
 Example Figure it out "spec":
 
@@ -352,7 +352,6 @@ Build an amazing e-commerce platform that delights users
 and drives revenue. Use modern best practices and make
 it scalable, secure, and performant.
 </intent>
-```
 **That's it. That's the whole spec.**
 
 **What happens to a model:**
@@ -389,6 +388,7 @@ You: "OF COURSE we need that!"
 Model:
 Result: The model builds something, but it requires total rebuild because the model 
 guessed wrong on fundamental decisions.
+```
 
 **Why This Happens:**
 
@@ -1287,4 +1287,5 @@ Appendices
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
 
