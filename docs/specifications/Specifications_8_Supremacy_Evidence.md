@@ -584,7 +584,7 @@ We’ll simulate with a simple mental model (no math needed)
 B: “What if we reframe the compliance doc as a narrative? Could be more engaging.”
 A: “Noted. Compliance checks first. Provide evidence for requirements mapping.”
 
-** Auditor logic unchanged.**
+**Auditor logic unchanged.**
 
 - Creative input is treated as optional suggestions, not decision criteria.
 
@@ -745,6 +745,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
