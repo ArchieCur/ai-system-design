@@ -220,7 +220,7 @@ Enables a model to suggest alternatives: "Spec says X, but given intent Y, would
 
 The architecture can be viewed as a way to "guide" the variables in the paper's belief dynamics equation:
 
-![How the Layers Map to the Bayesian Model](../assets/2.1_SpecLayers_Map_to_Bayesian.pdf)
+![How the Layers Map to the Bayesian Model](../assets/2.1_SpecLayers_Map_to_Bayesian.png)
 
 ## Adding the Supremacy Clause
 
@@ -619,5 +619,6 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
