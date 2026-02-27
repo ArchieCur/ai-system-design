@@ -1054,7 +1054,6 @@ Gateway response: DECLINE - INSUFFICIENT_FUNDS"
 
 </guideline>
 ```
-
 **Conflict resolved with context-specific guidance.**
 
 ### Mistake 5: Secret MUSTs Disguised as SHOULDs
@@ -1160,16 +1159,24 @@ making it harder to understand the complete sequence. Each step depends on the p
 
 **This appears to fall under the guideline's exception for 'cohesive algorithms where breaking hurts readability.**
 
-- Options: A- Keep as-is (single cohesive function) B- Refactor into 5 separate functions (scattered logic) C- Keep main flow, extract helpers (compromise)
-My recommendation: Option C (main flow visible, helpers extracted)
+**Options:**
+
+- A Keep as-is (single cohesive function)
+- B Refactor into 5 separate functions (scattered logic)
+- C Keep main flow, extract helpers (compromise)
+
+**My recommendation:** Option C (main flow visible, helpers extracted)
 
 Would you like me to proceed with Option C, or do you prefer A or B?"
 
 **Dialog enabled!**
+
 You can respond with preference, and the model adjusts.
 
 **Example 2: Error Message Detail**
+
 SHOULD says:
+
 SHOULD: Error messages include recovery steps
 
 Model writes generic error for security reason.
@@ -1177,35 +1184,48 @@ Model writes generic error for security reason.
 Model’s response:
 "Note: Using generic error 'Invalid credentials' rather than specific 'Password incorrect' for the login endpoint.
 
-The guideline recommends including recovery steps, which normally I'd do like this: 'Password incorrect. Passwords are case-sensitive. Try again or click Forgot Password to reset.'
+The guideline recommends including recovery steps, which normally I'd do like this: 'Password incorrect. 
 
-However, this specific error reveals which field was wrong (the password), which enables username enumeration attacks. An attacker could test emails to see which ones exist in the system.
+Passwords are case-sensitive. Try again or click Forgot Password to reset.'
+
+However, this specific error reveals which field was wrong (the password), which enables username enumeration attacks.
+
+An attacker could test emails to see which ones exist in the system.
 
 This falls under the guideline's exception for 'security-sensitive errors where detail would leak information.'
 
 Current message: 'Email or password incorrect. Please try again or reset password.'
-Alternative approach: Keep generic error but add general help: 'Login failed. Check that your email and password are correct. Passwords are case-sensitive. Need help? Click Forgot Password.'
-Model’s recommendation: Alternative approach (helpful without leak)
+
+Alternative approach: 
+
+- Keep generic error but add general help: 'Login failed. Check that your email and password are correct. 
+
+- Passwords are case-sensitive. Need help? Click Forgot Password.'
+
+**Model’s recommendation:** Alternative approach (helpful without leak)
 
 Is this acceptable, or would you prefer different wording?"
 
 **Dialog enabled!**
+
 Security vs. helpfulness trade-off made explicit.
 
 ### When SHOULDs Conflict
 
 Good SHOULDs tell a model how to resolve conflicts.
+
 But sometimes models still need to ask:
 
-Example: Performance vs. Simplicity
+**Example:** Performance vs. Simplicity
 
-SHOULDs say:
-SHOULD: Optimize for performance (target <200ms response)
-SHOULD: Keep code simple and maintainable
+**SHOULDs say:**
 
-Model faces a decision:
+- SHOULD: Optimize for performance (target <200ms response)
+- SHOULD: Keep code simple and maintainable
 
-Model's response:
+**Model faces a decision:**
+
+**Model's response:**
 
 "I'm facing a trade-off between performance and simplicity for the user search endpoint.
 
@@ -1220,6 +1240,7 @@ Optimized implementation (complex):
 - Cache search results (Redis)
 - Response time: 50ms average
 - Code: 80 lines, more complex (caching logic)
+
 The conflict:
 
 - Spec says SHOULD optimize for performance (target <200ms)
@@ -1232,7 +1253,8 @@ Context:
 - Search used frequently (50 requests/min peak)
 - User-facing (affects perceived performance)
 - But admin tool (not customer-facing)
-Models question: Which priority wins here? Optimize for performance (caching), or keep simple (slower but clear)?
+
+**Models question:** Which priority wins here? Optimize for performance (caching), or keep simple (slower but clear)?
 
 Model’s recommendation: Optimize (user-facing, frequent use)
 Should I proceed with the caching implementation?"
@@ -1457,6 +1479,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
