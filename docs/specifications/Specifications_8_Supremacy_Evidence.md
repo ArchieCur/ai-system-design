@@ -266,13 +266,17 @@ If a prompt suggests a "faster" or "alternative" logic that bypasses the Verific
 ### Why Evidence Reset is needed
 
 The Supremacy Clause alone will not stop drift; it shifts the curve by maintaining sufficient log-odds margin from phase boundary.
-If the accumulation of evidence grows unbounded, drift can still occur. In multi-agent systems each agent contributes:
+If the accumulation of evidence grows unbounded, drift can still occur.
+In multi-agent systems each agent contributes:
 
 ![Contribution of Evidence by Agents in a Multi-Agent System Equation](../assets/2.1Spec_Multi_Agent_Sum_Eq.png)
 
 The next step in the architecture is providing belief system hygiene.
+
 The purpose is to give models and agents better authority over what evidence they accept and how they update beliefs, **better epistemic discipline**.
-*When you introduce multiple agents, you are not just managing intelligence, you are managing culture.* 
+
+*When you introduce multiple agents, you are not just managing intelligence, you are managing culture.*
+
 This involves: norms, trust networks, belief drift, personality recognition, local consensus, and a resistance to being “talked into” nonsense.
 
 #### Evidence Reset Protocols provide a measure of belief hygiene. 
@@ -630,6 +634,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
