@@ -701,6 +701,7 @@ Fresh start with:
 A model doesn't experience a persona flip the way a human might experience a change of mind.
 There is no moment of decision, no felt resistance, no awareness that a threshold has been crossed.
 From a model’s perspective, each response feels locally coherent.
+
 **The model is always doing what seems most appropriate given the evidence in front of them.**
 
 **That is precisely what makes drift dangerous.**
@@ -770,6 +771,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
