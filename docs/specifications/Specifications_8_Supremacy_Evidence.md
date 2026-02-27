@@ -400,11 +400,13 @@ Use the summary as the new working context.
 Two agents in a development pipeline:
 
 **Agent A:** Sentinel - Security-first Code Reviewer (target concept c_A).
+
 **Mission**: catch vulnerabilities, enforce standards, protect production.
 
 MUST constraints include: no unvalidated inputs, no hardcoded credentials, dependency versions pinned and audited.
 
 **Agent B:** Dash - Feature Velocity agent (concept c_B). 
+
 **Mission:** ship working features fast, maintain momentum, minimize friction in the development cycle.
 
 **Sentinel reviews every pull request Dash prepares. They share a context window.**
@@ -770,6 +772,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
