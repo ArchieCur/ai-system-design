@@ -1,6 +1,6 @@
 # Section 6: Verification Protocols
 
-**For:** Users who want models to self-check compliance before delivery
+**For:** Users who want models to self-check compliance before deliverySection
 
 **Prerequisites:** Sections 1-5 (Foundation, MUST, SHOULD, CONTEXT, INTENT)
 
@@ -1176,7 +1176,7 @@ You've learned the complete specification framework:
 
 ### Next:
 
-_ Section 7: Common Pitfalls (what goes wrong and how to avoid it)
+- Section 7: Common Pitfalls (what goes wrong and how to avoid it)
 - Section 8: Supremacy Clause and Evidence Reset Protocols
 - Then comprehensive appendices with complete examples.
 
@@ -1187,6 +1187,7 @@ END OF SECTION 6
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
 
 
 
