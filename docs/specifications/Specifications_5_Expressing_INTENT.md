@@ -1,19 +1,24 @@
 # Section 5: Expressing INTENT
 
 **For:** Users who want models to understand the "why" behind requirements
+
 **Prerequisites:** Sections 1-4 (Foundation, MUST, SHOULD, CONTEXT)
+
 What you'll learn: How to express intent so models make decisions aligned with your goals
 
 ## Introduction
 
 You've learned how to write MUST constraints (boundaries), SHOULD guidelines (preferences),and CONTEXT (planning information). Now we explore INTENT—the "why" behind everything.
 
-From a model’s perspective:
+**From a model’s perspective:**
 
 **When you provide INTENT, you're saying:**
 
-"Here’s WHY these constraints exist, WHAT we're trying to achieve, and HOW success looks. Use this to make intelligent decisions when the path isn't clear."
-This is goal alignment, not rules.
+"Here’s WHY these constraints exist, WHAT we're trying to achieve, and HOW success looks.
+
+Use this to make intelligent decisions when the path isn't clear."
+
+**This is goal alignment, not rules.**
 
 ### This section teaches you how to express INTENT that
 
@@ -21,11 +26,13 @@ This is goal alignment, not rules.
 - Enables a model to suggest alternatives (if constraints conflict)
 - Guides a model when specs are incomplete (what's the goal?)
 - Aligns a model’s decisions with your goals (same direction)
+
 Let's explore what makes INTENT work from the trenches.
 
 ## What INTENT Is (And Why It Matters)
 
-The Fundamental Purpose
+### The Fundamental Purpose
+
 **INTENT = The "Why" Behind Everything**
 
 INTENT answers:
@@ -35,13 +42,13 @@ INTENT answers:
 - What does success look like?
 - Why did we choose this approach over alternatives?
 
-### INTENT is not
+#### INTENT is not
 
 - Another constraint (that's MUST)
 - A preference (that's SHOULD)
 - Background info (that's CONTEXT)
 
-### INTENT is
+#### INTENT is
 
 - The goal we're working toward
 - The rationale behind decisions
@@ -50,36 +57,45 @@ INTENT answers:
 
 ## Why INTENT Matters
 
-Without INTENT, a model knows WHAT but not WHY:
+**Without INTENT, a model knows WHAT but not WHY:**
 
-Example: Password Requirements
-With only MUST:
+### Example: Password Requirements
 
-`<constraint>`
+**With only MUST:**
+
+```text
+
+<constraint>
 MUST: Password minimum 12 characters
 MUST: Must include uppercase, lowercase, number, special character
 MUST: Bcrypt hashing with salt rounds = 12
-`</constraint>`
+</constraint>
+```
 
-What a model knows:
-The rules ✓
-The boundaries ✓
+**What a model knows:**
 
-What a model DOESN'T know:
-Why 12 characters? (why not 10 or 15?)
-Why bcrypt? (why not argon2?)
-Why these specific requirements?
-Result: A model follows the rules but can't explain trade-offs or suggest improvements.
+- The rules ✓
+- The boundaries ✓
 
-With INTENT added:
+**What a model DOESN'T know:**
 
-`<constraint>`
+- Why 12 characters? (why not 10 or 15?)
+- Why bcrypt? (why not argon2?)
+- Why these specific requirements?
+
+**Result: A model follows the rules but can't explain trade-offs or suggest improvements.**
+
+**With INTENT added:**
+
+```text
+
+<constraint>
 MUST: Password minimum 12 characters
 MUST: Must include uppercase, lowercase, number, special character
 MUST: Bcrypt hashing with salt rounds = 12
-`</constraint>`
+</constraint>
 
-`<intent>`
+<intent>
 
 **Goal:** Balance security and usability for non-technical users.
 
@@ -91,9 +107,9 @@ frustration and password reuse (users can't remember complex
 long passwords, so they reuse them—defeating security).
 
 **Why complexity requirements:**
-Prevents common passwords ("password123"). Complexity + length
-= harder to crack. But not excessive (no "3 special chars"
 
+Prevents common passwords ("password123"). Complexity + length= harder to crack.
+But not excessive (no "3 special chars"
 requirement) because user frustration increases abandonment.
 
 **Why bcrypt salt rounds = 12:**
@@ -108,19 +124,21 @@ would add noticeable delay.
 - Users can create and remember passwords (low reset rate)
 - Passwords resist brute force attacks (no successful attacks)
 - Login experience feels instant (<500ms total)
-`</intent>`
+</intent>
+```
 
-Now a model knows:
-The goal (balance security + usability) ✓
-The trade-offs (longer = more secure BUT users frustrated) ✓
-The reasoning (12 chars = sweet spot from research) ✓
-Success criteria (low resets, no attacks, fast login) ✓
+**Now a model knows:**
 
-Result: A model can explain decisions, suggest alternatives if constraints conflict, and align with your actual goals.
+- The goal (balance security + usability) ✓
+- The trade-offs (longer = more secure BUT users frustrated) ✓
+- The reasoning (12 chars = sweet spot from research) ✓
+- Success criteria (low resets, no attacks, fast login) ✓
+
+**Result: A model can explain decisions, suggest alternatives if constraints conflict, and align with your actual goals.**
 
 ## How a model Uses INTENT
 
-INTENT helps a model in four key ways:
+**INTENT helps a model in four key ways:**
 
 1. Understanding purpose (why this matters)
 2. Resolving ambiguity (when specs are unclear)
@@ -129,34 +147,41 @@ INTENT helps a model in four key ways:
 
 ### Use Case 1: Understanding Purpose
 
-Scenario: API Rate Limiting
+**Scenario: API Rate Limiting**
 
- With only constraints:
+ With only MUST constraints:
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Rate limit: 100 requests per minute per user
 MUST: Return 429 status when limit exceeded
-`</constraint>`
+</constraint>
+```
 
-A model’s understanding:
-There's a rate limit ✓
-It's 100/min ✓
-Return 429 when exceeded ✓
+**A model’s understanding:**
 
-What a model doesn't understand:
+- There's a rate limit ✓
+- It's 100/min ✓
+- Return 429 when exceeded ✓
 
-Why 100? (why not 50 or 200?)
-What problem does this solve?
+**What a model doesn't understand:**
+
+- Why 100? (why not 50 or 200?)
+- What problem does this solve?
+- 
 Is this for security or performance?
 
 With INTENT:
 
-`<constraint>`
+```text
+
+<constraint>
 MUST: Rate limit: 100 requests per minute per user
 MUST: Return 429 status when limit exceeded
-`</constraint>`
+</constraint>
 
-`<intent>`
+<intent>
 
 **Problem we're solving:**
 
@@ -180,21 +205,24 @@ frustrate power users.
 - Legitimate users never hit limit (even power users)
 - Buggy code gets caught (prevents infrastructure impact)
 - Clear error message guides developers to fix bugs
-`</intent>`
+</intent>
+```
 
-Now a model understands:
-PURPOSE: Catch bugs, not block users ✓
-REASONING: 100 = 2x burst (generous!) ✓
-GOAL: Protect infrastructure without frustrating users ✓
+**Now a model understands:**
 
-How this changes a model’s approach:
+- PURPOSE: Catch bugs, not block users ✓
+- REASONING: 100 = 2x burst (generous!) ✓
+- GOAL: Protect infrastructure without frustrating users ✓
+
+**How this changes a model’s approach:**
+
 User asks: "Can we increase rate limit to 200?"
 
-Without INTENT, a model might say:
+**Without INTENT,** a model might say:
 
 "The spec says 100. I'll need your approval to change it."
 
-With INTENT, a model can reason:
+**With INTENT,** a model can reason:
 
 "The rate limit is set at 100/min to catch buggy infinite loops while allowing 2x burst headroom for legitimate heavy use. Current data shows power users max out at 60/min.
 
@@ -1182,3 +1210,4 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
