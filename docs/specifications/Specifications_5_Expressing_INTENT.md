@@ -420,7 +420,7 @@ is important but can be done asynchronously if needed.
 
 **A model’s alternative suggestion:**
 
-"I notice the constraints conflict: database logging (50-100ms),
+I notice the constraints conflict: database logging (50-100ms),
 validation (80-120ms) = 130-220ms, which exceeds the 200ms requirement.
 Based on the INTENT's priority order:
 
@@ -1333,6 +1333,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
 
