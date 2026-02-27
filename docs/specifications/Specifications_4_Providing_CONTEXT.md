@@ -1,18 +1,23 @@
 # Section 4: Providing CONTEXT
 
 **For:** Users who want to help models make better decisions
+
 **Prerequisites:** Sections 1-3 (Foundation, MUST, and SHOULD)
+
 What you'll learn: How to provide context that helps models plan effectively without overwhelming them
 
 ## Introduction
 
-You've learned how to write MUST constraints (hard boundaries) and SHOULD guidelines (flexible preferences). Now we explore CONTEXT—the planning information that helps models make intelligent decisions within those boundaries.
+You've learned how to write MUST constraints (hard boundaries) and SHOULD guidelines (flexible preferences).
 
-From a model’s perspective:
+Now we explore CONTEXT—the planning information that helps models make intelligent decisions within those boundaries.
+
+**From a model’s perspective:**
 When you provide CONTEXT, you're saying:
 
-"Here's the background you need to make good decisions. This isn't a constraint—it's a lens to
-help you prioritize, make tradeoffs, and choose the right approach."
+"Here's the background you need to make good decisions.
+
+This isn't a constraint—it's a lens to help you prioritize, make tradeoffs, and choose the right approach."
 
 **This is planning support, not rules.**
 
@@ -22,25 +27,29 @@ help you prioritize, make tradeoffs, and choose the right approach."
 - Informs tradeoffs (when things conflict?)
 - Guides judgment (how to decide?)
 - Doesn't overwhelm (focused, relevant)
-Let's explore what makes CONTEXT work from the trenches.
 
 ## What CONTEXT Is (And Isn't)
 
 The Fundamental Nature
 
 **CONTEXT = Planning Information**
-Not:
-Constraints (that's MUST)
-Preferences (that's SHOULD)
-Instructions (that's prompts)
 
-But:
-Background that informs decisions
-Priorities when making tradeoffs
-Understanding of who/what/why
- lens for intelligent judgment
+**Not:**
+
+- Constraints (that's MUST)
+- Preferences (that's SHOULD)
+- Instructions (that's prompts)
+
+**But:**
+
+- Background that informs decisions
+- Priorities when making tradeoffs
+- Understanding of who/what/why
+- Lens for intelligent judgment
 
 ### Example: The Difference
+
+```text
 
 MUST (constraint):
 MUST: API response time <200ms (95th percentile)
@@ -54,34 +63,43 @@ Model’s response: This is preferred. I'll follow unless good reason not to. �
 
 CONTEXT (planning info):
 
-`<context>`
+<context>
+
 Users: Non-technical small business owners
+
 Usage pattern: Peak 9am-12pm (morning admin), low afternoons
+
 Current pain: "System feels slow during morning rush"
+
 Priority: User experience > System efficiency
+
 Scale: 2K users, 50 concurrent peak
-`</context>`
-Model’s response:
-Ah! Morning peak is the problem (9am-12pm)
-Users are non-technical (need simplicity, not complexity)
-"Feels slow" = perception matters (target <200ms for instant feel)
-Priority is UX, not efficiency (ok to use more resources for speed)
-Scale is small (can optimize for speed, not scale)
+</context>
+```
+**Model’s response:**
+
+- Ah! Morning peak is the problem (9am-12pm)
+- Users are non-technical (need simplicity, not complexity)
+- "Feels slow" = perception matters (target <200ms for instant feel)
+- Priority is UX, not efficiency (ok to use more resources for speed)
+- Scale is small (can optimize for speed, not scale)
 
 Now when a model sees the SHOULD about caching, it understands:
-WHY caching matters (morning peak performance!)
-WHERE to cache (morning admin workflows!)
-HOW aggressive (very—UX is priority!)
+
+- WHY caching matters (morning peak performance!)
+- WHERE to cache (morning admin workflows!)
+- HOW aggressive (very—UX is priority!)
 
 **CONTEXT changed HOW a model applies the SHOULD!!!**
 
-### CONTEXT vs. Other Layers
+## CONTEXT vs. Other Layers
 
-How the four layers work together:
+**How the four layers work together:**
 
 CONTEXT informs HOW a model executes within the boundaries.
-When CONTEXT Helps a model
-(Good Examples)
+
+### When CONTEXT Helps a model (Good Examples)
+
 CONTEXT helps a model when it provides:
 
 1. Who (users/audience)
@@ -90,11 +108,13 @@ CONTEXT helps a model when it provides:
 4. Why (priorities/pain points)
 5. How much (scale/scope)
 
-## Example 1: Technical Environment Context
+#### Example 1: Technical Environment Context
 
 CONTEXT That Helps:
 
-`<context scope="technical-environment">`
+```text
+
+<context scope="technical-environment">
 **Technology Stack:**
 
 - Backend: Node.js 20 LTS on AWS Lambda
@@ -122,15 +142,17 @@ CONTEXT That Helps:
 - Production: Blue-green deployment
 - Staging: Mirrors production
 - Dev: Local development with Docker
-`</context>`
+</context>
 
-### Why this helps a model
+#### Why this helps a model
 
 1. Technology Choices Informed:
 Scenario: User asks for caching solution
+
 **Without context:**
 Model: "I could use Redis, Memcached, or in-memory caching..."
 [Guesses which to recommend]
+
 **With context:**
 Model: "Given Lambda serverless architecture, external caching
 (ElastiCache Redis) makes most sense. In-memory caching
@@ -141,9 +163,11 @@ CONTEXT guided my recommendation! ✓
 
 2. Constraints Understood:
 Scenario: User asks for long-running background job
+
 **Without context:**
 Model: "I'll create a background worker process..."
 [Designs solution that won't work]
+
 **With context:**
 Model: "Lambda has 15-second timeout, so long-running job won't work.
 Two options:
@@ -156,11 +180,12 @@ CONTEXT prevented impossible solution! ✓
 
 3. Team Capabilities Considered:
 Scenario: User asks for complex optimization
-**Without context:**
 
+**Without context:**
 Model: "I'll use advanced caching with cache invalidation
 strategies, distributed locks, and Redis Cluster..."
 [Designs solution team can't maintain]
+
 **With context:**
 Model: "Given mix of senior and mid-level developers, I'll design
 straightforward caching with clear patterns:
@@ -169,6 +194,7 @@ straightforward caching with clear patterns:
 - TTL-based expiration (no complex invalidation)
 - Well-commented code (learning opportunity)
 - Comprehensive tests (safety net)
+```
 
 This balances performance with maintainability for your team."
 CONTEXT matched solution to team! ✓
@@ -1101,3 +1127,4 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
