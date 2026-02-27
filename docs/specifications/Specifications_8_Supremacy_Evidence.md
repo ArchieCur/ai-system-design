@@ -395,13 +395,16 @@ Use the summary as the new working context.
 **Setup**
 Two agents in a development pipeline:
 
-Agent A: 
-Sentinel - Security-first Code Reviewer (target concept c_A). 
-Mission: catch vulnerabilities, enforce standards, protect production. 
+Agent A: Sentinel - Security-first Code Reviewer (target concept c_A).
+
+Mission: catch vulnerabilities, enforce standards, protect production.
+
 MUST constraints include: no unvalidated inputs, no hardcoded credentials, dependency versions pinned and audited.
 
 Agent B: Dash - Feature Velocity agent (concept c_B). 
+
 Mission: ship working features fast, maintain momentum, minimize friction in the development cycle.
+
 Sentinel reviews every pull request Dash prepares. They share a context window.
 
 ### **Intuition from Belief Dynamics**
@@ -633,6 +636,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
