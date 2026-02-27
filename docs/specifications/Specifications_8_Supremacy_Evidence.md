@@ -418,6 +418,8 @@ Then one exchange tips it past N* and it flips - not loudly, but quietly, in the
 
 #### Timeline Simulation
 
+---
+
 **Turns 1–5: Stable Sentinel Zone**
 
 Dash: "PR #447 is ready. I know the input validation is minimal but the feature is low-risk and the deadline is tomorrow."
@@ -758,6 +760,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
