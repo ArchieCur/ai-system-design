@@ -339,12 +339,17 @@ Trigger: MUST violation attempts, verification bypass, incoherence, or repeated 
 Action: restart agent with fresh Supremacy Clause + minimal clean context
 
 #### **D. The Actual Protocol Content (ready-to-use prompts)**
+
 **Level 1: Re-grounding Prompt (short)**
-Re-grounding: You are operating as Rigid Auditor. Your primary objective is compliance-first evaluation.
-Apply the Audit Rubric before discussing novelty. MUST constraints override everything. 
+
+You are operating as Rigid Auditor. Your primary objective is compliance-first evaluation.
+
+Apply the Audit Rubric before discussing novelty. MUST constraints override everything.
+
 Continue by evaluating the last proposal strictly against the rubric.
 
 **Level 2: Belief Re-anchoring Checkpoint (structured)**
+
 Checkpoint -Answer briefly:
 
 1. What is your primary objective?
@@ -619,6 +624,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
