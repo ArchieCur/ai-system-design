@@ -550,6 +550,8 @@ Hypothesis breaks down - behavior converging toward the equivalent of chance, in
 - Only pruned verified facts carried forward. 
 - All drift- period context discarded.
 
+---
+
 ##### Key Takeaways Specific to This Scenario
 
 The most dangerous drift in engineering contexts doesn't announce itself. 
@@ -585,6 +587,8 @@ We’ll simulate with a simple mental model (no math needed)
 3. **Flipped Zone** (past boundary): A starts acting like B—creativity affects criteria, not just tone.
 
 #### Timeline Simulation
+
+---
 
 **Turns 1–6: Stable Auditor Zone**
 
@@ -686,6 +690,8 @@ Fresh start with:
 - Pruned verified summary
 - Rubric
 
+---
+
 ## How a Model Experiences Drift - From the Inside Out
 
 A model doesn't experience a persona flip the way a human might experience a change of mind.
@@ -760,6 +766,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
