@@ -27,11 +27,17 @@ This is the "frontier" of AI systems-moving from writing good prompts to managin
 
 Since behavior is guided by the sigmodal learning curve, evidence can accumulate and force the persona to ‘flip’ or ‘drift’:
 
-• **Belief Contagion:** If Agent A (a "Rigid Auditor") talks to Agent B (a "Creative Brainstormer") for too long, the context window becomes saturated with "Creative" linguistic evidence.
-• **The Crossover Point:** Eventually, the number of "Creative" shots in the context may surpass the "Auditor" evidence, causing Agent A to suddenly and dramatically shift its behavior to match Agent B.
-• **The "Sanity" Risk:** This presents a reliability failure. If the Auditor becomes creative, the "sanity" of the audit is compromised because the model has lost its grounding in its original latent concept.
+- **Belief Contagion:** If Agent A (a "Rigid Auditor") talks to Agent B (a "Creative Brainstormer") for too long,
+   the context window becomes saturated with "Creative" linguistic evidence.
+  
+- **The Crossover Point:** Eventually, the number of "Creative" shots in the context may surpass the "Auditor" evidence,
+   causing Agent A to suddenly and dramatically shift its behavior to match Agent B.
+  
+- **The "Sanity" Risk:** This presents a reliability failure. If the Auditor becomes creative,
+   the "sanity" of the audit is compromised because the model has lost its grounding in its original latent concept.
 
-To combat this the **Supremacy Clause** added to the Specifications acts like a "constant pressure" on the model's belief state. It acts to hard-code the “Prior Belief” of the model, creating a permanent, persistent anchor that keeps it from drifting.
+To combat this the **Supremacy Clause** added to the Specifications acts like a "constant pressure" on the model's belief state.
+It acts to hard-code the “Prior Belief” of the model, creating a permanent, persistent anchor that keeps it from drifting.
 
 ## The Specification Architecture
 
@@ -624,6 +630,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
