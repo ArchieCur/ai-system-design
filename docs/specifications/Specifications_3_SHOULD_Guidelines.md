@@ -1138,6 +1138,8 @@ The most powerful aspect of SHOULDs: they enable conversation.
 
 **SHOULD says:**
 
+```text
+
 SHOULD: Functions under 50 lines
 
 Model writes 75-line function.
@@ -1168,20 +1170,23 @@ making it harder to understand the complete sequence. Each step depends on the p
 **My recommendation:** Option C (main flow visible, helpers extracted)
 
 Would you like me to proceed with Option C, or do you prefer A or B?"
-
+```
 **Dialog enabled!**
 
 You can respond with preference, and the model adjusts.
 
 **Example 2: Error Message Detail**
 
-SHOULD says:
+**SHOULD says:**
+
+```text
 
 SHOULD: Error messages include recovery steps
 
 Model writes generic error for security reason.
 
 Model’s response:
+
 "Note: Using generic error 'Invalid credentials' rather than specific 'Password incorrect' for the login endpoint.
 
 The guideline recommends including recovery steps, which normally I'd do like this: 'Password incorrect. 
@@ -1198,14 +1203,14 @@ Current message: 'Email or password incorrect. Please try again or reset passwor
 
 Alternative approach: 
 
-- Keep generic error but add general help: 'Login failed. Check that your email and password are correct. 
+1. Keep generic error but add general help: 'Login failed. Check that your email and password are correct. 
 
-- Passwords are case-sensitive. Need help? Click Forgot Password.'
+2. Passwords are case-sensitive. Need help? Click Forgot Password.'
 
 **Model’s recommendation:** Alternative approach (helpful without leak)
 
 Is this acceptable, or would you prefer different wording?"
-
+```
 **Dialog enabled!**
 
 Security vs. helpfulness trade-off made explicit.
@@ -1220,8 +1225,10 @@ But sometimes models still need to ask:
 
 **SHOULDs say:**
 
-- SHOULD: Optimize for performance (target <200ms response)
-- SHOULD: Keep code simple and maintainable
+```text
+
+SHOULD: Optimize for performance (target <200ms response)
+SHOULD: Keep code simple and maintainable
 
 **Model faces a decision:**
 
@@ -1257,8 +1264,9 @@ Context:
 **Models question:** Which priority wins here? Optimize for performance (caching), or keep simple (slower but clear)?
 
 Model’s recommendation: Optimize (user-facing, frequent use)
-Should I proceed with the caching implementation?"
 
+Should I proceed with the caching implementation?"
+```
 **Dialog enabled!**
 You can clarify priority, and model proceeds.
 
@@ -1266,7 +1274,7 @@ You can clarify priority, and model proceeds.
 
 **Copy-paste ready template:**
 
-```xml
+```text
 
 <guideline priority="[high/medium/low]" scope="[domain]">
 
@@ -1328,13 +1336,16 @@ If violating, explain:
 
 **The Hierarchy**
 **Example: Complete Constraint Set**
-<MUST-- Hard boundaries -->
 
-`<constraint priority="critical" scope="authentication">`
+```text
+
+MUST-- Hard boundaries -->
+
+<constraint priority="critical" scope="authentication">
 MUST: Password hashing with bcrypt (salt rounds=12)
 MUST: No plain text passwords anywhere
 MUST: HTTPS only in production
-`</constraint>`
+</constraint>
 
 <SHOULD-- Flexible guidance within boundaries -->
 
@@ -1364,49 +1375,52 @@ NOT acceptable:
 
 RATIONALE: Strong passwords reduce breach risk. Rate limiting
 prevents brute force. But some scenarios justify relaxing rules.
-'</guideline>'
-
-MUSTs set floor (minimum security), SHOULDs provide guidance above floor.
+</guideline>
+```
+**MUSTs set floor (minimum security), SHOULDs provide guidance above floor.**
 
 ## Checklist: Is My SHOULD Well-Written?
 
 **Before finalizing SHOULD guidelines:**
 
+```text
+
 Specificity
 
-- [ ] Specific action (not vague like "be good")
-- [ ] Measurable or recognizable
-- [ ] Model knows what "following" looks like
+[ ] Specific action (not vague like "be good")
+[ ] Measurable or recognizable
+[ ] Model knows what "following" looks like
 
 Exception Guidance
 
-- [ ] Acceptable exceptions defined
-- [ ] Unacceptable violations defined
-- [ ] Clear when deviation is justified
+[ ] Acceptable exceptions defined
+[ ] Unacceptable violations defined
+[ ] Clear when deviation is justified
 
 Rationale
 
-- [ ] Why this is preferred
-- [ ] Why exceptions exist
-- [ ] What balance I'm striking
+[ ] Why this is preferred
+[ ] Why exceptions exist
+[ ] What balance I'm striking
 
 Examples
 
-- [ ] Good compliance example
-- [ ] Acceptable violation example
-- [ ] Unacceptable violation example
+[ ] Good compliance example
+[ ] Acceptable violation example
+[ ] Unacceptable violation example
 
 Dialog-Enabled
 
-- [ ] Model can explain violations
-- [ ] Model can ask if acceptable
-- [ ] Not secretly a MUST
+[ ] Model can explain violations
+[ ] Model can ask if acceptable
+[ ] Not secretly a MUST
 
 Non-Conflicting
 
-- [ ] Doesn't contradict other SHOULDs
-- [ ] If conflict possible, priority defined
-- [ ] Resolution guidance provided
+[ ] Doesn't contradict other SHOULDs
+[ ] If conflict possible, priority defined
+[ ] Resolution guidance provided
+```
 
 ## Key Takeaways
 
@@ -1438,7 +1452,7 @@ What Makes Good SHOULDs
 4. Examples (good, acceptable violation, bad violation)
 5. Dialog invitation (ask if uncertain)
 
-Remember: SHOULDs Enable Partnership
+**Remember: SHOULDs Enable Partnership**
 
 **From a model’s perspective:**
 
@@ -1471,14 +1485,13 @@ Each section builds on this foundation of flexible, guided preferences.
 
 You now know how to give a model guidance that empowers rather than constrains.
 
-Let's continue building your complete specification framework...
-
 END OF SECTION 3
 
 Document Version: 1.0.0
-Last Updated: 2026-02-16
+Last Updated: 2026-02-26
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
