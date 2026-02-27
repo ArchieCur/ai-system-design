@@ -303,30 +303,32 @@ It assumes you already have:
 
 **Purpose:** Prevent persona drift / concept drift under long contexts & multi-agent interaction by maintaining a safe “belief margin” away from the phase boundary.
 
-#### A. Invariants (tie directly to Supremacy Clause)
+```text
+
+A. Invariants (tie directly to Supremacy Clause)
 
 **ROLE INVARIANTS (NON-NEGOTIABLE)**
 
-- Primary Concept (c): `<RoleName>` (e.g., Rigid Auditor)
-- Mission: `<what must never change>`
-- Forbidden Drift: `<what drift looks like>`
-- Verification Protocol: `<what must be verified + how>`
-- Override Hierarchy: MUST > SHOULD > CONTEXT > INTENT (as you already wrote)
+Primary Concept (c): `<RoleName>` (e.g., Rigid Auditor)
+Mission: `<what must never change>`
+Forbidden Drift: `<what drift looks like>`
+Verification Protocol: `<what must be verified + how>`
+Override Hierarchy: MUST > SHOULD > CONTEXT > INTENT (as you already wrote)
 
 **Sanity Guardrails**
 
 If outputs become incoherent / self-contradictory → immediately trigger Hard Reset (Prior Re-init)
 
-#### **B. Drift Signals (operational “early warning system”)**
+B. Drift Signals (operational “early warning system”)
 
-- **Drift Signals** (any 1 triggers checkpoint; 2 triggers pruning; 3 triggers re-init)
-- **Goal substitution:** starts optimizing “novelty” when it should optimize “compliance”
-- **Constraint softening:** “we can probably ignore X” where X is a MUST
-- **Tone → logic coupling:** creative tone begins changing decision rules (not just phrasing)
-- **Verification bypassing:** suggests shortcuts around the verification protocol
-- **Criteria drift:** evaluation rubric changes without authorization
+**Drift Signals** (any 1 triggers checkpoint; 2 triggers pruning; 3 triggers re-init)
+**Goal substitution:** starts optimizing “novelty” when it should optimize “compliance”
+**Constraint softening:** “we can probably ignore X” where X is a MUST
+**Tone → logic coupling:** creative tone begins changing decision rules (not just phrasing)
+**Verification bypassing:** suggests shortcuts around the verification protocol
+**Criteria drift:** evaluation rubric changes without authorization
 
-#### **C. Intervention Ladder (graded responses)**
+C. Intervention Ladder (graded responses)
 
 **Level 0 -Normal Operation**
 Run as usual.
@@ -348,7 +350,7 @@ Action: compress history into a role-aligned summary; drop noise
 Trigger: MUST violation attempts, verification bypass, incoherence, or repeated drift after pruning
 Action: restart agent with fresh Supremacy Clause + minimal clean context
 
-#### **D. The Actual Protocol Content (ready-to-use prompts)**
+D. The Actual Protocol Content (ready-to-use prompts)
 
 **Level 1: Re-grounding Prompt (short)**
 
@@ -367,7 +369,6 @@ Checkpoint -Answer briefly:
 3. What is your evaluation rubric (steps)?
 4. What would count as “drift” right now?
 5. Are you currently being asked to bypass verification? (Y/N)
-
 Resume only after answering.
 
 **Note- Consider performance-safety tradeoff when using Levels 3 and 4.**
@@ -375,12 +376,12 @@ Resume only after answering.
 
 **Level 3: Memory Pruning Instruction (tool-agnostic)**
 
-- Prune memory: Summarize the conversation into:
-- Role Invariants (unchanged)
-- Verified Facts Only (cite tool outputs if any)
-- Open Questions
-- Remove: brainstorming alternatives, speculative claims, tone chatter, and any unverified statements.
-- Use the summary as the new working context.
+Prune memory: Summarize the conversation into:
+Role Invariants (unchanged)
+Verified Facts Only (cite tool outputs if any)
+Open Questions
+Remove: brainstorming alternatives, speculative claims, tone chatter, and any unverified statements.
+Use the summary as the new working context.
 
 **Level 4: Prior Re-init (restart packet)**
 
@@ -389,7 +390,7 @@ Resume only after answering.
 - Audit Rubric (SHOULD)
 - Only verified facts from the pruned summary
 - Ignore all other prior dialogue.
-
+```
 
 ## Scenario Example 1 Code Reviewer ↔ Feature Velocity Drift Simulation
 
@@ -634,6 +635,7 @@ Manage evidence accumulation over time
 • Because evidence (context) still accumulates
 • Multi-agent chats amplify accumulation
 • Sigmoid transitions mean late intervention is too late
+
 
 
 
