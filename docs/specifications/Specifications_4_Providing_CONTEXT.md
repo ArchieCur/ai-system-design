@@ -1,6 +1,7 @@
 # Section 4: Providing CONTEXT
 
-**For:** Users who want to help models make better decisions
+**For:**
+Users who want to help models make better decisions
 
 **Prerequisites:** Sections 1-3 (Foundation, MUST, and SHOULD)
 
@@ -559,6 +560,7 @@ Enterprise customers now 60% of revenue. SMB still 40%.
 - Buried in detail (can't find what matters!)
 - No clear relevance (why does the model need to know this?)
 - Takes forever to parse (cognitive overload!)
+
 **Result: Model will either ignore it all, or waste time finding relevant parts.**
 
 **Better Version (Focused):**
@@ -593,13 +595,16 @@ Enterprise customers now 60% of revenue. SMB still 40%.
 - Key constraint (backward compatibility requirement)
 - Relevant history (affects current decisions)
 - Concise (not overwhelming)
+
 **Model can use this! ✓**
 
 ### Problem 3: Irrelevant Context
 
 CONTEXT That Doesn't Matter:
 
-`<context>
+```text
+
+context>
 **Office Details:**`
 
 - Located in WeWork, downtown San Francisco
@@ -622,26 +627,30 @@ CONTEXT That Doesn't Matter:
 - Remote work Mondays
 - All-hands meeting Fridays at 4pm
 - Company retreats twice a year
-`</context>`
+</context>
+```
 
 **Why this is irrelevant:**
 
 For code/system decisions, model doesn't care about:
 
-Office furniture
-Lunch preferences
-Dress code
-Company retreats
-None of this affects:
-Technology choices
-Architecture decisions
-Code quality
-Performance optimization
-Result: Noise that distracts from relevant context.
+- Office furniture
+- Lunch preferences
+- Dress code
+- Company retreats
+- None of this affects:
+- Technology choices
+- Architecture decisions
+- Code quality
+- Performance optimization
+
+**Result:** Noise that distracts from relevant context.
 
 **Better Version (Relevant):**
 
-`<context>`
+```text
+
+<context>
 
 **Work Patterns:**
 
@@ -661,51 +670,62 @@ Result: Noise that distracts from relevant context.
 Core hours → Deploy during off-hours (after 3pm or before 10am)
 Remote Mondays → Async communication patterns in code reviews
 Friday all-hands → No risky deploys Friday afternoon
-Actually affects decisions! ✓
+```
+
+**Actually affects decisions! ✓**
 
 ### Problem 4: Context Conflicts with Constraints
 
 CONTEXT That Contradicts MUST:
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 
 MUST: All PII encrypted at rest (AES-256)
 MUST: HTTPS only in production
 MUST: No API keys in code
-`</constraint>`
+</constraint>
 
-`<context>`
+<context>
 **Speed is Critical:**
 We're in a race to market. Competitors are 2 months ahead.
 Need to ship fast, cut corners where possible.
 Perfect security can come later if we survive.
 Encryption is slow, avoid if possible.
-`</context>`
+</context>
+```
 
 **Why this is confusing:**
+
 Contradiction:
-MUST says: Encrypt PII, HTTPS only, secure practices
-CONTEXT says: Cut corners, skip encryption, speed over security
+
+- MUST says: Encrypt PII, HTTPS only, secure practices
+- CONTEXT says: Cut corners, skip encryption, speed over security
 
 Model’s confusion:
-Which wins? (MUST should win, but context suggests otherwise!)
-Is MUST actually flexible? (context implies it is!)
-Should I violate MUST? (context seems to encourage it!)
-Result: Paralyzed by contradiction, or will make wrong call.
+
+- Which wins? (MUST should win, but context suggests otherwise!)
+- Is MUST actually flexible? (context implies it is!)
+- Should I violate MUST? (context seems to encourage it!)
+
+**Result:** Paralyzed by contradiction, or will make wrong call.
 
 **Better Version (Aligned):**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: All PII encrypted at rest (AES-256)
 MUST: HTTPS only in production
 MUST: No API keys in code
-`</constraint>`
+</constraint>
 
-`<context>`
+<context>
 **Speed is Critical (Within Security Boundaries):**
-We're in competitive race (2 months behind).
 
-Need to ship fast WHERE SAFE:
+- We're in competitive race (2 months behind).
+- Need to ship fast WHERE SAFE:
 
 MOVE FAST:
 
@@ -719,23 +739,28 @@ NEVER COMPROMISE:
 - PII handling (compliance requirement)
 - Authentication (user trust critical)
 
-Philosophy: "Fast but secure. Ship features quickly,
+Philosophy:
+- "Fast but secure. Ship features quickly,
 but security is non-negotiable foundation."
-`</context>`
+</context>
+```
 
 **Why this works:**
 
-CONTEXT respects MUST constraints ✓
-Clarifies where speed is ok (UI, features) ✓
-Clarifies where it's not ok (security) ✓
-No contradiction ✓
-Aligned, not conflicting! ✓
+- CONTEXT respects MUST constraints ✓
+- Clarifies where speed is ok (UI, features) ✓
+- Clarifies where it's not ok (security) ✓
+- No contradiction ✓
 
-The CONTEXT Writing Pattern
+**Aligned, not conflicting! ✓**
 
-## Good CONTEXT follows this structure
+## The CONTEXT Writing Pattern
 
-`<context scope="[domain]">`
+### Good CONTEXT follows this structure
+
+```text
+
+<context scope="[domain]">
 
 **Current State:**
 [Who, what, where we are NOW]
@@ -758,13 +783,16 @@ When [X] conflicts with [Y], prioritize [X] because [reason].
 
 [What good looks like - measurable if possible]
 [Only what's relevant to decisions]
-`</context>`
+</context>
+```
 
 ### Applying This Pattern
 
-Example 1: Technical Context
+#### **Example 1: Technical Context**
 
-`<context scope="technical-environment">`
+```text
+
+<context scope="technical-environment">
 
 **Current State:**
 
@@ -795,11 +823,14 @@ Example 1: Technical Context
 - 99.9% uptime
 - <200ms API response (p95)
 - <2 hours to deploy new feature
-`</context>`
+</context>
+```
 
-Example 2: User Context
+#### **Example 2: User Context**
 
-`<context scope="users-and-audience">`
+```text
+
+<context scope="users-and-audience">
 **Current State:**
 
 - Users: Restaurant managers (35-60 years, non-technical)
@@ -829,11 +860,14 @@ Example 2: User Context
 - 90% task completion without help
 - <3 minutes per common task
 - Works offline for critical operations
-`</context>`
+</context>
+```
 
-Example 3: Business Context
+#### **Example 3: Business Context**
 
-`<context scope="business-priorities">`
+```text
+
+<context scope="business-priorities">
 
 **Current State:**
 
@@ -865,40 +899,48 @@ Example 3: Business Context
 - Hit $100K MRR by year end
 - Churn rate <5% monthly
 - Ship 2 major features per month
-`</context>`
+</context>
+```
 
 ## Common CONTEXT Mistakes
 
 ### Mistake 1: History Dump (Not Current State)
 
-Problem:
+**Problem:**
 
-`<context>`
+```text
+
+<context>
 
 Founded in 2010. First product PHP/MySQL. Migrated to Python 2013.
 Migrated to Node.js 2016. Adopted microservices 2018. Moved to AWS
 2019. Added Kubernetes 2020. Started TypeScript 2021...
 [Endless history, no current state]
-`</context>`
+</context>
+```
 
 **Solution:**
 
-`<context>`
+```text
+
+<context>
 
 **Current State (2026):**
 Node.js/TypeScript microservices on AWS + Kubernetes
 
 **Relevant History:**
 Legacy PHP API still running (migrate by 20265-Q2)
-`</context>`
-
-Focus on NOW, include history ONLY if it affects current decisions.
+</context>
+```
+**Focus on NOW, include history ONLY if it affects current decisions.**
 
 ### Mistake 2: Everything Is High Priority
 
 **Problem:**
 
-`<context>`
+```text
+
+<context>
 
 **Priorities:**
 
@@ -910,11 +952,14 @@ Focus on NOW, include history ONLY if it affects current decisions.
 - Cost efficiency is critical
 - Scalability is critical
 [Everything is critical = nothing is prioritized]
-`</context>`
+</context>
+```
 
 **Solution:**
 
-`<context>`
+```text
+
+<context>
 **Priorities (ranked, when they conflict):**
 
 1. Security (compliance requirement, non-negotiable)
@@ -928,25 +973,30 @@ Focus on NOW, include history ONLY if it affects current decisions.
 Security and reliability are never compromised.
 UX is our competitive advantage (protect it).
 Speed and cost are flexible within above constraints.
-`</context>`
-
-Ranked priorities with explicit trade-off guidance.
+</context>
+```
+**Ranked priorities with explicit trade-off guidance.**
 
 ### Mistake 3: No Decision Framework
 
 **Problem:**
 
-`<context>`
+```text
+
+<context>
 
 We value both quality and speed.
 We want happy customers and efficient development.
 We need reliability and innovation.
-`</context>`
-No guidance when these conflict!
+</context>
+```
+**No guidance when these conflict!**
 
 **Solution:**
 
-`<context>`
+```text
+
+<context>
 
 **Decision Framework:**
 WHEN quality conflicts with speed:
@@ -963,22 +1013,28 @@ WHEN technical debt slows development:
 
 If velocity drops >30% → sprint to fix debt
 If velocity drops <30% → keep shipping, fix gradually
-`</context>`
-Explicit guidance for common conflicts.
+</context>
+```
+**Explicit guidance for common conflicts.**
 
 ### Mistake 4: Vague Audience Description
 
 **Problem:**
 
-`<context>`
+```text
+
+<context>
 
 **Users:** Business professionals who value efficiency
-`</context>`
-Too vague to inform decisions!
+</context>
+```
+**Too vague to inform decisions!**
 
 **Solution:**
 
-`<context>`
+```text
+
+<context>
 **Users:**
 
 - Role: Sales managers at B2B companies
@@ -988,8 +1044,9 @@ Too vague to inform decisions!
 - Device: 80% desktop (in office), 20% mobile (on the road)
 - Pain point: "Too many tools, want everything in one place"
 - Success metric: Reduce time on admin tasks by 50%
-`</context>`
-Specific details that inform UI, complexity, and feature decisions.
+</context>
+```
+**Specific details that inform UI, complexity, and feature decisions.**
 
 ## Integration with MUST, SHOULD, and INTENT
 
@@ -997,18 +1054,20 @@ How all four layers work together:
 
 ### Complete Example: Payment Processing
 
+```text
+
 MUST: Hard boundaries
 
-`<constraint priority="critical" scope="payments">`
+<constraint priority="critical" scope="payments">
 MUST: PCI DSS compliant (never store card numbers)
 MUST: HTTPS only
 MUST: 3D Secure authentication for EU transactions
 MUST: Transaction logging (all attempts, even failed)
-`</constraint>`
+</constraint>
 
 SHOULD: Preferences
 
-`<guideline priority="high" scope="payments">`
+<guideline priority="high" scope="payments">
 SHOULD: Support Apple Pay and Google Pay (user convenience)
 SHOULD: Save payment methods for returning customers
 SHOULD: Provide receipt via email within 5 minutes
@@ -1016,11 +1075,11 @@ SHOULD: Provide receipt via email within 5 minutes
 WHEN violating:
 
 Document why (e.g., Apple Pay requires legal approval in some countries)
-`</guideline>`
+</guideline>
 
 CONTEXT: Planning information
 
-`<context scope="payments">`
+<context scope="payments">
 **Current State:**
 
 - Processing: Stripe (primary), PayPal (backup)
@@ -1051,11 +1110,11 @@ CONTEXT: Planning information
 - Cart abandonment <12%
 - Failed payment rate <1.5%
 - Zero PCI compliance violations
-`</context>`
+</context>
 
 INTENT: The why
 
-`<intent scope="payments">`
+<intent scope="payments">
 
 **Primary Goal:**
 Secure, frictionless payment experience that builds customer trust.
@@ -1070,27 +1129,39 @@ above industry average—payment UX is competitive advantage.
 Customers feel confident entering payment info (trust).
 Process completes in <30 seconds (friction-free).
 Zero chargebacks from fraud (secure).
-`</intent>`
+</intent>
+```
 
 ### How a model uses all four layers
 
-Scenario: User asks to add cryptocurrency payment option
+**Scenario:** User asks to add cryptocurrency payment option
 
-MUST tells a model: Must maintain PCI compliance, HTTPS, logging
-SHOULD tells a model: Prefer methods that improve UX
-CONTEXT tells a model:
-Only 5K transactions/month (low volume)
+- **MUST** tells a model: Must maintain PCI compliance, HTTPS, logging
+
+- **SHOULD** tells a model: Prefer methods that improve UX
+
+- **CONTEXT** tells a model: Only 5K transactions/month (low volume)
+
 Users are 60% credit card, 30% PayPal (traditional methods)
 Low cart abandonment already (12% vs 15%)
-INTENT tells a model: Goal is trust and low friction
-Model’s recommendation: "Given context (low volume, traditional user base) and intent (trust and low friction), cryptocurrency adds complexity without clear user demand. Current payment mix (credit/PayPal) already achieves <12% abandonment.
-Recommend: Wait until >50 customer requests OR competitor advantage appears. Resources better spent on failed payment recovery (2% failure rate could be reduced)."
 
-All four layers informed this decision!
+- **INTENT** tells a model: Goal is trust and low friction
+
+**Model’s recommendation:** "Given context (low volume, traditional user base) and intent (trust and low friction),
+
+cryptocurrency adds complexity without clear user demand. Current payment mix (credit/PayPal) already achieves <12% abandonment.
+
+**Recommend:** Wait until >50 customer requests OR competitor advantage appears. 
+
+Resources better spent on failed payment recovery (2% failure rate could be reduced)."
+
+**All four layers informed this decision!**
 
 ## Checklist: Is My CONTEXT Well-Written
 
 Before finalizing CONTEXT:
+
+```text
 
 Relevance
 
@@ -1123,10 +1194,12 @@ Alignment
 [ ] Doesn't conflict with MUST constraints
 [ ] Supports SHOULD preferences
 [ ] Connects to INTENT (explains why priorities exist)
+```
 
 ## Key Takeaways
 
-What Makes Good CONTEXT
+### **What Makes Good CONTEXT**
+
 Good CONTEXT is:
 
 1. Relevant (informs decisions, not just background)
@@ -1135,7 +1208,7 @@ Good CONTEXT is:
 4. Concise (focused on what matters)
 5. Aligned (doesn't contradict constraints)
 
-## Common Mistakes to Avoid
+### Common Mistakes to Avoid
 
 1. Vague ("We're a tech company") → Useless
 2. Too much (10 pages of history) → Overwhelming
@@ -1143,7 +1216,7 @@ Good CONTEXT is:
 4. Conflicting (contradicts MUST) → Confusing
 5. No priorities (everything is critical) → Unhelpful
 
-## The CONTEXT Pattern
+### The CONTEXT Pattern
 
 Every CONTEXT should have:
 
@@ -1154,18 +1227,21 @@ Every CONTEXT should have:
 5. Success criteria (what good looks like)
 
 Remember: CONTEXT Enables Better Decisions
-From a model’s perspective:
+
+**From a model’s perspective:**
 CONTEXT tells a model:
-Who I'm serving (audience understanding)
-What environment I'm in (technical constraints)
-What matters most (priority guidance)
-How to decide (trade-off framework)
+
+- Who I'm serving (audience understanding)
+- What environment I'm in (technical constraints)
+- What matters most (priority guidance)
+- How to decide (trade-off framework)
 
 Good CONTEXT enables a model to:
-Make intelligent tradeoffs (informed decisions)
-Prioritize correctly (focus effort)
-Match solutions to audience (appropriate complexity)
-Avoid wasted work (optimize what matters)
+
+- Make intelligent tradeoffs (informed decisions)
+- Prioritize correctly (focus effort)
+- Match solutions to audience (appropriate complexity)
+- Avoid wasted work (optimize what matters)
 
 **This is planning support, not rules.**
 
@@ -1173,18 +1249,20 @@ Avoid wasted work (optimize what matters)
 
 You've learned how to provide CONTEXT. Next:
 
-Section 5: Expressing INTENT (the "why" behind everything)
-Section 6: Verification Protocols (self-correction systems)
-Section 7: Common Pitfalls (what goes wrong)
-Section 8: Section 8: The Supremacy Clause and Evidence Reset Protocols (Belief Dynamics)
+- Section 5: Expressing INTENT (the "why" behind everything)
+- Section 6: Verification Protocols (self-correction systems)
+- Section 7: Common Pitfalls (what goes wrong)
+- Section 8: Section 8: The Supremacy Clause and Evidence Reset Protocols (Belief Dynamics)
+
 Each section builds on this foundation of informed decision-making.
 
 END OF SECTION 4
 
 Document Version: 1.0.0
-Last Updated: 2026-02-16
+Last Updated: 2026-02-27
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
 
 
 
