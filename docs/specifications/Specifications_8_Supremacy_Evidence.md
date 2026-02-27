@@ -230,9 +230,9 @@ The architecture can be viewed as a way to "guide" the variables in the paper's 
 
 ## Adding the Supremacy Clause
 
-The Supremacy Clause is added to the MUST layer of the Specification.
+**The Supremacy Clause is added to the MUST layer of the Specification.**
 
-By using this approach,you are essentially building a "mathematical firewall" around the model's core reasoning.
+By using this approach, you are essentially building a "mathematical firewall" around the model's core reasoning.
 
 ### **Pattern:** The Logic Supremacy Clause
 
@@ -758,6 +758,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
