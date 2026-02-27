@@ -381,10 +381,12 @@ LATER (if customers use it):
 - Comprehensive tests
 This matches startup stage (runway concern) and competitive
 pressure (need speed). Quality improves based on actual usage."
+
 **CONTEXT justified rapid iteration! ✓**
 
 2.What to Optimize:
-Scenario: Performance optimization request
+
+**Scenario:** Performance optimization request
 
 **Without context:**
 Model: "I'll optimize everything:
@@ -402,16 +404,18 @@ User pain point: 'Slow loading frustrates me'
 - Initial page load (first impression!)
 - Common operations (daily pain points!)
 - Mobile experience (60% of users!)
-DON'T OPTIMIZE (doesn't affect retention):
+- DON'T OPTIMIZE (doesn't affect retention):
 
 - Admin features (internal use, doesn't affect customers)
 - Reports (weekly use, patience higher)
 - Edge cases (rarely encountered)
-Focus optimization where it reduces churn."
+- Focus optimization where it reduces churn."
+
 **CONTEXT focused effort on business impact! ✓**
 
 3.Build vs. Buy:
-Scenario: User asks for email sending capability
+
+**Scenario:** User asks for email sending capability
 
 **Without context:**
 "I'll build custom email service with:
@@ -420,11 +424,12 @@ Scenario: User asks for email sending capability
 - Queue system
 - Retry logic
 - Analytics..."
-[Reinventing wheel, burning runway]
+- [Reinventing wheel, burning runway]
 
 **With context:**
 Model: "Given startup stage (18-month runway) and priority on
 speed to market, recommend:
+
 USE: SendGrid or AWS SES (battle-tested, $50/month)
 
 Why:
@@ -433,8 +438,9 @@ Why:
 - Proven reliability (99.9% uptime built-in)
 - Focus team on differentiation (better UX)
 - Low cost vs. developer time
-Build custom ONLY if email becomes competitive advantage
+- Build custom ONLY if email becomes competitive advantage
 (unlikely for your business model)."
+
 **CONTEXT drove build vs. buy decision! ✓**
 
 ## When CONTEXT Hurts a Model (Bad Examples)
@@ -475,6 +481,7 @@ Questions a model still has:
 - "Best practices" which ones? (Security? Performance? Accessibility?)
 - "Skilled team" in what? (Frontend? Backend? DevOps?)
 - "Competitive market" with whom? (What differentiates you?)
+
 **Result: Generic information that doesn't inform ANY decision.**
 
 **Better Version:**
@@ -503,6 +510,7 @@ Questions a model still has:
 - Concrete team skills (React/Node.js)
 - Known competitors (can research their approach)
 - Clear differentiation (offline mobile, simplicity)
+
 **Model can make decisions based on this! ✓**
 
 ### Problem 2: Too Much Context (Information Overload)
@@ -1177,6 +1185,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
 
 
 
