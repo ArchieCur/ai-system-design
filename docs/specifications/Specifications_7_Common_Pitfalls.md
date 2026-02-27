@@ -1,20 +1,30 @@
 # Section 7: Common Pitfalls
 
 **For:** Users who want to avoid common specification mistakes
+
 **Prerequisites:** Sections 1-6 (Complete specification framework)
-What you'll learn: What actually goes wrong with specs and how to avoid these traps
+
+**What you'll learn:** What actually goes wrong with specs and how to avoid these traps
 
 ## Introduction
 
-You've learned the complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION). Now we explore what actually goes wrong in practice—and how to avoid it.
-This section shares the mistakes models see most often, the traps users fall into repeatedly, and the anti-patterns that look good but fail spectacularly.
-These are real failures from the trenches.
+You've learned the complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION).
 
-This section teaches you:
-Common specification mistakes (and how to recognize them)
-Real-world failures (what went wrong and why)
-Recovery strategies (how to fix specs gone wrong)
-Anti-patterns (what NOT to do)
+Now we explore what actually goes wrong in practice—and how to avoid it.
+
+This section shares the mistakes models see most often, the traps users fall into repeatedly,
+
+and the anti-patterns that look good but fail spectacularly.
+
+**These are real failures from the trenches.**
+
+**This section teaches you:**
+
+- Common specification mistakes (and how to recognize them)
+- Real-world failures (what went wrong and why)
+- Recovery strategies (how to fix specs gone wrong)
+- Anti-patterns (what NOT to do)
+
 Let's explore the pitfalls so you can avoid them.
 
 ## The Most Common Pitfalls
@@ -27,7 +37,9 @@ Too many MUST constraints that paralyze progress.
 **The Problem:**
 Example Over-constraining spec:
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: Functions exactly 50 lines (not 49, not 51)
 MUST: Variable names exactly 15 characters
 MUST: Comments on every line
@@ -38,7 +50,8 @@ MUST: Use tabs (never spaces)
 MUST: Files saved at 3:47 PM local time
 ... [50 more overly-specific MUSTs]
 
-**What happens to the modelme:
+**What happens to the model:
+
 Model: [Starts writing function]
 Model: [Counts lines: 48... need 2 more]
 Model: [Adds filler comments to reach 50]
@@ -48,29 +61,37 @@ Model: [Gets to 51 lines while adding required comments]
 Model: [Deletes useful code to get back to 50]
 Model: [Result: Arbitrary, useless code that meets constraints]
 Model: "This is terrible code but technically compliant!"
-Result: Terrible code that technically meets specs but is actually bad.
+```
+**Result: Terrible code that technically meets specs but is actually bad.**
 
 **Why This Happens:**
 
 User thinks:
+
 "If I specify everything precisely, I'll get exactly what I want!"
 
 **Reality:**
-Over-specification = rigidity
-No room for judgment
-Models optimize for constraints, not quality
-The letter of the law, not the spirit
+
+- Over-specification = rigidity
+- No room for judgment
+- Models optimize for constraints, not quality
+- The letter of the law, not the spirit
 
 **The Solution:**
-Instead of:
+
+**Instead of:**
+
+```text
 
 MUST: Functions exactly 50 lines
 MUST: Variable names exactly 15 characters
 MUST: Comments on every line
+```
+**Do this:**
 
-Do this:
+```text
 
-`<constraint priority="high">`
+<constraint priority="high">
 MUST: Functions under 50 lines (promotes readability)
 
 Exceptions acceptable:
@@ -82,9 +103,9 @@ Not acceptable:
 
 - Just didn't bother to refactor
 - Multiple unrelated responsibilities
-`</constraint>`
+</constraint>
 
-`<guideline priority="high">`
+<guideline priority="high">
 
 SHOULD: Descriptive variable names (no arbitrary length requirement)
 SHOULD: Comments for non-obvious logic (not every line)
@@ -94,27 +115,32 @@ Examples:
 Good: getUserDataManager() - clear, appropriate length
 Bad: x() - too short, unclear
 Bad: theUserDataManagerThatManagesAllUserDataInTheSystem() - too long
-`</guideline>`
-
+</guideline>
+```
 **Key principle:** Constrain outcomes, not methods. Tell the model WHAT to achieve, not HOW to achieve it.
 
 ### Pitfall 2: Under-Constraining (The Void)
 
 **What it is:**
+
 Too few constraints, leaving a model to guess everything.
 
 **The Problem:**
 
 Example Under-constraining spec:
 
-`<guideline>`
+```text
+
+<guideline>
 SHOULD: Build a good authentication system
 SHOULD: Make it secure
 SHOULD: Use best practices
-`</guideline>`
+</guideline>
+```
+**What happens to a model:**
 
-What happens to a model:
 Model: "Build authentication... okay, but HOW?"
+
 Model: "Secure... what does that mean?"
 
 - JWT? OAuth? Sessions? API keys?
@@ -124,35 +150,43 @@ Model: "Secure... what does that mean?"
 - 2FA? Required or optional?
 
 Model: [Invents policy for all of these]
+
 Model: [Delivers what I THINK is good]
 
 You: "Why did you use JWT with HS256?!"
 
 Model: "You said 'secure' and 'best practices'... I guessed!"
 You: "We need OAuth with RS256!"
+
 Model: "...that wasn't in the spec."
-Result: Model delivers something, but it's probably not what you wanted because the model had to guess.
+
+**Result: Model delivers something, but it's probably not what you wanted because the model had to guess.**
 
 **Why This Happens:**
 
-User thinks:
+**User thinks:**
+
 "The model is smart, it knows what 'secure' means!"
 
-Reality:
-"Secure" has 100+ valid interpretations
-"Best practices" vary by context
-Model has to guess which approach you want
-Model will probably guess wrong
+**Reality:**
+
+- "Secure" has 100+ valid interpretations
+- "Best practices" vary by context
+- Model has to guess which approach you want
+- Model will probably guess wrong
 
 **The Solution:**
 
-Instead of:
+**Instead of:*
 SHOULD: Build a good authentication system
+
 SHOULD: Make it secure
 
-Do this:
+**Do this:**
 
-`<constraint priority="critical" scope="authentication">`
+```text
+
+<constraint priority="critical" scope="authentication">
 MUST: JWT-based authentication
 MUST: HS256 algorithm (team has shared secret infrastructure)
 MUST: Access tokens: 15-minute expiry
@@ -166,9 +200,9 @@ VERIFICATION:
 - Verify token expiry times in code
 - Confirm bcrypt salt rounds >= 12
 
-`</constraint>`
+</constraint>
 
-`<context scope="authentication">`
+<context scope="authentication">
 
 **Why these choices:**
 
@@ -183,8 +217,8 @@ VERIFICATION:
 - Sessions: Need stateless for load balancing
 - API keys: Users need to log in (not service-to-service)
 
-`</context>`
-
+</context>
+```
 **Key principle: Be specific about critical decisions. Don't make a model guess security requirements.
 
 ### Pitfall 3: Conflicting Constraints (The Impossible Task)
@@ -196,63 +230,73 @@ MUSTs that contradict each other, making compliance impossible.
 
 Example Conflicting contraints spec:
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: API response time <100ms (p95)
 MUST: Fetch all user data (50+ database queries)
 MUST: Calculate complex analytics (CPU-intensive, 500ms+)
 MUST: Never use caching (data must be real-time)
 MUST: Run on single t2.micro instance (limited CPU/memory)
-`</constraint>`
+</constraint>
+```
+**What happens to the model:**
 
-What happens to the model:
 Model: [Calculates requirements]
 
-50 database queries x 5ms each = 250ms
-Complex analytics = 500ms
-Total = 750ms
+- 50 database queries x 5ms each = 250ms
+- Complex analytics = 500ms
+- Total = 750ms
 
 Target: <100ms
 
-Model: "This is impossible!"
-Model: [Tries caching] → Spec says NO caching
-Model: [Tries more servers] → Spec says single t2.micro
-Model: [Tries optimization] → Still 400ms minimum
-Model: "I cannot meet all these MUSTs. They conflict!"
-Model: [Delivers anyway with 400ms response time]
+- Model: "This is impossible!"
+- Model: [Tries caching] → Spec says NO caching
+- Model: [Tries more servers] → Spec says single t2.micro
+- Model: [Tries optimization] → Still 400ms minimum
+- Model: "I cannot meet all these MUSTs. They conflict!"
+- Model: [Delivers anyway with 400ms response time]
 
 You: "Why is this slow?!"
+
 Model: "The constraints are impossible to meet together!"
-Result: The model can't succeed because the constraints contradict.
+
+**Result: The model can't succeed because the constraints contradict.**
 
 **Why This Happens:**
 
-Each constraint is valid individually:
-Response time <100ms ✓ (good goal)
-Fetch all user data ✓ (completeness)
-Real-time analytics ✓ (no cache)
-Single server ✓ (cost savings)
+**Each constraint is valid individually:**
 
-But together: IMPOSSIBLE
+- Response time <100ms ✓ (good goal)
+- Fetch all user data ✓ (completeness)
+- Real-time analytics ✓ (no cache)
+- Single server ✓ (cost savings)
+
+**But together: IMPOSSIBLE**
 
 The Solution:
 
-Instead of conflicting MUSTs:
+**Instead of conflicting MUSTs:**
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 MUST: API response time <100ms
 MUST: Fetch all data, no caching
 MUST: Single server
+```
+**CONFLICT - IMPOSSIBLE!**
 
-[CONFLICT - IMPOSSIBLE!]
+**Prioritize and provide alternatives:**
 
-Prioritize and provide alternatives:
+```text
 
-`<constraint priority="1-critical">`
+<constraint priority="1-critical">
 MUST: API response time <200ms (p95)
 [Relaxed from 100ms to achievable target]
-`</constraint>`
+</constraint>
 
-`<constraint priority="2-high">`
+<constraint priority="2-high">
 MUST: Fetch complete user profile data
 [Core data only, not "all 50+ fields"]
 
@@ -263,9 +307,9 @@ Core data:
 Extended data (optional, if time permits):
 
 - activity history, analytics (45 queries, ~225ms)
-`</constraint>`
+</constraint>
 
-`<guideline priority="high">`
+<guideline priority="high">
 SHOULD: Cache user profile data (5-minute TTL)
 
 Acceptable because:
@@ -279,16 +323,16 @@ If you need truly real-time:
 - Increase response time budget to 500ms
 - OR reduce data scope to core fields only
 
-`</guideline>`
+</guideline>
 
-`<context>`
+<context>
 
 **Trade-off decision:**
 We prioritize response time over complete real-time data.
 5-minute cache staleness is acceptable for profile data.
 Critical operations (payments, auth) bypass cache.
-`</context>`
-
+</context>
+```
 **Key principle:** When MUSTs conflict, prioritize and provide escape valves.
 
 ### Pitfall 4: The "Figure It Out" Non-Spec
@@ -301,15 +345,18 @@ The Problem:
 
 Example Figure it out "spec":
 
-`<intent>`
+```text
+
+<intent>
 Build an amazing e-commerce platform that delights users
 and drives revenue. Use modern best practices and make
 it scalable, secure, and performant.
-`</intent>`
+</intent>
+```
+**That's it. That's the whole spec.**
 
-That's it. That's the whole spec.
+**What happens to a model:**
 
-What happens to a model:
 Model: "Okay... but WHAT specifically?"
 
 - What tech stack?
@@ -322,6 +369,7 @@ Model: "Okay... but WHAT specifically?"
 - Performant = ? (<100ms? <1s?)
 
 Model: [Makes 10,000 decisions]
+
 Model: [Delivers working e-commerce site]
 
 You: "Why did you use React?!"
@@ -331,25 +379,29 @@ Model: "...You didn't specify?"
 You: "We're a Vue shop!"
 
 Model:"That wasn't in the spec!"
+
 You: "Why is it only in English?!"
 
 Model:"...Internationalization wasn't mentioned?"
+
 You: "OF COURSE we need that!"
 
 Model:
-Result: The model builds something, but it requires total rebuild because the model guessed wrong on fundamental decisions.
+Result: The model builds something, but it requires total rebuild because the model 
+guessed wrong on fundamental decisions.
 
-Why This Happens:
+**Why This Happens:**
 
 User thinks:
 "INTENT is enough! The model will figure out the details!"
 
 Reality:
-INTENT explains WHY (goals, rationale)
-But you still need MUST/SHOULD/CONTEXT (the WHAT)
-INTENT alone = The model guesses everything
 
-The Solution:
+- INTENT explains WHY (goals, rationale)
+- But you still need MUST/SHOULD/CONTEXT (the WHAT)
+- INTENT alone = The model guesses everything
+
+**The Solution:**
 
 INTENT is essential, but not sufficient:
 INTENT: The why
@@ -1235,3 +1287,4 @@ Appendices
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
