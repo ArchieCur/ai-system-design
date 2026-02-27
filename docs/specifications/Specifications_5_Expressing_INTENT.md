@@ -169,7 +169,7 @@ MUST: Return 429 status when limit exceeded
 
 - Why 100? (why not 50 or 200?)
 - What problem does this solve?
-- 
+  
 Is this for security or performance?
 
 With INTENT:
@@ -1210,5 +1210,6 @@ Document Version: 1.0.0
 Last Updated: 2026-02-16
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
