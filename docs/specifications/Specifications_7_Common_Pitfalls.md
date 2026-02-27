@@ -843,6 +843,8 @@ MUST: Implement Chuin-of-TheeghI Theiupts
 
 **CORRECT: Verified and corrected**
 
+```text
+
 <constraint>
  
 MUST: Use JavaScript for frontend
@@ -1392,6 +1394,7 @@ You've completed the core specification framework:
 You now know what actually goes wrong with specifications and how to avoid these traps.
 
 END OF SECTION 7
+
 
 
 
