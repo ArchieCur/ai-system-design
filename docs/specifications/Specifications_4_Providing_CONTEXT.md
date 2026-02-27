@@ -1140,10 +1140,12 @@ Zero chargebacks from fraud (secure).
 
 - **SHOULD** tells a model: Prefer methods that improve UX
 
-- **CONTEXT** tells a model: Only 5K transactions/month (low volume)
+- **CONTEXT** tells a model:
+  Only 5K transactions/month (low volume)
 
-Users are 60% credit card, 30% PayPal (traditional methods)
-Low cart abandonment already (12% vs 15%)
+  Users are 60% credit card, 30% PayPal (traditional methods)
+  
+  Low cart abandonment already (12% vs 15%)
 
 - **INTENT** tells a model: Goal is trust and low friction
 
@@ -1166,9 +1168,7 @@ Before finalizing CONTEXT:
 Relevance
 
 [ ] Directly informs decisions (not just background)
-
 [ ] Current state focused (minimal history)
-
 [ ] Actionable information (I can use this)
 
 Specificity
@@ -1262,6 +1262,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
 
 
 
