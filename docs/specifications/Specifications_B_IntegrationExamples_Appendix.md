@@ -795,15 +795,18 @@ VERIFICATION confirms: 10-minute auto-logout tested and working
 
 ### Example 3: API Service Rate Limiting
 
-Scenario: B2B SaaS API implementing fair usage limits
+**Scenario: B2B SaaS API implementing fair usage limits**
 
 The Complete Integrated Specification
 
 API RATE LIMITING SPECIFICATION
 All five layers working together
+
+```text
+
 **MUST, SHOULD, CONTEXT, INTENT, VERIFICATION**
 
-`<constraint priority="critical" scope="rate-limiting">`
+<constraint priority="critical" scope="rate-limiting">
 MUST: Rate limits enforced per API key
 MUST: Standard tier: 1,000 requests/hour
 MUST: Enterprise tier: 10,000 requests/hour
@@ -816,9 +819,9 @@ VERIFICATION:
 - Test 1001st request (returns 429)
 - Test headers present (all three headers in response)
 - Test Retry-After accuracy (wait time, then retry succeeds)
-`</constraint>`
+</constraint>
 
-`<guideline priority="high" scope="rate-limit-flexibility">`
+<guideline priority="high" scope="rate-limit-flexibility">
 SHOULD: Burst allowance (20% over limit for 1 minute)
 SHOULD: Different limits for read vs write operations
 SHOULD: Whitelist for status/health endpoints (no rate limit)
@@ -830,9 +833,9 @@ Burst handles traffic spikes (e.g., cron jobs at hour boundary).
 Reads cheaper than writes (GET vs POST/PUT/DELETE).
 
 Health checks shouldn't count toward limit (monitoring needs).
-`</guideline>`
+</guideline>
 
-`<context scope="business">`
+<context scope="business">
 
 **Customers:** Other software companies (B2B)
 
@@ -847,9 +850,9 @@ Health checks shouldn't count toward limit (monitoring needs).
 - Prevent abuse (one customer can't starve others)
 - Cost control (our infrastructure costs scale with usage)
 - Fair usage (ensure quality for all customers)
-`</context>`
+</context>
 
-`<intent scope="rate-limiting">`
+<intent scope="rate-limiting">
 
 **Goal:** Fair resource allocation while allowing legitimate bursts.
 
@@ -866,9 +869,9 @@ Health checks shouldn't count toward limit (monitoring needs).
 - Prevents false positives (legitimate use blocked)
 
 **Trade-off:** Complex to implement, but worth it for customer experience
-`</intent>`
+</intent>
 
-`<verification scope="rate-limiting">`
+<verification scope="rate-limiting">
 
 - 1001st request returns 429 (limit enforced)
 - Burst of 1,200 in 1 minute succeeds (burst works)
@@ -876,11 +879,12 @@ Health checks shouldn't count toward limit (monitoring needs).
 - Retry-After works (wait time, then success)
 
 PASS: All tests pass. Rate limiting works correctly.
-`</verification>`
+</verification>
+```
 
-### How Layers Prevent Conflicts
+#### How Layers Prevent Conflicts
 
-Potential conflict: "Customer wants unlimited API calls"
+**Potential conflict: "Customer wants unlimited API calls"**
 
 How layers resolve:
 
@@ -894,7 +898,8 @@ INTENT: Fair usage (one customer can't hurt others)
 
 VERIFICATION: Test confirms limit enforced but burst works
 
-Resolution: Limit enforced (MUST), but burst makes it flexible (SHOULD), for business reasons (CONTEXT), aligned with fairness goal (INTENT), proven working (VERIFICATION).
+Resolution: Limit enforced (MUST), but burst makes it flexible (SHOULD), 
+for business reasons (CONTEXT), aligned with fairness goal (INTENT), proven working (VERIFICATION).
 
 **Conflict resolved through layer integration!**
 
@@ -903,51 +908,67 @@ Resolution: Limit enforced (MUST), but burst makes it flexible (SHOULD), for bus
 From these three examples, we see:
 
 1. Each Layer Has a Job
-MUST: What's required (boundaries)
-SHOULD: What's preferred (flexibility)
-CONTEXT: Why these choices (environment)
-INTENT: What we're achieving (goals)
-VERIFICATION: How we check (validation)
+   
+- MUST: What's required (boundaries)
+- SHOULD: What's preferred (flexibility)
+- CONTEXT: Why these choices (environment)
+- INTENT: What we're achieving (goals)
+- VERIFICATION: How we check (validation)
 
-Don't make one layer do another's job!
+**Don't make one layer do another's job!**
+
 2. Layers Reinforce, Not Contradict
-Good integration:
+
+**Good integration:**
 MUST says "guest checkout required"
 CONTEXT explains "23% abandon at forced signup"
 INTENT clarifies "conversion > data collection"
-All layers support the decision
 
-Poor integration:
+**All layers support the decision**
+
+**Poor integration:**
 MUST says "checkout <60 seconds"
 CONTEXT says "users prefer thoroughness over speed"
 INTENT says "conversion through trust, not speed"
-Layers contradict!
-3. Supremacy Clauses Resolve Conflicts
-When layers might conflict:
-Declare supremacy (HIPAA > all else)
-Makes priorities explicit
-Prevents paralysis when trade-offs needed
 
-Example: HIPAA supremacy means "Remember Me" declined even though users want it.
+**Layers contradict!**
+
+3. Supremacy Clauses Resolve Conflicts
+
+When layers might conflict:
+- Declare supremacy (HIPAA > all else)
+- Makes priorities explicit
+- Prevents paralysis when trade-offs needed
+
+**Example: HIPAA supremacy means "Remember Me" declined even though users want it.**
+
 4. Verification Proves Integration
-Good verification tests:
-That MUST constraints are met
-That SHOULD preferences are honored (or exceptions documented)
-That CONTEXT assumptions are valid
-That INTENT goals are achieved
-Verification is the proof that integration works!
+
+**Good verification tests:**
+
+- That MUST constraints are met
+- That SHOULD preferences are honored (or exceptions documented)
+- That CONTEXT assumptions are valid
+- That INTENT goals are achieved
+
+**Verification is the proof that integration works!**
+
 5. Context Informs Everything
-Context shapes:
-Which MUSTs matter (HIPAA critical for healthcare, not for games)
-Which SHOULDs to prioritize (mobile-first if 60% mobile traffic)
-What INTENT focuses on (conversion if abandonment high)
-How to VERIFY (healthcare needs compliance audit, e-commerce needs conversion
+
+**Context shapes:**
+
+- Which MUSTs matter (HIPAA critical for healthcare, not for games)
+- Which SHOULDs to prioritize (mobile-first if 60% mobile traffic)
+- What INTENT focuses on (conversion if abandonment high)
+- How to VERIFY (healthcare needs compliance audit, e-commerce needs conversion
 metrics)
-Context is the lens through which all other layers are viewed.
+- Context is the lens through which all other layers are viewed.
 
 ## Integration Checklist
 
 Before finalizing your integrated specification:
+
+```text
 
 Completeness
 
@@ -980,6 +1001,7 @@ Measurable
 [ ] Success criteria in INTENT are specific
 [ ] Verification has objective pass/fail
 [ ] Metrics defined (not vague "good" or "fast")
+```
 
 ## Common Integration Mistakes
 
@@ -996,8 +1018,9 @@ Watch out for these:
 ### Contradictory Layers
 
 **Problem:**
-• MUST: Response time <100ms
-• INTENT: Thorough data validation more important than speed
+
+- MUST: Response time <100ms
+- INTENT: Thorough data validation more important than speed
 
 **Why it fails:**  Can't satisfy both. Need to prioritize.
 
@@ -1006,9 +1029,10 @@ Watch out for these:
 ### Vague Integration
 
 **Problem:**
-MUST: "Be secure"
-CONTEXT: "We're a tech company"
-INTENT: "Build a good product"
+
+- MUST: "Be secure"
+- CONTEXT: "We're a tech company"
+- INTENT: "Build a good product"
 
 **Why it fails:** All layers vague = no actionable guidance.
 
@@ -1017,8 +1041,9 @@ INTENT: "Build a good product"
 ### INTENT Doesn't Match MUST
 
 **Problem:**
-MUST: Stripe integration (specific tool)
-INTENT: "Maximize control and minimize cost"
+
+- MUST: Stripe integration (specific tool)
+- INTENT: "Maximize control and minimize cost"
 
 **Why it fails:** Stripe reduces control and costs per-transaction (conflicts with INTENT).
 
@@ -1026,7 +1051,7 @@ INTENT: "Maximize control and minimize cost"
 
 ## Summary
 
-Integration means:
+**Integration means:**
 
 - All 5 layers present and complete
 - Each layer doing its job (not another's)
@@ -1034,7 +1059,7 @@ Integration means:
 - No contradictions (or supremacy clause resolves)
 - Measurable and verifiable
 
-Good integration enables:
+**Good integration enables:**
 
 - Clear requirements (no guessing)
 - Aligned decisions (INTENT guides)
@@ -1046,6 +1071,7 @@ Use these examples as templates for your own integrated specifications.
 END OF APPENDIX B
 
 Document Version: 1.0.0
-Last Updated: 2026-0218
-Three complete integration examples showing all layers working together
+Last Updated: 2026-02-27
+Key Three complete integration examples showing all layers working together
+
 
