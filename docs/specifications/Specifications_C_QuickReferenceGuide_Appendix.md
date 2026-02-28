@@ -20,7 +20,7 @@ Meant for doing (quick lookups while working).
 
 ## The Five Layers at a Glance
 
-![Five Spec Layers Chart](../assets/Five_Layers_at_a_Glance.png)
+![Five Spec Layers Chart](../assets/Specs_C_Five_Layers.png)
 
 ### MUST Layer Quick Reference
 
@@ -870,5 +870,6 @@ SHOULD: [Preferences - 5-10 items]
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Quick reference for active specification writing
+
 
 
