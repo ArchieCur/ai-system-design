@@ -20,7 +20,7 @@ Meant for doing (quick lookups while working).
 
 ## The Five Layers at a Glance
 
-![Five Spec Layers Chart(../assets/Five_Layers_at_a_Glance.png)]
+![Five Spec Layers Chart](../assets/Five_Layers_at_a_Glance.png)
 
 ### MUST Layer Quick Reference
 
@@ -44,13 +44,15 @@ Don't use MUST for
 
 Before finalizing MUST constraints:
 
+```text
+
 [ ] Is this truly non-negotiable? (Can we launch without it? If yes → SHOULD)
 [ ] Is this specific? (Not "secure" but "bcrypt with salt rounds ≥12")
 [ ] Is this measurable? (Can the model verify objectively?)
 [ ] Is this actionable? (Does the model know what to do?)
 [ ] Does this have a supremacy clause if needed? (When conflicts occur, what wins?)
 [ ] Is verification protocol defined? (How to check compliance?)
-
+```
 ### MUST Patterns
 
 #### Pattern 1: Security Constraint
@@ -868,4 +870,5 @@ SHOULD: [Preferences - 5-10 items]
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Quick reference for active specification writing
+
 
