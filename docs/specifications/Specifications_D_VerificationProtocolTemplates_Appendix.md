@@ -1,6 +1,6 @@
 # Appendix D: Verification Protocol Templates
 
-*For:* Copy-paste ready verification protocols
+**For:** Copy-paste ready verification protocols
 
 **When to use:** Implementing verification for your specifications
 
@@ -1039,4 +1039,5 @@ END OF APPENDIX D**
 *Document Version: 1.0.0*
 *Last Updated: 2026-02-18*
 *Five complete verification protocol templates ready for production use*
+
 
