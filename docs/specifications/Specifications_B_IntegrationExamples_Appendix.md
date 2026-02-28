@@ -3,6 +3,7 @@
 **For:** Understanding how all five layers work together in practice
 
 **When to use:** After learning individual layers, to see complete integration
+
 **What you get:** Real-world examples showing MUST, SHOULD, CONTEXT, INTENT, and
 VERIFICATION working as a cohesive system
 
@@ -10,29 +11,33 @@ VERIFICATION working as a cohesive system
 
 You've learned each layer individually. Now see how they work together to create clear, actionable specifications that prevent common failures.
 
-This appendix shows:
-Complete specifications with all 5 layers integrated
-How layers reinforce each other (not conflict)
-How layers answer different questions (WHAT vs WHY vs HOW)
-What good integration looks like (vs poor integration)
+**This appendix shows:**
 
-Each example demonstrates:
-All layers present (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
-Layers aligned (no contradictions)
-Layers complete (answer all key questions)
-Integration that works
+- Complete specifications with all 5 layers integrated
+- How layers reinforce each other (not conflict)
+- How layers answer different questions (WHAT vs WHY vs HOW)
+- What good integration looks like (vs poor integration)
 
-## Example 1: E-commerce Checkout Flow
+**Each example demonstrates:**
 
-Scenario: Building checkout for fashion e-commerce startup
+- All layers present (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
+- Layers aligned (no contradictions)
+- Layers complete (answer all key questions)
+- Integration that works
 
-The Complete Integrated Specification
+### Example 1: E-commerce Checkout Flow
+
+**Scenario: Building checkout for fashion e-commerce startup**
+
+**The Complete Integrated Specification**
 
 All five layers working together
 
+```text
+
 Layer 1: MUST (Hard Boundaries)
 
-`<constraint priority="critical" scope="checkout-security">`
+<constraint priority="critical" scope="checkout-security">
 MUST: PCI-DSS compliant payment processing (Stripe integration)
 MUST: HTTPS only for all checkout pages
 MUST: Cart data encrypted in session (AES-256)
@@ -50,9 +55,9 @@ VERIFICATION:
 - HTTPS check: All checkout URLs return 200 on HTTPS, redirect on HTTP
 - Session encryption: Verify encrypted cart data in Redis
 - 3DSecure: Test with high-value transaction, verify challenge appears
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="checkout-performance">`
+<constraint priority="critical" scope="checkout-performance">
 MUST: Checkout completion time <60 seconds total (from cart to confirmation)
 MUST: Each step loads in <2 seconds (p95)
 MUST: Payment processing completes in <5 seconds (Stripe API call)
@@ -67,9 +72,9 @@ VERIFICATION:
 - Timed test: Complete checkout from cart to confirmation
 - Load test: Measure step load times under realistic traffic
 - Monitor Stripe API: P95 response time from Stripe
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="checkout-functionality">`
+<constraint priority="critical" scope="checkout-functionality">
 MUST: Support guest checkout (no forced account creation)
 MUST: Save cart state for 7 days (logged in users)
 MUST: Email order confirmation within 5 minutes
@@ -81,11 +86,11 @@ VERIFICATION:
 - Cart persistence test: Add items, logout, login 3 days later (cart intact)
 - Email test: Monitor SendGrid delivery (all confirmations <5 min)
 - Inventory test: Concurrent purchase attempt of last item (second user gets "out of stock")
-`</constraint>`
+</constraint>
 
 Layer 2: SHOULD (Flexible Preferences
 
-`<guideline priority="high" scope="checkout-ux">`
+<guideline priority="high" scope="checkout-ux">
 SHOULD: Single-page checkout (all steps visible, no page reloads)
 SHOULD: Real-time validation (inline errors as user types)
 SHOULD: Save payment methods for logged-in users (optional, requires consent)
@@ -95,9 +100,7 @@ SHOULD: Mobile-optimized (large touch targets, minimal typing)
 RATIONALE:
 
 Single-page checkout reduces friction (fewer page loads = less abandonment).
-
 Real-time validation catches errors early (better UX than submit-time errors).
-
 Saved payment methods improve returning customer experience.
 
 ACCEPTABLE EXCEPTIONS:
@@ -110,9 +113,9 @@ WHEN VIOLATING:
 
 Document performance trade-off or privacy concern.
 Ensure alternative approach still meets INTENT (frictionless checkout).
-`</guideline>`
+</guideline>
 
-`<guideline priority="medium" scope="checkout-features">`
+<guideline priority="medium" scope="checkout-features">
 SHOULD: Display security badges (Norton, McAfee, etc.)
 SHOULD: Show estimated delivery date before purchase
 SHOULD: Offer expedited shipping options
@@ -132,11 +135,11 @@ ACCEPTABLE TO SKIP:
 - Security badges if brand is well-known (Apple doesn't need Norton badge)
 - Delivery dates if shipping is always fast (2-day standard)
 - Expedited shipping if margins don't support it
-`</guideline>`
+</guideline>
 
 Layer 3: CONTEXT (Planning Information)
 
-`<context scope="business">`
+<context scope="business">
 
 **Company:** Fashion accessories e-commerce, Series A startup
 **Current Status:** 500 beta users, launching public Q2 2026
@@ -161,9 +164,9 @@ Layer 3: CONTEXT (Planning Information)
 - Budget: $5K/month infrastructure (must be efficient)
 - Timeline: 3 months to launch (aggressive)
 - Team: 3 developers (limited resources)
-`</context>`
+</context>
 
-`<context scope="technical">`
+<context scope="technical">
 
 **Technology Stack:**
 
@@ -191,9 +194,9 @@ Layer 3: CONTEXT (Planning Information)
 - Product catalog (done)
 - User authentication (done)
 - Cart (done, needs checkout integration)
-`</context>`
+</context>
 
-`<context scope="users">`
+<context scope="users">
 
 **Primary Users:** Fashion-conscious consumers
 
@@ -223,11 +226,11 @@ Layer 3: CONTEXT (Planning Information)
 - Recognizable payment logos (Visa, Mastercard, PayPal)
 - Clear return policy (visible during checkout)
 - Customer reviews (social proof)
-`</context>`
+</context>
 
 Layer 4: INTENT (The Why)
 
-`<intent scope="checkout-flow">`
+<intent scope="checkout-flow">
 
 **Primary Goal:**
 
@@ -371,11 +374,11 @@ Example application:
 - Analysis: Adds field to checkout (more friction), only 5% users want it
 - Decision: NO for v1 (hurts conversion, low demand). Revisit post-launch if >100 requests.
 - Rationale: Conversion (#2) outweighs feature (#5)
-`</intent>`
+</intent>
 
-<Layer 5: VERIFICATION (Self-Checking)
+Layer 5: VERIFICATION (Self-Checking)
 
-`<verification scope="checkout-complete">`
+<verification scope="checkout-complete">
 
 **Pre-Launch Verification (Must Pass All):**
 
@@ -443,57 +446,63 @@ User feedback scores (>4.0/5 satisfaction?)
 Payment processing health (error rate low?)
 Performance metrics (load times acceptable?)
 If trends negative: Initiate course correction per INTENT framework.
-`</verification>`
+</verification>
+```
 
 END OF INTEGRATED SPECIFICATION
 
 ## How the Layers Work Together
 
-### See how each layer answers different questions
+**See how each layer answers different questions**
 
-MUST Answers: "What boundaries exist?"
+### MUST Answers: "What boundaries exist?"
 
 - PCI compliance required (legal boundary)
 - <60 second checkout (performance boundary)
 - Guest checkout supported (functionality boundary)
 
-SHOULD Answers: "What's preferred?"
+### SHOULD Answers: "What's preferred?"
 
 - Single-page checkout preferred (can flex to multi-page)
 - Real-time validation preferred (can do submit-time)
 - Saved payment methods preferred (can skip if privacy concerns)
 
-CONTEXT Answers: "Why these boundaries and preferences?"
+### CONTEXT Answers: "Why these boundaries and preferences?"
 
 - Series A startup = limited resources (Stripe vs custom)
 - 60% mobile traffic = mobile-first focus
 - Cart abandonment 25% = urgent need to optimize
 - Q2 deadline = speed over perfection
 
-INTENT Answers: "What are we trying to achieve and why?"
+### INTENT Answers: "What are we trying to achieve and why?"
 
 - Primary goal: Reduce abandonment 25% → 15%
 - Why single-page: 10% conversion lift per research
 - Why Stripe: PCI compliance + time-to-market
 - Trade-offs: Paying Stripe fees worth compliance + speed
 
-VERIFICATION Answers: "How do we know we succeeded?"
+### VERIFICATION Answers: "How do we know we succeeded?"
 
 - Security: Stripe test payments work
 - Performance: Load tests show <2s per step
 - Functionality: Guest checkout completes
 - Success: Abandonment trending toward 15%
 
-### How Layers Reinforce Each Other
+## How Layers Reinforce Each Other
 
-Example: Guest Checkout
+### **Example: Guest Checkout**
+
+```text
 
 MUST says: Support guest checkout (hard requirement)
+
 SHOULD says: Encourage account creation after purchase (preference)
+
 CONTEXT explains why:
 User research: 23% abandon at forced account creation
 Business need: Convert browsers to buyers first
 User preference: 35% create account post-purchase anyway
+
 INTENT clarifies trade-off:
 Priority: Conversion > User data collection
 Trade-off: Miss some upfront data, gain more sales
@@ -503,58 +512,62 @@ VERIFICATION confirms:
 Test: Guest checkout completes without errors
 Metric: Abandonment at checkout step <10%
 Success: 35%+ guests create account post-purchase
-
+```
 **All layers aligned, reinforcing the decision!**
 
 ### What Good Integration Looks Like
 
-Characteristics of this integrated spec:
+**Characteristics of this integrated spec:**
 
 No Contradictions:
-• MUST says <60s checkout
-• CONTEXT explains why (abandonment research)
-• INTENT prioritizes this (conversion critical)
-• VERIFICATION measures it (timed tests)
 
- All layers support the same goal
+- MUST says <60s checkout
+- CONTEXT explains why (abandonment research)
+- INTENT prioritizes this (conversion critical)
+- VERIFICATION measures it (timed tests)
 
-Answers All Questions:
+ **All layers support the same goal**
+
+**Answers All Questions:**
 
 - WHAT to build (MUST/SHOULD)
 - WHY build it (CONTEXT/INTENT)
 - HOW to verify (VERIFICATION)
 - WHEN to course-correct (INTENT alignment check)
 
-Clear Priorities:
+**Clear Priorities:**
 
 - When features conflict, INTENT provides decision framework
 - Security (#1) > Conversion (#2) > Mobile (#3) > Features (#5)
 - No ambiguity about what wins
 
-Measurable Success:
+**Measurable Success:**
 
 - Specific metrics (abandonment <15%, conversion 2.5%)
 - Clear verification (load tests, user tests)
 - Monitoring plan (weekly reviews, alerts)
 
-Flexibility Where Needed:
+**Flexibility Where Needed:**
 
 - SHOULD allows alternatives (multi-page if single-page performs poorly)
 - INTENT explains acceptable trade-offs
 - CONTEXT justifies exceptions
 
-## Example 2: Healthcare Patient Portal (Mobile App)
+### Example 2: Healthcare Patient Portal (Mobile App)
 
 **Scenario: HIPAA-compliant mobile app for physician-patient communication**
+
 The Complete Integrated Specification
 
 PATIENT PORTAL MOBILE APP SPECIFICATION
 
 All five layers working together
 
+```text
+
 Layer 1: MUST (Hard Boundaries)
 
-`<constraint priority="critical" scope="hipaa-compliance" supremacy="true">`
+<constraint priority="critical" scope="hipaa-compliance" supremacy="true">
 MUST: HIPAA Security Rule compliance (all PHI handling)
 MUST: End-to-end encryption for messages (TLS 1.3 in transit, AES-256 at rest)
 MUST: Audit logging for all PHI access (who, what, when, where)
@@ -577,9 +590,9 @@ VERIFICATION:
 - Audit log review (100% PHI access captured)
 - Auto-logout test (10 minutes idle = logged out)
 - Code review (no PHI in logs, analytics confirmed)
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="offline-functionality">`
+<constraint priority="critical" scope="offline-functionality">
 
 MUST: Core features work offline (appointments view, message drafts)
 MUST: Automatic sync when connection available (background, no user action)
@@ -598,11 +611,11 @@ VERIFICATION:
 - Sync test (offline changes sync when reconnected)
 - Conflict test (simultaneous offline edits resolve correctly)
 - Status indicator test (airplane mode shows offline state)
-`</constraint>`
+</constraint>
 
 Layer 2: SHOULD (Flexible Preferences)
 
-`<guideline priority="high" scope="user-experience">`
+<guideline priority="high" scope="user-experience">
 SHOULD: Biometric login (Touch ID / Face ID) after initial MFA
 SHOULD: Push notifications for new messages (with PHI-free preview)
 SHOULD: In-app messaging (patient-doctor communication)
@@ -625,11 +638,11 @@ WHEN VIOLATING:
 
 Ensure alternative meets INTENT (timely communication, secure access).
 Document why exception made (technical limitation, user preference).
-`</guideline>`
+</guideline>
 
 <CONTEXT (Planning Information)
 
-`<context scope="healthcare-regulations">`
+<context scope="healthcare-regulations">
 
 **Regulatory Environment:**
 
@@ -649,9 +662,9 @@ Document why exception made (technical limitation, user preference).
 - Annual HIPAA security assessment (required by law)
 - Breach notification within 60 days (if PHI compromised)
 - Business associate agreements (any vendors handling PHI)
-`</context>`
+</context>
 
-`<context scope="users">`
+<context scope="users">
 
 **Patient Users:**
 
@@ -671,11 +684,11 @@ Document why exception made (technical limitation, user preference).
 
 - Patients: Easy access to doctor, no phone tag, see test results quickly
 - Physicians: Efficient communication (reduce phone calls), accessible anywhere
-`</context>`
+</context>
 
 Layer 4: INTENT (The Why)
 
-`<intent scope="patient-portal">`
+<intent scope="patient-portal">
 
 **Primary Goal:**
 Improve patient-physician communication while maintaining strict HIPAA
@@ -715,11 +728,11 @@ RATIONALE: No feature worth risking compliance violation
 - >4.5/5 patient satisfaction with communication
 - Zero HIPAA violations
 - Physicians use app daily (not abandoned)
-`</intent>`
+</intent>
 
 VERIFICATION (Self-Checking)
 
-`<verification scope="pre-launch">`
+<verification scope="pre-launch">
 
 **HIPAA COMPLIANCE (Critical - No Launch Without):**
 
@@ -749,17 +762,20 @@ PASS CRITERIA:
 - Usability: 90%+ pass (document exceptions)
 
 IF HIPAA FAILS: STOP. Fix immediately. No launch until 100% compliant.
-`</verification>`
+</verification>
+```
 
 END OF INTEGRATED SPECIFICATION
 
-## How Layers Work Together (Healthcare Example)
+#### How Layers Work Together (Healthcare Example)
 
-### SUPREMACY CLAUSE in action
+#### SUPREMACY CLAUSE in action
 
-Scenario: User requests "Remember Me" feature (stay logged in for 30 days)
+**Scenario: User requests "Remember Me" feature (stay logged in for 30 days)**
 
 How layers interact:
+
+```text
 
 MUST says: Auto-logout after 10 minutes (HIPAA requirement)
 User request: "Remember Me" = stay logged in 30 days
@@ -773,10 +789,11 @@ Decision: NO to "Remember Me" feature
 Alternative: Biometric login (SHOULD) = quick re-auth without compromising security
 
 VERIFICATION confirms: 10-minute auto-logout tested and working
+```
+**All layers aligned to protect compliance!**
 
-All layers aligned to protect compliance!
 
-## Example 3: API Service Rate Limiting
+### Example 3: API Service Rate Limiting
 
 Scenario: B2B SaaS API implementing fair usage limits
 
@@ -1031,3 +1048,4 @@ END OF APPENDIX B
 Document Version: 1.0.0
 Last Updated: 2026-0218
 Three complete integration examples showing all layers working together
+
