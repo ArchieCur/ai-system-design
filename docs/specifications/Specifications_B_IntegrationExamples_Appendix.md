@@ -911,7 +911,7 @@ for business reasons (CONTEXT), aligned with fairness goal (INTENT), proven work
 
 From these three examples, we see:
 
-1. **Each Layer Has a Job**
+1- **Each Layer Has a Job**
    
 - MUST: What's required (boundaries)
 - SHOULD: What's preferred (flexibility)
@@ -921,7 +921,7 @@ From these three examples, we see:
 
 **Don't make one layer do another's job!**
 
-2. **Layers Reinforce, Not Contradict**
+2- **Layers Reinforce, Not Contradict**
 
 **Good integration:**
 MUST says "guest checkout required"
@@ -937,7 +937,7 @@ INTENT says "conversion through trust, not speed"
 
 **Layers contradict!**
 
-3. **Supremacy Clauses Resolve Conflicts**
+3- **Supremacy Clauses Resolve Conflicts**
 
 **When layers might conflict:**
 
@@ -947,7 +947,7 @@ INTENT says "conversion through trust, not speed"
 
 **Example: HIPAA supremacy means "Remember Me" declined even though users want it.**
 
-4. **Verification Proves Integration**
+4- **Verification Proves Integration**
 
 **Good verification tests:**
 
@@ -958,7 +958,7 @@ INTENT says "conversion through trust, not speed"
 
 **Verification is the proof that integration works!**
 
-5. **Context Informs Everything**
+5- **Context Informs Everything**
 
 **Context shapes:**
 
@@ -1078,6 +1078,7 @@ END OF APPENDIX B
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Key principle: Three complete integration examples showing all layers working together
+
 
 
 
