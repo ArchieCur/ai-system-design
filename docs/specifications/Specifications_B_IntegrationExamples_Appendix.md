@@ -451,46 +451,49 @@ If trends negative: Initiate course correction per INTENT framework.
 
 END OF INTEGRATED SPECIFICATION
 
-## How the Layers Work Together
+#### How the Layers Work Together
 
 **See how each layer answers different questions**
 
-### MUST Answers: "What boundaries exist?"
+```text
+
+MUST Answers: "What boundaries exist?"
 
 - PCI compliance required (legal boundary)
 - <60 second checkout (performance boundary)
 - Guest checkout supported (functionality boundary)
 
-### SHOULD Answers: "What's preferred?"
+SHOULD Answers: "What's preferred?"
 
 - Single-page checkout preferred (can flex to multi-page)
 - Real-time validation preferred (can do submit-time)
 - Saved payment methods preferred (can skip if privacy concerns)
 
-### CONTEXT Answers: "Why these boundaries and preferences?"
+CONTEXT Answers: "Why these boundaries and preferences?"
 
 - Series A startup = limited resources (Stripe vs custom)
 - 60% mobile traffic = mobile-first focus
 - Cart abandonment 25% = urgent need to optimize
 - Q2 deadline = speed over perfection
 
-### INTENT Answers: "What are we trying to achieve and why?"
+INTENT Answers: "What are we trying to achieve and why?"
 
 - Primary goal: Reduce abandonment 25% → 15%
 - Why single-page: 10% conversion lift per research
 - Why Stripe: PCI compliance + time-to-market
 - Trade-offs: Paying Stripe fees worth compliance + speed
 
-### VERIFICATION Answers: "How do we know we succeeded?"
+VERIFICATION Answers: "How do we know we succeeded?"
 
 - Security: Stripe test payments work
 - Performance: Load tests show <2s per step
 - Functionality: Guest checkout completes
 - Success: Abandonment trending toward 15%
+```
 
-## How Layers Reinforce Each Other
+#### How Layers Reinforce Each Other
 
-### **Example: Guest Checkout**
+#### **Example: Guest Checkout**
 
 ```text
 
@@ -519,7 +522,7 @@ Success: 35%+ guests create account post-purchase
 
 **Characteristics of this integrated spec:**
 
-No Contradictions:
+**No Contradictions:**
 
 - MUST says <60s checkout
 - CONTEXT explains why (abandonment research)
@@ -735,7 +738,6 @@ VERIFICATION (Self-Checking)
 <verification scope="pre-launch">
 
 **HIPAA COMPLIANCE (Critical - No Launch Without):**
-
 All 45 HIPAA Security Rule items verified
 Penetration test passed (certified auditor report)
 Business associate agreements signed (all vendors)
@@ -888,6 +890,8 @@ PASS: All tests pass. Rate limiting works correctly.
 
 How layers resolve:
 
+```text
+
 MUST: 1,000/hour limit (prevents resource exhaustion)
 
 SHOULD: Burst allowance (handles legitimate spikes)
@@ -900,14 +904,14 @@ VERIFICATION: Test confirms limit enforced but burst works
 
 Resolution: Limit enforced (MUST), but burst makes it flexible (SHOULD), 
 for business reasons (CONTEXT), aligned with fairness goal (INTENT), proven working (VERIFICATION).
-
+```
 **Conflict resolved through layer integration!**
 
 ## Key Integration Principles
 
 From these three examples, we see:
 
-1. Each Layer Has a Job
+1. **Each Layer Has a Job**
    
 - MUST: What's required (boundaries)
 - SHOULD: What's preferred (flexibility)
@@ -917,7 +921,7 @@ From these three examples, we see:
 
 **Don't make one layer do another's job!**
 
-2. Layers Reinforce, Not Contradict
+2. **Layers Reinforce, Not Contradict**
 
 **Good integration:**
 MUST says "guest checkout required"
@@ -933,16 +937,17 @@ INTENT says "conversion through trust, not speed"
 
 **Layers contradict!**
 
-3. Supremacy Clauses Resolve Conflicts
+3. **Supremacy Clauses Resolve Conflicts**
 
-When layers might conflict:
+**When layers might conflict:**
+
 - Declare supremacy (HIPAA > all else)
 - Makes priorities explicit
 - Prevents paralysis when trade-offs needed
 
 **Example: HIPAA supremacy means "Remember Me" declined even though users want it.**
 
-4. Verification Proves Integration
+4. **Verification Proves Integration**
 
 **Good verification tests:**
 
@@ -953,7 +958,7 @@ When layers might conflict:
 
 **Verification is the proof that integration works!**
 
-5. Context Informs Everything
+5. **Context Informs Everything**
 
 **Context shapes:**
 
@@ -961,7 +966,7 @@ When layers might conflict:
 - Which SHOULDs to prioritize (mobile-first if 60% mobile traffic)
 - What INTENT focuses on (conversion if abandonment high)
 - How to VERIFY (healthcare needs compliance audit, e-commerce needs conversion
-metrics)
+  metrics)
 - Context is the lens through which all other layers are viewed.
 
 ## Integration Checklist
@@ -1073,5 +1078,6 @@ END OF APPENDIX B
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Key Three complete integration examples showing all layers working together
+
 
 
