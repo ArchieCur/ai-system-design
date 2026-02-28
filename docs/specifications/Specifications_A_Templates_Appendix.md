@@ -28,10 +28,12 @@ Remember: These are starting points, not rigid rules. Adapt to your needs.
 
 COMPLETE SPECIFICATION: E-COMMERCE PLATFORM
 
+```text
+
 Layer 1
 MUST: Hard Boundaries (Non-negotiable)
 
-`<constraint priority="critical" scope="security">`
+<constraint priority="critical" scope="security">
 
 MUST: All payment processing PCI-DSS compliant (use Stripe or similar)
 MUST: HTTPS only in production (no HTTP endpoints)
@@ -46,9 +48,9 @@ VERIFICATION:
 - Check SSL certificate valid (expires > 30 days from now)
 - Verify bcrypt usage: grep -r "bcrypt.hash" src/auth/
 - Verify PII encryption in database schema
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="performance">`
+<constraint priority="critical" scope="performance">
 MUST: API response time <200ms (p95) under normal load
 MUST: Page load time <2 seconds (p95) on 3G connection
 MUST: Checkout flow completes in <5 seconds total
@@ -58,9 +60,9 @@ VERIFICATION:
 - Load test: artillery run load-test.yml
 - Lighthouse performance score >85
 - Monitor production: DataDog alerts if p95 >200ms
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="functionality">`
+<constraint priority="critical" scope="functionality">
 
 MUST: Support payment methods: Credit card, PayPal, Apple Pay
 MUST: Real-time inventory tracking (prevent overselling)
@@ -72,11 +74,11 @@ VERIFICATION:
 - Test each payment method in staging
 - Inventory test: attempt concurrent purchases of last item
 - Monitor email delivery: SendGrid success rate >99%
-`</constraint>`
+</constraint>
 
 SHOULD: Flexible Preferences (Good to have)
 
-`<guideline priority="high" scope="ux">`
+<guideline priority="high" scope="ux">
 
 SHOULD: Guest checkout option (no forced account creation)
 SHOULD: Save payment methods for returning customers
@@ -89,15 +91,13 @@ ACCEPTABLE EXCEPTIONS:
 - Payment saving requires explicit consent (privacy regulation)
 
 WHEN VIOLATING: Document rationale and get product team approval
-`</guideline>`
+</guideline>
 
-`<guideline priority="medium" scope="features">`
+<guideline priority="medium" scope="features">
 
 SHOULD: Product recommendations based on browsing history
-`
 SHOULD: Wishlist functionality
-SHOULD: Social sharing (share products on social media)
-`
+SHOULD:  sharing (share products on social media)
 SHOULD: Live chat support during business hours
 
 ## RATIONALE
@@ -105,11 +105,11 @@ SHOULD: Live chat support during business hours
 These improve conversion but aren't critical for MVP launch.
 
 Implement based on user feedback after launch.
-`</guideline>`
+</guideline>
 
 CONTEXT: Planning Information
 
-`<context scope="business">`
+<context scope="business">
 
 **Company Stage:** Series A startup, 18 months runway
 **Current Status:** 500 beta users, launching to public Q2
@@ -127,9 +127,9 @@ Key Metrics:
 - Cart abandonment: Target <15% (industry average 20%)
 - Checkout completion: Target >80% (start to finish)
 - Support ticket rate: Target <2% of orders
-`</context>`
+</context>
 
-`<context scope="technical">`
+<context scope="technical">
 
 Technology Stack:
 
@@ -148,19 +148,19 @@ Team:
 
 Infrastructure:
 
-- Deployment: Blue-green via GitHub Actions
-- Monitoring: DataDog (metrics, logs, APM)
-- Error tracking: Sentry
-- Load: Expecting 1K concurrent users at launch, 10K within 6 months
+Deployment: Blue-green via GitHub Actions
+DeploymentMonitoring: DataDog (metrics, logs, APM)
+Error tracking: Sentry
+Load: Expecting 1K concurrent users at launch, 10K within 6 months
 
 Constraints:
 
-- Budget: $5K/month infrastructure (need to scale efficiently)
-- Timeline: 3 months to MVP (aggressive but achievable)
-- Technical debt: Acceptable if documented (speed to market priority)
-`</context>`
+Budget: $5K/month infrastructure (need to scale efficiently)
+Timeline: 3 months to MVP (aggressive but achievable)
+Technical debt: Acceptable if documented (speed to market priority)
+</context>
 
-`<context scope="users">`
+<context scope="users">
 
 Primary Users:
 
@@ -194,7 +194,7 @@ Success Criteria:
 
 INTENT: The Why
 
-`<intent scope="platform">`
+<intent scope="platform">
 
 Primary Goal:
 
@@ -289,11 +289,11 @@ If behind schedule by April 15:
 4. Defer Android app (web mobile-first)
 
 Priority: Ship Q2 > Ship perfect Q3
-`</intent>`
+</intent>
 
 VERIFICATION: Self-Checking
 
-`<verification scope="pre-delivery">`
+<verification scope="pre-delivery">
 
 **What to verify before delivery:**
 
@@ -346,7 +346,8 @@ HIGH PRIORITY checks should pass (document exceptions).
 If verification fails: Fix issues, re-verify, then deliver.
 
 Do NOT deliver if CRITICAL checks fail.
-`</verification>`
+</verification>
+```
 
 END OF TEMPLATE
 
@@ -354,9 +355,11 @@ END OF TEMPLATE
 
 ### COMPLETE SPECIFICATION: HEALTHCARE MOBILE APP
 
+```text
+
 MUST: Hard Boundaries (Non-negotiable)
 
-`<constraint priority="critical" scope="compliance" supremacy="true">`
+<constraint priority="critical" scope="compliance" supremacy="true">
 
 MUST: HIPAA compliant (all PHI handling follows HIPAA Security Rule)
 MUST: End-to-end encryption for all patient data in transit (TLS 1.3)
@@ -376,9 +379,9 @@ VERIFICATION:
 - Penetration testing by certified firm (annual)
 - Audit log review (random sampling, 100% capture verified)
 - Manual code review for logging (no PHI in logs)
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="functionality">`
+<constraint priority="critical" scope="functionality">
 
 MUST: Offline mode for core features (appointments, patient notes)
 MUST: Sync when connection available (automatic, background)
@@ -393,9 +396,9 @@ VERIFICATION:
 - Sync test: Go offline, make changes, go online, verify sync
 - Device matrix: Test on iPhone 11, Pixel 5, iPad (minimum devices)
 - Drug interaction: Test known interactions (aspirin + warfarin should warn)
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="performance">`
+<constraint priority="critical" scope="performance">
 MUST: App launch time <2 seconds (cold start on target devices)
 MUST: Patient record load time <1 second (from local cache)
 MUST: Sync completion <10 seconds (for typical day's changes)
@@ -406,11 +409,11 @@ VERIFICATION:
 - Test on iPhone 15 (3-year-old device)
 - Measure with Xcode Instruments (cold launch time)
 - Test with 100 patient records (typical physician load)
-`</constraint>`
+</constraint>
 
 SHOULD: Flexible Preferences
 
-`<guideline priority="high" scope="ux">`
+<guideline priority="high" scope="ux">
 SHOULD: Touch ID / Face ID for quick login (after initial authentication)
 SHOULD: Voice-to-text for note-taking (doctors prefer dictation)
 SHOULD: Smart templates for common diagnoses (save time)
@@ -425,9 +428,9 @@ ACCEPTABLE EXCEPTIONS:
 RATIONALE:
 
 These improve workflow efficiency but aren't critical for compliance or core function.
-`</guideline>`
+</guideline>
 
-`<guideline priority="medium" scope="features">`
+<guideline priority="medium" scope="features">
 
 SHOULD: Telemedicine video calls
 SHOULD: Prescription refill requests from patients
@@ -438,11 +441,11 @@ RATIONALE:
 
 Nice-to-have features for v2.0. Focus on core appointment/note-taking for v1.0.
 Add based on physician feedback after launch.
-`</guideline>`
+</guideline>
 
 CONTEXT: Planning Information
 
-`<context scope="business">`
+<context scope="business">
 
 **Company:** HealthTech startup (Series A), 15-person team
 
@@ -463,9 +466,9 @@ CONTEXT: Planning Information
 - Main competitor: Epic's mobile app (clunky, desktop-focused)
 - Our advantage: Mobile-first design, offline capability
 - Our challenge: Integration with existing EHR systems (complex)
-`</context>`
+</context>
 
-`<context scope="technical">`
+<context scope="technical">
 
 Technology Stack:
 
@@ -487,9 +490,9 @@ Deployment:
 - iOS: TestFlight beta, App Store release
 - Android: Internal testing, Play Store release
 - Backend: AWS ECS (containerized)
-`</context>`
+</context>
 
-`<context scope="users">`
+<context scope="users">
 
 **Primary Users:** Primary care physicians
 
@@ -518,11 +521,11 @@ Deployment:
 - 80% of physicians use offline mode regularly
 - <2% need support calls (intuitive enough for busy doctors)
 - 4.5/5 satisfaction (physicians are picky about tools)
-`</context>`
+</context>
 
 INTENT: The Why
 
-`<intent scope="mobile-app">`
+<intent scope="mobile-app">
 **Primary Goal:**
 
 Provide physicians with mobile-first tool that works better than desktop
@@ -598,11 +601,11 @@ RATIONALE: Simplicity over edge case perfection
 - Adding desktop features to mobile (wrong platform)
 - Requiring internet for core features (breaks offline promise)
 - Optimizing for rare workflows (ignoring 80/20 rule)
-`</intent>`
+</intent>
 
 VERIFICATION: Self-Checking
 
-`<verification scope="pre-delivery">`
+<verification scope="pre-delivery">
 
 **HIPAA COMPLIANCE (Critical - must pass):**
 
@@ -646,7 +649,8 @@ Code quality should pass (document exceptions).
 If HIPAA check fails: STOP. Fix immediately. Re-verify.
 
 Do NOT submit to App Store until ALL critical checks pass.
-`</verification>`
+</verification>
+```
 
 END OF TEMPLATE
 
@@ -654,9 +658,11 @@ END OF TEMPLATE
 
 COMPLETE SPECIFICATION: B2B API SERVICE
 
+```text
+
 MUST: Hard Boundaries
 
-`<constraint priority="critical" scope="api-contract">`
+<constraint priority="critical" scope="api-contract">
 
 MUST: RESTful API design (standard HTTP methods, status codes)
 MUST: API versioning in URL path (/api/v1/, /api/v2/)
@@ -671,9 +677,9 @@ VERIFICATION:
 - Backward compatibility test suite (v1 tests pass on v2)
 - Load test: k6 run load-test.js (p95 <200ms)
 - Rate limiting test: 1001st request returns 429
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="reliability">`
+<constraint priority="critical" scope="reliability">
 
 MUST: 99.9% uptime SLA (< 43.8 minutes downtime per month)
 MUST: Graceful degradation (partial service better than full outage)
@@ -687,9 +693,9 @@ VERIFICATION:
 - Test circuit breaker: Disable dependency, verify graceful handling
 - Load test connection pool: 1000 concurrent connections, no exhaustion
 - Health check responds <50ms
-`</constraint>`
+</constraint>
 
-`<constraint priority="critical" scope="security">`
+<constraint priority="critical" scope="security">
 
 MUST: API key authentication (unique per customer)
 MUST: HTTPS only (no HTTP endpoints in production)
@@ -702,11 +708,11 @@ VERIFICATION:
 - Manual review: No API keys or passwords in logs
 - Input validation test: SQL injection, XSS payloads rejected
 - HTTP endpoint test: All HTTP requests redirect to HTTPS
-`</constraint>`
+</constraint>
 
 SHOULD: Flexible Preferences
 
-`<guideline priority="high" scope="api-design">`
+<guideline priority="high" scope="api-design">
 
 SHOULD: Pagination for list endpoints (limit=100 default, max=1000)
 SHOULD: Filtering and sorting query parameters (standard conventions)
@@ -719,9 +725,9 @@ These improve API usability and prevent common integration issues.
 All are standard B2B API practices customers expect.
 
 WHEN VIOLATING: Document why (e.g., endpoint returns <100 items always)
-`</guideline>`
+</guideline>
 
-`<guideline priority="medium" scope="developer-experience">`
+<guideline priority="medium" scope="developer-experience">
 SHOULD: Code examples in docs (curl, Python, JavaScript, Ruby)
 SHOULD: Sandbox environment for testing (free tier, no credit card)
 SHOULD: Detailed error messages (what went wrong, how to fix)
@@ -730,11 +736,11 @@ SHOULD: SDKs for popular languages (Python, JavaScript to start)
 RATIONALE:
 
 Developer experience drives adoption. Better docs = more customers.
-`</guideline>`
+</guideline>
 
 CONTEXT: Planning Information
 
-`<context scope="business">`
+<context scope="business">
 
 **Company:** B2B SaaS (Series B), 40-person team
 
@@ -757,9 +763,9 @@ CONTEXT: Planning Information
 - [REPLACE: Competitor A - cheaper but less reliable]
 - [REPLACE: Competitor B - expensive but full-featured]
 - Our niche: Balance of price, reliability, and ease of use
-`</context>`
+</context>
 
-`<context scope="technical">`
+<context scope="technical">
 **Technology Stack:**
 
 - API: Node.js 20 + Express (REST)
@@ -786,9 +792,9 @@ CONTEXT: Planning Information
 - Multi-region complexity (data consistency challenges)
 - Cost sensitivity (margins on $0.01/request are thin)
 - Performance critical (customers integrate us in their critical paths)
-`</context>`
+</context>
 
-`<context scope="customers">`
+<context scope="customers">
 
 **Primary Users:** Software developers at B2B companies
 
@@ -816,11 +822,11 @@ CONTEXT: Planning Information
 - Support ticket rate <1% of customers
 - API satisfaction >4.5/5 (NPS survey)
 - Zero unplanned downtime (99.9% uptime)
-`</context>`
+</context>
 
 INTENT: The Why
 
-`<intent scope="api-service">`
+<intent scope="api-service">
 
 **Primary Goal:**
 Provide reliable, easy-to-integrate API that developers love, driving
@@ -896,11 +902,11 @@ RATIONALE: Customer acquisition through developer trial
 - Downtime increasing (reliability declining)
 - Support tickets growing faster than customers (poor docs/DX)
 - Optimizing for enterprise edge cases (ignoring SMB majority)
-`</intent>`
+</intent>
 
 VERIFICATION: Self-Checking
 
-`<verification scope="pre-deployment">`
+<verification scope="pre-deployment">
 
 **API CONTRACT (Critical - must pass):**
 
@@ -918,53 +924,40 @@ Load test passes: k6 run load-test.js
 - 5K requests/second sustained (no errors) ✓
 
 Database connection pool stable under load
-
 Circuit breakers trigger correctly (dependency failure test)
 
 **RELIABILITY (Critical - must pass):**
 
 Health check endpoint responds <50ms
-
 Graceful shutdown works (no dropped connections)
-
 Database failover tested (primary fails, replica takes over)
-
 Multi-region failover tested (one region down, others serve traffic)
 
 **SECURITY (Critical - must pass):**
 
 API key authentication required on all endpoints
-
 HTTPS enforced (HTTP redirects or rejects)
-
 Input validation prevents injection (OWASP ZAP scan clean)
-
 No sensitive data in logs (audit log files)
-
 Rate limiting prevents abuse
 
 **DEVELOPER EXPERIENCE (High priority):**
 
 Documentation complete (all endpoints, examples)
-
 Sandbox environment working (free testing)
-
 Error messages helpful (what + why + how to fix)
-
 Code examples tested (curl examples work)
 
 PASS CRITERIA:
 
 ALL critical checks must pass before production deployment.
-
 High priority checks should pass (document exceptions).
-
 If critical check fails: Fix, re-verify, then deploy.
 
 Monitor post-deployment: Response times, error rates, uptime.
-`</verification>`
+</verification>
+```
 
-`
 END OF TEMPLATE
 
 ## Quick Customization Guide
@@ -973,53 +966,56 @@ END OF TEMPLATE
 
 1. Replace Placeholders
 Look for [REPLACE: ...] markers and fill in your specifics:
-Technology stack
-Business domain
-User types
-Competitors
+-Technology stack
+-Business domain
+-User types
+-Competitors
 
 2. Remove Irrelevant Sections
 Delete entire sections that don't apply:
-E-commerce template has payments → Not needed for internal tool
-Healthcare template has HIPAA → Not needed for non-healthcare
-API template has multi-region → Not needed for single-region service
+-E-commerce template has payments → Not needed for internal tool
+-Healthcare template has HIPAA → Not needed for non-healthcare
+-API template has multi-region → Not needed for single-region service
 
-3. Add Domain-Specific Requirements
+4. Add Domain-Specific Requirements
 Include specialized needs:
-Financial services: SOX compliance, audit trails
-Education: FERPA compliance, accessibility (WCAG 2.1)
-Gaming: Low latency (<50ms), high throughput, anti-cheat
+-Financial services: SOX compliance, audit trails
+-Education: FERPA compliance, accessibility (WCAG 2.1)
+-Gaming: Low latency (<50ms), high throughput, anti-cheat
 
-4. Adjust Priorities
+5. Adjust Priorities
 Change priority levels based on your context:
-Startup MVP: Performance "high" not "critical" (ship fast, optimize later)
-Enterprise: Compliance "critical" (non-negotiable)
-Internal tool: Documentation "medium" (team knows the system)
+-Startup MVP: Performance "high" not "critical" (ship fast, optimize later)
+-Enterprise: Compliance "critical" (non-negotiable)
+-Internal tool: Documentation "medium" (team knows the system)
 
-5. Customize Verification
+6. Customize Verification
 Adapt verification to your tools and processes:
-Different testing framework? Update commands
-Different hosting? Update deployment verification
-Different monitoring? Update production checks
+-Different testing framework? Update commands
+-Different hosting? Update deployment verification
+-Different monitoring? Update production checks
 
-Common Patterns Across Domains
-All good specifications should have:
-Security constraints (appropriate to risk level)
-Performance targets (with measurement criteria)
-Verification protocols (objective pass/fail)
-Business context (why we're building this)
-User context (who will use this, how)
-Technical context (stack, team, infrastructure) Intent (the why, trade-offs, alignment check)
+## Common Patterns Across Domains
 
-Avoid these anti-patterns:
+### **All good specifications should have:**
 
-Vague constraints ("secure", "fast", "good" without definition)
-Missing context (constraints without rationale)
-No verification (can't check if requirements met)
-Copy-paste without adaptation (wrong domain assumptions)
-Over-constraining (too many rigid MUSTs)
+- Security constraints (appropriate to risk level)
+- Performance targets (with measurement criteria)
+- Verification protocols (objective pass/fail)
+- Business context (why we're building this)
+- User context (who will use this, how)
+- Technical context (stack, team, infrastructure) Intent (the why, trade-offs, alignment check)
 
-Next Steps
+### **Avoid these anti-patterns:**
+
+- Vague constraints ("secure", "fast", "good" without definition)
+- Missing context (constraints without rationale)
+- No verification (can't check if requirements met)
+- Copy-paste without adaptation (wrong domain assumptions)
+- Over-constraining (too many rigid MUSTs)
+
+## Next Steps
+
 After choosing and customizing a template:
 
 1. Review against Section 7 pitfalls (avoid common mistakes)
@@ -1027,14 +1023,17 @@ After choosing and customizing a template:
 3. Test with small scope (validate spec on small feature first)
 4. Iterate based on results (specs improve with feedback)
 
-Remember:
-Templates are starting points, not straitjackets
-Adapt to your specific needs
-Specifications improve over time through iteration
-When in doubt, be specific (under-constraining is common pitfall)
+**Remember:**
+
+- Templates are starting points, not straitjackets
+- Adapt to your specific needs
+- Specifications improve over time through iteration
+
+**When in doubt, be specific (under-constraining is common pitfall)**
 
 END OF APPENDIX A
 
 Document Version: 1.0.0
-Last Updated: 2026-02-16
+Last Updated: 2026-02-27
 Three complete templates ready for immediate use Copy, customize, and deploy
+
