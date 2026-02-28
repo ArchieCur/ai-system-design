@@ -213,6 +213,7 @@ Depth: Brief, referenced from SPEC.md
 ### Key difference between Spec and Skills folders
 
 • Skills = HOW (procedures, methods, SOPs)
+
 • Specs = WHAT (rules, policies, context)
 
 ## Best Practices
@@ -330,4 +331,5 @@ Document Version: 1.0.0
 Last Updated: 2026-02-28
 
 Organizing specifications with simple folder structures for complex projects
+
 
