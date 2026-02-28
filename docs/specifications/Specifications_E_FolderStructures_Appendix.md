@@ -22,6 +22,8 @@ Rule of thumb: If SPEC.md exceeds 500 lines, consider splitting into folders.
 
 ## Basic Folder Structure
 
+```text
+
 /project-specs/
 ├── SPEC.md # Main specification (MUST, SHOULD, CONTEXT, INTENT)
 ├── policies/ # Internal policies
@@ -36,13 +38,14 @@ Rule of thumb: If SPEC.md exceeds 500 lines, consider splitting into folders.
 ├── brand-guidelines.md
 ├── business-priorities.md
 └── technical-environment.md
+```
 
 ## Example: E-commerce Platform
 
 SPEC.md (Main Specification)
 Reference external documents instead of duplicating content
 
-```xml
+```text
 
 <constraint priority="critical" scope="security">
 MUST: Follow security policy (see policies/security-policy.md)
@@ -179,6 +182,8 @@ Important distinction:
 
 ## Skills Folders (Detailed Procedures)
 
+```text
+
 /mnt/skills/docx/
 ├── SKILL.md # HOW to create Word documents
 ├── examples/ # Step-by-step examples
@@ -188,8 +193,11 @@ Important distinction:
 Purpose: Teach HOW to do things (SOPs, procedures)
 Scope: Reusable across many projects
 Depth: Comprehensive, detailed
+```
 
 ### Spec Folders (Reference Documents)
+
+```text
 
 /project-specs/
 ├── SPEC.md # WHAT constraints and context apply
@@ -200,6 +208,7 @@ Depth: Comprehensive, detailed
 Purpose: Define WHAT rules apply (policies, constraints)
 Scope: Specific to this project
 Depth: Brief, referenced from SPEC.md
+```
 
 ### Key difference between Spec and Skills folders
 
@@ -208,34 +217,39 @@ Depth: Brief, referenced from SPEC.md
 
 ## Best Practices
 
-1. Keep SPEC.md as Hub
+1- **Keep SPEC.md as Hub**
 SPEC.md should be the single entry point:
-Contains all MUST/SHOULD constraints
-References external documents
-Provides high-level CONTEXT and INTENT
-External files provide details, but SPEC.md is authoritative.
+- Contains all MUST/SHOULD constraints
+- References external documents
+- Provides high-level CONTEXT and INTENT
+**External files provide details, but SPEC.md is authoritative.**
 
-2. Organize by Concern
-policies/ # Internal rules you control
-regulations/ # External compliance you must follow
-context/ # Background information that informs decisions
-This separation makes maintenance easier.
+2- **Organize by Concern**
+- policies/ # Internal rules you control
+- regulations/ # External compliance you must follow
+- context/ # Background information that informs decisions
+**This separation makes maintenance easier.**
 
-3. Keep Reference Files Updated
+3- **Keep Reference Files Updated**
 When policies change:
-Update the specific file (e.g., security-policy.md)
-SPEC.md references remain valid
-No need to regenerate entire specification
+- Update the specific file (e.g., security-policy.md)
+- SPEC.md references remain valid
+**No need to regenerate entire specification**
 
-4. Don't Over-Organize
-Good (simple, clear):
+4- **Don't Over-Organize**
+
+**Good (simple, clear):**
+
+```text
 
 /specs/
 ├── SPEC.md
 ├── policies/security-policy.md
 └── regulations/GDPR-requirements.md
+```
+**Bad (over-engineered):**
 
-Bad (over-engineered):
+```text
 
 /specs/
 ├── SPEC.md
@@ -247,18 +261,19 @@ Bad (over-engineered):
 │ │ │ │ ├── hashing.md
 │ │ │ │ └── storage.md
 [... 50 more nested folders ...]
-Keep it simple. 2-3 levels maximum.
+```
+**Keep it simple. 2-3 levels maximum.**
 
-## When to Use Single SPEC.md vs. Folders
+## When to Use Single SPEC.md vs. Adding Spec Folders
 
-Use Single SPEC.md When:
+**Use Single SPEC.md When:**
 
 - Project is straightforward (< 500 lines total)
 - No external compliance requirements
 - No shared policies across teams
 - Quick iteration and changes expected
 
-Use Folders When:
+**Use Folders When:**
 
 - Multiple compliance requirements (GDPR + SOC2 + PCI-DSS)
 - Detailed policies to reference (security, privacy, data retention)
@@ -268,6 +283,8 @@ Use Folders When:
 ## Template: Minimal Spec Folder
 
 For projects that need folders but want to keep it simple:
+
+```text
 
 /project-specs/
 ├── SPEC.md
@@ -284,29 +301,33 @@ For projects that need folders but want to keep it simple:
 │
 └── context/
 └── project-context.md
-
-Technical environment, users, business priorities
-Start here. Add more files only if needed.
+| #Technical environment, users, business priorities
+```
+**Start here. Add more files only if needed.**
 
 ## Key Takeaways
 
-Spec folders are:
+**Spec folders are:**
 
 - References (not procedures)
 - Project-specific (not reusable SOPs)
 - Simple organization (policies, regulations, context)
 - Complementary to SPEC.md (not replacements)
 
-Keep it simple:
+**Keep it simple:**
 
 - Reference from SPEC.md rather than duplicate
 - 2-3 levels deep maximum
 - Add folders only when SPEC.md gets unwieldy (>500 lines)
 - Update referenced files independently
-Unlike Skills folders (which teach HOW), Spec folders define WHAT (policies, compliance, context).
+
+**Unlike Skills folders (which teach HOW), Spec folders define WHAT (policies, compliance, context).**
 
 END OF APPENDIX E
 
 Document Version: 1.0.0
-Last Updated: 2026-02-18
+
+Last Updated: 2026-02-28
+
 Organizing specifications with simple folder structures for complex projects
+
