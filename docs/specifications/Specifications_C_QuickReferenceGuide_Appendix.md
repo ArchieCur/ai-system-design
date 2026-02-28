@@ -3,11 +3,12 @@
 **For:** Fast reference during specification writing
 
 **When to use:** While actively writing specs, need quick reminders
+
 **What you get:** Checklists, patterns, red flags, decision trees—all condensed
 
 ## How to Use This Guide
 
-This is your quick reference card:
+**This is your quick reference card:**
 
 - Keep it open while writing specs
 - Check relevant sections as you work
@@ -17,7 +18,7 @@ This is your quick reference card:
 Not meant for learning (see Sections 1-7 for that).
 Meant for doing (quick lookups while working).
 
-### The Five Layers at a Glance
+## The Five Layers at a Glance
 
 ![Five Spec Layers Chart(../assets/Five_Layers_at_a_Glance.png)]
 
@@ -50,11 +51,13 @@ Before finalizing MUST constraints:
 [ ] Does this have a supremacy clause if needed? (When conflicts occur, what wins?)
 [ ] Is verification protocol defined? (How to check compliance?)
 
-#### MUST Patterns
+### MUST Patterns
 
-Pattern 1: Security Constraint
+#### Pattern 1: Security Constraint
 
-`<constraint priority="critical" scope="security">`
+```text
+
+<constraint priority="critical" scope="security">
 MUST: [Specific security requirement]
 MUST: [Authentication/authorization requirement]
 MUST: [Data protection requirement]
@@ -63,11 +66,14 @@ RATIONALE: [Why this is required - legal, risk, etc.]
 VERIFICATION:
 
 [Specific test or audit to confirm compliance]
-`</constraint>`
+</constraint>
+```
 
-Pattern 2: Performance Constraint
+#### Pattern 2: Performance Constraint
 
-`<constraint priority="critical" scope="performance">`
+```text
+
+<constraint priority="critical" scope="performance">
 MUST: [Specific metric] <[threshold] ([percentile])
 
 Example: API response time <200ms (p95)
@@ -79,11 +85,14 @@ Command: [load test command]
 Expected: [specific result]
 
 Pass criteria: [objective threshold]
-`</constraint>`
+</constraint>
+```
 
-Pattern 3: Compatibility Constraint
+#### Pattern 3: Compatibility Constraint
 
-`<constraint priority="critical" scope="compatibility">`
+```text
+
+<constraint priority="critical" scope="compatibility">
 MUST: Support [platform/version] and above
 MUST: Work with [existing system/tool]
 
@@ -93,36 +102,48 @@ RATIONALE:
 VERIFICATION:
 
 Test matrix: [specific versions/platforms to test]
-`</constraint>`
+</constraint>
+```
 
 ### MUST Red Flags
 
 Warning signs your MUST is problematic:
 
-**Vague language:** "Be secure", "Perform well", "Look good"
+#### Vague language
 
-Fix: Define specifically (e.g., "bcrypt salt rounds ≥12", "p95 <200ms", "WCAG 2.1 AA")
+**"Be secure", "Perform well", "Look good"**
 
-**Subjective criteria:** "Clean code", "Good UX", "Elegant"
+**Fix:** Define specifically (e.g., "bcrypt salt rounds ≥12", "p95 <200ms", "WCAG 2.1 AA")
 
-Fix: Define objectively (e.g., "Complexity <10", "80% task completion", "Pass Nielsen heuristics")
+#### Subjective criteria:
 
-**Too many MUSTs:** 50+ critical constraints
+**"Clean code", "Good UX", "Elegant"**
 
-Fix: Prioritize—some are SHOULD not MUST. Keep MUSTs to truly critical items.
+**Fix:** Define objectively (e.g., "Complexity <10", "80% task completion", "Pass Nielsen heuristics")
 
-**Conflicting MUSTs:** Response <100ms BUT query 10 databases (impossible!)
+#### Too many MUSTs:
 
-Fix: Prioritize (which wins?) or relax one constraint to make both achievable.
+**50+ critical constraints**
 
-**Secret MUST disguised as SHOULD:** "SHOULD use company auth (but really you must!)"
-Fix: Call it MUST if it's required. Be honest about rigidity.
+**Fix:** Prioritize—some are SHOULD not MUST. Keep MUSTs to truly critical items.
+
+#### Conflicting MUSTs:
+
+**Response <100ms BUT query 10 databases (impossible!)**
+
+**Fix:** Prioritize (which wins?) or relax one constraint to make both achievable.
+
+#### Secret MUST disguised as SHOULD:
+
+**"SHOULD use company auth (but really you must!)"**
+
+**Fix:** Call it MUST if it's required. Be honest about rigidity.
 
 ### SHOULD Layer Quick Reference
 
-When to Use SHOULD
+#### When to Use SHOULD**
 
-Use SHOULD for:
+**Use SHOULD for:**
 
 - Preferred approaches (but alternatives acceptable)
 - Optimization goals (faster is better, but not critical)
@@ -141,17 +162,22 @@ Use SHOULD for:
 
 Before finalizing SHOULD guidelines:
 
+```text
+
 [ ] Is there flexibility? (Can alternatives work?)
 [ ] Are exceptions acceptable? (When would we violate this?)
 [ ] Is the preference justified? (Why is this preferred?)
 [ ] Are alternatives documented? (What else could work?)
 [ ] Is there a decision framework? (When to choose A vs B?)
+```
 
 ### SHOULD Patterns
 
-Pattern 1: Preferred Approach with Alternatives
+#### Pattern 1: Preferred Approach with Alternatives
 
-`<guideline priority="high">`
+```text
+
+<guideline priority="high">
 SHOULD: [Preferred approach]
 
 RATIONALE: [Why this is preferred]
@@ -164,11 +190,14 @@ ACCEPTABLE ALTERNATIVES:
 WHEN VIOLATING:
 
 Document rationale and get [stakeholder] approval
-`</guideline>`
+</guideline>
+```
 
-Pattern 2: Optimization Goal
+#### Pattern 2: Optimization Goal
 
-`<guideline priority="medium">`
+```text
+
+<guideline priority="medium">
 SHOULD: [Optimization target]
 
 Example: Aim for <100ms response time (p95)
@@ -178,26 +207,40 @@ RATIONALE: [Why this improves experience]
 ACCEPTABLE: <200ms if [trade-off justifies it]
 
 NOT ACCEPTABLE: >500ms (becomes MUST violation)
-`</guideline>`
+</guideline>
+```
 
 ### SHOULD Red Flags
 
-**Actually required:** "SHOULD comply with HIPAA (but it's required)"
-Fix: Make it MUST if it's truly required
+#### Actually required:
 
-**No flexibility:** "SHOULD use React (no alternatives allowed)"
-Fix: If no alternatives, it's MUST not SHOULD
+**"SHOULD comply with HIPAA (but it's required)"**
 
-**Too rigid:** "SHOULD be exactly 25 lines (no exceptions)"
-Fix: Add acceptable exceptions or make it a range
+**Fix:** Make it MUST if it's truly required
 
-**No rationale:** "SHOULD prefer PostgreSQL (no explanation)"
-Fix: Explain WHY preferred (team expertise? specific features?)
+#### No flexibility:
+
+**"SHOULD use React (no alternatives allowed)"**
+
+**Fix:** If no alternatives, it's MUST not SHOULD
+
+#### Too rigid:
+
+**"SHOULD be exactly 25 lines (no exceptions)"**
+
+**Fix:** Add acceptable exceptions or make it a range
+
+#### No rationale:
+
+**"SHOULD prefer PostgreSQL (no explanation)"**
+
+**Fix:** Explain WHY preferred (team expertise? specific features?)
 
 ### CONTEXT Layer Quick Reference
 
-What to Include in CONTEXT
-Business Context:
+**What to Include in CONTEXT**
+
+**Business Context:**
 
 - Company stage (startup vs enterprise)
 - Budget constraints
@@ -205,7 +248,7 @@ Business Context:
 - Competitive landscape
 - Success metrics
 
-Technical Context:
+**Technical Context:**
 
 - Technology stack
 - Team expertise
@@ -213,7 +256,7 @@ Technical Context:
 - Existing systems
 - Scale requirements
 
-User Context:
+**User Context:**
 
 - Who are the users?
 - Tech proficiency
@@ -225,29 +268,44 @@ User Context:
 
 Before finalizing CONTEXT:
 
+```text
+
 [ ] Does this explain WHY constraints exist?
 [ ] Does this inform priorities?
 [ ] Is this specific to THIS project? (Not copy-pasted)
 [ ] Does this help with trade-off decisions?
 [ ] Is this current and accurate?
+```
 
 ### CONTEXT Red Flags
 
-**Generic:** "We're a technology company focused on innovation"
-Fix: Be specific (stage, size, market, constraints)
+#### Generic:
 
-**Copy-pasted:** Context from different project/domain
-Fix: Customize to YOUR project
+**"We're a technology company focused on innovation"**
 
-**Too much history:** 5 pages of company background from 2010
-Fix: Focus on what's relevant NOW for THIS project
+**Fix:** Be specific (stage, size, market, constraints)
 
-**Irrelevant details:** "Office has standing desks, free snacks"
-Fix: Include only context that affects technical decisions
+#### Copy-pasted:
+
+**Context from different project/domain**
+
+**Fix:** Customize to YOUR project
+
+#### Too much history:
+
+**5 pages of company background from 2010**
+
+**Fix:** Focus on what's relevant NOW for THIS project
+
+#### Irrelevant details:
+
+**"Office has standing desks, free snacks"**
+
+**Fix:** Include only context that affects technical decisions
 
 ### INTENT Layer Quick Reference
 
-What to Include in INTENT
+**What to Include in INTENT**
 
 Primary Goal:
 
@@ -282,18 +340,23 @@ Alignment Check:
 
 Before finalizing INTENT:
 
+```text
+
 [ ] Is the goal clear and specific?
 [ ] Is success measurable?
 [ ] Are trade-offs explicitly stated?
 [ ] Is rationale provided for key choices?
 [ ] Is there an alignment check framework?
 [ ] Does this answer "why" for MUST constraints?
+```
 
 ### INTENT Patterns
 
-Pattern 1: Goal + Trade-offs + Alignment
+#### Pattern 1: Goal + Trade-offs + Alignment
 
-`<intent scope="domain">`
+```text
+
+<intent scope="domain">
 
 **Primary Goal:**
 [One sentence goal with metric]
@@ -322,25 +385,39 @@ Pattern 1: Goal + Trade-offs + Alignment
 On track if: [specific indicators]
 
 Drifting if: [warning signs]
-`</intent>`
+</intent>
+```
 
 ### INTENT Red Flags
 
-**Vague goal:** "Build a great product"
-Fix: Specific, measurable (e.g., "Reduce cart abandonment from 25% to 15%")
+#### Vague goal:
 
-**No trade-offs:** "We want it fast AND perfect AND cheap"
-Fix: Acknowledge what you're prioritizing (e.g., "Speed over perfection for v1")
+**"Build a great product"**
 
-**Missing rationale:** "We chose React" (no explanation)
-Fix: Explain WHY (team expertise, ecosystem, performance, etc.)
+**Fix:** Specific, measurable (e.g., "Reduce cart abandonment from 25% to 15%")
 
-**No alignment check:** How do you know if you're drifting?
-Fix: Define on-track indicators and warning signs
+#### No trade-offs:
+
+**"We want it fast AND perfect AND cheap"**
+
+**Fix:** Acknowledge what you're prioritizing (e.g., "Speed over perfection for v1")
+
+#### Missing rationale:
+
+**"We chose React" (no explanation)**
+
+**Fix:** Explain WHY (team expertise, ecosystem, performance, etc.)
+
+#### No alignment check:
+
+**How do you know if you're drifting?**
+
+**Fix:** Define on-track indicators and warning signs
 
 ## VERIFICATION Quick Reference
 
-What to Include in VERIFICATION
+**What to Include in VERIFICATION**
+
 What to Verify:
 
 - Which constraints to check
@@ -374,18 +451,23 @@ Pass Criteria:
 
 Before finalizing VERIFICATION:
 
+```text
+
 [ ] All critical MUST constraints have verification
 [ ] Verification is objective (not "looks good")
 [ ] Verification is actionable (I can actually run this)
 [ ] Expected results are clear
 [ ] Pass/fail criteria are specific
 [ ] Failure recovery is defined
+```
 
 ### VERIFICATION Patterns
 
-Pattern 1: Automated Verification
+#### Pattern 1: Automated Verification
 
-`<verification scope="domain">`
+```text
+
+<verification scope="domain">
 **What to verify:**
 [Specific constraint]
 
@@ -405,10 +487,13 @@ Pass criteria: [objective threshold]
 
 3. Re-verify
 `</verification>`
+```
 
-Pattern 2: Manual Verification
+#### Pattern 2: Manual Verification
 
-`<verification scope="domain">`
+```text
+
+<verification scope="domain">
 
 **What to verify:**
 [Specific criteria]
@@ -426,29 +511,41 @@ All items confirmed
 **If fails:**
 
 Document which item failed and why, then address
-`</verification>`
+</verification>
+```
 
 ### VERIFICATION Red Flags
 
-**Vague criteria:** "Verify code quality is good"
-Fix: Specific checks (linter passes, coverage >80%, complexity <10)
+#### Vague criteria:
 
-**No verification for critical MUST:** MUST has no matching verification
-Fix: Add specific verification protocol for each critical constraint
+**"Verify code quality is good"**
 
-**Subjective pass criteria:** "Looks good to me"
-Fix: Objective criteria (specific metrics, thresholds, tests)
+**Fix:** Specific checks (linter passes, coverage >80%, complexity <10)
+
+#### No verification for critical MUST:
+
+**MUST has no matching verification**
+
+**Fix:** Add specific verification protocol for each critical constraint
+
+#### Subjective pass criteria:
+
+**"Looks good to me"**
+
+**Fix:** Objective criteria (specific metrics, thresholds, tests)
 
 **No failure handling:** Verification fails, now what?
 Fix: Define what to do when verification fails
 
-#### Common Patterns
+## Common Patterns
 
-Pattern: The Supremacy Clause
+### Pattern: The Supremacy Clause
 
-When to use: Multiple critical constraints might conflict
+**When to use:** Multiple critical constraints might conflict
 
-`<constraint priority="critical" supremacy="true">`
+```text
+
+<constraint priority="critical" supremacy="true">
 
 MUST: [Highest priority requirement]
 
@@ -462,13 +559,18 @@ SUPREMACY CLAUSE:
 
 Example: HIPAA compliance overrides performance, features, and
 user convenience.
-`</constraint>`
+</constraint>
+```
 
-Pattern: The Exception Documentation
+### Pattern: The Exception Documentation
 
-When to use: SHOULD that might be violated
+**When to use:**
 
-`<guideline priority="high">`
+SHOULD that might be violated
+
+```text
+
+<guideline priority="high">
 
 SHOULD:
 [Preferred approach]
@@ -483,12 +585,15 @@ WHEN VIOLATING:
 1. Document specific rationale
 2. Get [stakeholder] approval
 3. Record in decision log
-`</guideline>`
+</guideline>
 
-Pattern: The Decision Framework
-When to use: Multiple options, need to choose
+### Pattern: The Decision Framework
 
-`<intent scope="domain">`
+**When to use:** Multiple options, need to choose
+
+```text
+
+<intent scope="domain">
 
 **Decision Framework:**
 
@@ -505,9 +610,12 @@ Example:
 - Analysis: Impacts priorities how?
 - Decision: Accept/reject based on framework
 - Rationale: [Which priority it serves/harms]
-`</intent>`
+</intent>
+```
 
 ## Decision Trees- Should This Be MUST or SHOULD?
+
+```text
 
 Is this legally required?
 
@@ -570,50 +678,54 @@ Would someone ask "why this approach?"
 
 ├─ YES → Provide rationale in CONTEXT/INTENT
 └─ NO → Minimal CONTEXT okay
+```
 
 ## Quick Anti-Pattern Recognition
 
 ### Red Flag Phrases
 
-If you write these, stop and fix:
+**If you write these, stop and fix:**
 
-"Be secure" → Define HOW (bcrypt? TLS? encryption?)
-"Perform well" → Define WHAT (response time? throughput?)
-"Good UX" → Define WHAT (task completion? satisfaction score?)
-"Clean code" → Define WHAT (complexity? coverage? linting?)
-"Use best practices" → Define WHICH practices
-"Make it fast" → Define HOW FAST (metric + threshold)
-"Obviously" / "Clearly" → If obvious, state it explicitly
-"Just" / "Simply" → If simple, be specific about how
+- "Be secure" → Define HOW (bcrypt? TLS? encryption?)
+- "Perform well" → Define WHAT (response time? throughput?)
+- "Good UX" → Define WHAT (task completion? satisfaction score?)
+- "Clean code" → Define WHAT (complexity? coverage? linting?)
+- "Use best practices" → Define WHICH practices
+- "Make it fast" → Define HOW FAST (metric + threshold)
+- "Obviously" / "Clearly" → If obvious, state it explicitly
+- "Just" / "Simply" → If simple, be specific about how
 
 ## Integration Check
 
 Are your layers working together?
 
-Good Integration:
+### Good Integration:
 
-MUST → Specific boundary
-CONTEXT → Explains why boundary exists
-INTENT → Clarifies what we're achieving with boundary
-VERIFICATION → Tests boundary is honored
+- MUST → Specific boundary
+- CONTEXT → Explains why boundary exists
+- INTENT → Clarifies what we're achieving with boundary
+- VERIFICATION → Tests boundary is honored
 
-Example:
+**Example:**
 
-MUST: Response time <200ms (p95)
-CONTEXT: Cart abandonment increases 10% per second delay
-INTENT: Reduce abandonment from 25% to 15%
-VERIFICATION: Load test shows p95 <200ms
+- MUST: Response time <200ms (p95)
+- CONTEXT: Cart abandonment increases 10% per second delay
+- INTENT: Reduce abandonment from 25% to 15%
+- VERIFICATION: Load test shows p95 <200ms
 
-Poor Integration:
+### Poor Integration:
 
-MUST: Response time <100ms
-CONTEXT: Users prefer thoroughness over speed
-INTENT: Build trust through careful validation
-LAYERS CONTRADICT!
+- MUST: Response time <100ms
+- CONTEXT: Users prefer thoroughness over speed
+- INTENT: Build trust through careful validation
+  
+**LAYERS CONTRADICT!**
 
 ## Before You Finish Checklist
 
 Final check before considering your spec complete:
+
+```text
 
 Completeness
 
@@ -655,12 +767,15 @@ Intent
 [ ] Trade-offs stated
 [ ] Rationale for key decisions provided
 [ ] Alignment check framework exists
+```
 
 ## Quick Templates
 
 ### Minimal Viable Spec Template
 
-`<constraint priority="critical">`
+```text
+
+<constraint priority="critical">
 
 MUST:
 [Most critical 3-5 requirements]
@@ -668,49 +783,51 @@ MUST:
 VERIFICATION:
 
 [How to check each]
-`</constraint>`
+</constraint>
 
-`<context>`
+<context>
 [Why these requirements exist]
 
 [Key constraints/pressures]
-`</context>`
+</context>
 
-`<intent>`
+<intent>
 
 **Goal:** [What we're achieving]
 
 **Success:** [How we measure it]
-`</intent>`
+</intent>
+```
+**Use this when: Need something fast, will iterate later.**
 
-Use this when: Need something fast, will iterate later.
+### Complete Spec Template
 
-### `Complete Spec Template
+```text
 
-`<constraint priority="critical">`
+<constraint priority="critical">
 MUST: [Hard boundaries - 5-10 items]
 
 [With verification for each]
-`</constraint>`
+</constraint>
 
-`<guideline priority="high">`
+<guideline priority="high">
 
 SHOULD: [Preferences - 5-10 items]
 
 [With acceptable exceptions]
-`</guideline>`
+</guideline>
 
-`<context scope="business">`
+<context scope="business">
 
 [Company, users, constraints, timeline]
-`</context>`
+</context>
 
-`<context scope="technical">`
+<context scope="technical">
 
 [Stack, team, infrastructure, scale]
-`</context>`
+</context>
 
-`<intent>`
+<intent>
 
 **Goal:** [Specific, measurable]
 
@@ -721,32 +838,34 @@ SHOULD: [Preferences - 5-10 items]
 **Trade-offs:** [What we accept]
 
 **Alignment:** [How we track]
-`</intent>`
+</intent>
 
-`<verification>`
+<verification>
 [Comprehensive checking for all critical items]
-`</verification>`
-
-Use this when: Formal project, need complete specification.
+</verification>
+```
+**Use this when: Formal project, need complete specification.**
 
 ## Remember
 
-Specifications are:
+**Specifications are:**
 
 - Persistent (reusable across conversations)
 - Precise (remove ambiguity)
 - Verifiable (objective success criteria)
 
-Good specs enable:
+**Good specs enable:**
 
 - No guessing (I know what to do)
 - No rabbit holes (I stay on track)
 - No conflicts (priorities clear)
 - Quality output (verified compliance)
-Keep this guide handy while writing specs!
+
+**Keep this guide handy while writing specs!**
 
 ## END OF APPENDIX C
 
 Document Version: 1.0.0
-Last Updated: 2026-02-18
+Last Updated: 2026-02-27
 Quick reference for active specification writing
+
