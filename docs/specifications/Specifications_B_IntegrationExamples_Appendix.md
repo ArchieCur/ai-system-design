@@ -1077,7 +1077,8 @@ END OF APPENDIX B
 
 Document Version: 1.0.0
 Last Updated: 2026-02-27
-Key Three complete integration examples showing all layers working together
+Key principle: Three complete integration examples showing all layers working together
+
 
 
 
