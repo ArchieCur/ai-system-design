@@ -126,7 +126,7 @@ This curriculum emerged from genuine collaboration between:
 
 - What skills are and when to use them
 - Creating reusable AI capabilities
-- Tool integration and semantic tagging
+- Tool integration, Programmatic Tool Calling and semantic tagging
 - **Appendices:** Templates, cross-platform resources
 
 **Module 3: Specifications** (Persistent)
