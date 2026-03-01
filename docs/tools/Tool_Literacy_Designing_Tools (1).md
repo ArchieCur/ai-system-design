@@ -49,8 +49,10 @@ What it solves: The "guess the intent" problem
 "name": "get_data",
 "description": "Gets data"
 }
+```
 
 **After:** (good design)
+```text
 {
 "name": "get_user_profile",
 "description": "Retrieves a single user's complete profile from the users database",
