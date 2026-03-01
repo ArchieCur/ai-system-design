@@ -464,12 +464,14 @@ But how do you know if the model actually followed the specification?
 **That's where Verification Protocols come in.**
 
 **Verification is not a fifth layer**- it's a separate component that **validates outputs against the specification**:
+**Verifications are a Specification Enforcement Mechanism**
 
 **The Four Layers are:**
 - **Prescriptive** (loaded into model's context, shape behavior during execution)
 - **Input to the model** (the model reads and uses them while working)
 
 **Verification Protocols are:**
+
 - **Evaluative** (applied to model's outputs after execution)
 - **External to the model** (human or automated systems check the work)
 
@@ -489,12 +491,6 @@ A complete specification system has **two parts**:
 **Without layers**, you have checks but no guidance.
 
 **Both are essential.** The four layers prevent failures. Verification catches failures that happen anyway.
-
-#### Verification Protocols:
-
-•	Applied to model's outputs after execution
-•	Check if behavior matched specification
-•	"Here's how to check if you behaved correctly"
 
 **For detailed verification patterns, see Section 6: Verification Protocols.**
 
@@ -892,6 +888,7 @@ The module concepts were refined through iterative stress-testing with Google Ge
 with actual model behaviors.
 
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
