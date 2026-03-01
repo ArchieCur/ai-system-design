@@ -141,8 +141,8 @@ Irreversible, has side effects, requires confirmation
 **Rule:** ALWAYS confirm with user before execution
 
 **Class C: Computational (When Reliability Requires It)**  
-Tasks where accumulated steps, scale, or precision requirements make in-context reasoning 
-unreliable*Examples: 360-month mortgage calculations, large dataset analysis*
+Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable 
+*Examples: 360-month mortgage calculations, large dataset analysis*
 **NOT:** "tasks Claude finds hard" but "tasks where error accumulates faster than reasoning can correct"
 
 ## Beyond Basic Descriptions
