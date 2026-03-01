@@ -134,6 +134,7 @@ This curriculum emerged from genuine collaboration between:
 - Complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
 - Writing constraints that prevent chaos
 - Verification protocols
+- Belief Dynamics In-Context Learning (ICL)
 - Common pitfalls (featuring the infamous "Jevo Script syndrome")
 - **Appendices:**  
   - Complete templates (e-commerce, healthcare, B2B SaaS)
@@ -141,6 +142,7 @@ This curriculum emerged from genuine collaboration between:
   - Quick reference guide
   - Verification protocol templates
   - Organizing specifications with folders
+  - 
 
 ### Read in Order or Jump Around
 
