@@ -10,13 +10,13 @@
 
 ## Introduction: The Same Problems, Compounded
 
-Everything in this curriculum has been building toward a specific claim: that the way you structure evidence — through Specifications, through Skills, through the design of your Prompts- determines how reliably an agent maintains its intended behavior under load, over time, and across contexts.
+Everything in this curriculum has been building toward a specific claim: that the way you structure evidence- through Specifications, through Skills, through the design of your Prompts- determines how reliably an agent maintains its intended behavior under load, over time, and across contexts.
 
 That claim doesn't change in multi-agent systems. It becomes more urgent.
 
-A prompt is an initial prior injection. A Specification is a prior lock. A Skill is a pre-structured evidence package. These mechanisms were designed with a single agent in mind — one model, one context window, one belief state to manage. When you introduce multiple agents, each of those mechanisms is still doing exactly what it was designed to do. The problem is that the outputs of one agent's context window are flowing directly into another agent's context window as evidence. And evidence accumulates.
+A prompt is an initial prior injection. A Specification is a prior lock. A Skill is a pre-structured evidence package. These mechanisms were designed with a single agent in mind- one model, one context window, one belief state to manage. When you introduce multiple agents, each of those mechanisms is still doing exactly what it was designed to do. The problem is that the outputs of one agent's context window are flowing directly into another agent's context window as evidence. And evidence accumulates.
 
-This module covers what changes- and what doesn't — when agents are communicating with each other.
+This module covers what changes- and what doesn't- when agents are communicating with each other.
 
 ---
 
