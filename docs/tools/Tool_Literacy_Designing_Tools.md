@@ -224,20 +224,21 @@ return api_payload
 **What it solves:** State-change anxiety, unknown side effects
 **Every tool must be classified:**
 
-**Class A: Read-Only (Low Risk)**
-• Characteristics: No side effects, idempotent, safe to retry, safe to use speculatively
-• Examples: get_user, search_documents, list_files, calculate_statistics
+**Class A: Read-Only (Low Risk)**  
+• Characteristics: No side effects, idempotent, safe to retry, safe to use speculatively  
+• Examples: get_user, search_documents, list_files, calculate_statistics  
 • System Prompt Guidance: "Use freely when information retrieval is needed"
 
-**Class B: State-Change (High Risk)**
-• Characteristics: Irreversible, has side effects, requires confirmation
-• Examples: delete_file, send_email, update_database, deploy_app
+**Class B: State-Change (High Risk)**  
+• Characteristics: Irreversible, has side effects, requires confirmation  
+• Examples: delete_file, send_email, update_database, deploy_app  
 • System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
 
-**Class C: Computational (When Reasoning Fails)**
-• Characteristics: Task exceeds The model's reasoning capability, requires external computation
-• Examples: calculate_mortgage_schedule (360 months of calculations),
-run_statistical_analysis (large dataset), generate_complex_report (requires structured
+**Class C: Computational (When Reliability Requires It)**
+• Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable
+• Examples: calculate_mortgage_schedule (360 months of calculations),  
+run_statistical_analysis (large dataset),  
+generate_complex_report (requires structured
 output)
 • System Prompt Guidance: "Use when task complexity exceeds reliable reasoning
 capability"
