@@ -235,9 +235,9 @@ return api_payload
 • System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
 
 **Class C: Computational (When Reliability Requires It)**  
-• Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable
-• Examples: calculate_mortgage_schedule (360 months of calculations), run_statistical_analysis
- (large dataset),generate_complex_report (requires structured output)
+• Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable  
+• Examples: calculate_mortgage_schedule (360 months of calculations), run_statistical_analysis  
+ (large dataset),generate_complex_report (requires structured output)  
 • System Prompt Guidance: "Use when task complexity exceeds reliable reasoning capability"
 
 **Key Distinction for Class C:**
