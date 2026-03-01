@@ -67,7 +67,7 @@ Work through the core framework sequentially to build a solid understanding.
 
 ## Key Principle
 
-**All five layers work together.** MUST defines boundaries. SHOULD provides flexibility. CONTEXT enables planning. INTENT reveals why. VERIFICATION PROTOCOLS confirm success.
+**All five work together.** MUST defines boundaries. SHOULD provides flexibility. CONTEXT enables planning. INTENT reveals why. VERIFICATION PROTOCOLS confirm success.
 
 Missing any layer increases cognitive friction and reduces reliability.
 
