@@ -459,11 +459,13 @@ Users need to know what went wrong
 ### Verification: Closing the Loop
 
 The four specification layers (MUST/SHOULD/CONTEXT/INTENT) tell the model **how to behave**. 
+
 But how do you know if the model actually followed the specification?
 
 **That's where Verification Protocols come in.**
 
 **Verification is not a fifth layer**- it's a separate component that **validates outputs against the specification**:
+
 **Verifications are a Specification Enforcement Mechanism**
 
 **The Four Layers are:**
@@ -888,6 +890,7 @@ The module concepts were refined through iterative stress-testing with Google Ge
 with actual model behaviors.
 
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
