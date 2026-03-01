@@ -140,10 +140,10 @@ Irreversible, has side effects, requires confirmation
 *Examples: delete_file, send_email, update_database*  
 **Rule:** ALWAYS confirm with user before execution
 
-**Class C: Computational (When Reasoning Fails)**  
-Task exceeds model's reasoning capability  
+**Class C: Computational (When Reliability Requires It)**  
+Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable
 *Examples: 360-month mortgage calculations, large dataset analysis*  
-**Not** "expensive computation" but "computation model can't reliably do in context"
+**Not** "tasks Claude finds hard" but "tasks where error accumulates faster than reasoning can correct"
 
 ---
 
