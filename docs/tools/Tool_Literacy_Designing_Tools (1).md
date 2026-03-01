@@ -394,8 +394,8 @@ Tool: delete_file(path="old_backup.txt")
 Correct: Confirm before destructive action
 Wrong: Execute immediately without confirmation
 
-Production note: In automated workflows, this confirmation gate should be
-enforced by orchestration code rather than relying on this instruction alone.
+**Production note:** In automated workflows, this confirmation gate should be
+enforced by orchestration code rather than relying on this instruction alone.  
 See [Programmatic Tool Calling](Programmatic_Tool_Calling.md).
 
 ## The Standard Library Pattern
