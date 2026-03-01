@@ -19,8 +19,10 @@
 
 What it solves: The "guess the intent" problem
 
-````markdown
 **Template:**
+
+```text
+
 {
 "name": "tool_name",
 "description": "Clear, specific description of what this does","trigger_logic": {
@@ -35,10 +37,14 @@ What it solves: The "guess the intent" problem
    ]
   }
 }
+```
 
 ### Trigger Logic Example (Before/After)
 
 **Before:** (Bad design)
+
+```text
+
 {
 "name": "get_data",
 "description": "Gets data"
@@ -61,8 +67,7 @@ What it solves: The "guess the intent" problem
   ]
  }
 }
-
-````
+```
 
 ### Negative Constraints (What NOT to Do)
 
@@ -113,7 +118,8 @@ What it solves: Common failure modes and safety issues
 
 ### Return Contract (What to Expect)
 
-What it solves: Unknown failure modes, error handling, recovery patterns
+What it solves: Unknown failure modes, error handling, recovery patterns  
+
 **Template**
 
 ```python
@@ -140,6 +146,7 @@ What it solves: Unknown failure modes, error handling, recovery patterns
 **Return Contract Example:**
 
 ```python
+
 {
 "name": "send_email",
 "return_contract": {
@@ -179,18 +186,25 @@ What it solves: Unknown failure modes, error handling, recovery patterns
 
 APIs are intentionally minimal. The API doesn't enforce judgment - your system does.
 
-While this structure is the logical model for a tool, when implementing in code (Python/JS), you often deliberately inject the **'Trigger Logic' and 'Constraints'** directly into the top-level description field, or less frequently the system prompt, so the model sees them immediately.
+While this structure is the logical model for a tool, when implementing in code (Python/JS),  
+you often deliberately inject the **'Trigger Logic' and 'Constraints'** directly into the  
+top-level description field, or less frequently the system prompt, so the model sees them immediately.
 
-## **API Implementation flattening note:** This JSON represents the Logical Definition. When sending this to an LLM API (like OpenAI/Claude/Opus/Gemini), map the fields as follows
+## **API Implementation flattening note:** This JSON represents the Logical Definition.  
+
+When sending this to an LLM API (like OpenAI/Claude/Opus/Gemini), map the fields as follows
 
 1. **Name/Parameters:** Map directly to the API schema
 2. **Trigger Logic & Negative Constraints:** Append these as structured text to the end of the Description field.
 
-**Why:** The model reads the description to decide when to use the tool. Putting your constraints there ensures they are seen at the "Decision Moment." This separation also allows teams to reason about tool behavior at the system level, even when the runtime API surface is limited.
+**Why:** The model reads the description to decide when to use the tool.  
+Putting your constraints there ensures they are seen at the "Decision Moment."  
+This separation also allows teams to reason about tool behavior at the system level,  
+even when the runtime API surface is limited.
 
 ### API IMPLEMENTATION EXAMPLE (Python)
 
-How to "Flatten" the Logical Definition into the API Payload
+**How to "Flatten" the Logical Definition into the API Payload**
 
 ```python
 
@@ -222,7 +236,7 @@ def register_tool(logical_tool_def):
 
 ![Tool Classification System](../assets/3_Part_Tool_Classification.png)
 
-**What it solves:** State-change anxiety, unknown side effects
+**What it solves:** State-change anxiety, unknown side effects  
 **Every tool must be classified:**
 
 **Class A: Read-Only (Low Risk)**
@@ -234,18 +248,29 @@ def register_tool(logical_tool_def):
 - Characteristics: Irreversible, has side effects, requires confirmation
 - Examples: delete_file, send_email, update_database, deploy_app
 - System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
-- Production Note: Confirmation in a system prompt is persuasive enforcement — the model is instructed to ask. In production systems, complex workflows, and multi-agent architectures, Class B confirmation gates should be enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone. See [Programmatic Tool Calling](Programmatic_Tool_Calling.md) for implementation patterns.
+- Production Note: Confirmation in a system prompt is persuasive enforcement — the model is instructed to ask.
+
+ In production systems, complex workflows, and multi-agent architectures, Class B confirmation gates should be
+ enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone.
+ See [Programmatic Tool Calling](Programmatic_Tool_Calling.md) for implementation patterns.
 
 **Class C: Computational (When Reliability Requires It)**
-- Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable — not tasks the model finds difficult, but tasks where error accumulates faster than reasoning can correct
-- Examples: calculate_mortgage_schedule (360 months of calculations), run_statistical_analysis (large dataset), generate_complex_report (structured output with many interdependent calculations)
+- Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable;  
+ not tasks the model finds difficult, *but tasks where error accumulates faster than reasoning can correct*
+- Examples: calculate_mortgage_schedule (360 months of calculations), run_statistical_analysis (large dataset),
+- generate_complex_report (structured output with many interdependent calculations)
 - System Prompt Guidance: "Use when error accumulation over repeated steps would make in-context reasoning unreliable"
 
 **Key Distinctions:**
 
-For Class B: A model instructed to confirm before Class B actions will do so most of the time. Under contextual pressure, in long sessions, or in automated pipelines, persuasive enforcement can fail. Architectural enforcement via programmatic tool calling is more reliable for production systems.
+For Class B: A model instructed to confirm before Class B actions will do so most of the time.  
+Under contextual pressure, in long sessions, or in automated pipelines, persuasive enforcement can fail.  
+Architectural enforcement via programmatic tool calling is more reliable for production systems.
 
-For Class C: **Not** "tasks a model finds hard" but "tasks where error accumulates faster than reasoning can correct." A single mortgage calculation step is trivial. Three hundred and sixty sequential steps accumulate drift that makes the final result unreliable regardless of the model's capability. The tool compensates for accumulated unreliability, not inability.
+For Class C: **Not** "tasks a model finds hard" but "tasks where error accumulates faster than reasoning can correct."  
+A single mortgage calculation step is trivial. Three hundred and sixty sequential steps accumulate drift that makes  
+the final result unreliable regardless of the model's capability.  
+The tool compensates for accumulated unreliability, not inability.
 
 ## How to Classify Your Tools
 
