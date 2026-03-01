@@ -252,8 +252,8 @@ def register_tool(logical_tool_def):
 - System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
 - Production Note: Confirmation in a system prompt is persuasive enforcement — the model is instructed to ask.
 
- In production systems, complex workflows, and multi-agent architectures, Class B confirmation gates should be
- enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone.
+ **In production systems, complex workflows, and multi-agent architectures**, Class B confirmation gates should be
+ enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone.  
  See [Programmatic Tool Calling](Programmatic_Tool_Calling.md) for implementation patterns.
 
 **Class C: Computational (When Reliability Requires It)**
