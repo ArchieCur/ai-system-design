@@ -250,7 +250,7 @@ def register_tool(logical_tool_def):
 - Characteristics: Irreversible, has side effects, requires confirmation
 - Examples: delete_file, send_email, update_database, deploy_app
 - System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
-- Production Note: Confirmation in a system prompt is persuasive enforcement — the model is instructed to ask.
+- Production Note: Confirmation in a system prompt is persuasive enforcement; the model is instructed to ask.
 
  **In production systems, complex workflows, and multi-agent architectures**, Class B confirmation gates should be
  enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone.  
