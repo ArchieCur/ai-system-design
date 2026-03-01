@@ -454,7 +454,7 @@ Users need to know what went wrong
 
 **Without layered specs: Model might build technically correct but unusable feature.**
 
-## Verification: The Fifth Component (Output validation)
+## Verification: The Specification Enforcement Mechanism
 
 ### Verification: Closing the Loop
 
@@ -478,21 +478,15 @@ But how do you know if the model actually followed the specification?
 - **External to the model** (human or automated systems check the work)
 
 **Think of it this way:**
-- **Specification Layers** = Instructions given to the model before it starts
-- **Verification Protocols** = Quality checks applied after the model finishes
+- **The layers prevent failures** they provide instructions given to the model before it starts.
+- **Verification catches the failures that happen anyway.**
+  
+#### **Why this matters:**
 
-### **Why this matters:**
+A complete specification system needs both:
 
-A complete specification system has **two parts**:
-
-1. **Layers** (MUST/SHOULD/CONTEXT/INTENT) → Guide model behavior
-2. **Verification** → Validate model outputs
-
-**Without verification**, you have instructions but no quality control. 
-
-**Without layers**, you have checks but no guidance.
-
-**Both are essential.** The four layers prevent failures. Verification catches failures that happen anyway.
+- Without layers, you have checks but no guidance.
+- Without verification, you have guidance but no quality control.
 
 **For detailed verification patterns, see Section 6: Verification Protocols.**
 
@@ -890,6 +884,7 @@ The module concepts were refined through iterative stress-testing with Google Ge
 with actual model behaviors.
 
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
