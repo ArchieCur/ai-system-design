@@ -1,6 +1,6 @@
 # Tool Templates
 
-There are 3 tool templates included. A Fill-in-the-Blank template for intermediate to advanced users. A Minimal template for simple tools. And a template for Non-Coders.
+## There are 3 tool templates included. A Fill-in-the-Blank template for intermediate to advanced users. A Minimal template for simple tools. And a template for Non-Coders.
 
 **Scope:** These templates cover tool definition- how to structure a tool so a model can understand when and how to use it. 
 They do not cover programmatic tool orchestration, which is how your code controls when tools fire, 
