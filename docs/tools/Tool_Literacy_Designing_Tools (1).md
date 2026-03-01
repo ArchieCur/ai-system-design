@@ -2,17 +2,18 @@
 
 ## Introduction: The Tool Problem
 
-**Current state:** People throw 50 vaguely-defined tools at the model and hope for the best.
-**Result**: Loops, failures, hallucinations, wasted tokens.
+**Current state:** People throw 50 vaguely-defined tools at the model and hope for the best.  
+**Result**: Loops, failures, hallucinations, wasted tokens.  
 **Solution:** Design fewer, better-defined tools with clear usage contracts.
 
-Core Principle: Tools are a form of communication. You're not just defining what a function does-you're teaching the model when and how to use it.
+**Core Principle:** Tools are a form of communication. You're not just defining what a function does
+-you're teaching the model when and how to use it.
 
 ## The Three-Part Tool Definition Standard
 
 ![The Part Tool Definition Standard](../assets/Three_Part_Tool_Standard.png)
 
-Every tool should include:
+**Every tool should include:**
 
 ### Trigger Logic (When to Use This)
 
