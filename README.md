@@ -188,7 +188,6 @@ ai-system-design/
 │   │  └── Specifications_5_Expressing_INTENT.md/
 |   |  └── Specifications_6_Verification_Protocols.md/
 │   │  └── Specifications_7_Common_Pitfalls.md/
-|   |  └──
 │   │  └── Specifications_8_Supremacy_Evidence.md/
 |   |  └── Specifications_A_Templates_Appendix.md/ 
 |   |  ├── Specifications_B_IntegrationExamples_Appendix.md
@@ -199,6 +198,7 @@ ai-system-design/
 |   └── tools/
 │   │  ├── tools-index.md/
 |   |  ├── Tool_Literacy_Designing_Tools.md/
+│   │  └── Tool_Templates.md/
 │   │  └── Tool_Templates.md/
 ```
 
