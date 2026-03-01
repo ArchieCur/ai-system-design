@@ -198,7 +198,7 @@ ai-system-design/
 |   └── tools/
 │   │  ├── tools-index.md/
 |   |  ├── Tool_Literacy_Designing_Tools.md/
-│   │  └── Tool_Templates.md/
+│   │  └── Programmatic_Tool_Calling.md/
 │   │  └── Tool_Templates.md/
 ```
 
@@ -238,7 +238,7 @@ AI Delivers output
 - **INTENT** - The why (goals, trade-offs, success criteria)
 - **VERIFICATION** - Self-checking (how to confirm success)
 
-**All five layers working together = specifications that prevent chaos.**
+**All five working together = specifications that prevent chaos.**
 
 ---
 
