@@ -142,7 +142,7 @@ This curriculum emerged from genuine collaboration between:
   - Quick reference guide
   - Verification protocol templates
   - Organizing specifications with folders
-  - 
+  - Supremacy Clause and Evidence Reset Protocols
 
 ### Read in Order or Jump Around
 
@@ -188,6 +188,7 @@ ai-system-design/
 │   │  └── Specifications_5_Expressing_INTENT.md/
 |   |  └── Specifications_6_Verification_Protocols.md/
 │   │  └── Specifications_7_Common_Pitfalls.md/
+|   |  └──
 │   │  └── Specifications_8_Supremacy_Evidence.md/
 |   |  └── Specifications_A_Templates_Appendix.md/ 
 |   |  ├── Specifications_B_IntegrationExamples_Appendix.md
