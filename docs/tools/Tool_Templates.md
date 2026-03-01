@@ -450,3 +450,13 @@ CONFIRMATION (If Class B)
 10. What should Claude ask before using this tool?
 
 - "This will ____________________. Proceed?"
+
+## What's Next:
+
+- Programmatic_Tool_Calling
+ 
+END OF TOOL TEMPLATES
+
+version 1.0.0  2026-02-28 
+
+
