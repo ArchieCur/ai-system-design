@@ -23,7 +23,7 @@ The complete framework for engineering tools models can actually use reliably:
 - **Tool Classification System**
   - Class A: Read-Only (low risk, use freely)
   - Class B: State-Change (high risk, requires confirmation)
-  - Class C: Computational (when reasoning fails)
+  - Class C: Computational (when reliability requires it)
 
 - **Decision Trees** - When to use reasoning vs. tools
 - **Standard Library Pattern** - Why fewer tools win
@@ -141,10 +141,9 @@ Irreversible, has side effects, requires confirmation
 **Rule:** ALWAYS confirm with user before execution
 
 **Class C: Computational (When Reliability Requires It)**  
-Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable
+Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable  
 *Examples: 360-month mortgage calculations, large dataset analysis*
-
-**Not** "tasks Claude finds hard" but "tasks where error accumulates faster than reasoning can correct"
+**NOT:** "tasks Claude finds hard" but "tasks where error accumulates faster than reasoning can correct"
 
 ## Beyond Basic Descriptions
 
