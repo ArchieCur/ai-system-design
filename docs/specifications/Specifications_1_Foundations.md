@@ -454,6 +454,50 @@ Users need to know what went wrong
 
 **Without layered specs: Model might build technically correct but unusable feature.**
 
+## Verification: The Fifth Component (Output validation)
+
+### Verification: Closing the Loop
+
+The four specification layers (MUST/SHOULD/CONTEXT/INTENT) tell the model **how to behave**. 
+But how do you know if the model actually followed the specification?
+
+**That's where Verification Protocols come in.**
+
+**Verification is not a fifth layer**- it's a separate component that **validates outputs against the specification**:
+
+**The Four Layers are:**
+- **Prescriptive** (loaded into model's context, shape behavior during execution)
+- **Input to the model** (the model reads and uses them while working)
+
+**Verification Protocols are:**
+- **Evaluative** (applied to model's outputs after execution)
+- **External to the model** (human or automated systems check the work)
+
+**Think of it this way:**
+- **Specification Layers** = Instructions given to the model before it starts
+- **Verification Protocols** = Quality checks applied after the model finishes
+
+### **Why this matters:**
+
+A complete specification system has **two parts**:
+
+1. **Layers** (MUST/SHOULD/CONTEXT/INTENT) → Guide model behavior
+2. **Verification** → Validate model outputs
+
+**Without verification**, you have instructions but no quality control. 
+
+**Without layers**, you have checks but no guidance.
+
+**Both are essential.** The four layers prevent failures. Verification catches failures that happen anyway.
+
+#### Verification Protocols:
+
+•	Applied to model's outputs after execution
+•	Check if behavior matched specification
+•	"Here's how to check if you behaved correctly"
+
+**For detailed verification patterns, see Section 6: Verification Protocols.**
+
 ## Why AI Needs Different Specs Than Software
 
 ### The Fundamental Difference
@@ -848,6 +892,7 @@ The module concepts were refined through iterative stress-testing with Google Ge
 with actual model behaviors.
 
 Key Concept: Specifications eliminate the need for models to invent policy
+
 
 
 
