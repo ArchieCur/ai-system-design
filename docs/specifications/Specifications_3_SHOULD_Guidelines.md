@@ -8,9 +8,9 @@
 
 ## Introduction
 
-You've learned how to write MUST constraints—the hard boundaries models cannot cross. 
+You've learned how to write MUST constraints- the hard boundaries models cannot cross. 
 
-Now we explore SHOULD guidelines—the flexible preferences that give models room for judgment while maintaining quality standards.
+Now we explore SHOULD guidelines- the flexible preferences that give models room for judgment while maintaining quality standards.
 
 **From a model’s perspective:**
 
@@ -286,7 +286,7 @@ PUT /profile
 **Model might explain:**
 "Note: Using /profile (singular) rather than /profiles (plural) because this endpoint represents
 
-a singleton resource—the current authenticated user's profile.
+a singleton resource- the current authenticated user's profile.
 This falls under the guideline's exception for 'singleton resources.'"
 
 #### Scenario 3: Action endpoint
@@ -358,7 +358,7 @@ message: "Invalid email format. Email must include '@' symbol and domain. Exampl
 }
 ```
 
-**Models thought:** Follows guideline—what's wrong, why, example provided ✓
+**Models thought:** Follows guideline- what's wrong, why, example provided ✓
 
 #### Scenario 2: Security-sensitive error
 
@@ -574,7 +574,7 @@ Edge cases (rarely executed)
 
 **RULE OF THUMB:**
 
-"Make it work, make it right, make it fast—in that order."
+"Make it work, make it right, make it fast- in that order."
 Optimize only when measurements show need.
 
 RATIONALE:
@@ -1491,6 +1491,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-26
 Written from model perspective: What makes SHOULD guidelines work from daily experience
 Key principle: SHOULDs enable partnership through flexibility with guidance
+
 
 
 
