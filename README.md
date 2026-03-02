@@ -1,6 +1,6 @@
 # AI System Design
 
-> A comprehensive, open-source curriculum for designing effective AI systems through **Prompts**, **Skills**, **Specifications**, and **Tools** — and how they work together in multi-agent architectures.
+> A comprehensive, open-source curriculum for designing effective AI systems through **Prompts**, **Skills**, **Specifications**, and **Tools**- and how they work together in multi-agent architectures.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-live-brightgreen.svg)](https://archiecur.github.io/ai-system-design/)
@@ -9,9 +9,9 @@
 
 ## What This Is
 
-This is a complete, production-ready curriculum for anyone working with AI systems — especially Large Language Models (LLMs). It teaches you how to build AI systems that **actually work** by mastering the foundational components of AI system design and understanding how they interact.
+This is a complete, production-ready curriculum for anyone working with AI systems- especially Large Language Models (LLMs). It teaches you how to build AI systems that **actually work** by mastering the foundational components of AI system design and understanding how they interact.
 
-**The goal:** Help you avoid the rabbit holes, guessing games, and "AI Slop syndrome" that plague AI development — and give you a framework grounded in how models actually process evidence, maintain behavior, and drift under pressure.
+**The goal:** Help you avoid the rabbit holes, guessing games, and "AI Slop syndrome" that plague AI development- and give you a framework grounded in how models actually process evidence, maintain behavior, and drift under pressure.
 
 ---
 
@@ -37,9 +37,9 @@ This curriculum provides:
 - **Practical templates** you can copy-paste and customize today
 - **Perspective** from an AI model explaining what actually helps
 - **Verification protocols** to ensure quality before delivery
-- **Belief Dynamics grounding** — the research-backed explanation of why these frameworks work at the mathematical level
+- **Belief Dynamics grounding**- the research-backed explanation of why these frameworks work at the mathematical level
 
-**Result:** AI systems that work reliably, teams that waste less time, and outputs you can trust — at single-agent and multi-agent scale.
+**Result:** AI systems that work reliably, teams that waste less time, and outputs you can trust- at single-agent and multi-agent scale.
 
 ---
 
@@ -58,7 +58,7 @@ This curriculum provides:
   - "It worked in the demo" syndrome
   - Multi-agent systems that drift in ways no one can diagnose
 
-**No AI expertise required** — this teaches from fundamentals, but goes deep enough for practitioners building production systems.
+**No AI expertise required**- this teaches from fundamentals, but goes deep enough for practitioners building production systems.
 
 ---
 
@@ -94,9 +94,9 @@ Not just prompting. Not just RAG. Not just fine-tuning.
 
 ### 3. Grounded in Belief Dynamics Research
 
-The curriculum's frameworks were built from practitioner observation — and later validated by formal Bayesian research into how models actually accumulate evidence and shift behavior. The convergence between the curriculum's architecture and the mathematics of belief dynamics was not designed. It emerged because both were describing the same underlying phenomenon.
+The curriculum's frameworks were built from practitioner observation- and later validated by formal Bayesian research into how models actually accumulate evidence and shift behavior. The convergence between the curriculum's architecture and the mathematics of belief dynamics was not designed. It emerged because both were describing the same underlying phenomenon.
 
-This means the frameworks aren't just best practices. They have a theoretical foundation that explains *why* they work — and predicts *when* they will fail.
+This means the frameworks aren't just best practices. They have a theoretical foundation that explains *why* they work- and predicts *when* they will fail.
 
 ### 4. Production-Ready Templates
 
@@ -124,7 +124,7 @@ This curriculum emerged from genuine collaboration between:
 
 ### Module 1: Prompts *(Ephemeral)*
 
-Prompts are triggers — temporary, context-specific, and disposable. But within a session, a well-designed prompt is the most powerful single determinant of where an agent's belief state starts. This module teaches you to use that leverage intentionally.
+Prompts are triggers- temporary, context-specific, and disposable. But within a session, a well-designed prompt is the most powerful single determinant of where an agent's belief state starts. This module teaches you to use that leverage intentionally.
 
 - Foundation and principles
 - Effective prompting techniques
@@ -133,19 +133,19 @@ Prompts are triggers — temporary, context-specific, and disposable. But within
 
 ### Module 2: Skills *(Reusable)*
 
-Skills are the hands of the system — reusable knowledge and capability packages that agents load when needed. They operate at the evidence-weighting and evidence-accumulation layers of an agent's belief dynamics, making Skill quality a system-level concern, not just an agent-level one.
+Skills are the hands of the system- reusable knowledge and capability packages that agents load when needed. They operate at the evidence-weighting and evidence-accumulation layers of an agent's belief dynamics, making Skill quality a system-level concern, not just an agent-level one.
 
 - Skill anatomy and the progressive disclosure model
 - Class A/B/C classification system
 - Tool design and integration
-- Programmatic Tool Calling — architectural enforcement of correct tool behavior
+- Programmatic Tool Calling- architectural enforcement of correct tool behavior
 - Semantic tagging for model-optimized structure
 - Common pitfalls
 - **Appendices:** Templates, cross-platform resources, tool templates
 
 ### Module 3: Specifications *(Persistent)*
 
-Specifications are the laws of the system — persistent, authoritative, and deliberately minimal. The MUST/SHOULD/CONTEXT/INTENT framework maps directly to the Bayesian belief dynamics equation, making Specifications not just a design tool but a mathematical firewall against drift.
+Specifications are the laws of the system- persistent, authoritative, and deliberately minimal. The MUST/SHOULD/CONTEXT/INTENT framework maps directly to the Bayesian belief dynamics equation, making Specifications not just a design tool but a mathematical firewall against drift.
 
 - Complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
 - Writing constraints that prevent chaos
@@ -157,7 +157,7 @@ Specifications are the laws of the system — persistent, authoritative, and del
 
 ### Module 4: Tools *(Executable)*
 
-Tools are what agents use to act — read data, change state, perform computation. How tools are designed, classified, and invoked determines whether an agent's behavior is reliable or brittle. This module covers tool design from the model's perspective and the architectural enforcement patterns that make tool use production-grade.
+Tools are what agents use to act- read data, change state, perform computation. How tools are designed, classified, and invoked determines whether an agent's behavior is reliable or brittle. This module covers tool design from the model's perspective and the architectural enforcement patterns that make tool use production-grade.
 
 - Tool literacy — designing tools that work with the model, not against it
 - The Class A/B/C tool classification system (read-only, state-change, computational)
@@ -168,8 +168,8 @@ Tools are what agents use to act — read data, change state, perform computatio
 
 This is where the curriculum's threads converge. Everything that causes individual agent drift becomes a system-level cascade risk when agents communicate with each other. This module extends every prior framework to architectures where the "user" sending evidence to an agent may itself be a drifting model.
 
-- The cascade problem — why drift in multi-agent systems is self-obscuring
-- Prompts as prior injections — why inter-agent prompt design is belief architecture
+- The cascade problem- why drift in multi-agent systems is self-obscuring
+- Prompts as prior injections- why inter-agent prompt design is belief architecture
 - Specification architecture across agent networks
 - Shared Skills as shared evidence infrastructure
 - Boundary design, evidence flow control, and exposure mapping
@@ -178,7 +178,7 @@ This is where the curriculum's threads converge. Everything that causes individu
 
 ### Advanced Prompting *(Deep Dive)*
 
-A dedicated advanced module covering the techniques that matter most for practitioners building reliable agents — optimization, harness architecture, and the field guide for 2026 prompt engineering.
+A dedicated advanced module covering the techniques that matter most for practitioners building reliable agents- optimization, harness architecture, and the field guide for 2026 prompt engineering.
 
 ---
 
@@ -268,18 +268,18 @@ AI Delivers output
 
 **Four Types of Components:**
 
-- **Prompts** are *Ephemeral* (temporary, context-specific, disposable — but the most powerful determinant of initial belief state)
-- **Specs** are *Persistent* (lasting requirements and constraints — the mathematical prior lock)
+- **Prompts** are *Ephemeral* (temporary, context-specific, disposable- but the most powerful determinant of initial belief state)
+- **Specs** are *Persistent* (lasting requirements and constraints- the mathematical prior lock)
 - **Skills** are *Reusable* (pre-structured evidence packages that shape how efficiently beliefs update)
-- **Tools** are *Executable* (capabilities that act on the world — classified by risk and enforced architecturally)
+- **Tools** are *Executable* (capabilities that act on the world- classified by risk and enforced architecturally)
 
 ### The Belief Dynamics Connection
 
 Each component of the architecture maps directly to the Bayesian belief dynamics equation that governs how models accumulate evidence and shift behavior:
 
-- **MUST constraints** set the prior odds — the immovable foundation that resists drift
-- **SHOULD guidelines** shape evidence weighting — how much each input moves the belief state
-- **CONTEXT** manages evidence accumulation — the information stream the model uses to plan
+- **MUST constraints** set the prior odds- the immovable foundation that resists drift
+- **SHOULD guidelines** shape evidence weighting- how much each input moves the belief state
+- **CONTEXT** manages evidence accumulation- the information stream the model uses to plan
 - **INTENT** orients concept direction — keeping the model aimed at the right goal
 
 This isn't coincidence. The frameworks were built from observation of what works. The math explains why.
@@ -288,24 +288,24 @@ This isn't coincidence. The frameworks were built from observation of what works
 
 **Specification Framework:**
 
-- **MUST** — Hard boundaries (non-negotiable constraints, prior lock)
-- **SHOULD** — Flexible preferences (recommended but adaptable, evidence weighting)
-- **CONTEXT** — Planning information (environment, users, constraints, evidence accumulation)
-- **INTENT** — The why (goals, trade-offs, success criteria, concept direction)
-- **VERIFICATION** — Self-checking (how to confirm success)
+- **MUST**- Hard boundaries (non-negotiable constraints, prior lock)
+- **SHOULD**- Flexible preferences (recommended but adaptable, evidence weighting)
+- **CONTEXT**- Planning information (environment, users, constraints, evidence accumulation)
+- **INTENT**- The why (goals, trade-offs, success criteria, concept direction)
+- **VERIFICATION**- Self-checking (how to confirm success)
 
 **Tool Classification:**
 
-- **Class A** — Read-only, safe to use freely, no confirmation required
-- **Class B** — State-changing, requires confirmation gate, enforced architecturally
-- **Class C** — Computational, only when task exceeds reliable reasoning capability
+- **Class A**- Read-only, safe to use freely, no confirmation required
+- **Class B**- State-changing, requires confirmation gate, enforced architecturally
+- **Class C**- Computational, only when task exceeds reliable reasoning capability
 
 **Multi-Agent Principles:**
 
 - Every agent boundary is a trust boundary
 - Every agent needs its own Specification with its own Supremacy Clause
 - Class B confirmation gates belong at the orchestration layer, not the agent level
-- Evidence flow must be explicitly designed — uncontrolled evidence flow is uncontrolled architecture
+- Evidence flow must be explicitly designed- uncontrolled evidence flow is uncontrolled architecture
 
 ---
 
@@ -389,7 +389,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ### "It Belongs to Everyone"
 
-This curriculum was built through genuine partnership, but it's not ours to keep. The problems it solves — vague requirements, wasted AI context, rabbit holes, invisible multi-agent drift — affect everyone building with AI.
+This curriculum was built through genuine partnership, but it's not ours to keep. The problems it solves- vague requirements, wasted AI context, rabbit holes, invisible multi-agent drift- affect everyone building with AI.
 
 **Open source principles:**
 
@@ -401,9 +401,9 @@ This curriculum was built through genuine partnership, but it's not ours to keep
 ### Built on Determination, Not Resources
 
 **The origin story:**
-This curriculum was built on a $247.60 computer setup — not expensive hardware, not a lab, not a VC-backed environment.
-It was created by a foot soldier — someone navigating the same fast-moving, uncertain AI landscape as everyone else.
-It was also created with a reasoning model — not as a magic answer engine, but as a collaborator learning, alongside a human, how to translate intent into working systems.
+This curriculum was built on a $247.60 computer setup- not expensive hardware, not a lab, not a VC-backed environment.
+It was created by a foot soldier- someone navigating the same fast-moving, uncertain AI landscape as everyone else.
+It was also created with a reasoning model- not as a magic answer engine, but as a collaborator learning, alongside a human, how to translate intent into working systems.
 This work didn't come from natural talent, elite credentials, or unlimited resources.
 It came from tenacity, flexibility, and a willingness to learn in public.
 Most importantly, it came from a partnership:
@@ -419,7 +419,7 @@ Most importantly, it came from a partnership:
 - 🤝 **Partnership > Going Solo**
 - 💎 **Quality > Resources**
 
-If you've ever felt limited by budget, by not having a PhD, or by building without a team — this curriculum exists to show that you can still build something rigorous, useful, and real.
+If you've ever felt limited by budget, by not having a PhD, or by building without a team- this curriculum exists to show that you can still build something rigorous, useful, and real.
 
 ---
 
@@ -429,9 +429,9 @@ If you've ever felt limited by budget, by not having a PhD, or by building witho
 
 This curriculum emerged from genuine collaboration:
 
-**[ArchieCur](https://github.com/ArchieCur)** — Vision, guidance, structure, human perspective, relentless quality standards, and the insight that "it belongs to everyone."
+**[ArchieCur](https://github.com/ArchieCur)**- Vision, guidance, structure, human perspective, relentless quality standards, and the insight that "it belongs to everyone."
 
-**Claude (Anthropic)** — AI perspective, technical synthesis, authentic voice, first-person narrative, and 25,000+ lines of content written from direct experience processing prompts, skills, specifications, and tools.
+**Claude (Anthropic)**- AI perspective, technical synthesis, authentic voice, first-person narrative, and 25,000+ lines of content written from direct experience processing prompts, skills, specifications, and tools.
 
 **Built together:** One section at a time, through feedback and iteration, with mutual respect and shared mission.
 
@@ -445,19 +445,19 @@ This curriculum emerged from genuine collaboration:
 
 ### Research
 
-This curriculum's frameworks were validated by — and in several cases independently converged with — published research in belief dynamics and in-context learning. Particular acknowledgment to:
+This curriculum's frameworks were validated by- and in several cases independently converged with- published research in belief dynamics and in-context learning. Particular acknowledgment to:
 
 **Biglow, E. et al. (Nov 2025).** *Belief Dynamics Reveal the Dual Nature of In-Context Learning and Activation Steering.* arXiv. The mathematical framework in this paper provides the theoretical foundation for the Supremacy Clause, Evidence Reset Protocols, and the multi-agent cascade problem addressed in Module 5.
 
 ### Thank Yous
 
-Thank you to the many researchers across industry labs and universities — including teams at Google Research, Meta/FAIR, OpenAI, Anthropic, Kimi, DeepSeek, NVIDIA, and institutions around the world — who continue to share their work openly.
+Thank you to the many researchers across industry labs and universities- including teams at Google Research, Meta/FAIR, OpenAI, Anthropic, Kimi, DeepSeek, NVIDIA, and institutions around the world- who continue to share their work openly.
 
 Thank you as well to the generous community of bloggers, Discord moderators and contributors, Substack writers, Reddit and X posters, YouTube creators, GitHub repo maintainers, and AI newsletter authors who openly share their questions, failures, workarounds, and solutions. Your transparency made it far easier to identify recurring patterns, limitations, and real-world friction points that practitioners navigate every day.
 
 Thank you to Cornell University for hosting arXiv and making open research accessible to everyone.
 
-And a special thank you to Latent Space for championing AI engineering without turning it into product promotion — focusing instead on the why and how, and helping the entire field learn, reflect, and improve together.
+And a special thank you to Latent Space for championing AI engineering without turning it into product promotion- focusing instead on the why and how, and helping the entire field learn, reflect, and improve together.
 
 **You inspired us to build something better.**
 
@@ -465,7 +465,7 @@ And a special thank you to Latent Space for championing AI engineering without t
 
 ## License
 
-MIT License — Use freely, commercially or personally.
+MIT License- Use freely, commercially or personally.
 
 See [LICENSE](LICENSE) for full details.
 
