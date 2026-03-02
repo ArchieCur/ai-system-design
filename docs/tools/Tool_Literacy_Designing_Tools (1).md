@@ -372,7 +372,7 @@ User: "What will my monthly payment be on a $500k mortgage at 6.5% for 30 years?
 
 Decision path:
 Can I answer from knowledge? NO (requires calculation)
-Would repeated steps accumulate unreliable error? YES (360 month amortization —
+Would repeated steps accumulate unreliable error? YES (360 month amortization-
 error drifts across sequential steps regardless of capability)
 → Class C tool
 Tool: calculate_mortgage_payment(principal=500000, rate=6.5, years=30)
