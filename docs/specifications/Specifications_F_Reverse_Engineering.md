@@ -69,7 +69,7 @@ The Belief Dynamics paper validates that this is exactly how models work interna
 
 ### A note on architecture boundaries
 
-Tools, MCPs, and resource documents — reside in the Skills folder, not in the Specification. This is not a subtle distinction. In the curriculum's foundation Specifications are Laws: persistent, authoritative, and deliberately minimal. Skills are Hands: reusable, composable, and designed to act. Prompts are Triggers: ephemeral, context-specific, and disposable.
+Tools, MCPs, and resource documents; reside in the Skills folder, not in the Specification. This is not a subtle distinction. In the curriculum's foundation Specifications are Laws: persistent, authoritative, and deliberately minimal. Skills are Hands: reusable, composable, and designed to act. Prompts are Triggers: ephemeral, context-specific, and disposable.
 
 Tools, MCPs, and Skills exert their belief-stabilizing influence from outside the Spec- and that is precisely what makes them effective. They are active in the system without adding noise to the document that anchors the prior. A Specification that tries to do everything becomes a document that anchors nothing. The Supremacy Clause holds its authority in part because the Spec is not cluttered with operational machinery.
 
@@ -109,5 +109,6 @@ version 1.0.0
 2026-02-28
 
 Key Principle: Dynamics Model to create a practical Belief Dynamics Control System Framework
+
 
 
