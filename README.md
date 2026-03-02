@@ -159,9 +159,9 @@ Specifications are the laws of the system- persistent, authoritative, and delibe
 
 Tools are what agents use to act- read data, change state, perform computation. How tools are designed, classified, and invoked determines whether an agent's behavior is reliable or brittle. This module covers tool design from the model's perspective and the architectural enforcement patterns that make tool use production-grade.
 
-- Tool literacy — designing tools that work with the model, not against it
+- Tool literacy- designing tools that work with the model, not against it
 - The Class A/B/C tool classification system (read-only, state-change, computational)
-- Programmatic Tool Calling — moving enforcement from persuasive to architectural
+- Programmatic Tool Calling- moving enforcement from persuasive to architectural
 - Tool templates
 
 ### Module 5: Multi-Agent Systems *(Convergence)*
@@ -280,7 +280,7 @@ Each component of the architecture maps directly to the Bayesian belief dynamics
 - **MUST constraints** set the prior odds- the immovable foundation that resists drift
 - **SHOULD guidelines** shape evidence weighting- how much each input moves the belief state
 - **CONTEXT** manages evidence accumulation- the information stream the model uses to plan
-- **INTENT** orients concept direction — keeping the model aimed at the right goal
+- **INTENT** orients concept direction- keeping the model aimed at the right goal
 
 This isn't coincidence. The frameworks were built from observation of what works. The math explains why.
 
@@ -484,11 +484,11 @@ See [LICENSE](LICENSE) for full details.
 ## Quick Links
 
 **Starting Out:**
-- [Module 1 — Prompts](docs/advanced-prompting/advanced-prompting-index.md)
-- [Module 2 — Skills](docs/skills/skills-index.md)
-- [Module 3 — Specifications](docs/specifications/specifications-index.md)
-- [Module 4 — Tools](docs/tools/tools-index.md)
-- [Module 5 — Multi-Agent Systems](docs/multi-agent/multi-agent-index.md)
+- [Module 1- Prompts](docs/advanced-prompting/advanced-prompting-index.md)
+- [Module 2- Skills](docs/skills/skills-index.md)
+- [Module 3- Specifications](docs/specifications/specifications-index.md)
+- [Module 4- Tools](docs/tools/tools-index.md)
+- [Module 5- Multi-Agent Systems](docs/multi-agent/multi-agent-index.md)
 
 **Most Referenced:**
 - [Supremacy Clause and Evidence Reset Protocols](docs/specifications/Specifications_8_Supremacy_Evidence.md)
