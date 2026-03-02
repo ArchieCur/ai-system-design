@@ -129,7 +129,7 @@ Prompts are triggers- temporary, context-specific, and disposable. But within a 
 - Foundation and principles
 - Effective prompting techniques
 - Advanced prompt optimization
-- When prompts are the right tool — and when they aren't
+- When prompts are the right tool- and when they aren't
 
 ### Module 2: Skills *(Reusable)*
 
