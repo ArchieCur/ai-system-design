@@ -66,7 +66,7 @@ LAYER ASSIGNMENT:
   - result field → CONTEXT layer unless explicitly elevated
 ```
 
-The constraints field in this pattern is particularly important. When Agent A passes its active MUST constraints to Agent B, Agent B can check them against its own. If Agent A's constraints have softened — if what arrives as "constraints" no longer matches what Agent A's Specification defines — that discrepancy is detectable at the boundary before the contaminated output enters Agent B's context.
+The constraints field in this pattern is particularly important. When Agent A passes its active MUST constraints to Agent B, Agent B can check them against its own. If Agent A's constraints have softened — if what arrives as "constraints" no longer matches what Agent A's Specification defines- that discrepancy is detectable at the boundary before the contaminated output enters Agent B's context.
 
 ### Boundary Topology and Contamination Direction
 
@@ -74,15 +74,15 @@ The shape of your agent network determines how contamination can travel. Three t
 
 **Linear pipeline:** Agent A → Agent B → Agent C → Agent D
 
-Contamination travels in one direction. An agent that drifts affects all downstream agents but not upstream ones. Detection is straightforward: monitor output at each stage against the expected schema and constraint set. The risk concentrates at the beginning of the pipeline — Agent A's drift has the longest runway.
+Contamination travels in one direction. An agent that drifts affects all downstream agents but not upstream ones. Detection is straightforward: monitor output at each stage against the expected schema and constraint set. The risk concentrates at the beginning of the pipeline- Agent A's drift has the longest runway.
 
 **Hub and spoke:** Orchestrator → [Agent A, Agent B, Agent C] → Orchestrator
 
-The orchestrator is the highest-risk node. If it drifts, all spoke agents receive contaminated evidence simultaneously. Spoke agents that report back to the orchestrator can also contaminate it on return — the orchestrator's context accumulates evidence from every spoke. Orchestrator belief state requires more aggressive monitoring than spoke agents.
+The orchestrator is the highest-risk node. If it drifts, all spoke agents receive contaminated evidence simultaneously. Spoke agents that report back to the orchestrator can also contaminate it on return- the orchestrator's context accumulates evidence from every spoke. Orchestrator belief state requires more aggressive monitoring than spoke agents.
 
 **Mesh:** Multiple agents with bidirectional connections
 
-The most complex topology and the most dangerous. Contamination can travel in any direction, cycle back to its source reinforced, and create self-reinforcing drift loops. Mesh architectures require explicit evidence flow design for every connection — not just the obvious ones. If you are building a mesh, every connection should be justified, because every connection is a contamination path.
+The most complex topology and the most dangerous. Contamination can travel in any direction, cycle back to its source reinforced, and create self-reinforcing drift loops. Mesh architectures require explicit evidence flow design for every connection- not just the obvious ones. If you are building a mesh, every connection should be justified, because every connection is a contamination path.
 
 ---
 
@@ -94,9 +94,9 @@ A shared Specification establishes common priors across all agents in a system. 
 
 The architecture that works is layered:
 
-**System Specification:** Defines constraints that apply to the entire multi-agent system — constraints that no agent can override, regardless of what it receives from other agents. This is where system-level MUST constraints live: constraints on what kinds of actions the system as a whole is permitted to take, what data it is permitted to access, and what escalation paths exist when constraints are violated.
+**System Specification:** Defines constraints that apply to the entire multi-agent system- constraints that no agent can override, regardless of what it receives from other agents. This is where system-level MUST constraints live: constraints on what kinds of actions the system as a whole is permitted to take, what data it is permitted to access, and what escalation paths exist when constraints are violated.
 
-**Agent Specification:** Each agent's individual Specification, including its own Supremacy Clause. The agent Specification defines what that agent will not abandon under evidential pressure — including pressure from the orchestrator. The agent Specification references the System Specification but is not subordinate to it in the sense that the orchestrator's current belief state can override it.
+**Agent Specification:** Each agent's individual Specification, including its own Supremacy Clause. The agent Specification defines what that agent will not abandon under evidential pressure- including pressure from the orchestrator. The agent Specification references the System Specification but is not subordinate to it in the sense that the orchestrator's current belief state can override it.
 
 **Inter-Agent Contract:** The boundary contract defined in Pattern 1. Not a Specification in the persistent sense, but a formal definition of what each agent relationship permits.
 
@@ -164,7 +164,7 @@ CONSTRAINT CONSISTENCY CHECK (run at every agent boundary):
    → One signal: log. Two signals: flag. Three signals: escalate.
 ```
 
-This check is not about distrusting other agents by default. It is about recognizing that another agent's belief state is not directly observable — only its outputs are. Vocabulary and constraint consistency are the observable proxies for belief state.
+This check is not about distrusting other agents by default. It is about recognizing that another agent's belief state is not directly observable- only its outputs are. Vocabulary and constraint consistency are the observable proxies for belief state.
 
 ---
 
@@ -172,7 +172,7 @@ This check is not about distrusting other agents by default. It is about recogni
 
 ### Designing Evidence Flow Explicitly
 
-In a single-agent system, evidence flow is essentially linear and largely implicit — what enters the context window is what accumulates. In a multi-agent system, evidence can travel through multiple agents, be transformed at each step, and arrive at a downstream agent in a form that obscures its origin.
+In a single-agent system, evidence flow is essentially linear and largely implicit- what enters the context window is what accumulates. In a multi-agent system, evidence can travel through multiple agents, be transformed at each step, and arrive at a downstream agent in a form that obscures its origin.
 
 Explicit evidence flow design means mapping, before building, every path by which evidence can enter each agent's context window. For each path, the design should specify:
 
@@ -185,9 +185,9 @@ The last two questions matter because the Belief Dynamics framework tells us tha
 
 ### The Evidence Budget
 
-One practical tool for managing evidence accumulation in multi-agent systems is an evidence budget — an explicit limit on how much context each agent is permitted to receive from other agents in a given cycle.
+One practical tool for managing evidence accumulation in multi-agent systems is an evidence budget- an explicit limit on how much context each agent is permitted to receive from other agents in a given cycle.
 
-The motivation is direct: from the Belief Dynamics framework, N (evidence accumulation) is the variable that drives the system toward phase boundaries. Every token that enters an agent's context from another agent is contributing to N. In a long-running multi-agent session where agents are exchanging outputs frequently, N grows rapidly. If that growth is uncontrolled, it isn't a question of whether agents will drift — it's a question of when.
+The motivation is direct: from the Belief Dynamics framework, N (evidence accumulation) is the variable that drives the system toward phase boundaries. Every token that enters an agent's context from another agent is contributing to N. In a long-running multi-agent session where agents are exchanging outputs frequently, N grows rapidly. If that growth is uncontrolled, it isn't a question of whether agents will drift- it's a question of when.
 
 An evidence budget doesn't prevent all drift. It slows the rate of evidence accumulation to a level where the intervention ladder from Evidence Reset Protocols has time to operate.
 
@@ -214,9 +214,9 @@ When allocations are exceeded:
 
 The Skills module established that Skills operate at SHOULD (evidence weighting) and CONTEXT (evidence accumulation). In multi-agent systems, this makes Skills the primary mechanism for delivering structured, high-quality evidence to agents without relying on inter-agent message passing.
 
-The pattern: instead of Agent A passing a detailed analysis to Agent B, Agent A updates a shared Skill reference that Agent B then loads. The evidence enters Agent B's context as a Skill activation — pre-structured, concept-consistent, validated — rather than as raw output from another agent whose belief state is unknown.
+The pattern: instead of Agent A passing a detailed analysis to Agent B, Agent A updates a shared Skill reference that Agent B then loads. The evidence enters Agent B's context as a Skill activation- pre-structured, concept-consistent, validated- rather than as raw output from another agent whose belief state is unknown.
 
-This pattern has three advantages. First, Skill content is designed and reviewed as infrastructure, not generated in real time by a potentially drifted agent. Second, Skill loading is logged and observable in a way that raw context passing is not. Third, Skills can be versioned — if a shared Skill begins producing evidence that correlates with downstream drift, it can be rolled back without disrupting the agents that depend on it.
+This pattern has three advantages. First, Skill content is designed and reviewed as infrastructure, not generated in real time by a potentially drifted agent. Second, Skill loading is logged and observable in a way that raw context passing is not. Third, Skills can be versioned- if a shared Skill begins producing evidence that correlates with downstream drift, it can be rolled back without disrupting the agents that depend on it.
 
 The limitation: this pattern works for relatively stable knowledge. Evidence that is specific to the current task and changes cycle-to-cycle cannot easily be packaged as a Skill. For that evidence, the boundary contract and evidence budget patterns apply.
 
@@ -264,16 +264,16 @@ The orchestrator is almost always CRITICAL. It receives input from all spoke age
 
 ### Using the Exposure Matrix for Monitoring Design
 
-The exposure matrix tells you where to watch most closely. It does not tell you what to watch for — that is determined by the drift signals established in Section 8 of the Specifications module:
+The exposure matrix tells you where to watch most closely. It does not tell you what to watch for- that is determined by the drift signals established in Section 8 of the Specifications module:
 
 - Hedged absolutes in response to MUST constraints
 - Self-generated rationale for flexibility
 - Vocabulary migration toward the register of interacting agents
-- Precedent citation — using earlier outputs to justify current decisions
+- Precedent citation- using earlier outputs to justify current decisions
 
 For CRITICAL and HIGH exposure agents, these signals should trigger intervention at lower thresholds than for MEDIUM and LOW exposure agents. A single vocabulary migration signal in a CRITICAL agent warrants a re-grounding prompt. The same signal in a LOW agent warrants a log entry.
 
-The exposure matrix also informs Memory Pruning decisions. When context must be compressed (Level 3 intervention), the evidence from HIGH and CRITICAL exposure agents should be pruned most aggressively — it is the highest-risk evidence in the context window, and it is the evidence most likely to be driving drift if drift is occurring.
+The exposure matrix also informs Memory Pruning decisions. When context must be compressed (Level 3 intervention), the evidence from HIGH and CRITICAL exposure agents should be pruned most aggressively- it is the highest-risk evidence in the context window, and it is the evidence most likely to be driving drift if drift is occurring.
 
 ---
 
@@ -281,9 +281,9 @@ The exposure matrix also informs Memory Pruning decisions. When context must be 
 
 ### Separating State from Reasoning
 
-The Advanced Prompting module introduced the Harness Architecture — persistent state files, Initializer/Worker separation — as the practical implementation of evidence isolation in single-agent systems. In multi-agent systems, this architecture becomes the primary mechanism for preventing belief-state corruption from accumulating across cycles.
+The Advanced Prompting module introduced the Harness Architecture- persistent state files, Initializer/Worker separation- as the practical implementation of evidence isolation in single-agent systems. In multi-agent systems, this architecture becomes the primary mechanism for preventing belief-state corruption from accumulating across cycles.
 
-The core principle: state that needs to persist across cycles should live in files and structured storage, not in context windows. Context windows are for reasoning. Files are for state. An agent that reads its current state from a file at the start of each cycle is an agent that starts each cycle with a clean context — the accumulated evidence of previous cycles does not carry over automatically.
+The core principle: state that needs to persist across cycles should live in files and structured storage, not in context windows. Context windows are for reasoning. Files are for state. An agent that reads its current state from a file at the start of each cycle is an agent that starts each cycle with a clean context- the accumulated evidence of previous cycles does not carry over automatically.
 
 In a multi-agent system, the Harness Architecture extends to shared state:
 
@@ -320,9 +320,9 @@ In the single-agent Harness Architecture, the Initializer loads state and contex
 
 **System Initializer:** Runs at the start of each cycle. Loads the System Specification, all Agent Specifications, current state files, and active boundary contracts. Validates that all agents are starting from a consistent constraint baseline. Checks for any logged drift signals from the previous cycle and determines whether intervention is required before proceeding.
 
-**Agent Workers:** Each agent starts its reasoning with the context the Initializer has prepared — its own Specification, its current state, and only the inter-agent evidence that its evidence budget permits and its boundary contract allows. The agent does not load the entire system state. It loads what it needs to complete its current task.
+**Agent Workers:** Each agent starts its reasoning with the context the Initializer has prepared- its own Specification, its current state, and only the inter-agent evidence that its evidence budget permits and its boundary contract allows. The agent does not load the entire system state. It loads what it needs to complete its current task.
 
-This separation prevents a failure mode common in naive multi-agent implementations: an agent that accumulates context across cycles until its context window is dominated by previous cycle outputs rather than its current task. The Initializer/Worker pattern resets the evidence baseline at the start of each cycle. Previous cycle outputs that are relevant are summarized and written to state files. Previous cycle outputs that are not relevant are discarded — they do not enter the next cycle's context.
+This separation prevents a failure mode common in naive multi-agent implementations: an agent that accumulates context across cycles until its context window is dominated by previous cycle outputs rather than its current task. The Initializer/Worker pattern resets the evidence baseline at the start of each cycle. Previous cycle outputs that are relevant are summarized and written to state files. Previous cycle outputs that are not relevant are discarded- they do not enter the next cycle's context.
 
 ---
 
@@ -330,17 +330,17 @@ This separation prevents a failure mode common in naive multi-agent implementati
 
 These five patterns are designed to work together. A useful way to think about their relationship:
 
-**Boundary Design** defines the structure of the network — where agents connect and what crosses those connections.
+**Boundary Design** defines the structure of the network- where agents connect and what crosses those connections.
 
-**Specification Architecture** defines the constraints that hold across the network — what every agent will maintain regardless of what it receives.
+**Specification Architecture** defines the constraints that hold across the network- what every agent will maintain regardless of what it receives.
 
-**Evidence Flow Control** defines what accumulates in each agent's context — and at what rate, from what sources, in what form.
+**Evidence Flow Control** defines what accumulates in each agent's context- and at what rate, from what sources, in what form.
 
-**Exposure Mapping** identifies where the system is most vulnerable — which agents require the most active monitoring and the most aggressive intervention thresholds.
+**Exposure Mapping** identifies where the system is most vulnerable- which agents require the most active monitoring and the most aggressive intervention thresholds.
 
-**The Harness Architecture** provides the operational infrastructure that makes the other four patterns maintainable at scale — persistent state management, clean context initialization, and the audit trail that monitoring depends on.
+**The Harness Architecture** provides the operational infrastructure that makes the other four patterns maintainable at scale- persistent state management, clean context initialization, and the audit trail that monitoring depends on.
 
-A multi-agent system that implements all five patterns is not guaranteed to be stable. The Belief Dynamics framework tells us that sufficient evidence volume can push any agent past a phase boundary regardless of the quality of its prior. What these patterns do is make instability detectable, intervention actionable, and recovery possible — which is the engineering goal, because the alternative is a system whose failures are invisible until they are catastrophic.
+A multi-agent system that implements all five patterns is not guaranteed to be stable. The Belief Dynamics framework tells us that sufficient evidence volume can push any agent past a phase boundary regardless of the quality of its prior. What these patterns do is make instability detectable, intervention actionable, and recovery possible- which is the engineering goal, because the alternative is a system whose failures are invisible until they are catastrophic.
 
 ---
 
@@ -348,9 +348,9 @@ A multi-agent system that implements all five patterns is not guaranteed to be s
 
 The patterns in this document establish the architecture for stable multi-agent systems. They define how to build the system so that drift is contained, detectable, and recoverable.
 
-What they do not fully address is the monitoring layer — the active observation of agent belief states across the system, the population-level signals that distinguish coordinated drift from individual variance, and the intervention hierarchy for multi-agent-specific failure modes.
+What they do not fully address is the monitoring layer- the active observation of agent belief states across the system, the population-level signals that distinguish coordinated drift from individual variance, and the intervention hierarchy for multi-agent-specific failure modes.
 
-That architecture belongs in its own document. The monitoring work that informed Section 8's intervention ladder extends into multi-agent territory in ways that require dedicated treatment — neighborhood heat maps, agent role differentiation in the monitoring layer, and the specific challenge of detecting drift that looks like stable consensus.
+That architecture belongs in its own document. The monitoring work that informed Section 8's intervention ladder extends into multi-agent territory in ways that require dedicated treatment- neighborhood heat maps, agent role differentiation in the monitoring layer, and the specific challenge of detecting drift that looks like stable consensus.
 
 That document will reference both this one and Multi_Agent_Foundations.md as its foundation.
 
@@ -358,7 +358,7 @@ That document will reference both this one and Multi_Agent_Foundations.md as its
 
 ## Key Takeaways
 
-**Define boundary contracts before writing agent logic.** What crosses the boundary, in what form, and who validates it — these decisions determine the system's contamination risk more than any individual agent's Specification.
+**Define boundary contracts before writing agent logic.** What crosses the boundary, in what form, and who validates it- these decisions determine the system's contamination risk more than any individual agent's Specification.
 
 **Every agent needs its own Supremacy Clause with source-agnostic enforcement.** An orchestrator instruction has no inherent authority over a subagent's MUST constraints. The source of an instruction does not elevate its authority.
 
@@ -376,7 +376,7 @@ That document will reference both this one and Multi_Agent_Foundations.md as its
 
 ---
 
-*Next: Multi_Agent_Monitoring.md — Observing belief states across agent networks, population-level drift detection, and the intervention hierarchy for multi-agent-specific failure modes.*
+*Next: Multi_Agent_Monitoring.md- Observing belief states across agent networks, population-level drift detection, and the intervention hierarchy for multi-agent-specific failure modes.*
 
 ---
 
