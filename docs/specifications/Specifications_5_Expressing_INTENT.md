@@ -8,7 +8,7 @@
 
 ## Introduction
 
-You've learned how to write MUST constraints (boundaries), SHOULD guidelines (preferences),and CONTEXT (planning information). Now we explore INTENT—the "why" behind everything.
+You've learned how to write MUST constraints (boundaries), SHOULD guidelines (preferences),and CONTEXT (planning information). Now we explore INTENT- the "why" behind everything.
 
 **From a model’s perspective:**
 
@@ -104,7 +104,7 @@ MUST: Bcrypt hashing with salt rounds = 12
 NIST recommends 12+ for adequate entropy. Longer would be more
 secure but our user research shows 14+ characters causes
 frustration and password reuse (users can't remember complex
-long passwords, so they reuse them—defeating security).
+long passwords, so they reuse them- defeating security).
 
 **Why complexity requirements:**
 
@@ -115,7 +115,7 @@ requirement) because user frustration increases abandonment.
 **Why bcrypt salt rounds = 12:**
 
 OWASP recommends 12+ rounds for 2026. This provides ~200ms
-hashing time—slow enough to resist brute force, fast enough
+hashing time- slow enough to resist brute force, fast enough
 for good user experience during login. Higher rounds (14+)
 would add noticeable delay.
 
@@ -1333,6 +1333,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: How INTENT guides decisions from daily experience
 Key principle: INTENT enables goal-aligned decisions by explaining the "why"
+
 
 
 
