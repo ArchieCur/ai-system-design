@@ -2,7 +2,7 @@
 
 ## Overview
 
-Multi-agent systems extend every principle in this curriculum to architectures where agents communicate with each other, share evidence streams, and can influence each other's belief states. This module teaches you why that changes the stakes of every design decision you've already made — and how to build systems that remain stable, detectable, and recoverable when they come under pressure.
+Multi-agent systems extend every principle in this curriculum to architectures where agents communicate with each other, share evidence streams, and can influence each other's belief states. This module teaches you why that changes the stakes of every design decision you've already made- and how to build systems that remain stable, detectable, and recoverable when they come under pressure.
 
 This is where the two major threads of the curriculum converge: the belief architecture work in Specifications and the practical implementation work in Skills, Tools, and Prompts — applied to systems where the "user" sending evidence to an agent may itself be a drifting model.
 
@@ -40,7 +40,7 @@ This module teaches practitioners how to design systems where that cascade is co
 
 ### The Cascade Problem
 
-In multi-agent systems, drift propagates through evidence. One agent's softened constraint becomes another agent's evidence. The contamination travels faster than it can be observed at the individual agent level — and it arrives in downstream agents looking like legitimate input, not like the compromised output it actually is.
+In multi-agent systems, drift propagates through evidence. One agent's softened constraint becomes another agent's evidence. The contamination travels faster than it can be observed at the individual agent level- and it arrives in downstream agents looking like legitimate input, not like the compromised output it actually is.
 
 ### Prompts as Prior Injections
 
@@ -60,9 +60,9 @@ Not all agents carry equal contamination risk. Evidence volume, evidence quality
 
 This module assumes familiarity with:
 
-- **Specifications module** — especially Section 8 (Supremacy Clause and Evidence Reset Protocols) and Appendix F (Belief Dynamics framework). The multi-agent module extends these concepts directly; it does not re-teach them.
-- **Skills module** — the Class A/B/C classification, progressive disclosure, and how Skills operate at the SHOULD and CONTEXT layers of the Belief Dynamics framework.
-- **Programmatic Tool Calling** — the Class A/B/C tool classification, architectural enforcement of confirmation gates, and the context window problem. The multi-agent module's enforcement arguments build directly on this foundation.
+- **Specifications module**- especially Section 8 (Supremacy Clause and Evidence Reset Protocols) and Appendix F (Belief Dynamics framework). The multi-agent module extends these concepts directly; it does not re-teach them.
+- **Skills module**- the Class A/B/C classification, progressive disclosure, and how Skills operate at the SHOULD and CONTEXT layers of the Belief Dynamics framework.
+- **Programmatic Tool Calling**- the Class A/B/C tool classification, architectural enforcement of confirmation gates, and the context window problem. The multi-agent module's enforcement arguments build directly on this foundation.
 
 If any of these are unfamiliar, return to those modules before proceeding here.
 
@@ -74,7 +74,7 @@ The Specifications module established the theoretical foundation: how models acc
 
 This module applies both to the hardest version of the problem: systems where the evidence sources are other models, the contamination paths are invisible, and the failure modes scale with the number of agents.
 
-Each existing module in the curriculum has a cross-reference to this one in its "What's Next" section. The connection runs in both directions — understanding multi-agent systems deepens the understanding of why single-agent design decisions matter, and mastering single-agent design is the prerequisite for building multi-agent systems that work.
+Each existing module in the curriculum has a cross-reference to this one in its "What's Next" section. The connection runs in both directions- understanding multi-agent systems deepens the understanding of why single-agent design decisions matter, and mastering single-agent design is the prerequisite for building multi-agent systems that work.
 
 ---
 
@@ -89,17 +89,17 @@ Read in order. Foundations establishes the argument. Patterns gives you the impl
 
 ### Building something now?
 
-- **Designing agent boundaries?** → [Multi-Agent Patterns: Pattern 1 — Boundary Design](Multi_Agent_Patterns.md)
-- **Structuring Specifications across agents?** → [Multi-Agent Patterns: Pattern 2 — Specification Architecture](Multi_Agent_Patterns.md)
-- **Managing what enters each agent's context?** → [Multi-Agent Patterns: Pattern 3 — Evidence Flow Control](Multi_Agent_Patterns.md)
-- **Identifying your highest-risk agents?** → [Multi-Agent Patterns: Pattern 4 — Exposure Mapping](Multi_Agent_Patterns.md)
-- **Setting up persistent state management?** → [Multi-Agent Patterns: Pattern 5 — The Harness Architecture](Multi_Agent_Patterns.md)
+- **Designing agent boundaries?** → [Multi-Agent Patterns: Pattern 1- Boundary Design](Multi_Agent_Patterns.md)
+- **Structuring Specifications across agents?** → [Multi-Agent Patterns: Pattern 2- Specification Architecture](Multi_Agent_Patterns.md)
+- **Managing what enters each agent's context?** → [Multi-Agent Patterns: Pattern 3- Evidence Flow Control](Multi_Agent_Patterns.md)
+- **Identifying your highest-risk agents?** → [Multi-Agent Patterns: Pattern 4- Exposure Mapping](Multi_Agent_Patterns.md)
+- **Setting up persistent state management?** → [Multi-Agent Patterns: Pattern 5- The Harness Architecture](Multi_Agent_Patterns.md)
 
 ---
 
 ## Key Principle
 
-**The framework extends, not changes.** Everything that produces reliable single-agent systems produces reliable multi-agent systems — with higher stakes at every decision point, and with contamination risks that require explicit architectural responses at the boundaries between agents.
+**The framework extends, not changes.** Everything that produces reliable single-agent systems produces reliable multi-agent systems- with higher stakes at every decision point, and with contamination risks that require explicit architectural responses at the boundaries between agents.
 
 ---
 
