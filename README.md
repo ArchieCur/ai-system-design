@@ -150,7 +150,7 @@ Specifications are the laws of the system- persistent, authoritative, and delibe
 - Complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
 - Writing constraints that prevent chaos
 - Verification protocols
-- Belief Dynamics In-Context Learning (ICL) — the research foundation
+- Belief Dynamics In-Context Learning (ICL)- the research foundation
 - The Supremacy Clause and Evidence Reset Protocols
 - Common pitfalls (featuring the infamous "Jevo Script syndrome")
 - **Appendices:** Templates, integration examples, quick reference guide, verification protocol templates, folder structures, Belief Dynamics reverse engineering
