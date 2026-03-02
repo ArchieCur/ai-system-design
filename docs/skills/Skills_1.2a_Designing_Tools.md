@@ -174,7 +174,7 @@ What it solves: Unknown failure modes, error handling, recovery patterns
 
 ```
 
-**Why this works:** The model now knows EXACTLY what to do for each failure type—no guessing, no loops, no hallucination.
+**Why this works:** The model now knows EXACTLY what to do for each failure type- no guessing, no loops, no hallucination.
 
 ## **Important Implementation note: Real APIs require flattening**
 
@@ -579,6 +579,7 @@ Problem:
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks The model handles natively
 **Fix:** Only create tools for tasks that genuinely exceed reasoning capability
+
 
 
 
