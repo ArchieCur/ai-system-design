@@ -4,7 +4,12 @@
 
 Tools are the **Achilles heel** of AI systems. Poorly designed tools- vague descriptions, unclear usage conditions, unpredictable failures-create massive cognitive friction and lead to unreliable behavior, especially in agentic workflows.
 
-This section provides a complete engineering framework for tool design, not just "better descriptions." You'll learn the **Three-Part Tool Definition Standard** (Trigger Logic, Negative Constraints, Return Contract), **Risk Classification** (Read-Only, State-Change, Computational), and systematic approaches to testing, composition, and error handling.
+This section provides a complete engineering framework for tool design, not just "better descriptions." 
+
+You'll learn the:
+
+- **Three-Part Tool Definition Standard** (Trigger Logic, Negative Constraints, Return Contract), 
+- **Risk Classification** (Read-Only, State-Change, Computational), and systematic approaches to testing, composition, and error handling.
 
 Mastering tools transforms them from a source of confusion into a source of reliability.
 
@@ -123,7 +128,7 @@ failure_modes:
     user_action: "Email will be sent in 60 seconds"
 ```
 
-**This eliminates guessing.** The model knows exactly what to do for each failure—no loops, no hallucination.
+**This eliminates guessing.** The model knows exactly what to do for each failure- no loops, no hallucination.
 
 ---
 
