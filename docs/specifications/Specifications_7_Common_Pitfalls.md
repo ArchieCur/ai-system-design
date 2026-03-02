@@ -10,7 +10,7 @@
 
 You've learned the complete specification framework (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION).
 
-Now we explore what actually goes wrong in practice—and how to avoid it.
+Now we explore what actually goes wrong in practice- and how to avoid it.
 
 This section shares the mistakes models see most often, the traps users fall into repeatedly,
 
@@ -603,7 +603,7 @@ PASS (subjective)
 Model: "All checks pass!"
 [Nothing was actually verified]
 ```
-**Result: Verification theater—looks like verification, verifies nothing.**
+**Result: Verification theater- looks like verification, verifies nothing.**
 
 **Why This Happens:**
 
@@ -1400,6 +1400,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Common Specification Pitfalls, and how to avoid and recover from pitfalls
+
 
 
 
