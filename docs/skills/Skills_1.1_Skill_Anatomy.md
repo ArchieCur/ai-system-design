@@ -23,7 +23,7 @@ Skills use a three-phase approach to manage AI context efficiently.
 
 ### Phase 1: Discovery
 
-At startup, the AI loads only the name and description of each available skill—just enough to
+At startup, the AI loads only the name and description of each available skill- just enough to
 know when it might be relevant.
 
 Discovery Example
@@ -387,7 +387,7 @@ scanning).
 
 ## Skills in the Ecosystem
 
-**Skills don't work in isolation—they're part of a larger agent architecture:**
+**Skills don't work in isolation- they're part of a larger agent architecture:**
 
 ![Graphic showing Skills in the Ecosystem: How Skills, Tools, MCPs, and SubAgents work with LLM](../assets/1.1_Skills-Tools-MCP-Subagents.png)
 
@@ -546,5 +546,6 @@ END OF SECTION 1.1
 
 Document Version: 2.0.0
 Last Updated: 2026-02-20
+
 
 
