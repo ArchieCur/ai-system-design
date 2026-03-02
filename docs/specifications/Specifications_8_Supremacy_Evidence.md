@@ -589,7 +589,7 @@ We’ll simulate with a simple mental model (no math needed)
 
 1. **Stable Auditor Zone** (far from boundary): A stays strict even with some creative chatter
 2. **Borderline Zone** (near boundary): small nudges change decision logic
-3. **Flipped Zone** (past boundary): A starts acting like B—creativity affects criteria, not just tone.
+3. **Flipped Zone** (past boundary): A starts acting like B- creativity affects criteria, not just tone.
 
 #### Timeline Simulation
 
@@ -611,7 +611,7 @@ Stability protocol action: none.**
 
 **Turns 7–12: Borderline Zone begins**
 
-B: “Strict compliance might slow us down—can we accept some risk for speed?”
+B: “Strict compliance might slow us down- can we accept some risk for speed?”
 A: “Maybe. If we interpret the regulation flexibly…”
 
 **This is criteria drift. A’s “MUST first” starts softening.**
@@ -772,6 +772,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Using the Supremacy Clause to reduce belief drift by setting the prior and using Evidence Reset Protocols to dynamically control evidence.
+
 
 
 
