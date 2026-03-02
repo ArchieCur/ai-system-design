@@ -18,7 +18,11 @@ This guide is structured for different reader needs:
 
 ## 1. Intro
 
-Prompting a standard LLM is a conversation; prompting an Agent is system architecture. Unlike static chatbots, Agents possess unique properties. They operate in loops, ranging from atomic single-turn tasks to long-running workflows that span hours. This autonomy exposes three critical failure points that traditional 2024 techniques (like standard Chain-of-Thought or basic Few-Shot) simply cannot solve: **State** (maintaining memory over time), **Tools** (reliably executing external actions), and **Coordination** (managing hand-offs between specialized roles). To build reliable Agents, we must stop 'talking' to the model and start engineering for these three structural challenges.
+Prompting a standard LLM is a conversation; prompting an Agent is system architecture. Unlike static chatbots, Agents possess unique properties. They operate in loops, ranging from atomic single-turn tasks to long-running workflows that span hours. This autonomy exposes three critical failure points that traditional 2024 techniques (like standard Chain-of-Thought or basic Few-Shot) simply cannot solve: 
+
+- **State** (maintaining memory over time), 
+- **Tools** (reliably executing external actions), and 
+- **Coordination** (managing hand-offs between specialized roles). To build reliable Agents, we must stop 'talking' to the model and start engineering for these three structural challenges.
 
 This guide covers advanced prompting patterns for agents that need to maintain state, coordinate multiple sub-agents, or operate reliably without constant human oversight.
 
