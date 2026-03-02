@@ -174,7 +174,7 @@ Individual agents cannot reliably detect their own drift. The model does not kno
 
 System-level drift detection requires observing behavior across agents, not just within them. Signals that are meaningful at the system level include: unexpected convergence of outputs across agents that should have independent reasoning paths; simultaneous softening of the same constraint class across multiple agents; and the appearance of shared vocabulary that wasn't present in any agent's Specification. These are population-level signals. They require a monitoring layer that sits above the individual agents.
 
-The monitoring architecture for these signals- and the intervention hierarchy for responding to them — belongs in the document that follows this one.
+The monitoring architecture for these signals- and the intervention hierarchy for responding to them- belongs in the document that follows this one.
 
 ### Evidence Flow Must Be Explicitly Designed
 
@@ -224,7 +224,7 @@ The framework extends, not changes. The principles that produced reliable single
 
 ---
 
-*Next: Multi_Agent_Patterns.md — Implementation patterns for stable multi-agent architectures-
+*Next: Multi_Agent_Patterns.md- Implementation patterns for stable multi-agent architectures-
 
 ---
 
@@ -232,4 +232,4 @@ Document Version: 1.0.0
 
 Last Updated: 2026-03-01
 
-Key Principle: Everything that causes individual agent drift becomes a system-level cascade risk in multi-agent architectures. The framework extends, not changes — with higher stakes at every decision point.
+Key Principle: Everything that causes individual agent drift becomes a system-level cascade risk in multi-agent architectures. The framework extends, not changes- with higher stakes at every decision point.
