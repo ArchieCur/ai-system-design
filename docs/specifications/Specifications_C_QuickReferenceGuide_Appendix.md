@@ -4,7 +4,7 @@
 
 **When to use:** While actively writing specs, need quick reminders
 
-**What you get:** Checklists, patterns, red flags, decision trees—all condensed
+**What you get:** Checklists, patterns, red flags, decision trees- all condensed
 
 ## How to Use This Guide
 
@@ -127,7 +127,7 @@ Warning signs your MUST is problematic:
 
 **50+ critical constraints**
 
-**Fix:** Prioritize—some are SHOULD not MUST. Keep MUSTs to truly critical items.
+**Fix:** Prioritize- some are SHOULD not MUST. Keep MUSTs to truly critical items.
 
 #### Conflicting MUSTs:
 
@@ -870,6 +870,7 @@ SHOULD: [Preferences - 5-10 items]
 Document Version: 1.0.0
 Last Updated: 2026-02-27
 Quick reference for active specification writing
+
 
 
 
