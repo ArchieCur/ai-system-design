@@ -4,7 +4,7 @@
 
 Multi-agent systems extend every principle in this curriculum to architectures where agents communicate with each other, share evidence streams, and can influence each other's belief states. This module teaches you why that changes the stakes of every design decision you've already made- and how to build systems that remain stable, detectable, and recoverable when they come under pressure.
 
-This is where the two major threads of the curriculum converge: the belief architecture work in Specifications and the practical implementation work in Skills, Tools, and Prompts — applied to systems where the "user" sending evidence to an agent may itself be a drifting model.
+This is where the two major threads of the curriculum converge: the belief architecture work in Specifications and the practical implementation work in Skills, Tools, and Prompts- applied to systems where the "user" sending evidence to an agent may itself be a drifting model.
 
 ---
 
@@ -28,7 +28,7 @@ This is where the two major threads of the curriculum converge: the belief archi
 
 Everything that causes individual agent drift becomes a system-level cascade risk when agents are communicating with each other.
 
-A belief state that drifts in a single agent is a single-agent problem. The Evidence Reset Protocols in Section 8 of the Specifications module are designed to catch it. But in a multi-agent system, a drifted agent's outputs don't just affect that agent — they enter downstream agents' context windows as evidence. Those agents update their belief states accordingly. Their outputs, now shaped by contaminated evidence, travel further downstream.
+A belief state that drifts in a single agent is a single-agent problem. The Evidence Reset Protocols in Section 8 of the Specifications module are designed to catch it. But in a multi-agent system, a drifted agent's outputs don't just affect that agent- they enter downstream agents' context windows as evidence. Those agents update their belief states accordingly. Their outputs, now shaped by contaminated evidence, travel further downstream.
 
 The cascade is self-obscuring: by the time behavior has visibly changed, the source of contamination may be several cycles back and invisible. No individual agent appears to have made an obviously wrong decision. The system has drifted, and the drift looks like consensus.
 
@@ -44,11 +44,11 @@ In multi-agent systems, drift propagates through evidence. One agent's softened 
 
 ### Prompts as Prior Injections
 
-Within a session, a prompt is the most powerful single determinant of where an agent's belief state starts. In multi-agent systems, inter-agent prompts are not messages — they are prior injections into downstream agents. The quality of an orchestrator's output to a subagent determines where that subagent starts on the sigmoidal learning curve.
+Within a session, a prompt is the most powerful single determinant of where an agent's belief state starts. In multi-agent systems, inter-agent prompts are not messages- they are prior injections into downstream agents. The quality of an orchestrator's output to a subagent determines where that subagent starts on the sigmoidal learning curve.
 
 ### Agent Boundaries as Trust Boundaries
 
-Every inter-agent boundary is a point where one model's belief state ends and another's begins. Treating those boundaries like API boundaries — typed inputs, validated outputs, explicit contracts — is the mechanism by which belief-state contamination is contained rather than propagated.
+Every inter-agent boundary is a point where one model's belief state ends and another's begins. Treating those boundaries like API boundaries- typed inputs, validated outputs, explicit contracts- is the mechanism by which belief-state contamination is contained rather than propagated.
 
 ### Exposure Mapping
 
