@@ -294,7 +294,7 @@ That document defines three classes:
 - **Class B (State-Change):** Requires confirmation, irreversible
 - **Class C (Computational):** Use when task exceeds reliable reasoning capability
 
-In a model-driven system, the classification is enforced persuasively — through system prompt instructions and tool descriptions that tell the model to confirm before Class B actions. This works most of the time. It fails under load, in long sessions, or when contextual pressure is high enough to shift the model's behavior.
+In a model-driven system, the classification is enforced persuasively- through system prompt instructions and tool descriptions that tell the model to confirm before Class B actions. This works most of the time. It fails under load, in long sessions, or when contextual pressure is high enough to shift the model's behavior.
 
 Programmatic calling enforces classification architecturally:
 
@@ -333,7 +333,7 @@ The class of a tool is no longer a suggestion the model can override. It is a st
 
 Single-agent reliability matters. Multi-agent reliability is where programmatic tool calling becomes non-negotiable.
 
-In a multi-agent system, agents share an evidential environment. One agent's tool outputs become another agent's context inputs. This creates a compounding dynamic: if Agent A calls the wrong tool and receives noisy or unexpected output, that output enters Agent B's context as evidence. Agent B's subsequent behavior is now shaped by Agent A's error — even if Agent B's own reasoning is sound.
+In a multi-agent system, agents share an evidential environment. One agent's tool outputs become another agent's context inputs. This creates a compounding dynamic: if Agent A calls the wrong tool and receives noisy or unexpected output, that output enters Agent B's context as evidence. Agent B's subsequent behavior is now shaped by Agent A's error- even if Agent B's own reasoning is sound.
 
 The failure mode is not just additive. In long-running multi-agent pipelines, evidential contamination can cascade: Agent A's bad output shifts Agent B's behavior, which produces outputs that further degrade Agent C's context, which creates conditions for Agent A to receive contaminated inputs on its next cycle. The system can drift far from intended behavior without any single agent making an obviously wrong decision.
 
