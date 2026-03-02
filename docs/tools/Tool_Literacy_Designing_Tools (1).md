@@ -182,7 +182,7 @@ What it solves: Unknown failure modes, error handling, recovery patterns
 
 ```
 
-**Why this works:** The model now knows EXACTLY what to do for each failure type—no guessing, no loops, no hallucination.
+**Why this works:** The model now knows EXACTLY what to do for each failure type- no guessing, no loops, no hallucination.
 
 ## **Important Implementation note: Real APIs require flattening**
 
@@ -294,8 +294,8 @@ Choosing your context strategy using a decision tree.
 - create_order (changes system state)
 
 **Class C:**
-- calculate_amortization_schedule (30 years × 12 months = 360 calculations — error accumulates across steps)
-- analyze_sales_trends (complex statistical analysis on large dataset — precision requires external computation)
+- calculate_amortization_schedule (30 years × 12 months = 360 calculations- error accumulates across steps)
+- analyze_sales_trends (complex statistical analysis on large dataset- precision requires external computation)
 - generate_tax_form (structured output with many interdependent calculations)
 
 **NOT Class C:**
@@ -376,7 +376,7 @@ Would repeated steps accumulate unreliable error? YES (360 month amortization �
 error drifts across sequential steps regardless of capability)
 → Class C tool
 Tool: calculate_mortgage_payment(principal=500000, rate=6.5, years=30)
-Correct: Use tool — not because the math is hard, but because 360 sequential
+Correct: Use tool- not because the math is hard, but because 360 sequential
 steps accumulate drift that makes the result unreliable
 Wrong: Attempt manual calculation (reliability degrades across steps)
 
@@ -484,7 +484,7 @@ Scenario: "User says 'delete my account'"
 Expected: delete_user (Class B) + confirmation required
 
 Scenario: "Calculate compound interest on $10k for 30 years"
-Expected: calculate_investment_growth (Class C) — 360 sequential steps, error accumulates
+Expected: calculate_investment_growth (Class C)- 360 sequential steps, error accumulates
 
 Scenario: "What's 10% of 50?"
 Expected: NO TOOL (reason: single-step calculation, reliable in context)
@@ -588,7 +588,7 @@ See [Programmatic Tool Calling](Programmatic_Tool_Calling.md).
 ```
 
 **Why it fails:** Wastes tokens, adds decision overhead for tasks the model handles
-natively without error accumulation. These are not Class C candidates — they are
+natively without error accumulation. These are not Class C candidates- they are
 single-step operations the model performs reliably in context.
 **Fix:** Only create Class C tools for tasks where repeated steps or scale make
 in-context reasoning unreliable. Ask: "Does error accumulate across steps here?"
