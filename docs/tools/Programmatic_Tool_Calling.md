@@ -14,11 +14,11 @@ There are two fundamentally different ways a tool gets called in an AI system.
 
 **Model-driven tool calling:** The agent reasons about what to do, decides which tool to invoke, generates that decision as output, and the runtime executes it. The model is in the loop for every invocation decision.
 
-**Programmatic tool calling:** Orchestration code defines when, how, and in what order tools fire. The model provides inputs and processes outputs — but the invocation logic lives in code, outside the model's reasoning process entirely.
+**Programmatic tool calling:** Orchestration code defines when, how, and in what order tools fire. The model provides inputs and processes outputs- but the invocation logic lives in code, outside the model's reasoning process entirely.
 
 Most practitioners start with model-driven calling because it's simpler to set up. Most practitioners building production systems eventually move toward programmatic calling because model-driven systems drift, fail unpredictably, and become harder to debug as complexity grows.
 
-This unit explains why — and shows you how to do it right.
+This unit explains why- and shows you how to do it right.
 
 ---
 
@@ -71,17 +71,17 @@ There are three distinct reliability advantages. Each one matters independently.
 
 ### Advantage 1: Correct Tool Selection Is Guaranteed by Logic, Not Belief State
 
-A model's tool selection decisions depend on its current belief state — which is influenced by everything in its context window. A long conversation, an ambiguous user message, or accumulated context from earlier in the session can all nudge the model toward a tool it shouldn't use, or away from one it should.
+A model's tool selection decisions depend on its current belief state- which is influenced by everything in its context window. A long conversation, an ambiguous user message, or accumulated context from earlier in the session can all nudge the model toward a tool it shouldn't use, or away from one it should.
 
 Programmatic calling removes belief state from the invocation decision entirely. The condition `if not inventory["available"]` doesn't care what the model currently believes about inventory. It evaluates to true or false based on the actual API response. The model cannot talk itself into skipping it.
 
-This matters most for Class B tools. The Class A/B/C classification system (covered in Tool_Literacy_Designing_Tools) is designed to ensure that state-changing tools require confirmation. But "require" in a model-driven system means "the model is instructed to ask" — which is persuasive enforcement. A model under sufficient contextual pressure can bypass a persuasive constraint. Programmatic calling makes confirmation a code gate, not a suggestion.
+This matters most for Class B tools. The Class A/B/C classification system (covered in Tool_Literacy_Designing_Tools) is designed to ensure that state-changing tools require confirmation. But "require" in a model-driven system means "the model is instructed to ask"- which is persuasive enforcement. A model under sufficient contextual pressure can bypass a persuasive constraint. Programmatic calling makes confirmation a code gate, not a suggestion.
 
 ### Advantage 2: Deliberation Tokens Don't Enter the Evidential Stream
 
 This is the less obvious advantage, but in long-running agents it may be the most important one.
 
-When a model reasons about which tool to call, that reasoning appears in the context window as tokens. Those tokens become part of the evidence the model uses for every subsequent decision. If the model deliberates about a complex tool selection and gets partway down the wrong reasoning path before correcting itself, that wrong reasoning is now in context — shaping what comes next.
+When a model reasons about which tool to call, that reasoning appears in the context window as tokens. Those tokens become part of the evidence the model uses for every subsequent decision. If the model deliberates about a complex tool selection and gets partway down the wrong reasoning path before correcting itself, that wrong reasoning is now in context- shaping what comes next.
 
 In programmatic calling, tool selection logic lives in code. The model never generates deliberation tokens about which tool to invoke. The context window stays clean. The model receives tool results and processes them, but the selection machinery is invisible to it.
 
@@ -114,7 +114,7 @@ The model sees a clean result object. It never sees the retry attempts, the back
 
 This section deserves focused attention because it changes how practitioners think about agent architecture.
 
-Every token in a model's context window influences subsequent behavior. This is not a bug — it is how transformer-based language models work. The model is always, implicitly, updating its understanding of the situation based on everything it has seen.
+Every token in a model's context window influences subsequent behavior. This is not a bug- it is how transformer-based language models work. The model is always, implicitly, updating its understanding of the situation based on everything it has seen.
 
 In a model-driven tool calling system, three categories of tokens end up in context that programmatic calling eliminates:
 
@@ -126,7 +126,7 @@ In a model-driven tool calling system, three categories of tokens end up in cont
 
 Programmatic calling moves all three categories out of the context window. The model sees: task inputs, tool results, and task outputs. The orchestration machinery is transparent to it.
 
-The practical implication: when designing a production agent, ask yourself which decisions belong in code and which belong to the model. A useful heuristic is this — if a decision can be expressed as a condition on a previous tool's output, it belongs in code. If a decision requires genuine language understanding or user intent interpretation, it belongs to the model.
+The practical implication: when designing a production agent, ask yourself which decisions belong in code and which belong to the model. A useful heuristic is this; if a decision can be expressed as a condition on a previous tool's output, it belongs in code. If a decision requires genuine language understanding or user intent interpretation, it belongs to the model.
 
 ---
 
@@ -337,7 +337,7 @@ In a multi-agent system, agents share an evidential environment. One agent's too
 
 The failure mode is not just additive. In long-running multi-agent pipelines, evidential contamination can cascade: Agent A's bad output shifts Agent B's behavior, which produces outputs that further degrade Agent C's context, which creates conditions for Agent A to receive contaminated inputs on its next cycle. The system can drift far from intended behavior without any single agent making an obviously wrong decision.
 
-Programmatic tool calling addresses this at the architectural level. When each agent's tool invocations are governed by code rather than by the agent's current belief state, the failure surface shrinks considerably. A tool that returns unexpected output triggers defined error handling — it does not trigger unbounded model reasoning that contaminates downstream context.
+Programmatic tool calling addresses this at the architectural level. When each agent's tool invocations are governed by code rather than by the agent's current belief state, the failure surface shrinks considerably. A tool that returns unexpected output triggers defined error handling- it does not trigger unbounded model reasoning that contaminates downstream context.
 
 For practitioners building multi-agent systems, three patterns matter most:
 
@@ -345,9 +345,9 @@ For practitioners building multi-agent systems, three patterns matter most:
 
 **Gate Class B actions at the system level, not the agent level.** In a multi-agent workflow, confirmation for state-changing actions should be handled by the orchestrator, not by individual agents. Individual agents should not independently decide to confirm or skip confirmation based on their local belief state.
 
-**Use programmatic calling to manage evidence volume.** Long-running multi-agent sessions accumulate context rapidly. Programmatic tool calling helps control what enters each agent's context window — tool results only, not deliberation about which tools to call or how to handle failures.
+**Use programmatic calling to manage evidence volume.** Long-running multi-agent sessions accumulate context rapidly. Programmatic tool calling helps control what enters each agent's context window- tool results only, not deliberation about which tools to call or how to handle failures.
 
-For practitioners who want to go deeper on why this matters theoretically, Appendix F of the Specifications module covers the Belief Dynamics framework — specifically how accumulated in-context evidence can push an agent's behavioral posterior across a phase boundary. The multi-agent cascading problem described here is the practical consequence of that dynamic playing out across a network of agents simultaneously.
+For practitioners who want to go deeper on why this matters theoretically, Appendix F of the Specifications module covers the Belief Dynamics framework- specifically how accumulated in-context evidence can push an agent's behavioral posterior across a phase boundary. The multi-agent cascading problem described here is the practical consequence of that dynamic playing out across a network of agents simultaneously.
 
 ---
 
@@ -371,7 +371,7 @@ response = client.messages.create(
 
 **Why it fails:** The model may sequence correctly most of the time. Under load, with ambiguous inputs, or late in a long session, it may not. Payment before inventory check is a real failure mode.
 
-**The fix:** Define the sequence in code. Let the model handle language understanding and input processing — not workflow orchestration.
+**The fix:** Define the sequence in code. Let the model handle language understanding and input processing- not workflow orchestration.
 
 ### Antipattern 2: Error Recovery in the Prompt
 
@@ -472,7 +472,7 @@ The model handles what models are good at. The code handles what code is good at
 
 ## Key Takeaways
 
-**Programmatic tool calling is architectural prior enforcement.** It does not rely on the model's belief state to enforce correct behavior — it builds correct behavior into the code.
+**Programmatic tool calling is architectural prior enforcement.** It does not rely on the model's belief state to enforce correct behavior- it builds correct behavior into the code.
 
 **Three reliability advantages:** Correct tool selection by logic, clean context window, error handling outside the evidential stream.
 
@@ -480,9 +480,9 @@ The model handles what models are good at. The code handles what code is good at
 
 **Classification enforcement moves from persuasive to architectural.** Class B confirmation gates in code cannot be bypassed by contextual pressure. Class C complexity thresholds become enforced preconditions.
 
-**Multi-agent systems amplify every single-agent failure mode.** Programmatic calling at the agent boundary is not optional in production multi-agent systems — it is the mechanism that prevents cascading evidential contamination.
+**Multi-agent systems amplify every single-agent failure mode.** Programmatic calling at the agent boundary is not optional in production multi-agent systems; it is the mechanism that prevents cascading evidential contamination.
 
-**The goal is not to remove the model from the loop — it is to put the model in the right part of the loop.** Language understanding, semantic reasoning, and content generation belong to the model. Workflow sequencing, error recovery, and state-change gating belong in code.
+**The goal is not to remove the model from the loop- it is to put the model in the right part of the loop.** Language understanding, semantic reasoning, and content generation belong to the model. Workflow sequencing, error recovery, and state-change gating belong in code.
 
 ---
 
