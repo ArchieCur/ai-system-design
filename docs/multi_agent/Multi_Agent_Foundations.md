@@ -156,7 +156,7 @@ The sections above establish what each component of the framework requires in mu
 
 ### Agent Boundaries Are Trust Boundaries
 
-Every inter-agent boundary is a point where one model's belief state ends and another's begins. Treating agent boundaries like API boundaries — with typed inputs, validated outputs, and explicit contracts- is not a software engineering preference. It is the mechanism by which belief-state contamination is contained.
+Every inter-agent boundary is a point where one model's belief state ends and another's begins. Treating agent boundaries like API boundaries- with typed inputs, validated outputs, and explicit contracts- is not a software engineering preference. It is the mechanism by which belief-state contamination is contained.
 
 Concretely, this means:
 
@@ -164,7 +164,7 @@ Every agent boundary should define what valid output looks like (schema, constra
 
 ### Every Agent Needs Its Own Specification
 
-Shared Specifications establish common priors. Individual Specifications establish individual anchor points. Both are necessary. In a multi-agent system, every agent that can receive external input — from humans or from other agents- needs its own Supremacy Clause that holds regardless of the source of that input.
+Shared Specifications establish common priors. Individual Specifications establish individual anchor points. Both are necessary. In a multi-agent system, every agent that can receive external input- from humans or from other agents- needs its own Supremacy Clause that holds regardless of the source of that input.
 
 This is not redundancy. The shared Specification defines what all agents agree on. The individual Specification defines what each agent will not abandon under evidential pressure, including pressure from other agents in the system.
 
@@ -174,7 +174,7 @@ Individual agents cannot reliably detect their own drift. The model does not kno
 
 System-level drift detection requires observing behavior across agents, not just within them. Signals that are meaningful at the system level include: unexpected convergence of outputs across agents that should have independent reasoning paths; simultaneous softening of the same constraint class across multiple agents; and the appearance of shared vocabulary that wasn't present in any agent's Specification. These are population-level signals. They require a monitoring layer that sits above the individual agents.
 
-The monitoring architecture for these signals — and the intervention hierarchy for responding to them — belongs in the document that follows this one.
+The monitoring architecture for these signals- and the intervention hierarchy for responding to them — belongs in the document that follows this one.
 
 ### Evidence Flow Must Be Explicitly Designed
 
