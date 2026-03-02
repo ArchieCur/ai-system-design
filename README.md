@@ -165,7 +165,11 @@ ai-system-design/
 |   |  ├── advnced-prompting-index.md
 |   |  ├── Automated_Prompt_Optimization.py
 │   │  └── Building_Reliable_Agents_Advanced_Prompting.md/
-|   |  └── The_2026Prompt_Engineering_Field_Guide.md/  
+|   |  └── The_2026Prompt_Engineering_Field_Guide.md/
+│   ├── multi_agent/
+│   │  ├── Multi_Agent-index.md/
+|   |  ├── Multi_Agent_Foundations.md/
+│   │  └── Multi_Agent_Patterns.md/
 │   ├── skills/
 │   │  ├── skills-index.md/
 |   |  ├── Skills_1.1_Skill_Anatomy.md/
