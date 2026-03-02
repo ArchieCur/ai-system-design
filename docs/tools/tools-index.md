@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tools are the **Achilles heel** of AI systems. Poorly designed tools—vague descriptions, unclear usage conditions, unpredictable failures-create massive cognitive friction and lead to unreliable behavior, especially in agentic workflows.
+Tools are the **Achilles heel** of AI systems. Poorly designed tools- vague descriptions, unclear usage conditions, unpredictable failures-create massive cognitive friction and lead to unreliable behavior, especially in agentic workflows.
 
 This section provides a complete engineering framework for tool design, not just "better descriptions." You'll learn the **Three-Part Tool Definition Standard** (Trigger Logic, Negative Constraints, Return Contract), **Risk Classification** (Read-Only, State-Change, Computational), and systematic approaches to testing, composition, and error handling.
 
@@ -190,7 +190,7 @@ Pay special attention to:
 
 ## Key Principle
 
-**Tools are the Achilles heel of AI systems—but only when poorly engineered.**
+**Tools are the Achilles heel of AI systems- but only when poorly engineered.**
 
 Well-designed tools with explicit trigger logic, negative constraints, and return contracts transform uncertainty into reliability. In production systems and multi-agent architectures, programmatic orchestration elevates that reliability from persuasive to architectural.
 
