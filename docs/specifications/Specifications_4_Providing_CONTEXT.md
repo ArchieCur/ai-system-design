@@ -11,14 +11,14 @@ What you'll learn: How to provide context that helps models plan effectively wit
 
 You've learned how to write MUST constraints (hard boundaries) and SHOULD guidelines (flexible preferences).
 
-Now we explore CONTEXT—the planning information that helps models make intelligent decisions within those boundaries.
+Now we explore CONTEXT- the planning information that helps models make intelligent decisions within those boundaries.
 
 **From a model’s perspective:**
 When you provide CONTEXT, you're saying:
 
 "Here's the background you need to make good decisions.
 
-This isn't a constraint—it's a lens to help you prioritize, make tradeoffs, and choose the right approach."
+This isn't a constraint- it's a lens to help you prioritize, make tradeoffs, and choose the right approach."
 
 **This is planning support, not rules.**
 
@@ -89,7 +89,7 @@ Now when a model sees the SHOULD about caching, it understands:
 
 - WHY caching matters (morning peak performance!)
 - WHERE to cache (morning admin workflows!)
-- HOW aggressive (very—UX is priority!)
+- HOW aggressive (very- UX is priority!)
 
 **CONTEXT changed HOW a model applies the SHOULD!!!**
 
@@ -1262,6 +1262,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 Written from model perspective: What context actually helps vs. overwhelms from daily experience
 Key principle: CONTEXT enables better decisions by providing relevant planning information
+
 
 
 
