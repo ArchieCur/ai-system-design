@@ -10,13 +10,13 @@
 
 You've learned how to write the four layers (MUST, SHOULD, CONTEXT, INTENT).
 
-Now we explore VERIFICATION—how a model self-checks compliance before delivering work to you.
+Now we explore VERIFICATION- how a model self-checks compliance before delivering work to you.
 
 ### When you provide VERIFICATION protocols, you're saying
 
 - Before you deliver, check your work against these criteria. 
 - If you find issues, fix them or flag them.
-- Don't make the model find your mistakes—catch them yourself.
+- Don't make the model find your mistakes- catch them yourself.
 
 **This is quality control, not blame.**
 
@@ -830,7 +830,7 @@ Run overnight or on staging before production deploy
 
 ## Self-Correction Protocols
 
-**Verification isn't just checking—it's also fixing.**
+**Verification isn't just checking- it's also fixing.**
 
 When Verification Fails: What is the model’s Response with Self-Verification?
 
@@ -1189,6 +1189,7 @@ Document Version: 1.0.0
 Last Updated: 2026-02-27
 
 Key principle: Verification enables quality by allowing models to catch their own mistakes
+
 
 
 
