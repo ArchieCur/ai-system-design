@@ -4,7 +4,7 @@
 
 **Prerequisites:** Multi_Agent_Foundations.md, Programmatic Tool Calling, Specifications module, Skills module
 
-**What you'll learn:** Concrete implementation patterns for stable multi-agent architectures — how to design agent boundaries, manage evidence flow, enforce constraints at the system level, and identify which agents in your system carry the highest contamination risk.
+**What you'll learn:** Concrete implementation patterns for stable multi-agent architectures- how to design agent boundaries, manage evidence flow, enforce constraints at the system level, and identify which agents in your system carry the highest contamination risk.
 
 ---
 
@@ -14,10 +14,10 @@ Multi-Agent Foundations established why multi-agent systems change the stakes of
 
 The patterns here are organized around the four structural problems every multi-agent system must solve:
 
-1. **Boundary design** — where one agent ends and another begins, and what crosses that boundary
-2. **Specification architecture** — how constraints are enforced across a network of agents, not just within each one
-3. **Evidence flow control** — what enters each agent's context window, from where, and at what layer
-4. **Exposure mapping** — which agents in your system carry the highest contamination risk, and why
+1. **Boundary design**- where one agent ends and another begins, and what crosses that boundary
+2. **Specification architecture**- how constraints are enforced across a network of agents, not just within each one
+3. **Evidence flow control**- what enters each agent's context window, from where, and at what layer
+4. **Exposure mapping**- which agents in your system carry the highest contamination risk, and why
 
 These are not independent problems. A boundary design decision is also an evidence flow decision. A Specification architecture decision determines how much exposure mapping matters. The patterns address each problem separately for clarity, but production systems require all four to be designed together.
 
@@ -33,7 +33,7 @@ This decision has three parts.
 
 **What crosses:** Not all of one agent's output should enter the next agent's context. Raw reasoning, tool deliberation, intermediate conclusions, and error recovery attempts should generally not cross boundaries. Validated results, structured outputs, and explicitly typed data should.
 
-**In what form:** Output that crosses a boundary should be typed and schema-constrained. An agent that produces free-form text and hands it directly to the next agent's context is not an inter-agent boundary — it is a context window merger. That is an architecture, but it is not a controlled one.
+**In what form:** Output that crosses a boundary should be typed and schema-constrained. An agent that produces free-form text and hands it directly to the next agent's context is not an inter-agent boundary- it is a context window merger. That is an architecture, but it is not a controlled one.
 
 **Who validates:** Validation at the boundary is the orchestrator's responsibility, not the receiving agent's. A receiving agent that must evaluate whether the evidence it's receiving is trustworthy is an agent whose belief state is already being shaped by the evaluation process. Move that work upstream.
 
