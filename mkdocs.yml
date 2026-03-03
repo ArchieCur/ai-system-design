@@ -103,12 +103,12 @@ nav:
       - Overview: advanced-prompting/advanced-prompting-index.md
       - Building Reliable Agents: advanced-prompting/Building_Reliable_Agents_Advanced_Prompting.md
       - Prompt Engineering Field Guide: advanced-prompting/The_2026_Prompt_Engineering_Field_Guide.md
-      - Automated Prompt Optimization: advanced-prompting/Automated_Prompt_Optimization.py
+      - Automated Prompt Optimization: advanced-prompting/Automated_Prompt_Optimization.md
 
   - Multi-Agent Systems:
-      - Overview: multi-agent/multi-agent-index.md
-      - Foundations: multi-agent/Multi_Agent_Foundations.md
-      - Patterns: multi-agent/Multi_Agent_Patterns.md
+      - Overview: multi_agent/multi-agent-index.md
+      - Foundations: multi_agent/Multi_Agent_Foundations.md
+      - Patterns: multi_agent/Multi_Agent_Patterns.md
 
 
 # Markdown Extensions
@@ -142,6 +142,8 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite       # Inline code highlighting
+  - pymdownx.snippets:          # File inclusion with --8<--
+      base_path: [docs]
   - pymdownx.keys               # Keyboard keys (++ctrl+alt+delete++)
   - pymdownx.smartsymbols       # Smart symbols (arrows, quotes, etc.)
   - pymdownx.superfences:       # Code blocks with additional features
