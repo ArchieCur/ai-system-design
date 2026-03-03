@@ -241,7 +241,7 @@ ai-system-design/
 │   │  └── Specifications_F_Reverse_Engineering.md
 │   └── tools/
 │      ├── tools-index.md
-│      ├── Tool_Literacy_Designing_Tools(1).md
+│      ├── Tool_Literacy_Designing_Tools (1).md
 │      └── Programmatic_Tool_Calling.md
 │      └── Tool_Templates.md
 ```
