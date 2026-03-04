@@ -10,7 +10,7 @@ This documentation provides practical guidance for anyone working with AI system
 
 ### Core Topics
 
-**📋 [Specifications](specifications/specification-index.md)**  
+**📋 [Specifications](specifications/specifications-index.md)**  
 Learn how to create clear, effective specifications for AI systems. Master the framework of MUST constraints, SHOULD guidelines, CONTEXT, INTENT, and VERIFICATION protocols.
 
 **🛠️ [Skills](skills/skills-index.md)**  
