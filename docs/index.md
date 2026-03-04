@@ -22,8 +22,9 @@ Explore the tools and templates for building AI systems, including tool literacy
 **🚀 [Advanced Prompting](advanced-prompting/andvanced-prompting-index.md)**  
 Master advanced prompting techniques, automated optimization, and building reliable AI agents.
 
-**🚀 [Advanced Prompting](multi-agent/multi-agent-index.md)**  
-Master advanced prompting techniques, automated optimization, and building reliable AI agents.
+**🚀 [Multi-Agent](multi-agent/multi-agent-index.md)**  
+Learn how multi-agent systems change the stakes, the cascade problem, how Specifications, Skills,  
+and Prompts extend to agent-to-agent interactions, and what stays the same.
 
 ---
 
