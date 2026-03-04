@@ -19,7 +19,10 @@ Discover how to design reusable AI capabilities. From basic skill anatomy to adv
 **🔧 [Tools](tools/tools-index.md)**  
 Explore the tools and templates for building AI systems, including tool literacy and practical implementation guides.
 
-**🚀 [Advanced Prompting](advanced-prompting/andvanced_prompting-index.md)**  
+**🚀 [Advanced Prompting](advanced-prompting/andvanced-prompting-index.md)**  
+Master advanced prompting techniques, automated optimization, and building reliable AI agents.
+
+**🚀 [Advanced Prompting](multi-agent/multi-agent-index.md)**  
 Master advanced prompting techniques, automated optimization, and building reliable AI agents.
 
 ---
