@@ -10,16 +10,16 @@ This documentation provides practical guidance for anyone working with AI system
 
 ### Core Topics
 
-**📋 [Specifications](specifications/index.md)**  
+**📋 [Specifications](specifications/specification-index.md)**  
 Learn how to create clear, effective specifications for AI systems. Master the framework of MUST constraints, SHOULD guidelines, CONTEXT, INTENT, and VERIFICATION protocols.
 
-**🛠️ [Skills](skills/index.md)**  
+**🛠️ [Skills](skills/skills-index.md)**  
 Discover how to design reusable AI capabilities. From basic skill anatomy to advanced implementations, including tool design and semantic tagging.
 
-**🔧 [Tools](tools/index.md)**  
+**🔧 [Tools](tools/tools-index.md)**  
 Explore the tools and templates for building AI systems, including tool literacy and practical implementation guides.
 
-**🚀 [Advanced Prompting](advanced-prompting/index.md)**  
+**🚀 [Advanced Prompting](advanced-prompting/andvanced_prompting-index.md)**  
 Master advanced prompting techniques, automated optimization, and building reliable AI agents.
 
 ---
@@ -94,4 +94,4 @@ This documentation was created through collaboration between Archie Cur and Clau
 
 ---
 
-*Ready to get started? Begin with [Specifications](specifications/index.md) →*
+*Ready to get started? Begin with [Specifications](specifications/specifications-index.md) →*
