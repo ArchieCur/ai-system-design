@@ -960,6 +960,259 @@ Monitor post-deployment: Response times, error rates, uptime.
 
 END OF TEMPLATE
 
+### Template 4: Coding Agent (Claude Code / Codex)
+
+### COMPLETE SPECIFICATION: CODING AGENT TASK
+
+**What is a Coding Agent?**
+
+A coding agent (such as Claude Code or Codex) operates with greater autonomy than a coding assistant.  
+
+It plans, executes, and iterates across multi-step tasks- writing, refactoring, testing, and modifying files without requiring a prompt for each action. This autonomy makes specifications more important, not less.  
+
+Without clear boundaries, a coding agent will make architectural assumptions that are hard to undo.
+
+---
+
+#### **Critical formatting note for Coding Agents:**
+
+- Do not mix DO and DO NOT constraints in the same block.
+- Coding agents process constraint types differently. Mixed blocks increase the risk of constraint violations.
+- Always visually separate DO constraints from DO NOT constraints, as shown in this template.
+
+---
+
+```text
+
+MUST: Hard Boundaries (Non-negotiable)
+
+MUST — DO:
+
+<constraint priority="critical" scope="environment">
+
+MUST: Use [target language and version, e.g., Python 3.11 / Node.js 20 / TypeScript 5.x]
+MUST: Use existing frameworks already in the codebase [list them, e.g., FastAPI, React 18, Prisma]
+MUST: Follow [legal or compliance requirements, e.g., GDPR data handling, SOC 2 logging standards]
+MUST: Stay within security boundaries [e.g., no external API calls not already in use, no new auth flows]
+MUST: Meet performance hard limits [e.g., endpoints must respond <200ms p95 under current load]
+MUST: Meet compatibility requirements [e.g., must run on Python 3.9+, must support IE11]
+
+RATIONALE:
+These constraints reflect the production environment this code will enter.
+Violations here create integration failures, compliance risk, or broken deployments.
+
+VERIFICATION:
+
+- Run existing test suite: [command, e.g., pytest / npm test] — must pass with 0 failures
+- Lint check: [command, e.g., ruff check . / npm run lint] — 0 errors
+- Confirm target runtime: [command, e.g., python --version / node --version]
+- Confirm no new dependencies added (diff package.json / requirements.txt)
+
+</constraint>
+
+---
+
+MUST — DO NOT:
+
+<constraint priority="critical" scope="boundaries">
+
+MUST NOT: Modify [specific files or folders that are out of scope, e.g., /src/auth/, database/migrations/]
+MUST NOT: Add new dependencies without explicit approval
+MUST NOT: Change existing API interfaces, function signatures, or return types
+MUST NOT: Refactor code outside the defined scope, even if improvements are apparent
+MUST NOT: Remove or alter existing tests
+
+RATIONALE:
+Coding agents will refactor adjacent code that was not in scope unless explicitly told not to.
+These boundaries prevent unintended side effects in production systems.
+
+VERIFICATION:
+
+- Git diff confirms only in-scope files were modified
+- No new entries in package.json / requirements.txt / go.mod
+- Existing API contract tests still pass (no signature changes)
+- Test count is equal to or greater than before (no tests removed)
+
+</constraint>
+
+
+SHOULD: Flexible Preferences
+
+<guideline priority="high" scope="code-style">
+
+SHOULD: Match existing patterns in the codebase (naming conventions, file structure, error handling style)
+SHOULD: Use [preferred error handling approach, e.g., raise exceptions / return error objects / silent logging]
+SHOULD: Write [preferred explanation level, e.g., brief inline comments for non-obvious logic only]
+SHOULD: Prefer [simplicity or robustness] when they conflict — [specify which and when]
+SHOULD: Optimize for [speed / readability / memory] — [specify priority]
+SHOULD: Follow [naming conventions, e.g., snake_case for Python, camelCase for JS]
+
+ACCEPTABLE EXCEPTIONS:
+
+- Pattern matching not required if existing patterns are inconsistent (use best judgment, document choice)
+- Verbosity acceptable in [specific areas, e.g., error handling for external API calls]
+- Performance optimization acceptable to defer if marked with a TODO and documented
+
+RATIONALE:
+SHOULD constraints give the coding agent guidelines with freedom.
+The ACCEPTABLE EXCEPTIONS tell the agent it is not failing the spec if it hits these cases-
+this removes a category of false conflict that would otherwise trigger unnecessary backtracking.
+
+WHEN VIOLATING: Add inline comment explaining the deviation.
+
+</guideline>
+
+<guideline priority="medium" scope="implementation">
+
+SHOULD: [Preferred library or approach for this task, if one exists — but alternatives are acceptable]
+SHOULD: [Testing style — unit tests only / integration tests / both]
+SHOULD: [Documentation style — docstrings / JSDoc / none required for internal functions]
+SHOULD: [Nice-to-have UX improvements, e.g., helpful error messages, progress logging]
+
+RATIONALE:
+These are preferred but not required. Document if a different approach was chosen and why.
+
+</guideline>
+
+
+CONTEXT: Planning Information
+
+<context scope="codebase">
+
+What this code is part of:
+[e.g., A REST API service / a CLI tool / a background job processor / a React frontend component]
+
+Who will read and maintain it:
+[e.g., Senior engineers only / a mixed team including junior developers / external contributors]
+
+Git state:
+[e.g., Feature branch: feature/add-retry-logic — no work in progress. Safe to modify in scope.]
+
+What has already been tried:
+[e.g., Attempted approach X — failed because Y. Do not retry this approach.]
+[This is the most underprovided layer. Without it, the coding agent may suggest the same
+approach that already failed, or make architectural assumptions that conflict with prior decisions.]
+
+</context>
+
+<context scope="technical">
+
+Technology Stack:
+- Language / runtime: [e.g., Python 3.11 / Node.js 20 / Go 1.22]
+- Framework: [e.g., FastAPI / Express / Gin]
+- Database: [e.g., PostgreSQL 15 via Prisma ORM]
+- Infrastructure: [e.g., AWS Lambda / Docker on ECS / bare metal]
+- CI/CD: [e.g., GitHub Actions — runs on pull request]
+
+Team expertise:
+[e.g., Strong in Python, limited Go experience. Avoid Go-specific patterns that require deep familiarity.]
+
+Existing systems this code touches:
+[List any services, APIs, or databases this code will interact with]
+
+Scale requirements:
+[e.g., Handles ~10K requests/day currently. Expected to reach 100K within 6 months.]
+
+</context>
+
+<context scope="business">
+
+Company stage: [Startup / Growth / Enterprise] — affects acceptable technical debt
+Timeline: [e.g., Needs to ship by Friday / No hard deadline, quality over speed]
+Success metrics: [e.g., Reduces error rate on checkout from 3% to <0.5%]
+
+</context>
+
+
+INTENT: The Why- this is often issing from Specs
+
+<intent scope="task">
+
+Primary Goal (one sentence — the outcome, not just the task):
+[e.g., "So users can recover from a failed upload without losing their work"
+- not just "add a retry function"]
+
+Solution Type: [Quick fix | Permanent solution | Prototype]
+
+**Note from Claude Code: These produce completely different code.**
+
+- A quick fix I will write defensively and simply.
+- A permanent solution I will architect properly.
+- A prototype I will not over-engineer.
+
+**Without this signal I will guess — and I usually guess wrong toward over-engineering.**
+
+Why This Matters:
+- Business impact: [e.g., Failed uploads cause 12% cart abandonment]
+- User impact: [e.g., Users currently lose all progress and restart from scratch]
+- Technical impact: [e.g., Reduces load on upload service by eliminating full re-uploads]
+
+What "done" looks like:
+[Describe the observable outcome from the user's or system's perspective —
+not the implementation, but what changes in behavior]
+
+Rationale for Key Decisions:
+- Why this approach over alternatives: [e.g., Chose exponential backoff over fixed retry interval because...]
+- Trade-offs accepted: [e.g., Slightly more complex error handling in exchange for better user recovery]
+
+Alignment Check:
+
+We are on track if:
+- [Observable behavior that confirms progress, e.g., Retry test passes with simulated 503 responses]
+- [e.g., No change to upload success rate for non-failing cases (no regression)]
+
+We are drifting if:
+- [e.g., Adding retry logic to endpoints not related to uploads (scope creep)]
+- [e.g., Refactoring the upload service architecture (out of scope)]
+
+</intent>
+
+
+VERIFICATION: Self-Checking
+
+<verification scope="pre-delivery">
+
+FUNCTIONALITY (Critical — must pass):
+
+- Core task works as specified: [describe specific test, e.g., Upload fails on attempt 1, succeeds on attempt 2]
+- No regression in existing functionality: [run full test suite — 0 new failures]
+- Edge cases handled: [list specific edge cases, e.g., What happens if all retries fail? If network is down?]
+
+CODE QUALITY (Critical — must pass):
+
+- All existing tests pass: [test command]
+- New tests written for new functionality: [minimum coverage expectation]
+- Linter passes: [lint command] — 0 errors
+- No hardcoded values, credentials, or debug statements in production code
+
+SCOPE COMPLIANCE (Critical — must pass):
+
+- Git diff shows only in-scope files modified
+- No new dependencies added without approval
+- No API signatures changed
+- No tests removed or disabled
+
+SECURITY (High priority — must pass if applicable):
+
+- No new user inputs accepted without validation
+- No sensitive data exposed in logs or error messages
+- No new authentication or authorization logic added without review
+
+PASS CRITERIA:
+
+ALL critical checks must pass before delivery.
+High priority checks should pass — document exceptions if they do not.
+
+If any critical check fails: Fix, re-verify, then deliver.
+Do NOT deliver if critical checks fail.
+
+If scope compliance fails: Revert out-of-scope changes before delivery.
+
+</verification>
+```
+
+END OF TEMPLATE
+
 ## Quick Customization Guide
 
 ### To adapt these templates
@@ -1033,7 +1286,8 @@ After choosing and customizing a template:
 
 END OF APPENDIX A
 
-Document Version: 1.0.0
-Last Updated: 2026-02-27
-Three complete templates ready for immediate use Copy, customize, and deploy
+Document Version: 1.1.0
+Last Updated: 2026-03-28
+Four complete templates ready for immediate use Copy, customize, and deploy
+
 
