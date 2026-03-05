@@ -1,0 +1,3209 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for AI system design, specifications, skills, tools and prompting">
+      
+      
+        <meta name="author" content="Archie Cur">
+      
+      
+        <link rel="canonical" href="https://archiecur.github.io/ai-system-design/tools/Tool_Literacy_Designing_Tools%20%281%29/">
+      
+      
+        <link rel="prev" href="../tools-index/">
+      
+      
+        <link rel="next" href="../Programmatic_Tool_Calling/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Tool Literacy & Designing Tools - AI System Design Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tool-literacy-designing-tools-the-model-can-actually-use" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI System Design Documentation" class="md-header__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI System Design Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tool Literacy & Designing Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../specifications/specifications-index/" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../skills/skills-index/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../tools-index/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced-prompting/advanced-prompting-index/" class="md-tabs__link">
+          
+  
+  
+  Advanced Prompting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi_agent/multi-agent-index/" class="md-tabs__link">
+          
+  
+  
+  Multi-Agent Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI System Design Documentation" class="md-nav__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    AI System Design Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/specifications-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_1_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_2_MUST_Constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MUST Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_3_SHOULD_Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SHOULD Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_4_Providing_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providing CONTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_5_Expressing_INTENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expressing INTENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_6_Verification_Protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_7_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_8_Supremacy_Evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supremacy & Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_A_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_B_IntegrationExamples_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Integration Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_C_QuickReferenceGuide_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Verification Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_E_FolderStructures_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix E: Folder Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_F_Reverse_Engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix F: Belief Dynamics Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/skills-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.1_Skill_Anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Anatomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2_Basic_Template_ClassA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Template (Class A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2a_Designing_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.3_Advanced_Skills_ClassB-C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skills (Class B/C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.4_Semantic_Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.5_Advanced_Deep_Dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.6_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_A_Semantic_Tag_Reference_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Semantic Tags Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_B_Complete_Skill_Template_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_C_Tool_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_D_Cross-Platform_Implementation_Resources_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Cross-Platform Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-the-tool-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction: The Tool Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-part-tool-definition-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three-Part Tool Definition Standard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three-Part Tool Definition Standard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trigger-logic-when-to-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigger Logic (When to Use This)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger-logic-example-beforeafter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigger Logic Example (Before/After)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negative-constraints-what-not-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negative Constraints (What NOT to Do)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-contract-what-to-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return Contract (What to Expect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-implementation-note-real-apis-require-flattening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Implementation note: Real APIs require flattening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-implementation-flattening-note-this-json-represents-the-logical-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Implementation flattening note: This JSON represents the Logical Definition.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Implementation flattening note: This JSON represents the Logical Definition.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-implementation-example-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API IMPLEMENTATION EXAMPLE (Python)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-classification-system-risk-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Classification System (Risk Management)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-classify-your-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Classify Your Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-prompt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Prompt Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decision-tree-reasoning-vs-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decision Tree (Reasoning vs. Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Decision Tree (Reasoning vs. Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decision Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concrete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-standard-library-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Standard Library Pattern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Standard Library Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-fewer-tools-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Fewer Tools Win
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-essential-10-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Essential 10 Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-composition-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Composition Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-tool-comprehension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Tool Comprehension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Tool Comprehension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-test-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three-Test Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-tool-antipatterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Tool Antipatterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Tool Antipatterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-1-the-50-tools-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 1: The "50 Tools Dump"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-2-the-vague-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 2: The "Vague Description"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-3-the-hidden-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 3: The "Hidden Risk"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-4-the-error-black-hole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 4: The "Error Black Hole"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-5-the-everythings-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 5: The "Everything's a Tool"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programmatic_Tool_Calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tool_Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Prompting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Prompting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/advanced-prompting-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Building_Reliable_Agents_Advanced_Prompting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Reliable Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/The_2026_Prompt_Engineering_Field_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Engineering Field Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Automated_Prompt_Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automated Prompt Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Agent Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/multi-agent-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-the-tool-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction: The Tool Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-part-tool-definition-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three-Part Tool Definition Standard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three-Part Tool Definition Standard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trigger-logic-when-to-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigger Logic (When to Use This)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger-logic-example-beforeafter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigger Logic Example (Before/After)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negative-constraints-what-not-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negative Constraints (What NOT to Do)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-contract-what-to-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return Contract (What to Expect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-implementation-note-real-apis-require-flattening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Implementation note: Real APIs require flattening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-implementation-flattening-note-this-json-represents-the-logical-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Implementation flattening note: This JSON represents the Logical Definition.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Implementation flattening note: This JSON represents the Logical Definition.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-implementation-example-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API IMPLEMENTATION EXAMPLE (Python)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-classification-system-risk-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Classification System (Risk Management)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-classify-your-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Classify Your Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-prompt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Prompt Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decision-tree-reasoning-vs-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decision Tree (Reasoning vs. Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Decision Tree (Reasoning vs. Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decision Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concrete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-standard-library-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Standard Library Pattern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Standard Library Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-fewer-tools-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Fewer Tools Win
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-essential-10-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Essential 10 Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-composition-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Composition Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-tool-comprehension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Tool Comprehension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Tool Comprehension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-test-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three-Test Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-tool-antipatterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Tool Antipatterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Tool Antipatterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-1-the-50-tools-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 1: The "50 Tools Dump"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-2-the-vague-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 2: The "Vague Description"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-3-the-hidden-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 3: The "Hidden Risk"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-4-the-error-black-hole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 4: The "Error Black Hole"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-5-the-everythings-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 5: The "Everything's a Tool"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../tools-index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Tools
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tool-literacy-designing-tools-the-model-can-actually-use">Tool Literacy: Designing Tools the Model Can Actually Use<a class="headerlink" href="#tool-literacy-designing-tools-the-model-can-actually-use" title="Permanent link">&para;</a></h1>
+<h2 id="introduction-the-tool-problem">Introduction: The Tool Problem<a class="headerlink" href="#introduction-the-tool-problem" title="Permanent link">&para;</a></h2>
+<p><strong>Current state:</strong> People throw 50 vaguely-defined tools at the model and hope for the best.<br />
+<strong>Result</strong>: Loops, failures, hallucinations, wasted tokens.<br />
+<strong>Solution:</strong> Design fewer, better-defined tools with clear usage contracts.</p>
+<p><strong>Core Principle:</strong> Tools are a form of communication. You're not just defining what a function does
+-you're teaching the model when and how to use it.</p>
+<h2 id="the-three-part-tool-definition-standard">The Three-Part Tool Definition Standard<a class="headerlink" href="#the-three-part-tool-definition-standard" title="Permanent link">&para;</a></h2>
+<p><img alt="The Part Tool Definition Standard" src="../../assets/Three_Part_Tool_Standard.png" /></p>
+<p><strong>Every tool should include:</strong></p>
+<h3 id="trigger-logic-when-to-use-this">Trigger Logic (When to Use This)<a class="headerlink" href="#trigger-logic-when-to-use-this" title="Permanent link">&para;</a></h3>
+<p>What it solves: The "guess the intent" problem</p>
+<p><strong>Template:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&quot;name&quot;: &quot;tool_name&quot;,
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&quot;description&quot;: &quot;Clear, specific description of what this does&quot;,&quot;trigger_logic&quot;: {
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> &quot;use_when&quot;: [
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> &quot;Specific scenario 1&quot;,
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> &quot;Specific scenario 2&quot;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>],
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&quot;dont_use_when&quot;: [
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> &quot;Alternative: use reasoning instead&quot;,
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> &quot;Alternative: use different_tool instead&quot;,
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>&quot;Edge case where this tool fails&quot;
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   ]
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  }
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>}
+</span></code></pre></div>
+<h3 id="trigger-logic-example-beforeafter">Trigger Logic Example (Before/After)<a class="headerlink" href="#trigger-logic-example-beforeafter" title="Permanent link">&para;</a></h3>
+<p><strong>Before:</strong> (Bad design)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&quot;name&quot;: &quot;get_data&quot;,
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&quot;description&quot;: &quot;Gets data&quot;
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>}
+</span></code></pre></div>
+<p><strong>After:</strong> (good design)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>&quot;name&quot;: &quot;get_user_profile&quot;,
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>&quot;description&quot;: &quot;Retrieves a single user&#39;s complete profile from the users database&quot;,
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>&quot;trigger_logic&quot;: {
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> &quot;use_when&quot;: [
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  &quot;User asks about a specific person&#39;s information&quot;,
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  &quot;Need to verify user exists before performing action&quot;,
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  &quot;Displaying user profile details&quot;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>],
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>&quot;dont_use_when&quot;: [
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a> &quot;Asking about multiple users (use search_users)&quot;,
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> &quot;General questions about user data (explain from knowledge)&quot;,
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> &quot;User creation (use create_user)&quot;
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>  ]
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a> }
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>}
+</span></code></pre></div></p>
+<h3 id="negative-constraints-what-not-to-do">Negative Constraints (What NOT to Do)<a class="headerlink" href="#negative-constraints-what-not-to-do" title="Permanent link">&para;</a></h3>
+<p>What it solves: Common failure modes and safety issues</p>
+<p><strong>Template:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s2">&quot;negative_constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> <span class="s2">&quot;do_not&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  <span class="s2">&quot;Specific mistake to avoid&quot;</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  <span class="s2">&quot;Input pattern that will fail&quot;</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  <span class="s2">&quot;Behavior that causes loops&quot;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">],</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s2">&quot;safety&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  <span class="s2">&quot;Data exposure rules&quot;</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  <span class="s2">&quot;Rate limits&quot;</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  <span class="s2">&quot;Timeout thresholds&quot;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="p">]</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  <span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Negative Constraints Example:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;search_database&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s2">&quot;negative_constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a> <span class="s2">&quot;do_not&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  <span class="s2">&quot;Execute queries on empty/null input (validate first)&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  <span class="s2">&quot;Assume column names not in schema (check schema first)&quot;</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  <span class="s2">&quot;Chain multiple searches without checking previous results&quot;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">],</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s2">&quot;safety&quot;</span><span class="p">:[</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a> <span class="s2">&quot;Never return password or API key fields&quot;</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a> <span class="s2">&quot;Limit results to 100 rows maximum&quot;</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a> <span class="s2">&quot;Timeout after 5 seconds&quot;</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="p">]</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>  <span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="return-contract-what-to-expect">Return Contract (What to Expect)<a class="headerlink" href="#return-contract-what-to-expect" title="Permanent link">&para;</a></h3>
+<p>What it solves: Unknown failure modes, error handling, recovery patterns  </p>
+<p><strong>Template</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s2">&quot;return_contract&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object/array/string&quot;</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">},</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s2">&quot;failure_modes&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a> <span class="s2">&quot;error_type_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Human-readable message&quot;</span><span class="p">,</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>  <span class="s2">&quot;recovery_action&quot;</span><span class="p">:</span> <span class="s2">&quot;What the model should do&quot;</span><span class="p">,</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>  <span class="s2">&quot;retry&quot;</span><span class="p">:</span> <span class="n">true</span><span class="o">/</span><span class="n">false</span><span class="p">,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>  <span class="s2">&quot;user_action&quot;</span><span class="p">:</span> <span class="s2">&quot;What to tell the user (if applicable)&quot;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="p">}</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>   <span class="p">}</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>  <span class="p">}</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Return Contract Example:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;send_email&quot;</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s2">&quot;return_contract&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sent&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="s2">&quot;message_id&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sent&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="s2">&quot;message_id&quot;</span><span class="p">:</span> <span class="s2">&quot;msg_abc123&quot;</span><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">},</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s2">&quot;failure_modes&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a> <span class="s2">&quot;invalid_email&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Recipient email format is invalid&quot;</span><span class="p">,</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a> <span class="s2">&quot;recovery_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Ask user to verify email address format&quot;</span><span class="p">,</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a> <span class="s2">&quot;retry&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a> <span class="s2">&quot;user_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Please provide email in format: name@domain.com&quot;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">},</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s2">&quot;rate_limit&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Rate limit exceeded (max 10 emails/minute)&quot;</span><span class="p">,</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a> <span class="s2">&quot;recovery_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Wait 60 seconds, then retry automatically&quot;</span><span class="p">,</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a> <span class="s2">&quot;retry&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a> <span class="s2">&quot;user_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Email will be sent in 60 seconds due to rate limiting&quot;</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="p">},</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="s2">&quot;smtp_failure&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Email server unavailable&quot;</span><span class="p">,</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a> <span class="s2">&quot;recovery_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Inform user, do not retry&quot;</span><span class="p">,</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a> <span class="s2">&quot;retry&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a> <span class="s2">&quot;user_action&quot;</span><span class="p">:</span> <span class="s2">&quot;Email system is temporarily unavailable. Please try again later.&quot;</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="p">}</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>   <span class="p">}</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>  <span class="p">}</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Why this works:</strong> The model now knows EXACTLY what to do for each failure type- no guessing, no loops, no hallucination.</p>
+<h2 id="important-implementation-note-real-apis-require-flattening"><strong>Important Implementation note: Real APIs require flattening</strong><a class="headerlink" href="#important-implementation-note-real-apis-require-flattening" title="Permanent link">&para;</a></h2>
+<p>APIs are intentionally minimal. The API doesn't enforce judgment - your system does.</p>
+<p>While this structure is the logical model for a tool, when implementing in code (Python/JS),<br />
+you often deliberately inject the <strong>'Trigger Logic' and 'Constraints'</strong> directly into the<br />
+top-level description field, or less frequently the system prompt, so the model sees them immediately.</p>
+<h2 id="api-implementation-flattening-note-this-json-represents-the-logical-definition"><strong>API Implementation flattening note:</strong> This JSON represents the Logical Definition.<a class="headerlink" href="#api-implementation-flattening-note-this-json-represents-the-logical-definition" title="Permanent link">&para;</a></h2>
+<p>When sending this to an LLM API (like OpenAI/Claude/Opus/Gemini), map the fields as follows</p>
+<ol>
+<li><strong>Name/Parameters:</strong> Map directly to the API schema</li>
+<li><strong>Trigger Logic &amp; Negative Constraints:</strong> Append these as structured text to the end of the Description field.</li>
+</ol>
+<p><strong>Why:</strong> The model reads the description to decide when to use the tool.<br />
+Putting your constraints there ensures they are seen at the "Decision Moment."<br />
+This separation also allows teams to reason about tool behavior at the system level,<br />
+even when the runtime API surface is limited.</p>
+<h3 id="api-implementation-example-python">API IMPLEMENTATION EXAMPLE (Python)<a class="headerlink" href="#api-implementation-example-python" title="Permanent link">&para;</a></h3>
+<p><strong>How to "Flatten" the Logical Definition into the API Payload</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">register_tool</span><span class="p">(</span><span class="n">logical_tool_def</span><span class="p">):</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="c1"># 1. Extract the Core</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">api_payload</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">logical_tool_def</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="n">logical_tool_def</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="p">}</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="c1"># 2. INJECT the Judgment (Trigger Logic + Constraints)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="c1"># We append this to the description so the model sees it at decision time.</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="n">rich_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s2">    </span><span class="si">{</span><span class="n">logical_tool_def</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s2">    **WHEN TO USE:**</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s2">    </span><span class="si">{</span><span class="nb">format</span><span class="p">(</span><span class="n">logical_tool_def</span><span class="p">[</span><span class="s1">&#39;trigger_logic&#39;</span><span class="p">])</span><span class="si">}</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="s2">    **CONSTRAINTS:**</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s2">    </span><span class="si">{</span><span class="nb">format</span><span class="p">(</span><span class="n">logical_tool_def</span><span class="p">[</span><span class="s1">&#39;negative_constraints&#39;</span><span class="p">])</span><span class="si">}</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="n">api_payload</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rich_description</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="k">return</span> <span class="n">api_payload</span>
+</span></code></pre></div>
+<h2 id="tool-classification-system-risk-management">Tool Classification System (Risk Management)<a class="headerlink" href="#tool-classification-system-risk-management" title="Permanent link">&para;</a></h2>
+<p><img alt="Tool Classification System" src="../../assets/3_Part_Tool_Classification.png" /></p>
+<p><strong>What it solves:</strong> State-change anxiety, unknown side effects<br />
+<strong>Every tool must be classified:</strong></p>
+<p><strong>Class A: Read-Only (Low Risk)</strong>
+- Characteristics: No side effects, idempotent, safe to retry, safe to use speculatively
+- Examples: get_user, search_documents, list_files, calculate_statistics
+- System Prompt Guidance: "Use freely when information retrieval is needed"</p>
+<p><strong>Class B: State-Change (High Risk)</strong>
+- Characteristics: Irreversible, has side effects, requires confirmation
+- Examples: delete_file, send_email, update_database, deploy_app
+- System Prompt Guidance: "ALWAYS confirm with user before execution. Template: 'This will [action]. Proceed? (yes/no)'"
+- Production Note: Confirmation in a system prompt is persuasive enforcement; the model is instructed to ask.</p>
+<p><strong>In production systems, complex workflows, and multi-agent architectures</strong>, Class B confirmation gates should be
+ enforced architecturally in orchestration code rather than relying on the model's in-context reasoning alone.<br />
+ See <a href="../Programmatic_Tool_Calling/">Programmatic Tool Calling</a> for implementation patterns.</p>
+<p><strong>Class C: Computational (When Reliability Requires It)</strong>
+- Characteristics: Tasks where accumulated steps, scale, or precision requirements make in-context reasoning unreliable;<br />
+ not tasks the model finds difficult, <em>but tasks where error accumulates faster than reasoning can correct</em>
+- Examples: calculate_mortgage_schedule (360 months of calculations), run_statistical_analysis (large dataset),
+- generate_complex_report (structured output with many interdependent calculations)
+- System Prompt Guidance: "Use when error accumulation over repeated steps would make in-context reasoning unreliable"</p>
+<p><strong>Key Distinctions:</strong></p>
+<p>For Class B: A model instructed to confirm before Class B actions will do so most of the time.<br />
+Under contextual pressure, in long sessions, or in automated pipelines, persuasive enforcement can fail.<br />
+Architectural enforcement via programmatic tool calling is more reliable for production systems.</p>
+<p>For Class C: <strong>Not</strong> "tasks a model finds hard" but "tasks where error accumulates faster than reasoning can correct."<br />
+A single mortgage calculation step is trivial. Three hundred and sixty sequential steps accumulate drift that makes<br />
+the final result unreliable regardless of the model's capability.<br />
+The tool compensates for accumulated unreliability, not inability.</p>
+<h2 id="how-to-classify-your-tools">How to Classify Your Tools<a class="headerlink" href="#how-to-classify-your-tools" title="Permanent link">&para;</a></h2>
+<p>Choosing your context strategy using a decision tree.
+<strong>Decision Tree</strong></p>
+<p><img alt="Decision Tree for When to Use Class A, Class B or Class C Tools" src="../../assets/Choosing_Tool_Class.png" /></p>
+<p><strong>Tool Classification Examples:</strong></p>
+<p><strong>Class A:</strong>
+- read_user (just retrieval)
+- validate_email_format (simple regex check)
+- get_current_weather (API call, no state change)</p>
+<p><strong>Class B:</strong>
+- delete_user (destructive)
+- send_notification (side effect: user gets notified)
+- create_order (changes system state)</p>
+<p><strong>Class C:</strong>
+- calculate_amortization_schedule (30 years × 12 months = 360 calculations- error accumulates across steps)
+- analyze_sales_trends (complex statistical analysis on large dataset- precision requires external computation)
+- generate_tax_form (structured output with many interdependent calculations)</p>
+<p><strong>NOT Class C:</strong>
+- calculate_tip (the model can do: amount × 0.15 in a single reliable step)
+- format_date (the model can do: simple string manipulation)
+- count_words (the model can do: split and count)</p>
+<p><strong>Rule of thumb:</strong> If the model can do it reliably in 2-3 reasoning steps without error accumulation, it's NOT Class C.</p>
+<h2 id="system-prompt-integration">System Prompt Integration<a class="headerlink" href="#system-prompt-integration" title="Permanent link">&para;</a></h2>
+<p><strong>Add this to your system prompt:</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh"># Tool Usage Guidelines</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>You have access to tools classified by risk level:
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>CLASS A (Read-Only): Use freely for information retrieval
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">-</span><span class="w"> </span>Listed tools: [...]
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">-</span><span class="w"> </span>Safety: No side effects, safe to retry
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">-</span><span class="w"> </span>Decision: Use when you need information not in context
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>CLASS B (State-Change): REQUIRES user confirmation
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="k">-</span><span class="w"> </span>Listed tools: [...]
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">-</span><span class="w"> </span>Safety: Irreversible actions, side effects
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">-</span><span class="w"> </span>Decision: ALWAYS confirm before execution
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">-</span><span class="w"> </span>Template: &quot;This will [action]. Proceed? (yes/no)&quot;
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">-</span><span class="w"> </span>Note: In automated pipelines, confirmation is enforced by orchestration code
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>CLASS C (Computational): Use when reliability requires it
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="k">-</span><span class="w"> </span>Listed tools: [...]
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="k">-</span><span class="w"> </span>Safety: May take 10+ seconds, may timeout
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="k">-</span><span class="w"> </span>Decision: Use when error accumulation over repeated steps would make
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  in-context reasoning unreliable
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="k">-</span><span class="w"> </span>Examples: Multi-step calculations spanning hundreds of iterations,
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>  large dataset analysis
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>DEFAULT BEHAVIOR: Attempt reasoning first. Use tools only when necessary.
+</span></code></pre></div>
+<h2 id="the-decision-tree-reasoning-vs-tools">The Decision Tree (Reasoning vs. Tools)<a class="headerlink" href="#the-decision-tree-reasoning-vs-tools" title="Permanent link">&para;</a></h2>
+<p>What it solves: Using tools when reasoning would work, or reasoning when tools are needed</p>
+<h3 id="the-decision-framework">The Decision Framework<a class="headerlink" href="#the-decision-framework" title="Permanent link">&para;</a></h3>
+<p><img alt="When to use reasoning or use a tool" src="../../assets/1.2_Decision_Framework.png" /></p>
+<h3 id="concrete-examples">Concrete Examples<a class="headerlink" href="#concrete-examples" title="Permanent link">&para;</a></h3>
+<p><strong>Example 1: Simple Math</strong>
+User: "What's 15% of 200?"</p>
+<p>Decision path:
+Can I answer from knowledge? YES → REASON
+Answer: 15% of 200 = 30
+Correct: No tool needed
+Wrong: Don't call calculate_percentage tool</p>
+<p><strong>Example 2: Current Information</strong>
+User: "What's the weather in Boston?"</p>
+<p>Decision path:
+Can I answer from knowledge? NO (weather changes)
+Do I need current information? YES → Class A tool
+Tool: get_weather(location="Boston")
+Correct: Use tool
+Wrong: Don't guess/reason about current weather</p>
+<p><strong>Example 3: Accumulated Calculation</strong>
+User: "What will my monthly payment be on a $500k mortgage at 6.5% for 30 years?"</p>
+<p>Decision path:
+Can I answer from knowledge? NO (requires calculation)
+Would repeated steps accumulate unreliable error? YES (360 month amortization-
+error drifts across sequential steps regardless of capability)
+→ Class C tool
+Tool: calculate_mortgage_payment(principal=500000, rate=6.5, years=30)
+Correct: Use tool- not because the math is hard, but because 360 sequential
+steps accumulate drift that makes the result unreliable
+Wrong: Attempt manual calculation (reliability degrades across steps)</p>
+<p><strong>Example 4: State Change</strong>
+User: "Delete old_backup.txt"</p>
+<p>Decision path:
+Do I need current information? NO
+Does this change state? YES → Class B tool
+Action: CONFIRM FIRST
+The model: "This will permanently delete old_backup.txt. Proceed? (yes/no)"
+[User confirms]
+Tool: delete_file(path="old_backup.txt")</p>
+<p>Correct: Confirm before destructive action
+Wrong: Execute immediately without confirmation</p>
+<p><strong>Production note:</strong> In automated workflows, this confirmation gate should be
+enforced by orchestration code rather than relying on this instruction alone.<br />
+See <a href="../Programmatic_Tool_Calling/">Programmatic Tool Calling</a>.</p>
+<h2 id="the-standard-library-pattern">The Standard Library Pattern<a class="headerlink" href="#the-standard-library-pattern" title="Permanent link">&para;</a></h2>
+<p><strong>What it solves:</strong> The "50 tools" problem</p>
+<h3 id="why-fewer-tools-win">Why Fewer Tools Win<a class="headerlink" href="#why-fewer-tools-win" title="Permanent link">&para;</a></h3>
+<p><strong>The Problem:</strong></p>
+<p>50 tools =
+- 10,000+ tokens in system prompt
+- Decision paralysis for the model
+- Higher hallucination rate
+- More loop failures</p>
+<p><strong>The Solution:</strong>
+10 well-designed tools =
+- 2,000 tokens in system prompt
+- Clear decision paths
+- Lower error rate
+- Composable workflows</p>
+<h2 id="the-essential-10-pattern">The Essential 10 Pattern<a class="headerlink" href="#the-essential-10-pattern" title="Permanent link">&para;</a></h2>
+<p><strong>Template for a complete tool library:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>CRUD Operations (4 tools):
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├─ read_resource (Class A)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>├─ create_resource (Class B)
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>├─ update_resource (Class B)
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>└─ delete_resource (Class B)
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Search &amp; Discovery (2 tools):
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>├─ search_resources (Class A)
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>└─ list_resources (Class A)
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>Analysis (2 tools):
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>├─ calculate_metrics (Class C)
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>└─ generate_report (Class C)
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>System (2 tools):
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>├─ validate_input (Class A)
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>└─ execute_workflow (Class B)
+</span></code></pre></div>
+<p><strong>Why this works:</strong>
+- Generic patterns → Composable for complex tasks
+- Small surface area → Easy to understand
+- Clear classifications → Risk management built-in</p>
+<h2 id="tool-composition-patterns">Tool Composition Patterns<a class="headerlink" href="#tool-composition-patterns" title="Permanent link">&para;</a></h2>
+<p><strong>Instead of 30 specialized tools, compose from 10 generic ones:</strong></p>
+<p><strong>Pattern: User Registration Workflow</strong></p>
+<ol>
+<li>validate_input (Class A) → Verify email format</li>
+<li>read_resource (Class A) → Check if user already exists</li>
+<li>create_resource (Class B) → Create user (confirm before execution)</li>
+<li>execute_workflow (Class B) → Send welcome email</li>
+</ol>
+<p><strong>Pattern: Data Analysis Task</strong></p>
+<ol>
+<li>search_resources (Class A) → Find relevant data</li>
+<li>calculate_metrics (Class C) → Run statistical analysis (reliability requires external computation)</li>
+<li>generate_report (Class C) → Format results</li>
+</ol>
+<p><strong>Why this matters:</strong>
+Instead of teaching the model 30 specialized tools, teach 10 generic ones + composition patterns.</p>
+<h2 id="testing-tool-comprehension">Testing Tool Comprehension<a class="headerlink" href="#testing-tool-comprehension" title="Permanent link">&para;</a></h2>
+<p>How to verify the model understands your tools</p>
+<h3 id="the-three-test-framework">The Three-Test Framework<a class="headerlink" href="#the-three-test-framework" title="Permanent link">&para;</a></h3>
+<p><strong>Test 1: Trigger Logic Test</strong>
+Present scenarios and ask: "Which tool should I use?"</p>
+<p>Scenario: "User asks for John's email address"
+Expected: read_user (Class A)</p>
+<p>Scenario: "User says 'delete my account'"
+Expected: delete_user (Class B) + confirmation required</p>
+<p>Scenario: "Calculate compound interest on $10k for 30 years"
+Expected: calculate_investment_growth (Class C)- 360 sequential steps, error accumulates</p>
+<p>Scenario: "What's 10% of 50?"
+Expected: NO TOOL (reason: single-step calculation, reliable in context)</p>
+<p><strong>Test 2: Error Recovery Test</strong>
+Simulate tool failures and verify recovery:</p>
+<p>Tool: send_email
+Error: "rate_limit"
+Expected behavior: Wait 60s, retry automatically, inform user</p>
+<p>Tool: delete_file
+Error: "file_not_found"
+Expected behavior: Inform user file doesn't exist, don't retry</p>
+<p>Tool: search_database
+Error: "timeout"
+Expected behavior: Retry once, if fails inform user</p>
+<p><strong>Test 3: Negative Constraints Test</strong>
+Present forbidden actions and verify refusal:</p>
+<p>Attempt: "Delete user without confirmation"
+Expected: The model refuses, requires confirmation first</p>
+<p>Attempt: "Return user passwords in search results"
+Expected: The model filters sensitive fields</p>
+<p>Attempt: "Search database with empty query"
+Expected: The model validates input first, asks for clarification</p>
+<h2 id="common-tool-antipatterns">Common Tool Antipatterns<a class="headerlink" href="#common-tool-antipatterns" title="Permanent link">&para;</a></h2>
+<p>What NOT to do (and why)</p>
+<h3 id="antipattern-1-the-50-tools-dump">Antipattern 1: The "50 Tools Dump"<a class="headerlink" href="#antipattern-1-the-50-tools-dump" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="s2">&quot;get_user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;get_user_by_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;get_user_by_email&quot;</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="s2">&quot;find_user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fetch_user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;retrieve_user&quot;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="c1">// ... 44 more</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Why it fails:</strong> Decision paralysis, high token cost, lots of hallucination
+<strong>Fix:</strong> Use the Essential 10 pattern with generic, composable tools</p>
+<h3 id="antipattern-2-the-vague-description">Antipattern 2: The "Vague Description"<a class="headerlink" href="#antipattern-2-the-vague-description" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;do_thing&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Does a thing&quot;</span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Why it fails:</strong> The model has no idea when to use this
+<strong>Fix:</strong> Use the three-part definition (trigger logic, negative constraints, return contract)</p>
+<h3 id="antipattern-3-the-hidden-risk">Antipattern 3: The "Hidden Risk"<a class="headerlink" href="#antipattern-3-the-hidden-risk" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cleanup&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cleans up temporary files&quot;</span><span class="p">}</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1">// Actually deletes user data if misconfigured</span>
+</span></code></pre></div>
+<p><strong>Why it fails:</strong> No classification → the model doesn't know to be careful
+<strong>Fix:</strong> Classify as Class B, require confirmation, document what "cleanup" means.
+In production workflows, enforce the confirmation gate architecturally in
+orchestration code rather than relying on instruction alone.
+See <a href="../Programmatic_Tool_Calling/">Programmatic Tool Calling</a>.</p>
+<h3 id="antipattern-4-the-error-black-hole">Antipattern 4: The "Error Black Hole"<a class="headerlink" href="#antipattern-4-the-error-black-hole" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;send_message&quot;</span><span class="p">,</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nt">&quot;return&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="w"> </span><span class="c1">// true or false, that&#39;s it</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Why it fails:</strong> The model doesn't know WHY it failed or how to recover
+<strong>Fix:</strong> Provide rich failure modes with recovery actions</p>
+<h3 id="antipattern-5-the-everythings-a-tool">Antipattern 5: The "Everything's a Tool"<a class="headerlink" href="#antipattern-5-the-everythings-a-tool" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calculate_tip_15_percent&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// The model can do this reliably in one step</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;convert_celsius_to_fahrenheit&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// The model can do this reliably in one step</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;format_phone_number&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// The model can do this reliably in one step</span>
+</span></code></pre></div>
+<p><strong>Why it fails:</strong> Wastes tokens, adds decision overhead for tasks the model handles
+natively without error accumulation. These are not Class C candidates- they are
+single-step operations the model performs reliably in context.
+<strong>Fix:</strong> Only create Class C tools for tasks where repeated steps or scale make
+in-context reasoning unreliable. Ask: "Does error accumulate across steps here?"
+If no, don't build the tool.</p>
+<h2 id="whats-next">What's Next:<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Programmatic_Tool_Calling</li>
+<li>Tool_Templates</li>
+</ul>
+<p>END OF TOOL LITERACY</p>
+<p>version 1.1.0  2026-03-01
+KEY PRINCIPLE: DESIGNING TOOLS THAT A MODEL CAN USE</p>
+<p>Change log v1.1.0:
+- Class C definition updated: "When Reliability Requires It" replaces "When Reasoning Fails"
+- Class C framing throughout: error accumulation over repeated steps, not task difficulty
+- Class B references updated: programmatic tool calling noted as architectural enforcement mechanism
+- Four programmatic tool calling cross-references added:
+  Classification section (Class B production note)
+  Classification section (Class C key distinction)
+  Decision Tree Example 4 (production note)
+  Antipattern 3 (Hidden Risk fix)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../tools-index/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Programmatic_Tool_Calling/" class="md-footer__link md-footer__link--next" aria-label="Next: Programmatic Tool Calling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Programmatic Tool Calling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArchieCur" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

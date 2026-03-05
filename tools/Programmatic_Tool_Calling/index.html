@@ -1,0 +1,2920 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for AI system design, specifications, skills, tools and prompting">
+      
+      
+        <meta name="author" content="Archie Cur">
+      
+      
+        <link rel="canonical" href="https://archiecur.github.io/ai-system-design/tools/Programmatic_Tool_Calling/">
+      
+      
+        <link rel="prev" href="../Tool_Literacy_Designing_Tools%20%281%29/">
+      
+      
+        <link rel="next" href="../Tool_Templates/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Programmatic Tool Calling - AI System Design Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#programmatic-tool-calling-building-agents-that-dont-drift" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI System Design Documentation" class="md-header__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI System Design Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programmatic Tool Calling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../specifications/specifications-index/" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../skills/skills-index/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../tools-index/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced-prompting/advanced-prompting-index/" class="md-tabs__link">
+          
+  
+  
+  Advanced Prompting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi_agent/multi-agent-index/" class="md-tabs__link">
+          
+  
+  
+  Multi-Agent Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI System Design Documentation" class="md-nav__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    AI System Design Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/specifications-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_1_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_2_MUST_Constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MUST Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_3_SHOULD_Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SHOULD Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_4_Providing_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providing CONTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_5_Expressing_INTENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expressing INTENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_6_Verification_Protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_7_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_8_Supremacy_Evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supremacy & Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_A_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_B_IntegrationExamples_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Integration Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_C_QuickReferenceGuide_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Verification Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_E_FolderStructures_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix E: Folder Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_F_Reverse_Engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix F: Belief Dynamics Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/skills-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.1_Skill_Anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Anatomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2_Basic_Template_ClassA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Template (Class A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2a_Designing_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.3_Advanced_Skills_ClassB-C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skills (Class B/C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.4_Semantic_Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.5_Advanced_Deep_Dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.6_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_A_Semantic_Tag_Reference_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Semantic Tags Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_B_Complete_Skill_Template_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_C_Tool_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_D_Cross-Platform_Implementation_Resources_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Cross-Platform Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tool_Literacy_Designing_Tools%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-two-ways-to-call-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction: Two Ways to Call a Tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-1-what-is-programmatic-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: What Is Programmatic Tool Calling?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2-why-programmatic-calling-produces-more-reliable-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: Why Programmatic Calling Produces More Reliable Agents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 2: Why Programmatic Calling Produces More Reliable Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantage-1-correct-tool-selection-is-guaranteed-by-logic-not-belief-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 1: Correct Tool Selection Is Guaranteed by Logic, Not Belief State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantage-2-deliberation-tokens-dont-enter-the-evidential-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 2: Deliberation Tokens Don't Enter the Evidential Stream
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantage-3-error-handling-lives-in-code-not-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 3: Error Handling Lives in Code, Not in Context
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-the-context-window-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: The Context Window Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-patterns-for-programmatic-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 4: Patterns for Programmatic Tool Calling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 4: Patterns for Programmatic Tool Calling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-sequential-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Sequential Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-conditional-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Conditional Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-parallel-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Parallel Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-4-error-handling-and-fallback-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 4: Error Handling and Fallback Chains
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-connecting-to-the-class-abc-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 5: Connecting to the Class A/B/C System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-6-multi-agent-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 6: Multi-Agent Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-7-common-antipatterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 7: Common Antipatterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 7: Common Antipatterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-1-letting-the-model-choose-tool-order-in-complex-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 1: Letting the Model Choose Tool Order in Complex Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-2-error-recovery-in-the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 2: Error Recovery in the Prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-3-mixed-invocation-without-clear-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 3: Mixed Invocation Without Clear Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-4-over-confirming-class-b-tools-in-automated-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 4: Over-Confirming Class B Tools in Automated Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-when-to-use-programmatic-vs-model-driven-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: When to Use Programmatic vs. Model-Driven Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tool_Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Prompting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Prompting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/advanced-prompting-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Building_Reliable_Agents_Advanced_Prompting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Reliable Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/The_2026_Prompt_Engineering_Field_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Engineering Field Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Automated_Prompt_Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automated Prompt Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Agent Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/multi-agent-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-two-ways-to-call-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction: Two Ways to Call a Tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-1-what-is-programmatic-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: What Is Programmatic Tool Calling?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2-why-programmatic-calling-produces-more-reliable-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: Why Programmatic Calling Produces More Reliable Agents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 2: Why Programmatic Calling Produces More Reliable Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantage-1-correct-tool-selection-is-guaranteed-by-logic-not-belief-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 1: Correct Tool Selection Is Guaranteed by Logic, Not Belief State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantage-2-deliberation-tokens-dont-enter-the-evidential-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 2: Deliberation Tokens Don't Enter the Evidential Stream
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantage-3-error-handling-lives-in-code-not-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantage 3: Error Handling Lives in Code, Not in Context
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-the-context-window-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: The Context Window Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-patterns-for-programmatic-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 4: Patterns for Programmatic Tool Calling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 4: Patterns for Programmatic Tool Calling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-sequential-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Sequential Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-conditional-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Conditional Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-parallel-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Parallel Calling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-4-error-handling-and-fallback-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 4: Error Handling and Fallback Chains
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-connecting-to-the-class-abc-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 5: Connecting to the Class A/B/C System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-6-multi-agent-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 6: Multi-Agent Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-7-common-antipatterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 7: Common Antipatterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 7: Common Antipatterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-1-letting-the-model-choose-tool-order-in-complex-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 1: Letting the Model Choose Tool Order in Complex Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-2-error-recovery-in-the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 2: Error Recovery in the Prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-3-mixed-invocation-without-clear-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 3: Mixed Invocation Without Clear Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antipattern-4-over-confirming-class-b-tools-in-automated-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antipattern 4: Over-Confirming Class B Tools in Automated Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-when-to-use-programmatic-vs-model-driven-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: When to Use Programmatic vs. Model-Driven Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../tools-index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Tools
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="programmatic-tool-calling-building-agents-that-dont-drift">Programmatic Tool Calling: Building Agents That Don't Drift<a class="headerlink" href="#programmatic-tool-calling-building-agents-that-dont-drift" title="Permanent link">&para;</a></h1>
+<p><strong>For:</strong> Informed practitioners building production AI agents and multi-agent systems</p>
+<p><strong>Prerequisites:</strong> Tool_Literacy_Designing_Tools.md, Tool_Templates.md</p>
+<p><strong>What you'll learn:</strong> What programmatic tool calling is, why it produces more reliable agents than model-driven tool invocation, and how to implement the patterns that matter in production.</p>
+<hr />
+<h2 id="introduction-two-ways-to-call-a-tool">Introduction: Two Ways to Call a Tool<a class="headerlink" href="#introduction-two-ways-to-call-a-tool" title="Permanent link">&para;</a></h2>
+<p>There are two fundamentally different ways a tool gets called in an AI system.</p>
+<p><strong>Model-driven tool calling:</strong> The agent reasons about what to do, decides which tool to invoke, generates that decision as output, and the runtime executes it. The model is in the loop for every invocation decision.</p>
+<p><strong>Programmatic tool calling:</strong> Orchestration code defines when, how, and in what order tools fire. The model provides inputs and processes outputs- but the invocation logic lives in code, outside the model's reasoning process entirely.</p>
+<p>Most practitioners start with model-driven calling because it's simpler to set up. Most practitioners building production systems eventually move toward programmatic calling because model-driven systems drift, fail unpredictably, and become harder to debug as complexity grows.</p>
+<p>This unit explains why- and shows you how to do it right.</p>
+<hr />
+<h2 id="section-1-what-is-programmatic-tool-calling">Section 1: What Is Programmatic Tool Calling?<a class="headerlink" href="#section-1-what-is-programmatic-tool-calling" title="Permanent link">&para;</a></h2>
+<p>In model-driven tool calling, the model's reasoning determines everything:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Model-driven: The model decides what to call and when</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_input</span><span class="p">}]</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># The model reasons, picks a tool, generates a call</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># You execute whatever the model decided</span>
+</span></code></pre></div>
+<p>In programmatic tool calling, your code determines the workflow:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Programmatic: Your code controls the logic</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="c1"># Step 1: Always validate first (Class A - no confirmation needed)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">validation</span> <span class="o">=</span> <span class="n">validate_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="k">return</span> <span class="n">handle_validation_failure</span><span class="p">(</span><span class="n">validation</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="c1"># Step 2: Check inventory (Class A)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">inventory</span> <span class="o">=</span> <span class="n">check_inventory</span><span class="p">(</span><span class="n">validation</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">])</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">inventory</span><span class="p">[</span><span class="s2">&quot;available&quot;</span><span class="p">]:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="k">return</span> <span class="n">handle_out_of_stock</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="c1"># Step 3: Confirm before charging (Class B - state change)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">get_user_confirmation</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Charge </span><span class="si">{</span><span class="n">validation</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">?&quot;</span><span class="p">):</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;cancelled&quot;</span><span class="p">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="c1"># Step 4: Execute payment (Class B)</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="n">payment</span> <span class="o">=</span> <span class="n">process_payment</span><span class="p">(</span><span class="n">order_id</span><span class="p">,</span> <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">])</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="k">return</span> <span class="n">payment</span>
+</span></code></pre></div>
+<p>The difference is not cosmetic. In the first example, the model decides whether to validate before charging. In the second example, it is architecturally impossible to skip validation. The model cannot reason its way around the gate because the gate is in code.</p>
+<hr />
+<h2 id="section-2-why-programmatic-calling-produces-more-reliable-agents">Section 2: Why Programmatic Calling Produces More Reliable Agents<a class="headerlink" href="#section-2-why-programmatic-calling-produces-more-reliable-agents" title="Permanent link">&para;</a></h2>
+<p>There are three distinct reliability advantages. Each one matters independently.</p>
+<h3 id="advantage-1-correct-tool-selection-is-guaranteed-by-logic-not-belief-state">Advantage 1: Correct Tool Selection Is Guaranteed by Logic, Not Belief State<a class="headerlink" href="#advantage-1-correct-tool-selection-is-guaranteed-by-logic-not-belief-state" title="Permanent link">&para;</a></h3>
+<p>A model's tool selection decisions depend on its current belief state- which is influenced by everything in its context window. A long conversation, an ambiguous user message, or accumulated context from earlier in the session can all nudge the model toward a tool it shouldn't use, or away from one it should.</p>
+<p>Programmatic calling removes belief state from the invocation decision entirely. The condition <code>if not inventory["available"]</code> doesn't care what the model currently believes about inventory. It evaluates to true or false based on the actual API response. The model cannot talk itself into skipping it.</p>
+<p>This matters most for Class B tools. The Class A/B/C classification system (covered in Tool_Literacy_Designing_Tools) is designed to ensure that state-changing tools require confirmation. But "require" in a model-driven system means "the model is instructed to ask"- which is persuasive enforcement. A model under sufficient contextual pressure can bypass a persuasive constraint. Programmatic calling makes confirmation a code gate, not a suggestion.</p>
+<h3 id="advantage-2-deliberation-tokens-dont-enter-the-evidential-stream">Advantage 2: Deliberation Tokens Don't Enter the Evidential Stream<a class="headerlink" href="#advantage-2-deliberation-tokens-dont-enter-the-evidential-stream" title="Permanent link">&para;</a></h3>
+<p>This is the less obvious advantage, but in long-running agents it may be the most important one.</p>
+<p>When a model reasons about which tool to call, that reasoning appears in the context window as tokens. Those tokens become part of the evidence the model uses for every subsequent decision. If the model deliberates about a complex tool selection and gets partway down the wrong reasoning path before correcting itself, that wrong reasoning is now in context- shaping what comes next.</p>
+<p>In programmatic calling, tool selection logic lives in code. The model never generates deliberation tokens about which tool to invoke. The context window stays clean. The model receives tool results and processes them, but the selection machinery is invisible to it.</p>
+<p>Over a long agent session, this compounds significantly. Clean context produces more predictable behavior than context contaminated with decision-making artifacts.</p>
+<h3 id="advantage-3-error-handling-lives-in-code-not-in-context">Advantage 3: Error Handling Lives in Code, Not in Context<a class="headerlink" href="#advantage-3-error-handling-lives-in-code-not-in-context" title="Permanent link">&para;</a></h3>
+<p>When a model-driven tool call fails, the model must generate a recovery response. That response enters the context window. If the tool fails again, another recovery response enters. Repeated failures create a growing accumulation of confused or contradictory reasoning that degrades the model's subsequent behavior.</p>
+<p>Programmatic error handling contains failures in code before they reach the model:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_with_retry</span><span class="p">(</span><span class="n">tool_fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">max_retries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">retry_on</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;timeout&quot;</span><span class="p">,</span> <span class="s2">&quot;rate_limit&quot;</span><span class="p">)):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_retries</span><span class="p">):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">tool_fn</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">retry_on</span><span class="p">:</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="c1"># Non-retryable error: surface to model with clean context</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">],</span> <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;inform_user&quot;</span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">attempt</span><span class="p">)</span>  <span class="c1"># Exponential backoff</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;max_retries_exceeded&quot;</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;escalate&quot;</span><span class="p">}</span>
+</span></code></pre></div>
+<p>The model sees a clean result object. It never sees the retry attempts, the backoff delays, or the intermediate failures. Its context remains uncontaminated by the recovery process.</p>
+<hr />
+<h2 id="section-3-the-context-window-problem">Section 3: The Context Window Problem<a class="headerlink" href="#section-3-the-context-window-problem" title="Permanent link">&para;</a></h2>
+<p>This section deserves focused attention because it changes how practitioners think about agent architecture.</p>
+<p>Every token in a model's context window influences subsequent behavior. This is not a bug- it is how transformer-based language models work. The model is always, implicitly, updating its understanding of the situation based on everything it has seen.</p>
+<p>In a model-driven tool calling system, three categories of tokens end up in context that programmatic calling eliminates:</p>
+<p><strong>Tool selection deliberation.</strong> The model's reasoning about which tool to use, whether conditions are met, and what the right sequence is. Even correct reasoning adds noise. Incorrect reasoning that gets corrected is worse.</p>
+<p><strong>Error recovery reasoning.</strong> When tools fail, the model generates explanations and recovery plans. These enter context and subtly shift subsequent behavior, even after the error is resolved.</p>
+<p><strong>Confirmation dialogs.</strong> For Class B tools, model-driven systems typically generate a confirmation request, receive a response, and then proceed. That entire exchange lives in context for the rest of the session, potentially creating patterns the model over-applies later.</p>
+<p>Programmatic calling moves all three categories out of the context window. The model sees: task inputs, tool results, and task outputs. The orchestration machinery is transparent to it.</p>
+<p>The practical implication: when designing a production agent, ask yourself which decisions belong in code and which belong to the model. A useful heuristic is this; if a decision can be expressed as a condition on a previous tool's output, it belongs in code. If a decision requires genuine language understanding or user intent interpretation, it belongs to the model.</p>
+<hr />
+<h2 id="section-4-patterns-for-programmatic-tool-calling">Section 4: Patterns for Programmatic Tool Calling<a class="headerlink" href="#section-4-patterns-for-programmatic-tool-calling" title="Permanent link">&para;</a></h2>
+<p>These four patterns cover the majority of production agent workflows.</p>
+<h3 id="pattern-1-sequential-calling">Pattern 1: Sequential Calling<a class="headerlink" href="#pattern-1-sequential-calling" title="Permanent link">&para;</a></h3>
+<p>One tool's output feeds the next. Each step is conditional on the previous step's success.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">user_onboarding_workflow</span><span class="p">(</span><span class="n">user_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="c1"># Step 1: Validate input (Class A)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">validation</span> <span class="o">=</span> <span class="n">validate_user_input</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;failed&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">]}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="c1"># Step 2: Check for duplicates (Class A)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">existing</span> <span class="o">=</span> <span class="n">search_users</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">user_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">if</span> <span class="n">existing</span><span class="p">[</span><span class="s2">&quot;found&quot;</span><span class="p">]:</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;failed&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;email_already_registered&quot;</span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="c1"># Step 3: Create account (Class B - confirm first)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">confirmed</span> <span class="o">=</span> <span class="n">get_confirmation</span><span class="p">(</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="sa">f</span><span class="s2">&quot;Create account for </span><span class="si">{</span><span class="n">user_data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">?&quot;</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">)</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">confirmed</span><span class="p">:</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;cancelled&quot;</span><span class="p">}</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="n">new_user</span> <span class="o">=</span> <span class="n">create_user</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span>  <span class="c1"># Class B tool</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="c1"># Step 4: Send welcome email (Class B - no additional confirmation needed,</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="c1"># already confirmed account creation)</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="n">send_welcome_email</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="n">new_user</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span> <span class="n">user_id</span><span class="o">=</span><span class="n">new_user</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">new_user</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]}</span>
+</span></code></pre></div>
+<p><strong>When to use it:</strong> Any workflow where steps have clear dependencies and a failure at any step should stop the chain.</p>
+<h3 id="pattern-2-conditional-calling">Pattern 2: Conditional Calling<a class="headerlink" href="#pattern-2-conditional-calling" title="Permanent link">&para;</a></h3>
+<p>Logic gates determine which tool fires based on context or previous results.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">route_support_ticket</span><span class="p">(</span><span class="n">ticket</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="c1"># Classify ticket (Class A - read/analyze only)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">classification</span> <span class="o">=</span> <span class="n">classify_ticket</span><span class="p">(</span><span class="n">ticket</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="c1"># Route based on classification — no model deliberation needed</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">if</span> <span class="n">classification</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;billing&quot;</span><span class="p">:</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="k">return</span> <span class="n">escalate_to_billing_team</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="k">elif</span> <span class="n">classification</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;technical&quot;</span><span class="p">:</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="c1"># Check if it&#39;s a known issue first (Class A)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="n">known_issue</span> <span class="o">=</span> <span class="n">search_known_issues</span><span class="p">(</span><span class="n">ticket</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="k">if</span> <span class="n">known_issue</span><span class="p">[</span><span class="s2">&quot;found&quot;</span><span class="p">]:</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="k">return</span> <span class="n">send_auto_response</span><span class="p">(</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                <span class="n">ticket_id</span><span class="o">=</span><span class="n">ticket</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                <span class="n">response</span><span class="o">=</span><span class="n">known_issue</span><span class="p">[</span><span class="s2">&quot;resolution&quot;</span><span class="p">]</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>            <span class="p">)</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>            <span class="k">return</span> <span class="n">create_technical_ticket</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="k">elif</span> <span class="n">classification</span><span class="p">[</span><span class="s2">&quot;priority&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;critical&quot;</span><span class="p">:</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="k">return</span> <span class="n">page_on_call_engineer</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="k">return</span> <span class="n">add_to_standard_queue</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>When to use it:</strong> Workflows where different inputs require meaningfully different tool paths. Keeps routing logic explicit and auditable.</p>
+<h3 id="pattern-3-parallel-calling">Pattern 3: Parallel Calling<a class="headerlink" href="#pattern-3-parallel-calling" title="Permanent link">&para;</a></h3>
+<p>Multiple tools fire simultaneously. Results are aggregated before proceeding.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">enrich_user_profile</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="c1"># Fire all enrichment tools simultaneously (all Class A)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">get_purchase_history</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">get_support_history</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">get_engagement_metrics</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">return_exceptions</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Don&#39;t let one failure block others</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="p">)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">purchase_data</span><span class="p">,</span> <span class="n">support_data</span><span class="p">,</span> <span class="n">engagement_data</span> <span class="o">=</span> <span class="n">results</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="c1"># Handle partial failures gracefully</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">profile</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">}</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">purchase_data</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="n">profile</span><span class="p">[</span><span class="s2">&quot;purchases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">purchase_data</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">support_data</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="n">profile</span><span class="p">[</span><span class="s2">&quot;support&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">support_data</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">engagement_data</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>        <span class="n">profile</span><span class="p">[</span><span class="s2">&quot;engagement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">engagement_data</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    <span class="k">return</span> <span class="n">profile</span>
+</span></code></pre></div>
+<p><strong>When to use it:</strong> Multiple independent data-gathering steps that don't depend on each other. Significantly reduces latency in data-enrichment workflows.</p>
+<p><strong>Important:</strong> Only appropriate for Class A (read-only) tools. Parallel Class B operations risk conflicting state changes and should be avoided.</p>
+<h3 id="pattern-4-error-handling-and-fallback-chains">Pattern 4: Error Handling and Fallback Chains<a class="headerlink" href="#pattern-4-error-handling-and-fallback-chains" title="Permanent link">&para;</a></h3>
+<p>Define explicit recovery behavior for each failure type before errors reach the model's context.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">resilient_data_fetch</span><span class="p">(</span><span class="n">resource_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="c1"># Primary source</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">fetch_from_primary_db</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="c1"># Handle specific failure types in code</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;timeout&quot;</span><span class="p">:</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="c1"># Try cache before giving up</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="n">cached</span> <span class="o">=</span> <span class="n">fetch_from_cache</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>        <span class="k">if</span> <span class="n">cached</span><span class="p">[</span><span class="s2">&quot;found&quot;</span><span class="p">]:</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">cached</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;cache&quot;</span><span class="p">}</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="c1"># Cache miss: escalate cleanly</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;unavailable&quot;</span><span class="p">,</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Data temporarily unavailable. Please try again shortly.&quot;</span><span class="p">,</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>            <span class="s2">&quot;retry_after&quot;</span><span class="p">:</span> <span class="mi">30</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="p">}</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;not_found&quot;</span><span class="p">:</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="c1"># Definitive answer — don&#39;t retry</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;not_found&quot;</span><span class="p">,</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Resource </span><span class="si">{</span><span class="n">resource_id</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>        <span class="p">}</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;rate_limit&quot;</span><span class="p">:</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="k">return</span> <span class="n">fetch_from_primary_db</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span>  <span class="c1"># One retry after rate limit</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="c1"># Unknown error: surface cleanly without exposing internals</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;An unexpected error occurred.&quot;</span><span class="p">,</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>        <span class="s2">&quot;error_code&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>    <span class="p">}</span>
+</span></code></pre></div>
+<p><strong>When to use it:</strong> Any tool that can fail in multiple ways. Define the recovery path for each failure mode in code rather than relying on the model to reason about it.</p>
+<hr />
+<h2 id="section-5-connecting-to-the-class-abc-system">Section 5: Connecting to the Class A/B/C System<a class="headerlink" href="#section-5-connecting-to-the-class-abc-system" title="Permanent link">&para;</a></h2>
+<p>Programmatic tool calling is the architectural enforcement layer for the classification system introduced in Tool_Literacy_Designing_Tools.</p>
+<p>That document defines three classes:</p>
+<ul>
+<li><strong>Class A (Read-Only):</strong> Safe to use freely, no side effects</li>
+<li><strong>Class B (State-Change):</strong> Requires confirmation, irreversible</li>
+<li><strong>Class C (Computational):</strong> Use when task exceeds reliable reasoning capability</li>
+</ul>
+<p>In a model-driven system, the classification is enforced persuasively- through system prompt instructions and tool descriptions that tell the model to confirm before Class B actions. This works most of the time. It fails under load, in long sessions, or when contextual pressure is high enough to shift the model's behavior.</p>
+<p>Programmatic calling enforces classification architecturally:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ToolOrchestrator</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">call_class_a</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_fn</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Class A tools: call freely, no confirmation required.&quot;&quot;&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="k">return</span> <span class="n">tool_fn</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">call_class_b</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">confirmation_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Class B tools: always gate behind explicit confirmation.&quot;&quot;&quot;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="c1"># This gate cannot be bypassed by the model&#39;s reasoning</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        <span class="n">confirmed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_explicit_confirmation</span><span class="p">(</span><span class="n">confirmation_message</span><span class="p">)</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">confirmed</span><span class="p">:</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;cancelled&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;user_declined&quot;</span><span class="p">}</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">tool_fn</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">log_state_change</span><span class="p">(</span><span class="n">tool_fn</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">call_class_c</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">complexity_threshold</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Class C tools: only invoke when reasoning would be unreliable.&quot;&quot;&quot;</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="c1"># Verify the task genuinely requires external computation</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data_size&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">complexity_threshold</span><span class="p">:</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>                <span class="sa">f</span><span class="s2">&quot;Task below complexity threshold. Use reasoning instead of </span><span class="si">{</span><span class="n">tool_fn</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.&quot;</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>            <span class="p">)</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>        <span class="k">return</span> <span class="n">tool_fn</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The class of a tool is no longer a suggestion the model can override. It is a structural property enforced by the orchestrator. A Class B tool cannot execute without triggering the confirmation gate. A Class C tool cannot execute below its complexity threshold.</p>
+<hr />
+<h2 id="section-6-multi-agent-considerations">Section 6: Multi-Agent Considerations<a class="headerlink" href="#section-6-multi-agent-considerations" title="Permanent link">&para;</a></h2>
+<p>Single-agent reliability matters. Multi-agent reliability is where programmatic tool calling becomes non-negotiable.</p>
+<p>In a multi-agent system, agents share an evidential environment. One agent's tool outputs become another agent's context inputs. This creates a compounding dynamic: if Agent A calls the wrong tool and receives noisy or unexpected output, that output enters Agent B's context as evidence. Agent B's subsequent behavior is now shaped by Agent A's error- even if Agent B's own reasoning is sound.</p>
+<p>The failure mode is not just additive. In long-running multi-agent pipelines, evidential contamination can cascade: Agent A's bad output shifts Agent B's behavior, which produces outputs that further degrade Agent C's context, which creates conditions for Agent A to receive contaminated inputs on its next cycle. The system can drift far from intended behavior without any single agent making an obviously wrong decision.</p>
+<p>Programmatic tool calling addresses this at the architectural level. When each agent's tool invocations are governed by code rather than by the agent's current belief state, the failure surface shrinks considerably. A tool that returns unexpected output triggers defined error handling- it does not trigger unbounded model reasoning that contaminates downstream context.</p>
+<p>For practitioners building multi-agent systems, three patterns matter most:</p>
+<p><strong>Define inter-agent contracts explicitly.</strong> What one agent produces as output should be formally typed and validated before it enters another agent's context. Treat agent boundaries like API boundaries.</p>
+<p><strong>Gate Class B actions at the system level, not the agent level.</strong> In a multi-agent workflow, confirmation for state-changing actions should be handled by the orchestrator, not by individual agents. Individual agents should not independently decide to confirm or skip confirmation based on their local belief state.</p>
+<p><strong>Use programmatic calling to manage evidence volume.</strong> Long-running multi-agent sessions accumulate context rapidly. Programmatic tool calling helps control what enters each agent's context window- tool results only, not deliberation about which tools to call or how to handle failures.</p>
+<p>For practitioners who want to go deeper on why this matters theoretically, Appendix F of the Specifications module covers the Belief Dynamics framework- specifically how accumulated in-context evidence can push an agent's behavioral posterior across a phase boundary. The multi-agent cascading problem described here is the practical consequence of that dynamic playing out across a network of agents simultaneously.</p>
+<hr />
+<h2 id="section-7-common-antipatterns">Section 7: Common Antipatterns<a class="headerlink" href="#section-7-common-antipatterns" title="Permanent link">&para;</a></h2>
+<p>These mistakes appear consistently in production agent systems. Most of them are easy to avoid once you know to look for them.</p>
+<h3 id="antipattern-1-letting-the-model-choose-tool-order-in-complex-workflows">Antipattern 1: Letting the Model Choose Tool Order in Complex Workflows<a class="headerlink" href="#antipattern-1-letting-the-model-choose-tool-order-in-complex-workflows" title="Permanent link">&para;</a></h3>
+<p><strong>The problem:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Asking the model to sequence tools in a complex workflow</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">system</span><span class="o">=</span><span class="s2">&quot;You have access to validate_order, check_inventory, process_payment, &quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>           <span class="s2">&quot;and send_confirmation. Use them in the right order to process this order.&quot;</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">tools</span><span class="o">=</span><span class="n">all_tools</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">order_request</span><span class="p">}]</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Why it fails:</strong> The model may sequence correctly most of the time. Under load, with ambiguous inputs, or late in a long session, it may not. Payment before inventory check is a real failure mode.</p>
+<p><strong>The fix:</strong> Define the sequence in code. Let the model handle language understanding and input processing- not workflow orchestration.</p>
+<h3 id="antipattern-2-error-recovery-in-the-prompt">Antipattern 2: Error Recovery in the Prompt<a class="headerlink" href="#antipattern-2-error-recovery-in-the-prompt" title="Permanent link">&para;</a></h3>
+<p><strong>The problem:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s2">If a tool fails with a timeout error, wait 30 seconds and try again.</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s2">If it fails with a rate limit error, wait 60 seconds and try again.</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s2">If it fails with a not_found error, tell the user the resource doesn&#39;t exist.</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s2">If it fails with an authentication error, ask the user to log in again.</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s2">&quot;&quot;&quot;</span>
+</span></code></pre></div></p>
+<p><strong>Why it fails:</strong> This puts error handling logic in the model's context as instructions it must remember and follow. Each error event generates tokens in context. Complex retry logic creates opportunities for the model to reason incorrectly about state.</p>
+<p><strong>The fix:</strong> Handle errors in code (see Pattern 4 above). The model should see clean results, not error events it must reason about.</p>
+<h3 id="antipattern-3-mixed-invocation-without-clear-boundaries">Antipattern 3: Mixed Invocation Without Clear Boundaries<a class="headerlink" href="#antipattern-3-mixed-invocation-without-clear-boundaries" title="Permanent link">&para;</a></h3>
+<p><strong>The problem:</strong> Using programmatic calling for some tools and model-driven calling for others in the same workflow, without explicit boundaries.</p>
+<p><strong>Why it fails:</strong> The model doesn't know which invocation decisions it's responsible for and which are handled externally. This creates confusion about state and can lead to the model attempting to call tools that have already been called programmatically.</p>
+<p><strong>The fix:</strong> Be explicit. Define which tools are orchestrator-controlled and which the model can invoke independently. Document the boundary clearly in the system prompt and tool descriptions.</p>
+<h3 id="antipattern-4-over-confirming-class-b-tools-in-automated-pipelines">Antipattern 4: Over-Confirming Class B Tools in Automated Pipelines<a class="headerlink" href="#antipattern-4-over-confirming-class-b-tools-in-automated-pipelines" title="Permanent link">&para;</a></h3>
+<p><strong>The problem:</strong> Requiring user confirmation for every Class B tool in an automated pipeline where human intervention is not practical.</p>
+<p><strong>Why it fails:</strong> In a fully automated workflow, requiring human confirmation at every state-change either blocks the pipeline or gets bypassed with a blanket approval that defeats the purpose of confirmation.</p>
+<p><strong>The fix:</strong> Distinguish between interactive and automated contexts. In interactive workflows, confirm Class B actions with the user. In automated workflows, confirm at the pipeline level (before the automation runs) rather than at the individual tool level. Use audit logging as the accountability mechanism instead of real-time confirmation.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">automated_pipeline_class_b</span><span class="p">(</span><span class="n">tool_fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">pipeline_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="sd">    In automated pipelines, Class B actions are pre-authorized at pipeline start.</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="sd">    Log every execution for audit purposes instead of real-time confirmation.</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">audit_log</span><span class="o">.</span><span class="n">record</span><span class="p">(</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="n">pipeline_id</span><span class="o">=</span><span class="n">pipeline_id</span><span class="p">,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="n">tool</span><span class="o">=</span><span class="n">tool_fn</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="n">pre_authorized</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="p">)</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="k">return</span> <span class="n">tool_fn</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="appendix-when-to-use-programmatic-vs-model-driven-calling">Appendix: When to Use Programmatic vs. Model-Driven Calling<a class="headerlink" href="#appendix-when-to-use-programmatic-vs-model-driven-calling" title="Permanent link">&para;</a></h2>
+<p>Not every tool interaction needs programmatic orchestration. Use this decision framework:</p>
+<p><strong>Use programmatic calling when:</strong></p>
+<ul>
+<li>The workflow has more than two tool invocations with dependencies between them</li>
+<li>Any Class B (state-changing) tool is in the workflow</li>
+<li>The system runs in a long-session or multi-agent context</li>
+<li>Failure at any step should stop or redirect the workflow</li>
+<li>The same workflow runs repeatedly (automation, scheduled tasks)</li>
+<li>You need auditable, reproducible behavior</li>
+</ul>
+<p><strong>Model-driven calling is acceptable when:</strong></p>
+<ul>
+<li>The task is a single, low-stakes tool invocation (one Class A lookup)</li>
+<li>The workflow is exploratory and the model genuinely needs to decide what to do next</li>
+<li>The context window is short and fresh</li>
+<li>Human oversight is continuous and real-time</li>
+</ul>
+<p><strong>The hybrid approach:</strong></p>
+<p>Most production systems benefit from a hybrid: programmatic orchestration for the workflow skeleton, with the model handling language understanding, content generation, and decisions that genuinely require semantic reasoning.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">hybrid_workflow</span><span class="p">(</span><span class="n">user_request</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="c1"># Programmatic: structured data retrieval</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">user_context</span> <span class="o">=</span> <span class="n">get_user_profile</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>        <span class="c1"># Class A</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">relevant_data</span> <span class="o">=</span> <span class="n">search_knowledge_base</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>     <span class="c1"># Class A</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="c1"># Model: semantic reasoning about retrieved data</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        <span class="n">context</span><span class="o">=</span><span class="p">[</span><span class="n">user_context</span><span class="p">,</span> <span class="n">relevant_data</span><span class="p">],</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>        <span class="n">request</span><span class="o">=</span><span class="n">user_request</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="p">)</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="c1"># Programmatic: structured action execution</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">requires_action</span><span class="p">:</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>        <span class="n">execute_action</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">action_type</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">action_params</span><span class="p">)</span>  <span class="c1"># Class B with gate</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+</span></code></pre></div>
+<p>The model handles what models are good at. The code handles what code is good at. Neither is asked to do the other's job.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<p><strong>Programmatic tool calling is architectural prior enforcement.</strong> It does not rely on the model's belief state to enforce correct behavior- it builds correct behavior into the code.</p>
+<p><strong>Three reliability advantages:</strong> Correct tool selection by logic, clean context window, error handling outside the evidential stream.</p>
+<p><strong>The context window problem is real.</strong> Every token the model generates about tool selection and error recovery is evidence that shapes subsequent behavior. Programmatic calling eliminates that contamination source.</p>
+<p><strong>Classification enforcement moves from persuasive to architectural.</strong> Class B confirmation gates in code cannot be bypassed by contextual pressure. Class C complexity thresholds become enforced preconditions.</p>
+<p><strong>Multi-agent systems amplify every single-agent failure mode.</strong> Programmatic calling at the agent boundary is not optional in production multi-agent systems; it is the mechanism that prevents cascading evidential contamination.</p>
+<p><strong>The goal is not to remove the model from the loop- it is to put the model in the right part of the loop.</strong> Language understanding, semantic reasoning, and content generation belong to the model. Workflow sequencing, error recovery, and state-change gating belong in code.</p>
+<hr />
+<p>END OF PROGRAMMATIC TOOL CALLING</p>
+<p>Document Version: 1.0.0
+Last Updated: 2026-02-28</p>
+<p>Written from practitioner perspective, consistent with Tool_Literacy_Designing_Tools.md and Tool_Templates.md.
+Connects to Specifications module Appendix F (Belief Dynamics) for deeper theoretical grounding.</p>
+<p>Key Principle: Programmatic tool calling is architectural prior enforcement — correct behavior built into code, not persuaded into the model.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Tool_Literacy_Designing_Tools%20%281%29/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tool Literacy &amp; Designing Tools">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Tool Literacy & Designing Tools
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Tool_Templates/" class="md-footer__link md-footer__link--next" aria-label="Next: Tool Templates">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Tool Templates
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArchieCur" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
