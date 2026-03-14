@@ -465,12 +465,16 @@ And a special thank you to Latent Space for championing AI engineering without t
 
 ## License
 
-MIT License- Use freely, commercially or personally.
+This work is licensed under CC BY-NC-SA 4.0.
 
 See [LICENSE](LICENSE) for full details.
 
-**TL;DR:** Do whatever you want with this. We built it to help you.
+License & Intent
+This project is a labor of love dedicated to democratizing education.
 
+This work is licensed under CC BY-NC-SA 4.0.   
+You are free to share, learn from, and adapt this work for non-commercial purposes. 
+If you find this content on a site charging a fee or displaying ads, please know that it has been scraped without the author's permission.
 ---
 
 ## Support
