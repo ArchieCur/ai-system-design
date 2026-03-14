@@ -1,0 +1,3613 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for AI system design, specifications, skills, tools and prompting">
+      
+      
+        <meta name="author" content="Archie Cur">
+      
+      
+        <link rel="canonical" href="https://archiecur.github.io/ai-system-design/specifications/Specifications_C_QuickReferenceGuide_Appendix/">
+      
+      
+        <link rel="prev" href="../Specifications_B_IntegrationExamples_Appendix/">
+      
+      
+        <link rel="next" href="../Specifications_D_VerificationProtocolTemplates_Appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Appendix C: Quick Reference - AI System Design Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-c-quick-reference-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI System Design Documentation" class="md-header__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI System Design Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix C: Quick Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../specifications-index/" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../skills/skills-index/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/tools-index/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced-prompting/advanced-prompting-index/" class="md-tabs__link">
+          
+  
+  
+  Advanced Prompting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi_agent/multi-agent-index/" class="md-tabs__link">
+          
+  
+  
+  Multi-Agent Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI System Design Documentation" class="md-nav__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    AI System Design Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specifications-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_1_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_2_MUST_Constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MUST Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_3_SHOULD_Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SHOULD Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_4_Providing_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providing CONTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_5_Expressing_INTENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expressing INTENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_6_Verification_Protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_7_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_8_Supremacy_Evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supremacy & Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_A_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_B_IntegrationExamples_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Integration Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-five-layers-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Five Layers at a Glance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Five Layers at a Glance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#must-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VERIFICATION Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-the-supremacy-clause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern: The Supremacy Clause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-the-exception-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern: The Exception Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-trees-should-this-be-must-or-should" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Trees- Should This Be MUST or SHOULD?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-anti-pattern-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Anti-Pattern Recognition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Anti-Pattern Recognition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-flag-phrases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Red Flag Phrases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Check
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Check">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good Integration:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poor-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poor Integration:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-finish-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Finish Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimal-viable-spec-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Viable Spec Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-spec-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Spec Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remember
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-of-appendix-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        END OF APPENDIX C
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Verification Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_E_FolderStructures_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix E: Folder Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_F_Reverse_Engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix F: Belief Dynamics Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/skills-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.1_Skill_Anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Anatomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2_Basic_Template_ClassA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Template (Class A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2a_Designing_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.3_Advanced_Skills_ClassB-C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skills (Class B/C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.4_Semantic_Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.5_Advanced_Deep_Dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.6_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_A_Semantic_Tag_Reference_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Semantic Tags Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_B_Complete_Skill_Template_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_C_Tool_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_D_Cross-Platform_Implementation_Resources_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Cross-Platform Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/tools-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Literacy_Designing_Tools%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Programmatic_Tool_Calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Prompting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Prompting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/advanced-prompting-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Building_Reliable_Agents_Advanced_Prompting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Reliable Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/The_2026_Prompt_Engineering_Field_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Engineering Field Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Automated_Prompt_Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automated Prompt Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Agent Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/multi-agent-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-five-layers-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Five Layers at a Glance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Five Layers at a Glance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#must-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MUST Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHOULD Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONTEXT Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-layer-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Layer Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INTENT Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VERIFICATION Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-red-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VERIFICATION Red Flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-the-supremacy-clause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern: The Supremacy Clause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-the-exception-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern: The Exception Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-trees-should-this-be-must-or-should" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Trees- Should This Be MUST or SHOULD?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-anti-pattern-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Anti-Pattern Recognition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Anti-Pattern Recognition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-flag-phrases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Red Flag Phrases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Check
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Check">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good Integration:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poor-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poor Integration:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-finish-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Finish Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimal-viable-spec-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Viable Spec Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-spec-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Spec Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remember
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-of-appendix-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        END OF APPENDIX C
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../specifications-index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Specifications
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="appendix-c-quick-reference-guide">Appendix C: Quick Reference Guide<a class="headerlink" href="#appendix-c-quick-reference-guide" title="Permanent link">&para;</a></h1>
+<p><strong>For:</strong> Fast reference during specification writing</p>
+<p><strong>When to use:</strong> While actively writing specs, need quick reminders</p>
+<p><strong>What you get:</strong> Checklists, patterns, red flags, decision trees- all condensed</p>
+<h2 id="how-to-use-this-guide">How to Use This Guide<a class="headerlink" href="#how-to-use-this-guide" title="Permanent link">&para;</a></h2>
+<p><strong>This is your quick reference card:</strong></p>
+<ul>
+<li>Keep it open while writing specs</li>
+<li>Check relevant sections as you work</li>
+<li>Use checklists before finalizing</li>
+<li>Reference patterns when stuck</li>
+</ul>
+<p>Not meant for learning (see Sections 1-7 for that).
+Meant for doing (quick lookups while working).</p>
+<h2 id="the-five-layers-at-a-glance">The Five Layers at a Glance<a class="headerlink" href="#the-five-layers-at-a-glance" title="Permanent link">&para;</a></h2>
+<p><img alt="Five Spec Layers Chart" src="../../assets/Specs_C_Five_Layers.png" /></p>
+<h3 id="must-layer-quick-reference">MUST Layer Quick Reference<a class="headerlink" href="#must-layer-quick-reference" title="Permanent link">&para;</a></h3>
+<p>When to Use MUST
+Use MUST for:</p>
+<ul>
+<li>Legal requirements (HIPAA, PCI-DSS, GDPR)</li>
+<li>Security boundaries (encryption, authentication)</li>
+<li>Performance hard limits (&lt;200ms or system fails)</li>
+<li>Data integrity rules (no data loss, corruption prevention)</li>
+<li>Compatibility requirements (must work on iOS 15+)</li>
+</ul>
+<p>Don't use MUST for</p>
+<ul>
+<li>Preferences (styling, naming conventions)</li>
+<li>Optimization goals (would like faster, but not critical)</li>
+<li>Nice-to-haves (features that would be good to add)</li>
+<li>Subjective qualities ("good", "clean", "elegant")</li>
+</ul>
+<h3 id="must-checklist">MUST Checklist<a class="headerlink" href="#must-checklist" title="Permanent link">&para;</a></h3>
+<p>Before finalizing MUST constraints:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[ ] Is this truly non-negotiable? (Can we launch without it? If yes → SHOULD)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>[ ] Is this specific? (Not &quot;secure&quot; but &quot;bcrypt with salt rounds ≥12&quot;)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[ ] Is this measurable? (Can the model verify objectively?)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[ ] Is this actionable? (Does the model know what to do?)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>[ ] Does this have a supremacy clause if needed? (When conflicts occur, what wins?)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>[ ] Is verification protocol defined? (How to check compliance?)
+</span></code></pre></div>
+<h3 id="must-patterns">MUST Patterns<a class="headerlink" href="#must-patterns" title="Permanent link">&para;</a></h3>
+<h4 id="pattern-1-security-constraint">Pattern 1: Security Constraint<a class="headerlink" href="#pattern-1-security-constraint" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;constraint priority=&quot;critical&quot; scope=&quot;security&quot;&gt;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>MUST: [Specific security requirement]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>MUST: [Authentication/authorization requirement]
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>MUST: [Data protection requirement]
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>RATIONALE: [Why this is required - legal, risk, etc.]
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>VERIFICATION:
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>[Specific test or audit to confirm compliance]
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<h4 id="pattern-2-performance-constraint">Pattern 2: Performance Constraint<a class="headerlink" href="#pattern-2-performance-constraint" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;constraint priority=&quot;critical&quot; scope=&quot;performance&quot;&gt;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>MUST: [Specific metric] &lt;[threshold] ([percentile])
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Example: API response time &lt;200ms (p95)
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>VERIFICATION:
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Command: [load test command]
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>Expected: [specific result]
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>Pass criteria: [objective threshold]
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<h4 id="pattern-3-compatibility-constraint">Pattern 3: Compatibility Constraint<a class="headerlink" href="#pattern-3-compatibility-constraint" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;constraint priority=&quot;critical&quot; scope=&quot;compatibility&quot;&gt;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>MUST: Support [platform/version] and above
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>MUST: Work with [existing system/tool]
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>RATIONALE:
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>[User base breakdown, integration needs]
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>VERIFICATION:
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Test matrix: [specific versions/platforms to test]
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<h3 id="must-red-flags">MUST Red Flags<a class="headerlink" href="#must-red-flags" title="Permanent link">&para;</a></h3>
+<p>Warning signs your MUST is problematic:</p>
+<h4 id="vague-language">Vague language<a class="headerlink" href="#vague-language" title="Permanent link">&para;</a></h4>
+<p><strong>"Be secure", "Perform well", "Look good"</strong></p>
+<p><strong>Fix:</strong> Define specifically (e.g., "bcrypt salt rounds ≥12", "p95 &lt;200ms", "WCAG 2.1 AA")</p>
+<h4 id="subjective-criteria">Subjective criteria:<a class="headerlink" href="#subjective-criteria" title="Permanent link">&para;</a></h4>
+<p><strong>"Clean code", "Good UX", "Elegant"</strong></p>
+<p><strong>Fix:</strong> Define objectively (e.g., "Complexity &lt;10", "80% task completion", "Pass Nielsen heuristics")</p>
+<h4 id="too-many-musts">Too many MUSTs:<a class="headerlink" href="#too-many-musts" title="Permanent link">&para;</a></h4>
+<p><strong>50+ critical constraints</strong></p>
+<p><strong>Fix:</strong> Prioritize- some are SHOULD not MUST. Keep MUSTs to truly critical items.</p>
+<h4 id="conflicting-musts">Conflicting MUSTs:<a class="headerlink" href="#conflicting-musts" title="Permanent link">&para;</a></h4>
+<p><strong>Response &lt;100ms BUT query 10 databases (impossible!)</strong></p>
+<p><strong>Fix:</strong> Prioritize (which wins?) or relax one constraint to make both achievable.</p>
+<h4 id="secret-must-disguised-as-should">Secret MUST disguised as SHOULD:<a class="headerlink" href="#secret-must-disguised-as-should" title="Permanent link">&para;</a></h4>
+<p><strong>"SHOULD use company auth (but really you must!)"</strong></p>
+<p><strong>Fix:</strong> Call it MUST if it's required. Be honest about rigidity.</p>
+<h3 id="should-layer-quick-reference">SHOULD Layer Quick Reference<a class="headerlink" href="#should-layer-quick-reference" title="Permanent link">&para;</a></h3>
+<h4 id="when-to-use-should">When to Use SHOULD**<a class="headerlink" href="#when-to-use-should" title="Permanent link">&para;</a></h4>
+<p><strong>Use SHOULD for:</strong></p>
+<ul>
+<li>Preferred approaches (but alternatives acceptable)</li>
+<li>Optimization goals (faster is better, but not critical)</li>
+<li>Style preferences (naming, formatting, conventions)</li>
+<li>Nice-to-have features (improve UX, not required)</li>
+<li>Best practices (recommended but context-dependent)</li>
+</ul>
+<h4 id="dont-use-should-for">Don't use SHOULD for<a class="headerlink" href="#dont-use-should-for" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Legal requirements (those are MUST!)</li>
+<li>Hard performance limits (those are MUST!)</li>
+<li>Security requirements (those are MUST!)</li>
+<li>Anything non-negotiable (call it MUST!)</li>
+</ul>
+<h3 id="should-checklist">SHOULD Checklist<a class="headerlink" href="#should-checklist" title="Permanent link">&para;</a></h3>
+<p>Before finalizing SHOULD guidelines:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[ ] Is there flexibility? (Can alternatives work?)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>[ ] Are exceptions acceptable? (When would we violate this?)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>[ ] Is the preference justified? (Why is this preferred?)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>[ ] Are alternatives documented? (What else could work?)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>[ ] Is there a decision framework? (When to choose A vs B?)
+</span></code></pre></div>
+<h3 id="should-patterns">SHOULD Patterns<a class="headerlink" href="#should-patterns" title="Permanent link">&para;</a></h3>
+<h4 id="pattern-1-preferred-approach-with-alternatives">Pattern 1: Preferred Approach with Alternatives<a class="headerlink" href="#pattern-1-preferred-approach-with-alternatives" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;guideline priority=&quot;high&quot;&gt;
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>SHOULD: [Preferred approach]
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>RATIONALE: [Why this is preferred]
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>ACCEPTABLE ALTERNATIVES:
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>- [Alternative 1] if [condition]
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>- [Alternative 2] if [condition]
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>WHEN VIOLATING:
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>Document rationale and get [stakeholder] approval
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>&lt;/guideline&gt;
+</span></code></pre></div>
+<h4 id="pattern-2-optimization-goal">Pattern 2: Optimization Goal<a class="headerlink" href="#pattern-2-optimization-goal" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;guideline priority=&quot;medium&quot;&gt;
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>SHOULD: [Optimization target]
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Example: Aim for &lt;100ms response time (p95)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>RATIONALE: [Why this improves experience]
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>ACCEPTABLE: &lt;200ms if [trade-off justifies it]
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>NOT ACCEPTABLE: &gt;500ms (becomes MUST violation)
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>&lt;/guideline&gt;
+</span></code></pre></div>
+<h3 id="should-red-flags">SHOULD Red Flags<a class="headerlink" href="#should-red-flags" title="Permanent link">&para;</a></h3>
+<h4 id="actually-required">Actually required:<a class="headerlink" href="#actually-required" title="Permanent link">&para;</a></h4>
+<p><strong>"SHOULD comply with HIPAA (but it's required)"</strong></p>
+<p><strong>Fix:</strong> Make it MUST if it's truly required</p>
+<h4 id="no-flexibility">No flexibility:<a class="headerlink" href="#no-flexibility" title="Permanent link">&para;</a></h4>
+<p><strong>"SHOULD use React (no alternatives allowed)"</strong></p>
+<p><strong>Fix:</strong> If no alternatives, it's MUST not SHOULD</p>
+<h4 id="too-rigid">Too rigid:<a class="headerlink" href="#too-rigid" title="Permanent link">&para;</a></h4>
+<p><strong>"SHOULD be exactly 25 lines (no exceptions)"</strong></p>
+<p><strong>Fix:</strong> Add acceptable exceptions or make it a range</p>
+<h4 id="no-rationale">No rationale:<a class="headerlink" href="#no-rationale" title="Permanent link">&para;</a></h4>
+<p><strong>"SHOULD prefer PostgreSQL (no explanation)"</strong></p>
+<p><strong>Fix:</strong> Explain WHY preferred (team expertise? specific features?)</p>
+<h3 id="context-layer-quick-reference">CONTEXT Layer Quick Reference<a class="headerlink" href="#context-layer-quick-reference" title="Permanent link">&para;</a></h3>
+<p><strong>What to Include in CONTEXT</strong></p>
+<p><strong>Business Context:</strong></p>
+<ul>
+<li>Company stage (startup vs enterprise)</li>
+<li>Budget constraints</li>
+<li>Timeline pressures</li>
+<li>Competitive landscape</li>
+<li>Success metrics</li>
+</ul>
+<p><strong>Technical Context:</strong></p>
+<ul>
+<li>Technology stack</li>
+<li>Team expertise</li>
+<li>Infrastructure constraints</li>
+<li>Existing systems</li>
+<li>Scale requirements</li>
+</ul>
+<p><strong>User Context:</strong></p>
+<ul>
+<li>Who are the users?</li>
+<li>Tech proficiency</li>
+<li>Device/platform usage</li>
+<li>Pain points</li>
+<li>Success criteria</li>
+</ul>
+<h3 id="context-checklist">CONTEXT Checklist<a class="headerlink" href="#context-checklist" title="Permanent link">&para;</a></h3>
+<p>Before finalizing CONTEXT:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[ ] Does this explain WHY constraints exist?
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>[ ] Does this inform priorities?
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>[ ] Is this specific to THIS project? (Not copy-pasted)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>[ ] Does this help with trade-off decisions?
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>[ ] Is this current and accurate?
+</span></code></pre></div>
+<h3 id="context-red-flags">CONTEXT Red Flags<a class="headerlink" href="#context-red-flags" title="Permanent link">&para;</a></h3>
+<h4 id="generic">Generic:<a class="headerlink" href="#generic" title="Permanent link">&para;</a></h4>
+<p><strong>"We're a technology company focused on innovation"</strong></p>
+<p><strong>Fix:</strong> Be specific (stage, size, market, constraints)</p>
+<h4 id="copy-pasted">Copy-pasted:<a class="headerlink" href="#copy-pasted" title="Permanent link">&para;</a></h4>
+<p><strong>Context from different project/domain</strong></p>
+<p><strong>Fix:</strong> Customize to YOUR project</p>
+<h4 id="too-much-history">Too much history:<a class="headerlink" href="#too-much-history" title="Permanent link">&para;</a></h4>
+<p><strong>5 pages of company background from 2010</strong></p>
+<p><strong>Fix:</strong> Focus on what's relevant NOW for THIS project</p>
+<h4 id="irrelevant-details">Irrelevant details:<a class="headerlink" href="#irrelevant-details" title="Permanent link">&para;</a></h4>
+<p><strong>"Office has standing desks, free snacks"</strong></p>
+<p><strong>Fix:</strong> Include only context that affects technical decisions</p>
+<h3 id="intent-layer-quick-reference">INTENT Layer Quick Reference<a class="headerlink" href="#intent-layer-quick-reference" title="Permanent link">&para;</a></h3>
+<p><strong>What to Include in INTENT</strong></p>
+<p>Primary Goal:</p>
+<ul>
+<li>One sentence: What are we trying to achieve?</li>
+<li>Measurable outcome preferred</li>
+</ul>
+<p>Why This Matters:</p>
+<ul>
+<li>Business impact</li>
+<li>User impact</li>
+<li>Technical impact</li>
+</ul>
+<p>Success Criteria:</p>
+<ul>
+<li>Specific metrics</li>
+<li>Observable behaviors</li>
+<li>Time-bound if relevant</li>
+</ul>
+<p>Rationale for Key Decisions:</p>
+<ul>
+<li>Why approach A over B?</li>
+<li>What trade-offs are we making?</li>
+<li>Why are these trade-offs worth it?</li>
+</ul>
+<p>Alignment Check:</p>
+<ul>
+<li>How do we know we're on track?</li>
+<li>What indicates we're drifting?</li>
+<li>When to course-correct?</li>
+</ul>
+<h3 id="intent-checklist">INTENT Checklist<a class="headerlink" href="#intent-checklist" title="Permanent link">&para;</a></h3>
+<p>Before finalizing INTENT:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[ ] Is the goal clear and specific?
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>[ ] Is success measurable?
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>[ ] Are trade-offs explicitly stated?
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>[ ] Is rationale provided for key choices?
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>[ ] Is there an alignment check framework?
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>[ ] Does this answer &quot;why&quot; for MUST constraints?
+</span></code></pre></div>
+<h3 id="intent-patterns">INTENT Patterns<a class="headerlink" href="#intent-patterns" title="Permanent link">&para;</a></h3>
+<h4 id="pattern-1-goal-trade-offs-alignment">Pattern 1: Goal + Trade-offs + Alignment<a class="headerlink" href="#pattern-1-goal-trade-offs-alignment" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;intent scope=&quot;domain&quot;&gt;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>**Primary Goal:**
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>[One sentence goal with metric]
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>**Why This Matters:**
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>[Business/user/technical impact]
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>**Success Looks Like:**
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>[Measurable outcomes, observable behaviors]
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>**Rationale for Key Decisions:**
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>- Why [choice A]: [reason, trade-off]
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>- Why [choice B]: [reason, trade-off]
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>**Trade-offs We Accept:**
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>- [What we sacrifice]: [why worth it]
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>- [What we prioritize over]
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>- [rationale]
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>**Alignment Check:**
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>On track if: [specific indicators]
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>Drifting if: [warning signs]
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>&lt;/intent&gt;
+</span></code></pre></div>
+<h3 id="intent-red-flags">INTENT Red Flags<a class="headerlink" href="#intent-red-flags" title="Permanent link">&para;</a></h3>
+<h4 id="vague-goal">Vague goal:<a class="headerlink" href="#vague-goal" title="Permanent link">&para;</a></h4>
+<p><strong>"Build a great product"</strong></p>
+<p><strong>Fix:</strong> Specific, measurable (e.g., "Reduce cart abandonment from 25% to 15%")</p>
+<h4 id="no-trade-offs">No trade-offs:<a class="headerlink" href="#no-trade-offs" title="Permanent link">&para;</a></h4>
+<p><strong>"We want it fast AND perfect AND cheap"</strong></p>
+<p><strong>Fix:</strong> Acknowledge what you're prioritizing (e.g., "Speed over perfection for v1")</p>
+<h4 id="missing-rationale">Missing rationale:<a class="headerlink" href="#missing-rationale" title="Permanent link">&para;</a></h4>
+<p><strong>"We chose React" (no explanation)</strong></p>
+<p><strong>Fix:</strong> Explain WHY (team expertise, ecosystem, performance, etc.)</p>
+<h4 id="no-alignment-check">No alignment check:<a class="headerlink" href="#no-alignment-check" title="Permanent link">&para;</a></h4>
+<p><strong>How do you know if you're drifting?</strong></p>
+<p><strong>Fix:</strong> Define on-track indicators and warning signs</p>
+<h2 id="verification-quick-reference">VERIFICATION Quick Reference<a class="headerlink" href="#verification-quick-reference" title="Permanent link">&para;</a></h2>
+<p><strong>What to Include in VERIFICATION</strong></p>
+<p>What to Verify:</p>
+<ul>
+<li>Which constraints to check</li>
+<li>Which success criteria to measure</li>
+</ul>
+<p>How to Verify:</p>
+<ul>
+<li>Automated commands (specific)</li>
+<li>Manual checklists (objective)</li>
+<li>Expected results (clear)</li>
+</ul>
+<p>When to Verify:</p>
+<ul>
+<li>During development (continuous)</li>
+<li>Pre-delivery (comprehensive)</li>
+<li>Post-deployment (monitoring)</li>
+</ul>
+<p>If Verification Fails:</p>
+<ul>
+<li>What to do (fix? flag? escalate?)</li>
+<li>Recovery process</li>
+<li>Re-verification steps</li>
+</ul>
+<p>Pass Criteria:</p>
+<ul>
+<li>Objective determination of success</li>
+<li>Clear thresholds</li>
+<li>No ambiguity</li>
+</ul>
+<h3 id="verification-checklist">VERIFICATION Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h3>
+<p>Before finalizing VERIFICATION:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[ ] All critical MUST constraints have verification
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[ ] Verification is objective (not &quot;looks good&quot;)
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>[ ] Verification is actionable (I can actually run this)
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>[ ] Expected results are clear
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>[ ] Pass/fail criteria are specific
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>[ ] Failure recovery is defined
+</span></code></pre></div>
+<h3 id="verification-patterns">VERIFICATION Patterns<a class="headerlink" href="#verification-patterns" title="Permanent link">&para;</a></h3>
+<h4 id="pattern-1-automated-verification">Pattern 1: Automated Verification<a class="headerlink" href="#pattern-1-automated-verification" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&lt;verification scope=&quot;domain&quot;&gt;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>**What to verify:**
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>[Specific constraint]
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>**How to verify:**
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Command: [exact command to run]
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>Expected: [specific output/result]
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>Pass criteria: [objective threshold]
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>**If fails:**
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>1. [Diagnostic step]
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>2. [Fix step]
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>3. Re-verify
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>`&lt;/verification&gt;`
+</span></code></pre></div>
+<h4 id="pattern-2-manual-verification">Pattern 2: Manual Verification<a class="headerlink" href="#pattern-2-manual-verification" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;verification scope=&quot;domain&quot;&gt;
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>**What to verify:**
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>[Specific criteria]
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>**How to verify (manual checklist):**
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>- [Check item 1] (specific, observable)
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>- [Check item 2] (specific, observable)
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>- [Check item 3] (specific, observable)
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>**Pass criteria:**
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>All items confirmed
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>**If fails:**
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>Document which item failed and why, then address
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<h3 id="verification-red-flags">VERIFICATION Red Flags<a class="headerlink" href="#verification-red-flags" title="Permanent link">&para;</a></h3>
+<h4 id="vague-criteria">Vague criteria:<a class="headerlink" href="#vague-criteria" title="Permanent link">&para;</a></h4>
+<p><strong>"Verify code quality is good"</strong></p>
+<p><strong>Fix:</strong> Specific checks (linter passes, coverage &gt;80%, complexity &lt;10)</p>
+<h4 id="no-verification-for-critical-must">No verification for critical MUST:<a class="headerlink" href="#no-verification-for-critical-must" title="Permanent link">&para;</a></h4>
+<p><strong>MUST has no matching verification</strong></p>
+<p><strong>Fix:</strong> Add specific verification protocol for each critical constraint</p>
+<h4 id="subjective-pass-criteria">Subjective pass criteria:<a class="headerlink" href="#subjective-pass-criteria" title="Permanent link">&para;</a></h4>
+<p><strong>"Looks good to me"</strong></p>
+<p><strong>Fix:</strong> Objective criteria (specific metrics, thresholds, tests)</p>
+<p><strong>No failure handling:</strong> Verification fails, now what?
+Fix: Define what to do when verification fails</p>
+<h2 id="common-patterns">Common Patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="pattern-the-supremacy-clause">Pattern: The Supremacy Clause<a class="headerlink" href="#pattern-the-supremacy-clause" title="Permanent link">&para;</a></h3>
+<p><strong>When to use:</strong> Multiple critical constraints might conflict</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;constraint priority=&quot;critical&quot; supremacy=&quot;true&quot;&gt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>MUST: [Highest priority requirement]
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>SUPREMACY CLAUSE:
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>[This requirement] overrides ALL other requirements including
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>[list potential conflicts]. If any requirement conflicts with
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>[this], [this] wins without exception.
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>Example: HIPAA compliance overrides performance, features, and
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>user convenience.
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<h3 id="pattern-the-exception-documentation">Pattern: The Exception Documentation<a class="headerlink" href="#pattern-the-exception-documentation" title="Permanent link">&para;</a></h3>
+<p><strong>When to use:</strong></p>
+<p>SHOULD that might be violated</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&lt;guideline priority=&quot;high&quot;&gt;
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>SHOULD:
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>[Preferred approach]
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>ACCEPTABLE EXCEPTIONS:
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>- [Scenario 1]: [Alternative approach] because [reason]
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>- [Scenario 2]: [Alternative approach] because [reason]
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>WHEN VIOLATING:
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>1. Document specific rationale
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>2. Get [stakeholder] approval
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>3. Record in decision log
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>&lt;/guideline&gt;
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>### Pattern: The Decision Framework
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>**When to use:** Multiple options, need to choose
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>```text
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>&lt;intent scope=&quot;domain&quot;&gt;
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>**Decision Framework:**
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>When [situation occurs], priority order:
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>1. [Highest priority] (non-negotiable)
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>2. [High priority] (important)
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>3. [Medium priority] (desirable)
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>4. [Lower priority] (nice-to-have)
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a>Example:
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a>- Request: Add feature X
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a>- Analysis: Impacts priorities how?
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a>- Decision: Accept/reject based on framework
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a>- Rationale: [Which priority it serves/harms]
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a>&lt;/intent&gt;
+</span></code></pre></div>
+<h2 id="decision-trees-should-this-be-must-or-should">Decision Trees- Should This Be MUST or SHOULD?<a class="headerlink" href="#decision-trees-should-this-be-must-or-should" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Is this legally required?
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>|─ YES → MUST
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>└─ NO → Continue
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Is this a security requirement?
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>├─ YES → MUST
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>└─ NO → Continue
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>Will the system fail/break without it?
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>├─ YES → MUST
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>└─ NO → Continue
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>Can we launch without it?
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>├─ NO → MUST
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>└─ YES → Continue
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>Would alternatives be acceptable?
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>├─ NO → MUST
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>└─ YES → SHOULD
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>How Specific Should My MUST Be?
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>Is this a security/compliance requirement?
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>├─ YES → Be VERY specific (exact algorithms, versions)
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>└─ NO → Continue
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>Is this a hard performance limit?
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>├─ YES → Be specific (exact threshold, percentile)
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a>└─ NO → Continue
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>Is this a compatibility requirement?
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>├─ YES → Be specific (exact versions, platforms)
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>└─ NO → Continue
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a>
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a>Is this a quality guideline?
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a>
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a>├─ YES → Consider making it SHOULD (quality often subjective)
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a>└─ NO → Be as specific as makes sense
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a>
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a>Do I Need CONTEXT for This?
+</span><span id="__span-15-48"><a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a>
+</span><span id="__span-15-49"><a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a>Are my MUST constraints unusual/surprising?
+</span><span id="__span-15-50"><a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a>
+</span><span id="__span-15-51"><a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a>├─ YES → Explain why in CONTEXT
+</span><span id="__span-15-52"><a id="__codelineno-15-52" name="__codelineno-15-52" href="#__codelineno-15-52"></a>└─ NO → Continue
+</span><span id="__span-15-53"><a id="__codelineno-15-53" name="__codelineno-15-53" href="#__codelineno-15-53"></a>
+</span><span id="__span-15-54"><a id="__codelineno-15-54" name="__codelineno-15-54" href="#__codelineno-15-54"></a>Do priorities seem backwards?
+</span><span id="__span-15-55"><a id="__codelineno-15-55" name="__codelineno-15-55" href="#__codelineno-15-55"></a>├─ YES → Explain trade-offs in CONTEXT
+</span><span id="__span-15-56"><a id="__codelineno-15-56" name="__codelineno-15-56" href="#__codelineno-15-56"></a>└─ NO → Continue
+</span><span id="__span-15-57"><a id="__codelineno-15-57" name="__codelineno-15-57" href="#__codelineno-15-57"></a>
+</span><span id="__span-15-58"><a id="__codelineno-15-58" name="__codelineno-15-58" href="#__codelineno-15-58"></a>Would someone ask &quot;why this approach?&quot;
+</span><span id="__span-15-59"><a id="__codelineno-15-59" name="__codelineno-15-59" href="#__codelineno-15-59"></a>
+</span><span id="__span-15-60"><a id="__codelineno-15-60" name="__codelineno-15-60" href="#__codelineno-15-60"></a>├─ YES → Provide rationale in CONTEXT/INTENT
+</span><span id="__span-15-61"><a id="__codelineno-15-61" name="__codelineno-15-61" href="#__codelineno-15-61"></a>└─ NO → Minimal CONTEXT okay
+</span></code></pre></div>
+<h2 id="quick-anti-pattern-recognition">Quick Anti-Pattern Recognition<a class="headerlink" href="#quick-anti-pattern-recognition" title="Permanent link">&para;</a></h2>
+<h3 id="red-flag-phrases">Red Flag Phrases<a class="headerlink" href="#red-flag-phrases" title="Permanent link">&para;</a></h3>
+<p><strong>If you write these, stop and fix:</strong></p>
+<ul>
+<li>"Be secure" → Define HOW (bcrypt? TLS? encryption?)</li>
+<li>"Perform well" → Define WHAT (response time? throughput?)</li>
+<li>"Good UX" → Define WHAT (task completion? satisfaction score?)</li>
+<li>"Clean code" → Define WHAT (complexity? coverage? linting?)</li>
+<li>"Use best practices" → Define WHICH practices</li>
+<li>"Make it fast" → Define HOW FAST (metric + threshold)</li>
+<li>"Obviously" / "Clearly" → If obvious, state it explicitly</li>
+<li>"Just" / "Simply" → If simple, be specific about how</li>
+</ul>
+<h2 id="integration-check">Integration Check<a class="headerlink" href="#integration-check" title="Permanent link">&para;</a></h2>
+<p>Are your layers working together?</p>
+<h3 id="good-integration">Good Integration:<a class="headerlink" href="#good-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>MUST → Specific boundary</li>
+<li>CONTEXT → Explains why boundary exists</li>
+<li>INTENT → Clarifies what we're achieving with boundary</li>
+<li>VERIFICATION → Tests boundary is honored</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>MUST: Response time &lt;200ms (p95)</li>
+<li>CONTEXT: Cart abandonment increases 10% per second delay</li>
+<li>INTENT: Reduce abandonment from 25% to 15%</li>
+<li>VERIFICATION: Load test shows p95 &lt;200ms</li>
+</ul>
+<h3 id="poor-integration">Poor Integration:<a class="headerlink" href="#poor-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>MUST: Response time &lt;100ms</li>
+<li>CONTEXT: Users prefer thoroughness over speed</li>
+<li>INTENT: Build trust through careful validation</li>
+</ul>
+<p><strong>LAYERS CONTRADICT!</strong></p>
+<h2 id="before-you-finish-checklist">Before You Finish Checklist<a class="headerlink" href="#before-you-finish-checklist" title="Permanent link">&para;</a></h2>
+<p>Final check before considering your spec complete:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Completeness
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>[ ] All 5 layers present (MUST, SHOULD, CONTEXT, INTENT, VERIFICATION)
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>[ ] Each layer answers its question
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>[ ] No layer missing
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Specificity
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>[ ] No vague terms without definition
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>[ ] Metrics have thresholds
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>[ ] Tools/technologies named explicitly
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>[ ] Success criteria measurable
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>Consistency
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>[ ] No contradictions between layers
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>[ ] Priorities clear when conflicts occur
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>[ ] Trade-offs explicitly acknowledged
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>[ ] Decision framework provided
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>Verifiability
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>[ ] All critical MUSTs have verification
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>[ ] Verification is objective
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>[ ] Pass criteria clear
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>[ ] Failure handling defined
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>Context
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>[ ] Specific to THIS project (not copy-pasted)
+</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>[ ] Current and accurate
+</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>[ ] Informs priorities and trade-offs
+</span><span id="__span-16-33"><a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>[ ] Explains unusual constraints
+</span><span id="__span-16-34"><a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>
+</span><span id="__span-16-35"><a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>Intent
+</span><span id="__span-16-36"><a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>
+</span><span id="__span-16-37"><a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>[ ] Goal is clear and measurable
+</span><span id="__span-16-38"><a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a>[ ] Trade-offs stated
+</span><span id="__span-16-39"><a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a>[ ] Rationale for key decisions provided
+</span><span id="__span-16-40"><a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>[ ] Alignment check framework exists
+</span></code></pre></div>
+<h2 id="quick-templates">Quick Templates<a class="headerlink" href="#quick-templates" title="Permanent link">&para;</a></h2>
+<h3 id="minimal-viable-spec-template">Minimal Viable Spec Template<a class="headerlink" href="#minimal-viable-spec-template" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>&lt;constraint priority=&quot;critical&quot;&gt;
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>MUST:
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>[Most critical 3-5 requirements]
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>VERIFICATION:
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>[How to check each]
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>&lt;/constraint&gt;
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>&lt;context&gt;
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>[Why these requirements exist]
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>[Key constraints/pressures]
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>&lt;/context&gt;
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>&lt;intent&gt;
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>**Goal:** [What we&#39;re achieving]
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>**Success:** [How we measure it]
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>&lt;/intent&gt;
+</span></code></pre></div>
+<strong>Use this when: Need something fast, will iterate later.</strong></p>
+<h3 id="complete-spec-template">Complete Spec Template<a class="headerlink" href="#complete-spec-template" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;constraint priority=&quot;critical&quot;&gt;
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>MUST: [Hard boundaries - 5-10 items]
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>[With verification for each]
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>&lt;/constraint&gt;
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>&lt;guideline priority=&quot;high&quot;&gt;
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>SHOULD: [Preferences - 5-10 items]
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>[With acceptable exceptions]
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>&lt;/guideline&gt;
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>&lt;context scope=&quot;business&quot;&gt;
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>[Company, users, constraints, timeline]
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>&lt;/context&gt;
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>&lt;context scope=&quot;technical&quot;&gt;
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>[Stack, team, infrastructure, scale]
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>&lt;/context&gt;
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>&lt;intent&gt;
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>**Goal:** [Specific, measurable]
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>
+</span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>**Why:** [Impact]
+</span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>
+</span><span id="__span-18-30"><a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>**Success:** [Criteria]
+</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>
+</span><span id="__span-18-32"><a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>**Trade-offs:** [What we accept]
+</span><span id="__span-18-33"><a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>
+</span><span id="__span-18-34"><a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>**Alignment:** [How we track]
+</span><span id="__span-18-35"><a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>&lt;/intent&gt;
+</span><span id="__span-18-36"><a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>
+</span><span id="__span-18-37"><a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a>&lt;verification&gt;
+</span><span id="__span-18-38"><a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a>[Comprehensive checking for all critical items]
+</span><span id="__span-18-39"><a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>Use this when: Formal project, need complete specification.</strong></p>
+<h2 id="remember">Remember<a class="headerlink" href="#remember" title="Permanent link">&para;</a></h2>
+<p><strong>Specifications are:</strong></p>
+<ul>
+<li>Persistent (reusable across conversations)</li>
+<li>Precise (remove ambiguity)</li>
+<li>Verifiable (objective success criteria)</li>
+</ul>
+<p><strong>Good specs enable:</strong></p>
+<ul>
+<li>No guessing (I know what to do)</li>
+<li>No rabbit holes (I stay on track)</li>
+<li>No conflicts (priorities clear)</li>
+<li>Quality output (verified compliance)</li>
+</ul>
+<p><strong>Keep this guide handy while writing specs!</strong></p>
+<h2 id="end-of-appendix-c">END OF APPENDIX C<a class="headerlink" href="#end-of-appendix-c" title="Permanent link">&para;</a></h2>
+<p>Document Version: 1.0.0
+Last Updated: 2026-02-27
+Quick reference for active specification writing</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Specifications_B_IntegrationExamples_Appendix/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Appendix B: Integration Examples">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Appendix B: Integration Examples
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix D: Verification Templates">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Appendix D: Verification Templates
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArchieCur" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
