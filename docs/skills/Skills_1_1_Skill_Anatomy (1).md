@@ -86,7 +86,8 @@ Skills work best on Anthropic Claude (native API support, progressive disclosure
 - Claude API: Programmatic access with Skills parameter
 - Claude Code: Terminal-based agentic coding with Skills
 - Claude Desktop: Includes Cowork for autonomous tasks  
-**Note:**  You can prompt Claude in Cowork to build a skill, which involves defining the desired output, formatting, and task steps.  
+**Note:**  You can prompt Claude in Cowork to build a skill, which involves defining the desired output, formatting, and task steps.
+  Claude will generate it for you.   
 **Usage in Cowork**: Once created or uploaded, skills can be toggled on to automate tasks.
   You can manage them in the **Customize** section of the application.  
 **Requirement in Cowork:** Skills require code execution to be enabled. See Anthropic support docs for latest status.
