@@ -85,8 +85,11 @@ Skills work best on Anthropic Claude (native API support, progressive disclosure
 - Claude.ai: Web interface with native Skills support
 - Claude API: Programmatic access with Skills parameter
 - Claude Code: Terminal-based agentic coding with Skills
-- Claude Desktop: Includes Cowork (research preview) for autonomous tasks
-Note: Cowork is in research preview (Jan 2026). Skills integration & capabilities are being evaluated. See Anthropic support docs for latest status.
+- Claude Desktop: Includes Cowork for autonomous tasks  
+**Note:**  You can prompt Claude in Cowork to build a skill, which involves defining the desired output, formatting, and task steps.  
+**Usage in Cowork**: Once created or uploaded, skills can be toggled on to automate tasks.
+  You can manage them in the **Customize** section of the application.  
+**Requirement in Cowork:** Skills require code execution to be enabled. See Anthropic support docs for latest status.
 
 - Zip-and-upload simplicity
 - Automatic progressive disclosure
