@@ -194,43 +194,44 @@ your-skill-name/
 
 ### 2- A **SKILL.md file with YAML frontmatter**
 
-#### 2- YAML frontmatter
+### **YAML frontmatter**
 
-**Required in YAML (minimum)**
+- **Required in YAML (minimum)**
 
 **name:** your-skill-name  
 **description:** What this skill does and when to use it  
 
 #### Optional YAML Additions  
 
-**Documentation Fields (optional)** — Describe the Skill for humans and version control
+- **Documentation Fields (optional)** — Describe the Skill for humans and version control
 
-- `license` - Licensing information
-- `compatibility` - Environment requirements
-- `metadata` - Additional properties (author, version, etc.)
+  - `license` - Licensing information
+  - `compatibility` - Environment requirements
+  - `metadata` - Additional properties (author, version, etc.)
 
-**Behavioral Fields (optional)** — Control how the Skill executes
+- **Behavioral Fields (optional)** — Control how the Skill executes
 
-- **context: fork** - Runs the Skill in an isolated sub-agent context, separate from the main conversation.
-  Use for verbose or exploratory Skills to prevent attentional residue from accumulating in the main session.
-- **allowed-tools** - Restricts which tools the Skill can access during execution. Use to enforce least-privilege
-  access and prevent accidental destructive actions (aligns with Class A/B/C risk classification).
-- **argument-hint** - Prompts the user for required parameters when the Skill is invoked without arguments.
-  Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
+  - **context: fork** - Runs the Skill in an isolated sub-agent context, separate from the main conversation.
+    Use for verbose or exploratory Skills to prevent attentional residue from accumulating in the main session.
+  - **allowed-tools** - Restricts which tools the Skill can access during execution. Use to enforce least-privilege
+    access and prevent accidental destructive actions (aligns with Class A/B/C risk classification).
+  - **argument-hint** - Prompts the user for required parameters when the Skill is invoked without arguments.
+    Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
 
- **Note:** 
- - **Documentation** fields describe the Skill.
- - **Behavioral fields** change how it runs. Missing behavioral fields doesn't break a Skill,
-   but using them correctly improves reliability and safety, especially for Class B and C Skills.
+-  **Note:** 
+   - **Documentation** fields describe the Skill.
+   - **Behavioral fields** change how it runs. Missing behavioral fields doesn't break a Skill,
+     but using them correctly improves reliability and safety, especially for Class B and C Skills.
 
 ### **Markdown body** with instructions
 
 Your Skill Title
 
-[Instructions for the AI...]
+[Instructions for the AI...]  
 
+This is where you provide the instructions for the model.  It is recommended that 8 component structure is used.
 
-
+### **Optional Reference Files**
 - references/ - Detailed documentation (Class B/C)
 - scripts/ - Executable code for automation/verification (Class C)
 - assets/ - Templates, images, data files
