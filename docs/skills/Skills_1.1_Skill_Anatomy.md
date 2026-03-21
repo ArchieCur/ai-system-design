@@ -182,27 +182,26 @@ Architecture: Multi-file (SKILL.md + references/ + scripts/)
 Skills follow an open standard that works across platforms (Anthropic, OpenAI, Google, and others). Agent Skills are folders of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently. Agent Skills open standard represents a significant advancement in AI technology, providing a framework for enhanced functionality, interoperability, and enterprise management in AI applications.
 <https://agentskills.io/home>
 
-### Required Structure-**Every skill must have**
+## Required Structure-**Every skill must have**
 
 ![Required Skill Structure](../assets/Required_Skill_Structure.png)
 
+
+### 1- **Directory**  
 - A **directory** with the skill name
 
 your-skill-name/
 
-- A **SKILL.md file with YAML frontmatter**
+### 2- A **SKILL.md file with YAML frontmatter**
 
-name: your-skill-name
+#### 2- YAML frontmatter
 
-description: What this skill does and when to use it
+**Required in YAML (minimum)**
 
-- **Markdown body** with instructions
+**name:** your-skill-name  
+**description:** What this skill does and when to use it  
 
-Your Skill Title
-
-[Instructions for the AI...]
-
-### Optional Additions
+#### Optional YAML Additions  
 
 **Documentation Fields (optional)** — Describe the Skill for humans and version control
 
@@ -212,13 +211,25 @@ Your Skill Title
 
 **Behavioral Fields (optional)** — Control how the Skill executes
 
-- `context: fork` - Runs the Skill in an isolated sub-agent context, separate from the main conversation. Use for verbose or exploratory Skills to prevent attentional residue from accumulating in the main session.
-- `allowed-tools` - Restricts which tools the Skill can access during execution. Use to enforce least-privilege access and prevent accidental destructive actions (aligns with Class A/B/C risk classification).
-- `argument-hint` - Prompts the user for required parameters when the Skill is invoked without arguments. Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
+- **context: fork** - Runs the Skill in an isolated sub-agent context, separate from the main conversation.
+  Use for verbose or exploratory Skills to prevent attentional residue from accumulating in the main session.
+- **allowed-tools** - Restricts which tools the Skill can access during execution. Use to enforce least-privilege
+  access and prevent accidental destructive actions (aligns with Class A/B/C risk classification).
+- **argument-hint** - Prompts the user for required parameters when the Skill is invoked without arguments.
+  Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
 
-> **Note:** Documentation fields describe the Skill. Behavioral fields change how it runs. Missing behavioral fields doesn't break a Skill — but using them correctly improves reliability and safety, especially for Class B and C Skills.
+ **Note:** 
+ - **Documentation** fields describe the Skill.
+ - **Behavioral fields** change how it runs. Missing behavioral fields doesn't break a Skill,
+   but using them correctly improves reliability and safety, especially for Class B and C Skills.
 
-Directories (optional)
+### **Markdown body** with instructions
+
+Your Skill Title
+
+[Instructions for the AI...]
+
+
 
 - references/ - Detailed documentation (Class B/C)
 - scripts/ - Executable code for automation/verification (Class C)
