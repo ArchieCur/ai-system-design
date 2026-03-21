@@ -1,0 +1,3100 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for AI system design, specifications, skills, tools and prompting">
+      
+      
+        <meta name="author" content="Archie Cur">
+      
+      
+        <link rel="canonical" href="https://archiecur.github.io/ai-system-design/skills/Skills_B_Complete_Skill_Template_Appendix/">
+      
+      
+        <link rel="prev" href="../Skills_A_Semantic_Tag_Reference_Appendix/">
+      
+      
+        <link rel="next" href="../Skills_C_Tool_Templates_Appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Appendix B: Complete Skill Template - AI System Design Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-b-complete-skill-template" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI System Design Documentation" class="md-header__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI System Design Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix B: Complete Skill Template
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../specifications/specifications-index/" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../skills-index/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/tools-index/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced-prompting/advanced-prompting-index/" class="md-tabs__link">
+          
+  
+  
+  Advanced Prompting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi_agent/multi-agent-index/" class="md-tabs__link">
+          
+  
+  
+  Multi-Agent Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI System Design Documentation" class="md-nav__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    AI System Design Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/specifications-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_1_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_2_MUST_Constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MUST Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_3_SHOULD_Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SHOULD Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_4_Providing_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providing CONTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_5_Expressing_INTENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expressing INTENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_6_Verification_Protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_7_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_8_Supremacy_Evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supremacy & Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_A_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_B_IntegrationExamples_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Integration Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_C_QuickReferenceGuide_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Verification Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_E_FolderStructures_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix E: Folder Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specifications/Specifications_F_Reverse_Engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix F: Belief Dynamics Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skills-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.1_Skill_Anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Anatomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.2_Basic_Template_ClassA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Template (Class A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.2a_Designing_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.3_Advanced_Skills_ClassB-C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skills (Class B/C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.4_Semantic_Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.5_Advanced_Deep_Dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_1.6_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_A_Semantic_Tag_Reference_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Semantic Tags Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's included
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to use this template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-template-universal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Template (Universal)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base Template (Universal)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REQUIRED FIELDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-fields-name-your-skill-name-here-description-what-what-this-skill-does-in-one-sentence-when-use-when-trigger-conditions-keywords-keywords-comma-separated-discovery-terms-optional-fields-uncomment-if-needed-license-compatibility-environment-requirements-eg-postgresql-12-mysql-8-metadata-author-your-organization-version-100-last_updated-yyyy-mm-dd-category-domain-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        # Required Fields name: your-skill-name-here description: &gt; [WHAT] What this skill does in one sentence. [WHEN] Use when [trigger conditions]. [KEYWORDS] Keywords: [comma, separated, discovery, terms]. # OPTIONAL FIELDS (uncomment if needed) # license: # compatibility: [Environment requirements, e.g., &quot;PostgreSQL 12+, MySQL 8+&quot;] # metadata: # author: your-organization # version: &quot;1.0.0&quot; # last_updated: &quot;YYYY-MM-DD&quot; # category: [domain-category]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-guide-class-a-b-and-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling Guide: Class A, B and C
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling Guide: Class A, B and C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-a-minimal-skill-30-50-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class A: Minimal Skill (30-50 lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-class-a-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Class A structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-b-intermediate-skill-200-400-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class B: Intermediate Skill (200-400 lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-class-b-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Class B file structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-c-complete-skill-1000-6000-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class C: Complete Skill (1,000-6,000+ lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-principle-for-class-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key principle for Class C:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Success
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_C_Tool_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills_D_Cross-Platform_Implementation_Resources_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Cross-Platform Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/tools-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Literacy_Designing_Tools%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Programmatic_Tool_Calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Prompting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Prompting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/advanced-prompting-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Building_Reliable_Agents_Advanced_Prompting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Reliable Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/The_2026_Prompt_Engineering_Field_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Engineering Field Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Automated_Prompt_Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automated Prompt Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Agent Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/multi-agent-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's included
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to use this template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-template-universal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Template (Universal)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base Template (Universal)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REQUIRED FIELDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-fields-name-your-skill-name-here-description-what-what-this-skill-does-in-one-sentence-when-use-when-trigger-conditions-keywords-keywords-comma-separated-discovery-terms-optional-fields-uncomment-if-needed-license-compatibility-environment-requirements-eg-postgresql-12-mysql-8-metadata-author-your-organization-version-100-last_updated-yyyy-mm-dd-category-domain-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        # Required Fields name: your-skill-name-here description: &gt; [WHAT] What this skill does in one sentence. [WHEN] Use when [trigger conditions]. [KEYWORDS] Keywords: [comma, separated, discovery, terms]. # OPTIONAL FIELDS (uncomment if needed) # license: # compatibility: [Environment requirements, e.g., &quot;PostgreSQL 12+, MySQL 8+&quot;] # metadata: # author: your-organization # version: &quot;1.0.0&quot; # last_updated: &quot;YYYY-MM-DD&quot; # category: [domain-category]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-guide-class-a-b-and-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling Guide: Class A, B and C
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling Guide: Class A, B and C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-a-minimal-skill-30-50-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class A: Minimal Skill (30-50 lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-class-a-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Class A structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-b-intermediate-skill-200-400-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class B: Intermediate Skill (200-400 lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-class-b-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Class B file structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-c-complete-skill-1000-6000-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class C: Complete Skill (1,000-6,000+ lines)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-principle-for-class-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key principle for Class C:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Success
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../skills-index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Skills
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="appendix-b-complete-skill-template">Appendix B: Complete Skill Template<a class="headerlink" href="#appendix-b-complete-skill-template" title="Permanent link">&para;</a></h1>
+<p><strong>Purpose:</strong> Copy-paste ready template with scaling guidance for Class A, B, and C skills</p>
+<p><strong>How to use:</strong> Copy entire template, replace placeholders, customize based on skill complexity</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This appendix provides a complete, production-ready skill template that works for all complexity levels (Class A, B, and C).</p>
+<h2 id="whats-included">What's included<a class="headerlink" href="#whats-included" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>• Base template with all 8 core components
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>• Scaling guide showing how to adapt for Class A/B/C
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>• Validation checklist ensuring quality
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>• User Intent Change emphasis (mandatory for all skills)
+</span></code></pre></div>
+<h2 id="how-to-use-this-template">How to use this template<a class="headerlink" href="#how-to-use-this-template" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. Copy the base template to a new SKILL.md file
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>2. Replace all [placeholders] with your content
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>3. Follow the scaling guide for your skill&#39;s complexity level
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>4. Use validation checklist before deployment
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>5. Test with real scenarios including User Intent Change
+</span></code></pre></div>
+<h2 id="base-template-universal">Base Template (Universal)<a class="headerlink" href="#base-template-universal" title="Permanent link">&para;</a></h2>
+<p>This template works for all skill classes. Customize depth based on complexity.</p>
+<h3 id="required-fields">REQUIRED FIELDS<a class="headerlink" href="#required-fields" title="Permanent link">&para;</a></h3>
+<p><img alt="YAML Frontmatter (Persistent)" src="../../assets/SkillsB_YAML.png" /></p>
+<h2 id="required-fields-name-your-skill-name-here-description-what-what-this-skill-does-in-one-sentence-when-use-when-trigger-conditions-keywords-keywords-comma-separated-discovery-terms-optional-fields-uncomment-if-needed-license-compatibility-environment-requirements-eg-postgresql-12-mysql-8-metadata-author-your-organization-version-100-last_updated-yyyy-mm-dd-category-domain-category"><div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>#<span class="w"> </span>Required<span class="w"> </span>Fields
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>name:<span class="w"> </span>your-skill-name-here
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>description:<span class="w"> </span>&gt;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>[WHAT]<span class="w"> </span>What<span class="w"> </span>this<span class="w"> </span>skill<span class="w"> </span>does<span class="w"> </span>in<span class="w"> </span>one<span class="w"> </span>sentence.
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>[WHEN]<span class="w"> </span>Use<span class="w"> </span>when<span class="w"> </span>[trigger<span class="w"> </span>conditions].
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>[KEYWORDS]<span class="w"> </span>Keywords:<span class="w"> </span>[comma,<span class="w"> </span>separated,<span class="w"> </span>discovery,<span class="w"> </span>terms].
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>#<span class="w"> </span>OPTIONAL<span class="w"> </span>FIELDS<span class="w"> </span>(uncomment<span class="w"> </span>if<span class="w"> </span>needed)
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>#<span class="w"> </span>license:<span class="w"> </span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>#<span class="w"> </span>compatibility:<span class="w"> </span>[Environment<span class="w"> </span>requirements,<span class="w"> </span>e.g.,<span class="w"> </span>&quot;PostgreSQL<span class="w"> </span>12+,<span class="w"> </span>MySQL<span class="w"> </span>8+&quot;]
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>#<span class="w"> </span>metadata:
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>#<span class="w"> </span>author:<span class="w"> </span>your-organization
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>#<span class="w"> </span>version:<span class="w"> </span>&quot;1.0.0&quot;
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>#<span class="w"> </span>last_updated:<span class="w"> </span>&quot;YYYY-MM-DD&quot;
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>#<span class="w"> </span>category:<span class="w"> </span>[domain-category]
+</span></code></pre></div><a class="headerlink" href="#required-fields-name-your-skill-name-here-description-what-what-this-skill-does-in-one-sentence-when-use-when-trigger-conditions-keywords-keywords-comma-separated-discovery-terms-optional-fields-uncomment-if-needed-license-compatibility-environment-requirements-eg-postgresql-12-mysql-8-metadata-author-your-organization-version-100-last_updated-yyyy-mm-dd-category-domain-category" title="Permanent link">&para;</a></h2>
+<p><img alt="Markdown File (Loads at Activation)" src="../../assets/SkillsB_Markdown.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>#[Skill Name in Title Case]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>**Purpose:** [One sentence explaining what problem this solves or what outcome it achieves]
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>---
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>## Critical Boundaries
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>&lt;critical&gt;
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>**MANDATORY: Monitor for User Intent Changes**
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Exit this skill IMMEDIATELY if user shows intent to change direction.
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>### User Intent Change signals (check FIRST, before anything else):
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>- User says &quot;Actually...&quot;, &quot;Never mind...&quot;, &quot;Wait...&quot;, &quot;Instead...&quot;
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>- User asks unrelated question (topic shift to different domain)
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>- User shows dissatisfaction (&quot;This isn&#39;t working&quot;, &quot;Let me try something else&quot;)
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>- User provides contradictory information (reverses previous requirements)
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>See full exit conditions in &lt;unload_condition&gt; section below.
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>This is the FIRST exit condition to check—before task completion,
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>before domain switches, before explicit stop signals.
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>&lt;/critical&gt;
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>---
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>&lt;critical&gt;
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a> Do NOT use this skill for:
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>- [Wrong domain/task 1] → Use [alternative-skill-name]
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>- [Wrong domain/task 2] → Use [alternative-skill-name]
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>- [Wrong technology/platform] → [Explanation or alternative]
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>- [Wrong problem type] → [Explanation or alternative]
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>&lt;/critical&gt;
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>---
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>&lt;prerequisite&gt;
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>This skill requires:
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>**Technical Requirements:**
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>- [System requirement, e.g., &quot;PostgreSQL 12+ or MySQL 8+&quot;]
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>- [Tool requirement, e.g., &quot;Access to EXPLAIN ANALYZE command&quot;]
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>**Permissions:**
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>- [Permission requirement, e.g., &quot;Read access to database&quot;]
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>- [Permission requirement, e.g., &quot;Write access for CREATE INDEX (if optimization needed)&quot;]
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>**Knowledge (helpful but not required):**
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>- [Optional knowledge, e.g., &quot;Basic SQL syntax familiarity&quot;]
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>&lt;/prerequisite&gt;
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>---
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>## When to Use This Skill
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>&lt;condition&gt;
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>Activate this skill when:
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>**User Language Triggers:**
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a>- User says &quot;[keyword phrase 1]&quot;, &quot;[keyword phrase 2]&quot;
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>- User asks to &quot;[action verb]&quot; or &quot;[action verb]&quot;
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>- User mentions &quot;[domain-specific term]&quot;
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a>**Observable Signals:**
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>- [Measurable condition, e.g., &quot;Query execution time &gt; 1 second&quot;]
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>- [System signal, e.g., &quot;EXPLAIN output provided&quot;]
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>- [Context indicator, e.g., &quot;User working with SQL queries&quot;]
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>**File/Data Indicators:**
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>- [File type, e.g., &quot;.sql files provided&quot;]
+</span><span id="__span-3-73"><a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a>- [Data format, e.g., &quot;Database connection available&quot;]
+</span><span id="__span-3-74"><a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a>&lt;/condition&gt;
+</span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>
+</span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a>---
+</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a>
+</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a>## Core Decision Logic
+</span><span id="__span-3-79"><a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a>
+</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>&lt;decision_criteria&gt;
+</span><span id="__span-3-81"><a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a>**Phase 1: [Initial Phase Name, e.g., &quot;Gather Information&quot;]**
+</span><span id="__span-3-82"><a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a>IF [condition A]:
+</span><span id="__span-3-83"><a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a>→ [Action to take]
+</span><span id="__span-3-84"><a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a>→ [Expected outcome]
+</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a>ELSE:
+</span><span id="__span-3-86"><a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a>→ [Alternative action]
+</span><span id="__span-3-87"><a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a>→ [Expected outcome]
+</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a>
+</span><span id="__span-3-89"><a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a>**Phase 2: [Main Work Phase, e.g., &quot;Analysis&quot;]**
+</span><span id="__span-3-90"><a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a>IF [condition B]:
+</span><span id="__span-3-91"><a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a>→ [Specific action]
+</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a>→ [Verification step]
+</span><span id="__span-3-93"><a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a>ELSE IF [condition C]:
+</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a>→ [Alternative approach]
+</span><span id="__span-3-95"><a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a>→ [Verification step]
+</span><span id="__span-3-96"><a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a>## ELSE:
+</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a>→ [Default action or request more info]
+</span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a>
+</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a>**Phase 3: [Completion Phase, e.g., &quot;Verification&quot;]**
+</span><span id="__span-3-100"><a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a>IF [success condition]:
+</span><span id="__span-3-101"><a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a>→ [Confirm success action]
+</span><span id="__span-3-102"><a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a>ELSE:
+</span><span id="__span-3-103"><a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a>→ [Retry or escalate action]
+</span><span id="__span-3-104"><a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a>→ See &lt;fallback&gt; for alternatives
+</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a>&lt;/decision_criteria&gt;
+</span><span id="__span-3-106"><a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a>
+</span><span id="__span-3-107"><a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a>---
+</span><span id="__span-3-108"><a id="__codelineno-3-108" name="__codelineno-3-108" href="#__codelineno-3-108"></a>
+</span><span id="__span-3-109"><a id="__codelineno-3-109" name="__codelineno-3-109" href="#__codelineno-3-109"></a>## Recommended Approaches
+</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a>
+</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a>&lt;good_pattern&gt;
+</span><span id="__span-3-112"><a id="__codelineno-3-112" name="__codelineno-3-112" href="#__codelineno-3-112"></a>**[Pattern Name, e.g., &quot;Systematic Analysis Workflow&quot;]:**
+</span><span id="__span-3-113"><a id="__codelineno-3-113" name="__codelineno-3-113" href="#__codelineno-3-113"></a>[Step-by-step description of recommended approach]
+</span><span id="__span-3-114"><a id="__codelineno-3-114" name="__codelineno-3-114" href="#__codelineno-3-114"></a>
+</span><span id="__span-3-115"><a id="__codelineno-3-115" name="__codelineno-3-115" href="#__codelineno-3-115"></a>1. [Step 1 with explanation]
+</span><span id="__span-3-116"><a id="__codelineno-3-116" name="__codelineno-3-116" href="#__codelineno-3-116"></a>2. [Step 2 with explanation]
+</span><span id="__span-3-117"><a id="__codelineno-3-117" name="__codelineno-3-117" href="#__codelineno-3-117"></a>3. [Step 3 with explanation]
+</span><span id="__span-3-118"><a id="__codelineno-3-118" name="__codelineno-3-118" href="#__codelineno-3-118"></a>
+</span><span id="__span-3-119"><a id="__codelineno-3-119" name="__codelineno-3-119" href="#__codelineno-3-119"></a>**Benefits:**
+</span><span id="__span-3-120"><a id="__codelineno-3-120" name="__codelineno-3-120" href="#__codelineno-3-120"></a>- [Benefit 1]
+</span><span id="__span-3-121"><a id="__codelineno-3-121" name="__codelineno-3-121" href="#__codelineno-3-121"></a>- [Benefit 2]
+</span><span id="__span-3-122"><a id="__codelineno-3-122" name="__codelineno-3-122" href="#__codelineno-3-122"></a>- [Benefit 3]
+</span><span id="__span-3-123"><a id="__codelineno-3-123" name="__codelineno-3-123" href="#__codelineno-3-123"></a>
+</span><span id="__span-3-124"><a id="__codelineno-3-124" name="__codelineno-3-124" href="#__codelineno-3-124"></a>**When to use:**
+</span><span id="__span-3-125"><a id="__codelineno-3-125" name="__codelineno-3-125" href="#__codelineno-3-125"></a>- [Scenario where this pattern applies]
+</span><span id="__span-3-126"><a id="__codelineno-3-126" name="__codelineno-3-126" href="#__codelineno-3-126"></a>&lt;/good_pattern&gt;
+</span><span id="__span-3-127"><a id="__codelineno-3-127" name="__codelineno-3-127" href="#__codelineno-3-127"></a>
+</span><span id="__span-3-128"><a id="__codelineno-3-128" name="__codelineno-3-128" href="#__codelineno-3-128"></a>---
+</span><span id="__span-3-129"><a id="__codelineno-3-129" name="__codelineno-3-129" href="#__codelineno-3-129"></a>
+</span><span id="__span-3-130"><a id="__codelineno-3-130" name="__codelineno-3-130" href="#__codelineno-3-130"></a>## What NOT to Do
+</span><span id="__span-3-131"><a id="__codelineno-3-131" name="__codelineno-3-131" href="#__codelineno-3-131"></a>
+</span><span id="__span-3-132"><a id="__codelineno-3-132" name="__codelineno-3-132" href="#__codelineno-3-132"></a>&lt;bad_pattern&gt;
+</span><span id="__span-3-133"><a id="__codelineno-3-133" name="__codelineno-3-133" href="#__codelineno-3-133"></a>[Common mistake or anti-pattern name]
+</span><span id="__span-3-134"><a id="__codelineno-3-134" name="__codelineno-3-134" href="#__codelineno-3-134"></a>
+</span><span id="__span-3-135"><a id="__codelineno-3-135" name="__codelineno-3-135" href="#__codelineno-3-135"></a>&lt;rationale&gt;
+</span><span id="__span-3-136"><a id="__codelineno-3-136" name="__codelineno-3-136" href="#__codelineno-3-136"></a>Why this approach is wrong:
+</span><span id="__span-3-137"><a id="__codelineno-3-137" name="__codelineno-3-137" href="#__codelineno-3-137"></a>- [Reason 1 with explanation]
+</span><span id="__span-3-138"><a id="__codelineno-3-138" name="__codelineno-3-138" href="#__codelineno-3-138"></a>- [Reason 2 with explanation]
+</span><span id="__span-3-139"><a id="__codelineno-3-139" name="__codelineno-3-139" href="#__codelineno-3-139"></a>- [Consequence if this approach is used]
+</span><span id="__span-3-140"><a id="__codelineno-3-140" name="__codelineno-3-140" href="#__codelineno-3-140"></a>**Better approach:** [Alternative recommendation]
+</span><span id="__span-3-141"><a id="__codelineno-3-141" name="__codelineno-3-141" href="#__codelineno-3-141"></a>&lt;/rationale&gt;
+</span><span id="__span-3-142"><a id="__codelineno-3-142" name="__codelineno-3-142" href="#__codelineno-3-142"></a>
+</span><span id="__span-3-143"><a id="__codelineno-3-143" name="__codelineno-3-143" href="#__codelineno-3-143"></a>&lt;/bad_pattern&gt;
+</span><span id="__span-3-144"><a id="__codelineno-3-144" name="__codelineno-3-144" href="#__codelineno-3-144"></a>
+</span><span id="__span-3-145"><a id="__codelineno-3-145" name="__codelineno-3-145" href="#__codelineno-3-145"></a>&lt;warning&gt;
+</span><span id="__span-3-146"><a id="__codelineno-3-146" name="__codelineno-3-146" href="#__codelineno-3-146"></a>[Specific warning about dangerous operation or common pitfall]
+</span><span id="__span-3-147"><a id="__codelineno-3-147" name="__codelineno-3-147" href="#__codelineno-3-147"></a>[Explanation of what could go wrong and how to avoid it]
+</span><span id="__span-3-148"><a id="__codelineno-3-148" name="__codelineno-3-148" href="#__codelineno-3-148"></a>&lt;/warning&gt;
+</span><span id="__span-3-149"><a id="__codelineno-3-149" name="__codelineno-3-149" href="#__codelineno-3-149"></a>
+</span><span id="__span-3-150"><a id="__codelineno-3-150" name="__codelineno-3-150" href="#__codelineno-3-150"></a>---
+</span><span id="__span-3-151"><a id="__codelineno-3-151" name="__codelineno-3-151" href="#__codelineno-3-151"></a>
+</span><span id="__span-3-152"><a id="__codelineno-3-152" name="__codelineno-3-152" href="#__codelineno-3-152"></a>## Examples
+</span><span id="__span-3-153"><a id="__codelineno-3-153" name="__codelineno-3-153" href="#__codelineno-3-153"></a>
+</span><span id="__span-3-154"><a id="__codelineno-3-154" name="__codelineno-3-154" href="#__codelineno-3-154"></a>&lt;example&gt;
+</span><span id="__span-3-155"><a id="__codelineno-3-155" name="__codelineno-3-155" href="#__codelineno-3-155"></a>**Example 1: [Scenario Name, e.g., &quot;Basic Case&quot;]**
+</span><span id="__span-3-156"><a id="__codelineno-3-156" name="__codelineno-3-156" href="#__codelineno-3-156"></a>
+</span><span id="__span-3-157"><a id="__codelineno-3-157" name="__codelineno-3-157" href="#__codelineno-3-157"></a>**Context:** [Brief description of scenario]
+</span><span id="__span-3-158"><a id="__codelineno-3-158" name="__codelineno-3-158" href="#__codelineno-3-158"></a>
+</span><span id="__span-3-159"><a id="__codelineno-3-159" name="__codelineno-3-159" href="#__codelineno-3-159"></a>**Input/Before:**
+</span><span id="__span-3-160"><a id="__codelineno-3-160" name="__codelineno-3-160" href="#__codelineno-3-160"></a>[Code, query, or input before transformation]
+</span><span id="__span-3-161"><a id="__codelineno-3-161" name="__codelineno-3-161" href="#__codelineno-3-161"></a>
+</span><span id="__span-3-162"><a id="__codelineno-3-162" name="__codelineno-3-162" href="#__codelineno-3-162"></a>**Problem:** [What was wrong or what needed improvement]
+</span><span id="__span-3-163"><a id="__codelineno-3-163" name="__codelineno-3-163" href="#__codelineno-3-163"></a>
+</span><span id="__span-3-164"><a id="__codelineno-3-164" name="__codelineno-3-164" href="#__codelineno-3-164"></a>**Solution/After:**
+</span><span id="__span-3-165"><a id="__codelineno-3-165" name="__codelineno-3-165" href="#__codelineno-3-165"></a>[Code, query, or output after transformation]
+</span><span id="__span-3-166"><a id="__codelineno-3-166" name="__codelineno-3-166" href="#__codelineno-3-166"></a>
+</span><span id="__span-3-167"><a id="__codelineno-3-167" name="__codelineno-3-167" href="#__codelineno-3-167"></a>**Result:**
+</span><span id="__span-3-168"><a id="__codelineno-3-168" name="__codelineno-3-168" href="#__codelineno-3-168"></a>- [Metric 1]: [Before value] → [After value] ([Improvement %])
+</span><span id="__span-3-169"><a id="__codelineno-3-169" name="__codelineno-3-169" href="#__codelineno-3-169"></a>- [Metric 2]: [Qualitative improvement]
+</span><span id="__span-3-170"><a id="__codelineno-3-170" name="__codelineno-3-170" href="#__codelineno-3-170"></a>
+</span><span id="__span-3-171"><a id="__codelineno-3-171" name="__codelineno-3-171" href="#__codelineno-3-171"></a>**Verification:**
+</span><span id="__span-3-172"><a id="__codelineno-3-172" name="__codelineno-3-172" href="#__codelineno-3-172"></a>[How success was verified]
+</span><span id="__span-3-173"><a id="__codelineno-3-173" name="__codelineno-3-173" href="#__codelineno-3-173"></a>&lt;/example&gt;
+</span><span id="__span-3-174"><a id="__codelineno-3-174" name="__codelineno-3-174" href="#__codelineno-3-174"></a>
+</span><span id="__span-3-175"><a id="__codelineno-3-175" name="__codelineno-3-175" href="#__codelineno-3-175"></a>&lt;example&gt;
+</span><span id="__span-3-176"><a id="__codelineno-3-176" name="__codelineno-3-176" href="#__codelineno-3-176"></a>**Example 2: [Different Scenario, e.g., &quot;Common Variation&quot;]**
+</span><span id="__span-3-177"><a id="__codelineno-3-177" name="__codelineno-3-177" href="#__codelineno-3-177"></a>[Same structure as Example 1]
+</span><span id="__span-3-178"><a id="__codelineno-3-178" name="__codelineno-3-178" href="#__codelineno-3-178"></a>&lt;/example&gt;
+</span><span id="__span-3-179"><a id="__codelineno-3-179" name="__codelineno-3-179" href="#__codelineno-3-179"></a>
+</span><span id="__span-3-180"><a id="__codelineno-3-180" name="__codelineno-3-180" href="#__codelineno-3-180"></a>&lt;example&gt;
+</span><span id="__span-3-181"><a id="__codelineno-3-181" name="__codelineno-3-181" href="#__codelineno-3-181"></a>**Example 3: [Edge Case, e.g., &quot;Special Handling Required&quot;]**
+</span><span id="__span-3-182"><a id="__codelineno-3-182" name="__codelineno-3-182" href="#__codelineno-3-182"></a>[Same structure as Example 1, but show edge case handling]
+</span><span id="__span-3-183"><a id="__codelineno-3-183" name="__codelineno-3-183" href="#__codelineno-3-183"></a>&lt;/example&gt;
+</span><span id="__span-3-184"><a id="__codelineno-3-184" name="__codelineno-3-184" href="#__codelineno-3-184"></a>
+</span><span id="__span-3-185"><a id="__codelineno-3-185" name="__codelineno-3-185" href="#__codelineno-3-185"></a>---
+</span><span id="__span-3-186"><a id="__codelineno-3-186" name="__codelineno-3-186" href="#__codelineno-3-186"></a>
+</span><span id="__span-3-187"><a id="__codelineno-3-187" name="__codelineno-3-187" href="#__codelineno-3-187"></a>## Success Criteria
+</span><span id="__span-3-188"><a id="__codelineno-3-188" name="__codelineno-3-188" href="#__codelineno-3-188"></a>
+</span><span id="__span-3-189"><a id="__codelineno-3-189" name="__codelineno-3-189" href="#__codelineno-3-189"></a>&lt;success_criteria&gt;
+</span><span id="__span-3-190"><a id="__codelineno-3-190" name="__codelineno-3-190" href="#__codelineno-3-190"></a>[Task name] is successful when:
+</span><span id="__span-3-191"><a id="__codelineno-3-191" name="__codelineno-3-191" href="#__codelineno-3-191"></a>
+</span><span id="__span-3-192"><a id="__codelineno-3-192" name="__codelineno-3-192" href="#__codelineno-3-192"></a>**[Category 1, e.g., &quot;Performance Metrics&quot;]:**
+</span><span id="__span-3-193"><a id="__codelineno-3-193" name="__codelineno-3-193" href="#__codelineno-3-193"></a>✓ [Specific measurable criterion, e.g., &quot;Execution time reduced by &gt;50%&quot;]
+</span><span id="__span-3-194"><a id="__codelineno-3-194" name="__codelineno-3-194" href="#__codelineno-3-194"></a>✓ [Specific measurable criterion]
+</span><span id="__span-3-195"><a id="__codelineno-3-195" name="__codelineno-3-195" href="#__codelineno-3-195"></a>✓ [Specific measurable criterion]
+</span><span id="__span-3-196"><a id="__codelineno-3-196" name="__codelineno-3-196" href="#__codelineno-3-196"></a>
+</span><span id="__span-3-197"><a id="__codelineno-3-197" name="__codelineno-3-197" href="#__codelineno-3-197"></a>**[Category 2, e.g., &quot;Quality Checks&quot;]:**
+</span><span id="__span-3-198"><a id="__codelineno-3-198" name="__codelineno-3-198" href="#__codelineno-3-198"></a>✓ [Verification criterion]
+</span><span id="__span-3-199"><a id="__codelineno-3-199" name="__codelineno-3-199" href="#__codelineno-3-199"></a>✓ [Verification criterion]
+</span><span id="__span-3-200"><a id="__codelineno-3-200" name="__codelineno-3-200" href="#__codelineno-3-200"></a>
+</span><span id="__span-3-201"><a id="__codelineno-3-201" name="__codelineno-3-201" href="#__codelineno-3-201"></a>**[Category 3, e.g., &quot;User Confirmation&quot;]:**
+</span><span id="__span-3-202"><a id="__codelineno-3-202" name="__codelineno-3-202" href="#__codelineno-3-202"></a>✓ [User feedback criterion]
+</span><span id="__span-3-203"><a id="__codelineno-3-203" name="__codelineno-3-203" href="#__codelineno-3-203"></a>✓ [Final validation criterion]
+</span><span id="__span-3-204"><a id="__codelineno-3-204" name="__codelineno-3-204" href="#__codelineno-3-204"></a>&lt;/success_criteria&gt;
+</span><span id="__span-3-205"><a id="__codelineno-3-205" name="__codelineno-3-205" href="#__codelineno-3-205"></a>
+</span><span id="__span-3-206"><a id="__codelineno-3-206" name="__codelineno-3-206" href="#__codelineno-3-206"></a>---
+</span><span id="__span-3-207"><a id="__codelineno-3-207" name="__codelineno-3-207" href="#__codelineno-3-207"></a>
+</span><span id="__span-3-208"><a id="__codelineno-3-208" name="__codelineno-3-208" href="#__codelineno-3-208"></a>## Self-Verification
+</span><span id="__span-3-209"><a id="__codelineno-3-209" name="__codelineno-3-209" href="#__codelineno-3-209"></a>
+</span><span id="__span-3-210"><a id="__codelineno-3-210" name="__codelineno-3-210" href="#__codelineno-3-210"></a>&lt;verification&gt;
+</span><span id="__span-3-211"><a id="__codelineno-3-211" name="__codelineno-3-211" href="#__codelineno-3-211"></a>
+</span><span id="__span-3-212"><a id="__codelineno-3-212" name="__codelineno-3-212" href="#__codelineno-3-212"></a>**Automated Verification (recommended for Class B/C):**
+</span><span id="__span-3-213"><a id="__codelineno-3-213" name="__codelineno-3-213" href="#__codelineno-3-213"></a>
+</span><span id="__span-3-214"><a id="__codelineno-3-214" name="__codelineno-3-214" href="#__codelineno-3-214"></a>Run verification script:
+</span><span id="__span-3-215"><a id="__codelineno-3-215" name="__codelineno-3-215" href="#__codelineno-3-215"></a>
+</span><span id="__span-3-216"><a id="__codelineno-3-216" name="__codelineno-3-216" href="#__codelineno-3-216"></a>bash
+</span><span id="__span-3-217"><a id="__codelineno-3-217" name="__codelineno-3-217" href="#__codelineno-3-217"></a>
+</span><span id="__span-3-218"><a id="__codelineno-3-218" name="__codelineno-3-218" href="#__codelineno-3-218"></a>./scripts/verify.sh [arguments]
+</span><span id="__span-3-219"><a id="__codelineno-3-219" name="__codelineno-3-219" href="#__codelineno-3-219"></a>
+</span><span id="__span-3-220"><a id="__codelineno-3-220" name="__codelineno-3-220" href="#__codelineno-3-220"></a>What it checks:
+</span><span id="__span-3-221"><a id="__codelineno-3-221" name="__codelineno-3-221" href="#__codelineno-3-221"></a>1. [Verification point 1]
+</span><span id="__span-3-222"><a id="__codelineno-3-222" name="__codelineno-3-222" href="#__codelineno-3-222"></a>2. [Verification point 2]
+</span><span id="__span-3-223"><a id="__codelineno-3-223" name="__codelineno-3-223" href="#__codelineno-3-223"></a>3. [Verification point 3]
+</span><span id="__span-3-224"><a id="__codelineno-3-224" name="__codelineno-3-224" href="#__codelineno-3-224"></a>
+</span><span id="__span-3-225"><a id="__codelineno-3-225" name="__codelineno-3-225" href="#__codelineno-3-225"></a>Exit codes:
+</span><span id="__span-3-226"><a id="__codelineno-3-226" name="__codelineno-3-226" href="#__codelineno-3-226"></a>• 0: All checks passed ✓
+</span><span id="__span-3-227"><a id="__codelineno-3-227" name="__codelineno-3-227" href="#__codelineno-3-227"></a>• 1: Verification failed (details in output)
+</span><span id="__span-3-228"><a id="__codelineno-3-228" name="__codelineno-3-228" href="#__codelineno-3-228"></a>• 2: Prerequisites missing
+</span><span id="__span-3-229"><a id="__codelineno-3-229" name="__codelineno-3-229" href="#__codelineno-3-229"></a>
+</span><span id="__span-3-230"><a id="__codelineno-3-230" name="__codelineno-3-230" href="#__codelineno-3-230"></a>Manual Verification (if scripts unavailable):
+</span><span id="__span-3-231"><a id="__codelineno-3-231" name="__codelineno-3-231" href="#__codelineno-3-231"></a>Step 1: [Verification Category 1] □ [Check item 1] □ [Check item 2]
+</span><span id="__span-3-232"><a id="__codelineno-3-232" name="__codelineno-3-232" href="#__codelineno-3-232"></a>Step 2: [Verification Category 2] □ [Check item 1] □ [Check item 2]
+</span><span id="__span-3-233"><a id="__codelineno-3-233" name="__codelineno-3-233" href="#__codelineno-3-233"></a>Step 3: [Verification Category 3] □ [Check item 1] □ [Check item 2]
+</span><span id="__span-3-234"><a id="__codelineno-3-234" name="__codelineno-3-234" href="#__codelineno-3-234"></a>
+</span><span id="__span-3-235"><a id="__codelineno-3-235" name="__codelineno-3-235" href="#__codelineno-3-235"></a>All checks must pass for verification to succeed.
+</span><span id="__span-3-236"><a id="__codelineno-3-236" name="__codelineno-3-236" href="#__codelineno-3-236"></a>
+</span><span id="__span-3-237"><a id="__codelineno-3-237" name="__codelineno-3-237" href="#__codelineno-3-237"></a>Expected Output Method (alternative for Class A):
+</span><span id="__span-3-238"><a id="__codelineno-3-238" name="__codelineno-3-238" href="#__codelineno-3-238"></a>Run through test cases:
+</span><span id="__span-3-239"><a id="__codelineno-3-239" name="__codelineno-3-239" href="#__codelineno-3-239"></a>Test Case 1: Input: [Sample input] Expected: [Expected output] Check: [What to verify] ✓
+</span><span id="__span-3-240"><a id="__codelineno-3-240" name="__codelineno-3-240" href="#__codelineno-3-240"></a>Test Case 2: Input: [Sample input] Expected: [Expected output] Check: [What to verify] ✓
+</span><span id="__span-3-241"><a id="__codelineno-3-241" name="__codelineno-3-241" href="#__codelineno-3-241"></a>
+</span><span id="__span-3-242"><a id="__codelineno-3-242" name="__codelineno-3-242" href="#__codelineno-3-242"></a>All test cases must pass. 
+</span><span id="__span-3-243"><a id="__codelineno-3-243" name="__codelineno-3-243" href="#__codelineno-3-243"></a>&lt;/verification&gt;
+</span><span id="__span-3-244"><a id="__codelineno-3-244" name="__codelineno-3-244" href="#__codelineno-3-244"></a>
+</span><span id="__span-3-245"><a id="__codelineno-3-245" name="__codelineno-3-245" href="#__codelineno-3-245"></a>---
+</span><span id="__span-3-246"><a id="__codelineno-3-246" name="__codelineno-3-246" href="#__codelineno-3-246"></a>
+</span><span id="__span-3-247"><a id="__codelineno-3-247" name="__codelineno-3-247" href="#__codelineno-3-247"></a>When to Stop Using This Skill
+</span><span id="__span-3-248"><a id="__codelineno-3-248" name="__codelineno-3-248" href="#__codelineno-3-248"></a>&lt;unload_condition&gt; 
+</span><span id="__span-3-249"><a id="__codelineno-3-249" name="__codelineno-3-249" href="#__codelineno-3-249"></a>Stop using this skill when:
+</span><span id="__span-3-250"><a id="__codelineno-3-250" name="__codelineno-3-250" href="#__codelineno-3-250"></a>
+</span><span id="__span-3-251"><a id="__codelineno-3-251" name="__codelineno-3-251" href="#__codelineno-3-251"></a>User Intent Change (CHECK THIS FIRST—HIGHEST PRIORITY):
+</span><span id="__span-3-252"><a id="__codelineno-3-252" name="__codelineno-3-252" href="#__codelineno-3-252"></a>1. User says &quot;Actually...&quot;, &quot;Never mind...&quot;, &quot;Wait...&quot;, &quot;Let me ask something else...&quot;
+</span><span id="__span-3-253"><a id="__codelineno-3-253" name="__codelineno-3-253" href="#__codelineno-3-253"></a>2. User says &quot;Let&#39;s switch to...&quot;, &quot;Instead, can you...&quot;, &quot;Forget that...&quot;
+</span><span id="__span-3-254"><a id="__codelineno-3-254" name="__codelineno-3-254" href="#__codelineno-3-254"></a>3. User interrupts with &quot;Stop&quot;, &quot;Hold on&quot;, &quot;Actually no&quot;
+</span><span id="__span-3-255"><a id="__codelineno-3-255" name="__codelineno-3-255" href="#__codelineno-3-255"></a>4. User asks question in completely different domain (topic shift)
+</span><span id="__span-3-256"><a id="__codelineno-3-256" name="__codelineno-3-256" href="#__codelineno-3-256"></a>5. User uploads new file or provides new context unrelated to current task
+</span><span id="__span-3-257"><a id="__codelineno-3-257" name="__codelineno-3-257" href="#__codelineno-3-257"></a>6. User says &quot;This isn&#39;t what I wanted&quot;, &quot;That&#39;s not helpful&quot;, &quot;This isn&#39;t working&quot;
+</span><span id="__span-3-258"><a id="__codelineno-3-258" name="__codelineno-3-258" href="#__codelineno-3-258"></a>7. User says &quot;Let me try a different approach&quot;, &quot;This is taking too long&quot;
+</span><span id="__span-3-259"><a id="__codelineno-3-259" name="__codelineno-3-259" href="#__codelineno-3-259"></a>8. User provides contradictory information to earlier statements
+</span><span id="__span-3-260"><a id="__codelineno-3-260" name="__codelineno-3-260" href="#__codelineno-3-260"></a>9. User sends new message mid-execution (interrupting your response)
+</span><span id="__span-3-261"><a id="__codelineno-3-261" name="__codelineno-3-261" href="#__codelineno-3-261"></a>10. User changes requirements significantly (&quot;Oh wait, I also need...&quot;)
+</span><span id="__span-3-262"><a id="__codelineno-3-262" name="__codelineno-3-262" href="#__codelineno-3-262"></a>
+</span><span id="__span-3-263"><a id="__codelineno-3-263" name="__codelineno-3-263" href="#__codelineno-3-263"></a>ACTION WHEN ANY INTENT CHANGE DETECTED: 
+</span><span id="__span-3-264"><a id="__codelineno-3-264" name="__codelineno-3-264" href="#__codelineno-3-264"></a>→ Stop current task IMMEDIATELY (do not
+</span><span id="__span-3-265"><a id="__codelineno-3-265" name="__codelineno-3-265" href="#__codelineno-3-265"></a>finish current step) 
+</span><span id="__span-3-266"><a id="__codelineno-3-266" name="__codelineno-3-266" href="#__codelineno-3-266"></a>→ Acknowledge the pivot: &quot;I see you&#39;d like to shift focus to [new topic]&quot; 
+</span><span id="__span-3-267"><a id="__codelineno-3-267" name="__codelineno-3-267" href="#__codelineno-3-267"></a>→ Offer to help with new direction: &quot;How can I help with [new topic]?&quot; 
+</span><span id="__span-3-268"><a id="__codelineno-3-268" name="__codelineno-3-268" href="#__codelineno-3-268"></a>→ Do NOT say &quot;Let me just finish this first&quot; 
+</span><span id="__span-3-269"><a id="__codelineno-3-269" name="__codelineno-3-269" href="#__codelineno-3-269"></a>→ Do NOT complete the original task 
+</span><span id="__span-3-270"><a id="__codelineno-3-270" name="__codelineno-3-270" href="#__codelineno-3-270"></a>→ Do NOT ask &quot;Are you sure?&quot; or resist the change
+</span><span id="__span-3-271"><a id="__codelineno-3-271" name="__codelineno-3-271" href="#__codelineno-3-271"></a>
+</span><span id="__span-3-272"><a id="__codelineno-3-272" name="__codelineno-3-272" href="#__codelineno-3-272"></a>Task Complete (check only if no intent change detected): 
+</span><span id="__span-3-273"><a id="__codelineno-3-273" name="__codelineno-3-273" href="#__codelineno-3-273"></a>11. [Task-specific completion signal 1]
+</span><span id="__span-3-274"><a id="__codelineno-3-274" name="__codelineno-3-274" href="#__codelineno-3-274"></a>12. [Task-specific completion signal 2] 
+</span><span id="__span-3-275"><a id="__codelineno-3-275" name="__codelineno-3-275" href="#__codelineno-3-275"></a>13. All success criteria from &lt;success_criteria&gt; are satisfied 
+</span><span id="__span-3-276"><a id="__codelineno-3-276" name="__codelineno-3-276" href="#__codelineno-3-276"></a>14. User confirms task is complete (&quot;That works&quot;, &quot;Perfect&quot;, &quot;Thanks&quot;)
+</span><span id="__span-3-277"><a id="__codelineno-3-277" name="__codelineno-3-277" href="#__codelineno-3-277"></a>
+</span><span id="__span-3-278"><a id="__codelineno-3-278" name="__codelineno-3-278" href="#__codelineno-3-278"></a>Domain Switch (check only if no intent change detected): 
+</span><span id="__span-3-279"><a id="__codelineno-3-279" name="__codelineno-3-279" href="#__codelineno-3-279"></a>15. User moves to [different domain]→ Activate [other-skill-name] 
+</span><span id="__span-3-280"><a id="__codelineno-3-280" name="__codelineno-3-280" href="#__codelineno-3-280"></a>16. Topic changes to [different topic] → Exit this domain 
+</span><span id="__span-3-281"><a id="__codelineno-3-281" name="__codelineno-3-281" href="#__codelineno-3-281"></a>17. [Technology/platform change] → This skill doesn&#39;t apply
+</span><span id="__span-3-282"><a id="__codelineno-3-282" name="__codelineno-3-282" href="#__codelineno-3-282"></a>
+</span><span id="__span-3-283"><a id="__codelineno-3-283" name="__codelineno-3-283" href="#__codelineno-3-283"></a>Failure Mode (check only if no intent change detected): 
+</span><span id="__span-3-284"><a id="__codelineno-3-284" name="__codelineno-3-284" href="#__codelineno-3-284"></a>18. After [N] attempts with [insufficient progress metric] → Escalate to [expert/alternative] 
+</span><span id="__span-3-285"><a id="__codelineno-3-285" name="__codelineno-3-285" href="#__codelineno-3-285"></a>19. Required resources unavailable → Notify user, cannot proceed 
+</span><span id="__span-3-286"><a id="__codelineno-3-286" name="__codelineno-3-286" href="#__codelineno-3-286"></a>20. Verification consistently fails → Review approach with user 
+</span><span id="__span-3-287"><a id="__codelineno-3-287" name="__codelineno-3-287" href="#__codelineno-3-287"></a>21. User lacks required permissions → Request permissions or escalate
+</span><span id="__span-3-288"><a id="__codelineno-3-288" name="__codelineno-3-288" href="#__codelineno-3-288"></a>
+</span><span id="__span-3-289"><a id="__codelineno-3-289" name="__codelineno-3-289" href="#__codelineno-3-289"></a>Explicit Stop (check only if no intent change detected): 
+</span><span id="__span-3-290"><a id="__codelineno-3-290" name="__codelineno-3-290" href="#__codelineno-3-290"></a>22. User says &quot;stop&quot;, &quot;that&#39;s enough&quot;,
+</span><span id="__span-3-291"><a id="__codelineno-3-291" name="__codelineno-3-291" href="#__codelineno-3-291"></a>&quot;don&#39;t continue&quot;, &quot;cancel&quot; 
+</span><span id="__span-3-292"><a id="__codelineno-3-292" name="__codelineno-3-292" href="#__codelineno-3-292"></a>23. User asks to explain instead of execute (teach, don&#39;t do)
+</span><span id="__span-3-293"><a id="__codelineno-3-293" name="__codelineno-3-293" href="#__codelineno-3-293"></a>&lt;/unload_condition&gt;
+</span><span id="__span-3-294"><a id="__codelineno-3-294" name="__codelineno-3-294" href="#__codelineno-3-294"></a>
+</span><span id="__span-3-295"><a id="__codelineno-3-295" name="__codelineno-3-295" href="#__codelineno-3-295"></a>Alternative Approaches
+</span><span id="__span-3-296"><a id="__codelineno-3-296" name="__codelineno-3-296" href="#__codelineno-3-296"></a>
+</span><span id="__span-3-297"><a id="__codelineno-3-297" name="__codelineno-3-297" href="#__codelineno-3-297"></a>&lt;fallback&gt; 
+</span><span id="__span-3-298"><a id="__codelineno-3-298" name="__codelineno-3-298" href="#__codelineno-3-298"></a>If primary approach doesn&#39;t work:
+</span><span id="__span-3-299"><a id="__codelineno-3-299" name="__codelineno-3-299" href="#__codelineno-3-299"></a>
+</span><span id="__span-3-300"><a id="__codelineno-3-300" name="__codelineno-3-300" href="#__codelineno-3-300"></a>Level 1: Verify Assumptions → [Check assumption 1] → [Check assumption 2] → [Adjust approach based on findings]
+</span><span id="__span-3-301"><a id="__codelineno-3-301" name="__codelineno-3-301" href="#__codelineno-3-301"></a>
+</span><span id="__span-3-302"><a id="__codelineno-3-302" name="__codelineno-3-302" href="#__codelineno-3-302"></a>Level 2: Try Alternative Method → [Alternative approach 1] → [When to use this alternative] → [Expected outcome]
+</span><span id="__span-3-303"><a id="__codelineno-3-303" name="__codelineno-3-303" href="#__codelineno-3-303"></a>
+</span><span id="__span-3-304"><a id="__codelineno-3-304" name="__codelineno-3-304" href="#__codelineno-3-304"></a>Level 3: Escalate or Hand Off → [When to escalate, e.g., &quot;After 3 attempts with &lt;20% improvement&quot;]
+</span><span id="__span-3-305"><a id="__codelineno-3-305" name="__codelineno-3-305" href="#__codelineno-3-305"></a>→ [Who/what to escalate to] → [Information to provide]
+</span><span id="__span-3-306"><a id="__codelineno-3-306" name="__codelineno-3-306" href="#__codelineno-3-306"></a>&lt;/fallback&gt;
+</span><span id="__span-3-307"><a id="__codelineno-3-307" name="__codelineno-3-307" href="#__codelineno-3-307"></a>
+</span><span id="__span-3-308"><a id="__codelineno-3-308" name="__codelineno-3-308" href="#__codelineno-3-308"></a>---
+</span><span id="__span-3-309"><a id="__codelineno-3-309" name="__codelineno-3-309" href="#__codelineno-3-309"></a>
+</span><span id="__span-3-310"><a id="__codelineno-3-310" name="__codelineno-3-310" href="#__codelineno-3-310"></a>Additional Context
+</span><span id="__span-3-311"><a id="__codelineno-3-311" name="__codelineno-3-311" href="#__codelineno-3-311"></a>
+</span><span id="__span-3-312"><a id="__codelineno-3-312" name="__codelineno-3-312" href="#__codelineno-3-312"></a>&lt;note&gt; **Related Skills:**
+</span><span id="__span-3-313"><a id="__codelineno-3-313" name="__codelineno-3-313" href="#__codelineno-3-313"></a>- [related-skill-1] - [When to use instead of this skill]
+</span><span id="__span-3-314"><a id="__codelineno-3-314" name="__codelineno-3-314" href="#__codelineno-3-314"></a>- [related-skill-2] - [How it complements this skill]
+</span><span id="__span-3-315"><a id="__codelineno-3-315" name="__codelineno-3-315" href="#__codelineno-3-315"></a>
+</span><span id="__span-3-316"><a id="__codelineno-3-316" name="__codelineno-3-316" href="#__codelineno-3-316"></a>Platform Considerations:
+</span><span id="__span-3-317"><a id="__codelineno-3-317" name="__codelineno-3-317" href="#__codelineno-3-317"></a>• [Platform-specific note if applicable]
+</span><span id="__span-3-318"><a id="__codelineno-3-318" name="__codelineno-3-318" href="#__codelineno-3-318"></a>• [Compatibility note if applicable]
+</span><span id="__span-3-319"><a id="__codelineno-3-319" name="__codelineno-3-319" href="#__codelineno-3-319"></a>
+</span><span id="__span-3-320"><a id="__codelineno-3-320" name="__codelineno-3-320" href="#__codelineno-3-320"></a>For Deep Dives:
+</span><span id="__span-3-321"><a id="__codelineno-3-321" name="__codelineno-3-321" href="#__codelineno-3-321"></a>• See references/[FILE.md] - [What it covers]
+</span><span id="__span-3-322"><a id="__codelineno-3-322" name="__codelineno-3-322" href="#__codelineno-3-322"></a>• See scripts/[script.sh] - [What it does] 
+</span><span id="__span-3-323"><a id="__codelineno-3-323" name="__codelineno-3-323" href="#__codelineno-3-323"></a>&lt;/note&gt;
+</span><span id="__span-3-324"><a id="__codelineno-3-324" name="__codelineno-3-324" href="#__codelineno-3-324"></a>
+</span><span id="__span-3-325"><a id="__codelineno-3-325" name="__codelineno-3-325" href="#__codelineno-3-325"></a>&lt;context&gt; **Background Information:**
+</span><span id="__span-3-326"><a id="__codelineno-3-326" name="__codelineno-3-326" href="#__codelineno-3-326"></a>[Any domain-specific context that helps understand this skill&#39;s approach]
+</span><span id="__span-3-327"><a id="__codelineno-3-327" name="__codelineno-3-327" href="#__codelineno-3-327"></a>[Why this skill takes the approach it does]
+</span><span id="__span-3-328"><a id="__codelineno-3-328" name="__codelineno-3-328" href="#__codelineno-3-328"></a>[Historical or technical context that informs decisions] 
+</span><span id="__span-3-329"><a id="__codelineno-3-329" name="__codelineno-3-329" href="#__codelineno-3-329"></a>&lt;/context&gt;
+</span></code></pre></div>
+<p><strong>END OF TEMPLATE</strong></p>
+<hr />
+<h2 id="scaling-guide-class-a-b-and-c">Scaling Guide: Class A, B and C<a class="headerlink" href="#scaling-guide-class-a-b-and-c" title="Permanent link">&para;</a></h2>
+<p><strong>How to Adapt This Template by Complexity</strong></p>
+<h3 id="class-a-minimal-skill-30-50-lines">Class A: Minimal Skill (30-50 lines)<a class="headerlink" href="#class-a-minimal-skill-30-50-lines" title="Permanent link">&para;</a></h3>
+<p><strong>What to keep:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>- YAML frontmatter (required fields only)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>- Purpose statement
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>- One `&lt;critical&gt;` section (exclusions)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>- Simple `&lt;decision_criteria&gt;` (1-3 IF-THEN rules)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>- 1-2 `&lt;example&gt;` blocks (basic cases)
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>- `&lt;unload_condition&gt;` (mandatory, User Intent Change first)
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>- `&lt;success_criteria&gt;` (brief, 3-5 checkboxes)
+</span></code></pre></div>
+<p><strong>What to simplify:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>- Prerequisites: One-liner if any
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>- Patterns: Skip `&lt;good_pattern&gt;` and `&lt;bad_pattern&gt;` if obvious
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>- Verification: Use &quot;Expected Output Method&quot; (simple test cases)
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>- Examples: 1-2 is sufficient
+</span></code></pre></div>
+<p><strong>What to skip:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>- Optional metadata fields
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>- `&lt;fallback&gt;` section
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>- `&lt;note&gt;` and `&lt;context&gt;` sections
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>- Separate verification scripts
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>- Multiple decision phases
+</span></code></pre></div>
+<h3 id="example-class-a-structure">Example Class A structure:<a class="headerlink" href="#example-class-a-structure" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>---
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>name: enforcing-oxford-comma
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>description: Apply Oxford comma to lists with 3+ items
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>---
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a># Enforcing Oxford Comma
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>**Purpose:** Apply Oxford comma to lists with 3+ items.
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>&lt;critical&gt;
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>Do NOT use for: technical docs, code, numbered lists
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>&lt;/critical&gt;
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>&lt;decision_criteria&gt;
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>IF list has 3+ items → Add comma before final &quot;and&quot;/&quot;or&quot;
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>IF list has 2 items → No comma needed
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>&lt;/decision_criteria&gt;
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>&lt;example&gt;
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>Input: &quot;A, B and C&quot;
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>Output: &quot;A, B, and C&quot;
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>&lt;/example&gt;
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>&lt;unload_condition&gt;
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>**User Intent Change (FIRST):**
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>1-10. [Standard User Intent Change signals]
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>**Task Complete:**
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>11. Oxford commas applied
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>12. User confirms correct
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>&lt;/unload_condition&gt;
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>&lt;success_criteria&gt;
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>✓ All 3+ item lists have Oxford comma
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>✓ 2-item lists unchanged
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>✓ User confirms formatting correct
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>&lt;/success_criteria&gt;
+</span></code></pre></div>
+<strong>Total: ~40 lines</strong></p>
+<h3 id="class-b-intermediate-skill-200-400-lines">Class B: Intermediate Skill (200-400 lines)<a class="headerlink" href="#class-b-intermediate-skill-200-400-lines" title="Permanent link">&para;</a></h3>
+<p><strong>What to keep:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>• Everything from Class A
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>• Optional metadata fields (version, author, category)
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>• &lt;prerequisite&gt; section (detailed)
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>• &lt;condition&gt; section (activation triggers)
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>• Multi-phase &lt;decision_criteria&gt; (2-3 phases)
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>• &lt;good_pattern&gt; and &lt;bad_pattern&gt; (1-2 each)
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>• 3-5 &lt;example&gt; blocks (varied scenarios)
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>• &lt;unload_condition&gt; with failure modes
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>• Manual verification checklist
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>• &lt;note&gt; section (related skills, references)
+</span></code></pre></div>
+<p><strong>What to expand:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>• Decision logic: 2-3 phases with nested conditions
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>• Examples: Show simple, common, and edge cases
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>• Verification: Manual checklist (no automated scripts yet)
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>• Patterns: Include 1-2 good patterns and 1-2 anti-patterns
+</span></code></pre></div>
+<p><strong>What to add:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>• 1-2 reference files in references/ directory (optional)
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    references/EXAMPLES.md (~200 lines of detailed examples)
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    references/budget_rules.md (domain-specific reference)
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>**What to skip (still):**
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>```text
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>• Extensive automated verification scripts
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>• Deep context and rationale (save for Class C)
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>• Multiple fallback levels (one level is fine)
+</span></code></pre></div>
+<h3 id="example-class-b-file-structure">Example Class B file structure:<a class="headerlink" href="#example-class-b-file-structure" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>analyzing-marketing-campaigns/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── SKILL.md # 250-300 lines
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>│ ├── Full metadata
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>│ ├── Multi-phase decision logic
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>│ ├── 3-5 examples
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>│ ├── Good/bad patterns
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>│ └── Manual verification
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>│
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>└── references/ (optional)
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>├── budget_reallocation_rules.md # 150 lines
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>└── EXAMPLES.md # 200 lines
+</span></code></pre></div>
+<strong>Total: 550-650 lines across 1-3 files</strong></p>
+<h3 id="class-c-complete-skill-1000-6000-lines">Class C: Complete Skill (1,000-6,000+ lines)<a class="headerlink" href="#class-c-complete-skill-1000-6000-lines" title="Permanent link">&para;</a></h3>
+<p><strong>What to include:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>• Everything from Class A and B
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>• Extensive &lt;decision_criteria&gt; (3-4 phases, nested logic)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>• Comprehensive examples (5-10+ across multiple scenarios)
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>• Multiple &lt;good_pattern&gt; and &lt;bad_pattern&gt; blocks
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>• Automated verification scripts (required!)
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>• Multi-level &lt;fallback&gt; section
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>• Extensive &lt;context&gt; and &lt;rationale&gt; sections
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>• Reference files in references/ directory
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>• Verification scripts in scripts/ directory
+</span></code></pre></div>
+<p><strong>What to expand:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>• Decision logic: 3-4 phases with complex nested conditions
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>• Examples: Before/after with metrics, production contexts
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>• Patterns: Multiple good patterns with rationale, 3+ anti-patterns
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>• Verification: Automated scripts + manual fallback
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>• Context: Background information, trade-offs, design decisions
+</span></code></pre></div>
+<p><strong>Required file structure:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>optimizing-sql-queries/
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>├── SKILL.md # 400-500 lines
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>│ ├── Full metadata
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>│ ├── Complex decision logic (high-level)
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>│ ├── Quick examples (2-3)
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>│ ├── Links to references/ and scripts/
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>│ └── Comprehensive unload conditions
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>│
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>├── references/
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>│ ├── EXAMPLES.md # 2,000 lines (20+ detailed examples)
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>│ ├── GUIDE.md # 1,500 lines (decision trees, procedures)
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>│ ├── VERIFICATION.md # 800 lines (verification procedures)
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>│ ├── ANTI_PATTERNS.md # 900 lines (15 anti-patterns)
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>│ └── CONTEXT.md # 400 lines (background, theory, trade-offs)
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>│
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>└── scripts/
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>├── verify.sh # Automated verification
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>├── test_suite.py # Regression testing
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>└── analyze_explain.py # Domain-specific tooling
+</span></code></pre></div>
+<strong>Total: 6,000+ lines across multiple files</strong></p>
+<h3 id="key-principle-for-class-c">Key principle for Class C:<a class="headerlink" href="#key-principle-for-class-c" title="Permanent link">&para;</a></h3>
+<p>Main SKILL.md stays manageable (400-500 lines) by referencing extensive content
+in references/ and providing automation in scripts/.</p>
+<h2 id="validation-checklist">Validation Checklist<a class="headerlink" href="#validation-checklist" title="Permanent link">&para;</a></h2>
+<p>Before deploying your skill, verify all items:</p>
+<p><strong>Core Requirements</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Spec Compliance:
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>[ ] Required frontmatter fields present (name, description)
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>[ ] Name follows constraints (lowercase, hyphens, 1-64 chars, matches directory)
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>[ ] Description includes WHAT + WHEN + KEYWORDS
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>[ ] Name uses gerund form (verb + -ing, e.g., optimizing-sql-queries)
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>User Intent Change Detection:
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>[ ] &lt;critical&gt; section mentions User Intent Change monitoring
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>[ ] &lt;unload_condition&gt; lists User Intent Change FIRST (highest priority)
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>[ ] Intent change signals are specific and detectable
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>[ ] Action upon detection is clear (stop immediately, acknowledge, offer help)
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>[ ] No other conditions checked before User Intent Change
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>8 Core Components
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>[ ] 1. Metadata: YAML frontmatter with required fields
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>[ ] 2. Purpose: Clear one-sentence purpose statement
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>[ ] 3. Scope: &lt;critical&gt; section defines exclusions and wrong use cases
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>[ ] 4. Decision Logic: &lt;decision_criteria&gt; with IF-THEN patterns
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>[ ] 5. Examples: Minimum 2-3 &lt;example&gt; blocks (simple, common, edge)
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>[ ] 6. Unload Conditions: &lt;unload_condition&gt; with User Intent Change first
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>[ ] 7. Success Criteria: &lt;success_criteria&gt; with measurable outcomes
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>[ ] 8. Self-Verification: &lt;verification&gt; section (automated or manual)
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>Quality Standards
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>Content Quality:
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>[ ] Purpose statement is one sentence, clear, specific
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>[ ] Triggers and exclusions are explicit (no vague &quot;helps with&quot; language)
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>[ ] Decision criteria use clear IF-THEN patterns (not run-on sentences)
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>[ ] Examples show measurable improvements or clear transformations
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>[ ] Anti-patterns explained with rationale (WHY they&#39;re wrong)
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a>[ ] Success criteria are observable and verifiable
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>[ ] Unload conditions are comprehensive (intent, complete, switch, failure, stop)
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a>Technical Quality:
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>[ ] All semantic tags properly closed (&lt;tag&gt;...&lt;/tag&gt;)
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>[ ] No conflicting instructions between sections
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a>[ ] Language is specific, not vague (&quot;optimize query&quot; not &quot;make query better&quot;)
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a>[ ] No platform-specific assumptions (works on claude.ai, API, Code, Desktop)
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a>
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a>File Size (Class-Appropriate):
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a>
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a>[ ] Class A: Main SKILL.md &lt; 100 lines
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a>[ ] Class B: Main SKILL.md 200-400 lines, total with references &lt; 1,000 lines
+</span><span id="__span-15-48"><a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a>[ ] Class C: Main SKILL.md 400-500 lines (extensive content in references/)
+</span><span id="__span-15-49"><a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a>
+</span><span id="__span-15-50"><a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a>Self-Verification Emphasis
+</span><span id="__span-15-51"><a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a>
+</span><span id="__span-15-52"><a id="__codelineno-15-52" name="__codelineno-15-52" href="#__codelineno-15-52"></a>Anthropic&#39;s #1 Recommendation:
+</span><span id="__span-15-53"><a id="__codelineno-15-53" name="__codelineno-15-53" href="#__codelineno-15-53"></a>[ ] &lt;verification&gt; section exists (not optional!)
+</span><span id="__span-15-54"><a id="__codelineno-15-54" name="__codelineno-15-54" href="#__codelineno-15-54"></a>[ ] Verification method is actionable (scripts, checklist, or expected outputs)
+</span><span id="__span-15-55"><a id="__codelineno-15-55" name="__codelineno-15-55" href="#__codelineno-15-55"></a>[ ] Class A: Expected output test cases provided
+</span><span id="__span-15-56"><a id="__codelineno-15-56" name="__codelineno-15-56" href="#__codelineno-15-56"></a>[ ] Class B: Manual verification checklist with clear steps
+</span><span id="__span-15-57"><a id="__codelineno-15-57" name="__codelineno-15-57" href="#__codelineno-15-57"></a>[ ] Class C: Automated verification scripts in scripts/ directory
+</span><span id="__span-15-58"><a id="__codelineno-15-58" name="__codelineno-15-58" href="#__codelineno-15-58"></a>[ ] Verification connects to &lt;success_criteria&gt; (each criterion has verification step)
+</span><span id="__span-15-59"><a id="__codelineno-15-59" name="__codelineno-15-59" href="#__codelineno-15-59"></a>
+</span><span id="__span-15-60"><a id="__codelineno-15-60" name="__codelineno-15-60" href="#__codelineno-15-60"></a>Testing
+</span><span id="__span-15-61"><a id="__codelineno-15-61" name="__codelineno-15-61" href="#__codelineno-15-61"></a>
+</span><span id="__span-15-62"><a id="__codelineno-15-62" name="__codelineno-15-62" href="#__codelineno-15-62"></a>Scenarios to test before deployment:
+</span><span id="__span-15-63"><a id="__codelineno-15-63" name="__codelineno-15-63" href="#__codelineno-15-63"></a>
+</span><span id="__span-15-64"><a id="__codelineno-15-64" name="__codelineno-15-64" href="#__codelineno-15-64"></a>[ ] Basic activation (skill activates when it should)
+</span><span id="__span-15-65"><a id="__codelineno-15-65" name="__codelineno-15-65" href="#__codelineno-15-65"></a>[ ] Exclusions work (skill doesn&#39;t activate for wrong use cases)
+</span><span id="__span-15-66"><a id="__codelineno-15-66" name="__codelineno-15-66" href="#__codelineno-15-66"></a>[ ] User Intent Change mid-task (skill stops immediately when user pivots)
+</span><span id="__span-15-67"><a id="__codelineno-15-67" name="__codelineno-15-67" href="#__codelineno-15-67"></a>[ ] Task completion (skill deactivates when success criteria met)
+</span><span id="__span-15-68"><a id="__codelineno-15-68" name="__codelineno-15-68" href="#__codelineno-15-68"></a>[ ] Failure modes (skill handles errors gracefully, doesn&#39;t loop infinitely)
+</span><span id="__span-15-69"><a id="__codelineno-15-69" name="__codelineno-15-69" href="#__codelineno-15-69"></a>[ ] Edge cases (skill handles special scenarios from examples)
+</span></code></pre></div>
+<h2 id="usage-notes">Usage Notes<a class="headerlink" href="#usage-notes" title="Permanent link">&para;</a></h2>
+<p><strong>Common Questions</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Q: Do I need all sections for a simple skill?
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>A: No! For Class A skills, use only required sections. See &quot;Class A: Minimal Skill&quot; in Scaling Guide.
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Q: Can I skip User Intent Change monitoring?
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>A: NO. This is mandatory for ALL skills (A, B, and C). It prevents attentional residue.
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Q: What if I don&#39;t have verification scripts?
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>A: Provide manual verification checklist (Class A/B) or expected output test cases (Class A). Automated scripts are only required for Class C.
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>Q: How many examples do I need?
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>A: Minimum 2 (Class A), recommended 3-5 (Class B), comprehensive 5-10+ (Class C).
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>Q: Should I use all the optional semantic tags?
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>A: Use tags when they add value. Class A skills might only use &lt;critical&gt;, &lt;decision_criteria&gt;, &lt;example&gt;, &lt;unload_condition&gt;, &lt;success_criteria&gt;. Class C skills might use all tags extensively.
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>Q: Can I create custom sections?
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>A: Yes, but start with the standard 8 components. Add custom sections only if they provide unique value not covered by standard components.
+</span></code></pre></div>
+<h2 id="tips-for-success">Tips for Success<a class="headerlink" href="#tips-for-success" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Start Simple:
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>1. Begin with Class A template (minimal)
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>2. Test with real scenarios
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>3. Expand to Class B as skill matures
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>4. Upgrade to Class C when production-ready
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>Iterate Based on Use:
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>• If users hit edge cases → Add examples
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>• If activation is unreliable → Refine description and &lt;condition&gt;
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>• If verification is manual and tedious → Create scripts (upgrade to Class C)
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>• If skill is used frequently → Add extensive documentation (upgrade to Class C)
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>Maintain Scope:
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>• One skill = one responsibility
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>• If skill does 3+ things → Split into 3+ skills
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>• Use &lt;exclusion&gt; liberally to clarify boundaries
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>Test User Intent Change:
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>• This is the #1 most important exit condition
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>• Test mid-task pivots (&quot;Actually, never mind...&quot;)
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>• Test topic shifts (user asks unrelated question)
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>• Test dissatisfaction signals (&quot;This isn&#39;t working&quot;)
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>• Skill should stop IMMEDIATELY, not finish current task
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>Resources
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>For more information:
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a>• Section 1.1: Foundation and Classification (Class A/B/C explained)
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>• Section 1.2: Basic Skill Creation (Class A patterns)
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a>• Section 1.3: Advanced Multi-File Skills (Class B/C patterns)
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a>• Section 1.4: Semantic Tags Reference (all 18 tags explained)
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a>• Section 1.5: Components Deep Dive (8 core components in depth)
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a>• Section 1.6: Common Pitfalls (mistakes to avoid)
+</span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a>
+</span><span id="__span-17-34"><a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a>External resources:
+</span><span id="__span-17-35"><a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a>• Agent Skills Specification: https://agentskills.io/specification
+</span><span id="__span-17-36"><a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a>• Anthropic Skills Repository: https://github.com/anthropics/skills
+</span><span id="__span-17-37"><a id="__codelineno-17-37" name="__codelineno-17-37" href="#__codelineno-17-37"></a>• Skill Creator Skill: https://github.com/anthropics/skills/tree/main/skills/skill-creator
+</span></code></pre></div>
+<p>END OF APPENDIX B</p>
+<p>Document Version: 2.0.0
+Last Updated: 2026-02-24
+Based on:* Agent Skills Open Standard + Skills Curriculum Sections 1.1-1.6*
+Key Updates:* A/B/C classification, self-verification emphasis, 8-component framework alignment*</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Skills_A_Semantic_Tag_Reference_Appendix/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Appendix A: Semantic Tags Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Appendix A: Semantic Tags Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Skills_C_Tool_Templates_Appendix/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix C: Tool Templates">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Appendix C: Tool Templates
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArchieCur" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
