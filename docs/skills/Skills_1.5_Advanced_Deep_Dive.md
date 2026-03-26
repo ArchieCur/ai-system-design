@@ -153,33 +153,40 @@ database, optimization, EXPLAIN, index, bottleneck.
 ```
 **Key difference:** Simple describes straightforward rule; complex describes multi-phase workflow with verification.
 
-#### Optional Metadata Fields
+#### Optional Metadata Fields  
 
-```text
+#### Optional YAML Additions  
 
-**license**
-license: MIT
-Or reference to license file:
-    license: See LICENSE.md
+- **Documentation Fields (optional)** — Describe the Skill for humans and version control
 
-**compatibility**
-compatibility: PostgreSQL 12+, MySQL 8+, requires EXPLAIN ANALYZE support
+  - `license` - Licensing information
+  - `compatibility` - Environment requirements
+         compatibility: PostgreSQL 12+, MySQL 8+, requires EXPLAIN ANALYZE support  
+  - `metadata` - (arbitrary key-value pairs)
+         metadata:  
+         author: engineering-team  
+        version: "2.1.0"  
+        last_updated: "2026-01-29"  
+        category: database-optimization  
+        maintainer: [Name or email of maintainer]  
+        deprecated: false  
+        replaces: old-query-optimization  
 
-**metadata (arbitrary key-value pairs)**
-metadata:
-    author: engineering-team
-    version: "2.1.0"
-    last_updated: "2026-01-29"
-    category: database-optimization
-    maintainer: [Name or email of maintainer]
-    deprecated: false
-    replaces: old-query-optimization
+- **Behavioral Fields (optional)** — Control how the Skill executes
 
-**allowed-tools (experimental)**
-allowed-tools: bash,filesystem,web_search
-Pre-approved tools the skill can use without asking permission each time.
-Note: This is experimental and may not be supported by all platforms.
-```
+- `context: fork` - Runs the Skill in an isolated sub-agent context, separate from the main conversation.
+  Use for verbose or exploratory Skills to prevent attentional residue from accumulating in the main session.
+- `allowed-tools` - Restricts which tools the Skill can access during execution.
+  Use to enforce least-privilege access and prevent accidental destructive actions (aligns with Class A/B/C risk classification).
+- `argument-hint` - Prompts the user for required parameters when the Skill is invoked without arguments.
+  Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
+  
+-  **Note:** 
+   - **Documentation** fields describe the Skill.
+   - **Behavioral fields** change how it runs. Missing behavioral fields doesn't break a Skill,
+     but using them correctly improves reliability and safety, especially for Class B and C Skills.
+
+
 
 ### Common Mistakes
 
