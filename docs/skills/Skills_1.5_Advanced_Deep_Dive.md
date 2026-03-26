@@ -181,7 +181,7 @@ database, optimization, EXPLAIN, index, bottleneck.
 - `argument-hint` - Prompts the user for required parameters when the Skill is invoked without arguments.
   Use when the Skill requires specific inputs (file path, target language, domain) to function correctly.
   
--  **Note:** 
+  **Note:** 
    - **Documentation** fields describe the Skill.
    - **Behavioral fields** change how it runs. Missing behavioral fields doesn't break a Skill,
      but using them correctly improves reliability and safety, especially for Class B and C Skills.
