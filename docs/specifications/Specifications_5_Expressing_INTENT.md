@@ -995,6 +995,80 @@ When features conflict with costs:
 </intent>
 ```
 
+## Advanced Pattern: Load-On-Demand INTENT
+
+As your Spec practice matures, you will encounter a meaningful architectural decision:
+**not every task needs the full INTENT layer loaded every time.**
+
+Consider the difference between these two scenarios:
+
+**Scenario A — Routine maintenance task:**
+> "Fix the off-by-one error in the pagination function."
+
+**Scenario B — Architectural decision:**
+> "Redesign the authentication flow to support SSO."
+
+Scenario A does not need the five-paragraph business rationale behind your
+authentication strategy. Loading it anyway adds token overhead with zero benefit
+to the task. The agent follows instructions either way — but unnecessary INTENT
+content triggers broader reasoning, more exploratory behavior, and higher cost.
+
+**Scenario B absolutely needs the full INTENT layer.** The agent is making
+consequential decisions. Trade-offs matter. Rationale matters. The "why" is
+load-bearing.
+
+### The Load-On-Demand Pattern
+
+Structure your Spec files to keep these concerns separated:
+
+```
+/specs
+  MUST_constraints.md          ← Always loaded. Always active.
+  SHOULD_guidelines.md         ← Always loaded. Always active.
+  CONTEXT.md                   ← Always loaded. Always active.
+  INTENT_core.md               ← Always loaded (primary goal + success criteria only)
+  INTENT_rationale.md          ← Load on demand (trade-offs, decision history, full "why")
+```
+
+**`INTENT_core.md`** stays lean — one sentence goal, measurable success criteria,
+the absolute minimum needed for the agent to stay aligned on any task.
+
+**`INTENT_rationale.md`** carries the depth — trade-offs, decision history, the
+reasoning behind architectural choices. Reference it explicitly when the task
+warrants it:
+
+```xml
+<intent scope="auth-redesign">
+  Load: INTENT_rationale.md#authentication
+  Primary Goal: Reduce login friction while maintaining SOC2 compliance.
+  Success: SSO login completion rate >95%, zero compliance findings.
+</intent>
+```
+
+For routine maintenance, leave `INTENT_rationale.md` unloaded. The MUST layer
+holds the line. The agent doesn't need the "why" to fix a pagination bug.
+
+### Why This Matters
+
+Research confirms that every element in your Spec file influences agent behavior —
+whether you intend it to or not. A bloated INTENT section on a simple task does not
+make the agent more aligned. It makes the task harder, triggers unnecessary
+reasoning, and costs you tokens with no performance gain.
+
+The MUST layer is your foundation. It holds when everything else is stripped away.
+The INTENT layer is your guide for consequential decisions. Keep them doing
+their separate jobs.
+
+> **Rule of thumb:** If the task could be described in a single sentence,
+> your core MUST constraints are sufficient. Load INTENT rationale when
+> the agent needs to understand *why* in order to make a good *choice*.
+
+---
+
+*Research basis: Lulla et al. (2026) ICSE JAWs; Gloaguen et al. (2026) ETH Zurich.*
+
+---
+
 ## Integration with MUST, SHOULD, and CONTEXT
 
 ### **How all four layers work together:**
