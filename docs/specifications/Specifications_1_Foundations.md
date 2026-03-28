@@ -93,6 +93,7 @@ SPEC.md says:
 
 `</constraint>`
 
+
 **User:** "Build a user authentication system"
 
 **Model:** "Perfect! The spec tells me:
@@ -106,7 +107,50 @@ SPEC.md says:
 
 **Model:** I'll implement exactly according to spec. No guessing needed.
 
-**Result:** Consistent, compliant, matches your requirements.
+**Result:** Consistent, compliant, matches your requirements.  
+
+## The Research Is In: Human-Written Specs Win
+
+> *This framework exists because the evidence demands it.*
+
+A 2026 empirical study across 10 real GitHub repositories and 124 pull requests
+measured what actually happens when AI coding agents receive repository-level
+specification files versus operating without them.
+
+The results validated what this curriculum is built on:
+
+| Condition | Result |
+|---|---|
+| **No Spec** | Baseline performance and cost |
+| **Auto-generated Spec** | 20%+ cost increase, marginal performance *decrease* |
+| **Human-written, targeted Spec** | ~28% faster task completion, ~17% fewer output tokens |
+
+The agents followed the specifications. Instructions were respected.
+The difference was not *whether* a spec existed — it was *the quality of what was in it.*
+
+Auto-generated specs added overhead without adding value. They introduced
+unnecessary requirements, triggered broader exploratory behavior, and caused agents
+to spend more reasoning cycles on tasks they didn't need to reason about.
+
+Human-written specs — targeted, actionable, specific — did the opposite. They gave
+agents exactly what they needed and nothing more. Faster. Cheaper. Better.
+
+**That is what this framework teaches you to write.**
+
+The kitchen sink approach is not neutral. Dumping everything you know about a
+project into a spec file — or letting a model generate one from scant information —
+actively harms performance. Every line in your Spec should earn its place by
+answering one question:
+
+> *Does the model need this to avoid making a wrong decision?*
+
+If the answer is no, cut it.
+
+---
+
+**Sources:**
+- Lulla et al. (2026). *On the Impact of AGENTS.md Files on the Efficiency of AI Coding Agents.* ICSE JAWs 2026.
+- Gloaguen et al. (2026). *Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?* ETH Zurich / LogicStar.a
 
 ## The Key Insight
 
