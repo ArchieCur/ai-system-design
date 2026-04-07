@@ -201,4 +201,4 @@ Well-designed tools with explicit trigger logic, negative constraints, and retur
 
 ---
 
-*Ready to begin? Start with [Tool Literacy: Designing Tools](Tool_Literacy_Designing_Tools.md) →*
+*Ready to begin? Start with [Tool Literacy: Designing Tools](Tool_Literacy_Designing_Tools (1).md) →*
