@@ -1164,6 +1164,54 @@ Every verification should have:
 - Deliver quality (verified compliance)
 - Improve continuously (learn from failures)
 
+## When Is the Specification Done? Specification Convergence
+
+Verification Protocols answer a per-output question: *did this run meet the requirements?*
+
+There is a second question that sits above it: *is the specification itself complete?*
+
+Hanyang University's Kim calls this **structural idempotence** — the termination condition
+for harness development. A specification has converged when re-applying its rules produces
+identical structural outcomes. If a second pass changes anything, the rule set is incomplete
+or conflicting and needs further refinement.
+
+The curriculum names this milestone **Specification Convergence**: the point at which
+iterating on the specification produces no further structural change in agent output. It is
+not a property of any single run. It is a property of the specification itself.
+
+---
+
+### The Practitioner's Bench Test
+
+| Step | Action |
+|---|---|
+| 1. Draft and Deploy | Implement your specification — MUST, SHOULD, CONTEXT, INTENT |
+| 2. Stress Test | Run edge-case prompts designed to induce drift or cognitive friction |
+| 3. Run Verification Protocols | Check outputs against your defined requirements |
+| 4. Refine the Structure | If output drifts, add or adjust a MUST or SHOULD — don't tweak the prompt |
+| 5. Repeat to Idempotence | Run the same stress tests again. Convergence is achieved when a subsequent pass yields zero structural changes |
+
+---
+
+### The Distinction That Matters
+
+| Concept | Focus | The Core Question | The Tool |
+|---|---|---|---|
+| **Verification Protocol** | The Output | Did this run meet the requirements? | Unit tests, format validators, human review |
+| **Specification Convergence** | The System | Is the rule set complete and non-conflicting? | Iterative re-runs resulting in structural idempotence |
+
+**Verification Protocols are how you test for it. Specification Convergence is what you
+are testing for.**
+
+---
+
+> **Note:** In multi-agent systems, Specification Convergence becomes a hard architectural
+> prerequisite — never connect Agent A to Agent B until Agent A has achieved Specification
+> Convergence. Drift at the node level becomes cascade failure at the system level. See the
+> [Multi-Agent Systems](https://archiecur.github.io/ai-system-design/multi_agent/multi-agent-index/)
+> module for the full treatment.
+
+
 ## What's Next
 
 You've learned the complete specification framework:
