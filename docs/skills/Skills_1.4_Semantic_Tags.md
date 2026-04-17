@@ -4,7 +4,7 @@ Section 1.4: Semantic Tags
 
 **For**: All users (referenced from 1.2, 1.3, and 1.5)
 
-**Purpose:** Complete reference for the 18-tag semantic system
+**Purpose:** Complete reference for the 19-tag semantic system
 
 What you'll learn: How to structure skills for optimal model interpretation
 
