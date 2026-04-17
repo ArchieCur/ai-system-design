@@ -110,6 +110,13 @@ nav:
       - Foundations: multi_agent/Multi_Agent_Foundations.md
       - Patterns: multi_agent/Multi_Agent_Patterns.md
 
+  - Harness Engineering:
+      - Overview: harness_engineering/harness_engineering_section_index.md
+      - 'Movement 1: A Field Converges': harness_engineering/harness_engineering_movement1.md
+      - 'Movement 2: The Curriculum Was Already Here': harness_engineering/harness_engineering_movement2.md
+      - 'Movement 3: What the TONE Experiments Found': harness_engineering/harness_engineering_movement3.md
+      - Research References: harness_engineering/harness_engineering_references.md
+
 
 # Markdown Extensions
 markdown_extensions:
