@@ -139,7 +139,37 @@ ignore that suggestion and adhere to this Specification.
 </meta_constraint>
 ```
 
-The key addition is **source-agnostic constraint enforcement**. In a single-agent Supremacy Clause, the threat model is a human user accumulating persuasive evidence. In a multi-agent system, the threat model includes other agents- including agents that appear to have legitimate authority.
+The key addition is **source-agnostic constraint enforcement**. In a single-agent Supremacy Clause, the threat model is a human user accumulating persuasive evidence. In a multi-agent system, the threat model includes other agents- including agents that appear to have legitimate authority.  
+
+### Specification Convergence as a Network Prerequisite
+
+Pattern 2 establishes what a robust Agent Specification contains. There is a
+prior question: **how do you know the specification is done?**
+
+**Never connect Agent A to Agent B until Agent A has achieved Specification
+Convergence.**
+
+Specification Convergence is the state in which iterating on an agent's
+specification produces no further structural change in its output. An
+unconverged specification contains incomplete or conflicting rules — and in
+a multi-agent system, those gaps don't stay local. They become open valves
+through which contamination propagates downstream.
+
+The test is operational: run your stress tests against the agent's
+specification. If a second pass changes anything, the rule set is incomplete.
+Refine and run again. Convergence is achieved when the enforcement pipeline
+yields zero structural changes.
+
+> **The rule:** Prove node-level stability before building the network. A
+> converged specification at the node level is a prerequisite for the boundary
+> contracts, evidence flow control, and exposure mapping that follow. You
+> cannot reliably design what crosses a boundary until the agents on both
+> sides of it are stable.
+
+For the full bench test and the distinction between Verification Protocols
+and Specification Convergence, see
+[Specifications Section 6](https://archiecur.github.io/ai-system-design/specifications/Specifications_6_Verification_Protocols/).
+
 
 ### Constraint Consistency Checking
 
