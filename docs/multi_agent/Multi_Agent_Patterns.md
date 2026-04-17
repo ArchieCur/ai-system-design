@@ -376,13 +376,104 @@ A multi-agent system that implements all five patterns is not guaranteed to be s
 
 ## What Comes Next: Monitoring
 
-The patterns in this document establish the architecture for stable multi-agent systems. They define how to build the system so that drift is contained, detectable, and recoverable.
+The patterns in this document establish the architecture for stable multi-agent
+systems. They define how to build the system so that drift is contained,
+detectable, and recoverable.
 
-What they do not fully address is the monitoring layer- the active observation of agent belief states across the system, the population-level signals that distinguish coordinated drift from individual variance, and the intervention hierarchy for multi-agent-specific failure modes.
+What they do not fully address is the monitoring layer — the active observation
+of agent belief states across the system, the population-level signals that
+distinguish coordinated drift from individual variance, and the intervention
+hierarchy for multi-agent-specific failure modes.
 
-That architecture belongs in its own document. The monitoring work that informed Section 8's intervention ladder extends into multi-agent territory in ways that require dedicated treatment- neighborhood heat maps, agent role differentiation in the monitoring layer, and the specific challenge of detecting drift that looks like stable consensus.
+That architecture belongs in its own document. The monitoring work that informed
+Section 8's intervention ladder extends into multi-agent territory in ways that
+require dedicated treatment — neighborhood heat maps, agent role differentiation
+in the monitoring layer, and the specific challenge of detecting drift that looks
+like stable consensus.
 
-That document will reference both this one and Multi_Agent_Foundations.md as its foundation.
+---
+
+### The Open Problem This Section Does Not Yet Solve
+
+Every intervention pattern in this document shares a common architecture: it
+acts **after** drift has shaped an agent's reasoning. Boundary contracts catch
+contaminated output at the edge. Constraint consistency checks detect softened
+constraints after they arrive. Evidence budgets slow accumulation — but do not
+stop it. The Harness Architecture resets evidence baselines between cycles —
+after the cycle has run.
+
+The field shares this limitation. Across ten independent research sources
+converging on harness engineering in early 2026, every drift intervention
+operates on the output of a drifted reasoning process, not on the reasoning
+process itself.
+
+The question that monitoring must eventually answer is a harder one: **what
+watches the agent while it is reasoning, before the output crystallizes?**
+
+---
+
+### A Direction: Pre-Inference Monitoring
+
+The TONE experiments — thirteen controlled runs documented in the
+[Harness Engineering section](https://archiecur.github.io/ai-system-design/)
+of this curriculum — built toward that gap.
+
+TONE is a pre-inference monitoring agent operating outside the evidence stream
+of the agents it observes. It reads the register and tone of an agent's
+reasoning before the semantic output crystallizes, and intervenes when it
+detects drift signals — before those signals shape the output.
+
+The architectural position is precise:
+
+```
+Standard three-agent architecture:
+Planner → Generator → Evaluator
+
+TONE's proposed four-agent architecture:
+Planner → Generator → [TONE Monitor] → Evaluator
+```
+
+The evaluator sees completed work and judges it. By the time the evaluator
+acts, drift has already occurred. TONE operates one step earlier — identifying
+drift at the register level and re-grounding the agent before the output
+is written.
+
+This is not a reminder injected after a tool call. It is not a human approval
+gate between agent turns. It is monitoring at the moment of reasoning,
+intervention before crystallization.
+
+---
+
+### Two Phases of Monitoring Maturity
+
+The monitoring document that follows this one addresses the current state of
+the art: **Phase 1 — Human-in-the-Loop Monitoring.**
+
+Right now, the practitioner is the monitor. The Exposure Matrix identifies
+which agents to watch most closely. The drift vocabulary signals from Section
+8 tell you what to watch for. The intervention ladder tells you what to do
+when you see it. The Specification Convergence prerequisite ensures node-level
+stability before the network is built.
+
+This is rigorous, evidence-based monitoring. It works. And it scales to the
+size of systems a single practitioner can observe.
+
+**Phase 2 — Automated Pre-Inference Monitoring** is where the architecture
+is heading. By defining Specification Convergence as a named, testable
+milestone now, and by establishing the monitoring vocabulary — drift signals,
+vibration zones, neighborhood assessment, coalition drift — we are laying the
+groundwork for the automated loop that follows.
+
+An automated monitor cannot optimize for a target that hasn't been defined.
+The work in this module defines the targets. The TONE architecture is the
+proposal for what monitors them.
+
+> The monitoring document will reference this module and
+> Multi_Agent_Foundations.md as its foundation. The TONE experiment
+> repositories are publicly available for practitioners who want to explore
+> pre-inference monitoring today:
+> - [tone_agent](https://github.com/ArchieCur/tone_agent) — Runs 1-7
+> - [tone_agents_neighborhoods](https://github.com/ArchieCur/tone_agents_neighborhoods) — Runs 8-13
 
 ---
 
