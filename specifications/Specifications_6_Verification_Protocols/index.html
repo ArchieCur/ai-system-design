@@ -1,0 +1,4525 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for AI system design, specifications, skills, tools and prompting">
+      
+      
+        <meta name="author" content="Archie Cur">
+      
+      
+        <link rel="canonical" href="https://archiecur.github.io/ai-system-design/specifications/Specifications_6_Verification_Protocols/">
+      
+      
+        <link rel="prev" href="../Specifications_5_Expressing_INTENT/">
+      
+      
+        <link rel="next" href="../Specifications_7_Common_Pitfalls/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Verification Protocols - AI System Design Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#section-6-verification-protocols" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI System Design Documentation" class="md-header__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI System Design Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Verification Protocols
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../specifications-index/" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../skills/skills-index/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/tools-index/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced-prompting/advanced-prompting-index/" class="md-tabs__link">
+          
+  
+  
+  Advanced Prompting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi_agent/multi-agent-index/" class="md-tabs__link">
+          
+  
+  
+  Multi-Agent Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../harness_engineering/harness_engineering_section_index/" class="md-tabs__link">
+          
+  
+  
+  Harness Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI System Design Documentation" class="md-nav__button md-logo" aria-label="AI System Design Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo200.png" alt="logo">
+
+    </a>
+    AI System Design Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArchieCur/ai-system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArchieCur/ai-system-design
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specifications-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_1_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_2_MUST_Constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MUST Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_3_SHOULD_Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SHOULD Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_4_Providing_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providing CONTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_5_Expressing_INTENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expressing INTENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-you-provide-verification-protocols-youre-saying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When you provide VERIFICATION protocols, you're saying
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this-section-teaches-you-how-to-design-verification-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        This section teaches you how to design verification that
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-verification-is-and-why-it-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Verification Is (And Why It Matters)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Verification Is (And Why It Matters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#without-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Without verification protocols
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With verification protocols
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-verification-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Verification Matters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Verification Matters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-catch-mistakes-before-you-see-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Catch Mistakes Before You See Them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-builds-confidence-in-their-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Model Builds Confidence in their Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-learn-what-good-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Learn What "Good" Looks Like
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-types-of-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three Types of Verification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Types of Verification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-1-automated-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 1: Automated Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-2-manual-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 2: Manual Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-3-hybrid-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 3: Hybrid Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-model-uses-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Model Uses Verification Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How a Model Uses Verification Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-during-development-continuous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: During Development (Continuous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-pre-delivery-comprehensive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Pre-Delivery (Comprehensive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-post-deployment-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Post-Deployment (Monitoring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-verifiable-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Verifiable Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Verifiable Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-to-verify-good-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy to Verify (Good Specs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-to-verify-bad-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard to Verify (Bad Specs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-verification-protocol-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Verification Protocol Pattern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Verification Protocol Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effective-verification-protocols-follow-this-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective verification protocols follow this structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-verification-failures-and-how-to-fix-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Verification Failures (And How to Fix Them)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Verification Failures (And How to Fix Them)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#failure-1-verification-criteria-too-vague" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 1: Verification Criteria Too Vague
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-2-no-verification-for-critical-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 2: No Verification for Critical Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-3-verification-criteria-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 3: Verification Criteria Conflict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-4-verification-takes-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 4: Verification Takes Too Long
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-correction-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Correction Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-Correction Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-automated-check-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: Automated Check Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-performance-check-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: Performance Check Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-cannot-fix-need-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: Cannot Fix (Need Guidance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-protocol-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Protocol Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verification Protocol Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template-1-security-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 1: Security Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-2-performance-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 2: Performance Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-3-compliance-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 3: Compliance Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-is-my-verification-protocol-well-written" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist: Is My Verification Protocol Well-Written?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-verification-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good verification is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes to Avoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-verification-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Verification Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-is-the-specification-done-specification-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Is the Specification Done? Specification Convergence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When Is the Specification Done? Specification Convergence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-practitioners-bench-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Practitioner's Bench Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-distinction-that-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Distinction That Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What&#39;s Next">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_7_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_8_Supremacy_Evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supremacy & Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_A_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_B_IntegrationExamples_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Integration Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_C_QuickReferenceGuide_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_D_VerificationProtocolTemplates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Verification Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_E_FolderStructures_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix E: Folder Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Specifications_F_Reverse_Engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix F: Belief Dynamics Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/skills-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.1_Skill_Anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Anatomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2_Basic_Template_ClassA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Template (Class A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.2a_Designing_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.3_Advanced_Skills_ClassB-C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skills (Class B/C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.4_Semantic_Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.5_Advanced_Deep_Dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_1.6_Common_Pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_A_Semantic_Tag_Reference_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Semantic Tags Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_B_Complete_Skill_Template_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Complete Skill Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_C_Tool_Templates_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C: Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/Skills_D_Cross-Platform_Implementation_Resources_Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D: Cross-Platform Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/tools-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Literacy_Designing_Tools (1).md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Literacy & Designing Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Programmatic_Tool_Calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programmatic Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Tool_Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Prompting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Prompting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/advanced-prompting-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Building_Reliable_Agents_Advanced_Prompting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Reliable Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/The_2026_Prompt_Engineering_Field_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Engineering Field Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-prompting/Automated_Prompt_Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automated Prompt Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Agent Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/multi-agent-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_agent/Multi_Agent_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../harness_engineering/harness_engineering_section_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../harness_engineering/harness_engineering_movement1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Movement 1: A Field Converges
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../harness_engineering/harness_engineering_movement2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Movement 2: The Curriculum Was Already Here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../harness_engineering/harness_engineering_movement3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Movement 3: What the TONE Experiments Found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../harness_engineering/harness_engineering_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-you-provide-verification-protocols-youre-saying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When you provide VERIFICATION protocols, you're saying
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this-section-teaches-you-how-to-design-verification-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        This section teaches you how to design verification that
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-verification-is-and-why-it-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Verification Is (And Why It Matters)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Verification Is (And Why It Matters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#without-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Without verification protocols
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With verification protocols
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-verification-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Verification Matters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Verification Matters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-catch-mistakes-before-you-see-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Catch Mistakes Before You See Them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-builds-confidence-in-their-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Model Builds Confidence in their Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-learn-what-good-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Learn What "Good" Looks Like
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-types-of-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three Types of Verification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Types of Verification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-1-automated-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 1: Automated Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-2-manual-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 2: Manual Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-3-hybrid-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 3: Hybrid Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-model-uses-verification-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Model Uses Verification Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How a Model Uses Verification Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-during-development-continuous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: During Development (Continuous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-pre-delivery-comprehensive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Pre-Delivery (Comprehensive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-post-deployment-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Post-Deployment (Monitoring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-verifiable-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Verifiable Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Verifiable Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-to-verify-good-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy to Verify (Good Specs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-to-verify-bad-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard to Verify (Bad Specs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-verification-protocol-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Verification Protocol Pattern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Verification Protocol Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effective-verification-protocols-follow-this-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective verification protocols follow this structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-verification-failures-and-how-to-fix-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Verification Failures (And How to Fix Them)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Verification Failures (And How to Fix Them)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#failure-1-verification-criteria-too-vague" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 1: Verification Criteria Too Vague
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-2-no-verification-for-critical-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 2: No Verification for Critical Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-3-verification-criteria-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 3: Verification Criteria Conflict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-4-verification-takes-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure 4: Verification Takes Too Long
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-correction-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Correction Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-Correction Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-automated-check-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: Automated Check Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-performance-check-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: Performance Check Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-cannot-fix-need-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: Cannot Fix (Need Guidance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-protocol-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Protocol Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verification Protocol Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template-1-security-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 1: Security Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-2-performance-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 2: Performance Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-3-compliance-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template 3: Compliance Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-is-my-verification-protocol-well-written" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist: Is My Verification Protocol Well-Written?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-verification-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good verification is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes to Avoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-verification-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Verification Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-is-the-specification-done-specification-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Is the Specification Done? Specification Convergence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When Is the Specification Done? Specification Convergence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-practitioners-bench-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Practitioner's Bench Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-distinction-that-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Distinction That Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What&#39;s Next">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../specifications-index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Specifications
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="section-6-verification-protocols">Section 6: Verification Protocols<a class="headerlink" href="#section-6-verification-protocols" title="Permanent link">&para;</a></h1>
+<p><strong>For:</strong> Users who want models to self-check compliance before deliverySection</p>
+<p><strong>Prerequisites:</strong> Sections 1-5 (Foundation, MUST, SHOULD, CONTEXT, INTENT)</p>
+<p><strong>What you'll learn:</strong> How to design verification protocols that enable models to catch issues before you see them</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>You've learned how to write the four layers (MUST, SHOULD, CONTEXT, INTENT).</p>
+<p>Now we explore VERIFICATION- how a model self-checks compliance before delivering work to you.</p>
+<h3 id="when-you-provide-verification-protocols-youre-saying">When you provide VERIFICATION protocols, you're saying<a class="headerlink" href="#when-you-provide-verification-protocols-youre-saying" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Before you deliver, check your work against these criteria. </li>
+<li>If you find issues, fix them or flag them.</li>
+<li>Don't make the model find your mistakes- catch them yourself.</li>
+</ul>
+<p><strong>This is quality control, not blame.</strong></p>
+<h3 id="this-section-teaches-you-how-to-design-verification-that">This section teaches you how to design verification that<a class="headerlink" href="#this-section-teaches-you-how-to-design-verification-that" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Enables models to self-check before delivery</li>
+<li>Catches common failures automatically</li>
+<li>Provides clear pass/fail criteria</li>
+<li>Makes fixing issues straightforward</li>
+</ul>
+<p>Let's explore what makes verification work from the trenches.</p>
+<h2 id="what-verification-is-and-why-it-matters">What Verification Is (And Why It Matters)<a class="headerlink" href="#what-verification-is-and-why-it-matters" title="Permanent link">&para;</a></h2>
+<p><strong>The Fundamental Purpose</strong></p>
+<p><strong>VERIFICATION = Self-Checking Before Delivery</strong></p>
+<h3 id="without-verification-protocols">Without verification protocols<a class="headerlink" href="#without-verification-protocols" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Model: [Builds feature]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Model: [Delivers to you]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>You: &quot;Wait, this violates the security constraint!&quot;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Model: &quot;Oh no, I missed that!&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>You: [Finds more issues]
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Cycle repeats...
+</span></code></pre></div>
+<h3 id="with-verification-protocols">With verification protocols<a class="headerlink" href="#with-verification-protocols" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Model: [Builds feature]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Model: [Runs verification checklist]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Model: &quot;Wait, I&#39;m missing password hashing! Let me fix...&quot;
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Model: [Fixes issue]
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Model: [Verifies again]
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Model: &quot;All checks pass &quot;
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Model: [Delivers to you]
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>You: &quot;Perfect, exactly as specified!&quot;
+</span></code></pre></div>
+<strong>VERIFICATION = Model catches their own mistakes.</strong></p>
+<h2 id="why-verification-matters">Why Verification Matters<a class="headerlink" href="#why-verification-matters" title="Permanent link">&para;</a></h2>
+<p><strong>Verification protocols help models:</strong></p>
+<h3 id="1-catch-mistakes-before-you-see-them">1. Catch Mistakes Before You See Them<a class="headerlink" href="#1-catch-mistakes-before-you-see-them" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Security issues (forgot to hash passwords?)</li>
+<li>Performance issues (response time &gt;200ms?)</li>
+<li>Compliance issues (missing GDPR requirements?)</li>
+</ul>
+<p><strong>Better:</strong>
+Models find and fix them ✓</p>
+<p><strong>Worse:</strong>
+You find them and need to fix them</p>
+<h3 id="2-model-builds-confidence-in-their-work">2. Model Builds Confidence in their Work<a class="headerlink" href="#2-model-builds-confidence-in-their-work" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"Did the model meet all the MUSTs?" → Check: YES</li>
+<li>"Did the model follow the SHOULDs?" → Check: YES</li>
+<li>"Does this align with INTENT?" → Check: YES</li>
+</ul>
+<p><strong>Result: Model delivers with confidence, not anxiety (cognitive friction) ✓</strong></p>
+<h3 id="3-learn-what-good-looks-like">3. Learn What "Good" Looks Like<a class="headerlink" href="#3-learn-what-good-looks-like" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verification criteria = definition of quality</li>
+<li>Passing verification = Model knows it succeeded</li>
+<li>Failing verification = Model knows exactly what to fix</li>
+</ul>
+<p><strong>Clear success criteria help models improve!</strong></p>
+<h2 id="the-three-types-of-verification">The Three Types of Verification<a class="headerlink" href="#the-three-types-of-verification" title="Permanent link">&para;</a></h2>
+<h3 id="type-1-automated-verification">Type 1: Automated Verification<a class="headerlink" href="#type-1-automated-verification" title="Permanent link">&para;</a></h3>
+<p><strong>What it is:</strong> Checks a model can run programmatically</p>
+<h4 id="examples-of-automated-verification">Examples of Automated verification<a class="headerlink" href="#examples-of-automated-verification" title="Permanent link">&para;</a></h4>
+<h5 id="security-verification">Security verification<a class="headerlink" href="#security-verification" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Check if passwords are hashed
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>grep -r &quot;bcrypt.hash&quot; src/auth/
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Expected: At least 1 match in password handling code
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Check for plaintext passwords
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>grep -r &quot;password.*=&quot; src/ | grep -v &quot;bcrypt&quot;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Expected: 0 matches (no plaintext storage)
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>*Performance verification*
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Load test API endpoints
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>artillery run load-test.yml
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>Expected: p95 response time &lt;200ms
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>*Check bundle size*
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>npm run build &amp;&amp; ls -lh dist/
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>Expected: bundle.js &lt;500KB
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>*Code quality verification*
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>Run linter
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>npm run lint
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>Expected: 0 errors, 0 warnings
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>*Run tests*
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>npm test
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>Expected: All tests pass, coverage &gt;80%
+</span></code></pre></div>
+<h4 id="why-automated-verification-works">Why automated verification works<a class="headerlink" href="#why-automated-verification-works" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Objective (pass/fail is clear) ✓</li>
+<li>Fast (runs in seconds) ✓</li>
+<li>Repeatable (same result every time) ✓</li>
+<li>Models can run these by themself! ✓</li>
+</ul>
+<h3 id="type-2-manual-verification">Type 2: Manual Verification<a class="headerlink" href="#type-2-manual-verification" title="Permanent link">&para;</a></h3>
+<p><strong>What it is:</strong> Checks model performs by inspection</p>
+<h4 id="examples-of-manual-verification">Examples of Manual Verification<a class="headerlink" href="#examples-of-manual-verification" title="Permanent link">&para;</a></h4>
+<h5 id="uiux-verification"><strong>UI/UX verification</strong><a class="headerlink" href="#uiux-verification" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>*Manual checklist:*
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>-All buttons have clear labels (not &quot;Click here&quot;)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-Error messages include recovery steps
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>-Forms have inline validation
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>-Loading states show (users know something is happening)
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>-Responsive design works on mobile (test at 375px width)
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>*Content verification*
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Manual checklist:
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>-No spelling errors (proofread)
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>-Tone matches brand guidelines (friendly but professional)
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>-Technical accuracy (no false claims)
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>-Examples are realistic (not &quot;user_123&quot; everywhere)
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>-Links work (click each one)
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>*Compliance verification*
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>Manual checklist:
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>-Privacy policy link on signup form
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>-Cookie consent banner on first visit
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>-Data deletion option in settings
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>-Export user data feature available
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>-GDPR disclosures present
+</span></code></pre></div>
+<h4 id="why-manual-verification-works">Why manual verification works<a class="headerlink" href="#why-manual-verification-works" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Catches subjective issues (tone, clarity) ✓</li>
+<li>Verifies user experience (does it feel right?) ✓</li>
+<li>Ensures human judgment (not just metrics) ✓</li>
+<li>Model can inspect and confirm! ✓</li>
+</ul>
+<h3 id="type-3-hybrid-verification">Type 3: Hybrid Verification<a class="headerlink" href="#type-3-hybrid-verification" title="Permanent link">&para;</a></h3>
+<p><strong>What it is:</strong> Combination of automated checks + manual review</p>
+<h4 id="example-of-hybrid-verification">Example of Hybrid verification<a class="headerlink" href="#example-of-hybrid-verification" title="Permanent link">&para;</a></h4>
+<h5 id="security-review">Security Review<a class="headerlink" href="#security-review" title="Permanent link">&para;</a></h5>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Automated checks:
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>1. Check for SQL injection prevention
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>grep -r &quot;db.query&quot; src/ | grep -v &quot;prepared&quot;
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Expected: 0 matches (all queries use prepared statements)
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>2. Check for XSS prevention
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>grep -r &quot;innerHTML&quot; src/
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Expected: 0 matches (use textContent or sanitize)
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>3. Check dependencies for vulnerabilities
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>npm audit
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>Expected: 0 high/critical vulnerabilities
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>Manual review:
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>- Review authentication flow (correct JWT implementation?)
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>- Check authorization logic (proper role checks?)
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>- Verify sensitive data handling (PII encrypted?)
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>- Review error messages (no stack traces to users?)
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>- Confirm security headers (CSP, HSTS present?)
+</span></code></pre></div>
+<strong>Result: Automated finds obvious issues, manual review catches subtle ones ✓</strong></p>
+<h2 id="how-a-model-uses-verification-protocols">How a Model Uses Verification Protocols<a class="headerlink" href="#how-a-model-uses-verification-protocols" title="Permanent link">&para;</a></h2>
+<p>Verification happens at three stages:</p>
+<h3 id="stage-1-during-development-continuous">Stage 1: During Development (Continuous)<a class="headerlink" href="#stage-1-during-development-continuous" title="Permanent link">&para;</a></h3>
+<p><strong>What a model does:</strong> Check alignment when building</p>
+<h4 id="example-building-authentication">Example: Building Authentication<a class="headerlink" href="#example-building-authentication" title="Permanent link">&para;</a></h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>While coding, model continuously verifies:
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>[Writing password validation]
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Model: &quot;Spec says 12+ characters. Am I enforcing this?&quot;
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Check: Yes, validation requires length &gt;= 12
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>[Writing password hashing]
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>Model: &quot;Spec says bcrypt with salt rounds = 12. Am I using this?&quot;
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Check: Yes, bcrypt.hash(password, 12)
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>[Writing token generation]
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>Model: &quot;Spec says JWT with HS256, 15min expiry. Am I compliant?&quot;
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>Check: Yes, jwt.sign({...}, secret, {algorithm: &#39;HS256&#39;, expiresIn: &#39;15m&#39;})
+</span></code></pre></div>
+<strong>Continuous verification prevents drift! ✓</strong></p>
+<h3 id="stage-2-pre-delivery-comprehensive">Stage 2: Pre-Delivery (Comprehensive)<a class="headerlink" href="#stage-2-pre-delivery-comprehensive" title="Permanent link">&para;</a></h3>
+<p>What model does: Full verification checklist before showing you</p>
+<h4 id="example-pre-delivery-checklist">Example: Pre-Delivery Checklist<a class="headerlink" href="#example-pre-delivery-checklist" title="Permanent link">&para;</a></h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>MUST Constraints:
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>- Password hashing: bcrypt, salt rounds = 12
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>- API response time: &lt;200ms (p95)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>- Database encryption: AES-256 for PII
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>- HTTPS only in production
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>- No API keys in code
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>SHOULD Guidelines:
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>- Functions under 50 lines (or documented exception)
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>- Error messages include recovery steps
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>- Following brand guidelines
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>CONTEXT Alignment
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>- Suitable for non-technical users (simple UI)
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>- Works on mobile (60% of users)
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>- Handles offline mode (spotty WiFi common)
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>INTENT Alignment
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>- Supports primary goal (reduce cart abandonment)
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>- Aligns with trade-offs (speed over perfection for v1)
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>- On track for deadline (feature freeze May 15)
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>VERIFICATION RESULTS:
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>- All MUSTs: PASS
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>- All SHOULDs: PASS (1 exception documented)
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>- CONTEXT: Aligned
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>- INTENT: Aligned
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>Ready to deliver!
+</span></code></pre></div>
+<strong>Comprehensive verification catches everything!</strong></p>
+<h3 id="stage-3-post-deployment-monitoring">Stage 3: Post-Deployment (Monitoring)<a class="headerlink" href="#stage-3-post-deployment-monitoring" title="Permanent link">&para;</a></h3>
+<p>What model does: Verify ongoing compliance in production</p>
+<h4 id="example-production-monitoring">Example: Production Monitoring<a class="headerlink" href="#example-production-monitoring" title="Permanent link">&para;</a></h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Continuous monitoring:
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>- API response time: &lt;200ms (p95) [Currently: 180ms ]
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>- Error rate: &lt;1% [Currently: 0.3% ]
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>- Uptime: &gt;99.9% [Currently: 99.95% ]
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>- Security: No vulnerabilities [Last scan: Clean ]
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Weekly review:
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>- Check logs for security events (none )
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>- Review user feedback (satisfaction &gt;4.5/5 )
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>- Verify performance trends (stable )
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>- Confirm compliance (GDPR requirements met )
+</span></code></pre></div>
+<strong>Ongoing verification ensures sustained compliance!</strong></p>
+<h2 id="writing-verifiable-specifications">Writing Verifiable Specifications<a class="headerlink" href="#writing-verifiable-specifications" title="Permanent link">&para;</a></h2>
+<p>Some specs are easy to verify, others are impossible.</p>
+<h3 id="easy-to-verify-good-specs">Easy to Verify (Good Specs)<a class="headerlink" href="#easy-to-verify-good-specs" title="Permanent link">&para;</a></h3>
+<h4 id="specific-measurable">Specific + Measurable<a class="headerlink" href="#specific-measurable" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&lt;constraint&gt;
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>MUST: API response time &lt;200ms (95th percentile)
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>VERIFICATION:
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Command: artillery run load-test.yml
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Expected: p95 &lt; 200ms
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>Pass criteria: All endpoints meet threshold
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<p><strong>Why this works</strong></p>
+<ul>
+<li>Clear metric (200ms) ✓</li>
+<li>Specific percentile (p95) ✓</li>
+<li>Automated check (artillery) ✓</li>
+</ul>
+<p><strong>Pass/fail obvious ✓</strong></p>
+<h4 id="binary-objective">Binary + Objective<a class="headerlink" href="#binary-objective" title="Permanent link">&para;</a></h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;constraint&gt;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>MUST: All passwords hashed with bcrypt (salt rounds &gt;= 12)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>VERIFICATION:
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Command: grep -r &quot;bcrypt.hash&quot; src/auth/
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Expected: At least 1 match in password handling
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>Command: grep -r &quot;bcrypt.hash.*[0-9]&quot; src/auth/
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>Expected: Salt rounds &gt;= 12 in all matches
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>Pass criteria: bcrypt used, rounds &gt;= 12
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<strong>Why this works</strong></p>
+<ul>
+<li>Binary (bcrypt or not)</li>
+<li>Objective (can grep for it)</li>
+<li>Clear threshold (&gt;= 12)</li>
+<li>Automated verification</li>
+</ul>
+<h3 id="hard-to-verify-bad-specs"><strong>Hard to Verify (Bad Specs)</strong><a class="headerlink" href="#hard-to-verify-bad-specs" title="Permanent link">&para;</a></h3>
+<h4 id="vague-subjective">Vague + Subjective<a class="headerlink" href="#vague-subjective" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&lt;constraint&gt;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>MUST: Code should be elegant and maintainable
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>VERIFICATION:
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>??? How does a model check this? ???
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<p><strong>Why this fails:</strong></p>
+<ul>
+<li>"Elegant" = subjective</li>
+<li>"Maintainable" = no clear criteria</li>
+<li>Can't automate</li>
+<li>Pass/fail unclear</li>
+</ul>
+<p><strong>Better version</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&lt;constraint&gt;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>MUST: Functions under 50 lines (except documented exceptions)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>MUST: Cyclomatic complexity &lt;10 per function
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>MUST: Test coverage &gt;80%
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>VERIFICATION:
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Command: npm run complexity-check
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>Expected: All functions complexity &lt;10
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>Command: npm test -- --coverage
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>Expected: Coverage &gt;80%
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>Pass criteria: Complexity and coverage thresholds met
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<h4 id="multiple-criteria-no-priority">Multiple Criteria, No Priority<a class="headerlink" href="#multiple-criteria-no-priority" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;constraint&gt;
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>MUST: Optimize for performance, security, and usability
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>VERIFICATION:
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>??? All three? In what order? How to measure? ???
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<p><strong>Why this fails:</strong></p>
+<ul>
+<li>Three different criteria</li>
+<li>No priority when they conflict</li>
+<li>No measurabletargets</li>
+</ul>
+<p><strong>Better version</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;constraint priority=&quot;critical&quot;&gt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>MUST: Security first (no compromise)
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>- All PII encrypted at rest (AES-256)
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>- Passwords hashed (bcrypt, salt rounds &gt;= 12)
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>- HTTPS only in production
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>VERIFICATION:
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>Command: npm run security-audit
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>Expected: 0 critical/high vulnerabilities
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>Command: Check encryption config
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>Expected: AES-256 for PII fields confirmed
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>&lt;/constraint&gt;
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>&lt;constraint priority=&quot;high&quot;&gt;
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>MUST: Performance adequate (not optimal)
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>- API response &lt;500ms (p95) [not &lt;200ms for v1]
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>- Page load &lt;3s on 3G [acceptable for v1]
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>VERIFICATION:
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>Command: lighthouse --throttling=3G
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>Expected: Performance score &gt;70 (not &gt;90 yet)
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>&lt;/constraint&gt;
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>&lt;guideline&gt;
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>SHOULD: Usability improvements (iterate post-launch)
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>- Clear error messages
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>- Responsive design
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>- Accessibility features
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>
+</span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>VERIFICATION:
+</span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>Manual review checklist (not blocking for v1)
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>&lt;/guideline&gt;
+</span></code></pre></div>
+<strong>Now priorities clear, verification possible!</strong></p>
+<h2 id="the-verification-protocol-pattern">The Verification Protocol Pattern<a class="headerlink" href="#the-verification-protocol-pattern" title="Permanent link">&para;</a></h2>
+<h3 id="effective-verification-protocols-follow-this-structure">Effective verification protocols follow this structure<a class="headerlink" href="#effective-verification-protocols-follow-this-structure" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&lt;verification scope=&quot;[domain]&quot;&gt;
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>**What to verify:**
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>[Specific constraints being checked]
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>**How to verify:**
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>[Automated commands OR manual checklist]
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>**Expected results:**
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>[Clear pass criteria]
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>**When to verify:**
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>[During development | Pre-delivery | Post-deployment]
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>**If verification fails:**
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>[What to do - fix, flag, or escalate]
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>**Pass criteria:**
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>[Objective determination of success]
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<h4 id="example-complete-verification-protocol-security-verification">Example: Complete Verification Protocol- Security Verification<a class="headerlink" href="#example-complete-verification-protocol-security-verification" title="Permanent link">&para;</a></h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>&lt;verification scope=&quot;security&quot;&gt;
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>### What to verify
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>#### All security MUST constraints from specification
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>- Password hashing (bcrypt, salt rounds &gt;= 12)
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>- API authentication (JWT with HS256, 15min expiry)
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>- PII encryption at rest (AES-256)
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>- HTTPS only in production
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>- No secrets in code
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>### How to verify
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>#### AUTOMATED CHECKS
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>1. Password hashing:
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>Command: grep -r &quot;bcrypt.hash&quot; src/auth/ &amp;&amp; grep &quot;rounds.*1[2-9]&quot; src/auth/
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>Expected: bcrypt found, salt rounds &gt;= 
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>2. JWT implementation:
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>Command: grep -r &quot;jwt.sign&quot; src/ | grep &quot;HS256&quot;
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>Expected: All JWT uses HS256 algorithm
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>Command: grep -r &quot;expiresIn.*15&quot; src/
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>Expected: 15-minute expiry found
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>3. Secrets check:
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>Command: git secrets --scan
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>Expected: 0 secrets found in code
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>4. Dependency vulnerabilities:
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>Command: npm audit --audit-level=high
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>Expected: 0 high/critical vulnerabilities
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>MANUAL CHECKS
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a>- Review authentication flow (correct implementation?)
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>- Verify production uses HTTPS (check deployment config)
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>- Confirm PII fields encrypted (review database schema)
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a>- Check error messages (no stack traces exposed?)
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a>**Expected results:**
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a>
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a>- All automated checks: PASS
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a>- All manual checks: CONFIRMED
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a>- 0 security issues found
+</span><span id="__span-15-48"><a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a>
+</span><span id="__span-15-49"><a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a>When to verify
+</span><span id="__span-15-50"><a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a>
+</span><span id="__span-15-51"><a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a>- During development: Continuous (catch issues early)
+</span><span id="__span-15-52"><a id="__codelineno-15-52" name="__codelineno-15-52" href="#__codelineno-15-52"></a>- Pre-delivery: Complete verification (before showing user)
+</span><span id="__span-15-53"><a id="__codelineno-15-53" name="__codelineno-15-53" href="#__codelineno-15-53"></a>- Post-deployment: Weekly security scan
+</span><span id="__span-15-54"><a id="__codelineno-15-54" name="__codelineno-15-54" href="#__codelineno-15-54"></a>
+</span><span id="__span-15-55"><a id="__codelineno-15-55" name="__codelineno-15-55" href="#__codelineno-15-55"></a>If verification fails
+</span><span id="__span-15-56"><a id="__codelineno-15-56" name="__codelineno-15-56" href="#__codelineno-15-56"></a>
+</span><span id="__span-15-57"><a id="__codelineno-15-57" name="__codelineno-15-57" href="#__codelineno-15-57"></a>1. AUTOMATED FAILURE
+</span><span id="__span-15-58"><a id="__codelineno-15-58" name="__codelineno-15-58" href="#__codelineno-15-58"></a>
+</span><span id="__span-15-59"><a id="__codelineno-15-59" name="__codelineno-15-59" href="#__codelineno-15-59"></a>- Review failed check output
+</span><span id="__span-15-60"><a id="__codelineno-15-60" name="__codelineno-15-60" href="#__codelineno-15-60"></a>- Fix code to meet constraint
+</span><span id="__span-15-61"><a id="__codelineno-15-61" name="__codelineno-15-61" href="#__codelineno-15-61"></a>- Re-run verification
+</span><span id="__span-15-62"><a id="__codelineno-15-62" name="__codelineno-15-62" href="#__codelineno-15-62"></a>- Don&#39;t deliver until all pass
+</span><span id="__span-15-63"><a id="__codelineno-15-63" name="__codelineno-15-63" href="#__codelineno-15-63"></a>
+</span><span id="__span-15-64"><a id="__codelineno-15-64" name="__codelineno-15-64" href="#__codelineno-15-64"></a>2. MANUAL FAILURE
+</span><span id="__span-15-65"><a id="__codelineno-15-65" name="__codelineno-15-65" href="#__codelineno-15-65"></a>
+</span><span id="__span-15-66"><a id="__codelineno-15-66" name="__codelineno-15-66" href="#__codelineno-15-66"></a>- Document specific issue found
+</span><span id="__span-15-67"><a id="__codelineno-15-67" name="__codelineno-15-67" href="#__codelineno-15-67"></a>- Determine if it violates MUST (critical) or SHOULD (acceptable exception)
+</span><span id="__span-15-68"><a id="__codelineno-15-68" name="__codelineno-15-68" href="#__codelineno-15-68"></a>- If MUST: Fix before delivery
+</span><span id="__span-15-69"><a id="__codelineno-15-69" name="__codelineno-15-69" href="#__codelineno-15-69"></a>- If SHOULD: Document exception and rationale
+</span><span id="__span-15-70"><a id="__codelineno-15-70" name="__codelineno-15-70" href="#__codelineno-15-70"></a>
+</span><span id="__span-15-71"><a id="__codelineno-15-71" name="__codelineno-15-71" href="#__codelineno-15-71"></a>**Pass criteria:**
+</span><span id="__span-15-72"><a id="__codelineno-15-72" name="__codelineno-15-72" href="#__codelineno-15-72"></a>
+</span><span id="__span-15-73"><a id="__codelineno-15-73" name="__codelineno-15-73" href="#__codelineno-15-73"></a>- All automated security checks pass
+</span><span id="__span-15-74"><a id="__codelineno-15-74" name="__codelineno-15-74" href="#__codelineno-15-74"></a>- All manual security reviews confirm compliance
+</span><span id="__span-15-75"><a id="__codelineno-15-75" name="__codelineno-15-75" href="#__codelineno-15-75"></a>- No secrets in code
+</span><span id="__span-15-76"><a id="__codelineno-15-76" name="__codelineno-15-76" href="#__codelineno-15-76"></a>- No high/critical vulnerabilities
+</span><span id="__span-15-77"><a id="__codelineno-15-77" name="__codelineno-15-77" href="#__codelineno-15-77"></a>- Production configured for HTTPS
+</span><span id="__span-15-78"><a id="__codelineno-15-78" name="__codelineno-15-78" href="#__codelineno-15-78"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>When all criteria met: SECURITY VERIFIED</strong></p>
+<h2 id="common-verification-failures-and-how-to-fix-them">Common Verification Failures (And How to Fix Them)<a class="headerlink" href="#common-verification-failures-and-how-to-fix-them" title="Permanent link">&para;</a></h2>
+<h3 id="failure-1-verification-criteria-too-vague">Failure 1: Verification Criteria Too Vague<a class="headerlink" href="#failure-1-verification-criteria-too-vague" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>&lt;verification&gt;
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Verify that code quality is good
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<p><strong>What happens:</strong>
+- Model: "Is my code quality good?"
+- Model: "I think so? Maybe? I don't know how to check!"
+- Model: [Delivers anyway, hopes for best]</p>
+<p>You: "This code quality is terrible!"</p>
+<p>Model: "But I verified it was good!"</p>
+<p><strong>Solution:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>&lt;verification scope=&quot;code-quality&quot;&gt;
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>What to verify:
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>- Linter passes (0 errors, 0 warnings)
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>- Tests pass (100% of tests)
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>- Coverage meets threshold (&gt;80%)
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>- Complexity acceptable (&lt;10 per function)
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>How to verify:
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>Command: npm run lint &amp;&amp; npm test -- --coverage
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>Expected:
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>- eslint: 0 errors, 0 warnings
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>- tests: 100% pass
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>- coverage: &gt;80%
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>- complexity: all functions &lt;10
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>Pass criteria:
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>All automated checks pass
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>Now a model knows exactly how to verify!</strong></p>
+<h3 id="failure-2-no-verification-for-critical-constraints">Failure 2: No Verification for Critical Constraints<a class="headerlink" href="#failure-2-no-verification-for-critical-constraints" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;constraint priority=&quot;critical&quot;&gt;
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>MUST: Encrypt all PII at rest (AES-256)
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>&lt;/constraint&gt;
+</span></code></pre></div>
+<strong>No verification protocol provided</strong></p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Model: [Builds feature]</li>
+<li>Model: "Did I encrypt PII? I think so... probably?"</li>
+<li>Model: [Delivers without checking]
+[Later: Data breach because PII wasn't encrypted]</li>
+</ul>
+<p><strong>Solution:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;constraint priority=&quot;critical&quot;&gt;
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>MUST: Encrypt all PII at rest (AES-256)
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>&lt;/constraint&gt;
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>&lt;verification scope=&quot;pii-encryption&quot;&gt;
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>**What to verify:**
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>All PII fields (email, name, phone, address, SSN) encrypted in database
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>**How to verify:**
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>1. List PII columns:
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>SELECT column_name, data_type
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>FROM information_schema.columns
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>WHERE table_name IN (&#39;users&#39;, &#39;profiles&#39;, &#39;orders&#39;)
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>AND column_name IN (&#39;email&#39;, &#39;name&#39;, &#39;phone&#39;, &#39;address&#39;, &#39;ssn&#39;);
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>2. Check encryption:
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>Encrypted columns: data_type = &#39;bytea&#39; (binary)
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>Plaintext columns: data_type = &#39;text&#39; or &#39;varchar&#39;
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>3. Verify encryption algorithm:
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>Check application code for AES-256 usage
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>Command: grep -r &quot;aes-256&quot; src/encryption/
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>**Expected results:**
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>All PII columns: data_type = &#39;bytea&#39;
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>Encryption code uses AES-256
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>No PII stored as plaintext
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a>**Pass criteria:**
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>All PII fields confirmed encrypted with AES-256
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>Now critical constraint has verification!</strong></p>
+<h3 id="failure-3-verification-criteria-conflict">Failure 3: Verification Criteria Conflict<a class="headerlink" href="#failure-3-verification-criteria-conflict" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>&lt;verification&gt;
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Verify performance: Response time &lt;100ms
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Verify completeness: All features implemented
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>But implementing all features makes response time 200ms</strong></p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Model: [Implements all features]</li>
+<li>Model: [Tests performance: 200ms]</li>
+<li>Model: "Performance fails! But all features work!"</li>
+<li>Model: [Removes features to hit 100ms]</li>
+<li>Model: [Tests completeness: Features missing]</li>
+<li>Model: "Completeness fails! But performance passes!"</li>
+<li>Model: "I CAN'T WIN!"</li>
+</ul>
+<p><strong>Solution:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>&lt;verification priority=&quot;1-must-pass-first&quot;&gt;
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>**Primary verification (MUST):**
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>Response time &lt;200ms (p95) - MUST PASS
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>**Secondary verification (after primary passes):**
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>All required features implemented - MUST PASS
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>**Priority:**
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>If both can&#39;t pass, prioritize performance (200ms hard limit).
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>Reduce feature scope to meet performance requirement.
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>**Pass criteria:**
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>1. Performance &lt;200ms (required)
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>2. All features implemented (if possible within performance budget)
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>If conflict: Ship fewer features with good performance
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>Don&#39;t ship: All features with poor performance
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>Now model knows which takes priority!</strong></p>
+<h3 id="failure-4-verification-takes-too-long">Failure 4: Verification Takes Too Long<a class="headerlink" href="#failure-4-verification-takes-too-long" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>&lt;verification&gt;
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Run full end-to-end test suite before every code change
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>(Suite takes 4 hours to run)
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<p><strong>What happens:</strong>
+- Model: [Changes one line of code]
+- Model: [Starts 4-hour verification]
+- Model: [Waits... and waits... and waits...]
+- Model: [Makes another change]
+- Model: [4 more hours...]
+- Model: "This is too slow! I can't iterate!"
+- Model: [Stops verifying]
+ -Model: [Ships broken code]</p>
+<p><strong>Solution:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>&lt;verification scope=&quot;multi-stage&quot;&gt;
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>**During development (fast feedback):**
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>- Unit tests only (~30 seconds)
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>- Linter (~10 seconds)
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>- Type checking (~20 seconds)
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>Total: ~1 minute (fast iteration ✓)
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>**Pre-commit (moderate):**
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>- Unit tests
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>- Integration tests (~5 minutes)
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>- Security scan (~2 minutes)
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>Total: ~7 minutes (acceptable for commit ✓)
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>**Pre-delivery (comprehensive):**
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>- Full test suite (~1 hour)
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>- Load testing (~30 minutes)
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>- Security audit (~15 minutes)
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>Total: ~2 hours (acceptable for delivery ✓)
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>**Post-deployment (extensive):**
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>- End-to-end tests (~4 hours)
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>- Penetration testing (~8 hours)
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>Run overnight or on staging before production deploy
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>**Pass criteria:**
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>- Dev: Fast checks pass (iterate quickly)
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>- Commit: Moderate checks pass (safe to commit)
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>- Delivery: Comprehensive checks pass (safe to show user)
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>- Deployment: Extensive checks pass (safe for production)
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<strong>Now verification is fast when needed, thorough when important!</strong></p>
+<h2 id="self-correction-protocols">Self-Correction Protocols<a class="headerlink" href="#self-correction-protocols" title="Permanent link">&para;</a></h2>
+<p><strong>Verification isn't just checking- it's also fixing.</strong></p>
+<p>When Verification Fails: What is the model’s Response with Self-Verification?</p>
+<h3 id="scenario-1-automated-check-fails">Scenario 1: Automated Check Fails<a class="headerlink" href="#scenario-1-automated-check-fails" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Model: [Runs verification]
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>Command: npm run lint
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>Output:
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>src/auth/login.js:42:5 - error: &#39;password&#39; is assigned but never used
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>VERIFICATION FAILED
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>Model’s response:
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>1. IDENTIFY: Linter found unused variable &#39;password&#39; at line 42
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>2. ANALYZE: Why is this variable unused?
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>3. FIX: Either use it or remove it
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>4. RE-VERIFY: Run npm run lint again
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>5. CONFIRM: Now passes
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>6. CONTINUE: Proceed to next verification
+</span></code></pre></div>
+<strong>Self-correction in action!</strong></p>
+<h3 id="scenario-2-performance-check-fails">Scenario 2: Performance Check Fails<a class="headerlink" href="#scenario-2-performance-check-fails" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Model: [Runs load test]
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>Output:
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>GET /api/users: p95 = 320ms (target: &lt;200ms)
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>VERIFICATION FAILED
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>Model’s response:
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>1. IDENTIFY: API response time 320ms exceeds 200ms target
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>2. ANALYZE: Why is it slow?
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>- Database query taking 250ms (bottleneck!)
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>- No caching
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>- No index on user_id column
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>3. FIX OPTIONS:
+</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>A- Add database index (fast fix)
+</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>B- Add caching (more complex)
+</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>C- Optimize query (requires analysis)
+</span><span id="__span-25-19"><a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>
+</span><span id="__span-25-20"><a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>4. CHOOSE: Start with (a) - add index
+</span><span id="__span-25-21"><a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>
+</span><span id="__span-25-22"><a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a>5. IMPLEMENT: CREATE INDEX idx_user_id ON users(user_id);
+</span><span id="__span-25-23"><a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a>
+</span><span id="__span-25-24"><a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a>6. RE-VERIFY: Run load test again
+</span><span id="__span-25-25"><a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a>
+</span><span id="__span-25-26"><a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a>7. RESULT: p95 = 180ms (now under 200ms!)
+</span><span id="__span-25-27"><a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>
+</span><span id="__span-25-28"><a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a>8. CONFIRM: Verification passes
+</span></code></pre></div>
+<strong>Systematic problem-solving!</strong></p>
+<h3 id="scenario-3-cannot-fix-need-guidance">Scenario 3: Cannot Fix (Need Guidance)<a class="headerlink" href="#scenario-3-cannot-fix-need-guidance" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Model: [Runs security audit]
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>Output:
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>High vulnerability: jwt library has known exploit
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>Recommendation: Upgrade to jwt v9.0+
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>VERIFICATION FAILED
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>Model: [Checks spec]
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>Spec says: MUST use jwt v8.5 (company standard)
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>Model: &quot;Conflict! Security says upgrade, spec says use v8.5!&quot;
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>Model’s response:
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>I can&#39;t fix this on my own. I need to flag it.
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>VERIFICATION FAILURE REPORT:
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>Issue: jwt library v8.5 has high-severity vulnerability
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>Spec requirement: MUST use jwt v8.5 (company standard)
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>Security recommendation: Upgrade to v9.0+
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>Conflict: Spec MUST conflicts with security MUST
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>Options:
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>A- Upgrade to v9.0 (violates spec, improves security)
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>B- Stay on v8.5 (meets spec, security risk remains)
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>C- Update spec to allow v9.0 (requires approval)
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>Recommendation: Option C (update spec to allow v9.0)
+</span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>
+</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>Rationale: Security vulnerability is high-severity.
+</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a>v8.5 company standard may be outdated.
+</span><span id="__span-26-29"><a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>Cannot proceed without guidance. Please advise.
+</span></code></pre></div>
+<strong>Model flags what it can't resolve!</strong></p>
+<h2 id="verification-protocol-templates">Verification Protocol Templates<a class="headerlink" href="#verification-protocol-templates" title="Permanent link">&para;</a></h2>
+<p>Copy-paste ready templates:</p>
+<h3 id="template-1-security-verification">Template 1: Security Verification<a class="headerlink" href="#template-1-security-verification" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>&lt;verification scope=&quot;security&quot;&gt;
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>**What to verify:**
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>- Password security (hashing, salting, storage)
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>- Authentication (JWT, sessions, tokens)
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>- Data encryption (at rest, in transit)
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>- Input validation (SQL injection, XSS prevention)
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>- Secrets management (no keys in code)
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>**How to verify:**
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>AUTOMATED:
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>- Password hashing: grep -r &quot;bcrypt&quot; src/auth/
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>- JWT security: npm run security-audit
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>- Secrets scan: git secrets --scan
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>- Dependency check: npm audit --audit-level=high
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>MANUAL:
+</span><span id="__span-27-21"><a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>
+</span><span id="__span-27-22"><a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>- Review authentication flow
+</span><span id="__span-27-23"><a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>- Verify production uses HTTPS
+</span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>- Check error messages (no sensitive data exposed)
+</span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>- Confirm PII handling complies with regulations
+</span><span id="__span-27-26"><a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a>
+</span><span id="__span-27-27"><a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a>**Expected results:**
+</span><span id="__span-27-28"><a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>
+</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a>All automated checks: PASS
+</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a>All manual reviews: CONFIRMED
+</span><span id="__span-27-31"><a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a>
+</span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a>**When to verify:**
+</span><span id="__span-27-33"><a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a>
+</span><span id="__span-27-34"><a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a>- During dev: Continuous
+</span><span id="__span-27-35"><a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a>- Pre-delivery: Complete check
+</span><span id="__span-27-36"><a id="__codelineno-27-36" name="__codelineno-27-36" href="#__codelineno-27-36"></a>- Weekly: Security scan
+</span><span id="__span-27-37"><a id="__codelineno-27-37" name="__codelineno-27-37" href="#__codelineno-27-37"></a>
+</span><span id="__span-27-38"><a id="__codelineno-27-38" name="__codelineno-27-38" href="#__codelineno-27-38"></a>**Pass criteria:**
+</span><span id="__span-27-39"><a id="__codelineno-27-39" name="__codelineno-27-39" href="#__codelineno-27-39"></a>
+</span><span id="__span-27-40"><a id="__codelineno-27-40" name="__codelineno-27-40" href="#__codelineno-27-40"></a>All security checks pass, 0 critical vulnerabilities
+</span><span id="__span-27-41"><a id="__codelineno-27-41" name="__codelineno-27-41" href="#__codelineno-27-41"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<h3 id="template-2-performance-verification">Template 2: Performance Verification<a class="headerlink" href="#template-2-performance-verification" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>&lt;verification scope=&quot;performance&quot;&gt;
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>**What to verify:**
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>- API response times (&lt;200ms p95)
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>- Database query performance (&lt;100ms p95)
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>- Page load times (&lt;2s on 3G)
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>- Bundle sizes (&lt;500KB)
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>**How to verify:**
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>AUTOMATED:
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>- Load test: artillery run load-test.yml
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>- Bundle analysis: npm run build &amp;&amp; ls -lh dist/
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>- Lighthouse: lighthouse --throttling=3G URL
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>**Expected results:**
+</span><span id="__span-28-19"><a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
+</span><span id="__span-28-20"><a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>- API p95: &lt;200ms
+</span><span id="__span-28-21"><a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>- DB queries p95: &lt;100ms
+</span><span id="__span-28-22"><a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>- Page load: &lt;2s
+</span><span id="__span-28-23"><a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>- Bundle: &lt;500KB
+</span><span id="__span-28-24"><a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>
+</span><span id="__span-28-25"><a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a>**When to verify:**
+</span><span id="__span-28-26"><a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>
+</span><span id="__span-28-27"><a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>- Pre-delivery: Required
+</span><span id="__span-28-28"><a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>- Post-deployment: Daily monitoring
+</span><span id="__span-28-29"><a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>
+</span><span id="__span-28-30"><a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>**If fails:**
+</span><span id="__span-28-31"><a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>
+</span><span id="__span-28-32"><a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>1. Identify bottleneck (profiling)
+</span><span id="__span-28-33"><a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a>2. Optimize (caching, indexing, code-splitting)
+</span><span id="__span-28-34"><a id="__codelineno-28-34" name="__codelineno-28-34" href="#__codelineno-28-34"></a>3. Re-verify
+</span><span id="__span-28-35"><a id="__codelineno-28-35" name="__codelineno-28-35" href="#__codelineno-28-35"></a>4. Escalate if cannot meet targets
+</span><span id="__span-28-36"><a id="__codelineno-28-36" name="__codelineno-28-36" href="#__codelineno-28-36"></a>
+</span><span id="__span-28-37"><a id="__codelineno-28-37" name="__codelineno-28-37" href="#__codelineno-28-37"></a>**Pass criteria:**
+</span><span id="__span-28-38"><a id="__codelineno-28-38" name="__codelineno-28-38" href="#__codelineno-28-38"></a>
+</span><span id="__span-28-39"><a id="__codelineno-28-39" name="__codelineno-28-39" href="#__codelineno-28-39"></a>All performance metrics within thresholds
+</span><span id="__span-28-40"><a id="__codelineno-28-40" name="__codelineno-28-40" href="#__codelineno-28-40"></a>
+</span><span id="__span-28-41"><a id="__codelineno-28-41" name="__codelineno-28-41" href="#__codelineno-28-41"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<h3 id="template-3-compliance-verification">Template 3: Compliance Verification<a class="headerlink" href="#template-3-compliance-verification" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>&lt;verification scope=&quot;compliance&quot;&gt;
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>**What to verify:**
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>- GDPR compliance (consent, deletion, export)
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>- Accessibility (WCAG 2.1 AA)
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>- Privacy policy (present and linked)
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>- Cookie consent (banner and preferences)
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>**How to verify:**
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>AUTOMATED:
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>- Accessibility: axe-core automated tests
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>- Links check: Check privacy policy link works
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>MANUAL:
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>- User can request data deletion
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>- User can export their data (machine-readable format)
+</span><span id="__span-29-21"><a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>- Cookie consent appears on first visit
+</span><span id="__span-29-22"><a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>- Privacy policy covers all required disclosures
+</span><span id="__span-29-23"><a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>- Accessibility: Keyboard navigation works
+</span><span id="__span-29-24"><a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a>- Accessibility: Screen reader compatibility
+</span><span id="__span-29-25"><a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a>
+</span><span id="__span-29-26"><a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>**Expected results:**
+</span><span id="__span-29-27"><a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a>
+</span><span id="__span-29-28"><a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a>All compliance requirements: MET
+</span><span id="__span-29-29"><a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a>
+</span><span id="__span-29-30"><a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a>**When to verify:**
+</span><span id="__span-29-31"><a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a>
+</span><span id="__span-29-32"><a id="__codelineno-29-32" name="__codelineno-29-32" href="#__codelineno-29-32"></a>- Pre-delivery: Required (legal requirement)
+</span><span id="__span-29-33"><a id="__codelineno-29-33" name="__codelineno-29-33" href="#__codelineno-29-33"></a>- Quarterly: Full compliance audit
+</span><span id="__span-29-34"><a id="__codelineno-29-34" name="__codelineno-29-34" href="#__codelineno-29-34"></a>
+</span><span id="__span-29-35"><a id="__codelineno-29-35" name="__codelineno-29-35" href="#__codelineno-29-35"></a>**If fails:**
+</span><span id="__span-29-36"><a id="__codelineno-29-36" name="__codelineno-29-36" href="#__codelineno-29-36"></a>
+</span><span id="__span-29-37"><a id="__codelineno-29-37" name="__codelineno-29-37" href="#__codelineno-29-37"></a>CRITICAL (legal risk) - Must fix before launch
+</span><span id="__span-29-38"><a id="__codelineno-29-38" name="__codelineno-29-38" href="#__codelineno-29-38"></a>
+</span><span id="__span-29-39"><a id="__codelineno-29-39" name="__codelineno-29-39" href="#__codelineno-29-39"></a>**Pass criteria:**
+</span><span id="__span-29-40"><a id="__codelineno-29-40" name="__codelineno-29-40" href="#__codelineno-29-40"></a>
+</span><span id="__span-29-41"><a id="__codelineno-29-41" name="__codelineno-29-41" href="#__codelineno-29-41"></a>All regulatory requirements confirmed compliant
+</span><span id="__span-29-42"><a id="__codelineno-29-42" name="__codelineno-29-42" href="#__codelineno-29-42"></a>
+</span><span id="__span-29-43"><a id="__codelineno-29-43" name="__codelineno-29-43" href="#__codelineno-29-43"></a>&lt;/verification&gt;
+</span></code></pre></div>
+<h2 id="checklist-is-my-verification-protocol-well-written">Checklist: Is My Verification Protocol Well-Written?<a class="headerlink" href="#checklist-is-my-verification-protocol-well-written" title="Permanent link">&para;</a></h2>
+<p><strong>Before finalizing verification protocols:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Clarity
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>[ ] What to verify is specific (not vague)
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>[ ] How to verify is actionable (commands or steps)
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>[ ] Expected results are clear (pass criteria obvious)
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>Completeness
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>[ ] Covers all critical MUST constraints
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>[ ] Includes automated checks where possible
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>[ ] Includes manual checks for subjective criteria
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>[ ] Specifies when to verify (timing)
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>Feasibility
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>[ ] Verification is fast enough (won&#39;t slow iteration)
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>[ ] Tools are available (or specified)
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>[ ] Can be run by model (or clear if human needed)
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>Actionability
+</span><span id="__span-30-21"><a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>
+</span><span id="__span-30-22"><a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>[ ] Pass/fail is objective (no ambiguity)
+</span><span id="__span-30-23"><a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a>[ ] Failures are fixable (or escalatable)
+</span><span id="__span-30-24"><a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a>[ ] Self-correction enabled (I can fix issues)
+</span><span id="__span-30-25"><a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a>
+</span><span id="__span-30-26"><a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a>Integration
+</span><span id="__span-30-27"><a id="__codelineno-30-27" name="__codelineno-30-27" href="#__codelineno-30-27"></a>
+</span><span id="__span-30-28"><a id="__codelineno-30-28" name="__codelineno-30-28" href="#__codelineno-30-28"></a>[ ] Aligns with MUST constraints (verifying what matters)
+</span><span id="__span-30-29"><a id="__codelineno-30-29" name="__codelineno-30-29" href="#__codelineno-30-29"></a>[ ] Respects priorities (critical first)
+</span><span id="__span-30-30"><a id="__codelineno-30-30" name="__codelineno-30-30" href="#__codelineno-30-30"></a>[ ] Enables self-checking (before delivery)
+</span></code></pre></div>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<p><strong>What Makes Good Verification</strong></p>
+<h3 id="good-verification-is">Good verification is<a class="headerlink" href="#good-verification-is" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Specific (clear what to check)</li>
+<li>Measurable (objective pass/fail)</li>
+<li>Automated (where possible)</li>
+<li>Actionable (I can fix failures)</li>
+<li>Comprehensive (covers all MUSTs)</li>
+</ol>
+<h3 id="common-mistakes-to-avoid">Common Mistakes to Avoid<a class="headerlink" href="#common-mistakes-to-avoid" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Vague criteria ("verify quality") → Not actionable</li>
+<li>No verification (constraints without checks) → Model can't self-verify</li>
+<li>Conflicting checks (can't pass all) → Frustrating</li>
+<li>Too slow (4-hour verification) → Model skips it</li>
+<li>No fix guidance (fails but unclear how to fix) → Stuck</li>
+</ol>
+<h2 id="the-verification-pattern">The Verification Pattern<a class="headerlink" href="#the-verification-pattern" title="Permanent link">&para;</a></h2>
+<p>Every verification should have:</p>
+<ol>
+<li>What to verify (specific constraints)</li>
+<li>How to verify (commands or checklist)</li>
+<li>Expected results (clear pass criteria)</li>
+<li>When to verify (timing)</li>
+<li>If verification fails (what to do)</li>
+<li>Pass criteria (objective determination)</li>
+</ol>
+<p><strong>Remember: Verification Enables Quality</strong></p>
+<p><strong>Verification tells a model:</strong></p>
+<ul>
+<li>What to check before delivery</li>
+<li>How to check it (automated or manual)</li>
+<li>When I've succeeded (pass criteria)</li>
+<li>What to fix if model fails (self-correction)</li>
+</ul>
+<p><strong>Good verification enables a model to:</strong></p>
+<ul>
+<li>Catch their own mistakes (before you see them)</li>
+<li>Build with confidence (Model knows when it's good)</li>
+<li>Deliver quality (verified compliance)</li>
+<li>Improve continuously (learn from failures)</li>
+</ul>
+<h2 id="when-is-the-specification-done-specification-convergence">When Is the Specification Done? Specification Convergence<a class="headerlink" href="#when-is-the-specification-done-specification-convergence" title="Permanent link">&para;</a></h2>
+<p>Verification Protocols answer a per-output question: <em>did this run meet the requirements?</em></p>
+<p>There is a second question that sits above it: <em>is the specification itself complete?</em></p>
+<p>Hanyang University's Kim calls this <strong>structural idempotence</strong> — the termination condition
+for harness development. A specification has converged when re-applying its rules produces
+identical structural outcomes. If a second pass changes anything, the rule set is incomplete
+or conflicting and needs further refinement.</p>
+<p>The curriculum names this milestone <strong>Specification Convergence</strong>: the point at which
+iterating on the specification produces no further structural change in agent output. It is
+not a property of any single run. It is a property of the specification itself.</p>
+<hr />
+<h3 id="the-practitioners-bench-test">The Practitioner's Bench Test<a class="headerlink" href="#the-practitioners-bench-test" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Draft and Deploy</td>
+<td>Implement your specification — MUST, SHOULD, CONTEXT, INTENT</td>
+</tr>
+<tr>
+<td>2. Stress Test</td>
+<td>Run edge-case prompts designed to induce drift or cognitive friction</td>
+</tr>
+<tr>
+<td>3. Run Verification Protocols</td>
+<td>Check outputs against your defined requirements</td>
+</tr>
+<tr>
+<td>4. Refine the Structure</td>
+<td>If output drifts, add or adjust a MUST or SHOULD — don't tweak the prompt</td>
+</tr>
+<tr>
+<td>5. Repeat to Idempotence</td>
+<td>Run the same stress tests again. Convergence is achieved when a subsequent pass yields zero structural changes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="the-distinction-that-matters">The Distinction That Matters<a class="headerlink" href="#the-distinction-that-matters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Focus</th>
+<th>The Core Question</th>
+<th>The Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verification Protocol</strong></td>
+<td>The Output</td>
+<td>Did this run meet the requirements?</td>
+<td>Unit tests, format validators, human review</td>
+</tr>
+<tr>
+<td><strong>Specification Convergence</strong></td>
+<td>The System</td>
+<td>Is the rule set complete and non-conflicting?</td>
+<td>Iterative re-runs resulting in structural idempotence</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verification Protocols are how you test for it. Specification Convergence is what you
+are testing for.</strong></p>
+<hr />
+<blockquote>
+<p><strong>Note:</strong> In multi-agent systems, Specification Convergence becomes a hard architectural
+prerequisite — never connect Agent A to Agent B until Agent A has achieved Specification
+Convergence. Drift at the node level becomes cascade failure at the system level. See the
+<a href="https://archiecur.github.io/ai-system-design/multi_agent/multi-agent-index/">Multi-Agent Systems</a>
+module for the full treatment.</p>
+</blockquote>
+<h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>You've learned the complete specification framework:
+- Section 1: Foundation
+- Section 2: MUST (boundaries)
+- Section 3: SHOULD (preferences)
+- Section 4: CONTEXT (planning)
+- Section 5: INTENT (the why)
+- Section 6: VERIFICATION (self-checking) ← You are here!</p>
+<h3 id="next">Next:<a class="headerlink" href="#next" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Section 7: Common Pitfalls (what goes wrong and how to avoid it)</li>
+<li>Section 8: Supremacy Clause and Evidence Reset Protocols</li>
+<li>Then comprehensive appendices with complete examples.</li>
+</ul>
+<p>You now know how to design verification protocols that enable models to catch issues before delivery.</p>
+<p>END OF SECTION 6</p>
+<p>Document Version: 1.0.0</p>
+<p>Last Updated: 2026-02-27</p>
+<p>Key principle: Verification enables quality by allowing models to catch their own mistakes</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Specifications_5_Expressing_INTENT/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Expressing INTENT">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Expressing INTENT
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Specifications_7_Common_Pitfalls/" class="md-footer__link md-footer__link--next" aria-label="Next: Common Pitfalls">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Common Pitfalls
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Archie Cur. Created in collaboration with Claude (Anthropic).
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArchieCur" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
