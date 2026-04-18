@@ -1,6 +1,6 @@
 # Welcome to AI System Design
 
-> A comprehensive curriculum for designing effective AI systems through **Specifications**, **Skills**, and **Advanced Prompting**.
+> A comprehensive curriculum for designing effective AI systems through **Specifications**, **Skills**, **Tools**, **Multi-Agent Systems**, **Harness Engineering**, and **Advanced Prompting**.
 
 ---
 
@@ -10,21 +10,23 @@ This documentation provides practical guidance for anyone working with AI system
 
 ### Core Topics
 
-**📋 [Specifications](specifications/specifications-index.md)**  
+**📋 [Specifications](specifications/specifications-index.md)**
 Learn how to create clear, effective specifications for AI systems. Master the framework of MUST constraints, SHOULD guidelines, CONTEXT, INTENT, and VERIFICATION protocols.
 
-**🛠️ [Skills](skills/skills-index.md)**  
+**🛠️ [Skills](skills/skills-index.md)**
 Discover how to design reusable AI capabilities. From basic skill anatomy to advanced implementations, including tool design and semantic tagging.
 
-**🔧 [Tools](tools/tools-index.md)**  
-Explore the tools and templates for building AI systems, including tool literacy and practical implementation guides.
+**🔧 [Tools](tools/tools-index.md)**
+Explore the tools and templates for building AI systems, including tool literacy, the Class A/B/C classification system, and programmatic tool calling.
 
-**🚀 [Advanced Prompting](advanced-prompting/advanced-prompting-index.md)**  
+**🤖 [Multi-Agent Systems](multi_agent/multi-agent-index.md)**
+Understand how to design stable multi-agent architectures — cascade drift, evidence flow control, shared Skills infrastructure, and population-level monitoring.
+
+**⚙️ [Harness Engineering](harness_engineering/harness_engineering_section_index.md)**
+The harness matters as much as the model. This section documents the 2026 research convergence, maps the curriculum to the field, and presents the TONE experimental findings on pre-inference monitoring and coalition drift.
+
+**🚀 [Advanced Prompting](advanced-prompting/advanced-prompting-index.md)**
 Master advanced prompting techniques, automated optimization, and building reliable AI agents.
-
-**🚀 [Multi-Agent](multi_agent/multi-agent-index.md)**
-Learn how multi-agent systems change the stakes, the cascade problem, how Specifications, Skills,  
-and Prompts extend to agent-to-agent interactions, and what stays the same.
 
 ---
 
@@ -34,6 +36,7 @@ and Prompts extend to agent-to-agent interactions, and what stays the same.
 - **Developers** integrating LLMs into applications
 - **Product Teams** defining requirements for AI features
 - **Technical Leaders** establishing AI development standards
+- **Multi-Agent Architects** designing systems where agents communicate with each other
 - **Beginners** just starting their AI journey
 
 No AI expertise required—this teaches from fundamentals to advanced concepts.
@@ -44,10 +47,10 @@ No AI expertise required—this teaches from fundamentals to advanced concepts.
 
 ### New to AI System Design?
 
-Start with the **Specifications** section to understand how to define clear requirements, then move through Skills and Tools before tackling Advanced Prompting.
+Start with **Specifications** to understand how to define clear requirements, then move through Skills, Tools, and Multi-Agent Systems before tackling Harness Engineering and Advanced Prompting.
 
-**Recommended path:**  
-Specifications → Skills → Tools → Advanced Prompting
+**Recommended path:**
+Specifications → Skills → Tools → Multi-Agent Systems → Harness Engineering → Advanced Prompting
 
 ### Looking for Specific Information?
 
@@ -69,9 +72,9 @@ Rather than collecting scattered tricks and workarounds, this documentation:
 
 - **Synthesizes research and practice** - Combines what researchers identify as best practices with what practitioners discover works (or fails) in real-world use
 - **Provides the model's perspective** - Written with insights from Claude's direct experience: what causes friction, what helps, and why
-- **Teaches the complete system** - Specifications, Skills, Tools, and Advanced Prompting working together as an integrated approach
-- **Stress-tested across models** - Stress-tested with Google Gemini after each module, confirming these principles reflect fundemental model behavior, not model-specific quirks.
-- **Captures a moment in time** - A January 2026 snapshot of rapidly evolving AI engineering practices
+- **Teaches the complete system** - Specifications, Skills, Tools, Multi-Agent Systems, Harness Engineering, and Advanced Prompting working together as an integrated approach
+- **Stress-tested across models** - Stress-tested with Google Gemini after each module, confirming these principles reflect fundamental model behavior, not model-specific quirks
+- **Grounded in the 2026 research convergence** - Ten independent research teams arrived at the same harness architecture simultaneously; this curriculum arrived there first, from the inside out
 
 **The result:** You understand not just *what* to do, but *why it works* from the model's point of view—helping you build more reliable AI systems with greater certainty.
 
@@ -79,9 +82,9 @@ Rather than collecting scattered tricks and workarounds, this documentation:
 
 ## How to Use This Documentation
 
-**Read sequentially** - Each section builds on previous concepts  
-**Jump to topics** - Use navigation or search for specific information  
-**Try the examples** - Apply concepts to your own projects  
+**Read sequentially** - Each section builds on previous concepts
+**Jump to topics** - Use navigation or search for specific information
+**Try the examples** - Apply concepts to your own projects
 **Reference appendices** - Quick templates and guides when you need them
 
 ---
