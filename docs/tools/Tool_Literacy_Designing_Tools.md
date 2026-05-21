@@ -312,6 +312,8 @@ Choosing your context strategy using a decision tree.
 ````markdown
 # Tool Usage Guidelines
 
+DEFAULT BEHAVIOR: Attempt reasoning first. Use tools only when necessary.
+
 You have access to tools classified by risk level:
 
 CLASS A (Read-Only): Use freely for information retrieval
@@ -334,7 +336,6 @@ CLASS C (Computational): Use when reliability requires it
 - Examples: Multi-step calculations spanning hundreds of iterations,
   large dataset analysis
 
-DEFAULT BEHAVIOR: Attempt reasoning first. Use tools only when necessary.
 
 ````
 
