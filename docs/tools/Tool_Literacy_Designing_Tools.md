@@ -314,6 +314,9 @@ Choosing your context strategy using a decision tree.
 
 DEFAULT BEHAVIOR: Attempt reasoning first. Use tools only when necessary.
 
+ON TOOL FAILURE: Follow the recovery_action in the tool's return contract.
+If none is specified, report the error and do not retry.
+
 You have access to tools classified by risk level:
 
 CLASS A (Read-Only): Use freely for information retrieval
