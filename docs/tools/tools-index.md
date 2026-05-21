@@ -17,7 +17,7 @@ Mastering tools transforms them from a source of confusion into a source of reli
 
 ## What You'll Learn
 
-**[Tool Literacy: Designing Tools](Tool_Literacy_Designing_Tools.md)**  
+**[Tool Literacy: Designing Tools](docs/tools/Tool_Literacy_Designing_Tools.md)**  
 The complete framework for engineering tools models can actually use reliably:
 
 - **Three-Part Tool Definition Standard**
