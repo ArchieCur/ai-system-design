@@ -223,12 +223,12 @@ This isn't about writing prettier tool descriptions. It's about:
 
 Work through:
 
-1.Four-Part Tool Definition Standard
-2. Tool Classification System
-3. Decision Trees (reasoning vs. tools)
-4. Standard Library Pattern
-5. Testing Framework
-6. Common Antipatterns
+- 1.Four-Part Tool Definition Standard
+- 2. Tool Classification System
+- 3. Decision Trees (reasoning vs. tools)
+- 4. Standard Library Pattern
+- 5. Testing Framework
+- 6. Common Antipatterns
 
 ### Need Templates?
 
