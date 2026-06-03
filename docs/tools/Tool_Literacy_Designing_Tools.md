@@ -9,7 +9,7 @@
 **Core Principle:** Tools are a form of communication. You're not just defining what a function does
 -you're teaching the model when and how to use it.
 
-## The Three-Part Tool Definition Standard
+## The Four-Part Tool Definition Standard
 
 ![The Part Tool Definition Standard](../assets/4_part_tool_definition.png)
 
