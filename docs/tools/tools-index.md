@@ -223,7 +223,7 @@ This isn't about writing prettier tool descriptions. It's about:
 
 Work through:
 
-1. Three-Part Tool Definition Standard
+1.Four-Part Tool Definition Standard
 2. Tool Classification System
 3. Decision Trees (reasoning vs. tools)
 4. Standard Library Pattern
@@ -242,6 +242,16 @@ Pay special attention to:
 - **Risk Classification** (especially Class B confirmation patterns)
 - **Testing Framework** (validate tool comprehension before deployment)
 - **Programmatic Tool Calling** (architectural enforcement for multi-agent and long-running systems)
+
+### Deploying in Security-Sensitive Contexts?
+
+If your tools retrieve external content, process user-supplied input, call third-party APIs, read shared memory stores, or operate inside    
+multi-agent pipelines, add a **Security Contract** to your Tool Definition Standard.  
+The Security Contract introduces an incorporation gate: tool returns are not incorporated into the model's context until they pass security validation.
+
+For the full threat architecture behind the Security Contract — including the evidence chain attack model,  
+the Supremacy Clause as a Zero Trust primitive, and a deployment maturity model calibrated to system scale and risk — see 
+[Security Architecture for Agentic Systems](../security/Security_Architecture_Agentic_Systems.md).
 
 ---
 
