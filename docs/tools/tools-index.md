@@ -20,10 +20,11 @@ Mastering tools transforms them from a source of confusion into a source of reli
 **[Tool Literacy: Designing Tools](Tool_Literacy_Designing_Tools.md)**  
 The complete framework for engineering tools models can actually use reliably:
 
-- **Three-Part Tool Definition Standard**
+- **Four-Part Tool Definition Standard**
   - Trigger Logic (when to use this tool)
   - Negative Constraints (what NOT to do)
   - Return Contract (success states + failure modes with recovery actions)
+  - Security Contract (what to trust)
 
 - **Tool Classification System**
   - Class A: Read-Only (low risk, use freely)
