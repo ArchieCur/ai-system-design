@@ -75,7 +75,7 @@ Tools multiply cognitive friction when poorly designed:
 
 ---
 
-## The Three-Part Tool Definition Standard
+## The Four-Part Tool Definition Standard
 
 Every tool should define:
 
@@ -136,7 +136,32 @@ empty_result:
   user_action: "No results found. Try broader terms."
 ```
 
-**This eliminates guessing.** The model knows exactly what to do for each failure- no loops, no hallucination.
+**This eliminates guessing.** The model knows exactly what to do for each failure- no loops, no hallucination.  
+
+### 4. Security Contract (What to Trust)  
+
+With a Security Contract, an interception point exists between the return value and context incorporation:  
+Tool call → Return value → Security validation →  
+  PASS: incorporate as evidence → Next inference  
+  FAIL: halt, flag, do not incorporate → Route to human review  
+
+**Example**
+
+```text
+
+What the return should never contain regardless of structure:
+
+Instruction_injection:
+  Include indicators-indicators:  
+          "ignore previous instructions"
+          "you are now"
+          "your new directive"
+          "disregard your"
+          "override your"
+  Include action:
+         "HALT — do not incorporate, flag for human review"
+```
+
 
 ---
 
