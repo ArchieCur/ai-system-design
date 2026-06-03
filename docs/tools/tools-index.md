@@ -8,7 +8,7 @@ This section provides a complete engineering framework for tool design, not just
 
 You'll learn the:
 
-- **Three-Part Tool Definition Standard** (Trigger Logic, Negative Constraints, Return Contract), 
+- **Four-Part Tool Definition Standard** (Trigger Logic, Negative Constraints, Return Contract, Security Contract), 
 - **Risk Classification** (Read-Only, State-Change, Computational), and systematic approaches to testing, composition, and error handling.
 
 Mastering tools transforms them from a source of confusion into a source of reliability.
