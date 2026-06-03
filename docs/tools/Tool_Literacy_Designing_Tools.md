@@ -11,7 +11,7 @@
 
 ## The Three-Part Tool Definition Standard
 
-![The Part Tool Definition Standard](../assets/Three_Part_Tool_Standard.png)
+![The Part Tool Definition Standard](../assets/4_part_tool_definition.png)
 
 **Every tool should include:**
 
