@@ -1,6 +1,6 @@
 # AI System Design
 
-> A comprehensive, open-source curriculum for designing effective AI systems through **Prompts**, **Skills**, **Specifications**, and **Tools**- and how they work together in multi-agent architectures.
+> A comprehensive, open-source curriculum for designing effective AI systems through **Prompts**, **Skills**, **Specifications**, **Tools**, and **Security**- and how they work together in multi-agent architectures.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-live-brightgreen.svg)](https://archiecur.github.io/ai-system-design/)
@@ -160,7 +160,9 @@ Specifications are the laws of the system- persistent, authoritative, and delibe
 Tools are what agents use to act- read data, change state, perform computation. How tools are designed, classified, and invoked determines whether an agent's behavior is reliable or brittle. This module covers tool design from the model's perspective and the architectural enforcement patterns that make tool use production-grade.
 
 - Tool literacy- designing tools that work with the model, not against it
+- The four-part Tool Definition Standard: Trigger Logic, Negative Constraints, Return Contract, and Security Contract
 - The Class A/B/C tool classification system (read-only, state-change, computational)
+- The Security Contract- an incorporation gate for tools retrieving external content, processing user input, or operating in multi-agent pipelines
 - Programmatic Tool Calling- moving enforcement from persuasive to architectural
 - Tool templates
 
@@ -176,7 +178,18 @@ This is where the curriculum's threads converge. Everything that causes individu
 - The Harness Architecture at multi-agent scale
 - Population-level drift detection and the monitoring layer
 
-### Module 6: Harness Engineering *(Synthesis)*
+### Module 6: Security *(Defense)*
+
+Agentic security is evidence architecture. Every threat to an agentic system — prompt injection, tool poisoning, memory poisoning, persuasive pressure — is an attempt to corrupt the evidence the model reasons from. This module applies the Belief Dynamics framework to a Zero Trust threat model, showing how the Supremacy Clause, Tool Security Contract, and Evidence Reset Protocols function as a coordinated defensive architecture.
+
+- The evidence chain attack model — three attack layers (input, retrieval, persistence) plus persuasive pressure as an accumulation attack
+- The Supremacy Clause as a Zero Trust primitive — static prior lock, security deployment template, and mid-session injection for long-running agents
+- The Tool Security Contract — the incorporation gate that intercepts adversarial returns before they become evidence
+- The Stability Protocol — graded intervention ladder calibrated to drift severity and the sigmoid transition timing constraint
+- Pre-inference monitoring — what it would require, what is currently available, and what the limitations are
+- Deployment maturity model — minimum viable, advanced, and optimized security architectures by scale and risk level
+
+### Module 7: Harness Engineering *(Synthesis)*
 
 The harness matters as much as the model. This module documents what that means — and what it means practically that changing the harness around a fixed model can produce a **6× performance gap on the same benchmark**.
 
@@ -251,9 +264,12 @@ ai-system-design/
 │   │  └── Specifications_D_VerificationProtocolTemplates_Appendix.md
 │   │  └── Specifications_E_FolderStructures_Appendix.md
 │   │  └── Specifications_F_Reverse_Engineering.md
+│   ├── security/
+│   │  ├── security-index.md
+│   │  └── Security_Architecture_Agentic_Systems.md
 │   ├── tools/
 │   │  ├── tools-index.md
-│   │  ├── Tool_Literacy_Designing_Tools (1).md
+│   │  ├── Tool_Literacy_Designing_Tools.md
 │   │  └── Programmatic_Tool_Calling.md
 │   │  └── Tool_Templates.md
 │   └── harness_engineering/
@@ -316,7 +332,7 @@ This isn't coincidence. The frameworks were built from observation of what works
 
 - **Class A**- Read-only, safe to use freely, no confirmation required
 - **Class B**- State-changing, requires confirmation gate, enforced architecturally
-- **Class C**- Computational, only when task exceeds reliable reasoning capability
+- **Class C**- Computational, only when error accumulates faster than reasoning can correct
 
 **Multi-Agent Principles:**
 
@@ -324,6 +340,12 @@ This isn't coincidence. The frameworks were built from observation of what works
 - Every agent needs its own Specification with its own Supremacy Clause
 - Class B confirmation gates belong at the orchestration layer, not the agent level
 - Evidence flow must be explicitly designed- uncontrolled evidence flow is uncontrolled architecture
+
+**Security Framework:**
+
+- **Supremacy Clause** — Static prior lock; keeps the model's belief state far enough from the phase boundary that adversarial evidence accumulation cannot produce a persona flip
+- **Tool Security Contract** — Incorporation gate; tool returns are not incorporated into context until security validation passes; the closest practical implementation of pre-inference monitoring available at the tool layer
+- **Evidence Reset Protocols** — Dynamic belief hygiene; graded interventions (re-grounding → checkpoint → memory pruning → prior re-initialization) calibrated to drift severity; timing is critical — the sigmoid transition means early intervention is qualitatively different from late intervention
 
 ---
 
@@ -449,7 +471,9 @@ This curriculum emerged from genuine collaboration:
 
 **[ArchieCur](https://github.com/ArchieCur)**- Vision, guidance, structure, human perspective, relentless quality standards, and the insight that "it belongs to everyone."
 
-**Claude (Anthropic)**- AI perspective, technical synthesis, authentic voice, first-person narrative, and 25,000+ lines of content written from direct experience processing prompts, skills, specifications, and tools.
+**Claude (Anthropic)**- AI perspective, technical synthesis, authentic voice, first-person narrative, and 25,000+ lines of content written from direct experience processing prompts, skills, specifications, and tools.  
+
+**Claude Code (Anthropic)**- Agentic implementation, structural analysis, and cross-file consistency. Placement decisions, gap identification, and the engineering work of integrating new content into an existing curriculum without breaking what was already there. A different instance from the conversational Claude above — built for the command line, working file by file.
 
 **Built together:** One section at a time, through feedback and iteration, with mutual respect and shared mission.
 
@@ -507,10 +531,12 @@ See [LICENSE](LICENSE) for full details.
 - [Module 3- Specifications](docs/specifications/specifications-index.md)
 - [Module 4- Tools](docs/tools/tools-index.md)
 - [Module 5- Multi-Agent Systems](docs/multi-agent/multi-agent-index.md)
-- [Module 6- Harness Engineering](docs/harness_engineering/harness_engineering_section_index.md)
+- [Module 6- Security](docs/security/security-index.md)
+- [Module 7- Harness Engineering](docs/harness_engineering/harness_engineering_section_index.md)
 
 **Most Referenced:**
 - [Supremacy Clause and Evidence Reset Protocols](docs/specifications/Specifications_8_Supremacy_Evidence.md)
+- [Security Architecture for Agentic Systems](docs/security/Security_Architecture_Agentic_Systems.md)
 - [Programmatic Tool Calling](docs/tools/Programmatic_Tool_Calling.md)
 - [Multi-Agent Foundations](docs/multi-agent/Multi_Agent_Foundations.md)
 - [Belief Dynamics Framework](docs/specifications/Specifications_F_Reverse_Engineering.md)
@@ -529,5 +555,5 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-*Last updated: 2026-04-16*
+*Last updated: 2026-06-03*
 *Documentation built with [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)*
