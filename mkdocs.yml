@@ -110,6 +110,10 @@ nav:
       - Foundations: multi_agent/Multi_Agent_Foundations.md
       - Patterns: multi_agent/Multi_Agent_Patterns.md
 
+  - Security:
+      - Overview: security/security-index.md
+      - Security Architecture for Agentic Systems: security/Security_Architecture_Agentic_Systems.md
+
   - Harness Engineering:
       - Overview: harness_engineering/harness_engineering_section_index.md
       - 'Movement 1: A Field Converges': harness_engineering/harness_engineering_movement1.md
