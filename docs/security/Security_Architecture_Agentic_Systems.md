@@ -94,7 +94,10 @@ and compounds over time.
 Memory consolidation operations (such as DREAMS-style async consolidation) provide a natural
 mitigation point: consolidation that detects contradictions, resolves them, and surfaces patterns
 as new insights also has the structural effect of stripping injected instructions that don't
-cohere with the verified evidence base.
+cohere with the verified evidence base.  
+See- Async memory consolidation: deduplicate and resolve contradictions across sessions
+[Dreams memory Consolidation]([https://docs.anthropic.com/](https://github.com/ArchieCur/claude_api_cookbook/blob/main/managed_agents/03_dreams_memory_consolidation.py) 
+
 
 ### The Fourth Category: Persuasive Pressure
 
